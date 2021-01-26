@@ -34,6 +34,10 @@ class DrawerMenu extends Component {
 	render() {
 		return (
 			<View style={drawerStyles.container}>
+				<BackItem
+					navigation={this.props.navigation}
+					icon={'times'}
+				/>
 				<FlatList
 					data={menuData}
 					renderItem={({ item }) => (
@@ -67,6 +71,21 @@ const DrawerItem = ({ navigation, icon, name, screenName }) => (
 			style={{ margin: 15 }}
 		/>
 		<Text style={drawerStyles.menuItemText}>{name}</Text>
+	</TouchableOpacity>
+);
+
+const BackItem = ({ navigation, icon }) => (
+	<TouchableOpacity
+		style={drawerStyles.menuItem}
+		activeOpacity={0.1}
+		onPress={() => navigation.closeDrawer()}
+	>
+		<Icon
+			name={icon}
+			size={25}
+			color="#222831"
+			style={{ margin: 15 }}
+		/>
 	</TouchableOpacity>
 );
 

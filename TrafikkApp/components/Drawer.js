@@ -17,14 +17,18 @@ function MyDrawer(props) {
 			initialRouteName="StartScreen"
 			drawerType="front"
 			drawerContent={(props) => <DrawerMenu {...props} />}
+			drawerContentOptions={{ activeBackgroundColor: 'blue' }}
 		>
-			<Drawer.Screen name="Hjem" component={StartScreen} />
 			<Drawer.Screen
-				name="Innstillinger"
+				name="StartScreen"
+				component={StartScreen}
+			/>
+			<Drawer.Screen
+				name="SettingsScreen"
 				component={SettingsScreen}
 			/>
 			<Drawer.Screen
-				name="Veikryss"
+				name="IntersectionScreen"
 				component={IntersectionScreen}
 			/>
 		</Drawer.Navigator>

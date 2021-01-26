@@ -2,7 +2,6 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import styles from '../styles/mainStyles.js';
-
 import Header from '../components/Header.js';
 
 const SettingsScreen = ({ navigation }) => {

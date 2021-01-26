@@ -4,7 +4,7 @@ const drawerStyles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: '#dddddd',
-		paddingTop: 70
+		paddingTop: 10
 	},
 	menuItem: {
 		flexDirection: 'row',

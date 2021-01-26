@@ -14,7 +14,6 @@ const StartScreen = ({ navigation }) => {
 				style={{ width: '100%', height: '90%' }}
 				resizeMode="contain"
 			/>
-			<Text> Startsiden </Text>
 		</View>
 	);
 };
