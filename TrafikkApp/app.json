@@ -1,4 +1,11 @@
 {
   "name": "TrafikkApp",
-  "displayName": "TrafikkApp"
+  "displayName": "TrafikkApp",
+  "platforms": [
+    "ios",
+    "android",
+    "web"
+  ],
+  "version": "1.0.0",
+  "orientation": "landscape"
 }
