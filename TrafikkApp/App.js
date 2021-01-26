@@ -13,7 +13,6 @@ import {
   View,
   Text,
   StatusBar,
-  Button
 } from 'react-native';
 
 import {
@@ -25,10 +24,6 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 const App = () => {
-  function testFunc() {
-    console.log('heeeei');
-  };
-
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -49,7 +44,6 @@ const App = () => {
                 Edit <Text style={styles.highlight}>App.js</Text> to change this
                 screen and then come back to see your edits.
               </Text>
-              <Button title="Halla" onPress={testFunc}/>
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>See Your Changes</Text>
