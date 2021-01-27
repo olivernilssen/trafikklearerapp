@@ -1,16 +1,6 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-
-const Colors = StyleSheet.create({
-    primary: {
-        color: '#48466d',
-    },
-    accent: {
-        color: '#48466d',
-    },
-    accent2: {
-        color: '#DDDDDD',
-    },
-});
-
-export default Colors;
+export default {
+     light: '#DDDDDD',
+     dark: '#222831',
+     mediumDark: '#30475E',
+     colorful: '#f05454',
+};

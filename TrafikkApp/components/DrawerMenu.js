@@ -3,6 +3,8 @@ import { Text, TouchableOpacity, View, FlatList } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import drawerStyles from '../styles/drawerStyle.js';
+import Colors from '../styles/Colors';
+
 import {
      DrawerContentScrollView,
      DrawerItemList,
@@ -79,14 +81,17 @@ const DrawerItem = ({ navigation, state, icon, name, screenName, value }) => (
           <Icon
                name={icon}
                size={25}
-               color={state.index == value ? '#f05454' : '#DDDDDD'}
+               color={state.index == value ? Colors.colorful : Colors.light}
                style={{ margin: 15 }}
           />
           <Text
                style={[
                     drawerStyles.menuItemText,
                     {
-                         color: state.index == value ? '#f05454' : '#DDDDDD',
+                         color:
+                              state.index == value
+                                   ? Colors.colorful
+                                   : Colors.light,
                     },
                ]}>
                {name}
@@ -102,7 +107,7 @@ const BackItem = ({ navigation, icon }) => (
           <Icon
                name={icon}
                size={35}
-               color="#DDDDDD"
+               color={Colors.light}
                style={{ marginTop: 10, marginLeft: 10 }}
           />
      </TouchableOpacity>

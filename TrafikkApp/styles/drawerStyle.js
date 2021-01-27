@@ -1,22 +1,23 @@
 import { StyleSheet } from 'react-native';
+import Colors from './Colors';
 
 const drawerStyles = StyleSheet.create({
      container: {
           flex: 1,
-          backgroundColor: '#222831',
+          backgroundColor: Colors.dark,
           paddingTop: 15,
           paddingHorizontal: 15,
      },
      menuItem: {
           flexDirection: 'row',
           marginBottom: 15,
-          color: '#48466d',
+          color: Colors.mediumDark,
      },
      menuItemText: {
           fontSize: 20,
           fontWeight: '300',
           margin: 15,
-          color: '#DDDDDD',
+          color: Colors.light,
      },
 });
 
