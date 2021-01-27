@@ -6,22 +6,22 @@ import styles from '../styles/mainStyles.js';
 import Header from '../components/Header.js';
 
 const RoundaboutScreen = ({ navigation }) => {
-     return (
-          <SafeAreaView style={styles.container}>
-               <Header name="Rundkjøring" toggleDrawer={navigation.toggleDrawer} />
-               <View style={screenStyles.main}>
-                    <Text>Rundkjøring siden</Text>
-               </View>
-          </SafeAreaView>
-     );
+    return (
+        <SafeAreaView style={styles.container}>
+            <Header name="Rundkjøring" navigation={navigation} />
+            <View style={screenStyles.main}>
+                <Text>Rundkjøring siden</Text>
+            </View>
+        </SafeAreaView>
+    );
 };
 
 const screenStyles = StyleSheet.create({
-     main: {
-          height: '90%',
-          justifyContent: 'center',
-          alignItems: 'center',
-     },
+    main: {
+        height: '90%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 });
 
 export default RoundaboutScreen;

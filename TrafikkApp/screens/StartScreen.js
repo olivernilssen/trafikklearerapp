@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import styles from '../styles/mainStyles.js';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import StartScreenLink from '../components/StartScreenLink';
+import StartScreenLink from '../components/StartScreenLink.js';
 
 import Colors from '../styles/Colors';
 
@@ -12,7 +12,7 @@ import Header from '../components/Header.js';
 const StartScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
-            <Header name="Home" toggleDrawer={navigation.toggleDrawer} />
+            <Header name="Hjem" navigation={navigation} />
             <View style={screenStyles.container}>
                 <StartScreenLink
                     name="times"
@@ -20,11 +20,11 @@ const StartScreen = ({ navigation }) => {
                     onPress={() => navigation.navigate('IntersectionScreen')}
                 />
                 <StartScreenLink name="question" text="tba" />
-                <StartScreenLink 
+                <StartScreenLink
                     name="crosshairs"
                     text="Rundkjøring"
-                    onPress={() => navigation.navigate('RoundaboutScreen')} 
-                    />
+                    onPress={() => navigation.navigate('RoundaboutScreen')}
+                />
                 <StartScreenLink name="question" text="tba" />
                 <StartScreenLink name="road" text="Vei" />
                 <StartScreenLink name="question" text="tba" />
