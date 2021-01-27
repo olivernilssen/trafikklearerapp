@@ -26,11 +26,18 @@ const menuData = [
           value: 1,
      },
      {
+          icon: 'crosshairs',
+          name: 'Rundkjøring',
+          screenName: 'RoundaboutScreen',
+          key: '2',
+          value: 2,
+     },
+     {
           icon: 'sliders',
           name: 'Innstillinger',
           screenName: 'SettingsScreen',
-          key: '2',
-          value: 2,
+          key: '3',
+          value: 3,
      },
 ];
 

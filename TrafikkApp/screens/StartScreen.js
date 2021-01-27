@@ -20,7 +20,11 @@ const StartScreen = ({ navigation }) => {
                     onPress={() => navigation.navigate('IntersectionScreen')}
                 />
                 <StartScreenLink name="question" text="tba" />
-                <StartScreenLink name="crosshairs" text="Rundkjøring" />
+                <StartScreenLink 
+                    name="crosshairs"
+                    text="Rundkjøring"
+                    onPress={() => navigation.navigate('RoundaboutScreen')} 
+                    />
                 <StartScreenLink name="question" text="tba" />
                 <StartScreenLink name="road" text="Vei" />
                 <StartScreenLink name="question" text="tba" />

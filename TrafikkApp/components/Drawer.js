@@ -6,6 +6,7 @@ import DrawerMenu from './DrawerMenu.js';
 import StartScreen from '../screens/StartScreen.js';
 import SettingsScreen from '../screens/SettingsScreen.js';
 import IntersectionScreen from '../screens/IntersectionScreen.js';
+import RoundaboutScreen from '../screens/RoundaboutScreen.js';
 
 const Drawer = createDrawerNavigator();
 
@@ -19,6 +20,10 @@ const MyDrawer = (props) => {
                <Drawer.Screen
                     name="IntersectionScreen"
                     component={IntersectionScreen}
+               />
+               <Drawer.Screen
+                    name="RoundaboutScreen"
+                    component={RoundaboutScreen}
                />
                <Drawer.Screen
                     name="SettingsScreen"
