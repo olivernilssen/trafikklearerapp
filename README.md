@@ -7,20 +7,19 @@ Framework and technology:
 - node.js
 - react native
 
-dependencies": {
-          "@react-native-community/masked-view": "^0.1.10",
-          "@react-navigation/drawer": "^5.12.3",
-          "@react-navigation/native": "^5.9.2",
-          "react": "16.13.1",
-          "react-native": "0.63.4",
-          "react-native-gesture-handler": "^1.9.0",
-          "react-native-reanimated": "^1.13.2",
-          "react-native-safe-area-context": "^3.1.9",
-          "react-native-screens": "^2.15.1",
-          "react-native-vector-icons": "^8.0.0",
-          "react-navigation": "^4.4.3",
-          "typescript": "^4.1.3"
-}
+dependencies":
+- @react-native-community/masked-view
+- @react-navigation/drawer
+- @react-navigation/native
+- react
+- react-native
+- react-native-gesture-handler
+- react-native-reanimated
+- react-native-safe-area-context
+- react-native-screens
+- react-native-vector-icons
+- react-navigation
+- typescript
 
 To run app: 
   - Make sure you have an android emulator running 
