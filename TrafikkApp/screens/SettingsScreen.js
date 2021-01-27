@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from '../styles/mainStyles.js';
 import Header from '../components/Header.js';
@@ -12,15 +12,19 @@ const SettingsScreen = ({ navigation }) => {
                     name="Innstillinger"
                     toggleDrawer={navigation.toggleDrawer}
                />
-               <View
-                    style={{
-                         height: '90%',
-                         justifyContent: 'center',
-                         alignItems: 'center',
-                    }}>
+               <View style={screenStyles.main}>
                     <Text>Innstillinger</Text>
                </View>
           </SafeAreaView>
      );
 };
+
+const screenStyles = StyleSheet.create({
+     main: {
+          height: '90%',
+          justifyContent: 'center',
+          alignItems: 'center',
+     },
+});
+
 export default SettingsScreen;
