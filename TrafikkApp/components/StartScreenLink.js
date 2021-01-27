@@ -8,7 +8,7 @@ const StartScreenLink = (props) => {
     return (
         <TouchableOpacity
             style={styles.linkContainer}
-            activeOpacity={0.8}
+            activeOpacity={0.6}
             onPress={props.onPress}>
             <Icon name={props.name} size={100} color={Colors.light} />
             <Text style={styles.linkText}>{props.text}</Text>
@@ -20,17 +20,18 @@ const styles = StyleSheet.create({
     linkContainer: {
         justifyContent: 'center',
         alignItems: 'center',
-        width: 250,
-        height: 250,
+        width: 200,
+        height: 200,
         borderRadius: 25,
         borderWidth: 2,
         borderColor: Colors.light,
-        margin: 30,
+        margin: 40,
         backgroundColor: Colors.colorful,
         elevation: 10,
     },
     linkText: {
-        fontSize: 30,
+        marginTop: 15,
+        fontSize: 25,
         color: Colors.light,
     },
 });

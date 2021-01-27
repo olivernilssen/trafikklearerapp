@@ -1,17 +1,24 @@
 import Icon from 'react-native-vector-icons/FontAwesome';
 import * as React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import styles from '../styles/mainStyles.js';
+import headerStyles from '../styles/headerStyle';
 import Colors from '../styles/Colors';
 
-const Header = ({ name, toggleDrawer }) => (
-     <View style={styles.header}>
-          <TouchableOpacity onPress={() => toggleDrawer()}>
-               <Icon name="bars" size={32} color={Colors.light} />
-          </TouchableOpacity>
-          <Text style={styles.headerText}>{name}</Text>
-          <Text style={{ width: 50 }} />
-     </View>
+const Header = ({ name, navigation }) => (
+    <View style={headerStyles.header}>
+        <TouchableOpacity
+            onPress={
+                name == 'Hjem' ? navigation.toggleDrawer : navigation.goBack
+            }>
+            <Icon
+                name={name == 'Hjem' ? 'bars' : 'angle-left'}
+                size={32}
+                color={Colors.dark}
+            />
+        </TouchableOpacity>
+        <Text style={headerStyles.headerText}>{name}</Text>
+        <Text style={{ width: 50 }} />
+    </View>
 );
 
 export default Header;
