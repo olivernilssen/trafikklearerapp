@@ -43,14 +43,14 @@ class DrawerMenu extends Component {
         return (
             <View style={drawerStyles.container}>
                 <BackItem navigation={this.props.navigation} icon={'times'} />
-                <DrawerItemList
+                {/* <DrawerItemList
                     icon={({ name, color, size }) => (
                         <Icon color={color} size={size} name={name} />
                     )}
                     inactiveTintColor="white"
                     activeTintColor="white"
                     {...this.props}
-                />
+                /> */}
                 <FlatList
                     data={menuData}
                     renderItem={({ item }) => (
