@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import DrawerMenu from './DrawerMenu.js';
+import DrawerMenu from './DraweMenu.js';
 
 import StartScreen from '../screens/StartScreen';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -10,7 +10,7 @@ import RoundaboutScreen from '../screens/RoundaboutScreen';
 
 const Drawer = createDrawerNavigator();
 
-const MyDrawer = () => {
+const MainDrawer = () => {
     return (
         <Drawer.Navigator
             initialRouteName="StartScreen"
@@ -21,27 +21,46 @@ const MyDrawer = () => {
             <Drawer.Screen
                 name="StartScreen"
                 component={StartScreen}
-                options={{
+                initialParams={{
                     title: 'Hjem',
+                    icon: 'home',
+                    screenName: 'StartScreen',
+                    value: 0,
                 }}
             />
             <Drawer.Screen
                 name="IntersectionScreen"
                 component={IntersectionScreen}
                 options={{ title: 'Veikryss' }}
+                initialParams={{
+                    title: 'testing',
+                    icon: 'road',
+                    screenName: 'IntersectionScreen',
+                    value: 1,
+                }}
             />
             <Drawer.Screen
                 name="RoundaboutScreen"
                 component={RoundaboutScreen}
-                options={{ title: 'Rundkjøring' }}
+                initialParams={{
+                    title: 'Rundkjøring',
+                    icon: 'crosshairs',
+                    screenName: 'RoundaboutScreen',
+                    value: 2,
+                }}
             />
             <Drawer.Screen
                 name="SettingsScreen"
                 component={SettingsScreen}
-                options={{ title: 'Innstilligner' }}
+                initialParams={{
+                    title: 'Innstillinger',
+                    icon: 'sliders',
+                    screenName: 'SettingsScreen',
+                    value: 3,
+                }}
             />
         </Drawer.Navigator>
     );
 };
 
-export default MyDrawer;
+export default MainDrawer;
