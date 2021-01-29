@@ -20,6 +20,7 @@ dependencies":
 - react-native-vector-icons
 - react-navigation
 - typescript
+- react-native-responsive-component
 
 To run app: 
   - Make sure you have an android emulator running 
