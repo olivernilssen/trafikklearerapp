@@ -6,6 +6,8 @@ import StartScreenLink from '../components/StartScreenLink.js';
 
 import Colors from '../styles/Colors';
 
+import { RView } from 'react-native-responsive-component';
+
 // pull in header with DrawerTrigger
 import Header from '../components/Header.js';
 
@@ -13,35 +15,66 @@ const StartScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <Header name="Hjem" navigation={navigation} />
-            <View style={screenStyles.container}>
-                <StartScreenLink
-                    name="times"
-                    text="Veikryss"
-                    onPress={() => navigation.navigate('IntersectionScreen')}
-                />
-                <StartScreenLink name="question" text="tba" />
-                <StartScreenLink
-                    name="crosshairs"
-                    text="Rundkjøring"
-                    onPress={() => navigation.navigate('RoundaboutScreen')}
-                />
-                <StartScreenLink name="question" text="tba" />
-                <StartScreenLink name="road" text="Vei" />
-                <StartScreenLink name="question" text="tba" />
-            </View>
+            <RView
+                style$ptr={screenStyles.mainPtr}
+                style$lnd={screenStyles.mainLnd}>
+                <RView
+                    style$ptr={screenStyles.containerPtr}
+                    style$lnd={screenStyles.containerLnd}>
+                    <StartScreenLink
+                        name="times"
+                        text="Veikryss"
+                        onPress={() =>
+                            navigation.navigate('IntersectionScreen')
+                        }
+                    />
+                    <StartScreenLink
+                        name="crosshairs"
+                        text="Rundkjøring"
+                        onPress={() => navigation.navigate('RoundaboutScreen')}
+                    />
+                    <StartScreenLink name="road" text="Vei" />
+                </RView>
+
+                <RView
+                    style$ptr={screenStyles.containerPtr}
+                    style$lnd={screenStyles.containerLnd}>
+                    <StartScreenLink name="question" text="tba" />
+                    <StartScreenLink name="question" text="tba" />
+                    <StartScreenLink name="question" text="tba" />
+                </RView>
+            </RView>
         </SafeAreaView>
     );
 };
 
 const screenStyles = StyleSheet.create({
-    container: {
+    mainPtr: {
         flex: 1,
         flexDirection: 'row',
+        width: '100%',
+        height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        flexWrap: 'wrap',
-        alignContent: 'center',
         backgroundColor: Colors.light,
+    },
+    mainLnd: {
+        flex: 1,
+        flexDirection: 'column',
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: Colors.light,
+    },
+    containerPtr: {
+        // flex: 1,
+        flexDirection: 'column',
+        // justifyContent: 'space-around',
+        // alignItems: 'center',
+    },
+    containerLnd: {
+        flexDirection: 'row',
     },
 });
 

@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useRef } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from '../styles/mainStyles';
 import SketchHeader from '../components/SketchHeader';
@@ -45,6 +45,11 @@ const IntersectionScreen = ({ navigation }) => {
                     strokeColor={currColor}
                     strokeWidth={20}
                 />
+                <ImageBackground
+                    style={screenStyles.backgroundImage}
+                    source={require('../assets/temp_kryss.png')}>
+                    <Text>Veikryss siden</Text>
+                </ImageBackground>
             </View>
         </SafeAreaView>
     );
@@ -52,12 +57,15 @@ const IntersectionScreen = ({ navigation }) => {
 
 const screenStyles = StyleSheet.create({
     main: {
+        flex: 1,
         height: '90%',
-        flex: 10,
-        flexDirection: 'row',
-        margin: 50,
-        backgroundColor: 'lightgray',
-        elevation: 5,
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    backgroundImage: {
+        width: '100%',
+        height: '100%',
     },
 });
 
