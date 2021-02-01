@@ -1,18 +1,25 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
+import React, { useRef, useState } from 'react';
+import {
+    View,
+    Text,
+    StyleSheet,
+    ImageBackground,
+    TouchableOpacity,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from '../styles/mainStyles';
 import SketchHeader from '../components/SketchHeader';
+import Header from '../components/Header';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
-import { TouchableHighlight } from 'react-native-gesture-handler';
 
 const IntersectionScreen = ({ navigation }) => {
     const sketchRef = useRef();
 
     const [currColor, setColor] = useState('black');
-    const [brushSize, setBrushSize] = useState(5);
+    const [brushSize, setBrushSize] = useState(20);
 
     const onColorChange = (newColor) => {
         setColor(newColor);
@@ -30,25 +37,28 @@ const IntersectionScreen = ({ navigation }) => {
         sketchRef.current.clear();
     };
 
+    const eraser = () => {
+        setColor('#00000000');
+    };
+
     return (
         <SafeAreaView style={styles.container}>
+            <Header name="Veikryss" navigation={navigation} />
             <SketchHeader
-                name="Veikryss"
-                navigation={navigation}
                 undo={undoChange}
-                clear={undoChange}
+                clear={clearCanvas}
+                eraser={eraser}
             />
             <View style={screenStyles.main}>
-                <SketchCanvas
-                    ref={sketchRef}
-                    style={{ flex: 10 }}
-                    strokeColor={currColor}
-                    strokeWidth={20}
-                />
                 <ImageBackground
                     style={screenStyles.backgroundImage}
                     source={require('../assets/temp_kryss.png')}>
-                    <Text>Veikryss siden</Text>
+                    <SketchCanvas
+                        ref={sketchRef}
+                        style={screenStyles.sketchCanvas}
+                        strokeColor={currColor}
+                        strokeWidth={brushSize}
+                    />
                 </ImageBackground>
             </View>
         </SafeAreaView>
@@ -58,10 +68,15 @@ const IntersectionScreen = ({ navigation }) => {
 const screenStyles = StyleSheet.create({
     main: {
         flex: 1,
-        height: '90%',
+        height: '100%',
         width: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
+        flexDirection: 'row',
+        margin: 50,
+        elevation: 5,
+    },
+    sketchCanvas: {
+        flex: 1,
+        backgroundColor: 'transparent',
     },
     backgroundImage: {
         width: '100%',

@@ -3,26 +3,26 @@ import * as React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Colors from '../styles/Colors';
 
-const SketchHeader = ({ name, navigation, undo, clear }) => (
+const SketchHeader = (props) => (
     <View style={styles.header}>
-        <View styles={styles.headerInfo}>
-            <BackButton name={name} navigation={navigation} />
-            <Text style={styles.headerText}>{name}</Text>
-        </View>
-        <ToolBar undo={undo} clear={clear} />
+        <ToolBar undo={props.undo} clear={props.clear} eraser={props.eraser} />
     </View>
 );
 
-const ToolBar = ({ undo, clear }) => {
+const ToolBar = (props) => {
     return (
         <View style={styles.toolBar}>
-            <TouchableOpacity onPress={undo}>
+            <TouchableOpacity onPress={props.undo}>
                 <Icon name="undo" size={32} />
                 <Text>Undo</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={clear}>
+            <TouchableOpacity onPress={props.clear}>
                 <Icon name="trash" size={32} />
                 <Text>Clear</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={props.eraser}>
+                <Icon name="eraser" size={32} />
+                <Text>Erase</Text>
             </TouchableOpacity>
         </View>
     );
@@ -50,9 +50,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingHorizontal: 20,
         backgroundColor: Colors.light,
-        flex: 1,
         elevation: 10,
-        backgroundColor: 'pink',
     },
     headerInfo: {
         // flex: 1,
