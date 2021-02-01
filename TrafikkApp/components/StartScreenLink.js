@@ -2,18 +2,19 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from '../styles/Colors';
-import RComponent, { RUtils } from 'react-native-responsive-component';
+import { RUtils } from 'react-native-responsive-component';
 
+// Eksempel tekststørrelse: 20 på små enheter, 30 på store
 const textSize = RUtils.isSmallScreen() ? 20 : 30;
+const linkWidth = RUtils.isSmallScreen() ? 130 : 250;
+const linkHeight = RUtils.isSmallScreen() ? 130 : 250;
+const linkMargin = RUtils.isSmallScreen() ? 20 : 30;
 
 const StartScreenLink = (props) => {
     const iconSize = RUtils.isSmallScreen() ? 50 : 100;
 
     return (
-        <RComponent
-            render$={() => View}
-            style$sm={styles.containerSm}
-            style$md={styles.containerMd}>
+        <View style={styles.container}>
             <TouchableOpacity
                 style={styles.linkButton}
                 activeOpacity={0.6}
@@ -21,32 +22,20 @@ const StartScreenLink = (props) => {
                 <Icon name={props.name} size={iconSize} color={Colors.light} />
                 <Text style={styles.linkText}>{props.text}</Text>
             </TouchableOpacity>
-        </RComponent>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
-    containerMd: {
+    container: {
         justifyContent: 'center',
         alignItems: 'center',
-        width: 250,
-        height: 250,
+        width: linkWidth,
+        height: linkHeight,
         borderRadius: 25,
         borderWidth: 2,
         borderColor: Colors.light,
-        margin: 30,
-        backgroundColor: Colors.colorful,
-        elevation: 10,
-    },
-    containerSm: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 130,
-        height: 130,
-        borderRadius: 25,
-        borderWidth: 2,
-        borderColor: Colors.light,
-        margin: 20,
+        margin: linkMargin,
         backgroundColor: Colors.colorful,
         elevation: 10,
     },
