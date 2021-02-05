@@ -13,6 +13,8 @@ import ToolBar from '../components/SketchHeader';
 import Header from '../components/Header';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
+import SelectIntersection from '../components/SelectIntersection';
+
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 
 const IntersectionScreen = ({ navigation }) => {
@@ -70,16 +72,14 @@ const IntersectionScreen = ({ navigation }) => {
                 greenBrush={greenBrush}
             />
             <View style={screenStyles.main}>
-                <ImageBackground
-                    style={screenStyles.backgroundImage}
-                    source={require('../assets/temp_kryss.png')}>
+                <SelectIntersection>
                     <SketchCanvas
                         ref={sketchRef}
                         style={screenStyles.sketchCanvas}
                         strokeColor={currColor}
                         strokeWidth={brushSize}
                     />
-                </ImageBackground>
+                </SelectIntersection>
             </View>
         </SafeAreaView>
     );
@@ -90,7 +90,7 @@ const screenStyles = StyleSheet.create({
         flex: 1,
         height: '100%',
         width: '100%',
-        //flexDirection: 'row',
+        // flexDirection: 'row',
         //margin: 50,
         elevation: 5,
     },
@@ -104,8 +104,8 @@ const screenStyles = StyleSheet.create({
     },
     strokeColorButton: {
         width: 30,
-        height: 30
-    },   
+        height: 30,
+    },
 });
 
 export default IntersectionScreen;
