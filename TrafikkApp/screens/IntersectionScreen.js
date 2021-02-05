@@ -9,9 +9,9 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from '../styles/mainStyles';
-import SketchHeader from '../components/SketchHeader';
+import ToolBar from '../components/SketchHeader';
 import Header from '../components/Header';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 
@@ -19,10 +19,26 @@ const IntersectionScreen = ({ navigation }) => {
     const sketchRef = useRef();
 
     const [currColor, setColor] = useState('black');
-    const [brushSize, setBrushSize] = useState(20);
+    const [brushSize, setBrushSize] = useState(10);
 
     const onColorChange = (newColor) => {
         setColor(newColor);
+    };
+
+    const brush = () => {
+        setColor('black');
+    };
+
+    const redBrush = () => {
+        setColor('red');
+    };
+
+    const blueBrush = () => {
+        setColor('blue');
+    };
+
+    const greenBrush = () => {
+        setColor('green');
     };
 
     const onChangeBrushSize = (newBrushSize) => {
@@ -44,10 +60,14 @@ const IntersectionScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <Header name="Veikryss" navigation={navigation} />
-            <SketchHeader
+            <ToolBar
                 undo={undoChange}
                 clear={clearCanvas}
                 eraser={eraser}
+                brush={brush}
+                redBrush={redBrush}
+                blueBrush={blueBrush}
+                greenBrush={greenBrush}
             />
             <View style={screenStyles.main}>
                 <ImageBackground
@@ -70,8 +90,8 @@ const screenStyles = StyleSheet.create({
         flex: 1,
         height: '100%',
         width: '100%',
-        flexDirection: 'row',
-        margin: 50,
+        //flexDirection: 'row',
+        //margin: 50,
         elevation: 5,
     },
     sketchCanvas: {
@@ -82,6 +102,10 @@ const screenStyles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
+    strokeColorButton: {
+        width: 30,
+        height: 30
+    },   
 });
 
 export default IntersectionScreen;

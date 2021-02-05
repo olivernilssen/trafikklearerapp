@@ -1,32 +1,61 @@
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import * as React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Colors from '../styles/Colors';
+import { Container, Header, Left, Body, Right, Button, Title, Footer, Content, Badge } from 'native-base';
 
-const SketchHeader = (props) => (
-    <View style={styles.header}>
-        <ToolBar undo={props.undo} clear={props.clear} eraser={props.eraser} />
-    </View>
-);
 
 const ToolBar = (props) => {
     return (
         <View style={styles.toolBar}>
-            <TouchableOpacity onPress={props.undo}>
-                <Icon name="undo" size={32} />
-                <Text>Undo</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={props.clear}>
-                <Icon name="trash" size={32} />
-                <Text>Clear</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={props.eraser}>
-                <Icon name="eraser" size={32} />
-                <Text>Erase</Text>
-            </TouchableOpacity>
+            <Header style={styles.header}>
+                <Left style={styles.test}>
+                    <View style={styles.spacedLeft}>
+                        <TouchableOpacity onPress={props.brush}>
+                            <Icon name="paint-brush" style={styles.buttonIcon} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.spacedLeft}>
+                        <TouchableOpacity onPress={props.redBrush}>
+                            <Icon name="paint-brush" style={[styles.buttonIcon, styles.redBrush]} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.spacedLeft}>
+                        <TouchableOpacity onPress={props.blueBrush}>
+                            <Icon name="paint-brush" style={[styles.buttonIcon, styles.blueBrush]} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.spacedLeft}>
+                        <TouchableOpacity onPress={props.greenBrush}>
+                            <Icon name="paint-brush" style={[styles.buttonIcon, styles.greenBrush]} />
+                        </TouchableOpacity>
+                    </View>
+                </Left>
+                <Body style={{  }}>
+                </Body>
+                <Right>
+                    <View style={styles.spacedRight}>
+                        <TouchableOpacity onPress={props.clear} >
+                            <Icon name="trash" style={styles.buttonIcon} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.spacedRight}>
+                        <TouchableOpacity onPress={props.eraser}>
+                            <Icon name='eraser' style={styles.buttonIcon} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.spacedRight}>
+                        <TouchableOpacity onPress={props.undo}>
+                            <Icon name="undo-alt" style={styles.buttonIcon} />
+                        </TouchableOpacity>
+                    </View>
+                </Right>
+            </Header>
         </View>
-    );
-};
+    )
+}
+
+
 
 const BackButton = ({ name, navigation }) => {
     return (
@@ -45,32 +74,41 @@ const BackButton = ({ name, navigation }) => {
 
 const styles = StyleSheet.create({
     header: {
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingHorizontal: 20,
-        backgroundColor: Colors.light,
-        elevation: 10,
-    },
-    headerInfo: {
-        // flex: 1,
-        // width: '100%',
-        backgroundColor: 'red',
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    headerText: {
-        color: Colors.dark,
-        fontSize: 25,
+        backgroundColor: Colors.light
     },
     toolBar: {
-        // flex: 1,
-        backgroundColor: 'green',
-        // width: '100%',
-        flexDirection: 'row',
-        // justifyContent: 'space-between',
-        alignItems: 'center',
+        width: '100%'
     },
+    buttonIcon: {
+        color: Colors.dark,
+        fontSize: 34,
+        //marginRight: '5%'
+    },
+    btnSelected: {
+        backgroundColor: 'yellow'
+    },
+    spacedLeft: {
+        flex: 1
+    },
+    spacedRight: {
+        flex: 1
+    },
+    redBrush: {
+        color: 'red'
+    },
+    blueBrush: {
+        color: 'blue'
+    },
+    greenBrush: {
+        color: 'green'
+    },
+    test: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
+
 });
 
-export default SketchHeader;
+export default ToolBar;
