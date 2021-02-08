@@ -11,10 +11,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from '../styles/mainStyles';
 import ToolBar from '../components/SketchHeader';
 import Header from '../components/Header';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-
 import SelectIntersection from '../components/SelectIntersection';
-
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 
 const IntersectionScreen = ({ navigation }) => {
@@ -27,20 +24,8 @@ const IntersectionScreen = ({ navigation }) => {
         setColor(newColor);
     };
 
-    const brush = () => {
-        setColor('black');
-    };
-
-    const redBrush = () => {
-        setColor('red');
-    };
-
-    const blueBrush = () => {
-        setColor('blue');
-    };
-
-    const greenBrush = () => {
-        setColor('green');
+    const brush = (color) => {
+        setColor(color);
     };
 
     const onChangeBrushSize = (newBrushSize) => {
@@ -67,9 +52,6 @@ const IntersectionScreen = ({ navigation }) => {
                 clear={clearCanvas}
                 eraser={eraser}
                 brush={brush}
-                redBrush={redBrush}
-                blueBrush={blueBrush}
-                greenBrush={greenBrush}
             />
             <View style={screenStyles.main}>
                 <SelectIntersection>
