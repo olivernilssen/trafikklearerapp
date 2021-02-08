@@ -17,15 +17,20 @@ import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 const IntersectionScreen = ({ navigation }) => {
     const sketchRef = useRef();
 
-    const [currColor, setColor] = useState('black');
-    const [brushSize, setBrushSize] = useState(10);
+    const [currBrushColor, setBrushColor] = useState('black');
+    const [currBrushSize, setBrushSize] = useState(10);
 
+<<<<<<< HEAD
     const onColorChange = (newColor) => {
         setColor(newColor);
     };
 
     const brush = (color) => {
         setColor(color);
+=======
+    const onBrushColorChange = (color) => {
+        setBrushColor(color);
+>>>>>>> 26736a6b24b88b287a3868a92b8d452e1bc8b775
     };
 
     const onChangeBrushSize = (newBrushSize) => {
@@ -46,20 +51,24 @@ const IntersectionScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Header name="Veikryss" navigation={navigation} />
+            {/* <Header name="Veikryss" navigation={navigation} /> */}
             <ToolBar
                 undo={undoChange}
                 clear={clearCanvas}
                 eraser={eraser}
+<<<<<<< HEAD
                 brush={brush}
+=======
+                onBrushColorChange={onBrushColorChange}
+>>>>>>> 26736a6b24b88b287a3868a92b8d452e1bc8b775
             />
             <View style={screenStyles.main}>
                 <SelectIntersection>
                     <SketchCanvas
                         ref={sketchRef}
                         style={screenStyles.sketchCanvas}
-                        strokeColor={currColor}
-                        strokeWidth={brushSize}
+                        strokeColor={currBrushColor}
+                        strokeWidth={currBrushSize}
                     />
                 </SelectIntersection>
             </View>
