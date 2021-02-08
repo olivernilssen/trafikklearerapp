@@ -31,9 +31,8 @@ const MainDrawer = () => {
             <Drawer.Screen
                 name="IntersectionScreen"
                 component={IntersectionScreen}
-                options={{ title: 'Veikryss' }}
                 initialParams={{
-                    title: 'testing',
+                    title: 'Veikryss',
                     icon: 'road',
                     screenName: 'IntersectionScreen',
                     value: 1,
