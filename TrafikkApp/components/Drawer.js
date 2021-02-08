@@ -13,7 +13,7 @@ const Drawer = createDrawerNavigator();
 const MainDrawer = () => {
     return (
         <Drawer.Navigator
-            initialRouteName="StartScreen"
+            initialRouteName="IntersectionScreen"
             lazy={true}
             drawerType="front"
             mode="modal"
