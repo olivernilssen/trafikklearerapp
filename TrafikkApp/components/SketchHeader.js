@@ -1,32 +1,34 @@
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import * as React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Colors from '../styles/Colors';
 import { Container, Header, Left, Body, Right, Button, Title, Footer, Content, Badge } from 'native-base';
 
 
 const ToolBar = (props) => {
+    const [activeIndex, setActiveIndex] = useState(0);
+
     return (
         <View style={styles.toolBar}>
             <Header style={styles.header}>
                 <Left style={styles.test}>
                     <View style={styles.spacedLeft}>
-                        <TouchableOpacity onPress={props.brush}>
+                        <TouchableOpacity onPress={() => props.onBrushColorChange('black')}>
                             <Icon name="paint-brush" style={styles.buttonIcon} />
                         </TouchableOpacity>
                     </View>
                     <View style={styles.spacedLeft}>
-                        <TouchableOpacity onPress={props.redBrush}>
+                        <TouchableOpacity onPress={() => props.onBrushColorChange('red')}>
                             <Icon name="paint-brush" style={[styles.buttonIcon, styles.redBrush]} />
                         </TouchableOpacity>
                     </View>
                     <View style={styles.spacedLeft}>
-                        <TouchableOpacity onPress={props.blueBrush}>
+                        <TouchableOpacity onPress={() => props.onBrushColorChange('blue')}>
                             <Icon name="paint-brush" style={[styles.buttonIcon, styles.blueBrush]} />
                         </TouchableOpacity>
                     </View>
                     <View style={styles.spacedLeft}>
-                        <TouchableOpacity onPress={props.greenBrush}>
+                        <TouchableOpacity onPress={() => props.onBrushColorChange('green')}>
                             <Icon name="paint-brush" style={[styles.buttonIcon, styles.greenBrush]} />
                         </TouchableOpacity>
                     </View>
