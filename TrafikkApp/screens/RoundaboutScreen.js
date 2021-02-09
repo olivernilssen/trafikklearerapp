@@ -1,16 +1,60 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { View, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import styles from '../styles/mainStyles.js';
-import Header from '../components/Header.js';
+import styles from '../styles/mainStyles';
+import ToolBar from '../components/SketchHeader';
+import SelectIntersection from '../components/SelectIntersection';
+import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 
-const RoundaboutScreen = ({ navigation }) => {
+const RoundAboutScreen = ({ navigation }) => {
+    const sketchRef = useRef();
+
+    const [currBrushColor, setBrushColor] = useState('black');
+    const [currBrushSize, setBrushSize] = useState(10);
+
+    const onColorChange = (newColor) => {
+        setColor(newColor);
+    };
+
+    const onBrushColorChange = (color) => {
+        setBrushColor(color);
+    };
+
+    const onChangeBrushSize = (newBrushSize) => {
+        setBrushSize(newBrushSize);
+    };
+
+    const undoChange = () => {
+        sketchRef.current.undo();
+    };
+
+    const clearCanvas = () => {
+        sketchRef.current.clear();
+    };
+
+    const eraser = () => {
+        setBrushColor('#00000000');
+    };
+
     return (
         <SafeAreaView style={styles.container}>
-            <Header name="Rundkjøring" navigation={navigation} />
+            {/* <Header name="Veikryss" navigation={navigation} /> */}
+            <ToolBar
+                undo={undoChange}
+                clear={clearCanvas}
+                eraser={eraser}
+                onBrushColorChange={onBrushColorChange}
+            />
             <View style={screenStyles.main}>
-                <Text>Rundkjøring siden</Text>
+                <SelectIntersection>
+                    <SketchCanvas
+                        ref={sketchRef}
+                        style={screenStyles.sketchCanvas}
+                        strokeColor={currBrushColor}
+                        strokeWidth={currBrushSize}
+                    />
+                </SelectIntersection>
             </View>
         </SafeAreaView>
     );
@@ -18,10 +62,23 @@ const RoundaboutScreen = ({ navigation }) => {
 
 const screenStyles = StyleSheet.create({
     main: {
-        height: '90%',
-        justifyContent: 'center',
-        alignItems: 'center',
+        flex: 1,
+        height: '100%',
+        width: '100%',
+        elevation: 5,
+    },
+    sketchCanvas: {
+        flex: 1,
+        backgroundColor: 'transparent',
+    },
+    backgroundImage: {
+        width: '100%',
+        height: '100%',
+    },
+    strokeColorButton: {
+        width: 30,
+        height: 30,
     },
 });
 
-export default RoundaboutScreen;
+export default RoundAboutScreen;

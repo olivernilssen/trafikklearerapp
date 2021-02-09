@@ -1,16 +1,9 @@
 /* eslint-disable prettier/prettier */
 import React, { useRef, useState } from 'react';
-import {
-    View,
-    Text,
-    StyleSheet,
-    ImageBackground,
-    TouchableOpacity,
-} from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from '../styles/mainStyles';
 import ToolBar from '../components/SketchHeader';
-import Header from '../components/Header';
 import SelectIntersection from '../components/SelectIntersection';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 
@@ -20,17 +13,12 @@ const IntersectionScreen = ({ navigation }) => {
     const [currBrushColor, setBrushColor] = useState('black');
     const [currBrushSize, setBrushSize] = useState(10);
 
-<<<<<<< HEAD
     const onColorChange = (newColor) => {
         setColor(newColor);
     };
 
-    const brush = (color) => {
-        setColor(color);
-=======
     const onBrushColorChange = (color) => {
         setBrushColor(color);
->>>>>>> 26736a6b24b88b287a3868a92b8d452e1bc8b775
     };
 
     const onChangeBrushSize = (newBrushSize) => {
@@ -46,7 +34,7 @@ const IntersectionScreen = ({ navigation }) => {
     };
 
     const eraser = () => {
-        setColor('#00000000');
+        setBrushColor('#00000000');
     };
 
     return (
@@ -56,11 +44,7 @@ const IntersectionScreen = ({ navigation }) => {
                 undo={undoChange}
                 clear={clearCanvas}
                 eraser={eraser}
-<<<<<<< HEAD
-                brush={brush}
-=======
                 onBrushColorChange={onBrushColorChange}
->>>>>>> 26736a6b24b88b287a3868a92b8d452e1bc8b775
             />
             <View style={screenStyles.main}>
                 <SelectIntersection>
