@@ -1,37 +1,18 @@
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import React, { useState, useEffect } from 'react';
+
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Colors from '../styles/Colors';
 import { Header, Left, Body, Right } from 'native-base';
 
 const ToolBar = (props) => {
-    const [selectedButton, setSelectedButton] = useState(null);
-    const [eraserActive, setEraserActive] = useState(false);
-
-    const onEraserClicked = () => {
-        setEraserActive(!eraserActive);
-        console.log(eraserActive);
-        if (eraserActive) {
-            props.eraser;
-        } else {
-            props.brush;
-        }
-    };
-
-    const onBrushColorChange = (color, buttonId) => {
-        setSelectedButton(buttonId);
-        if (eraserActive) setEraserActive(!eraserActive);
-        props.brush(color);
-    };
-
     return (
         <View style={styles.toolBar}>
             <Header style={styles.header}>
                 <Left style={styles.test}>
                     <View style={styles.spacedLeft}>
                         <TouchableOpacity
-                            name={'blackbrush'}
-                            onPress={props.brush}>
+                            onPress={() => props.onBrushColorChange('black')}>
                             <Icon
                                 name="paint-brush"
                                 style={styles.buttonIcon}
@@ -40,7 +21,7 @@ const ToolBar = (props) => {
                     </View>
                     <View style={styles.spacedLeft}>
                         <TouchableOpacity
-                            onPress={() => onBrushColorChange('red')}>
+                            onPress={() => props.onBrushColorChange('red')}>
                             <Icon
                                 name="paint-brush"
                                 style={[styles.buttonIcon, styles.redBrush]}
@@ -49,7 +30,7 @@ const ToolBar = (props) => {
                     </View>
                     <View style={styles.spacedLeft}>
                         <TouchableOpacity
-                            onPress={() => onBrushColorChange('blue')}>
+                            onPress={() => props.onBrushColorChange('blue')}>
                             <Icon
                                 name="paint-brush"
                                 style={[styles.buttonIcon, styles.blueBrush]}
@@ -58,7 +39,7 @@ const ToolBar = (props) => {
                     </View>
                     <View style={styles.spacedLeft}>
                         <TouchableOpacity
-                            onPress={() => onBrushColorChange('green')}>
+                            onPress={() => props.onBrushColorChange('green')}>
                             <Icon
                                 name="paint-brush"
                                 style={[styles.buttonIcon, styles.greenBrush]}
@@ -74,7 +55,7 @@ const ToolBar = (props) => {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.spacedRight}>
-                        <TouchableOpacity onPress={onEraserClicked}>
+                        <TouchableOpacity onPress={props.eraser}>
                             <Icon name="eraser" style={styles.buttonIcon} />
                         </TouchableOpacity>
                     </View>
