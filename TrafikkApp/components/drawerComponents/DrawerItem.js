@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Colors from '../styles/Colors';
+import Colors from '../../styles/Colors';
 
 const DrawerItem = ({ navigation, screenIndex, screenName, params }) => {
     const { icon, value, title } = params;

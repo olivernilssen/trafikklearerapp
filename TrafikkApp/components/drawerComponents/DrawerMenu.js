@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 
-import Colors from '../styles/Colors';
+import Colors from '../../styles/Colors';
 import DrawerToggleMenuItem from './DrawerToggleMenuItem';
 import DrawerItem from './DrawerItem';
 

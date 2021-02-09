@@ -2,17 +2,16 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import React, { useState, useEffect } from 'react';
 
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import Colors from '../styles/Colors';
+import Colors from '../../styles/Colors';
 import { Header, Left, Body, Right } from 'native-base';
 
-const ToolBar = (props) => {
-
-    const [colorsIndex, setColorIndex] = useState(0)
+const SketchHeader = (props) => {
+    const [colorsIndex, setColorIndex] = useState(0);
     const [activeIndex, setActiveIndex] = useState(0);
 
     onColorChange = (index) => {
-        setActiveIndex(index)
-    }
+        setActiveIndex(index);
+    };
 
     const strokeColors = [
         { color: '#000000' },
@@ -32,30 +31,28 @@ const ToolBar = (props) => {
         { color: '#A52A2A' },
         { color: '#800000' },
         { color: '#008000' },
-        { color: '#808000' }
-    ]
+        { color: '#808000' },
+    ];
 
     const listStrokeColors = strokeColors.map((item, index) => {
-        return(
+        return (
             <View style={styles.spacedLeft}>
                 <TouchableOpacity
-                key={index} 
-                onPress={() => props.onBrushColorChange(item.color)}
-                >
-                    <Icon name="paint-brush" style={[ styles.buttonIcon, { color: item.color} ]}/>
+                    key={index}
+                    onPress={() => props.onBrushColorChange(item.color)}>
+                    <Icon
+                        name="paint-brush"
+                        style={[styles.buttonIcon, { color: item.color }]}
+                    />
                 </TouchableOpacity>
             </View>
-        )
-    })
-
+        );
+    });
 
     return (
         <View style={styles.toolBar}>
             <Header style={styles.header}>
-                <Left style={styles.test}>
-
-                    {listStrokeColors}
-                </Left>
+                <Left style={styles.test}>{listStrokeColors}</Left>
                 <Body style={{}}></Body>
                 <Right>
                     <View style={styles.spacedRight}>
@@ -75,7 +72,6 @@ const ToolBar = (props) => {
                     </View>
                 </Right>
             </Header>
-            
         </View>
     );
 };
@@ -110,4 +106,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ToolBar;
+export default SketchHeader;

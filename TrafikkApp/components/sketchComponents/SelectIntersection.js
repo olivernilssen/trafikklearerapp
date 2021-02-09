@@ -3,12 +3,12 @@ import { View, StyleSheet, ImageBackground } from 'react-native';
 import { Fab, Button, Text } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import Colors from '../styles/Colors';
+import Colors from '../../styles/Colors';
 
 const SelectIntersection = (props) => {
-    const hoyreX = require('../assets/intersections/hoyrekryss/veikryss-hoyre-X.png');
-    const forkjorsX = require('../assets/intersections/forkjorskryss/veikryss-forkjors-X.png');
-    const lysX = require('../assets/intersections/lyskryss/veikryss-lys-X.png');
+    const hoyreX = require('../../assets/intersections/hoyrekryss/veikryss-hoyre-X.png');
+    const forkjorsX = require('../../assets/intersections/forkjorskryss/veikryss-forkjors-X.png');
+    const lysX = require('../../assets/intersections/lyskryss/veikryss-lys-X.png');
 
     const [currImage, setImage] = useState(hoyreX);
     const [FabActive, setActiveFab] = useState(false);
