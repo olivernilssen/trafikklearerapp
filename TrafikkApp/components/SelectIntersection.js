@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Button, ImageBackground } from 'react-native';
+import { View, StyleSheet, ImageBackground } from 'react-native';
+import { Fab, Button, Text } from 'native-base';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import Colors from '../styles/Colors';
 
@@ -9,9 +11,11 @@ const SelectIntersection = (props) => {
     const lysX = require('../assets/intersections/lyskryss/veikryss-lys-X.png');
 
     const [currImage, setImage] = useState(hoyreX);
+    const [FabActive, setActiveFab] = useState(false);
 
     const onImageChange = (newImage) => {
         setImage(newImage);
+        setActiveFab(!FabActive);
     };
 
     return (
@@ -20,21 +24,33 @@ const SelectIntersection = (props) => {
                 style={screenStyles.backgroundImage}
                 source={currImage}>
                 {props.children}
+
+                {/* Floating avtion button to pick a different background image */}
+                <Fab
+                    active={FabActive}
+                    direction="left"
+                    containerStyle={{}}
+                    style={{ backgroundColor: Colors.colorful }}
+                    position="bottomRight"
+                    onPress={() => setActiveFab(!FabActive)}>
+                    <Icon name="images" />
+                    <Button
+                        onPress={() => onImageChange(hoyreX)}
+                        style={{ backgroundColor: Colors.fab_hoyrekryss }}>
+                        <Text>H</Text>
+                    </Button>
+                    <Button
+                        onPress={() => onImageChange(lysX)}
+                        style={{ backgroundColor: Colors.fab_lyskryss }}>
+                        <Text>L</Text>
+                    </Button>
+                    <Button
+                        onPress={() => onImageChange(forkjorsX)}
+                        style={{ backgroundColor: Colors.fab_forkjorskryss }}>
+                        <Text>F</Text>
+                    </Button>
+                </Fab>
             </ImageBackground>
-
-            <View style={screenStyles.footerNav}>
-                <Button
-                    title="Høyrekryss"
-                    onPress={() => onImageChange(hoyreX)}
-                />
-
-                <Button title="Lyskryss" onPress={() => onImageChange(lysX)} />
-
-                <Button
-                    title="Forkjørskryss"
-                    onPress={() => onImageChange(forkjorsX)}
-                />
-            </View>
         </View>
     );
 };
@@ -55,7 +71,7 @@ const screenStyles = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        padding: 5,
+        padding: 20,
         backgroundColor: Colors.light,
     },
 });
