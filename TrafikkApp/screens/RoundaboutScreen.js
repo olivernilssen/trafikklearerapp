@@ -7,6 +7,10 @@ import SketchHeader from '../components/sketchComponents/SketchHeader';
 import SelectIntersection from '../components/sketchComponents/SelectIntersection';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 
+import BottomSheet from '../components/sketchComponents/bottomSheet';
+
+import Colors from '../styles/Colors';
+
 const RoundAboutScreen = ({ navigation }) => {
     const sketchRef = useRef();
 
@@ -45,7 +49,10 @@ const RoundAboutScreen = ({ navigation }) => {
                 clear={clearCanvas}
                 eraser={eraser}
                 onBrushColorChange={onBrushColorChange}
+                navigation={navigation}
+                name={'Rundkjøring'}
             />
+
             <View style={screenStyles.main}>
                 <SelectIntersection>
                     <SketchCanvas
@@ -54,6 +61,7 @@ const RoundAboutScreen = ({ navigation }) => {
                         strokeColor={currBrushColor}
                         strokeWidth={currBrushSize}
                     />
+                    <BottomSheet />
                 </SelectIntersection>
             </View>
         </SafeAreaView>

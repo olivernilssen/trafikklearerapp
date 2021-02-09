@@ -45,6 +45,8 @@ const IntersectionScreen = ({ navigation }) => {
                 clear={clearCanvas}
                 eraser={eraser}
                 onBrushColorChange={onBrushColorChange}
+                name={'Veikryss'}
+                navigation={navigation}
             />
             <View style={screenStyles.main}>
                 <SelectIntersection>

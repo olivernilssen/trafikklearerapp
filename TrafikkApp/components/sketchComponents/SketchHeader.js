@@ -36,9 +36,8 @@ const SketchHeader = (props) => {
 
     const listStrokeColors = strokeColors.map((item, index) => {
         return (
-            <View style={styles.spacedLeft}>
+            <View style={styles.spacedLeft} key={index}>
                 <TouchableOpacity
-                    key={index}
                     onPress={() => props.onBrushColorChange(item.color)}>
                     <Icon
                         name="paint-brush"
@@ -52,6 +51,11 @@ const SketchHeader = (props) => {
     return (
         <View style={styles.toolBar}>
             <Header style={styles.header}>
+                <Left>
+                    <TouchableOpacity onPress={props.navigation.toggleDrawer}>
+                        <Icon name={'bars'} size={32} color={Colors.dark} />
+                    </TouchableOpacity>
+                </Left>
                 <Left style={styles.test}>{listStrokeColors}</Left>
                 <Body style={{}}></Body>
                 <Right>

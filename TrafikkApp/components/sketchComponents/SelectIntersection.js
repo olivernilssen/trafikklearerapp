@@ -18,6 +18,8 @@ const SelectIntersection = (props) => {
         setActiveFab(!FabActive);
     };
 
+    const handleCallback = () => {};
+
     return (
         <View style={screenStyles.container}>
             <ImageBackground
@@ -26,7 +28,7 @@ const SelectIntersection = (props) => {
                 {props.children}
 
                 {/* Floating avtion button to pick a different background image */}
-                <Fab
+                {/* <Fab
                     active={FabActive}
                     direction="left"
                     containerStyle={{}}
@@ -49,7 +51,7 @@ const SelectIntersection = (props) => {
                         style={{ backgroundColor: Colors.fab_forkjorskryss }}>
                         <Text>F</Text>
                     </Button>
-                </Fab>
+                </Fab> */}
             </ImageBackground>
         </View>
     );
