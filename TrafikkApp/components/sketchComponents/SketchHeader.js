@@ -2,7 +2,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import React, { useState, useEffect } from 'react';
 
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import Colors from '../../styles/Colors';
+import Color from '../../styles/Colors';
 import { Header, Left, Body, Right } from 'native-base';
 
 const SketchHeader = (props) => {
@@ -78,18 +78,20 @@ const SketchHeader = (props) => {
 
 const styles = StyleSheet.create({
     header: {
-        backgroundColor: Colors.light,
+        backgroundColor: Color.header,
+        elevation: 10,
     },
     toolBar: {
         width: '100%',
     },
     buttonIcon: {
-        color: Colors.dark,
+        color: Color.iconPrimary,
         fontSize: 34,
         //marginRight: '5%'
     },
     btnSelected: {
-        backgroundColor: 'yellow',
+        // backgroundColor: 'yellow',
+        backgroundColor: Color.iconActive,
     },
     spacedLeft: {
         flex: 1,

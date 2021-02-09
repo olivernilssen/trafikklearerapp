@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 
-import Colors from '../../styles/Colors';
+import Color from '../../styles/Colors';
 import DrawerToggleMenuItem from './DrawerToggleMenuItem';
 import DrawerItem from './DrawerItem';
 
@@ -33,7 +33,7 @@ class DrawerMenu extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.dark,
+        backgroundColor: Color.drawerBg,
         paddingTop: 15,
         paddingHorizontal: 15,
     },

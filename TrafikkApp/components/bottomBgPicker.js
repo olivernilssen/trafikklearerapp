@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import Colors from '../styles/Colors';
+import Color from '../styles/Colors';
 
 const BottomDrawer = (props) => {
-    return (
-        <View>
-            
-        </View>
-    )
+    return <View></View>;
 };
 
 export default BottomDrawer;

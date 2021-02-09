@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Colors from '../../styles/Colors';
+import Color from '../../styles/Colors';
 
 const DrawerToggleMenuItem = ({ navigation, icon }) => (
     <TouchableOpacity
@@ -12,7 +12,7 @@ const DrawerToggleMenuItem = ({ navigation, icon }) => (
         <Icon
             name={icon}
             size={35}
-            color={Colors.light}
+            color={Color.drawerInactiveText}
             style={{ marginTop: 10, marginLeft: 10 }}
         />
     </TouchableOpacity>
@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
     menuItem: {
         flexDirection: 'row',
         marginBottom: 15,
-        color: Colors.mediumDark,
     },
 });
 
