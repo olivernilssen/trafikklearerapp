@@ -3,10 +3,10 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import DrawerMenu from './DrawerMenu.js';
 
-import StartScreen from '../screens/StartScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import IntersectionScreen from '../screens/IntersectionScreen';
-import RoundaboutScreen from '../screens/RoundaboutScreen';
+import StartScreen from '../../screens/StartScreen';
+import SettingsScreen from '../../screens/SettingsScreen';
+import IntersectionScreen from '../../screens/IntersectionScreen';
+import RoundaboutScreen from '../../screens/RoundaboutScreen';
 
 const Drawer = createDrawerNavigator();
 

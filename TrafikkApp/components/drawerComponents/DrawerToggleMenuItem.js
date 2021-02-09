@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Colors from '../styles/Colors';
+import Colors from '../../styles/Colors';
 
 const DrawerToggleMenuItem = ({ navigation, icon }) => (
     <TouchableOpacity

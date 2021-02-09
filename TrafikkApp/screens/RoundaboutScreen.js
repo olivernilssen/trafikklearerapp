@@ -3,8 +3,8 @@ import React, { useRef, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styles from '../styles/mainStyles';
-import ToolBar from '../components/SketchHeader';
-import SelectIntersection from '../components/SelectIntersection';
+import SketchHeader from '../components/sketchComponents/SketchHeader';
+import SelectIntersection from '../components/sketchComponents/SelectIntersection';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 
 const RoundAboutScreen = ({ navigation }) => {
@@ -40,7 +40,7 @@ const RoundAboutScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             {/* <Header name="Veikryss" navigation={navigation} /> */}
-            <ToolBar
+            <SketchHeader
                 undo={undoChange}
                 clear={clearCanvas}
                 eraser={eraser}
