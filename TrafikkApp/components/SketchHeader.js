@@ -6,46 +6,55 @@ import Colors from '../styles/Colors';
 import { Header, Left, Body, Right } from 'native-base';
 
 const ToolBar = (props) => {
+
+    const [colorsIndex, setColorIndex] = useState(0)
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    onColorChange = (index) => {
+        setActiveIndex(index)
+    }
+
+    const strokeColors = [
+        { color: '#000000' },
+        { color: '#FF0000' },
+        { color: '#00FFFF' },
+        { color: '#0000FF' },
+        { color: '#0000A0' },
+        { color: '#ADD8E6' },
+        { color: '#800080' },
+        { color: '#FFFF00' },
+        { color: '#00FF00' },
+        { color: '#FF00FF' },
+        { color: '#FFFFFF' },
+        { color: '#C0C0C0' },
+        { color: '#808080' },
+        { color: '#FFA500' },
+        { color: '#A52A2A' },
+        { color: '#800000' },
+        { color: '#008000' },
+        { color: '#808000' }
+    ]
+
+    const listStrokeColors = strokeColors.map((item, index) => {
+        return(
+            <View style={styles.spacedLeft}>
+                <TouchableOpacity
+                key={index} 
+                onPress={() => props.onBrushColorChange(item.color)}
+                >
+                    <Icon name="paint-brush" style={[ styles.buttonIcon, { color: item.color} ]}/>
+                </TouchableOpacity>
+            </View>
+        )
+    })
+
+
     return (
         <View style={styles.toolBar}>
             <Header style={styles.header}>
                 <Left style={styles.test}>
-                    <View style={styles.spacedLeft}>
-                        <TouchableOpacity
-                            onPress={() => props.onBrushColorChange('black')}>
-                            <Icon
-                                name="paint-brush"
-                                style={styles.buttonIcon}
-                            />
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.spacedLeft}>
-                        <TouchableOpacity
-                            onPress={() => props.onBrushColorChange('red')}>
-                            <Icon
-                                name="paint-brush"
-                                style={[styles.buttonIcon, styles.redBrush]}
-                            />
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.spacedLeft}>
-                        <TouchableOpacity
-                            onPress={() => props.onBrushColorChange('blue')}>
-                            <Icon
-                                name="paint-brush"
-                                style={[styles.buttonIcon, styles.blueBrush]}
-                            />
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.spacedLeft}>
-                        <TouchableOpacity
-                            onPress={() => props.onBrushColorChange('green')}>
-                            <Icon
-                                name="paint-brush"
-                                style={[styles.buttonIcon, styles.greenBrush]}
-                            />
-                        </TouchableOpacity>
-                    </View>
+
+                    {listStrokeColors}
                 </Left>
                 <Body style={{}}></Body>
                 <Right>
@@ -66,6 +75,7 @@ const ToolBar = (props) => {
                     </View>
                 </Right>
             </Header>
+            
         </View>
     );
 };
@@ -91,15 +101,7 @@ const styles = StyleSheet.create({
     spacedRight: {
         flex: 1,
     },
-    redBrush: {
-        color: 'red',
-    },
-    blueBrush: {
-        color: 'blue',
-    },
-    greenBrush: {
-        color: 'green',
-    },
+
     test: {
         flex: 1,
         flexDirection: 'row',
