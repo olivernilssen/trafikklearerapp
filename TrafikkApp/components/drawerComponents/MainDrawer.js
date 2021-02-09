@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import DrawerMenu from './DrawerMenu.js';
+import DrawerMenu from './DrawerMenu';
 
 import StartScreen from '../../screens/StartScreen';
 import SettingsScreen from '../../screens/SettingsScreen';

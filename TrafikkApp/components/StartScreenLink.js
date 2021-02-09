@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Colors from '../styles/Colors';
+import Color from '../styles/Colors';
 import { RUtils } from 'react-native-responsive-component';
 
 // Eksempel tekststørrelse: 20 på små enheter, 30 på store
@@ -19,7 +19,11 @@ const StartScreenLink = (props) => {
                 style={styles.linkButton}
                 activeOpacity={0.6}
                 onPress={props.onPress}>
-                <Icon name={props.name} size={iconSize} color={Colors.light} />
+                <Icon
+                    name={props.name}
+                    size={iconSize}
+                    color={Color.buttonText}
+                />
                 <Text style={styles.linkText}>{props.text}</Text>
             </TouchableOpacity>
         </View>
@@ -34,9 +38,9 @@ const styles = StyleSheet.create({
         height: linkHeight,
         borderRadius: 25,
         borderWidth: 2,
-        borderColor: Colors.light,
+        borderColor: Color.buttonBorder,
         margin: linkMargin,
-        backgroundColor: Colors.colorful,
+        backgroundColor: Color.buttonPrimary,
         elevation: 10,
     },
     linkButton: {
@@ -48,7 +52,7 @@ const styles = StyleSheet.create({
     linkText: {
         marginTop: 15,
         fontSize: textSize,
-        color: Colors.light,
+        color: Color.buttonText,
     },
 });
 

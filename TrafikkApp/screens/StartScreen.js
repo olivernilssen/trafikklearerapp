@@ -4,7 +4,7 @@ import styles from '../styles/mainStyles.js';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import StartScreenLink from '../components/StartScreenLink.js';
 
-import Colors from '../styles/Colors';
+import Color from '../styles/Colors';
 
 import { RView } from 'react-native-responsive-component';
 
@@ -56,7 +56,7 @@ const screenStyles = StyleSheet.create({
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: Colors.light,
+        backgroundColor: Color.background,
     },
     mainLnd: {
         flex: 1,
@@ -65,7 +65,7 @@ const screenStyles = StyleSheet.create({
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: Colors.light,
+        backgroundColor: Color.background,
     },
     containerPtr: {
         // flex: 1,

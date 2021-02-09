@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Colors from '../../styles/Colors';
+import Color from '../../styles/Colors';
 
 const DrawerItem = ({ navigation, screenIndex, screenName, params }) => {
     const { icon, value, title } = params;
@@ -18,7 +18,11 @@ const DrawerItem = ({ navigation, screenIndex, screenName, params }) => {
             <Icon
                 name={icon}
                 size={25}
-                color={screenIndex == value ? Colors.colorful : Colors.light}
+                color={
+                    screenIndex == value
+                        ? Color.drawerActiveText
+                        : Color.drawerInactiveText
+                }
                 style={{ margin: 15 }}
             />
             <Text
@@ -27,8 +31,8 @@ const DrawerItem = ({ navigation, screenIndex, screenName, params }) => {
                     {
                         color:
                             screenIndex == value
-                                ? Colors.colorful
-                                : Colors.light,
+                                ? Color.drawerActiveText
+                                : Color.drawerInactiveText,
                     },
                 ]}>
                 {title}
@@ -41,13 +45,13 @@ const styles = StyleSheet.create({
     menuItem: {
         flexDirection: 'row',
         marginBottom: 15,
-        color: Colors.mediumDark,
+        color: 'red',
     },
     menuItemText: {
         fontSize: 20,
         fontWeight: '300',
         margin: 15,
-        color: Colors.light,
+        // color: Colors.light,
     },
 });
 
