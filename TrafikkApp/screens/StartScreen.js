@@ -1,19 +1,15 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import styles from '../styles/mainStyles.js';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import StartScreenLink from '../components/StartScreenLink.js';
-
-import Color from '../styles/Colors';
-
+import { StyleSheet } from 'react-native';
 import { RView } from 'react-native-responsive-component';
 
-// pull in header with DrawerTrigger
+import MainView from '../components/MainView';
 import Header from '../components/Header.js';
+import StartScreenLink from '../components/StartScreenLink.js';
+import Color from '../styles/Colors';
 
 const StartScreen = ({ navigation }) => {
     return (
-        <SafeAreaView style={styles.container}>
+        <MainView>
             <Header name="Hjem" navigation={navigation} />
             <RView
                 style$ptr={screenStyles.mainPtr}
@@ -44,7 +40,7 @@ const StartScreen = ({ navigation }) => {
                     <StartScreenLink name="question" text="tba" />
                 </RView>
             </RView>
-        </SafeAreaView>
+        </MainView>
     );
 };
 
@@ -68,10 +64,7 @@ const screenStyles = StyleSheet.create({
         backgroundColor: Color.background,
     },
     containerPtr: {
-        // flex: 1,
         flexDirection: 'column',
-        // justifyContent: 'space-around',
-        // alignItems: 'center',
     },
     containerLnd: {
         flexDirection: 'row',

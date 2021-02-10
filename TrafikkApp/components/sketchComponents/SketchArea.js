@@ -1,10 +1,8 @@
 /* eslint-disable prettier/prettier */
 import React, { useRef, useState } from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
-import styles from '../../styles/mainStyles';
-
+import MainView from '../MainView';
 import SketchHeader from './SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import { BottomSheet } from './bottomSheet';
@@ -36,7 +34,7 @@ const SketchArea = (props) => {
     };
 
     return (
-        <SafeAreaView style={styles.container}>
+        <MainView>
             <SketchHeader
                 undo={undoChange}
                 clear={clearCanvas}
@@ -45,24 +43,24 @@ const SketchArea = (props) => {
                 navigation={props.navigation}
                 name={props.name}
             />
-            <View style={screenStyles.main}>
+            <View style={styles.main}>
                 <ImageBackground
-                    style={screenStyles.backgroundImage}
+                    style={styles.backgroundImage}
                     source={props.source}>
                     <SketchCanvas
                         ref={sketchRef}
-                        style={screenStyles.sketchCanvas}
+                        style={styles.sketchCanvas}
                         strokeColor={currBrushColor}
                         strokeWidth={currBrushSize}
                     />
                     {props.children}
                 </ImageBackground>
             </View>
-        </SafeAreaView>
+        </MainView>
     );
 };
 
-const screenStyles = StyleSheet.create({
+const styles = StyleSheet.create({
     main: {
         flex: 1,
         height: '100%',
