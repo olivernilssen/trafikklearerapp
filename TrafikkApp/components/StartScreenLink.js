@@ -6,8 +6,8 @@ import { RUtils } from 'react-native-responsive-component';
 
 // Eksempel tekststørrelse: 20 på små enheter, 30 på store
 const textSize = RUtils.isSmallScreen() ? 20 : 30;
-const linkWidth = RUtils.isSmallScreen() ? 130 : 250;
-const linkHeight = RUtils.isSmallScreen() ? 130 : 250;
+const linkWidth = RUtils.isSmallScreen() ? 130 : 230;
+const linkHeight = RUtils.isSmallScreen() ? 130 : 230;
 const linkMargin = RUtils.isSmallScreen() ? 20 : 30;
 
 const StartScreenLink = (props) => {

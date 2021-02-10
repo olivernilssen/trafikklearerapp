@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+
+import MainView from '../components/MainView';
 import SketchArea from '../components/sketchComponents/SketchArea';
 import BottomSheet from '../components/sketchComponents/bottomSheet';
 
@@ -19,7 +20,7 @@ const IntersectionScreen = ({ navigation }) => {
     };
 
     return (
-        <SafeAreaView style={styles.container}>
+        <MainView>
             <View style={styles.sketchArea}>
                 <SketchArea
                     source={currImage}
@@ -28,17 +29,11 @@ const IntersectionScreen = ({ navigation }) => {
                     <BottomSheet />
                 </SketchArea>
             </View>
-        </SafeAreaView>
+        </MainView>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        height: '100%',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-    },
     sketchArea: {
         flex: 1,
         width: '100%',
