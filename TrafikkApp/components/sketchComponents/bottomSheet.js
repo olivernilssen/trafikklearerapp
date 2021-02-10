@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
-import {
-    View,
-    StyleSheet,
-    Animated,
-    Text,
-    TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, Animated, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Color from '../../styles/Colors';
+import { View, Button, TabBar } from 'react-native-ui-lib';
 
+import Color from '../../styles/Colors';
+const labelsArray = [
+    'ONE TWO',
+    'THREE',
+    'THREEEEEEEE',
+    'FOUR',
+    'FIVE FIVE',
+    'SIX',
+    'SEVEN-ELEVEN',
+];
 var isHidden = false;
 
 const BottomSheet = ({ props }) => {
     const [bounceValue, setBoundValue] = useState(new Animated.Value(0));
     const [hiddenViewButton, setHiddeViewButton] = useState('chevron-down');
     const [bottomSheetHeigh, setBottomSheetHeigh] = useState(0);
+    const [labels, setLabel] = useState(labelsArray);
+    const [currentTab, setCurrentTab] = useState([]);
+    const [selectedIndex, setSelectedIndex] = useState(1);
 
     // Show or hide the bottom sheet depending on hight and if it is showing or not
     const toggleSubview = () => {
@@ -58,12 +65,32 @@ const BottomSheet = ({ props }) => {
                     getBottomSheetLayout(event.nativeEvent.layout);
                 }}
                 style={styles.bottomContainer}>
-                <Text>This is a sub view</Text>
-                <Text>This is a sub view</Text>
-                <Text>This is a sub view</Text>
-                <Text>This is a sub view</Text>
-                <Text>This is a sub view</Text>
-                <Text>This is a sub view</Text>
+                <TabBar style={styles.tabbar} selectedIndex={0} enableShadow>
+                    <TabBar.Item
+                        label="Forkjørskryss"
+                        labelStyle={{
+                            color: Color.headerText,
+                            fontWeight: 'bold',
+                            textTransform: 'capitalize',
+                        }}
+                    />
+                    <TabBar.Item
+                        label="Lyskryss"
+                        labelStyle={{
+                            color: Color.headerText,
+                            fontWeight: 'bold',
+                            textTransform: 'capitalize',
+                        }}
+                    />
+                    <TabBar.Item
+                        label="Høyrekryss"
+                        labelStyle={{
+                            color: Color.headerText,
+                            fontWeight: 'bold',
+                            textTransform: 'capitalize',
+                        }}
+                    />
+                </TabBar>
             </View>
         </Animated.View>
     );
@@ -74,6 +101,7 @@ var styles = StyleSheet.create({
         backgroundColor: Color.drawerBg,
         padding: 10,
         width: '100%',
+        alignItems: 'center',
     },
     button: {
         paddingBottom: 10,
@@ -90,6 +118,10 @@ var styles = StyleSheet.create({
         left: 0,
         right: 0,
         backgroundColor: 'transparent',
+    },
+    tabbar: {
+        marginVertical: 10,
+        marginHorizontal: 20,
     },
 });
 
