@@ -7,7 +7,7 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Colors from '../../styles/Colors';
+import Color from '../../styles/Colors';
 
 var isHidden = false;
 
@@ -61,6 +61,9 @@ const BottomSheet = ({ props }) => {
                 <Text>This is a sub view</Text>
                 <Text>This is a sub view</Text>
                 <Text>This is a sub view</Text>
+                <Text>This is a sub view</Text>
+                <Text>This is a sub view</Text>
+                <Text>This is a sub view</Text>
             </View>
         </Animated.View>
     );
@@ -68,7 +71,7 @@ const BottomSheet = ({ props }) => {
 
 var styles = StyleSheet.create({
     bottomContainer: {
-        backgroundColor: Colors.light,
+        backgroundColor: Color.drawerBg,
         padding: 10,
         width: '100%',
     },

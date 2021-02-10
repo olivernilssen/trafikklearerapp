@@ -1,91 +1,45 @@
 /* eslint-disable prettier/prettier */
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import styles from '../styles/mainStyles';
-import SketchHeader from '../components/sketchComponents/SketchHeader';
-import SelectIntersection from '../components/sketchComponents/SelectIntersection';
-import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
-
-import BottomSheet from '../components/sketchComponents/bottomSheet';
-
-import Colors from '../styles/Colors';
+import { SketchArea } from '../components/sketchComponents/SketchArea';
 
 const RoundAboutScreen = ({ navigation }) => {
-    const sketchRef = useRef();
+    const hoyreX = require('../assets/intersections/hoyrekryss/veikryss-hoyre-X.png');
+    const forkjorsX = require('../assets/intersections/forkjorskryss/veikryss-forkjors-X.png');
+    const lysX = require('../assets/intersections/lyskryss/veikryss-lys-X.png');
 
-    const [currBrushColor, setBrushColor] = useState('black');
-    const [currBrushSize, setBrushSize] = useState(10);
+    const [currImage, setImage] = useState(hoyreX);
+    const [FabActive, setActiveFab] = useState(false);
 
-    const onColorChange = (newColor) => {
-        setColor(newColor);
-    };
-
-    const onBrushColorChange = (color) => {
-        setBrushColor(color);
-    };
-
-    const onChangeBrushSize = (newBrushSize) => {
-        setBrushSize(newBrushSize);
-    };
-
-    const undoChange = () => {
-        sketchRef.current.undo();
-    };
-
-    const clearCanvas = () => {
-        sketchRef.current.clear();
-    };
-
-    const eraser = () => {
-        setBrushColor('#00000000');
+    const onImageChange = (newImage) => {
+        setImage(newImage);
+        setActiveFab(!FabActive);
     };
 
     return (
         <SafeAreaView style={styles.container}>
-            {/* <Header name="Veikryss" navigation={navigation} /> */}
-            <SketchHeader
-                undo={undoChange}
-                clear={clearCanvas}
-                eraser={eraser}
-                onBrushColorChange={onBrushColorChange}
-                navigation={navigation}
-                name={'Rundkjøring'}
-            />
-
-            <View style={screenStyles.main}>
-                <SelectIntersection>
-                    <SketchCanvas
-                        ref={sketchRef}
-                        style={screenStyles.sketchCanvas}
-                        strokeColor={currBrushColor}
-                        strokeWidth={currBrushSize}
-                    />
-                    <BottomSheet />
-                </SelectIntersection>
+            <View style={styles.sketchArea}>
+                <SketchArea
+                    source={currImage}
+                    navigation={navigation}
+                    name={'Rundkjøring'}
+                />
             </View>
         </SafeAreaView>
     );
 };
 
-const screenStyles = StyleSheet.create({
-    main: {
+const styles = StyleSheet.create({
+    container: {
         flex: 1,
         height: '100%',
-        width: '100%',
-        elevation: 5,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
     },
-    sketchCanvas: {
+    sketchArea: {
         flex: 1,
-        backgroundColor: 'transparent',
-    },
-    backgroundImage: {
         width: '100%',
-        height: '100%',
-    },
-    strokeColorButton: {
-        width: 30,
-        height: 30,
     },
 });
 
