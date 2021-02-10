@@ -26,7 +26,7 @@ const IntersectionScreen = ({ navigation }) => {
                     source={currImage}
                     navigation={navigation}
                     name={'Veikryss'}>
-                    <BottomSheet />
+                    <BottomSheet onImageChange={onImageChange} />
                 </SketchArea>
             </View>
         </MainView>
