@@ -3,25 +3,23 @@ import { StyleSheet, Animated, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { View, Button, TabBar } from 'react-native-ui-lib';
 
+import imgSource from './fileRegistry';
 import Color from '../../styles/Colors';
-const labelsArray = [
-    'ONE TWO',
-    'THREE',
-    'THREEEEEEEE',
-    'FOUR',
-    'FIVE FIVE',
-    'SIX',
-    'SEVEN-ELEVEN',
-];
+const labelsArray = [];
+
+const keys = Object.keys(imgSource);
+keys.map((keys) => {
+    labelsArray.push(keys);
+});
+
 var isHidden = false;
 
-const BottomSheet = ({ props }) => {
+const BottomSheet = ({ onImageChange }) => {
     const [bounceValue, setBoundValue] = useState(new Animated.Value(0));
     const [hiddenViewButton, setHiddeViewButton] = useState('chevron-down');
     const [bottomSheetHeigh, setBottomSheetHeigh] = useState(0);
-    const [labels, setLabel] = useState(labelsArray);
-    const [currentTab, setCurrentTab] = useState([]);
-    const [selectedIndex, setSelectedIndex] = useState(1);
+    const [SelectedView, setSelectedView] = useState(labelsArray[0]);
+    const [viewArray, setViewArray] = useState(imgSource.Høyrekryss);
 
     // Show or hide the bottom sheet depending on hight and if it is showing or not
     const toggleSubview = () => {
@@ -49,6 +47,32 @@ const BottomSheet = ({ props }) => {
         setBottomSheetHeigh(height);
     };
 
+    const tabPressed = (viewIndex) => {
+        setSelectedView(viewIndex);
+        setViewArray(imgSource[labelsArray[viewIndex]]);
+    };
+
+    const onImageSelect = (key) => {
+        const img = viewArray[key];
+        onImageChange(img);
+        toggleSubview();
+    };
+
+    const bottomTabRender = () => {
+        const keys = Object.keys(viewArray);
+        return (
+            <View style={styles.tabView}>
+                {keys.map((item) => {
+                    return (
+                        <TouchableOpacity onPress={() => onImageSelect(item)}>
+                            <Text>{item.toString()}-Kryss</Text>
+                        </TouchableOpacity>
+                    );
+                })}
+            </View>
+        );
+    };
+
     return (
         <Animated.View
             style={[
@@ -66,31 +90,22 @@ const BottomSheet = ({ props }) => {
                 }}
                 style={styles.bottomContainer}>
                 <TabBar style={styles.tabbar} selectedIndex={0} enableShadow>
-                    <TabBar.Item
-                        label="Forkjørskryss"
-                        labelStyle={{
-                            color: Color.headerText,
-                            fontWeight: 'bold',
-                            textTransform: 'capitalize',
-                        }}
-                    />
-                    <TabBar.Item
-                        label="Lyskryss"
-                        labelStyle={{
-                            color: Color.headerText,
-                            fontWeight: 'bold',
-                            textTransform: 'capitalize',
-                        }}
-                    />
-                    <TabBar.Item
-                        label="Høyrekryss"
-                        labelStyle={{
-                            color: Color.headerText,
-                            fontWeight: 'bold',
-                            textTransform: 'capitalize',
-                        }}
-                    />
+                    {labelsArray.map((label, i) => {
+                        return (
+                            <TabBar.Item
+                                label={label}
+                                labelStyle={{
+                                    color: Color.headerText,
+                                    fontWeight: 'bold',
+                                    textTransform: 'capitalize',
+                                }}
+                                onPress={() => tabPressed(i)}
+                            />
+                        );
+                    })}
                 </TabBar>
+
+                {bottomTabRender()}
             </View>
         </Animated.View>
     );
@@ -120,8 +135,17 @@ var styles = StyleSheet.create({
         backgroundColor: 'transparent',
     },
     tabbar: {
-        marginVertical: 10,
-        marginHorizontal: 20,
+        margin: 10,
+    },
+    tabView: {
+        backgroundColor: Color.drawerBg,
+        width: '100%',
+        borderRadius: 10,
+        alignItems: 'center',
+        elevation: 10,
+        padding: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
     },
 });
 
