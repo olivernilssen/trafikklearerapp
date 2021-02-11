@@ -14,8 +14,8 @@ const deepChampagne = '#f2cc8f'; // Secondary light color
 
 export default {
     background: terraCotta,
-    textPrimary: '',
-    textSecondary: '',
+    textPrimary: independence,
+    textSecondary: deepChampagne,
 
     // HEADER
     header: eggShell,
@@ -28,7 +28,7 @@ export default {
 
     // BUTTONS
     buttonPrimary: eggShell,
-    buttonPrimActive: '',
+    buttonPrimActive: greenSheen,
     buttonSecondary: '',
     buttonSecActive: '',
     buttonText: independence,
