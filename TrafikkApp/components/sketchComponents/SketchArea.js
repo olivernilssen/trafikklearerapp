@@ -6,6 +6,8 @@ import MainView from '../MainView';
 import SketchHeader from './SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 
+import Color from '../../styles/Colors';
+
 const SketchArea = (props) => {
     const sketchRef = useRef();
 
@@ -51,20 +53,20 @@ const SketchArea = (props) => {
                 navigation={props.navigation}
                 name={props.name}
             />
-            {/* <View style={styles.main}> */}
-            <ImageBackground
-                resizeMode={'contain'}
-                style={styles.backgroundImage}
-                source={currentImg}>
-                <SketchCanvas
-                    ref={sketchRef}
-                    style={styles.sketchCanvas}
-                    strokeColor={currBrushColor}
-                    strokeWidth={currBrushSize}
-                />
-                {props.children}
-            </ImageBackground>
-            {/* </View> */}
+            <View style={styles.main}>
+                <ImageBackground
+                    resizeMode={'contain'}
+                    style={styles.backgroundImage}
+                    source={currentImg}>
+                    <SketchCanvas
+                        ref={sketchRef}
+                        style={styles.sketchCanvas}
+                        strokeColor={currBrushColor}
+                        strokeWidth={currBrushSize}
+                    />
+                    {props.children}
+                </ImageBackground>
+            </View>
         </MainView>
     );
 };
@@ -74,8 +76,7 @@ const styles = StyleSheet.create({
         flex: 1,
         height: '100%',
         width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: Color.sketchBg,
     },
     sketchCanvas: {
         flex: 1,
@@ -85,7 +86,6 @@ const styles = StyleSheet.create({
     },
     backgroundImage: {
         flex: 1,
-        width: '100%',
     },
 });
 
