@@ -7,6 +7,7 @@ import imgSource from './fileRegistry';
 import Color from '../../styles/Colors';
 const labelsArray = [];
 
+//Get all the keys from our imgSource (høyre, lys etc for labels)
 const keys = Object.keys(imgSource);
 keys.map((keys) => {
     labelsArray.push(keys);
@@ -18,8 +19,12 @@ const BottomSheet = ({ onImageChange }) => {
     const [bounceValue, setBoundValue] = useState(new Animated.Value(0));
     const [hiddenViewButton, setHiddeViewButton] = useState('chevron-down');
     const [bottomSheetHeigh, setBottomSheetHeigh] = useState(0);
-    const [SelectedView, setSelectedView] = useState(labelsArray[0]);
-    const [viewArray, setViewArray] = useState(imgSource.Høyrekryss);
+    const [selectedRoad, setSelectedRoad] = useState(labelsArray[0]);
+    const [roadTypes, setRoadTypes] = useState(imgSource[labelsArray[0]]);
+    const [selectedRoadType, setSelectedRoadType] = useState([
+        Object.keys(imgSource[labelsArray[0]])[0],
+        labelsArray[0],
+    ]);
 
     // Show or hide the bottom sheet depending on hight and if it is showing or not
     const toggleSubview = () => {
@@ -47,25 +52,44 @@ const BottomSheet = ({ onImageChange }) => {
         setBottomSheetHeigh(height);
     };
 
-    const tabPressed = (viewIndex) => {
-        setSelectedView(viewIndex);
-        setViewArray(imgSource[labelsArray[viewIndex]]);
+    const tabPressed = (roadIndex) => {
+        setSelectedRoad(roadIndex);
+        setRoadTypes(imgSource[labelsArray[roadIndex]]);
     };
 
     const onImageSelect = (key) => {
-        const img = viewArray[key];
+        //get img from imgSource
+        const img = roadTypes[key];
+
+        //set the selected img/roadType
+        setSelectedRoadType([key, selectedRoad]);
+
+        //send to parent
         onImageChange(img);
-        toggleSubview();
+        // toggleSubview();
     };
 
-    const bottomTabRender = () => {
-        const keys = Object.keys(viewArray);
+    const bottomTabRender = (roadType) => {
+        const keys = Object.keys(roadTypes);
+
         return (
             <View style={styles.tabView}>
-                {keys.map((item) => {
+                {keys.map((key, i) => {
+                    const isOnTabAndKey =
+                        selectedRoadType[0] == key &&
+                        selectedRoadType[1] == roadType;
                     return (
-                        <TouchableOpacity onPress={() => onImageSelect(item)}>
-                            <Text>{item.toString()}-Kryss</Text>
+                        <TouchableOpacity
+                            key={i}
+                            style={
+                                isOnTabAndKey
+                                    ? styles.activeButton
+                                    : styles.inActiveButton
+                            }
+                            onPress={() => onImageSelect(key)}>
+                            <Text style={styles.buttonText}>
+                                {key.toString()}-Kryss
+                            </Text>
                         </TouchableOpacity>
                     );
                 })}
@@ -93,19 +117,16 @@ const BottomSheet = ({ onImageChange }) => {
                     {labelsArray.map((label, i) => {
                         return (
                             <TabBar.Item
+                                key={i}
                                 label={label}
-                                labelStyle={{
-                                    color: Color.headerText,
-                                    fontWeight: 'bold',
-                                    textTransform: 'capitalize',
-                                }}
+                                labelStyle={styles.labelText}
                                 onPress={() => tabPressed(i)}
                             />
                         );
                     })}
                 </TabBar>
 
-                {bottomTabRender()}
+                {bottomTabRender(selectedRoad)}
             </View>
         </Animated.View>
     );
@@ -146,6 +167,25 @@ var styles = StyleSheet.create({
         padding: 20,
         flexDirection: 'row',
         justifyContent: 'space-around',
+    },
+    activeButton: {
+        backgroundColor: Color.buttonPrimActive,
+        padding: 10,
+        borderRadius: 10,
+        elevation: 5,
+    },
+    inActiveButton: {
+        padding: 10,
+    },
+    buttonText: {
+        color: Color.textPrimary,
+        fontSize: 15,
+        fontWeight: 'bold',
+    },
+    labelText: {
+        color: Color.headerText,
+        fontWeight: 'bold',
+        textTransform: 'capitalize',
     },
 });
 
