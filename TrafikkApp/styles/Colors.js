@@ -13,7 +13,7 @@ const greenSheen = '#81b29a'; // Primary colorful color
 const deepChampagne = '#f2cc8f'; // Secondary light color
 
 export default {
-    background: terraCotta,
+    background: eggShell,
     sketchBg: eggShell,
 
     textPrimary: independence,
@@ -29,17 +29,30 @@ export default {
     drawerActiveText: terraCotta,
 
     // BUTTONS
-    buttonPrimary: eggShell,
+    buttonPrimary: terraCotta,
     buttonPrimActive: greenSheen,
     buttonSecondary: deepChampagne,
     buttonSecActive: greenSheen,
     buttonText: independence,
-    buttonBorder: eggShell,
+    buttonBorder: terraCotta,
 
     // LINKS
     iconPrimary: independence,
     iconSecondary: '',
     iconActive: eggShell,
+
+    // BOTTOMSHEET (in SketchArea)
+    bottomDrawerBg: eggShell,
+    tabBarHeader: terraCotta,
+    tabBarHeaderInactive: eggShell,
+    tabHeaderText: independence,
+    tabHeaderActive: independence,
+    tabViewBg: terraCotta,
+    tabViewBorder: terraCotta,
+    tabButtonActive: terraCotta,
+    tabButtonInactive: terraCotta,
+
+    // labelText: independence,
 
     linkDivider: eggShellGrey,
 };
