@@ -15,18 +15,17 @@ const RoadScreen = ({ navigation }) => {
     //States
     [draggables, setDraggables] = useState([]);
     [dropZoneValues, setDropZoneValues] = useState(0);
-    [counter, setCounter] = useState(0);
 
     onNewDraggable = (itemSrc) => {
-        setDraggables([...draggables, [itemSrc, counter]]);
-        setCounter(counter + 1);
+        setDraggables([...draggables, itemSrc]);
         // console.log(draggables);
     };
 
-    onRemoveItem = (itemNumber) => {
+    onRemoveItem = (index) => {
         console.log('should delete ' + index);
         const filtered = [...draggables];
-        filtered = filtered.filter((item, itemIndex) => item[1] != itemNumber);
+
+        filtered.splice(index, 1);
         setDraggables(filtered);
     };
 
@@ -56,8 +55,8 @@ const RoadScreen = ({ navigation }) => {
                     return (
                         <Draggable
                             key={i}
-                            itemNumber={itemInfo[1]}
-                            source={itemInfo[0]}
+                            index={i}
+                            source={itemInfo}
                             removeItem={onRemoveItem}
                             dropZoneValues={dropZoneValues}
                         />

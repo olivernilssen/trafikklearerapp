@@ -56,7 +56,10 @@ export default class Draggable extends Component {
             <Animated.View
                 {...this.panResponder.panHandlers}
                 style={[this.state.pan.getLayout()]}>
-                <Image style={styles.item} source={this.state.imageSrc} />
+                <Animated.Image
+                    style={styles.item}
+                    source={this.state.imageSrc}
+                />
             </Animated.View>
         );
     }

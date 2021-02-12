@@ -19,9 +19,6 @@ export default class DraggableMenu extends Component {
         };
     }
 
-    //Handle adding new item to screen
-    // addItem = ({ source }) => this.props.addDraggable(source);
-
     //Item that goes into flatlist
     listItem = ({ item }) => (
         <TouchableOpacity
