@@ -4,6 +4,8 @@ import { View, StyleSheet } from 'react-native';
 
 import MainView from '../components/MainView';
 import SketchArea from '../components/sketchComponents/SketchArea';
+import SketchColorSheet from '../components/sketchComponents/sketchColorSheet'
+
 
 const RoundaboutScreen = ({ navigation }) => {
     const hoyreX = require('../assets/intersections/hoyrekryss/veikryss-hoyre-X.png');
@@ -26,6 +28,7 @@ const RoundaboutScreen = ({ navigation }) => {
                     navigation={navigation}
                     name={'Rundkjøring'}
                 />
+                {/* <SketchColorSheet /> */}
             </View>
         </MainView>
     );

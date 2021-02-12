@@ -1,5 +1,6 @@
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import React, { useState, useEffect } from 'react';
+import SketchColorSheet from './sketchColorSheet'
 
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Color from '../../styles/Colors';
@@ -80,6 +81,7 @@ const SketchHeader = (props) => {
                     </View>
                 </Right>
             </Header>
+            <SketchColorSheet />
         </View>
     );
 };
