@@ -3,25 +3,28 @@ import { StyleSheet, Animated, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { View, Button, TabBar } from 'react-native-ui-lib';
 
+import imgSource from './fileRegistry';
 import Color from '../../styles/Colors';
-const labelsArray = [
-    'ONE TWO',
-    'THREE',
-    'THREEEEEEEE',
-    'FOUR',
-    'FIVE FIVE',
-    'SIX',
-    'SEVEN-ELEVEN',
-];
+const labelsArray = [];
+
+//Get all the keys from our imgSource (høyre, lys etc for labels)
+const keys = Object.keys(imgSource);
+keys.map((keys) => {
+    labelsArray.push(keys);
+});
+
 var isHidden = false;
 
-const BottomSheet = ({ props }) => {
+const BottomSheet = ({ onImageChange }) => {
     const [bounceValue, setBoundValue] = useState(new Animated.Value(0));
     const [hiddenViewButton, setHiddeViewButton] = useState('chevron-down');
     const [bottomSheetHeigh, setBottomSheetHeigh] = useState(0);
-    const [labels, setLabel] = useState(labelsArray);
-    const [currentTab, setCurrentTab] = useState([]);
-    const [selectedIndex, setSelectedIndex] = useState(1);
+    const [selectedRoad, setSelectedRoad] = useState(labelsArray[0]);
+    const [roadTypes, setRoadTypes] = useState(imgSource[labelsArray[0]]);
+    const [selectedRoadType, setSelectedRoadType] = useState([
+        Object.keys(imgSource[labelsArray[0]])[0],
+        labelsArray[0],
+    ]);
 
     // Show or hide the bottom sheet depending on hight and if it is showing or not
     const toggleSubview = () => {
@@ -49,6 +52,51 @@ const BottomSheet = ({ props }) => {
         setBottomSheetHeigh(height);
     };
 
+    const tabPressed = (roadIndex) => {
+        setSelectedRoad(roadIndex);
+        setRoadTypes(imgSource[labelsArray[roadIndex]]);
+    };
+
+    const onImageSelect = (key) => {
+        //get img from imgSource
+        const img = roadTypes[key];
+
+        //set the selected img/roadType
+        setSelectedRoadType([key, selectedRoad]);
+
+        //send to parent
+        onImageChange(img);
+        // toggleSubview();
+    };
+
+    const bottomTabRender = (roadType) => {
+        const keys = Object.keys(roadTypes);
+
+        return (
+            <View style={styles.tabView}>
+                {keys.map((key, i) => {
+                    const isOnTabAndKey =
+                        selectedRoadType[0] == key &&
+                        selectedRoadType[1] == roadType;
+                    return (
+                        <TouchableOpacity
+                            key={i}
+                            style={
+                                isOnTabAndKey
+                                    ? styles.activeButton
+                                    : styles.inActiveButton
+                            }
+                            onPress={() => onImageSelect(key)}>
+                            <Text style={styles.buttonText}>
+                                {key.toString()}-Kryss
+                            </Text>
+                        </TouchableOpacity>
+                    );
+                })}
+            </View>
+        );
+    };
+
     return (
         <Animated.View
             style={[
@@ -66,31 +114,19 @@ const BottomSheet = ({ props }) => {
                 }}
                 style={styles.bottomContainer}>
                 <TabBar style={styles.tabbar} selectedIndex={0} enableShadow>
-                    <TabBar.Item
-                        label="Forkjørskryss"
-                        labelStyle={{
-                            color: Color.headerText,
-                            fontWeight: 'bold',
-                            textTransform: 'capitalize',
-                        }}
-                    />
-                    <TabBar.Item
-                        label="Lyskryss"
-                        labelStyle={{
-                            color: Color.headerText,
-                            fontWeight: 'bold',
-                            textTransform: 'capitalize',
-                        }}
-                    />
-                    <TabBar.Item
-                        label="Høyrekryss"
-                        labelStyle={{
-                            color: Color.headerText,
-                            fontWeight: 'bold',
-                            textTransform: 'capitalize',
-                        }}
-                    />
+                    {labelsArray.map((label, i) => {
+                        return (
+                            <TabBar.Item
+                                key={i}
+                                label={label}
+                                labelStyle={styles.labelText}
+                                onPress={() => tabPressed(i)}
+                            />
+                        );
+                    })}
                 </TabBar>
+
+                {bottomTabRender(selectedRoad)}
             </View>
         </Animated.View>
     );
@@ -120,8 +156,36 @@ var styles = StyleSheet.create({
         backgroundColor: 'transparent',
     },
     tabbar: {
-        marginVertical: 10,
-        marginHorizontal: 20,
+        margin: 10,
+    },
+    tabView: {
+        backgroundColor: Color.drawerBg,
+        width: '100%',
+        borderRadius: 10,
+        alignItems: 'center',
+        elevation: 10,
+        padding: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+    },
+    activeButton: {
+        backgroundColor: Color.buttonPrimActive,
+        padding: 10,
+        borderRadius: 10,
+        elevation: 5,
+    },
+    inActiveButton: {
+        padding: 10,
+    },
+    buttonText: {
+        color: Color.textPrimary,
+        fontSize: 15,
+        fontWeight: 'bold',
+    },
+    labelText: {
+        color: Color.headerText,
+        fontWeight: 'bold',
+        textTransform: 'capitalize',
     },
 });
 
