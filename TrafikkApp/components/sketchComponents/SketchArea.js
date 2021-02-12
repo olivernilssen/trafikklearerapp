@@ -1,19 +1,27 @@
 /* eslint-disable prettier/prettier */
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
-import styles from '../../styles/mainStyles';
-
+import MainView from '../MainView';
 import SketchHeader from './SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
-import { BottomSheet } from './bottomSheet';
+
+import Color from '../../styles/Colors';
 
 const SketchArea = (props) => {
     const sketchRef = useRef();
 
     const [currBrushColor, setBrushColor] = useState('black');
     const [currBrushSize, setBrushSize] = useState(10);
+    const [currentImg, setImage] = useState(props.source);
+
+    //Clear canvas if new image is loaded
+    useEffect(() => {
+        if (currentImg != props.source) {
+            setImage(props.source);
+            clearCanvas();
+        }
+    });
 
     const onBrushColorChange = (color) => {
         setBrushColor(color);
@@ -36,7 +44,7 @@ const SketchArea = (props) => {
     };
 
     return (
-        <SafeAreaView style={styles.container}>
+        <MainView>
             <SketchHeader
                 undo={undoChange}
                 clear={clearCanvas}
@@ -45,29 +53,30 @@ const SketchArea = (props) => {
                 navigation={props.navigation}
                 name={props.name}
             />
-            <View style={screenStyles.main}>
+            <View style={styles.main}>
                 <ImageBackground
-                    style={screenStyles.backgroundImage}
-                    source={props.source}>
+                    resizeMode={'contain'}
+                    style={styles.backgroundImage}
+                    source={currentImg}>
                     <SketchCanvas
                         ref={sketchRef}
-                        style={screenStyles.sketchCanvas}
+                        style={styles.sketchCanvas}
                         strokeColor={currBrushColor}
                         strokeWidth={currBrushSize}
                     />
                     {props.children}
                 </ImageBackground>
             </View>
-        </SafeAreaView>
+        </MainView>
     );
 };
 
-const screenStyles = StyleSheet.create({
+const styles = StyleSheet.create({
     main: {
         flex: 1,
         height: '100%',
         width: '100%',
-        elevation: 5,
+        backgroundColor: Color.sketchBg,
     },
     sketchCanvas: {
         flex: 1,
@@ -76,8 +85,7 @@ const screenStyles = StyleSheet.create({
         backgroundColor: 'transparent',
     },
     backgroundImage: {
-        width: '100%',
-        height: '100%',
+        flex: 1,
     },
 });
 

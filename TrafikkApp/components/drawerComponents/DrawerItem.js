@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     menuItem: {
         flexDirection: 'row',
         marginBottom: 15,
-        color: 'red',
+        // color: 'red',
     },
     menuItemText: {
         fontSize: 20,
