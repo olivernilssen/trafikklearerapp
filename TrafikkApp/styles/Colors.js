@@ -12,19 +12,22 @@ const independence = '#3d405b'; // Primary dark color
 const greenSheen = '#81b29a'; // Primary colorful color
 const deepChampagne = '#f2cc8f'; // Secondary light color
 
+const white = '#ffffff';
+const lightGrey = '#ECECEC';
+
 export default {
-    background: eggShell,
-    sketchBg: eggShell,
+    background: white,
+    sketchBg: white,
 
     textPrimary: independence,
     textSecondary: deepChampagne,
 
     // HEADER
-    header: eggShell,
+    header: white,
     headerText: independence,
 
     // DRAWER
-    drawerBg: eggShell,
+    drawerBg: white,
     drawerInactiveText: independence,
     drawerActiveText: terraCotta,
 
@@ -42,15 +45,20 @@ export default {
     iconActive: eggShell,
 
     // BOTTOMSHEET (in SketchArea)
-    bottomDrawerBg: eggShell,
-    tabBarHeader: terraCotta,
-    tabBarHeaderInactive: eggShell,
-    tabHeaderText: independence,
-    tabHeaderActive: independence,
+    bottomDrawerBg: white,
+
+    tabHeaderInactiveBg: white,
+    tabHeaderActiveBg: white,
+    tabHeaderIndicator: terraCotta,
+
+    tabHeaderTextInactive: independence,
+    tabHeaderTextActive: independence,
+
     tabViewBg: terraCotta,
-    tabViewBorder: terraCotta,
-    tabButtonActive: terraCotta,
-    tabButtonInactive: terraCotta,
+    tabViewBorder: eggShellGrey,
+
+    tabButtonActive: lightGrey,
+    tabButtonBorder: eggShellGrey,
 
     // labelText: independence,
 
