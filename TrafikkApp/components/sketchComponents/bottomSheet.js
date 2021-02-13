@@ -16,9 +16,9 @@ keys.map((keys) => {
 var isHidden = false;
 
 const BottomSheet = ({ onImageChange }) => {
-    const [bounceValue, setBoundValue] = useState(new Animated.Value(0));
-    const [hiddenViewButton, setHiddeViewButton] = useState('chevron-down');
-    const [bottomSheetHeigh, setBottomSheetHeigh] = useState(0);
+    const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
+    const [hiddenViewButton, setHiddenViewButton] = useState('chevron-down');
+    const [bottomSheetHeight, setBottomSheetHeight] = useState(0);
     const [selectedRoad, setSelectedRoad] = useState(labelsArray[0]);
     const [roadTypes, setRoadTypes] = useState(imgSource[labelsArray[0]]);
     const [selectedRoadType, setSelectedRoadType] = useState([
@@ -28,8 +28,8 @@ const BottomSheet = ({ onImageChange }) => {
 
     // Show or hide the bottom sheet depending on hight and if it is showing or not
     const toggleSubview = () => {
-        setHiddeViewButton(!isHidden ? 'ellipsis-h' : 'chevron-down');
-        var toValue = bottomSheetHeigh;
+        setHiddenViewButton(!isHidden ? 'ellipsis-h' : 'chevron-down');
+        var toValue = bottomSheetHeight;
 
         if (isHidden) {
             toValue = 0;
@@ -49,7 +49,7 @@ const BottomSheet = ({ onImageChange }) => {
     // Get the high of the view which is hidden
     const getBottomSheetLayout = (layout) => {
         const { x, y, width, height } = layout;
-        setBottomSheetHeigh(height);
+        setBottomSheetHeight(height);
     };
 
     const tabPressed = (roadIndex) => {
@@ -87,8 +87,13 @@ const BottomSheet = ({ onImageChange }) => {
                                     : styles.inActiveButton
                             }
                             onPress={() => onImageSelect(key)}>
-                            <Text style={styles.buttonText}>
-                                {key.toString()}-Kryss
+                            <Text
+                                style={
+                                    isOnTabAndKey
+                                        ? styles.buttonTextActive
+                                        : styles.buttonTextInactive
+                                }>
+                                {key.toString()}-utforming
                             </Text>
                         </TouchableOpacity>
                     );
@@ -106,26 +111,40 @@ const BottomSheet = ({ onImageChange }) => {
             <TouchableOpacity
                 style={styles.button}
                 onPress={() => toggleSubview()}>
-                <Icon name={hiddenViewButton} size={40} color={'black'}></Icon>
+                <Icon
+                    name={hiddenViewButton}
+                    size={40}
+                    color={Color.iconPrimary}></Icon>
             </TouchableOpacity>
             <View
                 onLayout={(event) => {
                     getBottomSheetLayout(event.nativeEvent.layout);
                 }}
                 style={styles.bottomContainer}>
-                <TabBar style={styles.tabbar} selectedIndex={0} enableShadow>
+                <TabBar
+                    style={styles.tabBar}
+                    selectedIndex={0}
+                    indicatorStyle={{
+                        backgroundColor: Color.tabHeaderIndicator,
+                    }}>
                     {labelsArray.map((label, i) => {
+                        const activeTab = selectedRoad == i;
                         return (
                             <TabBar.Item
                                 key={i}
                                 label={label}
-                                labelStyle={styles.labelText}
+                                labelStyle={styles.tabHeaderTextInactive}
+                                selectedLabelStyle={styles.tabHeaderTextActive}
+                                style={
+                                    activeTab
+                                        ? styles.tabHeaderActive
+                                        : styles.tabHeaderInactive
+                                }
                                 onPress={() => tabPressed(i)}
                             />
                         );
                     })}
                 </TabBar>
-
                 {bottomTabRender(selectedRoad)}
             </View>
         </Animated.View>
@@ -133,20 +152,6 @@ const BottomSheet = ({ onImageChange }) => {
 };
 
 var styles = StyleSheet.create({
-    bottomContainer: {
-        backgroundColor: Color.drawerBg,
-        padding: 10,
-        width: '100%',
-        alignItems: 'center',
-    },
-    button: {
-        paddingBottom: 10,
-        paddingHorizontal: 20,
-    },
-    buttonText: {
-        fontSize: 17,
-        color: '#007AFF',
-    },
     subView: {
         position: 'absolute',
         alignItems: 'center',
@@ -155,37 +160,59 @@ var styles = StyleSheet.create({
         right: 0,
         backgroundColor: 'transparent',
     },
-    tabbar: {
-        margin: 10,
+    button: {
+        paddingBottom: 10,
+        paddingHorizontal: 20,
     },
-    tabView: {
-        backgroundColor: Color.drawerBg,
-        width: '100%',
-        borderRadius: 10,
+    bottomContainer: {
+        backgroundColor: Color.bottomDrawerBg,
+        padding: 10,
         alignItems: 'center',
         elevation: 10,
-        padding: 20,
+    },
+    tabBar: {
+        elevation: 3,
+        marginBottom: 5,
+    },
+    tabHeaderActive: {
+        backgroundColor: Color.tabHeaderActiveBg,
+    },
+    tabHeaderInactive: {
+        backgroundColor: Color.tabHeaderInactiveBg,
+    },
+    tabHeaderTextActive: {
+        color: Color.tabHeaderTextActive,
+        fontWeight: 'bold',
+        fontSize: 16,
+    },
+    tabHeaderTextInactive: {
+        color: Color.tabHeaderTextInactive,
+    },
+    tabView: {
+        width: '100%',
+        alignItems: 'center',
         flexDirection: 'row',
-        justifyContent: 'space-around',
     },
     activeButton: {
-        backgroundColor: Color.buttonPrimActive,
+        backgroundColor: Color.tabButtonActive,
+        borderRightWidth: 1,
+        borderLeftWidth: 1,
+        borderColor: Color.tabButtonBorder,
         padding: 10,
-        borderRadius: 10,
-        elevation: 5,
     },
     inActiveButton: {
+        borderRightWidth: 1,
+        borderLeftWidth: 1,
+        borderColor: Color.tabButtonBorder,
         padding: 10,
     },
-    buttonText: {
+    buttonTextActive: {
         color: Color.textPrimary,
-        fontSize: 15,
         fontWeight: 'bold',
+        fontStyle: 'italic',
     },
-    labelText: {
-        color: Color.headerText,
-        fontWeight: 'bold',
-        textTransform: 'capitalize',
+    buttonTextInactive: {
+        color: Color.textPrimary,
     },
 });
 
