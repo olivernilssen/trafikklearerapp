@@ -8,6 +8,7 @@ export default class Draggable extends Component {
             imageSrc: props.source,
             pan: new Animated.ValueXY(),
             dropZoneValues: props.dropZoneValues,
+            scale: 1,
         };
         this.state.pan.setValue({ x: 0, y: 0 });
 
@@ -22,10 +23,13 @@ export default class Draggable extends Component {
                 this.state.pan.setValue({ x: 0, y: 0 });
             },
             onPanResponderMove: (e, gesture) => {
-                //
-                // Set value of state.animate x/y to the
-                // delta value of each
-                //
+                if (this.isDropArea(gesture)) {
+                    this.props.onTrashHover(true);
+                } else {
+                    this.props.onTrashHover(false);
+                }
+
+                //set values (x and y) we are currently on for the animated.view
                 this.state.pan.setValue({
                     x: gesture.dx,
                     y: gesture.dy,
@@ -33,8 +37,8 @@ export default class Draggable extends Component {
             },
             onPanResponderRelease: (e, gesture) => {
                 if (this.isDropArea(gesture)) {
-                    console.log('should delete');
-                    this.props.removeItem(this.props.index);
+                    this.props.removeItem(this.props.id);
+                    this.props.onTrashHover(false); //reset the trash icon
                 } else {
                     this.state.pan.flattenOffset();
                 }
@@ -57,7 +61,7 @@ export default class Draggable extends Component {
                 {...this.panResponder.panHandlers}
                 style={[this.state.pan.getLayout()]}>
                 <Animated.Image
-                    style={styles.item}
+                    style={[styles.item]}
                     source={this.state.imageSrc}
                 />
             </Animated.View>
@@ -71,6 +75,7 @@ let styles = StyleSheet.create({
     item: {
         position: 'absolute',
         width: ITEM_SIZE,
+        height: ITEM_SIZE * 2,
         resizeMode: 'contain',
     },
 });

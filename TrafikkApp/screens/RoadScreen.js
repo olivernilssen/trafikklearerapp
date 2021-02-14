@@ -13,26 +13,29 @@ import DraggableMenu from '../components/draggable/DraggableMenu';
 
 const RoadScreen = ({ navigation }) => {
     //States
-    [draggables, setDraggables] = useState([]);
-    [dropZoneValues, setDropZoneValues] = useState(0);
+    const [draggables, setDraggables] = useState([]);
+    const [dropZoneValues, setDropZoneValues] = useState(0);
+    const [counter, setCounter] = useState(0);
+    const [trashHover, setTrashHover] = useState(false);
 
-    onNewDraggable = (itemSrc) => {
-        setDraggables([...draggables, itemSrc]);
-        // console.log(draggables);
+    const onNewDraggable = (itemSrc) => {
+        const newDraggable = { id: counter, source: itemSrc };
+        setCounter(counter + 1);
+        setDraggables([...draggables, newDraggable]);
     };
 
-    onRemoveItem = (index) => {
-        console.log('should delete ' + index);
-        const filtered = [...draggables];
-
-        filtered.splice(index, 1);
+    const onRemoveItem = (itemId) => {
+        const filtered = draggables.filter((item) => item.id !== itemId);
         setDraggables(filtered);
     };
 
     // Get the high of the view which is hidden
-    getIconLayout = (layout) => {
-        const { x, y, width, height } = layout;
+    const getIconLayout = (layout) => {
         setDropZoneValues(layout);
+    };
+
+    const onTrashHover = (isOver) => {
+        setTrashHover(isOver);
     };
 
     return (
@@ -40,23 +43,24 @@ const RoadScreen = ({ navigation }) => {
             <View style={styles.sketchArea}>
                 <Header name={'Vei'} navigation={navigation} />
                 <View styles={styles.dragArea}></View>
-
                 <DraggableMenu addDraggable={onNewDraggable} />
                 <Icon
                     onLayout={(event) => {
                         getIconLayout(event.nativeEvent.layout);
                     }}
                     style={styles.icon}
-                    name="trash"
+                    color={trashHover ? 'red' : 'black'}
+                    name={trashHover ? 'trash-restore' : 'trash'}
                     size={60}
                 />
 
-                {draggables.map((itemInfo, i) => {
+                {draggables.map((itemInfo) => {
                     return (
                         <Draggable
-                            key={i}
-                            index={i}
-                            source={itemInfo}
+                            key={itemInfo.id}
+                            onTrashHover={setTrashHover}
+                            id={itemInfo.id}
+                            source={itemInfo.source}
                             removeItem={onRemoveItem}
                             dropZoneValues={dropZoneValues}
                         />

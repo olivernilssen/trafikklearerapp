@@ -25,7 +25,8 @@ export default class DraggableMenu extends Component {
             style={styles.item}
             onPress={() => this.props.addDraggable(objectPaths[item])}>
             <Icon style={styles.icon} name={'plus'} size={25} />
-            <Text style={styles.flatlistTitle}>{item}</Text>
+            {/* <Text style={styles.flatlistTitle}>{item}</Text> */}
+            <Image source={objectPaths[item]} style={styles.image} />
         </TouchableOpacity>
     );
 
@@ -44,21 +45,20 @@ export default class DraggableMenu extends Component {
 
 const styles = StyleSheet.create({
     flatList: {
-        backgroundColor: 'grey',
-        height: '20%',
-        width: '40%',
-        alignContent: 'flex-start',
+        // backgroundColor: 'grey',
+        width: '30%',
+        alignContent: 'space-around',
     },
     item: {
-        width: '100%',
-        elevation: 10,
-        backgroundColor: 'lightgray',
+        borderColor: 'black',
+        borderWidth: 2,
+        elevation: 5,
+        backgroundColor: 'beige',
         flexDirection: 'row',
-        justifyContent: 'center',
-        marginBottom: 5,
+        marginBottom: 15,
     },
     flatlistTitle: {
-        flex: 5,
+        flex: 1,
         fontSize: 25,
         color: 'black',
         // backgroundColor: 'blue',
@@ -66,8 +66,14 @@ const styles = StyleSheet.create({
     icon: {
         flex: 1,
         marginLeft: 10,
-        // backgroundColor: 'pink',
         alignSelf: 'center',
-        alignItems: 'center',
+    },
+    image: {
+        flex: 1,
+        // backgroundColor: 'black',
+        width: 20,
+        height: 40,
+        resizeMode: 'contain',
+        transform: [{ rotate: '90deg' }],
     },
 });
