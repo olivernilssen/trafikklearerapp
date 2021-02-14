@@ -7,8 +7,6 @@ import SketchHeader from './SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import Color from '../../styles/Colors';
 
-import Color from '../../styles/Colors';
-
 const SketchArea = (props) => {
     const sketchRef = useRef();
 
