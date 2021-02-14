@@ -7,6 +7,8 @@ import SketchHeader from './SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import Color from '../../styles/Colors';
 
+import Color from '../../styles/Colors';
+
 const SketchArea = (props) => {
     const sketchRef = useRef();
 
@@ -63,8 +65,8 @@ const SketchArea = (props) => {
                         strokeColor={currBrushColor}
                         strokeWidth={currBrushSize}
                     />
+                    {props.children}
                 </ImageBackground>
-                {props.children}
             </View>
         </MainView>
     );
@@ -75,8 +77,7 @@ const styles = StyleSheet.create({
         flex: 1,
         height: '100%',
         width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: Color.sketchBg,
     },
     sketchCanvas: {
         flex: 1,

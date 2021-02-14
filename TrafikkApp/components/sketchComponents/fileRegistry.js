@@ -11,11 +11,11 @@ const imgSource = {
     },
     Lyskryss: {
         T: require('../../assets/intersections/lyskryss/veikryss-lys-T.png'),
-        'T-pil': require('../../assets/intersections/lyskryss/veikryss-lys-T-pil.png'),
+        // 'T-pil': require('../../assets/intersections/lyskryss/veikryss-lys-T-pil.png'),
         X: require('../../assets/intersections/lyskryss/veikryss-lys-X.png'),
-        'X-pil': require('../../assets/intersections/lyskryss/veikryss-lys-X-pil.png'),
+        // 'X-pil': require('../../assets/intersections/lyskryss/veikryss-lys-X-pil.png'),
         Y: require('../../assets/intersections/lyskryss/veikryss-lys-Y.png'),
-        'Y-pil': require('../../assets/intersections/lyskryss/veikryss-lys-Y-pil.png'),
+        // 'Y-pil': require('../../assets/intersections/lyskryss/veikryss-lys-Y-pil.png'),
     },
     Test: {},
 };

@@ -12,32 +12,55 @@ const independence = '#3d405b'; // Primary dark color
 const greenSheen = '#81b29a'; // Primary colorful color
 const deepChampagne = '#f2cc8f'; // Secondary light color
 
+const white = '#ffffff';
+const lightGrey = '#ECECEC';
+
 export default {
-    background: terraCotta,
+    background: white,
+    sketchBg: white,
+
     textPrimary: independence,
     textSecondary: deepChampagne,
 
     // HEADER
-    header: eggShell,
+    header: white,
     headerText: independence,
 
     // DRAWER
-    drawerBg: eggShell,
+    drawerBg: white,
     drawerInactiveText: independence,
     drawerActiveText: terraCotta,
 
     // BUTTONS
-    buttonPrimary: eggShell,
+    buttonPrimary: terraCotta,
     buttonPrimActive: greenSheen,
-    buttonSecondary: '',
-    buttonSecActive: '',
+    buttonSecondary: deepChampagne,
+    buttonSecActive: greenSheen,
     buttonText: independence,
-    buttonBorder: eggShell,
+    buttonBorder: terraCotta,
 
     // LINKS
     iconPrimary: independence,
     iconSecondary: '',
     iconActive: eggShell,
+
+    // BOTTOMSHEET (in SketchArea)
+    bottomDrawerBg: white,
+
+    tabHeaderInactiveBg: white,
+    tabHeaderActiveBg: white,
+    tabHeaderIndicator: terraCotta,
+
+    tabHeaderTextInactive: independence,
+    tabHeaderTextActive: independence,
+
+    tabViewBg: terraCotta,
+    tabViewBorder: eggShellGrey,
+
+    tabButtonActive: lightGrey,
+    tabButtonBorder: eggShellGrey,
+
+    // labelText: independence,
 
     linkDivider: eggShellGrey,
 };
