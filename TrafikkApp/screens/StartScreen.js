@@ -29,7 +29,11 @@ const StartScreen = ({ navigation }) => {
                         text="Rundkjøring"
                         onPress={() => navigation.navigate('RoundaboutScreen')}
                     />
-                    <StartScreenLink name="road" text="Vei" />
+                    <StartScreenLink
+                        name="road"
+                        text="Vei"
+                        onPress={() => navigation.navigate('RoadScreen')}
+                    />
                 </RView>
 
                 <RView
