@@ -34,10 +34,6 @@ const RoadScreen = ({ navigation }) => {
         setDropZoneValues(layout);
     };
 
-    const onTrashHover = (isOver) => {
-        setTrashHover(isOver);
-    };
-
     return (
         <MainView>
             <View style={styles.sketchArea}>

@@ -10,7 +10,19 @@ import {
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
+// const colors = [
+//     '#20303C',
+//     '#43515C',
+//     '#66737C',
+//     '#858F96',
+//     '#A3ABB0',
+//     '#C2C7CB',
+//     '#E0E3E5',
+//     '#F2F4F5',
+// ];
+
 import Gestures from 'react-native-easy-gestures';
+import { color } from 'react-native-reanimated';
 
 export default class Draggable extends Component {
     pinchRef = React.createRef();
@@ -85,6 +97,8 @@ export default class Draggable extends Component {
 
         return isInZone;
     }
+
+    onLongPress() {}
 
     render() {
         // const panStyle = {
