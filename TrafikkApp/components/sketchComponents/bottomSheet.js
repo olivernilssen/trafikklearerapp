@@ -1,17 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Animated, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { View, TabBar } from 'react-native-ui-lib';
 
-// import imgSource from './fileRegistry';
 import Color from '../../styles/Colors';
-// const labelsArray = [];
-
-// //Get all the keys from our imgSource (høyre, lys etc for labels)
-// const keys = Object.keys(imgSource);
-// keys.map((keys) => {
-//     labelsArray.push(keys);
-// });
 
 var isHidden = false;
 
@@ -21,9 +13,9 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
     const [hiddenView, setHiddenView] = useState(true);
     const [bottomSheetHeight, setBottomSheetHeight] = useState(0);
     const [selectedRoad, setSelectedRoad] = useState(labelsArray[0]);
-    const [roadTypes, setRoadTypes] = useState(VeiKryss[labelsArray[0]]);
+    const [roadTypes, setRoadTypes] = useState(imgSource[labelsArray[0]]);
     const [selectedRoadType, setSelectedRoadType] = useState([
-        Object.keys(VeiKryss[labelsArray[0]])[0],
+        Object.keys(imgSource[labelsArray[0]])[0],
         labelsArray[0],
     ]);
 
@@ -61,7 +53,7 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
 
     const tabPressed = (roadIndex) => {
         setSelectedRoad(roadIndex);
-        setRoadTypes(VeiKryss[labelsArray[roadIndex]]);
+        setRoadTypes(imgSource[labelsArray[roadIndex]]);
     };
 
     const onImageSelect = (key) => {
@@ -73,7 +65,7 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
 
         //send to parent
         onImageChange(img);
-        onHiddenViewChange();
+        toggleSubview();
     };
 
     const bottomTabRender = (roadType) => {
