@@ -6,8 +6,8 @@ import MainView from '../MainView';
 import SketchHeader from './SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import Color from '../../styles/Colors';
-
 import BottomSheet from './bottomSheet';
+
 import imgSource from './fileRegistry';
 
 const SketchArea = (props) => {
@@ -25,7 +25,7 @@ const SketchArea = (props) => {
     const InitialImageSrc = roadTypes[labelsArray[0]][initialImageSrcName];
 
     const sketchRef = useRef();
-
+    const bottomSheetRef = useRef();
     const [currBrushColor, setBrushColor] = useState('black');
     const [currBrushSize, setBrushSize] = useState(10);
     const [currentImg, setImage] = useState(InitialImageSrc);
@@ -55,6 +55,13 @@ const SketchArea = (props) => {
         setBrushColor('#00000000');
     };
 
+    //Vil at denne skal kjøre om bruker trykker utenfor viewen men det er ikke
+    //så jævla enkelt haha. Vi må nok sette opp en form form guesture event listener som
+    //ikke alltid er så enkelt.. hmm
+    const toggleBottomSheet = () => {
+        this.bottomSheetRef.current.onHiddenViewChange();
+    };
+
     return (
         <MainView>
             <SketchHeader
@@ -77,6 +84,7 @@ const SketchArea = (props) => {
                         strokeWidth={currBrushSize}
                     />
                     <BottomSheet
+                        ref={bottomSheetRef}
                         labelsArray={labelsArray}
                         imgSource={imgSource[props.name]}
                         onImageChange={setImage}

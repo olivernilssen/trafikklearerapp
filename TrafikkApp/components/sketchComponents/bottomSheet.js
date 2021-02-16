@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Animated, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { View, Button, TabBar } from 'react-native-ui-lib';
+import { View, TabBar } from 'react-native-ui-lib';
 
 import Color from '../../styles/Colors';
 
@@ -10,6 +10,7 @@ var isHidden = false;
 const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
     const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
     const [hiddenViewButton, setHiddenViewButton] = useState('chevron-down');
+    const [hiddenView, setHiddenView] = useState(true);
     const [bottomSheetHeight, setBottomSheetHeight] = useState(0);
     const [selectedRoad, setSelectedRoad] = useState(labelsArray[0]);
     const [roadTypes, setRoadTypes] = useState(imgSource[labelsArray[0]]);
@@ -18,12 +19,16 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
         labelsArray[0],
     ]);
 
+    useEffect(() => {
+        toggleSubview();
+    }, [hiddenView]);
+
     // Show or hide the bottom sheet depending on hight and if it is showing or not
     const toggleSubview = () => {
-        setHiddenViewButton(!isHidden ? 'ellipsis-h' : 'chevron-down');
+        setHiddenViewButton(!hiddenView ? 'ellipsis-h' : 'chevron-down');
         var toValue = bottomSheetHeight;
 
-        if (isHidden) {
+        if (hiddenView) {
             toValue = 0;
         }
 
@@ -34,8 +39,10 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
             tension: 2,
             friction: 8,
         }).start();
+    };
 
-        isHidden = !isHidden;
+    const onHiddenViewChange = () => {
+        setHiddenView(!hiddenView);
     };
 
     // Get the high of the view which is hidden
@@ -102,7 +109,7 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
             ]}>
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => toggleSubview()}>
+                onPress={onHiddenViewChange}>
                 <Icon
                     name={hiddenViewButton}
                     size={40}
