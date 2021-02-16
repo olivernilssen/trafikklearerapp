@@ -3,21 +3,19 @@ import { StyleSheet, Animated, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { View, TabBar } from 'react-native-ui-lib';
 
-import imgSource from './illustrationsPath';
+// import imgSource from './fileRegistry';
 import Color from '../../styles/Colors';
-import { useEffect } from 'react';
+// const labelsArray = [];
 
-//Kanskje dette burde legges en bedre plass?
-const labelsArray = [];
-const VeiKryss = imgSource.Veikryss;
-//Get all the keys from our imgSource (høyre, lys etc for labels)
-const keys = Object.keys(imgSource.Veikryss);
-console.log(keys);
-keys.map((keys) => {
-    labelsArray.push(keys);
-});
+// //Get all the keys from our imgSource (høyre, lys etc for labels)
+// const keys = Object.keys(imgSource);
+// keys.map((keys) => {
+//     labelsArray.push(keys);
+// });
 
-const BottomSheet = ({ onImageChange }) => {
+var isHidden = false;
+
+const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
     const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
     const [hiddenViewButton, setHiddenViewButton] = useState('chevron-down');
     const [hiddenView, setHiddenView] = useState(true);
@@ -102,7 +100,7 @@ const BottomSheet = ({ onImageChange }) => {
                                         ? styles.buttonTextActive
                                         : styles.buttonTextInactive
                                 }>
-                                {key.toString()}-utforming
+                                {key.toString()}
                             </Text>
                         </TouchableOpacity>
                     );
@@ -171,17 +169,19 @@ var styles = StyleSheet.create({
     },
     button: {
         paddingBottom: 10,
-        paddingHorizontal: 20,
+        // paddingHorizontal: 20,
     },
     bottomContainer: {
         backgroundColor: Color.bottomDrawerBg,
         padding: 10,
         alignItems: 'center',
-        elevation: 10,
+        borderTopWidth: 1,
+        borderTopColor: Color.borderColor,
     },
     tabBar: {
-        elevation: 3,
-        marginBottom: 5,
+        borderBottomWidth: 2,
+        borderBottomColor: Color.borderColor,
+        // marginBottom: 5,
     },
     tabHeaderActive: {
         backgroundColor: Color.tabHeaderActiveBg,
@@ -218,7 +218,6 @@ var styles = StyleSheet.create({
     buttonTextActive: {
         color: Color.textPrimary,
         fontWeight: 'bold',
-        fontStyle: 'italic',
     },
     buttonTextInactive: {
         color: Color.textPrimary,

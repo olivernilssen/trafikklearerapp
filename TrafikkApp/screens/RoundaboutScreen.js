@@ -4,13 +4,22 @@ import { View, StyleSheet } from 'react-native';
 
 import MainView from '../components/MainView';
 import SketchArea from '../components/sketchComponents/SketchArea';
+import BottomSheet from '../components/sketchComponents/bottomSheet';
+
+import imgSource from '../components/sketchComponents/fileRegistry';
 
 const RoundaboutScreen = ({ navigation }) => {
-    const hoyreX = require('../assets/intersections/hoyrekryss/veikryss-hoyre-X.png');
-    const forkjorsX = require('../assets/intersections/forkjorskryss/veikryss-forkjors-X.png');
-    const lysX = require('../assets/intersections/lyskryss/veikryss-lys-X.png');
+    const labelsArray = [];
 
-    const [currImage, setImage] = useState(hoyreX);
+    //Get all the keys from our imgSource (høyre, lys etc for labels)
+    const keys = Object.keys(imgSource.Rundkjoring);
+    keys.map((keys) => {
+        labelsArray.push(keys);
+    });
+
+    const rundkjoring = require('../assets/roundabouts/1feltinn1feltut.png');
+
+    const [currImage, setImage] = useState(rundkjoring);
     const [FabActive, setActiveFab] = useState(false);
 
     const onImageChange = (newImage) => {
@@ -25,6 +34,12 @@ const RoundaboutScreen = ({ navigation }) => {
                     source={currImage}
                     navigation={navigation}
                     name={'Rundkjøring'}
+                />
+                <BottomSheet
+                    labelsArray={labelsArray}
+                    imgSource={imgSource.Rundkjoring}
+                    onImageChange={onImageChange}
+                    type={'Intersection'}
                 />
             </View>
         </MainView>

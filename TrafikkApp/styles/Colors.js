@@ -46,6 +46,7 @@ export default {
 
     // BOTTOMSHEET (in SketchArea)
     bottomDrawerBg: white,
+    borderColor: lightGrey,
 
     tabHeaderInactiveBg: white,
     tabHeaderActiveBg: white,
