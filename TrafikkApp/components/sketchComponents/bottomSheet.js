@@ -3,15 +3,7 @@ import { StyleSheet, Animated, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { View, Button, TabBar } from 'react-native-ui-lib';
 
-// import imgSource from './fileRegistry';
 import Color from '../../styles/Colors';
-// const labelsArray = [];
-
-// //Get all the keys from our imgSource (høyre, lys etc for labels)
-// const keys = Object.keys(imgSource);
-// keys.map((keys) => {
-//     labelsArray.push(keys);
-// });
 
 var isHidden = false;
 
@@ -66,7 +58,7 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
 
         //send to parent
         onImageChange(img);
-        // toggleSubview();
+        toggleSubview();
     };
 
     const bottomTabRender = (roadType) => {
