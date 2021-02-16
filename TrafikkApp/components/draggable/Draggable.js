@@ -119,22 +119,20 @@ export default class Draggable extends Component {
                 }}>
                 <TouchableWithoutFeedback
                     onLongPress={() => console.log('Long pressed')}>
-                    <View>
-                        <Animated.Image
-                            source={this.state.imageSrc}
-                            resizeMode={'contain'}
-                            style={[
-                                styles.item,
-                                this.state.tintColor == null
-                                    ? null
-                                    : { tintColor: this.state.tintColor },
+                    <Animated.Image
+                        source={this.state.imageSrc}
+                        resizeMode={'contain'}
+                        style={[
+                            styles.item,
+                            this.state.tintColor == null
+                                ? null
+                                : { tintColor: this.state.tintColor },
 
-                                {
-                                    transform: [{ scale: this.state.scale }],
-                                },
-                            ]}
-                        />
-                    </View>
+                            {
+                                transform: [{ scale: this.state.scale }],
+                            },
+                        ]}
+                    />
                 </TouchableWithoutFeedback>
             </Gestures>
         );
@@ -145,11 +143,9 @@ let ITEM_SIZE = 60;
 
 let styles = StyleSheet.create({
     item: {
-        position: 'absolute',
-        width: '100%',
+        width: ITEM_SIZE,
         height: ITEM_SIZE * 2,
-
-        // backgroundColor: 'black',
+        // backgroundColor: 'gray',
     },
     container: {
         position: 'absolute',
