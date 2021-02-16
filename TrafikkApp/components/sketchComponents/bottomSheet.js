@@ -1,37 +1,44 @@
 import React, { useState } from 'react';
 import { StyleSheet, Animated, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { View, Button, TabBar } from 'react-native-ui-lib';
+import { View, TabBar } from 'react-native-ui-lib';
 
-import imgSource from './fileRegistry';
+import imgSource from './illustrationsPath';
 import Color from '../../styles/Colors';
-const labelsArray = [];
+import { useEffect } from 'react';
 
+//Kanskje dette burde legges en bedre plass?
+const labelsArray = [];
+const VeiKryss = imgSource.Veikryss;
 //Get all the keys from our imgSource (høyre, lys etc for labels)
-const keys = Object.keys(imgSource);
+const keys = Object.keys(imgSource.Veikryss);
+console.log(keys);
 keys.map((keys) => {
     labelsArray.push(keys);
 });
 
-var isHidden = false;
-
 const BottomSheet = ({ onImageChange }) => {
     const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
     const [hiddenViewButton, setHiddenViewButton] = useState('chevron-down');
+    const [hiddenView, setHiddenView] = useState(true);
     const [bottomSheetHeight, setBottomSheetHeight] = useState(0);
     const [selectedRoad, setSelectedRoad] = useState(labelsArray[0]);
-    const [roadTypes, setRoadTypes] = useState(imgSource[labelsArray[0]]);
+    const [roadTypes, setRoadTypes] = useState(VeiKryss[labelsArray[0]]);
     const [selectedRoadType, setSelectedRoadType] = useState([
-        Object.keys(imgSource[labelsArray[0]])[0],
+        Object.keys(VeiKryss[labelsArray[0]])[0],
         labelsArray[0],
     ]);
 
+    useEffect(() => {
+        toggleSubview();
+    }, [hiddenView]);
+
     // Show or hide the bottom sheet depending on hight and if it is showing or not
     const toggleSubview = () => {
-        setHiddenViewButton(!isHidden ? 'ellipsis-h' : 'chevron-down');
+        setHiddenViewButton(!hiddenView ? 'ellipsis-h' : 'chevron-down');
         var toValue = bottomSheetHeight;
 
-        if (isHidden) {
+        if (hiddenView) {
             toValue = 0;
         }
 
@@ -42,8 +49,10 @@ const BottomSheet = ({ onImageChange }) => {
             tension: 2,
             friction: 8,
         }).start();
+    };
 
-        isHidden = !isHidden;
+    const onHiddenViewChange = () => {
+        setHiddenView(!hiddenView);
     };
 
     // Get the high of the view which is hidden
@@ -54,7 +63,7 @@ const BottomSheet = ({ onImageChange }) => {
 
     const tabPressed = (roadIndex) => {
         setSelectedRoad(roadIndex);
-        setRoadTypes(imgSource[labelsArray[roadIndex]]);
+        setRoadTypes(VeiKryss[labelsArray[roadIndex]]);
     };
 
     const onImageSelect = (key) => {
@@ -66,7 +75,7 @@ const BottomSheet = ({ onImageChange }) => {
 
         //send to parent
         onImageChange(img);
-        // toggleSubview();
+        onHiddenViewChange();
     };
 
     const bottomTabRender = (roadType) => {
@@ -110,7 +119,7 @@ const BottomSheet = ({ onImageChange }) => {
             ]}>
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => toggleSubview()}>
+                onPress={onHiddenViewChange}>
                 <Icon
                     name={hiddenViewButton}
                     size={40}

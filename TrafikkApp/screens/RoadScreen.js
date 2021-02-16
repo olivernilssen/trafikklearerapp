@@ -63,6 +63,7 @@ const RoadScreen = ({ navigation }) => {
                             source={itemInfo.source}
                             removeItem={onRemoveItem}
                             dropZoneValues={dropZoneValues}
+                            tintColor={null}
                         />
                     );
                 })}

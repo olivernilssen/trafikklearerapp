@@ -6,21 +6,23 @@ import MainView from '../MainView';
 import SketchHeader from './SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import Color from '../../styles/Colors';
+import BottomSheet from './bottomSheet';
 
 const SketchArea = (props) => {
     const sketchRef = useRef();
-
+    const bottomSheetRef = useRef();
     const [currBrushColor, setBrushColor] = useState('black');
     const [currBrushSize, setBrushSize] = useState(10);
     const [currentImg, setImage] = useState(props.source);
 
     //Clear canvas if new image is loaded
     useEffect(() => {
-        if (currentImg != props.source) {
-            setImage(props.source);
-            clearCanvas();
-        }
-    });
+        clearCanvas();
+    }, [currentImg]);
+
+    const onImageChange = (imgSrc) => {
+        setImage(imgSrc);
+    };
 
     const onBrushColorChange = (color) => {
         setBrushColor(color);
@@ -40,6 +42,13 @@ const SketchArea = (props) => {
 
     const eraser = () => {
         setBrushColor('#00000000');
+    };
+
+    //Vil at denne skal kjøre om bruker trykker utenfor viewen men det er ikke
+    //så jævla enkelt haha. Vi må nok sette opp en form form guesture event listener som
+    //ikke alltid er så enkelt.. hmm
+    const toggleBottomSheet = () => {
+        this.bottomSheetRef.current.onHiddenViewChange();
     };
 
     return (
@@ -63,7 +72,11 @@ const SketchArea = (props) => {
                         strokeColor={currBrushColor}
                         strokeWidth={currBrushSize}
                     />
-                    {props.children}
+                    <BottomSheet
+                        ref={bottomSheetRef}
+                        onImageChange={onImageChange}
+                        type={'Intersection'}
+                    />
                 </ImageBackground>
             </View>
         </MainView>
