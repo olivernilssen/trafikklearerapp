@@ -6,7 +6,17 @@ import MainView from '../components/MainView';
 import SketchArea from '../components/sketchComponents/SketchArea';
 import BottomSheet from '../components/sketchComponents/bottomSheet';
 
+import imgSource from '../components/sketchComponents/fileRegistry';
+
 const IntersectionScreen = ({ navigation }) => {
+    const labelsArray = [];
+
+    //Get all the keys from our imgSource (høyre, lys etc for labels)
+    const keys = Object.keys(imgSource.Veikryss);
+    keys.map((keys) => {
+        labelsArray.push(keys);
+    });
+
     const hoyreX = require('../assets/intersections/hoyrekryss/veikryss-hoyre-X.png');
 
     const [currImage, setImage] = useState(hoyreX);
@@ -25,6 +35,8 @@ const IntersectionScreen = ({ navigation }) => {
                     navigation={navigation}
                     name={'Veikryss'}>
                     <BottomSheet
+                        labelsArray={labelsArray}
+                        imgSource={imgSource.Veikryss}
                         onImageChange={onImageChange}
                         type={'Intersection'}
                     />
