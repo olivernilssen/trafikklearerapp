@@ -1,52 +1,158 @@
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import React, { useState, useEffect } from 'react';
+import React, { useState, Component } from 'react';
+import {
+    Menu,
+    MenuOptions,
+    MenuOption,
+    MenuTrigger,
+    renderers,
+} from 'react-native-popup-menu';
 
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
 import Color from '../../styles/Colors';
 import { Header, Left, Body, Right } from 'native-base';
+import { Colors, View, Text, ColorPalette } from 'react-native-ui-lib';
+
+const { Popover } = renderers;
 
 const SketchHeader = (props) => {
-    const [colorsIndex, setColorIndex] = useState(0);
-    const [activeIndex, setActiveIndex] = useState(0);
+    const { pencil, undo, clear, eraser, onPencilColorChange } = props;
+    const [currentColorSetup, setCurrentColorSetup] = useState({
+        color: INITIAL_COLOR,
+        textColor: Colors.white,
+        paletteChange: false,
+    });
+    const [isActive, setActive] = useState(0);
+    const [prevActive, setPrevActive] = useState(0);
 
-    onColorChange = (index) => {
-        setActiveIndex(index);
-    };
-
-    const strokeColors = [
-        { color: '#000000' },
-        { color: '#FF0000' },
-        { color: '#00FFFF' },
-        { color: '#0000FF' },
-        { color: '#0000A0' },
-        { color: '#ADD8E6' },
-        { color: '#800080' },
-        { color: '#FFFF00' },
-        { color: '#00FF00' },
-        { color: '#FF00FF' },
-        { color: '#FFFFFF' },
-        { color: '#C0C0C0' },
-        { color: '#808080' },
-        { color: '#FFA500' },
-        { color: '#A52A2A' },
-        { color: '#800000' },
-        { color: '#008000' },
-        { color: '#808000' },
+    const INITIAL_COLOR = '#20303C';
+    const colors = [
+        '#20303C',
+        '#3182C8',
+        '#00AAAF',
+        '#00A65F',
+        '#E2902B',
+        '#D9644A',
+        '#CF262F',
+        '#8B1079',
     ];
 
-    const listStrokeColors = strokeColors.map((item, index) => {
+    const iconBtns = [
+        { iconName: 'pen', altIconName: 'pen', pressed: pencil, active: 0 },
+        {
+            iconName: 'trash',
+            altIconName: 'trash',
+            pressed: clear,
+            active: null,
+        },
+        {
+            iconName: 'eraser',
+            altIconName: 'eraser',
+            pressed: eraser,
+            active: 2,
+        },
+        {
+            iconName: 'undo-alt',
+            altIconName: 'undo-alt',
+            pressed: undo,
+            active: null,
+        },
+        { iconName: 'box', altIconName: 'box-open', pressed: undo, active: 4 },
+    ];
+
+    const focusedActiveButton = (value) => {
+        if (value === null) {
+            setActive(prevActive);
+        } else {
+            setPrevActive(value);
+        }
+    };
+
+    const HeaderBtn = iconBtns.map((item, index) => {
         return (
-            <View style={styles.spacedLeft} key={index}>
+            <View style={styles.spacedRight} key={index}>
                 <TouchableOpacity
-                    onPress={() => props.onBrushColorChange(item.color)}>
+                    onPress={() => {
+                        item.pressed(),
+                            setActive(item.active),
+                            focusedActiveButton(item.active);
+                    }}>
                     <Icon
-                        name="paint-brush"
-                        style={[styles.buttonIcon, { color: item.color }]}
+                        name={isActive === 4 ? item.altIconName : item.iconName}
+                        style={
+                            isActive === index
+                                ? styles.btnSelected
+                                : [styles.buttonSize, styles.buttonIcon]
+                        }
                     />
                 </TouchableOpacity>
             </View>
         );
     });
+
+    const PencilColorPopup = () => {
+        const onPaletteValueChange = (value, options) => {
+            setCurrentColorSetup({
+                color: value,
+                textColor: options ? options.tintColor : undefined,
+                paletteChange: true,
+            });
+            forceChange(value);
+        };
+
+        const forceChange = (value) => {
+            onPencilColorChange(value);
+        };
+
+        const {
+            color,
+            textColor,
+            customColors,
+            paletteChange,
+        } = currentColorSetup;
+
+        return (
+            <View key={currentColorSetup.color}>
+                <Menu
+                    renderer={Popover}
+                    rendererProps={{ preferredPlacement: 'bottom' }}>
+                    <MenuTrigger>
+                        <Icon
+                            name={'circle'}
+                            solid
+                            color={currentColorSetup.color}
+                            style={styles.buttonSize}
+                        />
+                    </MenuTrigger>
+                    <MenuOptions>
+                        <MenuOption style={styles.colorMenu}>
+                            <ColorPalette
+                                value={color}
+                                onValueChange={onPaletteValueChange}
+                                colors={colors}
+                                numberOfRows={3}
+                                containerWidth={200}
+                            />
+                        </MenuOption>
+                    </MenuOptions>
+                </Menu>
+            </View>
+        );
+    };
+
+    // const PencilSizePopup = () => {
+
+    //     return (
+    //         <View>
+    //             <Menu renderer={Popover} rendererProps={{ preferredPlacement: 'bottom' }}>
+    //             <MenuTrigger><Icon name={'circle'} solid size={32} color={currentColorSetup.color}/></MenuTrigger>
+    //             <MenuOptions>
+    //                 <MenuOption style={styles.colorMenu} ><ColorPalette value={currentColorSetup.color} onValueChange={onPaletteValueChange} colors={colors} numberOfRows={2} containerWidth={200} /></MenuOption>
+    //             </MenuOptions>
+    //             </Menu>
+    //         </View>
+    //     )
+    // };
 
     return (
         <View style={styles.toolBar}>
@@ -60,24 +166,14 @@ const SketchHeader = (props) => {
                         />
                     </TouchableOpacity>
                 </Left>
-                <Left style={styles.test}>{listStrokeColors}</Left>
+                <Left style={styles.test}>
+                    <PencilColorPopup />
+                    {/* <PencilSizePopup /> */}
+                </Left>
                 <Body style={{}}></Body>
                 <Right>
-                    <View style={styles.spacedRight}>
-                        <TouchableOpacity onPress={props.clear}>
-                            <Icon name="trash" style={styles.buttonIcon} />
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.spacedRight}>
-                        <TouchableOpacity onPress={props.eraser}>
-                            <Icon name="eraser" style={styles.buttonIcon} />
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.spacedRight}>
-                        <TouchableOpacity onPress={props.undo}>
-                            <Icon name="undo-alt" style={styles.buttonIcon} />
-                        </TouchableOpacity>
-                    </View>
+                    {HeaderBtn}
+                    {/* <ComponentButton /> */}
                 </Right>
             </Header>
         </View>
@@ -87,19 +183,25 @@ const SketchHeader = (props) => {
 const styles = StyleSheet.create({
     header: {
         backgroundColor: Color.header,
-        elevation: 10,
     },
     toolBar: {
         width: '100%',
+        elevation: 10,
+    },
+    buttonSize: {
+        fontSize: 30,
     },
     buttonIcon: {
         color: Color.iconPrimary,
-        fontSize: 34,
         //marginRight: '5%'
     },
     btnSelected: {
         // backgroundColor: 'yellow',
-        backgroundColor: Color.iconActive,
+        color: 'red',
+        fontSize: 30,
+    },
+    colorButton: {
+        fontSize: 30,
     },
     spacedLeft: {
         flex: 1,
@@ -113,6 +215,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    container: {
+        flex: 2,
+        width: '100%',
+        height: '20%',
+        backgroundColor: Colors.dark80,
     },
 });
 

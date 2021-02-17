@@ -25,9 +25,10 @@ const SketchArea = (props) => {
     const InitialImageSrc = roadTypes[labelsArray[0]][initialImageSrcName];
 
     const sketchRef = useRef();
-    const bottomSheetRef = useRef();
-    const [currBrushColor, setBrushColor] = useState('black');
-    const [currBrushSize, setBrushSize] = useState(10);
+    const bottomSheetRef = useRef();    
+    const [currPencilColor, setPencilColor] = useState('black');
+    const [prevPencilColor, setPrevPencilColor] = useState('');
+    const [currPencilSize, setPencilSize] = useState(10);
     const [currentImg, setImage] = useState(InitialImageSrc);
 
     //Clear canvas if new image is loaded
@@ -35,12 +36,19 @@ const SketchArea = (props) => {
         clearCanvas();
     }, [currentImg]);
 
-    const onBrushColorChange = (color) => {
-        setBrushColor(color);
+    const onPencilColorChange = (color) => {
+        setPencilColor(color);
+        console.log(color);
     };
 
-    const onChangeBrushSize = (newBrushSize) => {
-        setBrushSize(newBrushSize);
+    const onSwitchPencilColor = () => {
+        if (currPencilColor === '#00000000') {
+            setPencilColor(prevPencilColor);
+        } else setPencilColor(currPencilColor);
+    };
+
+    const onChangePencilSize = (newPencilSize) => {
+        setPencilSize(newPencilSize);
     };
 
     const undoChange = () => {
@@ -52,7 +60,12 @@ const SketchArea = (props) => {
     };
 
     const eraser = () => {
-        setBrushColor('#00000000');
+        if (currPencilColor != '#00000000') {
+            setPrevPencilColor(currPencilColor);
+            setPencilColor('#00000000');
+        } else {
+            currPencilColor;
+        }
     };
 
     //Vil at denne skal kjøre om bruker trykker utenfor viewen men det er ikke
@@ -65,10 +78,11 @@ const SketchArea = (props) => {
     return (
         <MainView>
             <SketchHeader
+                pencil={onSwitchPencilColor}
                 undo={undoChange}
                 clear={clearCanvas}
                 eraser={eraser}
-                onBrushColorChange={onBrushColorChange}
+                onPencilColorChange={onPencilColorChange}
                 navigation={props.navigation}
                 name={props.name}
             />
@@ -80,8 +94,8 @@ const SketchArea = (props) => {
                     <SketchCanvas
                         ref={sketchRef}
                         style={styles.sketchCanvas}
-                        strokeColor={currBrushColor}
-                        strokeWidth={currBrushSize}
+                        strokeColor={currPencilColor}
+                        strokeWidth={currPencilSize}
                     />
                     <BottomSheet
                         ref={bottomSheetRef}

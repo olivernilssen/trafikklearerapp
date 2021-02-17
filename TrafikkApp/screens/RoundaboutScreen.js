@@ -1,9 +1,10 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import MainView from '../components/MainView';
 import SketchArea from '../components/sketchComponents/SketchArea';
+
 
 const RoundaboutScreen = ({ navigation }) => {
     return (
