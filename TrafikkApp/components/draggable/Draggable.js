@@ -1,93 +1,97 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     Animated,
     View,
-    TouchableWithoutFeedback,
     Dimensions,
+    TouchableWithoutFeedback,
 } from 'react-native';
+
+import Popout from './Popout';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-// const colors = [
-//     '#20303C',
-//     '#43515C',
-//     '#66737C',
-//     '#858F96',
-//     '#A3ABB0',
-//     '#C2C7CB',
-//     '#E0E3E5',
-//     '#F2F4F5',
-// ];
+const colors = [
+    '#000000',
+    '#e09f3e',
+    '#9e2a2b',
+    '#284b63',
+    '#3a5a40',
+    '#DDDDDD',
+];
 
 import Gestures from 'react-native-easy-gestures';
-import { color } from 'react-native-reanimated';
 
-export default class Draggable extends Component {
-    pinchRef = React.createRef();
+const ITEM_SIZE = 100;
+const radius = (ITEM_SIZE * 2) / 2;
+const buttonSize = 25;
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            imageSrc: props.source,
-            dropZoneValues: props.dropZoneValues,
-            scale: new Animated.Value(1),
-            isScaling: false,
-            tintColor: props.tintColor == null ? null : props.tintColor,
-        };
-    }
-    //Actions to take when Drag is started
-    onDragStart = (gesture) => {
+const Draggable = (props) => {
+    //States
+    const { source, dropZoneValues } = props;
+    const [imgScale, setimgScale] = useState(new Animated.Value(1));
+    const [isScaling, setIsScaling] = useState(false);
+    const [tintColor, setTintColor] = useState(
+        props.tintColor == null ? null : props.tintColor
+    );
+    const [popoutActive, setPopoutActive] = useState(false);
+    // const [popoutScaling, setPopoutScaling] = useState(new Animated.Value(1));
+
+    useEffect(() => {
+        setPopoutActive(!popoutActive);
+    }, [tintColor]);
+
+    const onDragStart = (gesture) => {
         //Start spring animation (user feedback)
-        Animated.spring(this.state.scale, {
+        setPopoutActive(false);
+
+        Animated.spring(imgScale, {
             toValue: 1.2,
             friction: 3,
             useNativeDriver: true,
         }).start();
     };
 
-    //Actions to take when drag is active
-    onDragMove = (gesture) => {
-        if (this.isDropArea(gesture) && !this.state.isScaling) {
-            this.props.onTrashHover(true);
+    const onDragMove = (gesture) => {
+        if (isDropArea(gesture) && !isScaling) {
+            props.onTrashHover(true);
         } else {
-            this.props.onTrashHover(false);
+            props.onTrashHover(false);
         }
     };
 
-    //Actions to take when drag has ended
-    onDragEnd = (gesture) => {
+    const onDragEnd = (gesture) => {
         //If in dropzone, delete element
-        if (this.isDropArea(gesture) && !this.state.isScaling) {
+        if (isDropArea(gesture) && !isScaling) {
             //End spring animation to trashcan
-            Animated.spring(this.state.scale, {
+            Animated.spring(imgScale, {
                 toValue: 0.1,
                 velocity: 1,
                 bounciness: 0,
                 useNativeDriver: true,
-            }).start(() => this.removeItem());
+            }).start(() => removeItem());
         } else {
             //End spring animation
-            Animated.spring(this.state.scale, {
+            Animated.spring(imgScale, {
                 toValue: 1,
                 friction: 3,
                 useNativeDriver: true,
-            }).start(this.setState({ isScaling: false }));
+            }).start();
         }
 
-        this.setState({ isScaling: false });
+        setIsScaling(false);
     };
 
     //Helper function so we can run to functions
     //after animation over trashcan has ended
-    removeItem() {
-        this.props.removeItem(this.props.id);
-        this.props.onTrashHover(false);
-    }
+    const removeItem = () => {
+        props.removeItem(props.id);
+        props.onTrashHover(false);
+    };
 
-    isDropArea(gesture) {
-        var dz = this.state.dropZoneValues;
+    const isDropArea = (gesture) => {
+        var dz = dropZoneValues;
 
         var isInZone =
             gesture.nativeEvent.pageX > dz.x &&
@@ -96,63 +100,64 @@ export default class Draggable extends Component {
             gesture.nativeEvent.pageY < dz.y + dz.height;
 
         return isInZone;
-    }
+    };
 
-    onLongPress() {}
-
-    render() {
-        // const panStyle = {
-        //     transform: this.state.pan.getTranslateTransform(),
-        // };
-
-        return (
-            <Gestures
-                draggable={true}
-                scalable={true}
-                rotatable={true}
-                style={styles.container}
-                onEnd={(event) => this.onDragEnd(event)}
-                onChange={(event) => this.onDragMove(event)}
-                onStart={(event) => this.onDragStart(event)}
-                onScaleStart={() => {
-                    this.setState({ isScaling: true });
-                }}>
+    return (
+        <Gestures
+            draggable={true}
+            scalable={true}
+            rotatable={true}
+            style={styles.container}
+            onEnd={(event) => onDragEnd(event)}
+            onChange={(event) => onDragMove(event)}
+            onStart={(event) => onDragStart(event)}
+            onScaleStart={() => setimgScale(true)}>
+            <View>
                 <TouchableWithoutFeedback
-                    onLongPress={() => console.log('Long pressed')}>
+                    onLongPress={() => setPopoutActive(!popoutActive)}
+                    accessibilityRole={'image'}>
                     <Animated.Image
-                        source={this.state.imageSrc}
+                        source={source}
                         resizeMode={'contain'}
                         style={[
                             styles.item,
-                            this.state.tintColor == null
-                                ? null
-                                : { tintColor: this.state.tintColor },
-
+                            tintColor == null ? null : { tintColor: tintColor },
                             {
-                                transform: [{ scale: this.state.scale }],
+                                transform: [{ scale: imgScale }],
                             },
                         ]}
                     />
                 </TouchableWithoutFeedback>
-            </Gestures>
-        );
-    }
-}
 
-let ITEM_SIZE = 60;
+                <Popout
+                    radius={radius}
+                    array={colors}
+                    setPopoutActive={setPopoutActive}
+                    popoutActive={popoutActive}
+                    exitButtonPos={colors.length - 1}
+                    setTintColor={setTintColor}
+                    buttonSize={buttonSize}
+                    itemSize={ITEM_SIZE}
+                />
+            </View>
+        </Gestures>
+    );
+};
 
-let styles = StyleSheet.create({
+const styles = StyleSheet.create({
     item: {
-        width: ITEM_SIZE,
-        height: ITEM_SIZE * 2,
-        // backgroundColor: 'gray',
+        width: '100%',
+        height: '100%',
     },
     container: {
         position: 'absolute',
         top: windowHeight / 2,
         left: windowWidth / 2,
         width: ITEM_SIZE,
-        height: ITEM_SIZE * 2,
-        // backgroundColor: 'blue',
+        height: ITEM_SIZE,
+        justifyContent: 'center',
+        // zIndex: -1,
     },
 });
+
+export default Draggable;

@@ -38,7 +38,7 @@ const RoadScreen = ({ navigation }) => {
         <MainView>
             <View style={styles.sketchArea}>
                 <Header name={'Vei'} navigation={navigation} />
-                <View styles={styles.dragArea}></View>
+
                 <DraggableMenu addDraggable={onNewDraggable} />
                 <Icon
                     onLayout={(event) => {
@@ -73,11 +73,8 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '100%',
         height: '100%',
-    },
-    dragArea: {
-        flex: 1,
-        height: '100%',
-        backgroundColor: Colors.background,
+
+        backgroundColor: Colors.textPrimary,
     },
     icon: {
         position: 'absolute',
