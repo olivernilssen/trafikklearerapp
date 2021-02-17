@@ -10,8 +10,9 @@ import Color from '../../styles/Colors';
 const SketchArea = (props) => {
     const sketchRef = useRef();
 
-    const [currBrushColor, setBrushColor] = useState('black');
-    const [currBrushSize, setBrushSize] = useState(10);
+    const [currPencilColor, setPencilColor] = useState('black');
+    const [prevPencilColor, setPrevPencilColor] = useState('');
+    const [currPencilSize, setPencilSize] = useState(10);
     const [currentImg, setImage] = useState(props.source);
 
     //Clear canvas if new image is loaded
@@ -22,12 +23,19 @@ const SketchArea = (props) => {
         }
     });
 
-    const onBrushColorChange = (color) => {
-        setBrushColor(color);
+    const onPencilColorChange = (color) => {
+        setPencilColor(color);
+        console.log(color);
     };
 
-    const onChangeBrushSize = (newBrushSize) => {
-        setBrushSize(newBrushSize);
+    const onSwitchPencilColor = () => {
+        if (currPencilColor === '#00000000') {
+            setPencilColor(prevPencilColor);
+        } else setPencilColor(currPencilColor);
+    };
+
+    const onChangePencilSize = (newPencilSize) => {
+        setPencilSize(newPencilSize);
     };
 
     const undoChange = () => {
@@ -39,16 +47,22 @@ const SketchArea = (props) => {
     };
 
     const eraser = () => {
-        setBrushColor('#00000000');
+        if (currPencilColor != '#00000000') {
+            setPrevPencilColor(currPencilColor);
+            setPencilColor('#00000000');
+        } else {
+            currPencilColor;
+        }
     };
 
     return (
         <MainView>
             <SketchHeader
+                pencil={onSwitchPencilColor}
                 undo={undoChange}
                 clear={clearCanvas}
                 eraser={eraser}
-                onBrushColorChange={onBrushColorChange}
+                onPencilColorChange={onPencilColorChange}
                 navigation={props.navigation}
                 name={props.name}
             />
@@ -60,8 +74,8 @@ const SketchArea = (props) => {
                     <SketchCanvas
                         ref={sketchRef}
                         style={styles.sketchCanvas}
-                        strokeColor={currBrushColor}
-                        strokeWidth={currBrushSize}
+                        strokeColor={currPencilColor}
+                        strokeWidth={currPencilSize}
                     />
                     {props.children}
                 </ImageBackground>
