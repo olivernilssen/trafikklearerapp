@@ -54,7 +54,7 @@ const screenStyles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         height: '100%',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
         backgroundColor: Color.background,
     },
@@ -63,15 +63,19 @@ const screenStyles = StyleSheet.create({
         flexDirection: 'column',
         width: '100%',
         height: '100%',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
         backgroundColor: Color.background,
     },
     containerPtr: {
+        height: '100%',
         flexDirection: 'column',
+        justifyContent: 'space-evenly',
     },
     containerLnd: {
+        width: '100%',
         flexDirection: 'row',
+        justifyContent: 'space-evenly',
     },
 });
 

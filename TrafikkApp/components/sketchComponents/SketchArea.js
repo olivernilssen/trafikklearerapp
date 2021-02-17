@@ -25,11 +25,12 @@ const SketchArea = (props) => {
     const InitialImageSrc = roadTypes[labelsArray[0]][initialImageSrcName];
 
     const sketchRef = useRef();
-    const bottomSheetRef = useRef();    
+    const bottomSheetRef = useRef();
     const [currPencilColor, setPencilColor] = useState('black');
     const [prevPencilColor, setPrevPencilColor] = useState('');
     const [currPencilSize, setPencilSize] = useState(10);
     const [currentImg, setImage] = useState(InitialImageSrc);
+    const [toggleRightMenu, setToggleRightMenu] = useState(false);
 
     //Clear canvas if new image is loaded
     useEffect(() => {
@@ -85,6 +86,7 @@ const SketchArea = (props) => {
                 onPencilColorChange={onPencilColorChange}
                 navigation={props.navigation}
                 name={props.name}
+                setToggleRightMenu={setToggleRightMenu}
             />
             <View style={styles.main}>
                 <ImageBackground

@@ -16,7 +16,14 @@ import { Colors, View, Text, ColorPalette } from 'react-native-ui-lib';
 const { Popover } = renderers;
 
 const SketchHeader = (props) => {
-    const { pencil, undo, clear, eraser, onPencilColorChange } = props;
+    const {
+        pencil,
+        undo,
+        clear,
+        eraser,
+        onPencilColorChange,
+        setToggleRightMenu,
+    } = props;
     const [currentColorSetup, setCurrentColorSetup] = useState({
         color: INITIAL_COLOR,
         textColor: Colors.white,
@@ -57,7 +64,12 @@ const SketchHeader = (props) => {
             pressed: undo,
             active: null,
         },
-        { iconName: 'box', altIconName: 'box-open', pressed: undo, active: 4 },
+        {
+            iconName: 'box',
+            altIconName: 'box-open',
+            pressed: setToggleRightMenu,
+            active: 4,
+        },
     ];
 
     const focusedActiveButton = (value) => {
