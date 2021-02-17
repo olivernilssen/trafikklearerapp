@@ -11,7 +11,7 @@ import RoadScreen from '../../screens/RoadScreen';
 
 const Drawer = createDrawerNavigator();
 
-const MainDrawer = () => {
+const Navigator = () => {
     return (
         <Drawer.Navigator
             initialRouteName="StartScreen"
@@ -73,4 +73,4 @@ const MainDrawer = () => {
     );
 };
 
-export default MainDrawer;
+export default Navigator;

@@ -111,7 +111,7 @@ const Draggable = (props) => {
             onEnd={(event) => onDragEnd(event)}
             onChange={(event) => onDragMove(event)}
             onStart={(event) => onDragStart(event)}
-            onScaleStart={() => setimgScale(true)}>
+            onScaleStart={() => setIsScaling(true)}>
             <View>
                 <TouchableWithoutFeedback
                     onLongPress={() => setPopoutActive(!popoutActive)}

@@ -6,7 +6,7 @@ import MainView from '../MainView';
 import SketchHeader from './SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import Color from '../../styles/Colors';
-import BottomSheet from './bottomSheet';
+import BottomSheet from './BottomSheet';
 
 import imgSource from './fileRegistry';
 

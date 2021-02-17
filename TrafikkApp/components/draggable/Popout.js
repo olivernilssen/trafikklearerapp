@@ -18,7 +18,6 @@ const Popout = (props) => {
     const [scale, setScale] = useState(new Animated.Value(0));
 
     useEffect(() => {
-        console.log('useeffect fired ' + popoutActive);
         //Animation effect to "hide or show" popup
         if (popoutActive) {
             Animated.spring(scale, {
@@ -56,36 +55,27 @@ const Popout = (props) => {
             const coords = calculateXY(i);
             const isExitButton = i == exitButtonPos;
             return (
-                <View
+                <TouchableOpacity
                     key={color}
+                    color={color}
                     style={[
-                        styles.buttonView,
+                        styles.button,
                         {
                             top: coords.y - buttonSize / 2,
                             right: coords.x - buttonSize / 2,
                             height: buttonSize,
                             width: buttonSize,
+                            backgroundColor: color,
+                            borderRadius: buttonSize,
                         },
-                    ]}>
-                    <TouchableOpacity
-                        color={color}
-                        style={[
-                            styles.button,
-                            {
-                                backgroundColor: color,
-                                borderRadius: buttonSize,
-                            },
-                        ]}
-                        onPress={() => {
-                            !isExitButton
-                                ? setTintColor(color)
-                                : setPopoverActive(false);
-                        }}>
-                        {isExitButton && (
-                            <Icon name={'times'} color={'black'} />
-                        )}
-                    </TouchableOpacity>
-                </View>
+                    ]}
+                    onPress={() => {
+                        !isExitButton
+                            ? setTintColor(color)
+                            : setPopoverActive(false);
+                    }}>
+                    {isExitButton && <Icon name={'times'} color={'black'} />}
+                </TouchableOpacity>
             );
         });
     };
@@ -112,7 +102,7 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         justifyContent: 'center',
-        // position: 'absolute'
+        position: 'absolute',
         elevation: 10,
         alignItems: 'center',
     },

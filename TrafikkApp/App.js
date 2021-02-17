@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
-import MainDrawer from './components/drawerComponents/MainDrawer';
+import Navigator from './components/drawerComponents/Navigator';
 
 export default function App() {
     return (
         <NavigationContainer>
-            <MainDrawer />
+            <Navigator />
         </NavigationContainer>
     );
 }
