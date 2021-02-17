@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import objectPaths from './objectPaths';
+import objectPaths from './draggableObjectPaths';
 
 export default class DraggableMenu extends Component {
     constructor(props) {
@@ -74,6 +74,6 @@ const styles = StyleSheet.create({
         width: 20,
         height: 40,
         resizeMode: 'contain',
-        transform: [{ rotate: '90deg' }],
+        transform: [{ rotate: '0deg' }],
     },
 });

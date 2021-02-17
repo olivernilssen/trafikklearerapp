@@ -6,22 +6,35 @@ import MainView from '../MainView';
 import SketchHeader from './SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import Color from '../../styles/Colors';
+import BottomSheet from './bottomSheet';
+
+import imgSource from './fileRegistry';
 
 const SketchArea = (props) => {
-    const sketchRef = useRef();
+    // TESTING
+    const labelsArray = [];
+    const roadTypes = imgSource[props.name];
 
+    //Get all the keys from our imgSource (høyre, lys etc for labels)
+    const keys = Object.keys(roadTypes);
+    keys.map((keys) => {
+        labelsArray.push(keys);
+    });
+
+    const initialImageSrcName = Object.keys(roadTypes[labelsArray[0]])[0];
+    const InitialImageSrc = roadTypes[labelsArray[0]][initialImageSrcName];
+
+    const sketchRef = useRef();
+    const bottomSheetRef = useRef();    
     const [currPencilColor, setPencilColor] = useState('black');
     const [prevPencilColor, setPrevPencilColor] = useState('');
     const [currPencilSize, setPencilSize] = useState(10);
-    const [currentImg, setImage] = useState(props.source);
+    const [currentImg, setImage] = useState(InitialImageSrc);
 
     //Clear canvas if new image is loaded
     useEffect(() => {
-        if (currentImg != props.source) {
-            setImage(props.source);
-            clearCanvas();
-        }
-    });
+        clearCanvas();
+    }, [currentImg]);
 
     const onPencilColorChange = (color) => {
         setPencilColor(color);
@@ -55,6 +68,13 @@ const SketchArea = (props) => {
         }
     };
 
+    //Vil at denne skal kjøre om bruker trykker utenfor viewen men det er ikke
+    //så jævla enkelt haha. Vi må nok sette opp en form form guesture event listener som
+    //ikke alltid er så enkelt.. hmm
+    const toggleBottomSheet = () => {
+        this.bottomSheetRef.current.onHiddenViewChange();
+    };
+
     return (
         <MainView>
             <SketchHeader
@@ -77,7 +97,12 @@ const SketchArea = (props) => {
                         strokeColor={currPencilColor}
                         strokeWidth={currPencilSize}
                     />
-                    {props.children}
+                    <BottomSheet
+                        ref={bottomSheetRef}
+                        labelsArray={labelsArray}
+                        imgSource={imgSource[props.name]}
+                        onImageChange={setImage}
+                    />
                 </ImageBackground>
             </View>
         </MainView>

@@ -1,23 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Animated, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { View, Button, TabBar } from 'react-native-ui-lib';
+import { View, TabBar } from 'react-native-ui-lib';
 
-import imgSource from './fileRegistry';
 import Color from '../../styles/Colors';
-const labelsArray = [];
-
-//Get all the keys from our imgSource (høyre, lys etc for labels)
-const keys = Object.keys(imgSource);
-keys.map((keys) => {
-    labelsArray.push(keys);
-});
 
 var isHidden = false;
 
-const BottomSheet = ({ onImageChange }) => {
+const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
     const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
     const [hiddenViewButton, setHiddenViewButton] = useState('chevron-down');
+    const [hiddenView, setHiddenView] = useState(true);
     const [bottomSheetHeight, setBottomSheetHeight] = useState(0);
     const [selectedRoad, setSelectedRoad] = useState(labelsArray[0]);
     const [roadTypes, setRoadTypes] = useState(imgSource[labelsArray[0]]);
@@ -26,12 +19,16 @@ const BottomSheet = ({ onImageChange }) => {
         labelsArray[0],
     ]);
 
+    useEffect(() => {
+        toggleSubview();
+    }, [hiddenView]);
+
     // Show or hide the bottom sheet depending on hight and if it is showing or not
     const toggleSubview = () => {
-        setHiddenViewButton(!isHidden ? 'ellipsis-h' : 'chevron-down');
+        setHiddenViewButton(!hiddenView ? 'ellipsis-h' : 'chevron-down');
         var toValue = bottomSheetHeight;
 
-        if (isHidden) {
+        if (hiddenView) {
             toValue = 0;
         }
 
@@ -42,8 +39,10 @@ const BottomSheet = ({ onImageChange }) => {
             tension: 2,
             friction: 8,
         }).start();
+    };
 
-        isHidden = !isHidden;
+    const onHiddenViewChange = () => {
+        setHiddenView(!hiddenView);
     };
 
     // Get the high of the view which is hidden
@@ -66,7 +65,7 @@ const BottomSheet = ({ onImageChange }) => {
 
         //send to parent
         onImageChange(img);
-        // toggleSubview();
+        toggleSubview();
     };
 
     const bottomTabRender = (roadType) => {
@@ -93,7 +92,7 @@ const BottomSheet = ({ onImageChange }) => {
                                         ? styles.buttonTextActive
                                         : styles.buttonTextInactive
                                 }>
-                                {key.toString()}-utforming
+                                {key.toString()}
                             </Text>
                         </TouchableOpacity>
                     );
@@ -110,7 +109,7 @@ const BottomSheet = ({ onImageChange }) => {
             ]}>
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => toggleSubview()}>
+                onPress={onHiddenViewChange}>
                 <Icon
                     name={hiddenViewButton}
                     size={40}
@@ -162,17 +161,19 @@ var styles = StyleSheet.create({
     },
     button: {
         paddingBottom: 10,
-        paddingHorizontal: 20,
+        // paddingHorizontal: 20,
     },
     bottomContainer: {
         backgroundColor: Color.bottomDrawerBg,
         padding: 10,
         alignItems: 'center',
-        elevation: 10,
+        borderTopWidth: 1,
+        borderTopColor: Color.borderColor,
     },
     tabBar: {
-        elevation: 3,
-        marginBottom: 5,
+        borderBottomWidth: 2,
+        borderBottomColor: Color.borderColor,
+        // marginBottom: 5,
     },
     tabHeaderActive: {
         backgroundColor: Color.tabHeaderActiveBg,
@@ -209,7 +210,6 @@ var styles = StyleSheet.create({
     buttonTextActive: {
         color: Color.textPrimary,
         fontWeight: 'bold',
-        fontStyle: 'italic',
     },
     buttonTextInactive: {
         color: Color.textPrimary,

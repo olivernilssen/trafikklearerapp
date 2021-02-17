@@ -7,8 +7,20 @@ Framework and technology:
 - node.js
 - react native
 
-Dependencies: 
-... To come
+dependencies":
+- @react-native-community/masked-view
+- @react-navigation/drawer
+- @react-navigation/native
+- react
+- react-native
+- react-native-gesture-handler
+- react-native-reanimated
+- react-native-safe-area-context
+- react-native-screens
+- react-native-vector-icons
+- react-navigation
+- typescript
+- react-native-responsive-component
 
 To run app: 
   - Make sure you have an android emulator running 
