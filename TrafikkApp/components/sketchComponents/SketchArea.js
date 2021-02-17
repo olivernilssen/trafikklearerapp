@@ -8,7 +8,7 @@ import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import Color from '../../styles/Colors';
 import BottomSheet from './bottomSheet';
 
-import imgSource from './fileRegistry';
+import imgSource from './illustrationsPath';
 
 const SketchArea = (props) => {
     // TESTING
