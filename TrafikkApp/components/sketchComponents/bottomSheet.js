@@ -5,8 +5,6 @@ import { View, TabBar } from 'react-native-ui-lib';
 
 import Color from '../../styles/Colors';
 
-var isHidden = false;
-
 const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
     const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
     const [hiddenViewButton, setHiddenViewButton] = useState('chevron-down');

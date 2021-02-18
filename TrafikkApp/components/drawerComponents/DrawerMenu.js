@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 
 import Color from '../../styles/Colors';
-import DrawerToggleMenuItem from './DrawerToggleMenuItem';
+import DrawerToggleMenuItem from './DrawerToggleItem';
 import DrawerItem from './DrawerItem';
 
 class DrawerMenu extends Component {

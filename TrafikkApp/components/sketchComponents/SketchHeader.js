@@ -24,6 +24,7 @@ const SketchHeader = (props) => {
         onPencilColorChange,
         toggleRightMenu,
     } = props;
+
     const [currentColorSetup, setCurrentColorSetup] = useState({
         color: INITIAL_COLOR,
         textColor: Colors.white,
@@ -50,7 +51,7 @@ const SketchHeader = (props) => {
             iconName: 'trash',
             altIconName: 'trash',
             pressed: clear,
-            active: null,
+            active: 0,
         },
         {
             iconName: 'eraser',
@@ -62,7 +63,7 @@ const SketchHeader = (props) => {
             iconName: 'undo-alt',
             altIconName: 'undo-alt',
             pressed: undo,
-            active: null,
+            active: 0,
         },
         {
             iconName: 'box',
@@ -73,7 +74,7 @@ const SketchHeader = (props) => {
     ];
 
     const focusedActiveButton = (value) => {
-        if (value === null) {
+        if (value === 0) {
             setActive(prevActive);
         } else {
             setPrevActive(value);
@@ -127,23 +128,30 @@ const SketchHeader = (props) => {
             <View key={currentColorSetup.color}>
                 <Menu
                     renderer={Popover}
+                    // opened={true}
                     rendererProps={{ preferredPlacement: 'bottom' }}>
                     <MenuTrigger>
                         <Icon
                             name={'circle'}
+                            size={15}
                             solid
                             color={currentColorSetup.color}
                             style={styles.buttonSize}
                         />
                     </MenuTrigger>
                     <MenuOptions>
-                        <MenuOption style={styles.colorMenu}>
+                        <MenuOption>
                             <ColorPalette
                                 value={color}
+                                swatchStyle={{
+                                    width: 250 / colors.length,
+                                    height: 250 / colors.length,
+                                }}
                                 onValueChange={onPaletteValueChange}
                                 colors={colors}
-                                numberOfRows={3}
-                                containerWidth={200}
+                                numberOfRows={2}
+                                containerWidth={250}
+                                usePagination={false}
                             />
                         </MenuOption>
                     </MenuOptions>
