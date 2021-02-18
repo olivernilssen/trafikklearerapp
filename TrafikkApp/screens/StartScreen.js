@@ -54,8 +54,10 @@ const screenStyles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         height: '100%',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
+        paddingLeft: 15,
+        paddingRight: 15,
         backgroundColor: Color.background,
     },
     mainLnd: {
@@ -63,15 +65,21 @@ const screenStyles = StyleSheet.create({
         flexDirection: 'column',
         width: '100%',
         height: '100%',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
+        paddingLeft: 15,
+        paddingRight: 15,
         backgroundColor: Color.background,
     },
     containerPtr: {
+        height: '100%',
         flexDirection: 'column',
+        justifyContent: 'space-evenly',
     },
     containerLnd: {
+        width: '100%',
         flexDirection: 'row',
+        justifyContent: 'space-evenly',
     },
 });
 
