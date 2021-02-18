@@ -56,6 +56,8 @@ const screenStyles = StyleSheet.create({
         height: '100%',
         justifyContent: 'space-evenly',
         alignItems: 'center',
+        paddingLeft: 15,
+        paddingRight: 15,
         backgroundColor: Color.background,
     },
     mainLnd: {
@@ -65,6 +67,8 @@ const screenStyles = StyleSheet.create({
         height: '100%',
         justifyContent: 'space-evenly',
         alignItems: 'center',
+        paddingLeft: 15,
+        paddingRight: 15,
         backgroundColor: Color.background,
     },
     containerPtr: {

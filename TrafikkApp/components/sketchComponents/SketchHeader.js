@@ -22,7 +22,7 @@ const SketchHeader = (props) => {
         clear,
         eraser,
         onPencilColorChange,
-        setToggleRightMenu,
+        toggleRightMenu,
     } = props;
     const [currentColorSetup, setCurrentColorSetup] = useState({
         color: INITIAL_COLOR,
@@ -67,7 +67,7 @@ const SketchHeader = (props) => {
         {
             iconName: 'box',
             altIconName: 'box-open',
-            pressed: setToggleRightMenu,
+            pressed: toggleRightMenu,
             active: 4,
         },
     ];

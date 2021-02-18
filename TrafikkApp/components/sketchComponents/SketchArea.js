@@ -6,12 +6,12 @@ import MainView from '../MainView';
 import SketchHeader from './SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import Color from '../../styles/Colors';
+import RightMenu from './RightMenu';
 import BottomSheet from './bottomSheet';
 
 import imgSource from './illustrationsPath';
 
 const SketchArea = (props) => {
-    // TESTING
     const labelsArray = [];
     const roadTypes = imgSource[props.name];
 
@@ -30,7 +30,7 @@ const SketchArea = (props) => {
     const [prevPencilColor, setPrevPencilColor] = useState('');
     const [currPencilSize, setPencilSize] = useState(10);
     const [currentImg, setImage] = useState(InitialImageSrc);
-    const [toggleRightMenu, setToggleRightMenu] = useState(false);
+    const [toggleRightMenu, setToggleRightMenu] = useState(true);
 
     //Clear canvas if new image is loaded
     useEffect(() => {
@@ -69,6 +69,10 @@ const SketchArea = (props) => {
         }
     };
 
+    const toggleMenu = () => {
+        setToggleRightMenu(!toggleRightMenu);
+    };
+
     //Vil at denne skal kjøre om bruker trykker utenfor viewen men det er ikke
     //så jævla enkelt haha. Vi må nok sette opp en form form guesture event listener som
     //ikke alltid er så enkelt.. hmm
@@ -86,21 +90,27 @@ const SketchArea = (props) => {
                 onPencilColorChange={onPencilColorChange}
                 navigation={props.navigation}
                 name={props.name}
-                setToggleRightMenu={setToggleRightMenu}
+                toggleRightMenu={toggleMenu}
             />
+
             <View style={styles.main}>
                 <ImageBackground
                     resizeMode={'contain'}
                     style={styles.backgroundImage}
                     source={currentImg}>
+                    <RightMenu
+                        toggleRightMenu={toggleRightMenu}
+                        setToggleRightMenu={toggleMenu}
+                    />
                     <SketchCanvas
                         ref={sketchRef}
                         style={styles.sketchCanvas}
                         strokeColor={currPencilColor}
                         strokeWidth={currPencilSize}
                     />
+
                     <BottomSheet
-                        ref={bottomSheetRef}
+                        // ref={bottomSheetRef}
                         labelsArray={labelsArray}
                         imgSource={imgSource[props.name]}
                         onImageChange={setImage}
