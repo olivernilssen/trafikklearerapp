@@ -8,7 +8,7 @@ let windowWidth = Dimensions.get('window').width * 2;
 const menuHeight = 150;
 let startXPosition = -(windowWidth / 4);
 
-const RightMenu = (props) => {
+const ComponentMenuTop = (props) => {
     const { toggleRightMenu } = props;
 
     const yPosHidden = -menuHeight - menuHeight / 2;
@@ -77,4 +77,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default RightMenu;
+export default ComponentMenuTop;

@@ -6,7 +6,7 @@ import MainView from '../MainView';
 import SketchHeader from './SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import Color from '../../styles/Colors';
-import RightMenu from './RightMenu';
+import ComponentMenuTop from './ComponentMenuTop';
 import BottomSheet from './bottomSheet';
 
 import imgSource from './illustrationsPath';
@@ -30,7 +30,7 @@ const SketchArea = (props) => {
     const [prevPencilColor, setPrevPencilColor] = useState('');
     const [currPencilSize, setPencilSize] = useState(10);
     const [currentImg, setImage] = useState(InitialImageSrc);
-    const [toggleRightMenu, setToggleRightMenu] = useState(true);
+    const [toggleRightMenu, setToggleRightMenu] = useState(false);
 
     //Clear canvas if new image is loaded
     useEffect(() => {
@@ -98,7 +98,7 @@ const SketchArea = (props) => {
                     resizeMode={'contain'}
                     style={styles.backgroundImage}
                     source={currentImg}>
-                    <RightMenu
+                    <ComponentMenuTop
                         toggleRightMenu={toggleRightMenu}
                         setToggleRightMenu={toggleMenu}
                     />
