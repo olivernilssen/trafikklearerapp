@@ -1,45 +1,46 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Animated, Dimensions } from 'react-native';
-
+import { StyleSheet, View, Animated } from 'react-native';
 import Color from '../../styles/Colors';
-
-let windowWidth = Dimensions.get('window').width * 2;
-// const windowHeight = Dimensions.get('window').height;
-const menuHeight = 150;
-let startXPosition = -(windowWidth / 4);
+import ComponentItems from './ComponentItems';
 
 const ComponentMenuTop = (props) => {
-    const { toggleRightMenu } = props;
+    const { topMenuHidden } = props;
 
-    const yPosHidden = -menuHeight - menuHeight / 2;
-    const yPosNotHidden = yPosHidden + menuHeight;
-    const [boxScale, setBoxScale] = useState(new Animated.Value(0.5));
+    const [yPosHidden, setYPosHidden] = useState(-200);
     const [bounceValue, setBounceValue] = useState(
         new Animated.Value(yPosHidden)
     );
+    const [containerHeight, setContainerHeight] = useState(0);
 
     useEffect(() => {
         toggleView();
-    }, [toggleRightMenu]);
+    }, [topMenuHidden]);
 
     const toggleView = () => {
-        windowWidth = Dimensions.get('window').width * 2;
-        startXPosition = -(windowWidth / 4);
+        var toValue = containerHeight / 2;
 
-        if (toggleRightMenu) {
+        if (topMenuHidden) {
+            toValue = yPosHidden;
+        }
+        if (!topMenuHidden) {
             Animated.spring(bounceValue, {
-                toValue: yPosNotHidden,
+                toValue: toValue,
                 bounciness: 2,
                 useNativeDriver: true,
             }).start();
         } else {
             Animated.spring(bounceValue, {
-                toValue: yPosHidden,
-                tension: 1,
-                friction: 5,
+                toValue: toValue,
+                bounciness: 2,
                 useNativeDriver: true,
             }).start();
         }
+    };
+
+    const getTopMenuLayout = (layout) => {
+        const { x, y, width, height } = layout;
+        setYPosHidden(-height);
+        setContainerHeight(height);
     };
 
     return (
@@ -47,15 +48,16 @@ const ComponentMenuTop = (props) => {
             style={[
                 styles.animatedView,
                 {
-                    transform: [
-                        { scale: boxScale },
-                        { translateY: bounceValue },
-                    ],
-                    left: startXPosition,
-                    width: windowWidth,
+                    transform: [{ translateY: bounceValue }],
                 },
             ]}>
-            <View style={styles.menuContent}></View>
+            <View
+                style={styles.menuContent}
+                onLayout={(event) => {
+                    getTopMenuLayout(event.nativeEvent.layout);
+                }}>
+                <ComponentItems />
+            </View>
         </Animated.View>
     );
 };
@@ -65,15 +67,19 @@ const styles = StyleSheet.create({
         position: 'absolute',
         alignItems: 'center',
         top: 0,
-        height: menuHeight,
-        backgroundColor: 'transparent',
+        left: 0,
+        right: 0,
+        backgroundColor: Color.borderColor,
+        justifyContent: 'center',
+        alignItems: 'center',
         zIndex: 1,
     },
     menuContent: {
-        flex: 1,
-        width: '100%',
+        // flex: 1,
         backgroundColor: Color.borderColor,
         elevation: 10,
+        width: '100%',
+        position: 'absolute',
     },
 });
 

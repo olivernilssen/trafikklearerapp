@@ -1,16 +1,16 @@
 const imgSource = {
     Veikryss: {
-        Høyrekryss: {
+        HØYREKRYSS: {
             'X-utforming': require('../../assets/intersections/hoyrekryss/veikryss-hoyre-X.png'),
             'T-utforming': require('../../assets/intersections/hoyrekryss/veikryss-hoyre-T.png'),
             'Y-utforming': require('../../assets/intersections/hoyrekryss/veikryss-hoyre-Y.png'),
         },
-        Forkjørskryss: {
+        FORKJØRSKRYSS: {
             'X-utforming': require('../../assets/intersections/forkjorskryss/veikryss-forkjors-X.png'),
             'T-utforming': require('../../assets/intersections/forkjorskryss/veikryss-forkjors-T.png'),
             'Y-utforming': require('../../assets/intersections/forkjorskryss/veikryss-forkjors-Y.png'),
         },
-        Lyskryss: {
+        LYSKRYSS: {
             'X-utforming': require('../../assets/intersections/lyskryss/veikryss-lys-X.png'),
             // 'X-pil': require('../../assets/intersections/lyskryss/veikryss-lys-X-pil.png'),
             'T-utforming': require('../../assets/intersections/lyskryss/veikryss-lys-T.png'),
@@ -20,7 +20,7 @@ const imgSource = {
         },
     },
     Rundkjoring: {
-        Rundkjøring: {
+        RUNDKJØRING: {
             'Ett felt': require('../../assets/roundabouts/1feltinn1feltut.png'),
             'To felt': require('../../assets/roundabouts/2feltinn1feltut.png'),
             'Fire felt': require('../../assets/roundabouts/2feltinn2feltut.png'),
