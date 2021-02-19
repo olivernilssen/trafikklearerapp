@@ -25,7 +25,7 @@ const SketchArea = (props) => {
 
     const sketchRef = useRef();
     const bottomSheetRef = useRef();
-    const [currPencilColor, setPencilColor] = useState('black');
+    const [currPencilColor, setPencilColor] = useState('#20303C');
     const [prevPencilColor, setPrevPencilColor] = useState('');
     const [currPencilSize, setPencilSize] = useState(10);
     const [currentImg, setImage] = useState(InitialImageSrc);
@@ -38,7 +38,6 @@ const SketchArea = (props) => {
 
     const onPencilColorChange = (color) => {
         setPencilColor(color);
-        console.log(color);
     };
 
     const onSwitchPencilColor = () => {
@@ -90,6 +89,7 @@ const SketchArea = (props) => {
                 navigation={props.navigation}
                 name={props.name}
                 toggleRightMenu={toggleMenu}
+                toggleRightMenuState={toggleRightMenu}
             />
 
             <View style={styles.main}>
