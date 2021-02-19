@@ -6,7 +6,10 @@ import MainView from '../MainView';
 import SketchHeader from './SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import Color from '../../styles/Colors';
+
 import ComponentMenuTop from './ComponentMenuTop';
+// import ComponentMenuRight from './ComponentMenuRight';
+
 import BottomSheet from './BottomSheet';
 import imgSource from './illustrationsPath';
 
@@ -29,7 +32,7 @@ const SketchArea = (props) => {
     const [prevPencilColor, setPrevPencilColor] = useState('');
     const [currPencilSize, setPencilSize] = useState(10);
     const [currentImg, setImage] = useState(InitialImageSrc);
-    const [toggleRightMenu, setToggleRightMenu] = useState(false);
+    const [topMenuHidden, setTopMenuHidden] = useState(true);
 
     //Clear canvas if new image is loaded
     useEffect(() => {
@@ -69,7 +72,7 @@ const SketchArea = (props) => {
     };
 
     const toggleMenu = () => {
-        setToggleRightMenu(!toggleRightMenu);
+        setTopMenuHidden(!topMenuHidden);
     };
 
     //Vil at denne skal kjøre om bruker trykker utenfor viewen men det er ikke
@@ -89,18 +92,18 @@ const SketchArea = (props) => {
                 onPencilColorChange={onPencilColorChange}
                 navigation={props.navigation}
                 name={props.name}
-                toggleRightMenu={toggleMenu}
+                topMenuHidden={toggleMenu}
             />
 
             <View style={styles.main}>
+                <ComponentMenuTop
+                    topMenuHidden={topMenuHidden}
+                    setTopMenuHidden={toggleMenu}
+                />
                 <ImageBackground
                     resizeMode={'contain'}
                     style={styles.backgroundImage}
                     source={currentImg}>
-                    <ComponentMenuTop
-                        toggleRightMenu={toggleRightMenu}
-                        setToggleRightMenu={toggleMenu}
-                    />
                     <SketchCanvas
                         ref={sketchRef}
                         style={styles.sketchCanvas}
