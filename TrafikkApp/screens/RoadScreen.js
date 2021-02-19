@@ -10,6 +10,8 @@ import Colors from '../styles/Colors';
 import Header from '../components/Header';
 import Draggable from '../components/draggable/Draggable';
 import DraggableMenu from '../components/draggable/DraggableMenu';
+import DraggableDropZone from '../components/draggable/DraggableDropzone';
+import MappingDraggable from '../components/draggable/MappingDraggables';
 
 const RoadScreen = ({ navigation }) => {
     //States
@@ -24,45 +26,23 @@ const RoadScreen = ({ navigation }) => {
         setDraggables([...draggables, newDraggable]);
     };
 
-    const onRemoveItem = (itemId) => {
-        const filtered = draggables.filter((item) => item.id !== itemId);
-        setDraggables(filtered);
-    };
-
-    // Get the high of the view which is hidden
-    const getIconLayout = (layout) => {
-        setDropZoneValues(layout);
-    };
-
     return (
         <MainView>
             <View style={styles.sketchArea}>
                 <Header name={'Vei'} navigation={navigation} />
 
                 <DraggableMenu addDraggable={onNewDraggable} />
-                <Icon
-                    onLayout={(event) => {
-                        getIconLayout(event.nativeEvent.layout);
-                    }}
-                    style={styles.icon}
-                    color={trashHover ? 'red' : 'black'}
-                    name={trashHover ? 'trash-restore' : 'trash'}
-                    size={60}
+                <DraggableDropZone
+                    setDropZoneValues={setDropZoneValues}
+                    iconSize={60}
+                    trashHover={trashHover}
                 />
-
-                {draggables.map((itemInfo) => {
-                    return (
-                        <Draggable
-                            key={itemInfo.id}
-                            onTrashHover={setTrashHover}
-                            id={itemInfo.id}
-                            source={itemInfo.source}
-                            removeItem={onRemoveItem}
-                            dropZoneValues={dropZoneValues}
-                            tintColor={null}
-                        />
-                    );
-                })}
+                <MappingDraggable
+                    draggables={draggables}
+                    setDraggables={setDraggables}
+                    setTrashHover={setTrashHover}
+                    dropZoneValues={dropZoneValues}
+                />
             </View>
         </MainView>
     );
@@ -75,12 +55,6 @@ const styles = StyleSheet.create({
         height: '100%',
 
         backgroundColor: Colors.textPrimary,
-    },
-    icon: {
-        position: 'absolute',
-        bottom: 0,
-        right: 0,
-        padding: 30,
     },
 });
 

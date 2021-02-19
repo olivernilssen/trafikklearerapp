@@ -29,7 +29,6 @@ const radius = (ITEM_SIZE * 2) / 2;
 const buttonSize = 25;
 
 const Draggable = (props) => {
-    console.log(props);
     //States
     const { source, dropZoneValues } = props;
     const [imgScale, setimgScale] = useState(new Animated.Value(1));
