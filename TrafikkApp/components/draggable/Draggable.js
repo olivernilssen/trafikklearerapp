@@ -29,6 +29,7 @@ const radius = (ITEM_SIZE * 2) / 2;
 const buttonSize = 25;
 
 const Draggable = (props) => {
+    console.log(props);
     //States
     const { source, dropZoneValues } = props;
     const [imgScale, setimgScale] = useState(new Animated.Value(1));
@@ -120,7 +121,9 @@ const Draggable = (props) => {
                         resizeMode={'contain'}
                         style={[
                             styles.item,
-                            tintColor == null ? {} : { tintColor: tintColor },
+                            tintColor === null
+                                ? null
+                                : { tintColor: tintColor },
                             {
                                 transform: [{ scale: imgScale }],
                             },
@@ -145,6 +148,10 @@ const Draggable = (props) => {
 
 const styles = StyleSheet.create({
     item: {
+        width: '100%',
+        height: '100%',
+    },
+    itemNoTint: {
         width: '100%',
         height: '100%',
     },
