@@ -14,7 +14,7 @@ const SketchHeaderButton = (props) => {
         undo,
         clear,
         eraser,
-        toggleRightMenu,
+        topMenuHidden,
         toggleRightMenuState,
     } = props;
 
@@ -56,7 +56,7 @@ const SketchHeaderButton = (props) => {
 
     const iconButtons = buttonArray.map((item, index) => {
         return (
-            <View style={styles.spacedRight}>
+            <View style={styles.spacedRight} key={index}>
                 <TouchableOpacity
                     onPress={() => {
                         item.pressed(),
@@ -79,11 +79,11 @@ const SketchHeaderButton = (props) => {
     const ComponentButton = () => {
         return (
             <View style={styles.spacedRight}>
-                <TouchableOpacity onPress={() => toggleRightMenu()}>
+                <TouchableOpacity onPress={() => topMenuHidden()}>
                     <Icon
-                        name={toggleRightMenuState ? 'box-open' : 'box'}
+                        name={!toggleRightMenuState ? 'box-open' : 'box'}
                         style={
-                            toggleRightMenuState
+                            !toggleRightMenuState
                                 ? styles.btnSelected
                                 : [styles.buttonSize, styles.buttonIcon]
                         }

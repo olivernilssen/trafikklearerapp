@@ -92,7 +92,7 @@ const SketchArea = (props) => {
                 navigation={props.navigation}
                 name={props.name}
                 topMenuHidden={toggleMenu}
-                toggleRightMenuState={toggleRightMenu}
+                toggleRightMenuState={topMenuHidden}
             />
 
             <View style={styles.main}>
