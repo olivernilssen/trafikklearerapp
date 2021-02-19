@@ -96,6 +96,10 @@ const SketchArea = (props) => {
             />
 
             <View style={styles.main}>
+                <ComponentMenuTop
+                    topMenuHidden={topMenuHidden}
+                    setTopMenuHidden={toggleMenu}
+                />
                 <ImageBackground
                     resizeMode={'contain'}
                     style={styles.backgroundImage}
@@ -105,10 +109,6 @@ const SketchArea = (props) => {
                         style={styles.sketchCanvas}
                         strokeColor={currPencilColor}
                         strokeWidth={currPencilSize}
-                    />
-                    <ComponentMenuTop
-                        topMenuHidden={topMenuHidden}
-                        setTopMenuHidden={toggleMenu}
                     />
 
                     <BottomSheet
