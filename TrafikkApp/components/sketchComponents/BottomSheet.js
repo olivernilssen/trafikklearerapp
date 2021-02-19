@@ -3,6 +3,8 @@ import { StyleSheet, Animated, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { View, TabBar } from 'react-native-ui-lib';
 
+import BottomSheetTabs from './BottomSheetTabs';
+
 import Color from '../../styles/Colors';
 
 const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
@@ -66,39 +68,6 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
         toggleSubview();
     };
 
-    const bottomTabRender = (roadType) => {
-        const keys = Object.keys(roadTypes);
-
-        return (
-            <View style={styles.tabView}>
-                {keys.map((key, i) => {
-                    const isOnTabAndKey =
-                        selectedRoadType[0] == key &&
-                        selectedRoadType[1] == roadType;
-                    return (
-                        <TouchableOpacity
-                            key={i}
-                            style={
-                                isOnTabAndKey
-                                    ? styles.activeButton
-                                    : styles.inActiveButton
-                            }
-                            onPress={() => onImageSelect(key)}>
-                            <Text
-                                style={
-                                    isOnTabAndKey
-                                        ? styles.buttonTextActive
-                                        : styles.buttonTextInactive
-                                }>
-                                {key.toString()}
-                            </Text>
-                        </TouchableOpacity>
-                    );
-                })}
-            </View>
-        );
-    };
-
     return (
         <Animated.View
             style={[
@@ -142,7 +111,12 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
                         );
                     })}
                 </TabBar>
-                {bottomTabRender(selectedRoad)}
+                <BottomSheetTabs
+                    roadTypes={roadTypes}
+                    onImageSelect={onImageSelect}
+                    selectedRoadType={selectedRoadType}
+                    roadtype={selectedRoad}
+                />
             </View>
         </Animated.View>
     );
