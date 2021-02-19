@@ -128,7 +128,6 @@ const SketchHeader = (props) => {
             <View key={currentColorSetup.color}>
                 <Menu
                     renderer={Popover}
-                    // opened={true}
                     rendererProps={{ preferredPlacement: 'bottom' }}>
                     <MenuTrigger>
                         <Icon
