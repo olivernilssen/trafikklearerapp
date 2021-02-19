@@ -14,7 +14,7 @@ const SketchHeader = (props) => {
         clear,
         eraser,
         onPencilColorChange,
-        toggleRightMenu,
+        topMenuHidden,
         toggleRightMenuState,
     } = props;
 
@@ -36,7 +36,7 @@ const SketchHeader = (props) => {
                     />
                 </Body>
                 <SketchHeaderButton
-                    toggleRightMenu={toggleRightMenu}
+                    topMenuHidden={topMenuHidden}
                     toggleRightMenuState={toggleRightMenuState}
                     pencil={pencil}
                     undo={undo}

@@ -131,18 +131,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    test: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    container: {
-        flex: 2,
-        width: '100%',
-        height: '20%',
-        backgroundColor: Colors.dark80,
-    },
 });
 
 export default SketchHeaderButton;
