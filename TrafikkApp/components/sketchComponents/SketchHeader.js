@@ -1,9 +1,9 @@
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import React, { useState, Component } from 'react';
-import { TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
+import React from 'react';
+import { TouchableOpacity, StyleSheet } from 'react-native';
 import Color from '../../styles/Colors';
 import { Header, Left, Body } from 'native-base';
-import { Colors, View } from 'react-native-ui-lib';
+import { View } from 'react-native-ui-lib';
 import SketchHeaderButton from './SketchHeaderButton';
 import SketchColorMenu from './sketchColorMenu';
 
@@ -59,4 +59,3 @@ const styles = StyleSheet.create({
 });
 
 export default SketchHeader;
-d;

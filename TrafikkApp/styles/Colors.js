@@ -62,6 +62,9 @@ export default {
     tabButtonBorder: eggShellGrey,
 
     // labelText: independence,
-
     linkDivider: eggShellGrey,
+
+    //DRAGGABLE
+
+    //BOTTOMSHEET
 };
