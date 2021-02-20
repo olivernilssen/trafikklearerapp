@@ -6,18 +6,18 @@ import ComponentItems from './ComponentItems';
 const ComponentMenuTop = (props) => {
     const { topMenuHidden } = props;
 
-    const [yPosHidden, setYPosHidden] = useState(-200);
+    const [yPosHidden, setYPosHidden] = useState(-100);
     const [bounceValue, setBounceValue] = useState(
         new Animated.Value(yPosHidden)
     );
-    const [containerHeight, setContainerHeight] = useState(0);
+    // const [containerHeight, setContainerHeight] = useState(0);
 
     useEffect(() => {
         toggleView();
     }, [topMenuHidden]);
 
     const toggleView = () => {
-        var toValue = containerHeight / 2;
+        var toValue = 0;
 
         if (topMenuHidden) {
             toValue = yPosHidden;
@@ -40,7 +40,7 @@ const ComponentMenuTop = (props) => {
     const getTopMenuLayout = (layout) => {
         const { x, y, width, height } = layout;
         setYPosHidden(-height);
-        setContainerHeight(height);
+        // setContainerHeight(0);
     };
 
     return (
@@ -69,17 +69,15 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         right: 0,
-        backgroundColor: Color.borderColor,
         justifyContent: 'center',
         alignItems: 'center',
         zIndex: 1,
     },
     menuContent: {
-        // flex: 1,
         backgroundColor: Color.borderColor,
         elevation: 10,
         width: '100%',
-        position: 'absolute',
+        height: '100%',
     },
 });
 

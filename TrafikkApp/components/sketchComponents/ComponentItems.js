@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Image, StyleSheet } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
+// import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Color from '../../styles/Colors';
 
@@ -9,8 +9,8 @@ import objectPaths from '../draggable/draggableObjectPaths';
 const ComponentItems = (props) => {
     const objects = Object.keys(objectPaths);
 
-    const onImagePress = () => {
-        console.log('heei');
+    const onImagePress = (img) => {
+        console.log('Clicking on ', img);
     };
 
     const images = objects.map((source, i) => {
@@ -19,7 +19,7 @@ const ComponentItems = (props) => {
                 <TouchableOpacity
                     style={styles.imageButton}
                     activeOpacity={0.6}
-                    onPress={onImagePress}>
+                    onPress={() => onImagePress(source)}>
                     <Image
                         source={objectPaths[source]}
                         style={styles.icon}
@@ -44,21 +44,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     imageContainer: {
-        // zIndex: 999,
         borderRadius: 250,
         borderWidth: 2,
         borderColor: Color.header,
         backgroundColor: Color.header,
     },
     imageButton: {
-        height: 40,
-        width: 40,
         padding: 5,
+        zIndex: 99999,
+        zIndex: 99999,
     },
 
     icon: {
-        maxWidth: '100%',
-        maxHeight: '100%',
+        height: 30,
+        width: 30,
     },
 });
 
