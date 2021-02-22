@@ -1,7 +1,5 @@
 import React from 'react';
 import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
-// import { TouchableOpacity } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import Color from '../../styles/Colors';
 
 import objectPaths from '../draggable/draggableObjectPaths';
@@ -11,8 +9,7 @@ const ComponentItems = (props) => {
     const objects = Object.keys(objectPaths);
 
     const onElementPress = (source) => {
-        console.log('Element pressed');
-        onNewDraggable(source);
+        onNewDraggable(objectPaths[source]);
     };
 
     const images = objects.map((source, i) => {

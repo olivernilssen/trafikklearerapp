@@ -16,7 +16,6 @@ const DraggableWithEverything = (props) => {
     const [trashHover, setTrashHover] = useState(false);
 
     const onNewDraggable = (itemSrc) => {
-        console.log('adding element');
         const newDraggable = { id: counter, source: itemSrc };
         setCounter(counter + 1);
         setDraggables([...draggables, newDraggable]);
@@ -28,17 +27,18 @@ const DraggableWithEverything = (props) => {
                 topMenuHidden={topMenuHidden}
                 onNewDraggable={onNewDraggable}
             />
-            {/* <DraggableMenu addDraggable={onNewDraggable} /> */}
-            <DraggableDropZone
-                setDropZoneValues={setDropZoneValues}
-                iconSize={60}
-                trashHover={trashHover}
-            />
+
             <MappingDraggable
                 draggables={draggables}
                 setDraggables={setDraggables}
                 setTrashHover={setTrashHover}
                 dropZoneValues={dropZoneValues}
+            />
+
+            <DraggableDropZone
+                setDropZoneValues={setDropZoneValues}
+                iconSize={60}
+                trashHover={trashHover}
             />
         </>
     );

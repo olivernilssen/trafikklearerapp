@@ -25,6 +25,7 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
 
     // Show or hide the bottom sheet depending on hight and if it is showing or not
     const toggleSubview = () => {
+        console.log('testing');
         setHiddenViewButton(!hiddenView ? 'ellipsis-h' : 'chevron-down');
         var toValue = bottomSheetHeight;
 
@@ -65,7 +66,7 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
 
         //send to parent
         onImageChange(img);
-        toggleSubview();
+        onHiddenViewChange(!hiddenView);
     };
 
     return (
