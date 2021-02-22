@@ -7,7 +7,7 @@ import {
     TouchableWithoutFeedback,
 } from 'react-native';
 
-import Popout from './Popout';
+import Popout from './Popout/Popout';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -18,6 +18,7 @@ const colors = [
     '#9e2a2b',
     '#284b63',
     '#3a5a40',
+    'reset',
     '#DDDDDD',
 ];
 
@@ -32,9 +33,7 @@ const Draggable = (props) => {
     const { source, dropZoneValues } = props;
     const [imgScale, setimgScale] = useState(new Animated.Value(1));
     const [isScaling, setIsScaling] = useState(false);
-    const [tintColor, setTintColor] = useState(
-        props.tintColor == null ? null : props.tintColor
-    );
+    const [tintColor, setTintColor] = useState(props.tintColor);
     const [popoutActive, setPopoutActive] = useState(false);
     // const [popoutScaling, setPopoutScaling] = useState(new Animated.Value(1));
 
@@ -121,7 +120,9 @@ const Draggable = (props) => {
                         resizeMode={'contain'}
                         style={[
                             styles.item,
-                            tintColor == null ? null : { tintColor: tintColor },
+                            tintColor === null
+                                ? null
+                                : { tintColor: tintColor },
                             {
                                 transform: [{ scale: imgScale }],
                             },
@@ -146,6 +147,10 @@ const Draggable = (props) => {
 
 const styles = StyleSheet.create({
     item: {
+        width: '100%',
+        height: '100%',
+    },
+    itemNoTint: {
         width: '100%',
         height: '100%',
     },
