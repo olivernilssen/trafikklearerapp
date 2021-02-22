@@ -1,19 +1,15 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import styles from '../styles/mainStyles.js';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import StartScreenLink from '../components/StartScreenLink.js';
-
-import Colors from '../styles/Colors';
-
+import { StyleSheet } from 'react-native';
 import { RView } from 'react-native-responsive-component';
 
-// pull in header with DrawerTrigger
+import MainView from '../components/MainView';
 import Header from '../components/Header.js';
+import StartScreenLink from '../components/StartScreenLink.js';
+import Color from '../styles/Colors';
 
 const StartScreen = ({ navigation }) => {
     return (
-        <SafeAreaView style={styles.container}>
+        <MainView>
             <Header name="Hjem" navigation={navigation} />
             <RView
                 style$ptr={screenStyles.mainPtr}
@@ -33,7 +29,11 @@ const StartScreen = ({ navigation }) => {
                         text="Rundkjøring"
                         onPress={() => navigation.navigate('RoundaboutScreen')}
                     />
-                    <StartScreenLink name="road" text="Vei" />
+                    <StartScreenLink
+                        name="road"
+                        text="Vei"
+                        onPress={() => navigation.navigate('RoadScreen')}
+                    />
                 </RView>
 
                 <RView
@@ -44,7 +44,7 @@ const StartScreen = ({ navigation }) => {
                     <StartScreenLink name="question" text="tba" />
                 </RView>
             </RView>
-        </SafeAreaView>
+        </MainView>
     );
 };
 
@@ -54,27 +54,32 @@ const screenStyles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         height: '100%',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
-        backgroundColor: Colors.light,
+        paddingLeft: 15,
+        paddingRight: 15,
+        backgroundColor: Color.background,
     },
     mainLnd: {
         flex: 1,
         flexDirection: 'column',
         width: '100%',
         height: '100%',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
-        backgroundColor: Colors.light,
+        paddingLeft: 15,
+        paddingRight: 15,
+        backgroundColor: Color.background,
     },
     containerPtr: {
-        // flex: 1,
+        height: '100%',
         flexDirection: 'column',
-        // justifyContent: 'space-around',
-        // alignItems: 'center',
+        justifyContent: 'space-evenly',
     },
     containerLnd: {
+        width: '100%',
         flexDirection: 'row',
+        justifyContent: 'space-evenly',
     },
 });
 

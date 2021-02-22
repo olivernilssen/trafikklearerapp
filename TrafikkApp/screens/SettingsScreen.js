@@ -1,26 +1,29 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import styles from '../styles/mainStyles.js';
+
+import MainView from '../components/MainView';
 import Header from '../components/Header.js';
+import Color from '../styles/Colors';
 
 const SettingsScreen = ({ navigation }) => {
     return (
-        <SafeAreaView style={styles.container}>
+        <MainView>
             <Header name="Innstillinger" navigation={navigation} />
-            <View style={screenStyles.main}>
+            <View style={styles.main}>
                 <Text>Innstillinger</Text>
             </View>
-        </SafeAreaView>
+        </MainView>
     );
 };
 
-const screenStyles = StyleSheet.create({
+const styles = StyleSheet.create({
     main: {
-        height: '90%',
+        flex: 1,
+        width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: Color.background,
     },
 });
 
