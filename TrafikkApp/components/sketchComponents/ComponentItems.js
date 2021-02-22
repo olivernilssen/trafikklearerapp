@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+    View,
+    Image,
+    StyleSheet,
+    TouchableOpacity,
+    ScrollView,
+} from 'react-native';
 import Color from '../../styles/Colors';
 
 import objectPaths from '../draggable/draggableObjectPaths';
@@ -29,31 +35,31 @@ const ComponentItems = (props) => {
         );
     });
 
-    return <View style={styles.scrollViewContainer}>{images}</View>;
+    return (
+        <ScrollView horizontal={true} persistentScrollbar={true}>
+            <View style={styles.scrollViewContainer}>{images}</View>
+        </ScrollView>
+    );
 };
 
 const styles = StyleSheet.create({
     scrollViewContainer: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
         margin: 5,
-        marginHorizontal: 40,
-        padding: 5,
+        padding: 10,
         alignItems: 'center',
     },
     imageContainer: {
-        borderRadius: 250,
-        borderWidth: 2,
-        borderColor: Color.header,
-        backgroundColor: Color.header,
+        marginHorizontal: 15,
+        // borderRadius: 250,
+        // borderWidth: 2,
+        // borderColor: Color.header,
+        // backgroundColor: Color.header,
     },
     imageButton: {
         padding: 5,
-        zIndex: 99999,
-        zIndex: 99999,
     },
-
     icon: {
         height: 30,
         width: 30,
