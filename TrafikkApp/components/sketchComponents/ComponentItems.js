@@ -7,10 +7,12 @@ import Color from '../../styles/Colors';
 import objectPaths from '../draggable/draggableObjectPaths';
 
 const ComponentItems = (props) => {
+    const { onNewDraggable } = props;
     const objects = Object.keys(objectPaths);
 
-    const onImagePress = () => {
-        console.log('heei');
+    const onElementPress = (source) => {
+        console.log('Element pressed');
+        onNewDraggable(source);
     };
 
     const images = objects.map((source, i) => {
@@ -18,8 +20,8 @@ const ComponentItems = (props) => {
             <View key={i} style={styles.imageContainer}>
                 <TouchableOpacity
                     style={styles.imageButton}
-                    activeOpacity={0.6}
-                    onPress={onImagePress}>
+                    activeOpacity={0.2}
+                    onPress={() => onElementPress(source)}>
                     <Image
                         source={objectPaths[source]}
                         style={styles.icon}

@@ -4,7 +4,7 @@ import Color from '../../styles/Colors';
 import ComponentItems from './ComponentItems';
 
 const ComponentMenuTop = (props) => {
-    const { topMenuHidden } = props;
+    const { topMenuHidden, onNewDraggable } = props;
 
     const [yPosHidden, setYPosHidden] = useState(-200);
     const [bounceValue, setBounceValue] = useState(
@@ -56,7 +56,7 @@ const ComponentMenuTop = (props) => {
                 onLayout={(event) => {
                     getTopMenuLayout(event.nativeEvent.layout);
                 }}>
-                <ComponentItems />
+                <ComponentItems {...props} />
             </View>
         </Animated.View>
     );
