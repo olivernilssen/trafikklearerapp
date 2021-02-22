@@ -8,6 +8,7 @@ import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import Color from '../../styles/Colors';
 
 import ComponentMenuTop from './ComponentMenuTop';
+import DraggableWithEverything from '../draggable/DraggableWithEverything';
 // import ComponentMenuRight from './ComponentMenuRight';
 
 import BottomSheet from './BottomSheet';
@@ -96,10 +97,6 @@ const SketchArea = (props) => {
             />
 
             <View style={styles.main}>
-                <ComponentMenuTop
-                    topMenuHidden={topMenuHidden}
-                    setTopMenuHidden={toggleMenu}
-                />
                 <ImageBackground
                     resizeMode={'contain'}
                     style={styles.backgroundImage}
@@ -110,6 +107,8 @@ const SketchArea = (props) => {
                         strokeColor={currPencilColor}
                         strokeWidth={currPencilSize}
                     />
+
+                    <DraggableWithEverything topMenuHidden={topMenuHidden} />
 
                     <BottomSheet
                         // ref={bottomSheetRef}
