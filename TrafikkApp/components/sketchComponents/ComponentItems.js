@@ -40,7 +40,7 @@ const ComponentItems = React.memo(({ onNewDraggable }) => {
             <View style={styles.scrollViewContainer}>{images}</View>
         </ScrollView>
     );
-};
+});
 
 const styles = StyleSheet.create({
     scrollViewContainer: {
