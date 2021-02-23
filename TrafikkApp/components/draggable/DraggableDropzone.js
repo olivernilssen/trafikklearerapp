@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -14,15 +14,23 @@ const DraggableDropZone = (props) => {
     };
 
     return (
-        <Icon
+        <View
             onLayout={(event) => {
                 getIconLayout(event.nativeEvent.layout);
             }}
-            style={styles.icon}
-            color={trashHover ? 'red' : 'black'}
-            name={trashHover ? 'trash-restore' : 'trash'}
-            size={iconSize}
-        />
+            style={[
+                styles.icon,
+                {
+                    height: iconSize + 50,
+                    width: iconSize + 50,
+                },
+            ]}>
+            <Icon
+                color={trashHover ? 'red' : 'black'}
+                name={trashHover ? 'trash-restore' : 'trash'}
+                size={iconSize}
+            />
+        </View>
     );
 };
 
@@ -31,7 +39,9 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         right: 0,
-        padding: 30,
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 0,
     },
 });
 

@@ -48,7 +48,7 @@ export default {
     bottomDrawerBg: white,
     borderColor: lightGrey,
 
-    tabHeaderInactiveBg: white,
+    tabHeaderInactiveBg: lightGrey,
     tabHeaderActiveBg: white,
     tabHeaderIndicator: terraCotta,
 

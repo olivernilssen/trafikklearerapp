@@ -1,6 +1,11 @@
 /* eslint-disable prettier/prettier */
-import React, { useRef, useState, useEffect } from 'react';
-import { View, StyleSheet, ImageBackground } from 'react-native';
+import React, { useRef, useState, useEffect, forwardRef } from 'react';
+import {
+    View,
+    StyleSheet,
+    ImageBackground,
+    TouchableWithoutFeedback,
+} from 'react-native';
 
 import MainView from '../MainView';
 import SketchHeader from './SketchHeader';
@@ -9,7 +14,6 @@ import Color from '../../styles/Colors';
 
 import ComponentMenuTop from './ComponentMenuTop';
 import DraggableWithEverything from '../draggable/DraggableWithEverything';
-// import ComponentMenuRight from './ComponentMenuRight';
 
 import BottomSheet from './BottomSheet';
 import imgSource from './illustrationsPath';
@@ -28,16 +32,20 @@ const SketchArea = (props) => {
     const InitialImageSrc = roadTypes[labelsArray[0]][initialImageSrcName];
 
     const sketchRef = useRef();
-    const bottomSheetRef = useRef();
     const [currPencilColor, setPencilColor] = useState('#20303C');
     const [prevPencilColor, setPrevPencilColor] = useState('');
     const [currPencilSize, setPencilSize] = useState(10);
     const [currentImg, setImage] = useState(InitialImageSrc);
     const [topMenuHidden, setTopMenuHidden] = useState(true);
+    const [bottomSheetHidden, setBottomSheetHidden] = useState(true);
+    const [draggables, setDraggables] = useState([]);
+    const [actionList, setActionList] = useState([]);
+    const [deletingItemId, setDeletingItemId] = useState(null);
 
     //Clear canvas if new image is loaded
     useEffect(() => {
         clearCanvas();
+        setDraggables([]);
     }, [currentImg]);
 
     const onPencilColorChange = (color) => {
@@ -55,11 +63,25 @@ const SketchArea = (props) => {
     };
 
     const undoChange = () => {
-        sketchRef.current.undo();
+        if (actionList.length == 0) return;
+
+        const copyList = [...actionList];
+        const lastItem = copyList.pop();
+
+        if (lastItem.type == 'stroke') {
+            sketchRef.current.undo();
+        } else if (lastItem.type == 'draggable') {
+            setDeletingItemId(lastItem.id);
+        } else {
+            console.log('error occured with deleting');
+        }
+
+        setActionList(copyList);
     };
 
     const clearCanvas = () => {
         sketchRef.current.clear();
+        setDraggables([]);
     };
 
     const eraser = () => {
@@ -71,15 +93,15 @@ const SketchArea = (props) => {
         }
     };
 
-    const toggleMenu = () => {
-        setTopMenuHidden(!topMenuHidden);
+    const onStrokeStart = () => {
+        if (bottomSheetHidden == false)
+            setBottomSheetHidden(!bottomSheetHidden);
+
+        setActionList([...actionList, { type: 'stroke' }]);
     };
 
-    //Vil at denne skal kjøre om bruker trykker utenfor viewen men det er ikke
-    //så jævla enkelt haha. Vi må nok sette opp en form form guesture event listener som
-    //ikke alltid er så enkelt.. hmm
-    const toggleBottomSheet = () => {
-        this.bottomSheetRef.current.onHiddenViewChange();
+    const toggleMenu = () => {
+        setTopMenuHidden(!topMenuHidden);
     };
 
     return (
@@ -102,19 +124,28 @@ const SketchArea = (props) => {
                     style={styles.backgroundImage}
                     source={currentImg}>
                     <SketchCanvas
+                        onStrokeStart={() => onStrokeStart()}
                         ref={sketchRef}
                         style={styles.sketchCanvas}
                         strokeColor={currPencilColor}
                         strokeWidth={currPencilSize}
                     />
 
-                    <DraggableWithEverything topMenuHidden={topMenuHidden} />
+                    <DraggableWithEverything
+                        draggables={draggables}
+                        setDraggables={setDraggables}
+                        topMenuHidden={topMenuHidden}
+                        deletingItemId={deletingItemId}
+                        setActionList={setActionList}
+                        actionList={actionList}
+                    />
 
                     <BottomSheet
-                        // ref={bottomSheetRef}
                         labelsArray={labelsArray}
                         imgSource={imgSource[props.name]}
                         onImageChange={setImage}
+                        bottomSheetHidden={bottomSheetHidden}
+                        setBottomSheetHidden={setBottomSheetHidden}
                     />
                 </ImageBackground>
             </View>

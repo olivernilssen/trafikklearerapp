@@ -85,7 +85,7 @@ const Draggable = (props) => {
     //Helper function so we can run to functions
     //after animation over trashcan has ended
     const removeItem = () => {
-        props.removeItem(props.id);
+        props.onRemoveItem(props.id);
         props.onTrashHover(false);
     };
 
@@ -93,10 +93,9 @@ const Draggable = (props) => {
         var dz = dropZoneValues;
 
         var isInZone =
-            gesture.nativeEvent.pageX > dz.x &&
-            gesture.nativeEvent.pageX < dz.x + dz.height &&
-            gesture.nativeEvent.pageY > dz.y &&
-            gesture.nativeEvent.pageY < dz.y + dz.height;
+            gesture.nativeEvent.pageX >= dz.x &&
+            gesture.nativeEvent.pageX <= dz.x + dz.height &&
+            gesture.nativeEvent.pageY >= dz.y;
 
         return isInZone;
     };

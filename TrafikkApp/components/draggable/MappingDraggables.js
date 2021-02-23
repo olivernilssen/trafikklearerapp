@@ -4,12 +4,13 @@ import Draggable from './Draggable';
 
 const MappingDraggable = (props) => {
     //Get props
-    const { draggables, setDraggables, setTrashHover, dropZoneValues } = props;
-
-    const onRemoveItem = (itemId) => {
-        const filtered = draggables.filter((item) => item.id !== itemId);
-        setDraggables(filtered);
-    };
+    const {
+        draggables,
+        setDraggables,
+        setTrashHover,
+        dropZoneValues,
+        onRemoveItem,
+    } = props;
 
     return (
         <>
@@ -20,9 +21,9 @@ const MappingDraggable = (props) => {
                         onTrashHover={setTrashHover}
                         id={itemInfo.id}
                         source={itemInfo.source}
-                        removeItem={onRemoveItem}
+                        onRemoveItem={onRemoveItem}
                         dropZoneValues={dropZoneValues}
-                        tintColor={null}
+                        tintColor={'red'}
                     />
                 );
             })}
