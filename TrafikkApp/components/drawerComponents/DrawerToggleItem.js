@@ -4,7 +4,7 @@ import { TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Color from '../../styles/Colors';
 
-const DrawerToggleMenuItem = ({ navigation, icon }) => (
+const DrawerToggleMenuItem = React.memo(({ navigation, icon }) => (
     <TouchableOpacity
         style={styles.menuItem}
         activeOpacity={0.8}
@@ -16,7 +16,7 @@ const DrawerToggleMenuItem = ({ navigation, icon }) => (
             style={styles.menuIcon}
         />
     </TouchableOpacity>
-);
+));
 
 const styles = StyleSheet.create({
     menuItem: {

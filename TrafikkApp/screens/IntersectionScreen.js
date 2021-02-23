@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import MainView from '../components/MainView';
 import SketchArea from '../components/sketchComponents/SketchArea';
 
-const IntersectionScreen = ({ navigation }) => {
+const IntersectionScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
             <View style={styles.sketchArea}>
@@ -14,7 +14,7 @@ const IntersectionScreen = ({ navigation }) => {
             </View>
         </MainView>
     );
-};
+});
 
 const styles = StyleSheet.create({
     sketchArea: {

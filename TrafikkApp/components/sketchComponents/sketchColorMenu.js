@@ -14,7 +14,7 @@ const { Popover } = renderers;
 
 import Color from '../../styles/Colors';
 
-const SketchColorMenu = (props) => {
+const SketchColorMenu = React.memo((props) => {
     const [currentColorSetup, setCurrentColorSetup] = useState({
         color: INITIAL_COLOR,
         textColor: Colors.white,
@@ -81,7 +81,7 @@ const SketchColorMenu = (props) => {
             </Menu>
         </View>
     );
-};
+});
 
 const styles = StyleSheet.create({
     buttonSize: {

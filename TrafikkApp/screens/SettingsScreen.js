@@ -6,7 +6,7 @@ import MainView from '../components/MainView';
 import Header from '../components/Header.js';
 import Color from '../styles/Colors';
 
-const SettingsScreen = ({ navigation }) => {
+const SettingsScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
             <Header name="Innstillinger" navigation={navigation} />
@@ -15,7 +15,7 @@ const SettingsScreen = ({ navigation }) => {
             </View>
         </MainView>
     );
-};
+});
 
 const styles = StyleSheet.create({
     main: {

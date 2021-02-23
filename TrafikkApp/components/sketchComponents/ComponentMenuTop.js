@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useCallback } from 'react';
 import { StyleSheet, View, Animated } from 'react-native';
 import Color from '../../styles/Colors';
 import ComponentItems from './ComponentItems';
 
-const ComponentMenuTop = (props) => {
-    const { topMenuHidden, onNewDraggable } = props;
-
+const ComponentMenuTop = React.memo(({ topMenuHidden, onNewDraggable }) => {
     const [yPosHidden, setYPosHidden] = useState(-100);
     const [bounceValue, setBounceValue] = useState(
         new Animated.Value(yPosHidden)
@@ -16,7 +15,7 @@ const ComponentMenuTop = (props) => {
         toggleView();
     }, [topMenuHidden]);
 
-    const toggleView = () => {
+    const toggleView = useCallback(() => {
         var toValue = 0;
 
         if (topMenuHidden) {
@@ -35,7 +34,7 @@ const ComponentMenuTop = (props) => {
                 useNativeDriver: true,
             }).start();
         }
-    };
+    });
 
     const getTopMenuLayout = (layout) => {
         const { x, y, width, height } = layout;
@@ -56,11 +55,11 @@ const ComponentMenuTop = (props) => {
                 onLayout={(event) => {
                     getTopMenuLayout(event.nativeEvent.layout);
                 }}>
-                <ComponentItems {...props} />
+                <ComponentItems onNewDraggable={onNewDraggable} />
             </View>
         </Animated.View>
     );
-};
+});
 
 const styles = StyleSheet.create({
     animatedView: {

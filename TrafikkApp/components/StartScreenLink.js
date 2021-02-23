@@ -10,7 +10,8 @@ const linkWidth = RUtils.isSmallScreen() ? 130 : 230;
 const linkHeight = RUtils.isSmallScreen() ? 130 : 230;
 const linkMargin = RUtils.isSmallScreen() ? 20 : 30;
 
-const StartScreenLink = (props) => {
+const StartScreenLink = React.memo((props) => {
+    const { name, text, onPress } = props;
     const iconSize = RUtils.isSmallScreen() ? 50 : 100;
 
     return (
@@ -18,17 +19,13 @@ const StartScreenLink = (props) => {
             <TouchableOpacity
                 style={styles.linkButton}
                 activeOpacity={0.6}
-                onPress={props.onPress}>
-                <Icon
-                    name={props.name}
-                    size={iconSize}
-                    color={Color.buttonText}
-                />
-                <Text style={styles.linkText}>{props.text}</Text>
+                onPress={onPress}>
+                <Icon name={name} size={iconSize} color={Color.buttonText} />
+                <Text style={styles.linkText}>{text}</Text>
             </TouchableOpacity>
         </View>
     );
-};
+});
 
 const styles = StyleSheet.create({
     container: {

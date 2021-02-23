@@ -28,7 +28,7 @@ const ITEM_SIZE = 100;
 const radius = (ITEM_SIZE * 2) / 2;
 const buttonSize = 25;
 
-const Draggable = (props) => {
+const Draggable = React.memo((props) => {
     //States
     const { source, dropZoneValues } = props;
     const [imgScale, setimgScale] = useState(new Animated.Value(1));
@@ -142,7 +142,7 @@ const Draggable = (props) => {
             </View>
         </Gestures>
     );
-};
+});
 
 const styles = StyleSheet.create({
     item: {

@@ -4,8 +4,8 @@ import Color from '../../styles/Colors';
 
 import objectPaths from '../draggable/draggableObjectPaths';
 
-const ComponentItems = (props) => {
-    const { onNewDraggable } = props;
+const ComponentItems = React.memo(({ onNewDraggable }) => {
+    // console.log('test');
     const objects = Object.keys(objectPaths);
 
     const onElementPress = (source) => {
@@ -30,7 +30,7 @@ const ComponentItems = (props) => {
     });
 
     return <View style={styles.scrollViewContainer}>{images}</View>;
-};
+});
 
 const styles = StyleSheet.create({
     scrollViewContainer: {

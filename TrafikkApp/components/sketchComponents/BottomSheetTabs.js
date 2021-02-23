@@ -5,7 +5,7 @@ import { View, TabBar } from 'react-native-ui-lib';
 
 import Color from '../../styles/Colors';
 
-const BottomSheetTabs = (props) => {
+const BottomSheetTabs = React.memo((props) => {
     const { selectedRoadType, roadTypes, roadType, onImageSelect } = props;
 
     const keys = Object.keys(roadTypes);
@@ -38,7 +38,7 @@ const BottomSheetTabs = (props) => {
             })}
         </View>
     );
-};
+});
 
 const styles = StyleSheet.create({
     tabView: {
