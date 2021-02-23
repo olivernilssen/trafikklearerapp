@@ -7,10 +7,17 @@ import BottomSheetTabs from './BottomSheetTabs';
 
 import Color from '../../styles/Colors';
 
-const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
+const BottomSheet = (props) => {
+    const {
+        onImageChange,
+        labelsArray,
+        imgSource,
+        bottomSheetHidden,
+        setBottomSheetHidden,
+    } = props;
+
     const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
     const [hiddenViewButton, setHiddenViewButton] = useState('chevron-down');
-    const [hiddenView, setHiddenView] = useState(true);
     const [bottomSheetHeight, setBottomSheetHeight] = useState(0);
     const [selectedRoad, setSelectedRoad] = useState(labelsArray[0]);
     const [roadTypes, setRoadTypes] = useState(imgSource[labelsArray[0]]);
@@ -21,15 +28,14 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
 
     useEffect(() => {
         toggleSubview();
-    }, [hiddenView]);
+    }, [bottomSheetHidden]);
 
     // Show or hide the bottom sheet depending on hight and if it is showing or not
     const toggleSubview = () => {
-        console.log('testing');
-        setHiddenViewButton(!hiddenView ? 'ellipsis-h' : 'chevron-down');
+        setHiddenViewButton(bottomSheetHidden ? 'ellipsis-h' : 'chevron-down');
         var toValue = bottomSheetHeight;
 
-        if (hiddenView) {
+        if (!bottomSheetHidden) {
             toValue = 0;
         }
 
@@ -43,7 +49,7 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
     };
 
     const onHiddenViewChange = () => {
-        setHiddenView(!hiddenView);
+        setBottomSheetHidden(!bottomSheetHidden);
     };
 
     // Get the high of the view which is hidden
@@ -66,7 +72,7 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
 
         //send to parent
         onImageChange(img);
-        onHiddenViewChange(!hiddenView);
+        onHiddenViewChange(!bottomSheetHidden);
     };
 
     return (

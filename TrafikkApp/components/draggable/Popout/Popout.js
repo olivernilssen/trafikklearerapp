@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         alignContent: 'center',
         justifyContent: 'center',
-        zIndex: -1,
+        zIndex: 999,
     },
 });
 
