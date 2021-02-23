@@ -37,7 +37,7 @@ const SketchArea = (props) => {
     const [currPencilSize, setPencilSize] = useState(10);
     const [currentImg, setImage] = useState(InitialImageSrc);
     const [topMenuHidden, setTopMenuHidden] = useState(true);
-    const [bottomSheetHidden, setBottomSheetHidden] = useState(true);
+    const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
     const [draggables, setDraggables] = useState([]);
     const [actionList, setActionList] = useState([]);
     const [deletingItemId, setDeletingItemId] = useState(null);
