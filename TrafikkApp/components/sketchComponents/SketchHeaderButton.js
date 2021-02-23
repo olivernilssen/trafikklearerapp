@@ -5,7 +5,7 @@ import { Right } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, View } from 'react-native-ui-lib';
 
-const SketchHeaderButton = (props) => {
+const SketchHeaderButton = React.memo((props) => {
     const [isActive, setActive] = useState(0);
     const [prevActive, setPrevActive] = useState(0);
 
@@ -101,7 +101,7 @@ const SketchHeaderButton = (props) => {
             </Right>
         </View>
     );
-};
+});
 
 const styles = StyleSheet.create({
     buttonSize: {

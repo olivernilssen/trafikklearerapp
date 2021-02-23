@@ -18,7 +18,7 @@ import DraggableWithEverything from '../draggable/DraggableWithEverything';
 import BottomSheet from './BottomSheet';
 import imgSource from './illustrationsPath';
 
-const SketchArea = (props) => {
+const SketchArea = React.memo((props) => {
     const labelsArray = [];
     const roadTypes = imgSource[props.name];
 
@@ -151,7 +151,7 @@ const SketchArea = (props) => {
             </View>
         </MainView>
     );
-};
+});
 
 const styles = StyleSheet.create({
     main: {
@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,
         width: '100%',
+        height: '100%',
         backgroundColor: Color.header,
     },
 });

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Color from '../styles/Colors';
 
-const Header = (props) => (
+const Header = React.memo((props) => (
     <View style={styles.header}>
         <TouchableOpacity
             onPress={
@@ -20,7 +20,7 @@ const Header = (props) => (
         <Text style={styles.headerText}>{props.name}</Text>
         {props.children}
     </View>
-);
+));
 
 const styles = StyleSheet.create({
     header: {

@@ -11,7 +11,7 @@ import DraggableDropZone from '../components/draggable/DraggableDropzone';
 import MappingDraggable from '../components/draggable/MappingDraggables';
 import DraggableWithEverything from '../components/draggable/DraggableWithEverything';
 
-const RoadScreen = ({ navigation }) => {
+const RoadScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
             <View style={styles.sketchArea}>
@@ -21,7 +21,7 @@ const RoadScreen = ({ navigation }) => {
             </View>
         </MainView>
     );
-};
+});
 
 const styles = StyleSheet.create({
     sketchArea: {

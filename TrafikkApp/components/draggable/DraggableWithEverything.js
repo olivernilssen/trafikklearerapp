@@ -1,16 +1,16 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
+import { useCallback } from 'react';
 import { useEffect } from 'react';
 
 import ComponentMenuTop from '../sketchComponents/ComponentMenuTop';
 import DraggableDropZone from './DraggableDropzone';
 import MappingDraggable from './MappingDraggables';
 
-const DraggableWithEverything = (props) => {
+const DraggableWithEverything = React.memo((props) => {
     //States from props
     const {
         topMenuHidden,
-        setTopMenuHidden,
         draggables,
         setDraggables,
         actionList,
@@ -28,20 +28,27 @@ const DraggableWithEverything = (props) => {
     const [counter, setCounter] = useState(0);
     const [trashHover, setTrashHover] = useState(false);
 
-    const onNewDraggable = (itemSrc) => {
+    const onNewDraggable = useCallback((itemSrc) => {
         const newDraggable = {
             id: counter,
             source: itemSrc,
-            type: 'draggable',
         };
+
         setCounter(counter + 1);
         setDraggables([...draggables, newDraggable]);
-        setActionList([...actionList, newDraggable]);
-    };
+        setActionList([...actionList, { ...newDraggable, type: 'draggable' }]);
+    });
 
     const onRemoveItem = (itemId) => {
+        //Remove item from list of draggables
         const filtered = draggables.filter((item) => item.id !== itemId);
         setDraggables(filtered);
+
+        //Remove this item also from the action list
+        const filteredActionList = actionList.filter(
+            (item) => item.id !== itemId
+        );
+        setActionList(filteredActionList);
     };
 
     return (
@@ -66,6 +73,6 @@ const DraggableWithEverything = (props) => {
             />
         </>
     );
-};
+});
 
 export default DraggableWithEverything;

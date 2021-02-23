@@ -7,7 +7,7 @@ import BottomSheetTabs from './BottomSheetTabs';
 
 import Color from '../../styles/Colors';
 
-const BottomSheet = (props) => {
+const BottomSheet = React.memo((props) => {
     const {
         onImageChange,
         labelsArray,
@@ -130,7 +130,7 @@ const BottomSheet = (props) => {
             </View>
         </Animated.View>
     );
-};
+});
 
 var styles = StyleSheet.create({
     subView: {

@@ -5,30 +5,28 @@ import Color from '../../styles/Colors';
 import DrawerToggleMenuItem from './DrawerToggleItem';
 import DrawerItem from './DrawerItem';
 
-class DrawerMenu extends Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <DrawerToggleMenuItem
-                    navigation={this.props.navigation}
-                    icon={'times'}
-                />
-                <FlatList
-                    data={this.props.state.routes}
-                    renderItem={({ item }) => (
-                        <DrawerItem
-                            navigation={this.props.navigation}
-                            screenIndex={this.props.state.index}
-                            screenName={item.name}
-                            params={item.params}
-                            key={item.key}
-                        />
-                    )}
-                />
-            </View>
-        );
-    }
-}
+const DrawerMenu = React.memo((props) => {
+    return (
+        <View style={styles.container}>
+            <DrawerToggleMenuItem
+                navigation={props.navigation}
+                icon={'times'}
+            />
+            <FlatList
+                data={props.state.routes}
+                renderItem={({ item }) => (
+                    <DrawerItem
+                        navigation={props.navigation}
+                        screenIndex={props.state.index}
+                        screenName={item.name}
+                        params={item.params}
+                        key={item.key}
+                    />
+                )}
+            />
+        </View>
+    );
+});
 
 const styles = StyleSheet.create({
     container: {

@@ -7,7 +7,7 @@ import { View } from 'react-native-ui-lib';
 import SketchHeaderButton from './SketchHeaderButton';
 import SketchColorMenu from './sketchColorMenu';
 
-const SketchHeader = (props) => {
+const SketchHeader = React.memo((props) => {
     const {
         pencil,
         undo,
@@ -46,7 +46,7 @@ const SketchHeader = (props) => {
             </Header>
         </View>
     );
-};
+});
 
 const styles = StyleSheet.create({
     header: {

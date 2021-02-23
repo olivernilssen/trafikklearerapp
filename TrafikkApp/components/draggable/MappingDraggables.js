@@ -2,7 +2,7 @@
 import React from 'react';
 import Draggable from './Draggable';
 
-const MappingDraggable = (props) => {
+const MappingDraggable = React.memo((props) => {
     //Get props
     const {
         draggables,
@@ -29,6 +29,6 @@ const MappingDraggable = (props) => {
             })}
         </>
     );
-};
+});
 
 export default MappingDraggable;
