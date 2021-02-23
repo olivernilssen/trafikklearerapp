@@ -96,9 +96,12 @@ const BottomSheet = React.memo((props) => {
                 style={styles.bottomContainer}>
                 <TabBar
                     style={styles.tabBar}
+                    backgroundColor={Color.tabHeaderInactiveBg}
                     selectedIndex={0}
                     indicatorStyle={{
-                        backgroundColor: Color.tabHeaderIndicator,
+                        backgroundColor: '#e07a5f',
+                        width: '70%',
+                        alignSelf: 'center',
                     }}>
                     {labelsArray.map((label, i) => {
                         const activeTab = selectedRoad == i;
@@ -140,29 +143,26 @@ var styles = StyleSheet.create({
     },
     button: {
         paddingBottom: 10,
-        // paddingHorizontal: 20,
     },
     bottomContainer: {
-        backgroundColor: Color.bottomDrawerBg,
-        padding: 10,
+        backgroundColor: 'white',
+        paddingBottom: 10,
         alignItems: 'center',
-        borderTopWidth: 1,
-        borderTopColor: Color.borderColor,
+        elevation: 20,
     },
-    tabBar: {
-        borderBottomWidth: 2,
-        borderBottomColor: Color.borderColor,
-        // marginBottom: 5,
-    },
+    tabBar: {},
     tabHeaderActive: {
-        backgroundColor: Color.tabHeaderActiveBg,
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        borderColor: Color.tabHeaderActiveBg,
     },
     tabHeaderInactive: {
         backgroundColor: Color.tabHeaderInactiveBg,
     },
     tabHeaderTextActive: {
-        color: Color.tabHeaderTextActive,
-        fontWeight: 'bold',
+        color: Color.textPrimary,
         fontSize: 16,
     },
     tabHeaderTextInactive: {
@@ -172,26 +172,28 @@ var styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         flexDirection: 'row',
+        marginTop: 10,
+        backgroundColor: Color.tabViewBg,
     },
     activeButton: {
-        backgroundColor: Color.tabButtonActive,
-        borderRightWidth: 1,
-        borderLeftWidth: 1,
-        borderColor: Color.tabButtonBorder,
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: Color.tabHeaderTextActive,
         padding: 10,
+        marginHorizontal: 10,
     },
     inActiveButton: {
-        borderRightWidth: 1,
-        borderLeftWidth: 1,
+        borderWidth: 1,
+        borderRadius: 5,
         borderColor: Color.tabButtonBorder,
         padding: 10,
+        marginHorizontal: 10,
     },
     buttonTextActive: {
-        color: Color.textPrimary,
-        fontWeight: 'bold',
+        color: Color.tabHeaderTextActive,
     },
     buttonTextInactive: {
-        color: Color.textPrimary,
+        color: Color.tabHeaderTextInactive,
     },
 });
 

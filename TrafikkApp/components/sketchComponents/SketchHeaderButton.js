@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     },
     btnSelected: {
         // backgroundColor: 'yellow',
-        color: 'red',
+        color: Color.iconActive,
         fontSize: 30,
     },
     colorButton: {

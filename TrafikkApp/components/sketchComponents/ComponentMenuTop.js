@@ -9,7 +9,6 @@ const ComponentMenuTop = React.memo(({ topMenuHidden, onNewDraggable }) => {
     const [bounceValue, setBounceValue] = useState(
         new Animated.Value(yPosHidden)
     );
-    // const [containerHeight, setContainerHeight] = useState(0);
 
     useEffect(() => {
         toggleView();
@@ -39,7 +38,6 @@ const ComponentMenuTop = React.memo(({ topMenuHidden, onNewDraggable }) => {
     const getTopMenuLayout = (layout) => {
         const { x, y, width, height } = layout;
         setYPosHidden(-height);
-        // setContainerHeight(0);
     };
 
     return (
@@ -77,6 +75,8 @@ const styles = StyleSheet.create({
         elevation: 10,
         width: '100%',
         height: '100%',
+        borderTopWidth: 3,
+        borderTopColor: Color.borderColor,
     },
 });
 

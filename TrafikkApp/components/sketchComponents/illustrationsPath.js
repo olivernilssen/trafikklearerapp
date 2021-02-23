@@ -1,6 +1,6 @@
 const imgSource = {
     Veikryss: {
-        HØYREKRYSS: {
+        Høyrekryss: {
             X: require('../../assets/intersections/hoyrekryss/veikryss-hoyre-X.png'),
             'X (gangfelt)': require('../../assets/intersections/hoyrekryss/veikryss-hoyre-X-gangfelt.png'),
             T: require('../../assets/intersections/hoyrekryss/veikryss-hoyre-T.png'),
@@ -8,7 +8,7 @@ const imgSource = {
             Y: require('../../assets/intersections/hoyrekryss/veikryss-hoyre-Y.png'),
             'Y (gangfelt)': require('../../assets/intersections/hoyrekryss/veikryss-hoyre-Y-gangfelt.png'),
         },
-        FORKJØRSKRYSS: {
+        Forkjørskryss: {
             X: require('../../assets/intersections/forkjorskryss/veikryss-forkjors-X.png'),
             'X (gangfelt)': require('../../assets/intersections/forkjorskryss/veikryss-forkjors-X-gangfelt.png'),
             T: require('../../assets/intersections/forkjorskryss/veikryss-forkjors-T.png'),
@@ -16,7 +16,7 @@ const imgSource = {
             Y: require('../../assets/intersections/forkjorskryss/veikryss-forkjors-Y.png'),
             'Y (gangfelt)': require('../../assets/intersections/forkjorskryss/veikryss-forkjors-Y-gangfelt.png'),
         },
-        LYSKRYSS: {
+        Lyskryss: {
             X: require('../../assets/intersections/lyskryss/veikryss-lys-X.png'),
             'X (gangfelt)': require('../../assets/intersections/lyskryss/veikryss-lys-X-gangfelt.png'),
             // 'X-pil': require('../../assets/intersections/lyskryss/veikryss-lys-X-pil.png'),
