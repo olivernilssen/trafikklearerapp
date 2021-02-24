@@ -11,7 +11,6 @@ import Color from '../../styles/Colors';
 import objectPaths from '../draggable/draggableObjectPaths';
 
 const ComponentItems = React.memo(({ onNewDraggable }) => {
-    // console.log('test');
     const objects = Object.keys(objectPaths);
 
     const onElementPress = (source) => {
@@ -23,7 +22,7 @@ const ComponentItems = React.memo(({ onNewDraggable }) => {
             <View key={i} style={styles.imageContainer}>
                 <TouchableOpacity
                     style={styles.imageButton}
-                    activeOpacity={0.2}
+                    activeOpacity={0.4}
                     onPress={() => onElementPress(source)}>
                     <Image
                         source={objectPaths[source]}
@@ -36,33 +35,35 @@ const ComponentItems = React.memo(({ onNewDraggable }) => {
     });
 
     return (
-        <ScrollView horizontal={true} persistentScrollbar={true}>
-            <View style={styles.scrollViewContainer}>{images}</View>
-        </ScrollView>
+        // <ScrollView horizontal={true} persistentScrollbar={true}>
+        <View style={styles.container}>{images}</View>
+        // </ScrollView>
     );
 });
 
 const styles = StyleSheet.create({
-    scrollViewContainer: {
+    container: {
         flex: 1,
         flexDirection: 'row',
-        margin: 5,
         padding: 10,
         alignItems: 'center',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
     },
     imageContainer: {
-        marginHorizontal: 15,
+        margin: 10,
+        padding: 5,
         // borderRadius: 250,
         // borderWidth: 2,
-        // borderColor: Color.header,
-        // backgroundColor: Color.header,
+        // borderColor: Color.borderColor,
+        // backgroundColor: Color.borderColor,
     },
     imageButton: {
         padding: 5,
     },
     icon: {
-        height: 30,
-        width: 30,
+        height: 40,
+        width: 40,
     },
 });
 
