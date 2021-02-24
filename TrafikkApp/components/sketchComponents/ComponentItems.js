@@ -1,17 +1,11 @@
-import React from 'react';
-import {
-    View,
-    Image,
-    StyleSheet,
-    TouchableOpacity,
-    ScrollView,
-} from 'react-native';
+import React, { useState } from 'react';
+import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Color from '../../styles/Colors';
-
 import objectPaths from '../draggable/draggableObjectPaths';
 
+import Carousel from '../Carousel';
+
 const ComponentItems = React.memo(({ onNewDraggable }) => {
-    // console.log('test');
     const objects = Object.keys(objectPaths);
 
     const onElementPress = (source) => {
@@ -23,7 +17,7 @@ const ComponentItems = React.memo(({ onNewDraggable }) => {
             <View key={i} style={styles.imageContainer}>
                 <TouchableOpacity
                     style={styles.imageButton}
-                    activeOpacity={0.2}
+                    activeOpacity={0.4}
                     onPress={() => onElementPress(source)}>
                     <Image
                         source={objectPaths[source]}
@@ -36,33 +30,38 @@ const ComponentItems = React.memo(({ onNewDraggable }) => {
     });
 
     return (
-        <ScrollView horizontal={true} persistentScrollbar={true}>
-            <View style={styles.scrollViewContainer}>{images}</View>
-        </ScrollView>
+        <View>
+            <Carousel objectArray={objects}>
+                {images}
+                {images}
+            </Carousel>
+        </View>
     );
 });
 
 const styles = StyleSheet.create({
-    scrollViewContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        margin: 5,
-        padding: 10,
-        alignItems: 'center',
-    },
     imageContainer: {
-        marginHorizontal: 15,
+        marginVertical: 5,
+        marginHorizontal: 10,
+        padding: 5,
         // borderRadius: 250,
         // borderWidth: 2,
-        // borderColor: Color.header,
-        // backgroundColor: Color.header,
+        // borderColor: Color.borderColor,
+        // backgroundColor: Color.borderColor,
     },
     imageButton: {
-        padding: 5,
+        paddingHorizontal: 5,
     },
     icon: {
-        height: 30,
-        width: 30,
+        height: 40,
+        width: 40,
+    },
+    bullets: {
+        flexDirection: 'row',
+    },
+    bullet: {
+        paddingHorizontal: 10,
+        fontSize: 25,
     },
 });
 

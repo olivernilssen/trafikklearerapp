@@ -99,7 +99,7 @@ const BottomSheet = React.memo((props) => {
                     backgroundColor={Color.tabHeaderInactiveBg}
                     selectedIndex={0}
                     indicatorStyle={{
-                        backgroundColor: '#e07a5f',
+                        backgroundColor: Color.tabHeaderIndicator,
                         width: '70%',
                         alignSelf: 'center',
                     }}>
@@ -125,7 +125,7 @@ const BottomSheet = React.memo((props) => {
                     roadTypes={roadTypes}
                     onImageSelect={onImageSelect}
                     selectedRoadType={selectedRoadType}
-                    roadtype={selectedRoad}
+                    selectedRoad={selectedRoad}
                 />
             </View>
         </Animated.View>
@@ -145,14 +145,14 @@ var styles = StyleSheet.create({
         paddingBottom: 10,
     },
     bottomContainer: {
-        backgroundColor: 'white',
+        backgroundColor: Color.bottomDrawerBg,
         paddingBottom: 10,
         alignItems: 'center',
         elevation: 20,
     },
     tabBar: {},
     tabHeaderActive: {
-        backgroundColor: 'white',
+        backgroundColor: Color.tabHeaderActiveBg,
         borderWidth: 1,
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
@@ -166,33 +166,6 @@ var styles = StyleSheet.create({
         fontSize: 16,
     },
     tabHeaderTextInactive: {
-        color: Color.tabHeaderTextInactive,
-    },
-    tabView: {
-        width: '100%',
-        alignItems: 'center',
-        flexDirection: 'row',
-        marginTop: 10,
-        backgroundColor: Color.tabViewBg,
-    },
-    activeButton: {
-        borderWidth: 1,
-        borderRadius: 5,
-        borderColor: Color.tabHeaderTextActive,
-        padding: 10,
-        marginHorizontal: 10,
-    },
-    inActiveButton: {
-        borderWidth: 1,
-        borderRadius: 5,
-        borderColor: Color.tabButtonBorder,
-        padding: 10,
-        marginHorizontal: 10,
-    },
-    buttonTextActive: {
-        color: Color.tabHeaderTextActive,
-    },
-    buttonTextInactive: {
         color: Color.tabHeaderTextInactive,
     },
 });

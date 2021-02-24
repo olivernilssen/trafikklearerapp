@@ -6,7 +6,7 @@ import { View, TabBar } from 'react-native-ui-lib';
 import Color from '../../styles/Colors';
 
 const BottomSheetTabs = React.memo((props) => {
-    const { selectedRoadType, roadTypes, roadType, onImageSelect } = props;
+    const { selectedRoadType, roadTypes, selectedRoad, onImageSelect } = props;
 
     const keys = Object.keys(roadTypes);
 
@@ -15,7 +15,7 @@ const BottomSheetTabs = React.memo((props) => {
             {keys.map((key, i) => {
                 const isOnTabAndKey =
                     selectedRoadType[0] == key &&
-                    selectedRoadType[1] == roadType;
+                    selectedRoadType[1] == selectedRoad;
                 return (
                     <TouchableOpacity
                         key={i}
@@ -45,26 +45,28 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         flexDirection: 'row',
+        marginTop: 10,
+        backgroundColor: Color.tabViewBg,
     },
     activeButton: {
-        backgroundColor: Color.tabButtonActive,
-        borderRightWidth: 1,
-        borderLeftWidth: 1,
-        borderColor: Color.tabButtonBorder,
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: Color.tabHeaderTextActive,
         padding: 10,
+        marginHorizontal: 10,
     },
     inActiveButton: {
-        borderRightWidth: 1,
-        borderLeftWidth: 1,
+        borderWidth: 1,
+        borderRadius: 5,
         borderColor: Color.tabButtonBorder,
         padding: 10,
+        marginHorizontal: 10,
     },
     buttonTextActive: {
-        color: Color.textPrimary,
-        fontWeight: 'bold',
+        color: Color.tabHeaderTextActive,
     },
     buttonTextInactive: {
-        color: Color.textPrimary,
+        color: Color.tabHeaderTextInactive,
     },
 });
 
