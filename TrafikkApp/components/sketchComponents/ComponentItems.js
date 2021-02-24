@@ -1,14 +1,9 @@
-import React from 'react';
-import {
-    View,
-    Image,
-    StyleSheet,
-    TouchableOpacity,
-    ScrollView,
-} from 'react-native';
+import React, { useState } from 'react';
+import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Color from '../../styles/Colors';
-
 import objectPaths from '../draggable/draggableObjectPaths';
+
+import Carousel from '../Carousel';
 
 const ComponentItems = React.memo(({ onNewDraggable }) => {
     const objects = Object.keys(objectPaths);
@@ -35,23 +30,19 @@ const ComponentItems = React.memo(({ onNewDraggable }) => {
     });
 
     return (
-        // <ScrollView horizontal={true} persistentScrollbar={true}>
-        <View style={styles.container}>{images}</View>
-        // </ScrollView>
+        <View>
+            <Carousel objectArray={objects}>
+                {images}
+                {images}
+            </Carousel>
+        </View>
     );
 });
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'row',
-        padding: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-    },
     imageContainer: {
-        margin: 10,
+        marginVertical: 5,
+        marginHorizontal: 10,
         padding: 5,
         // borderRadius: 250,
         // borderWidth: 2,
@@ -59,11 +50,18 @@ const styles = StyleSheet.create({
         // backgroundColor: Color.borderColor,
     },
     imageButton: {
-        padding: 5,
+        paddingHorizontal: 5,
     },
     icon: {
         height: 40,
         width: 40,
+    },
+    bullets: {
+        flexDirection: 'row',
+    },
+    bullet: {
+        paddingHorizontal: 10,
+        fontSize: 25,
     },
 });
 
