@@ -3,43 +3,42 @@ import { View, StyleSheet, ScrollView, Text } from 'react-native';
 import Color from '../styles/Colors';
 
 const Carousel = (props) => {
-    const itemsPerInterval = 9;
+    const itemsPerSlide = props.itemsPerSlide;
 
-    const [intervals, setIntervals] = useState(1);
-    const [interval, setInterval] = useState(1);
+    const [numberOfSlides, setNumberOfSlides] = useState(1);
+    const [activeSlide, setActiveSlide] = useState(1);
     const [width, setWidth] = useState(0);
 
-    const init = (width) => {
-        // initialise width
+    const getCarouselLayout = (width) => {
+        // Initialise width of carousel
         setWidth(width);
 
-        // initialise total intervals
-        const totalItems = props.objectArray.length * 2;
-        setIntervals(Math.ceil(totalItems / itemsPerInterval));
+        // Initialise total number of slides
+        const totalItems = props.objectArray.length * 2; // * 2 for testing
+        setNumberOfSlides(Math.ceil(totalItems / itemsPerSlide));
     };
 
-    const getInterval = (offset) => {
-        for (let i = 1; i <= intervals; i++) {
-            if (offset * 2 < (width / intervals) * i) {
+    const getActiveSlide = (offset) => {
+        for (let i = 1; i <= numberOfSlides; i++) {
+            if (offset * 2 < (width / numberOfSlides) * i) {
                 return i;
             }
-            if (i == intervals) {
+            if (i == numberOfSlides) {
                 return i;
             }
         }
     };
 
-    // BULLETPOINTS
+    // x bulletpoints for x number of slides
     let bullets = [];
-    for (let i = 1; i <= intervals; i++) {
+    for (let i = 1; i <= numberOfSlides; i++) {
         bullets.push(
             <Text
                 key={i}
-                style={{
-                    paddingHorizontal: 10,
-                    fontSize: 25,
-                    opacity: interval === i ? 0.5 : 0.1,
-                }}>
+                style={[
+                    styles.bullet,
+                    { opacity: activeSlide === i ? 0.6 : 0.2 },
+                ]}>
                 &bull;
             </Text>
         );
@@ -51,17 +50,19 @@ const Carousel = (props) => {
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 decelerationRate="fast"
-                // contentContainerStyle={{ width: `${100 * intervals}%` }}
+                contentContainerStyle={{ width: `${100 * numberOfSlides}%` }}
                 pagingEnabled
-                onContentSizeChange={(w, h) => init(w)}
-                style={styles.scrollView}
+                onContentSizeChange={(w, h) => getCarouselLayout(w)}
+                style={styles.carousel}
                 onScroll={(data) => {
-                    setInterval(getInterval(data.nativeEvent.contentOffset.x));
+                    setActiveSlide(
+                        getActiveSlide(data.nativeEvent.contentOffset.x)
+                    );
                 }}
                 scrollEventThrottle={200}>
                 {props.children}
             </ScrollView>
-            <View style={styles.bullets}>{bullets}</View>
+            <View style={styles.bulletContainer}>{bullets}</View>
         </View>
     );
 };
@@ -72,16 +73,16 @@ const styles = StyleSheet.create({
         paddingTop: 5,
         alignItems: 'center',
     },
-    scrollView: {
+    carousel: {
         paddingHorizontal: 10,
         flexDirection: 'row',
     },
-    bullets: {
+    bulletContainer: {
         flexDirection: 'row',
     },
     bullet: {
         paddingHorizontal: 10,
-        fontSize: 25,
+        fontSize: 30,
     },
 });
 

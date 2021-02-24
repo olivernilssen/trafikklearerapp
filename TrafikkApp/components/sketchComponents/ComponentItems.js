@@ -21,7 +21,7 @@ const ComponentItems = React.memo(({ onNewDraggable }) => {
                     onPress={() => onElementPress(source)}>
                     <Image
                         source={objectPaths[source]}
-                        style={styles.icon}
+                        style={styles.image}
                         resizeMode={'contain'}
                     />
                 </TouchableOpacity>
@@ -30,20 +30,17 @@ const ComponentItems = React.memo(({ onNewDraggable }) => {
     });
 
     return (
-        <View>
-            <Carousel objectArray={objects}>
-                {images}
-                {images}
-            </Carousel>
-        </View>
+        <Carousel objectArray={objects} itemsPerSlide={9}>
+            {images}
+            {images}
+        </Carousel>
     );
 });
 
 const styles = StyleSheet.create({
     imageContainer: {
-        marginVertical: 5,
+        marginTop: 10,
         marginHorizontal: 10,
-        padding: 5,
         // borderRadius: 250,
         // borderWidth: 2,
         // borderColor: Color.borderColor,
@@ -52,7 +49,7 @@ const styles = StyleSheet.create({
     imageButton: {
         paddingHorizontal: 5,
     },
-    icon: {
+    image: {
         height: 40,
         width: 40,
     },
