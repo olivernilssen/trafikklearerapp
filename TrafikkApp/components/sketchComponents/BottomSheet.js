@@ -6,6 +6,7 @@ import { View, TabBar } from 'react-native-ui-lib';
 import BottomSheetTabs from './BottomSheetTabs';
 
 import Color from '../../styles/Colors';
+import { useCallback } from 'react';
 
 const BottomSheet = React.memo((props) => {
     const {
@@ -31,7 +32,7 @@ const BottomSheet = React.memo((props) => {
     }, [bottomSheetHidden]);
 
     // Show or hide the bottom sheet depending on hight and if it is showing or not
-    const toggleSubview = () => {
+    const toggleSubview = useCallback(() => {
         setHiddenViewButton(bottomSheetHidden ? 'ellipsis-h' : 'chevron-down');
         var toValue = bottomSheetHeight;
 
@@ -46,11 +47,11 @@ const BottomSheet = React.memo((props) => {
             tension: 2,
             friction: 8,
         }).start();
-    };
+    }, [bottomSheetHidden]);
 
-    const onHiddenViewChange = () => {
+    const onHiddenViewChange = useCallback(() => {
         setBottomSheetHidden(!bottomSheetHidden);
-    };
+    });
 
     // Get the high of the view which is hidden
     const getBottomSheetLayout = (layout) => {
@@ -58,12 +59,12 @@ const BottomSheet = React.memo((props) => {
         setBottomSheetHeight(height);
     };
 
-    const tabPressed = (roadIndex) => {
+    const tabPressed = useCallback((roadIndex) => {
         setSelectedRoad(roadIndex);
         setRoadTypes(imgSource[labelsArray[roadIndex]]);
-    };
+    });
 
-    const onImageSelect = (key) => {
+    const onImageSelect = useCallback((key) => {
         //get img from imgSource
         const img = roadTypes[key];
 
@@ -73,7 +74,7 @@ const BottomSheet = React.memo((props) => {
         //send to parent
         onImageChange(img);
         onHiddenViewChange(!bottomSheetHidden);
-    };
+    });
 
     return (
         <Animated.View

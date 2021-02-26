@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useRef, useState, useEffect, forwardRef } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import {
     View,
     StyleSheet,
@@ -34,7 +34,7 @@ const SketchArea = React.memo((props) => {
     const sketchRef = useRef();
     const [currPencilColor, setPencilColor] = useState('#20303C');
     const [prevPencilColor, setPrevPencilColor] = useState('');
-    const [currPencilSize, setPencilSize] = useState(10);
+    const [currPencilSize, setPencilSize] = useState(5);
     const [currentImg, setImage] = useState(InitialImageSrc);
     const [topMenuHidden, setTopMenuHidden] = useState(true);
     const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
@@ -52,17 +52,21 @@ const SketchArea = React.memo((props) => {
         setPencilColor(color);
     };
 
-    const onSwitchPencilColor = () => {
+    const onSwitchPencilColor = useCallback(() => {
         if (currPencilColor === '#00000000') {
             setPencilColor(prevPencilColor);
-        } else setPencilColor(currPencilColor);
-    };
+            setPencilSize(5);
+        } else {
+            setPencilColor(currPencilColor);
+            setPencilSize(5);
+        }
+    }, [currPencilColor]);
 
     const onChangePencilSize = (newPencilSize) => {
         setPencilSize(newPencilSize);
     };
 
-    const undoChange = () => {
+    const undoChange = useCallback(() => {
         if (actionList.length == 0) return;
 
         const copyList = [...actionList];
@@ -77,30 +81,32 @@ const SketchArea = React.memo((props) => {
         }
 
         setActionList(copyList);
-    };
+    }, [actionList]);
 
-    const onStrokeEnd = () => {
+    const onStrokeEnd = useCallback(() => {
         setActionList([...actionList, { type: 'stroke' }]);
-    };
+    });
 
-    const clearCanvas = () => {
+    const clearCanvas = useCallback(() => {
         sketchRef.current.clear();
         setDraggables([]);
-    };
+    });
 
-    const eraser = () => {
+    const eraser = useCallback(() => {
         if (currPencilColor != '#00000000') {
             setPrevPencilColor(currPencilColor);
             setPencilColor('#00000000');
+            setPencilSize(80);
         } else {
             currPencilColor;
+            setPencilSize(5);
         }
-    };
+    }, [currPencilColor]);
 
-    const onStrokeStart = () => {
+    const onStrokeStart = useCallback(() => {
         if (bottomSheetHidden == false)
             setBottomSheetHidden(!bottomSheetHidden);
-    };
+    }, [bottomSheetHidden]);
 
     const toggleMenu = () => {
         setTopMenuHidden(!topMenuHidden);
