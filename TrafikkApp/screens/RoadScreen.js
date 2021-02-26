@@ -14,33 +14,33 @@ import Header from '../components/Header';
 import imgSource from '../components/sketchComponents/illustrationsPath';
 
 const RoadScreen = React.memo(({ navigation }) => {
-    const labelsArray = [];
+    const roadTypeNames = [];
     const roadTypes = imgSource['Veikryss'];
     const kryssUtforming = ['X', 'T', 'Y'];
 
     // Get all the keys from our imgSource (høyre, lys etc for labels)
     const keys = Object.keys(roadTypes);
     keys.map((keys) => {
-        labelsArray.push(keys);
+        roadTypeNames.push(keys);
     });
 
     // Initial image is Høyrekryss with X-utforming
-    const initialImageSrcName = Object.keys(roadTypes[labelsArray[0]])[0];
+    const initialImageSrcName = Object.keys(roadTypes[roadTypeNames[0]])[0];
 
     const [backroundImage, setBackroundImage] = useState(
-        roadTypes[labelsArray[0]][initialImageSrcName]
+        roadTypes[roadTypeNames[0]][initialImageSrcName]
     );
 
     const [selectedRadioBtn, setSelectedRadioBtn] = useState(0);
-    const [selectedRoad, setSelectedRoad] = useState(labelsArray[0]);
+    const [selectedRoad, setSelectedRoad] = useState(roadTypeNames[0]);
 
     // When clicking the main buttons (høyrekryss, forkjørs, lys), the image should change
     const onRoadPress = (roadPressed) => {
-        setSelectedRoad(labelsArray[roadPressed]);
+        setSelectedRoad(roadTypeNames[roadPressed]);
 
         setBackroundImage(
-            roadTypes[labelsArray[roadPressed]][
-                Object.keys(roadTypes[labelsArray[roadPressed]])[
+            roadTypes[roadTypeNames[roadPressed]][
+                Object.keys(roadTypes[roadTypeNames[roadPressed]])[
                     selectedRadioBtn
                 ]
             ]
@@ -75,8 +75,8 @@ const RoadScreen = React.memo(({ navigation }) => {
                 <View style={{ flex: 2 }}></View>
                 <View style={styles.btnAndRadios}>
                     {/* START * The main buttons (Høyrekryss, forkjørs, lys) */}
-                    {labelsArray.map((label, i) => {
-                        const activeBtn = selectedRoad == labelsArray[i];
+                    {roadTypeNames.map((label, i) => {
+                        const activeBtn = selectedRoad == roadTypeNames[i];
                         return (
                             <TouchableOpacity
                                 key={i}
