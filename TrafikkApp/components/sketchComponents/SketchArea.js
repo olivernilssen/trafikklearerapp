@@ -79,6 +79,10 @@ const SketchArea = React.memo((props) => {
         setActionList(copyList);
     };
 
+    const onStrokeEnd = () => {
+        setActionList([...actionList, { type: 'stroke' }]);
+    };
+
     const clearCanvas = () => {
         sketchRef.current.clear();
         setDraggables([]);
@@ -96,8 +100,6 @@ const SketchArea = React.memo((props) => {
     const onStrokeStart = () => {
         if (bottomSheetHidden == false)
             setBottomSheetHidden(!bottomSheetHidden);
-
-        setActionList([...actionList, { type: 'stroke' }]);
     };
 
     const toggleMenu = () => {
@@ -125,6 +127,7 @@ const SketchArea = React.memo((props) => {
                     source={currentImg}>
                     <SketchCanvas
                         onStrokeStart={() => onStrokeStart()}
+                        onStrokeEnd={() => onStrokeEnd()}
                         ref={sketchRef}
                         style={styles.sketchCanvas}
                         strokeColor={currPencilColor}
