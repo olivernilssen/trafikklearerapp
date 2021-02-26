@@ -3,19 +3,15 @@ import {
     StyleSheet,
     View,
     Text,
-    Button,
     TouchableOpacity,
     ImageBackground,
 } from 'react-native';
+import { RadioGroup, RadioButton } from 'react-native-ui-lib';
 
 import MainView from '../components/MainView';
 import Color from '../styles/Colors';
-
 import Header from '../components/Header';
-
 import imgSource from '../components/sketchComponents/illustrationsPath';
-
-import { RadioGroup, RadioButton } from 'react-native-ui-lib';
 
 const RoadScreen = React.memo(({ navigation }) => {
     const labelsArray = [];
@@ -76,8 +72,9 @@ const RoadScreen = React.memo(({ navigation }) => {
                 resizeMode={'cover'}
                 style={styles.img}
                 source={backroundImage}>
+                <View style={{ flex: 2 }}></View>
                 <View style={styles.btnAndRadios}>
-                    {/* The main buttons (Høyrekryss, forkjørs, lys) */}
+                    {/* START * The main buttons (Høyrekryss, forkjørs, lys) */}
                     {labelsArray.map((label, i) => {
                         const activeBtn = selectedRoad == labelsArray[i];
                         return (
@@ -89,7 +86,6 @@ const RoadScreen = React.memo(({ navigation }) => {
                                         ? {
                                               backgroundColor:
                                                   Color.buttonSecActive,
-                                              elevation: 10,
                                           }
                                         : {
                                               backgroundColor:
@@ -115,9 +111,9 @@ const RoadScreen = React.memo(({ navigation }) => {
                             </TouchableOpacity>
                         );
                     })}
-                    {/* The main buttons (Høyrekryss, forkjørs, lys) */}
+                    {/* END * The main buttons (Høyrekryss, forkjørs, lys) */}
 
-                    {/* The radio buttons (X, T, Y) */}
+                    {/* START * The radio buttons (X, T, Y) */}
                     <View style={styles.radioGroup}>
                         <RadioGroup
                             initialValue={selectedRadioBtn}
@@ -130,14 +126,14 @@ const RoadScreen = React.memo(({ navigation }) => {
                                         value={i}
                                         size={25}
                                         labelStyle={{ fontSize: 20 }}
-                                        style={{ margin: 5 }}
+                                        style={styles.radioBtn}
                                         color={Color.buttonSecActive}
                                     />
                                 );
                             })}
                         </RadioGroup>
                     </View>
-                    {/* The radio buttons (X, T, Y) */}
+                    {/* END * The radio buttons (X, T, Y) */}
                 </View>
             </ImageBackground>
         </MainView>
@@ -153,6 +149,8 @@ const styles = StyleSheet.create({
     btnAndRadios: {
         flexDirection: 'row',
         padding: 20,
+        justifyContent: 'center',
+        backgroundColor: 'white',
     },
     buttonContainer: {
         backgroundColor: 'white',
@@ -161,14 +159,20 @@ const styles = StyleSheet.create({
         borderColor: 'transparent',
         borderRadius: 20,
         marginRight: 5,
+        marginHorizontal: 15,
         justifyContent: 'center',
-        // elevation: 5,
+        elevation: 3,
     },
     buttonText: {
         fontSize: 20,
     },
     radioGroup: {
         alignContent: 'center',
+        marginLeft: 30,
+    },
+    radioBtn: {
+        margin: 5,
+        backgroundColor: 'white',
     },
 });
 
