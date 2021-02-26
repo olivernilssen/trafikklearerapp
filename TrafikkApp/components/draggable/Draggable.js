@@ -23,6 +23,7 @@ const colors = [
 ];
 
 import Gestures from 'react-native-easy-gestures';
+import { useCallback } from 'react';
 
 const ITEM_SIZE = 100;
 const radius = (ITEM_SIZE * 2) / 2;
@@ -84,10 +85,10 @@ const Draggable = React.memo((props) => {
 
     //Helper function so we can run to functions
     //after animation over trashcan has ended
-    const removeItem = () => {
+    const removeItem = useCallback(() => {
         props.onRemoveItem(props.id);
         props.onTrashHover(false);
-    };
+    });
 
     const isDropArea = (gesture) => {
         var dz = dropZoneValues;
