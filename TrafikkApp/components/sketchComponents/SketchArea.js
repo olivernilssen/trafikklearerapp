@@ -30,7 +30,7 @@ const SketchArea = (props) => {
     const bottomSheetRef = useRef();
     const [currPencilColor, setPencilColor] = useState('#20303C');
     const [prevPencilColor, setPrevPencilColor] = useState('');
-    const [currPencilSize, setPencilSize] = useState(10);
+    const [currPencilSize, setPencilSize] = useState(5);
     const [currentImg, setImage] = useState(InitialImageSrc);
     const [topMenuHidden, setTopMenuHidden] = useState(true);
 
@@ -46,6 +46,7 @@ const SketchArea = (props) => {
     const onSwitchPencilColor = () => {
         if (currPencilColor === '#00000000') {
             setPencilColor(prevPencilColor);
+            setPencilSize(5);
         } else setPencilColor(currPencilColor);
     };
 
@@ -65,8 +66,10 @@ const SketchArea = (props) => {
         if (currPencilColor != '#00000000') {
             setPrevPencilColor(currPencilColor);
             setPencilColor('#00000000');
+            setPencilSize(80);
         } else {
             currPencilColor;
+            setPencilSize(5);
         }
     };
 

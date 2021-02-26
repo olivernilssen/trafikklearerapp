@@ -39,7 +39,11 @@ const StartScreen = ({ navigation }) => {
                 <RView
                     style$ptr={screenStyles.containerPtr}
                     style$lnd={screenStyles.containerLnd}>
-                    <StartScreenLink name="question" text="tba" />
+                    <StartScreenLink
+                        name="map-signs"
+                        text="Skilt"
+                        onPress={() => navigation.navigate('RoadSignScreen')}
+                    />
                     <StartScreenLink name="question" text="tba" />
                     <StartScreenLink name="question" text="tba" />
                 </RView>
