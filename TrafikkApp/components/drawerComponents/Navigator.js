@@ -8,7 +8,6 @@ import SettingsScreen from '../../screens/SettingsScreen';
 import IntersectionScreen from '../../screens/IntersectionScreen';
 import RoundaboutScreen from '../../screens/RoundaboutScreen';
 import RoadScreen from '../../screens/RoadScreen';
-import RoadSignScreen from '../../screens/RoadSignScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -61,23 +60,13 @@ const Navigator = () => {
                 }}
             />
             <Drawer.Screen
-                name="RoadSignScreen"
-                component={RoadSignScreen}
-                initialParams={{
-                    title: 'Skilt',
-                    icon: 'map-signs',
-                    screenName: 'RoadSignScreen',
-                    value: 4,
-                }}
-            />
-            <Drawer.Screen
                 name="SettingsScreen"
                 component={SettingsScreen}
                 initialParams={{
                     title: 'Innstillinger',
                     icon: 'sliders',
                     screenName: 'SettingsScreen',
-                    value: 5,
+                    value: 4,
                 }}
             />
         </Drawer.Navigator>
