@@ -126,12 +126,10 @@ export default class Draggable extends Component {
     }
 
     onTintChange(newColor) {
-        console.log('Tint color should change');
         this.setState({ tintColor: newColor, colorMenuActive: false });
     }
 
     onLongPress() {
-        console.log('Longpress method started');
         this.setState({ colorMenuActive: true });
     }
 

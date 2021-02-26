@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, View } from 'react-native-ui-lib';
 import { IconButtons } from '../buttons/headerButtons';
 
-const SketchHeaderButton = (props) => {
+const SketchHeaderButton = React.memo((props) => {
     const [isActive, setActive] = useState(0);
     const [prevActive, setPrevActive] = useState(0);
 
@@ -102,7 +102,7 @@ const SketchHeaderButton = (props) => {
             <ComponentButton />
         </View>
     );
-};
+});
 
 const styles = StyleSheet.create({
     buttonSize: {
@@ -117,8 +117,7 @@ const styles = StyleSheet.create({
     },
     buttonActive: {
         // backgroundColor: 'yellow',
-        // flex: 1,
-        color: Color.iconPrimary,
+        color: Color.iconActive,
         fontSize: 30,
         backgroundColor: Color.tabButtonActive,
         borderRightWidth: 1,

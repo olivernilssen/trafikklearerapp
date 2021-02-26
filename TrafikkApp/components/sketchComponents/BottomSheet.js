@@ -3,12 +3,22 @@ import { StyleSheet, Animated, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { View, TabBar } from 'react-native-ui-lib';
 
-import Color from '../../styles/Colors';
+import BottomSheetTabs from './BottomSheetTabs';
 
-const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
+import Color from '../../styles/Colors';
+import { useCallback } from 'react';
+
+const BottomSheet = React.memo((props) => {
+    const {
+        onImageChange,
+        labelsArray,
+        imgSource,
+        bottomSheetHidden,
+        setBottomSheetHidden,
+    } = props;
+
     const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
     const [hiddenViewButton, setHiddenViewButton] = useState('chevron-down');
-    const [hiddenView, setHiddenView] = useState(true);
     const [bottomSheetHeight, setBottomSheetHeight] = useState(0);
     const [selectedRoad, setSelectedRoad] = useState(labelsArray[0]);
     const [roadTypes, setRoadTypes] = useState(imgSource[labelsArray[0]]);
@@ -19,14 +29,14 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
 
     useEffect(() => {
         toggleSubview();
-    }, [hiddenView]);
+    }, [bottomSheetHidden]);
 
     // Show or hide the bottom sheet depending on hight and if it is showing or not
-    const toggleSubview = () => {
-        setHiddenViewButton(!hiddenView ? 'ellipsis-h' : 'chevron-down');
+    const toggleSubview = useCallback(() => {
+        setHiddenViewButton(bottomSheetHidden ? 'ellipsis-h' : 'chevron-down');
         var toValue = bottomSheetHeight;
 
-        if (hiddenView) {
+        if (!bottomSheetHidden) {
             toValue = 0;
         }
 
@@ -37,11 +47,11 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
             tension: 2,
             friction: 8,
         }).start();
-    };
+    }, [bottomSheetHidden]);
 
-    const onHiddenViewChange = () => {
-        setHiddenView(!hiddenView);
-    };
+    const onHiddenViewChange = useCallback(() => {
+        setBottomSheetHidden(!bottomSheetHidden);
+    });
 
     // Get the high of the view which is hidden
     const getBottomSheetLayout = (layout) => {
@@ -49,12 +59,12 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
         setBottomSheetHeight(height);
     };
 
-    const tabPressed = (roadIndex) => {
+    const tabPressed = useCallback((roadIndex) => {
         setSelectedRoad(roadIndex);
         setRoadTypes(imgSource[labelsArray[roadIndex]]);
-    };
+    });
 
-    const onImageSelect = (key) => {
+    const onImageSelect = useCallback((key) => {
         //get img from imgSource
         const img = roadTypes[key];
 
@@ -63,41 +73,8 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
 
         //send to parent
         onImageChange(img);
-        toggleSubview();
-    };
-
-    const bottomTabRender = (roadType) => {
-        const keys = Object.keys(roadTypes);
-
-        return (
-            <View style={styles.tabView}>
-                {keys.map((key, i) => {
-                    const isOnTabAndKey =
-                        selectedRoadType[0] == key &&
-                        selectedRoadType[1] == roadType;
-                    return (
-                        <TouchableOpacity
-                            key={i}
-                            style={
-                                isOnTabAndKey
-                                    ? styles.activeButton
-                                    : styles.inActiveButton
-                            }
-                            onPress={() => onImageSelect(key)}>
-                            <Text
-                                style={
-                                    isOnTabAndKey
-                                        ? styles.buttonTextActive
-                                        : styles.buttonTextInactive
-                                }>
-                                {key.toString()}
-                            </Text>
-                        </TouchableOpacity>
-                    );
-                })}
-            </View>
-        );
-    };
+        onHiddenViewChange(!bottomSheetHidden);
+    });
 
     return (
         <Animated.View
@@ -120,9 +97,12 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
                 style={styles.bottomContainer}>
                 <TabBar
                     style={styles.tabBar}
+                    backgroundColor={Color.tabHeaderInactiveBg}
                     selectedIndex={0}
                     indicatorStyle={{
                         backgroundColor: Color.tabHeaderIndicator,
+                        width: '70%',
+                        alignSelf: 'center',
                     }}>
                     {labelsArray.map((label, i) => {
                         const activeTab = selectedRoad == i;
@@ -142,11 +122,16 @@ const BottomSheet = ({ onImageChange, labelsArray, imgSource }) => {
                         );
                     })}
                 </TabBar>
-                {bottomTabRender(selectedRoad)}
+                <BottomSheetTabs
+                    roadTypes={roadTypes}
+                    onImageSelect={onImageSelect}
+                    selectedRoadType={selectedRoadType}
+                    selectedRoad={selectedRoad}
+                />
             </View>
         </Animated.View>
     );
-};
+});
 
 var styles = StyleSheet.create({
     subView: {
@@ -159,58 +144,30 @@ var styles = StyleSheet.create({
     },
     button: {
         paddingBottom: 10,
-        // paddingHorizontal: 20,
     },
     bottomContainer: {
         backgroundColor: Color.bottomDrawerBg,
-        padding: 10,
+        paddingBottom: 10,
         alignItems: 'center',
-        borderTopWidth: 1,
-        borderTopColor: Color.borderColor,
+        elevation: 20,
     },
-    tabBar: {
-        borderBottomWidth: 2,
-        borderBottomColor: Color.borderColor,
-        // marginBottom: 5,
-    },
+    tabBar: {},
     tabHeaderActive: {
         backgroundColor: Color.tabHeaderActiveBg,
+        borderWidth: 1,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        borderColor: Color.tabHeaderActiveBg,
     },
     tabHeaderInactive: {
         backgroundColor: Color.tabHeaderInactiveBg,
     },
     tabHeaderTextActive: {
-        color: Color.tabHeaderTextActive,
-        fontWeight: 'bold',
+        color: Color.textPrimary,
         fontSize: 16,
     },
     tabHeaderTextInactive: {
         color: Color.tabHeaderTextInactive,
-    },
-    tabView: {
-        width: '100%',
-        alignItems: 'center',
-        flexDirection: 'row',
-    },
-    activeButton: {
-        backgroundColor: Color.tabButtonActive,
-        borderRightWidth: 1,
-        borderLeftWidth: 1,
-        borderColor: Color.tabButtonBorder,
-        padding: 10,
-    },
-    inActiveButton: {
-        borderRightWidth: 1,
-        borderLeftWidth: 1,
-        borderColor: Color.tabButtonBorder,
-        padding: 10,
-    },
-    buttonTextActive: {
-        color: Color.textPrimary,
-        fontWeight: 'bold',
-    },
-    buttonTextInactive: {
-        color: Color.textPrimary,
     },
 });
 

@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
-// import { TouchableOpacity } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import Color from '../../styles/Colors';
-
 import objectPaths from '../draggable/draggableObjectPaths';
 
-const ComponentItems = (props) => {
+import Carousel from '../Carousel';
+
+const ComponentItems = React.memo(({ onNewDraggable }) => {
     const objects = Object.keys(objectPaths);
 
-    const onImagePress = (img) => {
-        console.log('Clicking on ', img);
+    const onElementPress = (source) => {
+        onNewDraggable(objectPaths[source]);
     };
 
     const images = objects.map((source, i) => {
@@ -18,11 +17,11 @@ const ComponentItems = (props) => {
             <View key={i} style={styles.imageContainer}>
                 <TouchableOpacity
                     style={styles.imageButton}
-                    activeOpacity={0.6}
-                    onPress={() => onImagePress(source)}>
+                    activeOpacity={0.4}
+                    onPress={() => onElementPress(source)}>
                     <Image
                         source={objectPaths[source]}
-                        style={styles.icon}
+                        style={styles.image}
                         resizeMode={'contain'}
                     />
                 </TouchableOpacity>
@@ -30,34 +29,36 @@ const ComponentItems = (props) => {
         );
     });
 
-    return <View style={styles.scrollViewContainer}>{images}</View>;
-};
+    return (
+        <Carousel objectArray={objects} itemsPerSlide={9}>
+            {images}
+            {images}
+        </Carousel>
+    );
+});
 
 const styles = StyleSheet.create({
-    scrollViewContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        margin: 5,
-        marginHorizontal: 40,
-        padding: 5,
-        alignItems: 'center',
-    },
     imageContainer: {
-        borderRadius: 250,
-        borderWidth: 2,
-        borderColor: Color.header,
-        backgroundColor: Color.header,
+        marginTop: 10,
+        marginHorizontal: 10,
+        // borderRadius: 250,
+        // borderWidth: 2,
+        // borderColor: Color.borderColor,
+        // backgroundColor: Color.borderColor,
     },
     imageButton: {
-        padding: 5,
-        zIndex: 99999,
-        zIndex: 99999,
+        paddingHorizontal: 5,
     },
-
-    icon: {
-        height: 30,
-        width: 30,
+    image: {
+        height: 40,
+        width: 40,
+    },
+    bullets: {
+        flexDirection: 'row',
+    },
+    bullet: {
+        paddingHorizontal: 10,
+        fontSize: 25,
     },
 });
 

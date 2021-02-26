@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import MainView from '../components/MainView';
 import SketchArea from '../components/sketchComponents/SketchArea';
 
-const RoundaboutScreen = ({ navigation }) => {
+const RoundaboutScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
             <View style={styles.sketchArea}>
@@ -12,7 +12,7 @@ const RoundaboutScreen = ({ navigation }) => {
             </View>
         </MainView>
     );
-};
+});
 
 const styles = StyleSheet.create({
     sketchArea: {

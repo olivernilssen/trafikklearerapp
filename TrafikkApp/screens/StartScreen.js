@@ -7,7 +7,7 @@ import Header from '../components/Header.js';
 import StartScreenLink from '../components/StartScreenLink.js';
 import Color from '../styles/Colors';
 
-const StartScreen = ({ navigation }) => {
+const StartScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
             <Header name="Hjem" navigation={navigation} />
@@ -50,7 +50,7 @@ const StartScreen = ({ navigation }) => {
             </RView>
         </MainView>
     );
-};
+});
 
 const screenStyles = StyleSheet.create({
     mainPtr: {

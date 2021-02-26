@@ -14,6 +14,7 @@ const deepChampagne = '#f2cc8f'; // Secondary light color
 
 const white = '#ffffff';
 const lightGrey = '#ECECEC';
+const independenceTint = '#8b8c9d';
 
 export default {
     background: white,
@@ -42,26 +43,29 @@ export default {
     // LINKS
     iconPrimary: independence,
     iconSecondary: '',
-    iconActive: eggShell,
+    iconActive: terraCotta,
 
     // BOTTOMSHEET (in SketchArea)
     bottomDrawerBg: white,
     borderColor: lightGrey,
 
-    tabHeaderInactiveBg: white,
+    tabHeaderInactiveBg: lightGrey,
     tabHeaderActiveBg: white,
     tabHeaderIndicator: terraCotta,
 
-    tabHeaderTextInactive: independence,
-    tabHeaderTextActive: independence,
+    tabHeaderTextInactive: independenceTint,
+    tabHeaderTextActive: terraCotta,
 
-    tabViewBg: terraCotta,
+    tabViewBg: white,
     tabViewBorder: eggShellGrey,
 
-    tabButtonActive: lightGrey,
+    tabButtonActive: terraCotta,
     tabButtonBorder: eggShellGrey,
 
     // labelText: independence,
-
     linkDivider: eggShellGrey,
+
+    //DRAGGABLE
+
+    //BOTTOMSHEET
 };

@@ -7,7 +7,7 @@ import {
     TouchableWithoutFeedback,
 } from 'react-native';
 
-import Popout from './Popout';
+import Popout from './Popout/Popout';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -18,23 +18,23 @@ const colors = [
     '#9e2a2b',
     '#284b63',
     '#3a5a40',
+    'reset',
     '#DDDDDD',
 ];
 
 import Gestures from 'react-native-easy-gestures';
+import { useCallback } from 'react';
 
 const ITEM_SIZE = 100;
 const radius = (ITEM_SIZE * 2) / 2;
 const buttonSize = 25;
 
-const Draggable = (props) => {
+const Draggable = React.memo((props) => {
     //States
     const { source, dropZoneValues } = props;
     const [imgScale, setimgScale] = useState(new Animated.Value(1));
     const [isScaling, setIsScaling] = useState(false);
-    const [tintColor, setTintColor] = useState(
-        props.tintColor == null ? null : props.tintColor
-    );
+    const [tintColor, setTintColor] = useState(props.tintColor);
     const [popoutActive, setPopoutActive] = useState(false);
     // const [popoutScaling, setPopoutScaling] = useState(new Animated.Value(1));
 
@@ -85,19 +85,18 @@ const Draggable = (props) => {
 
     //Helper function so we can run to functions
     //after animation over trashcan has ended
-    const removeItem = () => {
-        props.removeItem(props.id);
+    const removeItem = useCallback(() => {
+        props.onRemoveItem(props.id);
         props.onTrashHover(false);
-    };
+    });
 
     const isDropArea = (gesture) => {
         var dz = dropZoneValues;
 
         var isInZone =
-            gesture.nativeEvent.pageX > dz.x &&
-            gesture.nativeEvent.pageX < dz.x + dz.height &&
-            gesture.nativeEvent.pageY > dz.y &&
-            gesture.nativeEvent.pageY < dz.y + dz.height;
+            gesture.nativeEvent.pageX >= dz.x &&
+            gesture.nativeEvent.pageX <= dz.x + dz.height &&
+            gesture.nativeEvent.pageY >= dz.y;
 
         return isInZone;
     };
@@ -121,7 +120,9 @@ const Draggable = (props) => {
                         resizeMode={'contain'}
                         style={[
                             styles.item,
-                            tintColor == null ? null : { tintColor: tintColor },
+                            tintColor === null
+                                ? null
+                                : { tintColor: tintColor },
                             {
                                 transform: [{ scale: imgScale }],
                             },
@@ -142,10 +143,14 @@ const Draggable = (props) => {
             </View>
         </Gestures>
     );
-};
+});
 
 const styles = StyleSheet.create({
     item: {
+        width: '100%',
+        height: '100%',
+    },
+    itemNoTint: {
         width: '100%',
         height: '100%',
     },
