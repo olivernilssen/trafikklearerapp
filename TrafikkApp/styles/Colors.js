@@ -46,7 +46,7 @@ export default {
     iconActive: terraCotta,
 
     // BOTTOMSHEET (in SketchArea)
-    bottomDrawerBg: lightGrey,
+    bottomDrawerBg: white,
     borderColor: lightGrey,
 
     tabHeaderInactiveBg: lightGrey,
