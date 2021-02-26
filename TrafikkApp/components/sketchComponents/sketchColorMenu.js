@@ -12,8 +12,6 @@ import {
 
 const { Popover } = renderers;
 
-import Color from '../../styles/Colors';
-
 const SketchColorMenu = React.memo((props) => {
     const [currentColorSetup, setCurrentColorSetup] = useState({
         color: INITIAL_COLOR,

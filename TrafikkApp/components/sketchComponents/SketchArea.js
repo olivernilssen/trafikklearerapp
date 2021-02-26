@@ -56,7 +56,10 @@ const SketchArea = React.memo((props) => {
         if (currPencilColor === '#00000000') {
             setPencilColor(prevPencilColor);
             setPencilSize(5);
-        } else setPencilColor(currPencilColor);
+        } else {
+            setPencilColor(currPencilColor);
+            setPencilSize(5);
+        }
     }, [currPencilColor]);
 
     const onChangePencilSize = (newPencilSize) => {

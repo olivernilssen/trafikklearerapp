@@ -98,7 +98,7 @@ const SketchHeaderButton = React.memo((props) => {
     return (
         <View style={styles.spacedRight}>
             {iconButtons}
-            <IconButtons />
+            {/* <IconButtons /> */}
             <ComponentButton />
         </View>
     );
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     },
     buttonActive: {
         // backgroundColor: 'yellow',
-        color: Color.iconActive,
+        color: 'white',
         fontSize: 30,
         backgroundColor: Color.tabButtonActive,
         borderRightWidth: 1,
