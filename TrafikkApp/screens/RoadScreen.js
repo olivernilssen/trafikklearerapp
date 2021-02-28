@@ -72,7 +72,7 @@ const RoadScreen = React.memo(({ navigation }) => {
                 resizeMode={'cover'}
                 style={styles.img}
                 source={backroundImage}>
-                <View style={{ flex: 2 }}></View>
+                <View style={{ flex: 2 }} />
                 <View style={styles.btnAndRadios}>
                     {/* START * The main buttons (Høyrekryss, forkjørs, lys) */}
                     {roadTypeNames.map((label, i) => {
