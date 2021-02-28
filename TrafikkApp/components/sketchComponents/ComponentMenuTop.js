@@ -1,63 +1,97 @@
 import React, { useState, useEffect } from 'react';
 import { useCallback } from 'react';
 import { StyleSheet, View, Animated } from 'react-native';
+import { RadioGroup, RadioButton } from 'react-native-ui-lib';
+
 import Color from '../../styles/Colors';
 import ComponentItems from './ComponentItems';
 
-const ComponentMenuTop = React.memo(({ topMenuHidden, onNewDraggable }) => {
-    const [yPosHidden, setYPosHidden] = useState(-100);
-    const [bounceValue, setBounceValue] = useState(
-        new Animated.Value(yPosHidden)
-    );
+const extensionTypes = ['vanlig', 'gangfelt', 'busslomme', 'pil'];
 
-    useEffect(() => {
-        toggleView();
-    }, [topMenuHidden]);
+const ComponentMenuTop = React.memo(
+    ({ topMenuHidden, onNewDraggable, setExtensionType }) => {
+        const [radioBtn, setRadioBtn] = useState(extensionTypes[0]);
+        const [yPosHidden, setYPosHidden] = useState(-200);
+        const [bounceValue, setBounceValue] = useState(
+            new Animated.Value(yPosHidden)
+        );
 
-    const toggleView = useCallback(() => {
-        var toValue = 0;
+        useEffect(() => {
+            toggleView();
+        }, [topMenuHidden]);
 
-        if (topMenuHidden) {
-            toValue = yPosHidden;
-        }
-        if (!topMenuHidden) {
-            Animated.spring(bounceValue, {
-                toValue: toValue,
-                bounciness: 2,
-                useNativeDriver: true,
-            }).start();
-        } else {
-            Animated.spring(bounceValue, {
-                toValue: toValue,
-                bounciness: 2,
-                useNativeDriver: true,
-            }).start();
-        }
-    });
+        const toggleView = useCallback(() => {
+            var toValue = 0;
 
-    const getTopMenuLayout = (layout) => {
-        const { x, y, width, height } = layout;
-        setYPosHidden(-height);
-    };
+            if (topMenuHidden) {
+                toValue = yPosHidden;
+            }
+            if (!topMenuHidden) {
+                Animated.spring(bounceValue, {
+                    toValue: toValue,
+                    bounciness: 1,
+                    speed: 4,
+                    useNativeDriver: true,
+                }).start();
+            } else {
+                Animated.spring(bounceValue, {
+                    toValue: toValue,
+                    bounciness: 1,
+                    speed: 4,
+                    useNativeDriver: true,
+                }).start();
+            }
+        });
 
-    return (
-        <Animated.View
-            style={[
-                styles.animatedView,
-                {
-                    transform: [{ translateY: bounceValue }],
-                },
-            ]}>
-            <View
-                style={styles.menuContent}
-                onLayout={(event) => {
-                    getTopMenuLayout(event.nativeEvent.layout);
-                }}>
-                <ComponentItems onNewDraggable={onNewDraggable} />
-            </View>
-        </Animated.View>
-    );
-});
+        const getTopMenuLayout = (layout) => {
+            const { x, y, width, height } = layout;
+            setYPosHidden(-height);
+        };
+
+        const radioButtonChange = (value) => {
+            setRadioBtn(value);
+            setExtensionType(value);
+        };
+
+        return (
+            <Animated.View
+                style={[
+                    styles.animatedView,
+                    {
+                        transform: [{ translateY: bounceValue }],
+                    },
+                ]}>
+                <View
+                    style={styles.menuContent}
+                    onLayout={(event) => {
+                        getTopMenuLayout(event.nativeEvent.layout);
+                    }}>
+                    <View style={styles.radioView}>
+                        <RadioGroup
+                            initialValue={radioBtn}
+                            onValueChange={(value) => radioButtonChange(value)}
+                            style={styles.buttonGroup}>
+                            {extensionTypes.map((name, i) => {
+                                return (
+                                    <RadioButton
+                                        key={i}
+                                        label={name}
+                                        value={name}
+                                        size={25}
+                                        labelStyle={{ fontSize: 20 }}
+                                        style={styles.radioBtn}
+                                        color={Color.buttonSecActive}
+                                    />
+                                );
+                            })}
+                        </RadioGroup>
+                    </View>
+                    <ComponentItems onNewDraggable={onNewDraggable} />
+                </View>
+            </Animated.View>
+        );
+    }
+);
 
 const styles = StyleSheet.create({
     animatedView: {
@@ -71,6 +105,7 @@ const styles = StyleSheet.create({
         zIndex: 1,
     },
     menuContent: {
+        flexDirection: 'column',
         backgroundColor: Color.borderColor,
         elevation: 10,
         width: '100%',
@@ -78,6 +113,15 @@ const styles = StyleSheet.create({
         borderTopWidth: 3,
         borderTopColor: Color.borderColor,
     },
+    radioView: {
+        padding: 20,
+    },
+    buttonGroup: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        // padding: 5,
+    },
+    radioBtn: {},
 });
 
 export default ComponentMenuTop;

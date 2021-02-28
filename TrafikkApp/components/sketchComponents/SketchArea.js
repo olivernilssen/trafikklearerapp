@@ -38,6 +38,7 @@ const SketchArea = React.memo((props) => {
     const [draggables, setDraggables] = useState([]);
     const [actionList, setActionList] = useState([]);
     const [deletingItemId, setDeletingItemId] = useState(null);
+    const [extensionType, setExtensionType] = useState('vanlig');
 
     //Clear canvas if new image is loaded
     useEffect(() => {
@@ -144,12 +145,13 @@ const SketchArea = React.memo((props) => {
                         deletingItemId={deletingItemId}
                         setActionList={setActionList}
                         actionList={actionList}
+                        setExtensionType={setExtensionType}
                     />
 
                     <BottomMenuAnimated
                         roadType={props.name}
                         setImage={setImage}
-                        extensionType={'vanlig'}
+                        extensionType={extensionType}
                         bottomSheetHidden={bottomSheetHidden}
                         setBottomSheetHidden={setBottomSheetHidden}
                     />

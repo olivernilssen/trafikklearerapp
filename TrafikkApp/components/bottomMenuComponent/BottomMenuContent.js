@@ -45,6 +45,17 @@ const BottomMenuContent = React.memo(
             }
         }, []);
 
+        useEffect(() => {
+            if (roadType == 'Veikryss') {
+                const imgSource =
+                    thisRoadType[roadDesign][intersectionType][extensionType];
+                setImage(imgSource);
+            } else {
+                const imgSource = thisRoadType[roadDesign][extensionType];
+                setImage(imgSource);
+            }
+        }, [extensionType]);
+
         //Set the road design and reset intersectiontype to X
         const onPressButton = (designName) => {
             if (roadType == 'Veikryss') {
