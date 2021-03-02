@@ -21,7 +21,7 @@ const SketchColorMenu = React.memo((props) => {
         paletteChange: false,
     });
 
-    const { onPencilColorChange } = props;
+    const { onPencilColorChange, propsStyle, iconSize } = props;
 
     const INITIAL_COLOR = '#20303C';
     const colors = [
@@ -45,10 +45,10 @@ const SketchColorMenu = React.memo((props) => {
         onPencilColorChange(value);
     };
 
-    const { color, textColor, customColors, paletteChange } = currentColorSetup;
+    const { color } = currentColorSetup;
 
     return (
-        <View key={currentColorSetup.color}>
+        <View style={propsStyle} key={currentColorSetup.color}>
             <Menu
                 renderer={Popover}
                 // opened={true}
@@ -59,7 +59,7 @@ const SketchColorMenu = React.memo((props) => {
                         size={15}
                         solid
                         color={currentColorSetup.color}
-                        style={styles.buttonSize}
+                        style={iconSize}
                     />
                 </MenuTrigger>
                 <MenuOptions>
