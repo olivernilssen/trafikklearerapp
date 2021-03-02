@@ -16,6 +16,8 @@ const white = '#ffffff';
 const lightGrey = '#ECECEC';
 const independenceTint = '#8b8c9d';
 
+const blue = '#2596be';
+
 export default {
     background: white,
     sketchBg: white,
@@ -35,8 +37,8 @@ export default {
     // BUTTONS
     buttonPrimary: terraCotta,
     buttonPrimActive: greenSheen,
-    buttonSecondary: deepChampagne,
-    buttonSecActive: greenSheen,
+    buttonSecondary: lightGrey,
+    buttonSecActive: blue,
     buttonText: independence,
     buttonBorder: terraCotta,
 

@@ -12,35 +12,33 @@ import SketchHeader from './SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import Color from '../../styles/Colors';
 
-import ComponentMenuTop from './ComponentMenuTop';
 import DraggableWithEverything from '../draggable/DraggableWithEverything';
-
-import BottomSheet from './BottomSheet';
-import imgSource from './illustrationsPath';
+import BottomMenuAnimated from '../bottomMenuComponent/BottomMenuAnimated';
 
 const SketchArea = React.memo((props) => {
-    const labelsArray = [];
-    const roadTypes = imgSource[props.name];
-
-    //Get all the keys from our imgSource (høyre, lys etc for labels)
-    const keys = Object.keys(roadTypes);
-    keys.map((keys) => {
-        labelsArray.push(keys);
-    });
-
-    const initialImageSrcName = Object.keys(roadTypes[labelsArray[0]])[0];
-    const InitialImageSrc = roadTypes[labelsArray[0]][initialImageSrcName];
-
     const sketchRef = useRef();
+    // const roadTypeNames = [];
+    // const roadTypes = imgSource[props.name]; //get the correct object based on type of road
+
+    // //Get all the keys from our imgSource (høyre, lys etc for labels)
+    // const keys = Object.keys(roadTypes);
+    // keys.map((keys) => {
+    //     roadTypeNames.push(keys);
+    // });
+
+    // const initialImageSrcName = Object.keys(roadTypes[roadTypeNames[0]])[0];
+    // const InitialImageSrc = roadTypes[roadTypsNames[0]][initialImageSrcName];
+
     const [currPencilColor, setPencilColor] = useState('#20303C');
-    const [prevPencilColor, setPrevPencilColor] = useState('');
+    const [prevPencilColor, setPrevPencilColor] = useState('red');
     const [currPencilSize, setPencilSize] = useState(5);
-    const [currentImg, setImage] = useState(InitialImageSrc);
+    const [currentImg, setImage] = useState();
     const [topMenuHidden, setTopMenuHidden] = useState(true);
     const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
     const [draggables, setDraggables] = useState([]);
     const [actionList, setActionList] = useState([]);
     const [deletingItemId, setDeletingItemId] = useState(null);
+    const [extensionType, setExtensionType] = useState('vanlig');
 
     //Clear canvas if new image is loaded
     useEffect(() => {
@@ -56,7 +54,10 @@ const SketchArea = React.memo((props) => {
         if (currPencilColor === '#00000000') {
             setPencilColor(prevPencilColor);
             setPencilSize(5);
-        } else setPencilColor(currPencilColor);
+        } else {
+            setPencilColor(currPencilColor);
+            setPencilSize(5);
+        }
     }, [currPencilColor]);
 
     const onChangePencilSize = (newPencilSize) => {
@@ -125,7 +126,7 @@ const SketchArea = React.memo((props) => {
 
             <View style={styles.main}>
                 <ImageBackground
-                    resizeMode={'contain'}
+                    resizeMode={'cover'}
                     style={styles.backgroundImage}
                     source={currentImg}>
                     <SketchCanvas
@@ -144,12 +145,13 @@ const SketchArea = React.memo((props) => {
                         deletingItemId={deletingItemId}
                         setActionList={setActionList}
                         actionList={actionList}
+                        setExtensionType={setExtensionType}
                     />
 
-                    <BottomSheet
-                        labelsArray={labelsArray}
-                        imgSource={imgSource[props.name]}
-                        onImageChange={setImage}
+                    <BottomMenuAnimated
+                        roadType={props.name}
+                        setImage={setImage}
+                        extensionType={extensionType}
                         bottomSheetHidden={bottomSheetHidden}
                         setBottomSheetHidden={setBottomSheetHidden}
                     />
