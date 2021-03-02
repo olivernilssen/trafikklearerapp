@@ -29,9 +29,10 @@ const SketchArea = React.memo((props) => {
     // const initialImageSrcName = Object.keys(roadTypes[roadTypeNames[0]])[0];
     // const InitialImageSrc = roadTypes[roadTypsNames[0]][initialImageSrcName];
 
-    const [currPencilColor, setPencilColor] = useState('#20303C');
+    const [currPencilColor, setPencilColor] = useState('#CF262F');
     const [prevPencilColor, setPrevPencilColor] = useState('red');
     const [currPencilSize, setPencilSize] = useState(5);
+    const [prevPencilSize, setPrevPencilSize] = useState(null);
     const [currentImg, setImage] = useState();
     const [topMenuHidden, setTopMenuHidden] = useState(true);
     const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
@@ -48,6 +49,7 @@ const SketchArea = React.memo((props) => {
 
     const onPencilColorChange = (color) => {
         setPencilColor(color);
+        setPencilSize(prevPencilSize);
     };
 
     const onSwitchPencilColor = useCallback(() => {
@@ -94,10 +96,11 @@ const SketchArea = React.memo((props) => {
         if (currPencilColor != '#00000000') {
             setPrevPencilColor(currPencilColor);
             setPencilColor('#00000000');
+            setPrevPencilSize(currPencilSize);
             setPencilSize(80);
         } else {
             currPencilColor;
-            setPencilSize(5);
+            setPencilSize(prevPencilSize);
         }
     }, [currPencilColor]);
 

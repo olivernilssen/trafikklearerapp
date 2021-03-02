@@ -1,10 +1,13 @@
 import { TouchableOpacity, StyleSheet } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import Color from '../../styles/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { View } from 'react-native-ui-lib';
+import SketchColorMenu from '../sketchComponents/sketchColorMenu';
 
 const IconButtons = (props) => {
+    const [isLongPressed, setIsLongPressed] = useState(false);
+
     const {
         iconName,
         buttonFnc,
@@ -12,13 +15,32 @@ const IconButtons = (props) => {
         isActive,
         buttonNum,
         propsStyle,
+        onPencilColorChange,
+        testComp,
     } = props;
+
+    const longButtonPress = () => {
+        return (
+            <SketchColorMenu
+                onPencilColorChange={onPencilColorChange}
+                iconSize={styles.buttonSize}
+                propsStyle={styles.spacedCenter}
+            />
+        );
+    };
+
+    // console.log(testComp);
 
     return (
         <View style={propsStyle}>
             <TouchableOpacity
                 onPress={() => {
                     buttonFnc(), focusedActiveButton(buttonNum);
+                }}
+                onLongPress={() => {
+                    {
+                        longButtonPress();
+                    }
                 }}>
                 <Icon
                     name={iconName}
@@ -88,8 +110,13 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 16,
     },
-    colorButton: {
-        fontSize: 30,
+    spacedCenter: {
+        flex: 1,
+        flexDirection: 'row',
+        height: '100%',
+        width: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     spacedRight: {
         flex: 1,
