@@ -49,7 +49,9 @@ const SketchArea = React.memo((props) => {
 
     const onPencilColorChange = (color) => {
         setPencilColor(color);
-        setPencilSize(prevPencilSize);
+        if (prevPencilSize != null) {
+            setPencilSize(prevPencilSize);
+        }
     };
 
     const onSwitchPencilColor = useCallback(() => {
