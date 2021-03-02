@@ -130,6 +130,7 @@ const SketchArea = React.memo((props) => {
             <View style={styles.main}>
                 <ImageBackground
                     resizeMode={'cover'}
+                    // resizeMethod="resize"
                     style={styles.backgroundImage}
                     source={currentImg}>
                     <SketchCanvas
@@ -170,6 +171,7 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         backgroundColor: Color.sketchBg,
+        justifyContent: 'center',
     },
     sketchCanvas: {
         flex: 1,
@@ -178,9 +180,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
     },
     backgroundImage: {
-        flex: 1,
+        flex: 1, // Denne må fjernes hvis bildet ikke skal skalere opp
+        // marginVertical: 100,
         width: '100%',
-        height: '100%',
+        height: '100%', // Må stå som 'undefined'
+        // aspectRatio: 1752 / 2263,
+        // alignSelf: 'center', // Må stå som 'stretch' hvis bildet ikke skal skalere opp
         backgroundColor: Color.header,
     },
 });
