@@ -4,60 +4,74 @@ const backgroundImagePath = {
             X: {
                 vanlig: require('../../assets/intersections/hoyrekryss/veikryss-hoyre-X.png'),
                 gangfelt: require('../../assets/intersections/hoyrekryss/veikryss-hoyre-X-gangfelt.png'),
+                sykkelfelt: require('../../assets/intersections/hoyrekryss/veikryss-hoyre-X-sykkelfelt.png'),
             },
             T: {
                 vanlig: require('../../assets/intersections/hoyrekryss/veikryss-hoyre-T.png'),
                 gangfelt: require('../../assets/intersections/hoyrekryss/veikryss-hoyre-T-gangfelt.png'),
+                sykkelfelt: require('../../assets/intersections/hoyrekryss/veikryss-hoyre-T-sykkelfelt.png'),
             },
             Y: {
                 vanlig: require('../../assets/intersections/hoyrekryss/veikryss-hoyre-Y.png'),
                 gangfelt: require('../../assets/intersections/hoyrekryss/veikryss-hoyre-Y-gangfelt.png'),
+                sykkelfelt: require('../../assets/intersections/hoyrekryss/veikryss-hoyre-Y-sykkelfelt.png'),
             },
         },
         Forkjørskryss: {
             X: {
                 vanlig: require('../../assets/intersections/forkjorskryss/veikryss-forkjors-X.png'),
                 gangfelt: require('../../assets/intersections/forkjorskryss/veikryss-forkjors-X-gangfelt.png'),
+                sykkelfelt: require('../../assets/intersections/forkjorskryss/veikryss-forkjors-X-sykkelfelt.png'),
             },
             T: {
                 vanlig: require('../../assets/intersections/forkjorskryss/veikryss-forkjors-T.png'),
                 gangfelt: require('../../assets/intersections/forkjorskryss/veikryss-forkjors-T-gangfelt.png'),
+                sykkelfelt: require('../../assets/intersections/forkjorskryss/veikryss-forkjors-T-sykkelfelt.png'),
             },
             Y: {
                 vanlig: require('../../assets/intersections/forkjorskryss/veikryss-forkjors-Y.png'),
                 gangfelt: require('../../assets/intersections/forkjorskryss/veikryss-forkjors-Y-gangfelt.png'),
+                sykkelfelt: require('../../assets/intersections/forkjorskryss/veikryss-forkjors-Y-sykkelfelt.png'),
             },
         },
         Lyskryss: {
             X: {
                 vanlig: require('../../assets/intersections/lyskryss/veikryss-lys-X.png'),
                 gangfelt: require('../../assets/intersections/lyskryss/veikryss-lys-X-gangfelt.png'),
-                // pil: require('../../assets/intersections/lyskryss/veikryss-lys-X-pil.png'),
+                sykkelfelt: require('../../assets/intersections/lyskryss/veikryss-lys-X-sykkelfelt.png'),
             },
             T: {
                 vanlig: require('../../assets/intersections/lyskryss/veikryss-lys-T.png'),
                 gangfelt: require('../../assets/intersections/lyskryss/veikryss-lys-T-gangfelt.png'),
-                // pil: require('../../assets/intersections/lyskryss/veikryss-lys-T-pil.png'),
+                sykkelfelt: require('../../assets/intersections/lyskryss/veikryss-lys-T-sykkelfelt.png'),
             },
             Y: {
                 vanlig: require('../../assets/intersections/lyskryss/veikryss-lys-Y.png'),
                 gangfelt: require('../../assets/intersections/lyskryss/veikryss-lys-Y-gangfelt.png'),
-                // pil: require('../../assets/intersections/lyskryss/veikryss-lys-Y-pil.png'),
+                sykkelfelt: require('../../assets/intersections/lyskryss/veikryss-lys-Y-sykkelfelt.png'),
             },
         },
     },
     Rundkjoring: {
         Ettfelts: {
-            vanlig: require('../../assets/roundabouts/1feltinn1feltut.png'),
-            gangfelt: require('../../assets/roundabouts/1feltinn1feltut-gangfelt.png'),
+            vanlig: require('../../assets/roundabouts/1felt/1felt.png'),
+            gangfelt: require('../../assets/roundabouts/1felt/1felt-gangfelt.png'),
+            sykkelfelt: require('../../assets/roundabouts/1felt/1felt-sykkelfelt.png'),
         },
         Tofelts: {
-            vanlig: require('../../assets/roundabouts/2feltinn1feltut.png'),
-            gangfelt: require('../../assets/roundabouts/2feltinn1feltut-gangfelt.png'),
+            vanlig: require('../../assets/roundabouts/2felt/2felt.png'),
+            gangfelt: require('../../assets/roundabouts/2felt/2felt-gangfelt.png'),
+            sykkelfelt: require('../../assets/roundabouts/2felt/2felt-sykkelfelt.png'),
         },
-        Firefelts: {
-            vanlig: require('../../assets/roundabouts/2feltinn2feltut.png'),
-            gangfelt: require('../../assets/roundabouts/2feltinn2feltut-gangfelt.png'),
+    },
+    Vei: {
+        E6: {
+            Fartsreduksjonsfelt: require('../../assets/vei/e6/avkjøringsrampe.png'),
+            Fartsøkningsfelt: require('../../assets/vei/e6/påkjøringsrampe.png'),
+        },
+        Landevei: {
+            Landevei: require('../../assets/vei/landevei/landevei.png'),
+            'Smal veg': require('../../assets/vei/landevei/landevei-smalVeg.png'),
         },
     },
 };

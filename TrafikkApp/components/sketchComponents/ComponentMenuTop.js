@@ -6,7 +6,7 @@ import { RadioGroup, RadioButton } from 'react-native-ui-lib';
 import Color from '../../styles/Colors';
 import ComponentItems from './ComponentItems';
 
-const extensionTypes = ['vanlig', 'gangfelt', 'busslomme', 'pil'];
+const extensionTypes = ['vanlig', 'gangfelt', 'sykkelfelt'];
 
 const ComponentMenuTop = React.memo(
     ({ topMenuHidden, onNewDraggable, setExtensionType }) => {
