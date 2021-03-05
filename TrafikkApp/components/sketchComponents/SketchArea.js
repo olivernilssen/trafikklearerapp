@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import MainView from '../MainView';
-import SketchHeader from './SketchHeader';
+import SketchHeader from '../sketchHeader/SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import Color from '../../styles/Colors';
 
