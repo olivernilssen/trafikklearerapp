@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useCallback } from 'react';
 import { useEffect } from 'react';
 
-import ComponentMenuTop from '../sketchComponents/ComponentMenuTop';
+import DraggableComponentsMenu from '../draggableComponentsMenu/DraggableComponentsMenu';
 import DraggableDropZone from './DraggableDropzone';
 import MappingDraggable from './MappingDraggables';
 
@@ -74,7 +74,7 @@ const DraggableWithEverything = React.memo((props) => {
 
     return (
         <>
-            <ComponentMenuTop
+            <DraggableComponentsMenu
                 topMenuHidden={topMenuHidden}
                 onNewDraggable={onNewDraggable}
                 setExtensionType={setExtensionType}
