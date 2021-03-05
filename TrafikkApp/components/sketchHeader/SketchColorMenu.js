@@ -14,6 +14,8 @@ import {
 const { Popover } = renderers;
 
 const SketchColorMenu = React.memo((props) => {
+    const INITIAL_COLOR = '#CF262F';
+
     const [currentColorSetup, setCurrentColorSetup] = useState({
         color: INITIAL_COLOR,
         textColor: Colors.white,
@@ -31,7 +33,6 @@ const SketchColorMenu = React.memo((props) => {
         focusedActiveButton,
     } = props;
 
-    const INITIAL_COLOR = '#CF262F';
     const colors = [
         '#20303C',
         '#3182C8',

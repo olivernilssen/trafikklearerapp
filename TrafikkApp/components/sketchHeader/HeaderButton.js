@@ -8,7 +8,7 @@ import { View } from 'react-native-ui-lib';
  * IconButtons is the buttons at the top menu for the sketcharea
  * @param {props} props
  */
-const IconButtons = (props) => {
+const HeaderButton = (props) => {
     const {
         iconName,
         buttonFnc,
@@ -37,42 +37,17 @@ const IconButtons = (props) => {
     );
 };
 
-/**
- * This is the button component for the
- * box that is either open or closed on the sketchheader
- * @param {props} props
- */
-const ComponentButton = (props) => {
-    const { topMenuHidden, toggleRightMenuState } = props;
-    return (
-        <View>
-            <TouchableOpacity
-                onPress={() => topMenuHidden()}
-                style={{ flex: 1, justifyContent: 'space-around' }}>
-                <Icon
-                    name={!toggleRightMenuState ? 'box-open' : 'box'}
-                    style={
-                        !toggleRightMenuState
-                            ? styles.buttonActive
-                            : [styles.buttonSize, styles.buttonInactive]
-                    }
-                />
-            </TouchableOpacity>
-        </View>
-    );
-};
-
 const styles = StyleSheet.create({
     buttonSize: {
         fontSize: 30,
         justifyContent: 'center',
         alignItems: 'center',
     },
-    buttonIcon: {
-        color: Color.iconPrimary,
-        borderColor: Color.tabButtonBorder,
-        //marginRight: '5%'
-    },
+    // buttonIcon: {
+    //     color: Color.iconPrimary,
+    //     borderColor: Color.tabButtonBorder,
+    //     //marginRight: '5%'
+    // },
     buttonActive: {
         // backgroundColor: 'yellow',
         // flex: 1,
@@ -97,9 +72,9 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 16,
     },
-    colorButton: {
-        fontSize: 30,
-    },
+    // colorButton: {
+    //     fontSize: 30,
+    // },
     spacedRight: {
         flex: 1,
         flexDirection: 'row',
@@ -110,4 +85,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export { IconButtons, ComponentButton };
+export default HeaderButton;
