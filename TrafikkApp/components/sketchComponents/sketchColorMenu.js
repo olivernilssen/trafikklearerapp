@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
+import Color from '../../styles/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, View, ColorPalette } from 'react-native-ui-lib';
 import {
@@ -19,9 +20,18 @@ const SketchColorMenu = React.memo((props) => {
         paletteChange: false,
     });
 
-    const { onPencilColorChange, propsStyle, iconSize } = props;
+    const {
+        onPencilColorChange,
+        propsStyle,
+        iconSize,
+        pencil,
+        buttonFnc,
+        buttonNum,
+        isActive,
+        focusedActiveButton,
+    } = props;
 
-    const INITIAL_COLOR = '#20303C';
+    const INITIAL_COLOR = '#CF262F';
     const colors = [
         '#20303C',
         '#3182C8',
@@ -41,6 +51,7 @@ const SketchColorMenu = React.memo((props) => {
         });
 
         onPencilColorChange(value);
+        focusedActiveButton(buttonNum);
     };
 
     const { color } = currentColorSetup;
@@ -49,15 +60,22 @@ const SketchColorMenu = React.memo((props) => {
         <View style={propsStyle} key={currentColorSetup.color}>
             <Menu
                 renderer={Popover}
-                // opened={true}
                 rendererProps={{ preferredPlacement: 'bottom' }}>
-                <MenuTrigger>
+                <MenuTrigger
+                    triggerOnLongPress
+                    onAlternativeAction={() => {
+                        pencil, buttonFnc(), focusedActiveButton(buttonNum);
+                    }}
+                    style={
+                        isActive === buttonNum
+                            ? styles.buttonActive
+                            : [styles.buttonSize, styles.buttonInactive]
+                    }>
                     <Icon
-                        name={'circle'}
-                        size={15}
+                        name={'pen'}
+                        size={30}
                         solid
                         color={currentColorSetup.color}
-                        style={iconSize}
                     />
                 </MenuTrigger>
                 <MenuOptions>
@@ -84,6 +102,30 @@ const SketchColorMenu = React.memo((props) => {
 const styles = StyleSheet.create({
     buttonSize: {
         fontSize: 30,
+    },
+    buttonActive: {
+        // backgroundColor: 'yellow',
+        // flex: 1,
+        // color: Color.iconPrimary,
+        fontSize: 30,
+        backgroundColor: Color.tabButtonActive,
+        borderRightWidth: 1,
+        borderLeftWidth: 1,
+        borderColor: Color.tabButtonBorder,
+        // width: '100%',
+        // height: '100%',
+        paddingVertical: 12,
+        paddingHorizontal: 16,
+    },
+    buttonInactive: {
+        color: Color.iconPrimary,
+        fontSize: 30,
+        backgroundColor: Color.tabButton,
+        borderRightWidth: 1,
+        borderLeftWidth: 1,
+        borderColor: Color.tabButtonBorder,
+        paddingVertical: 12,
+        paddingHorizontal: 16,
     },
 });
 

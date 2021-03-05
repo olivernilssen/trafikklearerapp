@@ -22,9 +22,10 @@ import BottomMenuAnimated from '../bottomMenuComponent/BottomMenuAnimated';
 const SketchArea = React.memo((props) => {
     const sketchRef = useRef();
 
-    const [currPencilColor, setPencilColor] = useState('#20303C');
+    const [currPencilColor, setPencilColor] = useState('#CF262F');
     const [prevPencilColor, setPrevPencilColor] = useState('red');
     const [currPencilSize, setPencilSize] = useState(5);
+    const [prevPencilSize, setPrevPencilSize] = useState(null);
     const [currentImg, setImage] = useState();
     const [topMenuHidden, setTopMenuHidden] = useState(true);
     const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
@@ -47,6 +48,9 @@ const SketchArea = React.memo((props) => {
      */
     const onPencilColorChange = (color) => {
         setPencilColor(color);
+        if (prevPencilSize != null) {
+            setPencilSize(prevPencilSize);
+        }
     };
 
     /**
@@ -115,10 +119,11 @@ const SketchArea = React.memo((props) => {
         if (currPencilColor != '#00000000') {
             setPrevPencilColor(currPencilColor);
             setPencilColor('#00000000');
+            setPrevPencilSize(currPencilSize);
             setPencilSize(80);
         } else {
             currPencilColor;
-            setPencilSize(5);
+            setPencilSize(prevPencilSize);
         }
     }, [currPencilColor]);
 
