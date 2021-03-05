@@ -1,8 +1,9 @@
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import React from 'react';
-import Color from '../../styles/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { View } from 'react-native-ui-lib';
+
+import { Colors, Typography, Buttons, Icons } from '../../styles';
 
 /**
  * IconButtons is the buttons at the top menu for the sketcharea
@@ -39,9 +40,10 @@ const HeaderButton = (props) => {
 
 const styles = StyleSheet.create({
     buttonSize: {
-        fontSize: 30,
+        // fontSize: 30,
         justifyContent: 'center',
         alignItems: 'center',
+        ...Typography.large,
     },
     // buttonIcon: {
     //     color: Color.iconPrimary,
@@ -51,26 +53,30 @@ const styles = StyleSheet.create({
     buttonActive: {
         // backgroundColor: 'yellow',
         // flex: 1,
-        color: Color.iconPrimary,
-        fontSize: 30,
-        backgroundColor: Color.tabButtonActive,
-        borderRightWidth: 1,
-        borderLeftWidth: 1,
-        borderColor: Color.tabButtonBorder,
-        // width: '100%',
-        // height: '100%',
+        color: Colors.textLight,
+        // fontSize: 30,
+        backgroundColor: Colors.iconActive,
+        // borderRightWidth: 1,
+        // borderLeftWidth: 1,
+        // borderRadius: 50,
+        // borderColor: Colors.iconActive,
+        width: Icons.mediumBackground,
+        height: Icons.mediumBackground,
         paddingVertical: 12,
         paddingHorizontal: 16,
+        ...Buttons.round,
+        ...Typography.large,
     },
     buttonInactive: {
-        color: Color.iconPrimary,
-        fontSize: 30,
-        backgroundColor: Color.tabButton,
-        borderRightWidth: 1,
-        borderLeftWidth: 1,
-        borderColor: Color.tabButtonBorder,
+        color: Colors.icons,
+        // fontSize: 30,
+        backgroundColor: Colors.header,
+        // borderRightWidth: 1,
+        // borderLeftWidth: 1,
+        // borderColor: Colors.tabButtonBorder,
         paddingVertical: 12,
         paddingHorizontal: 16,
+        ...Typography.large,
     },
     // colorButton: {
     //     fontSize: 30,

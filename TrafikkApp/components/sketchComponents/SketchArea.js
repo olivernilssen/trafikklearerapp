@@ -10,7 +10,7 @@ import {
 import MainView from '../MainView';
 import SketchHeader from '../sketchHeader/SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
-import Color from '../../styles/Colors';
+import { Colors } from '../../styles';
 
 import DraggableWithEverything from '../draggable/DraggableWithEverything';
 import BottomMenuAnimated from '../bottomMenuComponent/BottomMenuAnimated';
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
         flex: 1,
         height: '100%',
         width: '100%',
-        backgroundColor: Color.sketchBg,
+        backgroundColor: Colors.sketchBackground,
         justifyContent: 'center',
     },
     sketchCanvas: {
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
         height: '100%', // Må stå som 'undefined'
         // aspectRatio: 1752 / 2263,
         // alignSelf: 'center', // Må stå som 'stretch' hvis bildet ikke skal skalere opp
-        backgroundColor: Color.header,
+        backgroundColor: Colors.sketchBackground,
     },
 });
 

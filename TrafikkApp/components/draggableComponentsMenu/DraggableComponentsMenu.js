@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import { StyleSheet, View, Animated } from 'react-native';
 import { RadioGroup, RadioButton } from 'react-native-ui-lib';
 
-import Color from '../../styles/Colors';
+import { Colors, Typography, Icons } from '../../styles';
 import DraggableComponents from './DraggableComponents';
 
 const extensionTypes = ['vanlig', 'gangfelt', 'sykkelfelt', 'busslomme'];
@@ -100,10 +100,13 @@ const DraggableComponentsMenu = React.memo(
                                         key={i}
                                         label={name}
                                         value={name}
-                                        size={25}
-                                        labelStyle={{ fontSize: 20 }}
+                                        size={Icons.small}
+                                        labelStyle={{
+                                            color: Colors.icons,
+                                            ...Typography.medium,
+                                        }}
                                         style={styles.radioBtn}
-                                        color={Color.buttonSecActive}
+                                        color={Colors.componentMenuButtons}
                                     />
                                 );
                             })}
@@ -129,12 +132,14 @@ const styles = StyleSheet.create({
     },
     menuContent: {
         flexDirection: 'column',
-        backgroundColor: Color.borderColor,
+        backgroundColor: Colors.componentMenu,
         elevation: 10,
-        width: '100%',
+        width: '85%',
         height: '100%',
-        borderTopWidth: 3,
-        borderTopColor: Color.borderColor,
+        borderBottomLeftRadius: 40,
+        borderBottomRightRadius: 40,
+        // borderTopWidth: 3,
+        // borderTopColor: Color.borderColor,
     },
     radioView: {
         padding: 20,

@@ -1,73 +1,38 @@
 //
 // ALL COLORS USED IN THE APP SHOULD BE DECLARED HERE
 //
+const charcoal = '#4A4A4A';
+const lightGray = '#DAD8D8';
+const black = '#3B3B3B';
+const white = '#FFFFFF';
+const mustard = '#E2BD38';
 
-// https://coolors.co/f4f1de-e07a5f-3d405b-81b29a-f2cc8f
+const green = '#66DA8D';
+const blue = '#79B7DA';
+const blueGray = 'CDD7DC';
 
-const eggShell = '#f4f1de'; // Primary light color
-const eggShellGrey = '#D6D2C4';
-
-const terraCotta = '#e07a5f'; // Secondary colorful color
-const independence = '#3d405b'; // Primary dark color
-const greenSheen = '#81b29a'; // Primary colorful color
-const deepChampagne = '#f2cc8f'; // Secondary light color
-
-const white = '#ffffff';
-const lightGrey = '#ECECEC';
-const independenceTint = '#8b8c9d';
-
-const blue = '#2596be';
+const red = '#FB5555';
 
 export default {
-    background: white,
-    sketchBg: white,
+    background: black,
+    header: black,
+    bottomMeny: black,
+    componentMenuButtons: black,
 
-    textPrimary: independence,
-    textSecondary: deepChampagne,
+    textDark: black,
+    textLight: white,
 
-    // HEADER
-    header: white,
-    headerText: independence,
+    componentMenu: charcoal,
+    bottomMenyButtons: charcoal,
+    sketchBackground: charcoal,
 
-    // DRAWER
-    drawerBg: white,
-    drawerInactiveText: independence,
-    drawerActiveText: terraCotta,
+    icons: lightGray,
+    iconActive: charcoal, // or mustard?
 
-    // BUTTONS
-    buttonPrimary: terraCotta,
-    buttonPrimActive: greenSheen,
-    buttonSecondary: lightGrey,
-    buttonSecActive: blue,
-    buttonText: independence,
-    buttonBorder: terraCotta,
+    startScreenLinkDrawing: green,
+    startScreenLinkTheory: blue,
+    startScreenLinkLink: blueGray,
 
-    // LINKS
-    iconPrimary: independence,
-    iconSecondary: '',
-    iconActive: terraCotta,
-
-    // BOTTOMSHEET (in SketchArea)
-    bottomDrawerBg: white,
-    borderColor: lightGrey,
-
-    tabHeaderInactiveBg: lightGrey,
-    tabHeaderActiveBg: white,
-    tabHeaderIndicator: terraCotta,
-
-    tabHeaderTextInactive: independenceTint,
-    tabHeaderTextActive: terraCotta,
-
-    tabViewBg: white,
-    tabViewBorder: eggShellGrey,
-
-    tabButtonActive: terraCotta,
-    tabButtonBorder: eggShellGrey,
-
-    // labelText: independence,
-    linkDivider: eggShellGrey,
-
-    //DRAGGABLE
-
-    //BOTTOMSHEET
+    deleteButton: black,
+    deleteButtonActive: red,
 };
