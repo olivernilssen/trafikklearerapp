@@ -11,10 +11,10 @@ import { View } from 'react-native-ui-lib';
 const HeaderButton = (props) => {
     const {
         iconName,
-        buttonFnc,
+        buttonOnPress,
         focusedActiveButton,
         isActive,
-        buttonNum,
+        buttonActiveNumber,
         propsStyle,
     } = props;
 
@@ -22,12 +22,12 @@ const HeaderButton = (props) => {
         <View style={propsStyle}>
             <TouchableOpacity
                 onPress={() => {
-                    buttonFnc(), focusedActiveButton(buttonNum);
+                    buttonOnPress(), focusedActiveButton(buttonActiveNumber);
                 }}>
                 <Icon
                     name={iconName}
                     style={
-                        isActive === buttonNum
+                        isActive === buttonActiveNumber
                             ? styles.buttonActive
                             : [styles.buttonSize, styles.buttonInactive]
                     }

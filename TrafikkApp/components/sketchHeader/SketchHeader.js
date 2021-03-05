@@ -6,7 +6,7 @@ import { View } from 'react-native-ui-lib';
 import SketchColorMenu from './SketchColorMenu';
 import HeaderButton from './HeaderButton';
 import BoxButton from './BoxButton';
-import PencilSizePopup from './SketchSizeMenu';
+import PencilSizePopup from './PencilSizePopup';
 
 const SketchHeader = React.memo((props, navigation) => {
     const [isActive, setActive] = useState(0);
@@ -34,24 +34,24 @@ const SketchHeader = React.memo((props, navigation) => {
     return (
         <View style={styles.toolBar}>
             <Header
-                name={'ScreenName'}
-                navigation={navigation}
+                name={''}
+                navigation={props.navigation}
                 style={styles.header}>
-                <HeaderButton
+                {/* <HeaderButton
                     iconName={'bars'}
                     buttonFnc={props.navigation.toggleDrawer}
                     buttonNum={null}
                     isActive={isActive}
                     focusedActiveButton={focusedActiveButton}
                     propsStyle={styles.spacedLeft}
-                />
+                /> */}
                 <HeaderButton
                     iconName={'trash'}
-                    buttonFnc={clear}
-                    buttonNum={null}
+                    buttonOnPress={clear}
+                    buttonActiveNumber={null}
                     isActive={isActive}
                     focusedActiveButton={focusedActiveButton}
-                    propsStyle={styles.spacedRight}
+                    propsStyle={styles.spacedLeft}
                 />
 
                 <PencilSizePopup />
@@ -60,22 +60,22 @@ const SketchHeader = React.memo((props, navigation) => {
                     iconSize={styles.buttonSize}
                     propsStyle={styles.spacedCenter}
                     pencil={pencil}
-                    buttonFnc={pencil}
-                    buttonNum={0}
+                    buttonOnPress={pencil}
+                    buttonActiveNumber={0}
                     isActive={isActive}
                     focusedActiveButton={focusedActiveButton}
                 />
                 <HeaderButton
                     iconName={'eraser'}
-                    buttonFnc={eraser}
-                    buttonNum={1}
+                    buttonOnPress={eraser}
+                    buttonActiveNumber={1}
                     isActive={isActive}
                     focusedActiveButton={focusedActiveButton}
                 />
                 <HeaderButton
                     iconName={'undo-alt'}
-                    buttonFnc={undo}
-                    buttonNum={null}
+                    buttonOnPress={undo}
+                    buttonActiveNumber={null}
                     isActive={isActive}
                     focusedActiveButton={focusedActiveButton}
                 />

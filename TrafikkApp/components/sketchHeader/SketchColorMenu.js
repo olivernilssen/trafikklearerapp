@@ -27,8 +27,8 @@ const SketchColorMenu = React.memo((props) => {
         propsStyle,
         iconSize,
         pencil,
-        buttonFnc,
-        buttonNum,
+        buttonOnPress,
+        buttonActiveNumber,
         isActive,
         focusedActiveButton,
     } = props;
@@ -52,7 +52,7 @@ const SketchColorMenu = React.memo((props) => {
         });
 
         onPencilColorChange(value);
-        focusedActiveButton(buttonNum);
+        focusedActiveButton(buttonActiveNumber);
     };
 
     const { color } = currentColorSetup;
@@ -65,10 +65,12 @@ const SketchColorMenu = React.memo((props) => {
                 <MenuTrigger
                     triggerOnLongPress
                     onAlternativeAction={() => {
-                        pencil, buttonFnc(), focusedActiveButton(buttonNum);
+                        pencil,
+                            buttonOnPress(),
+                            focusedActiveButton(buttonActiveNumber);
                     }}
                     style={
-                        isActive === buttonNum
+                        isActive === buttonActiveNumber
                             ? styles.buttonActive
                             : [styles.buttonSize, styles.buttonInactive]
                     }>
