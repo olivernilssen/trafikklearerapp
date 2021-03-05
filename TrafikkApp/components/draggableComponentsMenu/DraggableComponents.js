@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import Color from '../../styles/Colors';
+import { Colors } from '../../styles';
 import objectPaths from '../draggable/draggableObjectPaths';
 
 import Carousel from '../Carousel';

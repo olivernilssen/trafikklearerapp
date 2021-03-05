@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { RView } from 'react-native-responsive-component';
 
 import MainView from '../components/MainView';
 import Header from '../components/Header.js';
 import StartScreenLink from '../components/StartScreenLink.js';
-import Color from '../styles/Colors';
+
+import { Colors } from '../styles';
 
 /**
  * Screen component for the start screen
@@ -27,16 +28,19 @@ const StartScreen = React.memo(({ navigation }) => {
                         onPress={() =>
                             navigation.navigate('IntersectionScreen')
                         }
+                        backgroundColor={Colors.startScreenLinkDrawing}
                     />
                     <StartScreenLink
                         name="crosshairs"
                         text="Rundkjøring"
                         onPress={() => navigation.navigate('RoundaboutScreen')}
+                        backgroundColor={Colors.startScreenLinkDrawing}
                     />
                     <StartScreenLink
                         name="road"
                         text="Vei"
                         onPress={() => navigation.navigate('RoadScreen')}
+                        backgroundColor={Colors.startScreenLinkDrawing}
                     />
                 </RView>
 
@@ -47,9 +51,18 @@ const StartScreen = React.memo(({ navigation }) => {
                         name="map-signs"
                         text="Skilt"
                         onPress={() => navigation.navigate('RoadSignScreen')}
+                        backgroundColor={Colors.startScreenLinkTheory}
                     />
-                    <StartScreenLink name="question" text="tba" />
-                    <StartScreenLink name="question" text="tba" />
+                    <StartScreenLink
+                        name="question"
+                        text="tba"
+                        backgroundColor={Colors.startScreenLinkTheory}
+                    />
+                    <StartScreenLink
+                        name="question"
+                        text="tba"
+                        backgroundColor={Colors.startScreenLinkTheory}
+                    />
                 </RView>
             </RView>
         </MainView>
@@ -64,9 +77,8 @@ const screenStyles = StyleSheet.create({
         height: '100%',
         justifyContent: 'space-evenly',
         alignItems: 'center',
-        paddingLeft: 15,
-        paddingRight: 15,
-        backgroundColor: Color.background,
+        paddingHorizontal: 15,
+        backgroundColor: Colors.background,
     },
     mainLnd: {
         flex: 1,
@@ -75,9 +87,8 @@ const screenStyles = StyleSheet.create({
         height: '100%',
         justifyContent: 'space-evenly',
         alignItems: 'center',
-        paddingLeft: 15,
-        paddingRight: 15,
-        backgroundColor: Color.background,
+        paddingHorizontal: 15,
+        backgroundColor: Colors.background,
     },
     containerPtr: {
         height: '100%',

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 
-import Color from '../../styles/Colors';
+import { Colors } from '../../styles';
 import DrawerToggleMenuItem from './DrawerToggleItem';
 import DrawerItem from './DrawerItem';
 
@@ -35,7 +35,7 @@ const DrawerMenu = React.memo((props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Color.drawerBg,
+        backgroundColor: Colors.background,
         paddingTop: 15,
         paddingHorizontal: 15,
     },

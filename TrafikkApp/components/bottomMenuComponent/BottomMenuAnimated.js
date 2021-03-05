@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Animated, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Animated, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { View, TabBar } from 'react-native-ui-lib';
+// import { View, TabBar } from 'react-native-ui-lib';
 
-import Color from '../../styles/Colors';
+import { Colors, Icons } from '../../styles';
 import { useCallback } from 'react';
 import BottomMenuContent from './BottomMenuContent';
 
@@ -86,8 +86,8 @@ const BottomMenuAnimated = React.memo((props) => {
                 onPress={onHiddenViewChange}>
                 <Icon
                     name={hiddenViewButton}
-                    size={40}
-                    color={Color.iconPrimary}
+                    size={Icons.medium}
+                    color={Colors.bottomMeny}
                 />
             </TouchableOpacity>
 
@@ -119,29 +119,13 @@ var styles = StyleSheet.create({
         paddingBottom: 10,
     },
     bottomContainer: {
-        backgroundColor: Color.bottomDrawerBg,
+        backgroundColor: Colors.bottomMeny,
         paddingBottom: 10,
         alignItems: 'center',
         elevation: 20,
         width: '100%',
-    },
-    tabBar: {},
-    tabHeaderActive: {
-        backgroundColor: Color.tabHeaderActiveBg,
-        borderWidth: 1,
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-        borderColor: Color.tabHeaderActiveBg,
-    },
-    tabHeaderInactive: {
-        backgroundColor: Color.tabHeaderInactiveBg,
-    },
-    tabHeaderTextActive: {
-        color: Color.textPrimary,
-        fontSize: 16,
-    },
-    tabHeaderTextInactive: {
-        color: Color.tabHeaderTextInactive,
+        borderTopLeftRadius: 40,
+        borderTopRightRadius: 40,
     },
 });
 

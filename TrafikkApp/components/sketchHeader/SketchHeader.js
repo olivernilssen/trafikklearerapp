@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
-import Color from '../../styles/Colors';
 import Header from '../Header';
 import { View } from 'react-native-ui-lib';
 import SketchColorMenu from './SketchColorMenu';
 import HeaderButton from './HeaderButton';
 import BoxButton from './BoxButton';
 import PencilSizePopup from './PencilSizePopup';
+import { Colors, Typography } from '../../styles';
 
 const SketchHeader = React.memo((props, navigation) => {
     const [isActive, setActive] = useState(0);
@@ -92,10 +92,10 @@ const SketchHeader = React.memo((props, navigation) => {
 
 const styles = StyleSheet.create({
     buttonSize: {
-        fontSize: 30,
+        ...Typography.medium,
     },
     header: {
-        backgroundColor: Color.header,
+        backgroundColor: Colors.header,
     },
     toolBar: {
         width: '100%',
