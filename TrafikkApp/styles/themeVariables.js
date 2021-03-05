@@ -1,0 +1,21 @@
+export default {
+    // FONTS
+    FONT_SIZE_SMALL: 12,
+    FONT_SIZE_MEDIUM: 14,
+    FONT_SIZE_LARGE: 16,
+
+    // ICONS
+    ICON_SIZE_SMALL: 12,
+    ICON_SIZE_MEDIUM: 14,
+    ICON_SIZE_LARGE: 16,
+
+    // SPACING
+    CONTAINER_PADDING: 20,
+    CONTAINER_MARGIN: 5,
+    BUTTON_PADDING: 10,
+    BUTTON_MARGIN: 5,
+    ICON_PADDING: 5,
+    ICON_MARGIN: 5,
+
+    //
+};
