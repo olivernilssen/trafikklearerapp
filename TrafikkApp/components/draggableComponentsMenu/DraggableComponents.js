@@ -8,7 +8,7 @@ import Carousel from '../Carousel';
 /**
  * Component for the items that are in the draggable top menu
  */
-const ComponentItems = React.memo(({ onNewDraggable }) => {
+const DraggableComponents = React.memo(({ onNewDraggable }) => {
     const objects = Object.keys(objectPaths);
 
     /**
@@ -70,4 +70,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ComponentItems;
+export default DraggableComponents;
