@@ -4,6 +4,10 @@ import { TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Color from '../../styles/Colors';
 
+/**
+ * Component for closing the drawer with button
+ * Displayed as an X in the top left corner
+ */
 const DrawerToggleMenuItem = React.memo(({ navigation, icon }) => (
     <TouchableOpacity
         style={styles.menuItem}

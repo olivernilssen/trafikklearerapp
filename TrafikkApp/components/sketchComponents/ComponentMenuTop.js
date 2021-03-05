@@ -6,8 +6,12 @@ import { RadioGroup, RadioButton } from 'react-native-ui-lib';
 import Color from '../../styles/Colors';
 import ComponentItems from './ComponentItems';
 
-const extensionTypes = ['vanlig', 'gangfelt', 'sykkelfelt'];
+const extensionTypes = ['vanlig', 'gangfelt', 'sykkelfelt', 'busslomme'];
 
+/**
+ * Component for the top menu, which displayes objects
+ * that can be turned into draggables.
+ */
 const ComponentMenuTop = React.memo(
     ({ topMenuHidden, onNewDraggable, setExtensionType }) => {
         const [radioBtn, setRadioBtn] = useState(extensionTypes[0]);
@@ -16,10 +20,17 @@ const ComponentMenuTop = React.memo(
             new Animated.Value(yPosHidden)
         );
 
+        /**
+         * useEffect that is triggered when topMenuHidden
+         * is changed. Will toggle the view of the top menu
+         */
         useEffect(() => {
             toggleView();
         }, [topMenuHidden]);
 
+        /**
+         * Animates the topmenu in and out of view
+         */
         const toggleView = useCallback(() => {
             var toValue = 0;
 
@@ -43,11 +54,23 @@ const ComponentMenuTop = React.memo(
             }
         });
 
+        /**
+         * Get's the layout of the topmenu view
+         * This is so we know how far down the object needs to
+         * "slide" to be fully in view for the user
+         * @param {dictionary} layout
+         */
         const getTopMenuLayout = (layout) => {
             const { x, y, width, height } = layout;
             setYPosHidden(-height);
         };
 
+        /**
+         * Triggered when the radiobuttons on the topmenu is
+         * changed or clicked. Will set the value of the radiobutton
+         * aswell as the extensiontype and to change backgroundImage
+         * @param {String} value
+         */
         const radioButtonChange = (value) => {
             setRadioBtn(value);
             setExtensionType(value);

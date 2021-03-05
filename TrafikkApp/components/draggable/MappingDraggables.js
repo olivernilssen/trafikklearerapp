@@ -2,6 +2,10 @@
 import React from 'react';
 import Draggable from './Draggable';
 
+/**
+ * Helper function to map through all the draggables objects
+ * then to display them in DraggableWithEverything
+ */
 const MappingDraggable = React.memo((props) => {
     //Get props
     const {

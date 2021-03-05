@@ -29,6 +29,10 @@ const ITEM_SIZE = 100;
 const radius = (ITEM_SIZE * 2) / 2;
 const buttonSize = 25;
 
+/**
+ * The component which is draggable
+ * Can be moved freely around the view it belongs too
+ */
 const Draggable = React.memo((props) => {
     //States
     const { source, dropZoneValues } = props;
@@ -38,10 +42,21 @@ const Draggable = React.memo((props) => {
     const [popoutActive, setPopoutActive] = useState(false);
     // const [popoutScaling, setPopoutScaling] = useState(new Animated.Value(1));
 
+    /**
+     * useEffect that is triggered when tintColor is changed
+     * Will make the popout inactive
+     */
     useEffect(() => {
         setPopoutActive(!popoutActive);
     }, [tintColor]);
 
+    /**
+     * When user starts dragging the object, this is triggered
+     * will remove the popout if it is active
+     * and make the item hover as a feedback that the dragging has
+     * started
+     * @param {Event} gesture
+     */
     const onDragStart = (gesture) => {
         //Start spring animation (user feedback)
         setPopoutActive(false);
@@ -53,6 +68,12 @@ const Draggable = React.memo((props) => {
         }).start();
     };
 
+    /**
+     * While the user is dragging the object
+     * it will check if the object is in the view
+     * of the trashcan and then send feedback to trashcan
+     * @param {Event} gesture
+     */
     const onDragMove = (gesture) => {
         if (isDropArea(gesture) && !isScaling) {
             props.onTrashHover(true);
@@ -61,6 +82,12 @@ const Draggable = React.memo((props) => {
         }
     };
 
+    /**
+     * When dragging event has ended, the
+     * hoved animation will end and pop back to it's
+     * original size
+     * @param {Event} gesture
+     */
     const onDragEnd = (gesture) => {
         //If in dropzone, delete element
         if (isDropArea(gesture) && !isScaling) {
@@ -83,13 +110,22 @@ const Draggable = React.memo((props) => {
         setIsScaling(false);
     };
 
-    //Helper function so we can run to functions
-    //after animation over trashcan has ended
+    /**
+     * Helper function so useEffects are triggered
+     * when the user stops dragging the element on top of
+     * the trashcan. This will initate the removal of the item
+     */
     const removeItem = useCallback(() => {
         props.onRemoveItem(props.id);
         props.onTrashHover(false);
     });
 
+    /**
+     * Checks if the user has dropped the draggable object on top of the
+     * trashcan or not
+     * @param {Event} gesture
+     * @returns true or false if the item is inside the dropzoneArea (trashcna)
+     */
     const isDropArea = (gesture) => {
         var dz = dropZoneValues;
 

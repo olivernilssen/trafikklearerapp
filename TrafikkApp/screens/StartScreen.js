@@ -7,6 +7,10 @@ import Header from '../components/Header.js';
 import StartScreenLink from '../components/StartScreenLink.js';
 import Color from '../styles/Colors';
 
+/**
+ * Screen component for the start screen
+ * contains a list of all the clickable screens in the navigator
+ */
 const StartScreen = React.memo(({ navigation }) => {
     return (
         <MainView>

@@ -12,6 +12,12 @@ import RoadSignScreen from '../../screens/RoadSignScreen';
 
 const Drawer = createDrawerNavigator();
 
+/**
+ * This is the Navigator for our side drawer
+ * Holds all the information about the screens and
+ * the screen parameters
+ * @returns The Drawer Navigator
+ */
 const Navigator = () => {
     return (
         <Drawer.Navigator
