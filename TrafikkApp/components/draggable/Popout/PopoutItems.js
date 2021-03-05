@@ -4,6 +4,11 @@ import { View, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
+/**
+ * Component for the items inside the animated popout menu
+ * @param {dictionary} props
+ * @returns popoutItems as small circles
+ */
 const PopoutItems = (props) => {
     const {
         radius,
@@ -14,6 +19,13 @@ const PopoutItems = (props) => {
         buttonSize,
     } = props;
 
+    /**
+     * Function to calculate the x and y coordinates as a half circle
+     * around an object. depending on which position the item has in
+     * the array it is placed in
+     * @param {Int} i
+     * @returns the x and y position of the circle
+     */
     const calculateXY = (i) => {
         const so = 0; //start offset
         const rx = radius; //radius along x
@@ -29,6 +41,10 @@ const PopoutItems = (props) => {
         return { x, y };
     };
 
+    /**
+     * This returns each object that is in the array
+     * as a small circle placed according to the function calculateXY
+     */
     return array.map((color, i) => {
         const isResetButton = color == 'reset';
         color = isResetButton ? '#DDDDDD' : color;

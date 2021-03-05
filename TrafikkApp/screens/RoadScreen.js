@@ -13,6 +13,10 @@ import Color from '../styles/Colors';
 import Header from '../components/Header';
 import imgSource from '../components/sketchComponents/illustrationsPath';
 
+/**
+ * The screen component for roadScreen "veikryss"
+ * Denne er langt fra ferdig!
+ */
 const RoadScreen = React.memo(({ navigation }) => {
     const roadTypeNames = [];
     const roadTypes = imgSource['Veikryss'];

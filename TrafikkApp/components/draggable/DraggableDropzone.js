@@ -3,12 +3,23 @@ import { StyleSheet, View } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
+/**
+ * Component that shows the dropzone area for
+ * draggable objects
+ * @param {dictonary} props
+ * @returns the components at an absolute position
+ */
 const DraggableDropZone = (props) => {
     // Get the high of the view which is hidden
     const { iconSize, trashHover, setDropZoneValues } = props;
 
     if (iconSize == null) iconSize = 60; //check if user set the iconSize and if so, change it
 
+    /**
+     * Get the layout of the trashcan icon
+     * and set the state for the layout
+     * @param {dictionary} layout
+     */
     const getIconLayout = (layout) => {
         setDropZoneValues(layout);
     };

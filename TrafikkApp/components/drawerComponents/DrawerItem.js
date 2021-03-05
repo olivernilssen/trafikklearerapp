@@ -4,6 +4,9 @@ import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Color from '../../styles/Colors';
 
+/**
+ * Components item that are shown in the navigation drawer
+ */
 const DrawerItem = React.memo(
     ({ navigation, screenIndex, screenName, params }) => {
         const { icon, value, title } = params;

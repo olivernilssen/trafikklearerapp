@@ -7,12 +7,15 @@ import Color from '../../styles/Colors';
 import { useCallback } from 'react';
 import BottomMenuContent from './BottomMenuContent';
 
+/**
+ * This function class is the mainview of the bottomSheet
+ * It has properties to move or hide the view and will
+ * show the content of it's children
+ */
 const BottomMenuAnimated = React.memo((props) => {
     const {
         roadType,
         setImage,
-        // roadTypesNames,
-        // imgSource,
         extensionType,
         bottomSheetHidden,
         setBottomSheetHidden,
@@ -22,11 +25,20 @@ const BottomMenuAnimated = React.memo((props) => {
     const [hiddenViewButton, setHiddenViewButton] = useState('chevron-down');
     const [bottomSheetHeight, setBottomSheetHeight] = useState(0);
 
+    /**
+     * Is triggered when the state bottomSheetHidden is changed
+     * Will trigger the toggleSubview function to animate the
+     * bottomsheet into view
+     */
     useEffect(() => {
         toggleSubview();
     }, [bottomSheetHidden]);
 
-    // Show or hide the bottom sheet depending on hight and if it is showing or not
+    /**
+     * This function will change the little icon at the top of the bottom menu
+     * to either show a chevorn of elipsis.
+     * It also animates the menu to either be hidden or shown
+     */
     const toggleSubview = useCallback(() => {
         setHiddenViewButton(bottomSheetHidden ? 'ellipsis-h' : 'chevron-down');
         var toValue = bottomSheetHeight;
@@ -44,27 +56,24 @@ const BottomMenuAnimated = React.memo((props) => {
         }).start();
     }, [bottomSheetHidden]);
 
+    /**
+     * Change the state of the bottomSheetHidden state
+     * This will also trigger a useEffect to run afterwards
+     */
     const onHiddenViewChange = useCallback(() => {
         setBottomSheetHidden(!bottomSheetHidden);
     });
 
-    // Get the high of the view which is hidden
+    /**
+     * Is triggered to get the layout (height, width) of the
+     * bottomsheet view. This is to accuractly decide how far up
+     * on the screen the menu needs to slide
+     * @param {dictionary} layout
+     */
     const getLayout = (layout) => {
         const { x, y, width, height } = layout;
         setBottomSheetHeight(height);
     };
-
-    // const onMenuButtonPressed = useCallback((key) => {
-    //     //get img from imgSource
-    //     const img = roadTypes[key];
-
-    //     //set the selected img/roadType
-    //     setSelectedRoadType([key, selectedRoad]);
-
-    //     //send to parent
-    //     onImageChange(img);
-    //     onHiddenViewChange(!bottomSheetHidden);
-    // });
 
     return (
         <Animated.View

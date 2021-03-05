@@ -4,6 +4,10 @@ import Color from '../../styles/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { View } from 'react-native-ui-lib';
 
+/**
+ * IconButtons is the buttons at the top menu for the sketcharea
+ * @param {props} props
+ */
 const IconButtons = (props) => {
     const {
         iconName,
@@ -33,6 +37,11 @@ const IconButtons = (props) => {
     );
 };
 
+/**
+ * This is the button component for the
+ * box that is either open or closed on the sketchheader
+ * @param {props} props
+ */
 const ComponentButton = (props) => {
     const { topMenuHidden, toggleRightMenuState } = props;
     return (

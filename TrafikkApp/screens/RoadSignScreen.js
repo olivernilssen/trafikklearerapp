@@ -6,6 +6,10 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import Colors from '../styles/Colors';
 import signSource from '../components/roadSignComponents/signPath';
 
+/**
+ * Screen component for sign screen
+ * @param {navigator} navigation
+ */
 const RoadSignScreen = ({ navigation }) => {
     const labelsArray = [];
     const testSkilt = signSource['Fareskilt'];
@@ -20,18 +24,14 @@ const RoadSignScreen = ({ navigation }) => {
     const InitialImageSrc =
         signSource[skiltGruppeArray[0]][initialImageSrcName];
 
-    console.log(initialImageSrcName);
-    console.log(InitialImageSrc);
-    console.log(labelsArray);
+    // console.log(initialImageSrcName);
+    // console.log(InitialImageSrc);
+    // console.log(labelsArray);
 
     const images = skiltGruppeArray.map((item, index) => {
         return (
             <View key={index}>
-                <Image
-                    source={skiltGruppeArray[item]}
-                    // style={styles.icon}
-                    resizeMode={'contain'}
-                />
+                <Image source={skiltGruppeArray[item]} resizeMode={'contain'} />
             </View>
         );
     });

@@ -4,6 +4,9 @@ import { View, StyleSheet } from 'react-native';
 import MainView from '../components/MainView';
 import SketchArea from '../components/sketchComponents/SketchArea';
 
+/**
+ * Screen component for roundbaout screen / rundkjøring
+ */
 const RoundaboutScreen = React.memo(({ navigation }) => {
     return (
         <MainView>

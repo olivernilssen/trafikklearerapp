@@ -6,6 +6,9 @@ import MainView from '../components/MainView';
 import Header from '../components/Header.js';
 import Color from '../styles/Colors';
 
+/**
+ * Screen component for the settings screen (TODO)
+ */
 const SettingsScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
