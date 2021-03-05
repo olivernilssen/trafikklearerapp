@@ -4,15 +4,15 @@ import { StyleSheet, View, Animated } from 'react-native';
 import { RadioGroup, RadioButton } from 'react-native-ui-lib';
 
 import Color from '../../styles/Colors';
-import ComponentItems from './ComponentItems';
+import DraggableComponents from './DraggableComponents';
 
 const extensionTypes = ['vanlig', 'gangfelt', 'sykkelfelt', 'busslomme'];
 
 /**
- * Component for the top menu, which displayes objects
+ * Component for the draggable top menu, which displayes objects
  * that can be turned into draggables.
  */
-const ComponentMenuTop = React.memo(
+const DraggableComponentsMenu = React.memo(
     ({ topMenuHidden, onNewDraggable, setExtensionType }) => {
         const [radioBtn, setRadioBtn] = useState(extensionTypes[0]);
         const [yPosHidden, setYPosHidden] = useState(-200);
@@ -109,7 +109,7 @@ const ComponentMenuTop = React.memo(
                             })}
                         </RadioGroup>
                     </View>
-                    <ComponentItems onNewDraggable={onNewDraggable} />
+                    <DraggableComponents onNewDraggable={onNewDraggable} />
                 </View>
             </Animated.View>
         );
@@ -147,4 +147,4 @@ const styles = StyleSheet.create({
     radioBtn: {},
 });
 
-export default ComponentMenuTop;
+export default DraggableComponentsMenu;
