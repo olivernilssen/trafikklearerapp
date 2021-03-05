@@ -15,19 +15,12 @@ import Color from '../../styles/Colors';
 import DraggableWithEverything from '../draggable/DraggableWithEverything';
 import BottomMenuAnimated from '../bottomMenuComponent/BottomMenuAnimated';
 
+/**
+ * This is a big component that contains all the components that are visible
+ * on the sketcharea screens.
+ */
 const SketchArea = React.memo((props) => {
     const sketchRef = useRef();
-    // const roadTypeNames = [];
-    // const roadTypes = imgSource[props.name]; //get the correct object based on type of road
-
-    // //Get all the keys from our imgSource (høyre, lys etc for labels)
-    // const keys = Object.keys(roadTypes);
-    // keys.map((keys) => {
-    //     roadTypeNames.push(keys);
-    // });
-
-    // const initialImageSrcName = Object.keys(roadTypes[roadTypeNames[0]])[0];
-    // const InitialImageSrc = roadTypes[roadTypsNames[0]][initialImageSrcName];
 
     const [currPencilColor, setPencilColor] = useState('#CF262F');
     const [prevPencilColor, setPrevPencilColor] = useState('red');
@@ -41,12 +34,18 @@ const SketchArea = React.memo((props) => {
     const [deletingItemId, setDeletingItemId] = useState(null);
     const [extensionType, setExtensionType] = useState('vanlig');
 
-    //Clear canvas if new image is loaded
+    /**
+     * useEffect that is triggered when currentImg is changed
+     * Will clear the canvas and delete all objects on the screen
+     */
     useEffect(() => {
         clearCanvas();
-        setDraggables([]);
     }, [currentImg]);
 
+    /**
+     * Changes the pencil color according to user input
+     * @param {String} color
+     */
     const onPencilColorChange = (color) => {
         setPencilColor(color);
         if (prevPencilSize != null) {
@@ -54,6 +53,9 @@ const SketchArea = React.memo((props) => {
         }
     };
 
+    /**
+     * Changes the pencil color according to user input
+     */
     const onSwitchPencilColor = useCallback(() => {
         if (currPencilColor === '#00000000') {
             setPencilColor(prevPencilColor);
@@ -64,10 +66,19 @@ const SketchArea = React.memo((props) => {
         }
     }, [currPencilColor]);
 
+    /**
+     * Function to change the pencil brush size
+     * @param {int} newPencilSize
+     */
     const onChangePencilSize = (newPencilSize) => {
         setPencilSize(newPencilSize);
     };
 
+    /**
+     * Function to undo the previous action of the user
+     * will remove strokes or draggables
+     * Does not unto draggable movements
+     */
     const undoChange = useCallback(() => {
         if (actionList.length == 0) return;
 
@@ -85,15 +96,25 @@ const SketchArea = React.memo((props) => {
         setActionList(copyList);
     }, [actionList]);
 
+    /**
+     * When strokeEnded the added path/stroke
+     * is added to actionList to keep track of undo actions
+     */
     const onStrokeEnd = useCallback(() => {
         setActionList([...actionList, { type: 'stroke' }]);
     });
 
+    /**
+     * Function to clear the canvas and set draggables to empty list
+     */
     const clearCanvas = useCallback(() => {
         sketchRef.current.clear();
         setDraggables([]);
     });
 
+    /**
+     * Function to set the pencil to an eraser
+     */
     const eraser = useCallback(() => {
         if (currPencilColor != '#00000000') {
             setPrevPencilColor(currPencilColor);
@@ -106,11 +127,18 @@ const SketchArea = React.memo((props) => {
         }
     }, [currPencilColor]);
 
+    /**
+     * Function to hide the bottomsheet when user starts
+     * drawing on the canvas
+     */
     const onStrokeStart = useCallback(() => {
         if (bottomSheetHidden == false)
             setBottomSheetHidden(!bottomSheetHidden);
     }, [bottomSheetHidden]);
 
+    /**
+     * Function to toggle the topmenu to hidden or not hidden
+     */
     const toggleMenu = () => {
         setTopMenuHidden(!topMenuHidden);
     };
@@ -132,7 +160,6 @@ const SketchArea = React.memo((props) => {
             <View style={styles.main}>
                 <ImageBackground
                     resizeMode={'cover'}
-                    // resizeMethod="resize"
                     style={styles.backgroundImage}
                     source={currentImg}>
                     <SketchCanvas

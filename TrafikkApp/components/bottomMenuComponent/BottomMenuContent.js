@@ -5,6 +5,11 @@ import { RadioGroup, RadioButton } from 'react-native-ui-lib';
 import Color from '../../styles/Colors';
 import backgroundImagePath from '../sketchComponents/illustrationsPath';
 
+/**
+ * BottomMenuContent is a menu that slides up from the bottom of the screen
+ * This menu allows the user to change the background image according to
+ * which screen they are on
+ */
 const BottomMenuContent = React.memo(
     ({ roadType, setImage, extensionType }) => {
         //Get the roadtype json this component applies too based on roadType prop
@@ -33,7 +38,10 @@ const BottomMenuContent = React.memo(
             });
         }
 
-        //set the background image when initially launched
+        /**
+         * Is triggered on mount and unmount, will help set the background
+         * when the screen is first mounted
+         */
         useEffect(() => {
             if (roadType == 'Veikryss') {
                 const imgSource =
@@ -45,6 +53,10 @@ const BottomMenuContent = React.memo(
             }
         }, []);
 
+        /**
+         * Is triggered when extensionType state is changed
+         * Will update the background image according to this parameter
+         */
         useEffect(() => {
             if (roadType == 'Veikryss') {
                 const imgSource =
@@ -56,7 +68,12 @@ const BottomMenuContent = React.memo(
             }
         }, [extensionType]);
 
-        //Set the road design and reset intersectiontype to X
+        /**
+         * Button event that changes the background image of the screen
+         * Depending on if it is a intersection or not, the handling is different
+         * Also sets the roadDesign state.
+         * @param {String} designName
+         */
         const onPressButton = (designName) => {
             if (roadType == 'Veikryss') {
                 const imgSource = thisRoadType[designName]['X'][extensionType];
@@ -69,7 +86,11 @@ const BottomMenuContent = React.memo(
             setRoadDesign(designName);
         };
 
-        //Set the intersection type, only applies to Intersection road design (veikryss)
+        /**
+         * Triggered when the radiobuttons are clicked
+         * Changes the type of intersection design that is chosen (x, y, t)
+         * @param {String} radioValue
+         */
         const radioButtonChange = (radioValue) => {
             setIntersectionType(radioValue);
             const imgSource =

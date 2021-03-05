@@ -5,13 +5,25 @@ import objectPaths from '../draggable/draggableObjectPaths';
 
 import Carousel from '../Carousel';
 
+/**
+ * Component for the items that are in the draggable top menu
+ */
 const ComponentItems = React.memo(({ onNewDraggable }) => {
     const objects = Object.keys(objectPaths);
 
+    /**
+     * Get's the image source of the draggable
+     * and creates a new draggable item
+     * @param {int} source
+     */
     const onElementPress = (source) => {
         onNewDraggable(objectPaths[source]);
     };
 
+    /**
+     * Displayes the available draggable images that can be used
+     * @return all the images that are in the "objects" array
+     */
     const images = objects.map((source, i) => {
         return (
             <View key={i} style={styles.imageContainer}>
@@ -41,10 +53,6 @@ const styles = StyleSheet.create({
     imageContainer: {
         marginTop: 10,
         marginHorizontal: 10,
-        // borderRadius: 250,
-        // borderWidth: 2,
-        // borderColor: Color.borderColor,
-        // backgroundColor: Color.borderColor,
     },
     imageButton: {
         paddingHorizontal: 5,

@@ -4,6 +4,9 @@ import { View, StyleSheet } from 'react-native';
 import MainView from '../components/MainView';
 import SketchArea from '../components/sketchComponents/SketchArea';
 
+/**
+ * The scren component to show the sketcharea of Veikryss
+ */
 const IntersectionScreen = React.memo(({ navigation }) => {
     return (
         <MainView>

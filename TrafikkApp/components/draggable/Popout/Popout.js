@@ -3,11 +3,22 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Animated } from 'react-native';
 import PopoutItems from './PopoutItems';
 
+/**
+ * Popout component that shows a half circle of colors around
+ * an object/view
+ * @param {dictionary} props
+ * @returns
+ */
 const Popout = (props) => {
     const { popoutActive, itemSize } = props;
 
     const [scale, setScale] = useState(new Animated.Value(0));
 
+    /**
+     * useEffect that is triggered when popoutActive state
+     * is changed. Will animate the menu in or out of view
+     * of the user
+     */
     useEffect(() => {
         //Animation effect to "hide or show" popup
         if (popoutActive) {

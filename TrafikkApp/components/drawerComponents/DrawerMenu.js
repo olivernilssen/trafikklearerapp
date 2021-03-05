@@ -5,6 +5,10 @@ import Color from '../../styles/Colors';
 import DrawerToggleMenuItem from './DrawerToggleItem';
 import DrawerItem from './DrawerItem';
 
+/**
+ * Component to display the menu as a flatlist in
+ * the navigation drawer (will add all items that are in props.state.routes)
+ */
 const DrawerMenu = React.memo((props) => {
     return (
         <View style={styles.container}>
