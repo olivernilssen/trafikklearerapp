@@ -5,17 +5,8 @@ import Color from '../styles/Colors';
 
 const Header = React.memo((props) => (
     <View style={styles.header}>
-        <TouchableOpacity
-            onPress={
-                props.name == 'Hjem'
-                    ? props.navigation.toggleDrawer
-                    : props.navigation.goBack
-            }>
-            <Icon
-                name={props.name == 'Hjem' ? 'bars' : 'angle-left'}
-                size={32}
-                color={Color.headerText}
-            />
+        <TouchableOpacity onPress={props.navigation.toggleDrawer}>
+            <Icon name={'bars'} size={32} color={Color.headerText} />
         </TouchableOpacity>
         <Text style={styles.headerText}>{props.name}</Text>
         {props.children}
