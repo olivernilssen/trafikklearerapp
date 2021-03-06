@@ -7,7 +7,7 @@ export default {
     FONT_SIZE_LARGE: RUtils.isSmallScreen() ? 20 : 30,
 
     // ICONS
-    ICON_SIZE_SMALL: 25,
+    ICON_SIZE_SMALL: RUtils.isSmallScreen() ? 20 : 30,
     ICON_SIZE_MEDIUM: 40,
     ICON_SIZE_LARGE: RUtils.isSmallScreen() ? 50 : 100,
 
@@ -16,8 +16,8 @@ export default {
     BUTTON_HEIGHT_SMALL: 53,
     BUTTON_WIDTH_MEDIUM: 110,
     BUTTON_HEIGHT_MEDIUM: 80,
-    BUTTON_WIDTH_LARGE: RUtils.isSmallScreen() ? 130 : 220,
-    BUTTON_HEIGHT_LARGE: RUtils.isSmallScreen() ? 130 : 220,
+    BUTTON_WIDTH_LARGE: RUtils.isSmallScreen() ? 120 : 210,
+    BUTTON_HEIGHT_LARGE: RUtils.isSmallScreen() ? 100 : 190,
 
     // SPACING
     PADDING_SMALL: 5,

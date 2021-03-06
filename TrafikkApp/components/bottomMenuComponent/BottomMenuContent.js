@@ -172,8 +172,6 @@ const BottomMenuContent = React.memo(
     }
 );
 
-export default BottomMenuContent;
-
 const styles = StyleSheet.create({
     btnAndRadios: {
         flexDirection: 'column',
@@ -209,3 +207,5 @@ const styles = StyleSheet.create({
         ...Typography.medium,
     },
 });
+
+export default BottomMenuContent;

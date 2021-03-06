@@ -1,12 +1,12 @@
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Colors, Typography } from '../styles';
+import { Colors, Icons, Typography } from '../styles';
 
 const Header = React.memo((props) => (
     <View style={styles.header}>
         <TouchableOpacity onPress={props.navigation.toggleDrawer}>
-            <Icon name={'bars'} size={32} color={Colors.icons} />
+            <Icon name={'bars'} size={Icons.small} color={Colors.icons} />
         </TouchableOpacity>
         <Text style={styles.headerText}>{props.name}</Text>
         {props.children}

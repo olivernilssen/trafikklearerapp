@@ -20,7 +20,7 @@ import {
 
 const { Popover } = renderers;
 
-import Color from '../../styles/Colors';
+// import { Colors } from '../../styles';
 
 const PencilSizePopup = () => {
     const [sliderValue, setSliderValue] = useState(5);

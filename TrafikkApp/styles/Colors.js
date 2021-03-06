@@ -9,7 +9,7 @@ const mustard = '#E2BD38';
 
 const green = '#66DA8D';
 const blue = '#79B7DA';
-const blueGray = 'CDD7DC';
+const blueGray = '#CDD7DC';
 
 const red = '#FB5555';
 

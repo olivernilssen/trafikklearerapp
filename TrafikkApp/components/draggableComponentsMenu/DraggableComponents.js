@@ -42,7 +42,7 @@ const DraggableComponents = React.memo(({ onNewDraggable }) => {
     });
 
     return (
-        <Carousel objectArray={objects} itemsPerSlide={9}>
+        <Carousel objectArray={images} itemsPerSlide={9}>
             {images}
             {images}
         </Carousel>
