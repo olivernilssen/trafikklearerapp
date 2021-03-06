@@ -2,7 +2,7 @@ import { TouchableOpacity, StyleSheet } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { View } from 'react-native-ui-lib';
-import { Buttons, Colors, Typography, Icons } from '../../styles';
+import { Buttons, Colors, Icons } from '../../styles';
 
 /**
  * This is the button component for the
@@ -18,10 +18,10 @@ const BoxButton = (props) => {
                 style={{
                     flex: 1,
                     justifyContent: 'space-around',
-                    alignItems: 'center',
                 }}>
                 <Icon
                     name={!toggleRightMenuState ? 'box-open' : 'box'}
+                    size={Icons.small}
                     style={
                         !toggleRightMenuState
                             ? styles.buttonActive
@@ -36,38 +36,22 @@ const BoxButton = (props) => {
 const styles = StyleSheet.create({
     buttonSize: {
         // fontSize: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
-        ...Typography.large,
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        // ...Typography.medium,
     },
     buttonActive: {
-        // backgroundColor: 'yellow',
-        // flex: 1,
         color: Colors.textLight,
-        // fontSize: 20,
         backgroundColor: Colors.iconActive,
-        // borderRightWidth: 1,
-        // borderLeftWidth: 1,
-        // borderColor: Color.tabButtonBorder,
-        // width: '100%',
-        // height: '100%',
         paddingVertical: 12,
-        paddingHorizontal: 16,
-        width: Icons.mediumBackground,
-        height: Icons.mediumBackground,
+        paddingHorizontal: 14,
         ...Buttons.round,
-        ...Typography.large,
     },
     buttonInactive: {
         color: Colors.icons,
-        // fontSize: 30,
         backgroundColor: Colors.header,
-        // borderRightWidth: 1,
-        // borderLeftWidth: 1,
-        // borderColor: Color.tabButtonBorder,
         paddingVertical: 12,
-        paddingHorizontal: 16,
-        ...Typography.large,
+        paddingHorizontal: 14,
     },
 });
 

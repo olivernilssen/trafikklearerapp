@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Colors, Typography } from '../../styles';
+import { Colors, Typography, Icons } from '../../styles';
 
 /**
  * Components item that are shown in the navigation drawer
@@ -29,7 +29,7 @@ const DrawerItem = React.memo(
                 }>
                 <Icon
                     name={icon}
-                    size={25}
+                    size={Icons.small}
                     color={
                         screenIndex == value ? Colors.textLight : Colors.icons
                     }
@@ -56,14 +56,15 @@ const styles = StyleSheet.create({
     menuItem: {
         flexDirection: 'row',
         marginBottom: 15,
+        alignItems: 'center',
         color: Colors.icons,
         borderRadius: 10,
     },
     menuItemText: {
         // fontSize: 20,
         fontWeight: '300',
-        margin: 15,
-        // color: Colors.light,
+        margin: 12,
+        textAlign: 'center',
         ...Typography.medium,
     },
 });

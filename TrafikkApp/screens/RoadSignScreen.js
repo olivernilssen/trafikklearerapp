@@ -3,7 +3,7 @@ import { FlatList, StyleSheet, View, Text, Image } from 'react-native';
 import Header from '../components/Header';
 import MainView from '../components/MainView';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Colors from '../styles/Colors';
+import { Colors } from '../styles';
 import signSource from '../components/roadSignComponents/signPath';
 
 /**
