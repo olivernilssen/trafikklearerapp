@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { RadioGroup, RadioButton } from 'react-native-ui-lib';
 
-import Color from '../../styles/Colors';
+import { Colors, Icons, Typography, Buttons } from '../../styles';
 import backgroundImagePath from '../sketchComponents/illustrationsPath';
 
 /**
@@ -100,50 +100,11 @@ const BottomMenuContent = React.memo(
 
         return (
             <View style={styles.btnAndRadios}>
-                {/* START * The main buttons (Høyrekryss, forkjørs, lys) */}
-                {RoadDesigns.map((label, i) => {
-                    const activeBtn = label === roadDesign;
-
-                    return (
-                        <TouchableOpacity
-                            key={i}
-                            style={[
-                                styles.buttonContainer,
-                                activeBtn
-                                    ? {
-                                          backgroundColor:
-                                              Color.buttonSecActive,
-                                      }
-                                    : {
-                                          backgroundColor:
-                                              Color.buttonSecondary,
-                                      },
-                            ]}
-                            activeOpacity={0.6}
-                            onPress={() => onPressButton(label)}>
-                            <Text
-                                style={[
-                                    styles.buttonText,
-                                    activeBtn
-                                        ? {
-                                              color: Color.textPrimary,
-                                          }
-                                        : {
-                                              color:
-                                                  Color.tabHeaderTextInactive,
-                                          },
-                                ]}>
-                                {label}
-                            </Text>
-                        </TouchableOpacity>
-                    );
-                })}
-                {/* END * The main buttons (Høyrekryss, forkjørs, lys) */}
-
                 {/* START * The radio buttons (X, T, Y) */}
                 {roadType == 'Veikryss' && (
-                    <View style={styles.radioGroup}>
+                    <View style={styles.radioView}>
                         <RadioGroup
+                            style={styles.radioGroup}
                             initialValue={intersectionType}
                             onValueChange={(value) => radioButtonChange(value)}>
                             {IntersectionTypes.map((name, i) => {
@@ -152,51 +113,99 @@ const BottomMenuContent = React.memo(
                                         key={i}
                                         label={name}
                                         value={name}
-                                        size={25}
-                                        labelStyle={{ fontSize: 20 }}
+                                        size={Icons.small}
+                                        labelStyle={{
+                                            color: Colors.textLight,
+                                            ...Typography.medium,
+                                        }}
                                         style={styles.radioBtn}
-                                        color={Color.buttonSecActive}
+                                        color={Colors.bottomMenyButtons}
                                     />
                                 );
                             })}
                         </RadioGroup>
                     </View>
                 )}
+
+                {/* START * The main buttons (Høyrekryss, forkjørs, lys) */}
+                <View style={styles.buttonGroup}>
+                    {RoadDesigns.map((label, i) => {
+                        const activeBtn = label === roadDesign;
+
+                        return (
+                            <TouchableOpacity
+                                key={i}
+                                style={[
+                                    styles.buttonContainer,
+                                    activeBtn
+                                        ? {
+                                              backgroundColor:
+                                                  Colors.bottomMenyButtons,
+                                          }
+                                        : {
+                                              backgroundColor:
+                                                  Colors.bottomMeny,
+                                          },
+                                ]}
+                                activeOpacity={0.6}
+                                onPress={() => onPressButton(label)}>
+                                <Text
+                                    style={[
+                                        styles.buttonText,
+                                        activeBtn
+                                            ? {
+                                                  color: Colors.textLight,
+                                              }
+                                            : {
+                                                  color: Colors.icons,
+                                              },
+                                    ]}>
+                                    {label}
+                                </Text>
+                            </TouchableOpacity>
+                        );
+                    })}
+                </View>
+                {/* END * The main buttons (Høyrekryss, forkjørs, lys) */}
             </View>
         );
     }
 );
 
-export default BottomMenuContent;
-
 const styles = StyleSheet.create({
     btnAndRadios: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         padding: 20,
         justifyContent: 'center',
-        backgroundColor: 'white',
+        alignItems: 'center',
+        width: '100%',
+    },
+    radioView: {
+        width: '50%',
+        marginBottom: 20,
+    },
+    radioGroup: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+    },
+    radioBtn: {
+        backgroundColor: Colors.icons,
+    },
+    buttonGroup: {
+        flexDirection: 'row',
     },
     buttonContainer: {
-        backgroundColor: 'white',
         padding: 25,
-        borderWidth: 2,
-        // height: '100%',
-        borderColor: 'transparent',
-        borderRadius: 20,
         marginRight: 5,
         marginHorizontal: 15,
         justifyContent: 'center',
+        alignItems: 'center',
         elevation: 3,
+        ...Buttons.largeRounded,
     },
     buttonText: {
-        fontSize: 20,
-    },
-    radioGroup: {
-        alignContent: 'center',
-        marginLeft: 30,
-    },
-    radioBtn: {
-        margin: 5,
-        backgroundColor: 'white',
+        ...Typography.medium,
     },
 });
+
+export default BottomMenuContent;

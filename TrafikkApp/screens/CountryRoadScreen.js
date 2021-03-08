@@ -5,14 +5,16 @@ import MainView from '../components/MainView';
 import SketchArea from '../components/sketchComponents/SketchArea';
 
 /**
- * The screen component for roadScreen "Veu"
+ * The screen component for roadScreen "Landevei"
  * Denne er langt fra ferdig!
  */
-const RoadScreen = React.memo(({ navigation }) => {
+const CountryRoadScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
             <View style={styles.sketchArea}>
-                <SketchArea navigation={navigation} name={'Vei'}></SketchArea>
+                <SketchArea
+                    navigation={navigation}
+                    name={'Landevei'}></SketchArea>
             </View>
         </MainView>
     );
@@ -25,4 +27,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default RoadScreen;
+export default CountryRoadScreen;

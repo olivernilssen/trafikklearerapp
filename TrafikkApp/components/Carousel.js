@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, Text } from 'react-native';
-import Color from '../styles/Colors';
+import { Colors } from '../styles';
 
 const Carousel = (props) => {
     const itemsPerSlide = props.itemsPerSlide;

@@ -12,7 +12,7 @@ import {
 
 const { Popover } = renderers;
 
-import Color from '../../styles/Colors';
+// import { Colors } from '../../styles';
 
 const PencilSizePopup = (props) => {
     // const pencilSizeButton = (pencilThickness) => {

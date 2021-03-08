@@ -1,12 +1,12 @@
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import * as React from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import Color from '../styles/Colors';
+import { Colors, Icons, Typography } from '../styles';
 
 const Header = React.memo((props) => (
     <View style={styles.header}>
         <TouchableOpacity onPress={props.navigation.toggleDrawer}>
-            <Icon name={'bars'} size={32} color={Color.headerText} />
+            <Icon name={'bars'} size={Icons.small} color={Colors.icons} />
         </TouchableOpacity>
         <Text style={styles.headerText}>{props.name}</Text>
         {props.children}
@@ -20,16 +20,15 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 20,
-        backgroundColor: Color.header,
+        backgroundColor: Colors.background,
         elevation: 5,
     },
     headerText: {
         flex: 1,
-        color: Color.headerText,
-        fontFamily: '',
-        fontSize: 30,
+        color: Colors.icons,
         paddingRight: 30,
         textAlign: 'center',
+        ...Typography.large,
     },
 });
 

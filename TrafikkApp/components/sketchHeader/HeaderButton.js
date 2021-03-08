@@ -1,8 +1,9 @@
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import React from 'react';
-import Color from '../../styles/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { View } from 'react-native-ui-lib';
+
+import { Colors, Buttons, Icons } from '../../styles';
 
 /**
  * IconButtons is the buttons at the top menu for the sketcharea
@@ -26,6 +27,7 @@ const HeaderButton = (props) => {
                 }}>
                 <Icon
                     name={iconName}
+                    size={Icons.small}
                     style={
                         activeId === buttonActiveId
                             ? styles.buttonActive
@@ -39,42 +41,23 @@ const HeaderButton = (props) => {
 
 const styles = StyleSheet.create({
     buttonSize: {
-        fontSize: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        // ...Typography.large,
     },
-    // buttonIcon: {
-    //     color: Color.iconPrimary,
-    //     borderColor: Color.tabButtonBorder,
-    //     //marginRight: '5%'
-    // },
     buttonActive: {
-        // backgroundColor: 'yellow',
-        // flex: 1,
-        color: Color.iconPrimary,
-        fontSize: 30,
-        backgroundColor: Color.tabButtonActive,
-        borderRightWidth: 1,
-        borderLeftWidth: 1,
-        borderColor: Color.tabButtonBorder,
-        // width: '100%',
-        // height: '100%',
+        color: Colors.textLight,
+        backgroundColor: Colors.iconActive,
         paddingVertical: 12,
         paddingHorizontal: 16,
+        ...Buttons.round,
     },
     buttonInactive: {
-        color: Color.iconPrimary,
-        fontSize: 30,
-        backgroundColor: Color.tabButton,
-        borderRightWidth: 1,
-        borderLeftWidth: 1,
-        borderColor: Color.tabButtonBorder,
+        color: Colors.icons,
+        backgroundColor: Colors.header,
         paddingVertical: 12,
         paddingHorizontal: 16,
     },
-    // colorButton: {
-    //     fontSize: 30,
-    // },
     spacedRight: {
         flex: 1,
         flexDirection: 'row',

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
-import Color from '../../styles/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { Colors, View, ColorPalette } from 'react-native-ui-lib';
+import { View, ColorPalette } from 'react-native-ui-lib';
 import {
     Menu,
     MenuOptions,
@@ -10,7 +9,11 @@ import {
     MenuTrigger,
     renderers,
 } from 'react-native-popup-menu';
+<<<<<<< HEAD
 import PencilSizePopup from './PencilSizePopup';
+=======
+import { Colors, Typography, Buttons } from '../../styles';
+>>>>>>> 7ffe4bee152b9e67ed5813892b4efd3dba2ff01c
 
 const { Popover } = renderers;
 
@@ -20,7 +23,7 @@ const SketchColorMenu = React.memo((props) => {
 
     const [currentColorSetup, setCurrentColorSetup] = useState({
         color: INITIAL_COLOR,
-        textColor: Colors.white,
+        textColor: Colors.header,
         paletteChange: false,
     });
 
@@ -148,31 +151,35 @@ const SketchColorMenu = React.memo((props) => {
 
 const styles = StyleSheet.create({
     buttonSize: {
-        fontSize: 30,
+        // fontSize: 30,
+        ...Typography.large,
     },
     buttonActive: {
         // backgroundColor: 'yellow',
         // flex: 1,
         // color: Color.iconPrimary,
-        fontSize: 30,
-        backgroundColor: Color.tabButtonActive,
-        borderRightWidth: 1,
-        borderLeftWidth: 1,
-        borderColor: Color.tabButtonBorder,
+        // fontSize: 30,
+        backgroundColor: Colors.iconActive,
+        // borderRightWidth: 1,
+        // borderLeftWidth: 1,
+        // borderColor: Color.tabButtonBorder,
         // width: '100%',
         // height: '100%',
         paddingVertical: 12,
         paddingHorizontal: 16,
+        ...Buttons.round,
+        ...Typography.large,
     },
     buttonInactive: {
-        color: Color.iconPrimary,
-        fontSize: 30,
-        backgroundColor: Color.tabButton,
-        borderRightWidth: 1,
-        borderLeftWidth: 1,
-        borderColor: Color.tabButtonBorder,
+        color: Colors.icons,
+        // fontSize: 30,
+        backgroundColor: Colors.header,
+        // borderRightWidth: 1,
+        // borderLeftWidth: 1,
+        // borderColor: Color.tabButtonBorder,
         paddingVertical: 12,
         paddingHorizontal: 16,
+        ...Typography.large,
     },
     spacedCenter: {
         flex: 1,

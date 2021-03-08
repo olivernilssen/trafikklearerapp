@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Color from '../../styles/Colors';
+import { Colors } from '../../styles';
 
 /**
  * Component for closing the drawer with button
@@ -16,7 +16,7 @@ const DrawerToggleMenuItem = React.memo(({ navigation, icon }) => (
         <Icon
             name={icon}
             size={35}
-            color={Color.drawerInactiveText}
+            color={Colors.icons}
             style={styles.menuIcon}
         />
     </TouchableOpacity>
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         paddingBottom: 20,
         borderBottomWidth: 1,
-        borderBottomColor: Color.linkDivider,
+        borderBottomColor: Colors.iconActive,
     },
     menuIcon: {
         marginTop: 10,

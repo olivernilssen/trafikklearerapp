@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Color from '../../styles/Colors';
+import { Colors, Typography, Icons } from '../../styles';
 
 /**
  * Components item that are shown in the navigation drawer
@@ -12,7 +12,15 @@ const DrawerItem = React.memo(
         const { icon, value, title } = params;
         return (
             <TouchableOpacity
-                style={styles.menuItem}
+                style={[
+                    styles.menuItem,
+                    {
+                        backgroundColor:
+                            screenIndex == value
+                                ? Colors.iconActive
+                                : Colors.background,
+                    },
+                ]}
                 activeOpacity={0.2}
                 onPress={() =>
                     navigation.navigate(`${screenName}`, {
@@ -21,11 +29,9 @@ const DrawerItem = React.memo(
                 }>
                 <Icon
                     name={icon}
-                    size={25}
+                    size={Icons.small}
                     color={
-                        screenIndex == value
-                            ? Color.drawerActiveText
-                            : Color.drawerInactiveText
+                        screenIndex == value ? Colors.textLight : Colors.icons
                     }
                     style={{ margin: 15 }}
                 />
@@ -35,8 +41,8 @@ const DrawerItem = React.memo(
                         {
                             color:
                                 screenIndex == value
-                                    ? Color.drawerActiveText
-                                    : Color.drawerInactiveText,
+                                    ? Colors.textLight
+                                    : Colors.icons,
                         },
                     ]}>
                     {title}
@@ -50,13 +56,16 @@ const styles = StyleSheet.create({
     menuItem: {
         flexDirection: 'row',
         marginBottom: 15,
-        // color: 'red',
+        alignItems: 'center',
+        color: Colors.icons,
+        borderRadius: 10,
     },
     menuItemText: {
-        fontSize: 20,
+        // fontSize: 20,
         fontWeight: '300',
-        margin: 15,
-        // color: Colors.light,
+        margin: 12,
+        textAlign: 'center',
+        ...Typography.medium,
     },
 });
 

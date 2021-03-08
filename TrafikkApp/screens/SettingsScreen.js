@@ -1,10 +1,9 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import MainView from '../components/MainView';
 import Header from '../components/Header.js';
-import Color from '../styles/Colors';
+import { Colors } from '../styles';
 
 /**
  * Screen component for the settings screen (TODO)
@@ -26,7 +25,7 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: Color.background,
+        backgroundColor: Colors.sketchBackground,
     },
 });
 

@@ -1,8 +1,8 @@
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import React from 'react';
-import Color from '../../styles/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { View } from 'react-native-ui-lib';
+import { Buttons, Colors, Icons } from '../../styles';
 
 /**
  * This is the button component for the
@@ -15,9 +15,13 @@ const BoxButton = (props) => {
         <View>
             <TouchableOpacity
                 onPress={() => topMenuHidden()}
-                style={{ flex: 1, justifyContent: 'space-around' }}>
+                style={{
+                    flex: 1,
+                    justifyContent: 'space-around',
+                }}>
                 <Icon
                     name={!toggleRightMenuState ? 'box-open' : 'box'}
+                    size={Icons.small}
                     style={
                         !toggleRightMenuState
                             ? styles.buttonActive
@@ -31,33 +35,23 @@ const BoxButton = (props) => {
 
 const styles = StyleSheet.create({
     buttonSize: {
-        fontSize: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
+        // fontSize: 30,
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        // ...Typography.medium,
     },
     buttonActive: {
-        // backgroundColor: 'yellow',
-        // flex: 1,
-        color: Color.iconPrimary,
-        fontSize: 30,
-        backgroundColor: Color.tabButtonActive,
-        borderRightWidth: 1,
-        borderLeftWidth: 1,
-        borderColor: Color.tabButtonBorder,
-        // width: '100%',
-        // height: '100%',
+        color: Colors.textLight,
+        backgroundColor: Colors.iconActive,
         paddingVertical: 12,
-        paddingHorizontal: 16,
+        paddingHorizontal: 14,
+        ...Buttons.round,
     },
     buttonInactive: {
-        color: Color.iconPrimary,
-        fontSize: 30,
-        backgroundColor: Color.tabButton,
-        borderRightWidth: 1,
-        borderLeftWidth: 1,
-        borderColor: Color.tabButtonBorder,
+        color: Colors.icons,
+        backgroundColor: Colors.header,
         paddingVertical: 12,
-        paddingHorizontal: 16,
+        paddingHorizontal: 14,
     },
 });
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import { Colors } from '../../styles';
 
 /**
  * Component that shows the dropzone area for
@@ -37,7 +38,9 @@ const DraggableDropZone = (props) => {
                 },
             ]}>
             <Icon
-                color={trashHover ? 'red' : 'black'}
+                color={
+                    trashHover ? Colors.deleteButtonActive : Colors.deleteButton
+                }
                 name={trashHover ? 'trash-restore' : 'trash'}
                 size={iconSize}
             />
