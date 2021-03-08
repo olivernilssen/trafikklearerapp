@@ -9,11 +9,8 @@ import {
     MenuTrigger,
     renderers,
 } from 'react-native-popup-menu';
-<<<<<<< HEAD
 import PencilSizePopup from './PencilSizePopup';
-=======
 import { Colors, Typography, Buttons } from '../../styles';
->>>>>>> 7ffe4bee152b9e67ed5813892b4efd3dba2ff01c
 
 const { Popover } = renderers;
 
