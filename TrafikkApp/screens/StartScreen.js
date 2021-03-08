@@ -101,17 +101,20 @@ const StartScreen = React.memo(({ navigation }) => {
 
 const styles = StyleSheet.create({
     main: {
-        flex: 1,
-        width: '100%',
-        paddingTop: 10,
+        // flex: 1,
+        height: '100%',
+        // width: '100%',
+        paddingTop: 20,
+        alignSelf: 'center',
         backgroundColor: Colors.background,
     },
     container: {
         // flex: 1,
+        // height: '100%',
         // width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingVertical: 5,
+        paddingVertical: 10,
     },
     linksContainer: {
         // flex: 1,

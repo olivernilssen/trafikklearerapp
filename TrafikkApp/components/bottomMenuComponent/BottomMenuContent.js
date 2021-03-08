@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import {
+    StyleSheet,
+    View,
+    TouchableOpacity,
+    Text,
+    Image,
+    Dimensions,
+} from 'react-native';
 import { RadioGroup, RadioButton } from 'react-native-ui-lib';
 
 import { Colors, Icons, Typography, Buttons } from '../../styles';
@@ -98,6 +105,16 @@ const BottomMenuContent = React.memo(
             setImage(imgSource);
         };
 
+        const getImage = (designName) => {
+            let imgSource = '';
+            if (roadType == 'Veikryss') {
+                imgSource = thisRoadType[designName]['X'][extensionType];
+            } else {
+                imgSource = thisRoadType[designName][extensionType];
+            }
+            return imgSource;
+        };
+
         return (
             <View style={styles.btnAndRadios}>
                 {/* START * The radio buttons (X, T, Y) */}
@@ -131,24 +148,38 @@ const BottomMenuContent = React.memo(
                 <View style={styles.buttonGroup}>
                     {RoadDesigns.map((label, i) => {
                         const activeBtn = label === roadDesign;
-
+                        const imgSource = getImage(label);
                         return (
-                            <TouchableOpacity
-                                key={i}
-                                style={[
-                                    styles.buttonContainer,
-                                    activeBtn
-                                        ? {
-                                              backgroundColor:
-                                                  Colors.bottomMenyButtons,
-                                          }
-                                        : {
-                                              backgroundColor:
-                                                  Colors.bottomMeny,
-                                          },
-                                ]}
-                                activeOpacity={0.6}
-                                onPress={() => onPressButton(label)}>
+                            <View key={i}>
+                                <TouchableOpacity
+                                    style={[
+                                        styles.buttonContainer,
+                                        // activeBtn
+                                        //     ? {
+                                        //           backgroundColor:
+                                        //               Colors.bottomMenyButtons,
+                                        //       }
+                                        //     : {
+                                        //           backgroundColor:
+                                        //               Colors.bottomMeny,
+                                        //       },
+                                    ]}
+                                    activeOpacity={0.6}
+                                    onPress={() => onPressButton(label)}>
+                                    <Image
+                                        source={imgSource}
+                                        style={[
+                                            styles.buttonImage,
+                                            activeBtn
+                                                ? {
+                                                      opacity: 1,
+                                                  }
+                                                : {
+                                                      opacity: 0.6,
+                                                  },
+                                        ]}
+                                    />
+                                </TouchableOpacity>
                                 <Text
                                     style={[
                                         styles.buttonText,
@@ -162,7 +193,7 @@ const BottomMenuContent = React.memo(
                                     ]}>
                                     {label}
                                 </Text>
-                            </TouchableOpacity>
+                            </View>
                         );
                     })}
                 </View>
@@ -175,7 +206,8 @@ const BottomMenuContent = React.memo(
 const styles = StyleSheet.create({
     btnAndRadios: {
         flexDirection: 'column',
-        padding: 20,
+        paddingTop: 20,
+        paddingBottom: 10,
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
@@ -201,9 +233,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         elevation: 3,
-        ...Buttons.largeRounded,
+        backgroundColor: Colors.bottomMeny,
+        ...Buttons.largeWidthRounded,
+    },
+    buttonImage: {
+        overflow: 'hidden',
+        height: undefined,
+        width: undefined,
+        ...Buttons.rounded,
+        ...StyleSheet.absoluteFillObject,
     },
     buttonText: {
+        paddingTop: 5,
+        textAlign: 'center',
         ...Typography.medium,
     },
 });
