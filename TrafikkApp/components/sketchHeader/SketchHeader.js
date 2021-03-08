@@ -9,8 +9,8 @@ import BoxButton from './BoxButton';
 import PencilSizePopup from './PencilSizePopup';
 
 const SketchHeader = React.memo((props, navigation) => {
-    const [isActive, setActive] = useState(0);
-    const [prevActive, setPrevActive] = useState(0);
+    const [activeId, setActiveId] = useState(0);
+    const [prevActiveId, setPrevActiveId] = useState(0);
 
     const {
         pencil,
@@ -20,14 +20,15 @@ const SketchHeader = React.memo((props, navigation) => {
         onPencilColorChange,
         topMenuHidden,
         toggleRightMenuState,
+        onChangePencilSize,
     } = props;
 
     const focusedActiveButton = (value) => {
         if (value === null) {
-            setPrevActive(prevActive);
+            setPrevActiveId(prevActiveId);
         } else {
-            setActive(value);
-            setPrevActive(value);
+            setActiveId(value);
+            setPrevActiveId(value);
         }
     };
 
@@ -41,42 +42,43 @@ const SketchHeader = React.memo((props, navigation) => {
                     iconName={'bars'}
                     buttonFnc={props.navigation.toggleDrawer}
                     buttonNum={null}
-                    isActive={isActive}
+                    activeId={activeId}
                     focusedActiveButton={focusedActiveButton}
                     propsStyle={styles.spacedLeft}
                 /> */}
                 <HeaderButton
                     iconName={'trash'}
                     buttonOnPress={clear}
-                    buttonActiveNumber={null}
-                    isActive={isActive}
+                    buttonActiveId={null}
+                    activeId={activeId}
                     focusedActiveButton={focusedActiveButton}
                     propsStyle={styles.spacedLeft}
                 />
 
-                <PencilSizePopup />
+                <PencilSizePopup propsStyle={styles.spacedCenter} />
                 <SketchColorMenu
                     onPencilColorChange={onPencilColorChange}
+                    onChangePencilSize={onChangePencilSize}
                     iconSize={styles.buttonSize}
                     propsStyle={styles.spacedCenter}
                     pencil={pencil}
                     buttonOnPress={pencil}
-                    buttonActiveNumber={0}
-                    isActive={isActive}
+                    buttonActiveId={0}
+                    activeId={activeId}
                     focusedActiveButton={focusedActiveButton}
                 />
                 <HeaderButton
                     iconName={'eraser'}
                     buttonOnPress={eraser}
-                    buttonActiveNumber={1}
-                    isActive={isActive}
+                    buttonActiveId={1}
+                    activeId={activeId}
                     focusedActiveButton={focusedActiveButton}
                 />
                 <HeaderButton
                     iconName={'undo-alt'}
                     buttonOnPress={undo}
-                    buttonActiveNumber={null}
-                    isActive={isActive}
+                    buttonActiveId={null}
+                    activeId={activeId}
                     focusedActiveButton={focusedActiveButton}
                 />
                 <BoxButton

@@ -10,11 +10,13 @@ import {
     MenuTrigger,
     renderers,
 } from 'react-native-popup-menu';
+import PencilSizePopup from './PencilSizePopup';
 
 const { Popover } = renderers;
 
 const SketchColorMenu = React.memo((props) => {
     const INITIAL_COLOR = '#CF262F';
+    const [isOpened, setOpened] = useState(false);
 
     const [currentColorSetup, setCurrentColorSetup] = useState({
         color: INITIAL_COLOR,
@@ -24,12 +26,13 @@ const SketchColorMenu = React.memo((props) => {
 
     const {
         onPencilColorChange,
+        onChangePencilSize,
         propsStyle,
         iconSize,
         pencil,
         buttonOnPress,
-        buttonActiveNumber,
-        isActive,
+        buttonActiveId,
+        activeId,
         focusedActiveButton,
     } = props;
 
@@ -52,7 +55,12 @@ const SketchColorMenu = React.memo((props) => {
         });
 
         onPencilColorChange(value);
-        focusedActiveButton(buttonActiveNumber);
+        focusedActiveButton(buttonActiveId);
+        setOpened(false);
+    };
+
+    const onSecondClickOpen = (value) => {
+        setOpened(value);
     };
 
     const { color } = currentColorSetup;
@@ -61,28 +69,39 @@ const SketchColorMenu = React.memo((props) => {
         <View style={propsStyle} key={currentColorSetup.color}>
             <Menu
                 renderer={Popover}
-                rendererProps={{ preferredPlacement: 'bottom' }}>
+                rendererProps={{ preferredPlacement: 'bottom' }}
+                opened={isOpened}
+                onBackdropPress={() => {
+                    onSecondClickOpen(false);
+                }}>
                 <MenuTrigger
-                    triggerOnLongPress
-                    onAlternativeAction={() => {
-                        pencil,
-                            buttonOnPress(),
-                            focusedActiveButton(buttonActiveNumber);
+                    onPress={() => {
+                        if (activeId != 0) {
+                            pencil,
+                                buttonOnPress(),
+                                focusedActiveButton(buttonActiveId);
+                            onSecondClickOpen(false);
+                        } else {
+                            onSecondClickOpen(true);
+                        }
                     }}
                     style={
-                        isActive === buttonActiveNumber
+                        activeId === buttonActiveId
                             ? styles.buttonActive
                             : [styles.buttonSize, styles.buttonInactive]
                     }>
                     <Icon
-                        name={'pen'}
+                        name={activeId === 0 ? 'chevron-down' : 'pen'}
                         size={30}
                         solid
                         color={currentColorSetup.color}
                     />
                 </MenuTrigger>
                 <MenuOptions>
-                    <MenuOption>
+                    <MenuOption
+                        onSelect={() => {
+                            onSecondClickOpen(false);
+                        }}>
                         <ColorPalette
                             value={color}
                             swatchStyle={{
@@ -96,6 +115,31 @@ const SketchColorMenu = React.memo((props) => {
                             usePagination={false}
                         />
                     </MenuOption>
+                    <MenuOptions>
+                        <View style={styles.iconPlacement}>
+                            <MenuOption
+                                onSelect={() => {
+                                    onChangePencilSize(5);
+                                    onSecondClickOpen(false);
+                                }}>
+                                <PencilSizePopup pencilThickness={8} />
+                            </MenuOption>
+                            <MenuOption
+                                onSelect={() => {
+                                    onChangePencilSize(8);
+                                    onSecondClickOpen(false);
+                                }}>
+                                <PencilSizePopup pencilThickness={11} />
+                            </MenuOption>
+                            <MenuOption
+                                onSelect={() => {
+                                    onChangePencilSize(11);
+                                    onSecondClickOpen(false);
+                                }}>
+                                <PencilSizePopup pencilThickness={14} />
+                            </MenuOption>
+                        </View>
+                    </MenuOptions>
                 </MenuOptions>
             </Menu>
         </View>
@@ -129,6 +173,22 @@ const styles = StyleSheet.create({
         borderColor: Color.tabButtonBorder,
         paddingVertical: 12,
         paddingHorizontal: 16,
+    },
+    spacedCenter: {
+        flex: 1,
+        flexDirection: 'row',
+        height: '100%',
+        width: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    iconPlacement: {
+        flexDirection: 'row',
+        width: 320,
+        height: 80,
+        left: 60,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });
 
