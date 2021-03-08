@@ -101,24 +101,17 @@ const StartScreen = React.memo(({ navigation }) => {
 
 const styles = StyleSheet.create({
     main: {
-        // flex: 1,
         height: '100%',
-        // width: '100%',
         paddingTop: 20,
         alignSelf: 'center',
         backgroundColor: Colors.background,
     },
     container: {
-        // flex: 1,
-        // height: '100%',
-        // width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
         paddingVertical: 10,
     },
     linksContainer: {
-        // flex: 1,
-        // width: '100%',
         flexDirection: 'row',
         justifyContent: 'center',
         flexWrap: 'wrap',
@@ -127,7 +120,6 @@ const styles = StyleSheet.create({
         width: '85%',
         borderBottomWidth: 1,
         borderColor: Colors.iconActive,
-        // fontSize: 20,
         color: Colors.icons,
         paddingVertical: 5,
         ...Typography.medium,

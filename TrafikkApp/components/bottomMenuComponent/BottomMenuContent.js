@@ -105,6 +105,11 @@ const BottomMenuContent = React.memo(
             setImage(imgSource);
         };
 
+        /**
+         * Returns the source of the image to be displayed as a background image
+         * of the buttons in the BottomMenu.
+         * @param {String} designName
+         */
         const getImage = (designName) => {
             let imgSource = '';
             if (roadType == 'Veikryss') {
