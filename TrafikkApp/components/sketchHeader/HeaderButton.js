@@ -14,8 +14,8 @@ const HeaderButton = (props) => {
         iconName,
         buttonOnPress,
         focusedActiveButton,
-        isActive,
-        buttonActiveNumber,
+        activeId,
+        buttonActiveId,
         propsStyle,
     } = props;
 
@@ -23,13 +23,13 @@ const HeaderButton = (props) => {
         <View style={propsStyle}>
             <TouchableOpacity
                 onPress={() => {
-                    buttonOnPress(), focusedActiveButton(buttonActiveNumber);
+                    buttonOnPress(), focusedActiveButton(buttonActiveId);
                 }}>
                 <Icon
                     name={iconName}
                     size={Icons.small}
                     style={
-                        isActive === buttonActiveNumber
+                        activeId === buttonActiveId
                             ? styles.buttonActive
                             : [styles.buttonSize, styles.buttonInactive]
                     }

@@ -155,6 +155,7 @@ const SketchArea = React.memo((props) => {
                 name={props.name}
                 topMenuHidden={toggleMenu}
                 toggleRightMenuState={topMenuHidden}
+                onChangePencilSize={onChangePencilSize}
             />
 
             <View style={styles.main}>
