@@ -20,21 +20,23 @@ const HeaderButton = (props) => {
     } = props;
 
     return (
-        <View style={propsStyle}>
-            <TouchableOpacity
-                onPress={() => {
-                    buttonOnPress(), focusedActiveButton(buttonActiveId);
-                }}>
-                <Icon
-                    name={iconName}
-                    size={Icons.small}
-                    style={
-                        activeId === buttonActiveId
-                            ? styles.buttonActive
-                            : [styles.buttonSize, styles.buttonInactive]
-                    }
-                />
-            </TouchableOpacity>
+        <View style={{ paddingHorizontal: 10 }}>
+            <View style={propsStyle}>
+                <TouchableOpacity
+                    onPress={() => {
+                        buttonOnPress(), focusedActiveButton(buttonActiveId);
+                    }}>
+                    <Icon
+                        name={iconName}
+                        size={Icons.small}
+                        style={
+                            activeId === buttonActiveId
+                                ? styles.buttonActive
+                                : [styles.buttonSize, styles.buttonInactive]
+                        }
+                    />
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };
@@ -49,14 +51,14 @@ const styles = StyleSheet.create({
         color: Colors.textLight,
         backgroundColor: Colors.iconActive,
         paddingVertical: 12,
-        paddingHorizontal: 16,
+        paddingHorizontal: 14,
         ...Buttons.round,
     },
     buttonInactive: {
         color: Colors.icons,
         backgroundColor: Colors.header,
         paddingVertical: 12,
-        paddingHorizontal: 16,
+        paddingHorizontal: 14,
     },
     spacedRight: {
         flex: 1,
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
     },
 });
 

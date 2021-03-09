@@ -29,6 +29,8 @@ export default {
     icons: lightGray,
     iconActive: charcoal, // or mustard?
 
+    colorPaletteMenu: charcoal,
+
     startScreenLinkDrawing: green,
     startScreenLinkTheory: blue,
     startScreenLinkLink: blueGray,
