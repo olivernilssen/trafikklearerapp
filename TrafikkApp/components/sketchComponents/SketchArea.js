@@ -21,11 +21,17 @@ import BottomMenuAnimated from '../bottomMenuComponent/BottomMenuAnimated';
  */
 const SketchArea = React.memo((props) => {
     const sketchRef = useRef();
+    const eraserSize = 80;
+    const eraserColor = '#00000000';
 
-    const [currPencilColor, setPencilColor] = useState('#CF262F');
-    const [prevPencilColor, setPrevPencilColor] = useState('red');
-    const [currPencilSize, setPencilSize] = useState(5);
-    const [prevPencilSize, setPrevPencilSize] = useState(null);
+    const [pencilColor, setPencilColor] = useState('#CF262F');
+    const [chosenColor, setChosenColor] = useState('');
+    // const [prevPencilColor, setPrevPencilColor] = useState('red');
+
+    const [pencilSize, setPencilSize] = useState(5);
+    const [chosenPencilSize, setChosenPencilSize] = useState(null);
+    // const [prevPencilSize, setPrevPencilSize] = useState(null);
+
     const [currentImg, setImage] = useState();
     const [topMenuHidden, setTopMenuHidden] = useState(true);
     const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
@@ -46,25 +52,22 @@ const SketchArea = React.memo((props) => {
      * Changes the pencil color according to user input
      * @param {String} color
      */
-    const onPencilColorChange = (color) => {
+    const onPaletteColorChange = (color) => {
         setPencilColor(color);
-        if (prevPencilSize != null) {
-            setPencilSize(prevPencilSize);
-        }
     };
 
     /**
-     * Changes the pencil color according to user input
+     * Changes the pencil color when switching between eraser and pencil
      */
-    const onSwitchPencilColor = useCallback(() => {
-        if (currPencilColor === '#00000000') {
-            setPencilColor(prevPencilColor);
-            setPencilSize(5);
+    const onEraserPencilSwitch = useCallback(() => {
+        if (pencilColor === eraserColor) {
+            setPencilColor(chosenColor);
+            setPencilSize(chosenPencilSize);
         } else {
-            setPencilColor(currPencilColor);
-            setPencilSize(5);
+            setPencilColor(pencilColor);
+            setPencilSize(pencilSize);
         }
-    }, [currPencilColor]);
+    }, [pencilColor]);
 
     /**
      * Function to change the pencil brush size
@@ -72,6 +75,7 @@ const SketchArea = React.memo((props) => {
      */
     const onChangePencilSize = (newPencilSize) => {
         setPencilSize(newPencilSize);
+        setChosenPencilSize(newPencilSize);
     };
 
     /**
@@ -115,17 +119,12 @@ const SketchArea = React.memo((props) => {
     /**
      * Function to set the pencil to an eraser
      */
-    const eraser = useCallback(() => {
-        if (currPencilColor != '#00000000') {
-            setPrevPencilColor(currPencilColor);
-            setPencilColor('#00000000');
-            setPrevPencilSize(currPencilSize);
-            setPencilSize(80);
-        } else {
-            currPencilColor;
-            setPencilSize(prevPencilSize);
-        }
-    }, [currPencilColor]);
+    const eraser = () => {
+        setChosenColor(pencilColor);
+        setChosenPencilSize(pencilSize);
+        setPencilColor(eraserColor);
+        setPencilSize(eraserSize);
+    };
 
     /**
      * Function to hide the bottomsheet when user starts
@@ -146,16 +145,18 @@ const SketchArea = React.memo((props) => {
     return (
         <MainView>
             <SketchHeader
-                pencil={onSwitchPencilColor}
-                undo={undoChange}
-                clear={clearCanvas}
+                onEraserPencilSwitch={onEraserPencilSwitch}
+                undoChange={undoChange}
+                clearCanvas={clearCanvas}
                 eraser={eraser}
-                onPencilColorChange={onPencilColorChange}
+                onPaletteColorChange={onPaletteColorChange}
                 navigation={props.navigation}
                 name={props.name}
                 topMenuHidden={toggleMenu}
                 toggleRightMenuState={topMenuHidden}
                 onChangePencilSize={onChangePencilSize}
+                pencilColor={pencilColor}
+                pencilSize={pencilSize}
             />
 
             <View style={styles.main}>
@@ -168,8 +169,8 @@ const SketchArea = React.memo((props) => {
                         onStrokeEnd={() => onStrokeEnd()}
                         ref={sketchRef}
                         style={styles.sketchCanvas}
-                        strokeColor={currPencilColor}
-                        strokeWidth={currPencilSize}
+                        strokeColor={pencilColor}
+                        strokeWidth={pencilSize}
                     />
 
                     <DraggableWithEverything

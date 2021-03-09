@@ -13,14 +13,16 @@ const SketchHeader = React.memo((props, navigation) => {
     const [prevActiveId, setPrevActiveId] = useState(0);
 
     const {
-        pencil,
-        undo,
-        clear,
+        onEraserPencilSwitch,
+        undoChange,
+        clearCanvas,
         eraser,
-        onPencilColorChange,
+        onPaletteColorChange,
         topMenuHidden,
         toggleRightMenuState,
         onChangePencilSize,
+        pencilColor,
+        pencilSize,
     } = props;
 
     const focusedActiveButton = (value) => {
@@ -38,17 +40,9 @@ const SketchHeader = React.memo((props, navigation) => {
                 name={''}
                 navigation={props.navigation}
                 style={styles.header}>
-                {/* <HeaderButton
-                    iconName={'bars'}
-                    buttonFnc={props.navigation.toggleDrawer}
-                    buttonNum={null}
-                    activeId={activeId}
-                    focusedActiveButton={focusedActiveButton}
-                    propsStyle={styles.spacedLeft}
-                /> */}
                 <HeaderButton
                     iconName={'trash'}
-                    buttonOnPress={clear}
+                    buttonOnPress={clearCanvas}
                     buttonActiveId={null}
                     activeId={activeId}
                     focusedActiveButton={focusedActiveButton}
@@ -57,15 +51,16 @@ const SketchHeader = React.memo((props, navigation) => {
 
                 <PencilSizePopup propsStyle={styles.spacedCenter} />
                 <SketchColorMenu
-                    onPencilColorChange={onPencilColorChange}
+                    onPaletteColorChange={onPaletteColorChange}
                     onChangePencilSize={onChangePencilSize}
                     iconSize={styles.buttonSize}
                     propsStyle={styles.spacedCenter}
-                    pencil={pencil}
-                    buttonOnPress={pencil}
+                    onEraserPencilSwitch={onEraserPencilSwitch}
                     buttonActiveId={0}
                     activeId={activeId}
                     focusedActiveButton={focusedActiveButton}
+                    pencilColor={pencilColor}
+                    pencilSize={pencilSize}
                 />
                 <HeaderButton
                     iconName={'eraser'}
@@ -76,7 +71,7 @@ const SketchHeader = React.memo((props, navigation) => {
                 />
                 <HeaderButton
                     iconName={'undo-alt'}
-                    buttonOnPress={undo}
+                    buttonOnPress={undoChange}
                     buttonActiveId={null}
                     activeId={activeId}
                     focusedActiveButton={focusedActiveButton}
