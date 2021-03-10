@@ -10,7 +10,7 @@ import {
 import { RadioGroup, RadioButton } from 'react-native-ui-lib';
 
 import { Colors, Icons, Typography, Buttons } from '../../styles';
-import backgroundImagePath from '../sketchComponents/illustrationsPath';
+import backgroundImagePath from '../sketchComponents/backgroundImagePath';
 
 /**
  * BottomMenuContent is a menu that slides up from the bottom of the screen
@@ -113,9 +113,9 @@ const BottomMenuContent = React.memo(
         const getImage = (designName) => {
             let imgSource = '';
             if (roadType == 'Veikryss') {
-                imgSource = thisRoadType[designName]['X'][extensionType];
+                imgSource = thisRoadType[designName]['X']['vanlig'];
             } else {
-                imgSource = thisRoadType[designName][extensionType];
+                imgSource = thisRoadType[designName]['vanlig'];
             }
             return imgSource;
         };
