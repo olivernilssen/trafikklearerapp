@@ -64,14 +64,20 @@ const backgroundImagePath = {
             sykkelfelt: require('../../assets/roundabouts/2felt/2felt-sykkelfelt.png'),
         },
     },
-    Vei: {
-        E6: {
-            Fartsreduksjonsfelt: require('../../assets/vei/e6/avkjøringsrampe.png'),
-            Fartsøkningsfelt: require('../../assets/vei/e6/påkjøringsrampe.png'),
-        },
+    Landevei: {
         Landevei: {
-            Landevei: require('../../assets/vei/landevei/landevei.png'),
-            'Smal veg': require('../../assets/vei/landevei/landevei-smal-veg.png'),
+            vanlig: require('../../assets/vei/landevei/landevei.png'),
+        },
+        'Smal veg': {
+            vanlig: require('../../assets/vei/landevei/landevei-smal-veg.png'),
+        },
+    },
+    'Fartsøknings- og reduksjonsfelt': {
+        Fartsøkningsfelt: {
+            vanlig: require('../../assets/vei/e6/avkjøringsrampe.png'),
+        },
+        Reduksjonsfelt: {
+            vanlig: require('../../assets/vei/e6/påkjøringsrampe.png'),
         },
     },
 };
