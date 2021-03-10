@@ -5,7 +5,7 @@ import MainView from '../components/MainView';
 import SketchArea from '../components/sketchComponents/SketchArea';
 
 /**
- * The screen component for roadScreen "Veu"
+ * The screen component for roadScreen "Vei"
  * Denne er langt fra ferdig!
  */
 const RoadScreen = React.memo(({ navigation }) => {
