@@ -71,7 +71,7 @@ const backgroundImagePath = {
         },
         Landevei: {
             Landevei: require('../../assets/vei/landevei/landevei.png'),
-            'Smal veg': require('../../assets/vei/landevei/landevei-smalVeg.png'),
+            'Smal veg': require('../../assets/vei/landevei/landevei-smal-veg.png'),
         },
     },
 };

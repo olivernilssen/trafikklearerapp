@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: Colors.textDark,
         alignSelf: 'center',
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         ...Typography.medium,
     },
 });
