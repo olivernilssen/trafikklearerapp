@@ -7,7 +7,6 @@ import StartScreen from '../../screens/StartScreen';
 import SettingsScreen from '../../screens/SettingsScreen';
 import IntersectionScreen from '../../screens/IntersectionScreen';
 import RoundaboutScreen from '../../screens/RoundaboutScreen';
-// import RoadScreen from '../../screens/RoadScreen';
 import CountryRoadScreen from '../../screens/CountryRoadScreen';
 import HighwayScreen from '../../screens/HighwayScreen';
 import RoadSignScreen from '../../screens/RoadSignScreen';
