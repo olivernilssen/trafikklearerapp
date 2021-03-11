@@ -1,13 +1,10 @@
 import ThemeVariables from './themeVariables';
 
 export const small = {
-    // paddingHorizontal: 5,
     width: ThemeVariables.BUTTON_WIDTH_SMALL,
 };
 
 export const medium = {
-    // paddingHorizontal: 10,
-    // paddingVertical: 12,
     width: ThemeVariables.BUTTON_WIDTH_MEDIUM,
 };
 
@@ -16,8 +13,13 @@ export const large = {
     height: ThemeVariables.BUTTON_HEIGHT_LARGE,
 };
 
+export const largeWidt = {
+    height: ThemeVariables.BUTTON_HEIGHT_EXTRA_LARGE,
+    width: ThemeVariables.BUTTON_WIDTH_LARGE,
+};
+
 export const rounded = {
-    borderRadius: 25,
+    borderRadius: 15,
 };
 
 export const round = {
@@ -36,5 +38,10 @@ export const mediumRounded = {
 
 export const largeRounded = {
     ...large,
+    ...rounded,
+};
+
+export const largeWidthRounded = {
+    ...largeWidt,
     ...rounded,
 };

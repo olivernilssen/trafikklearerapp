@@ -12,7 +12,7 @@ import { Buttons, Colors, Icons } from '../../styles';
 const BoxButton = (props) => {
     const { topMenuHidden, toggleRightMenuState } = props;
     return (
-        <View>
+        <View style={{ paddingLeft: 5 }}>
             <TouchableOpacity
                 onPress={() => topMenuHidden()}
                 style={{
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         color: Colors.textLight,
         backgroundColor: Colors.iconActive,
         paddingVertical: 12,
-        paddingHorizontal: 14,
+        paddingHorizontal: 10,
         ...Buttons.round,
     },
     buttonInactive: {

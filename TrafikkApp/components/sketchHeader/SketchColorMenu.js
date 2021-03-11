@@ -26,15 +26,15 @@ const SketchColorMenu = React.memo((props) => {
     });
 
     const {
-        onPencilColorChange,
+        onPaletteColorChange,
         onChangePencilSize,
         propsStyle,
-        iconSize,
-        pencil,
-        buttonOnPress,
+        onEraserPencilSwitch,
         buttonActiveId,
         activeId,
         focusedActiveButton,
+        pencilColor,
+        pencilSize,
     } = props;
 
     const colors = [
@@ -55,7 +55,7 @@ const SketchColorMenu = React.memo((props) => {
             paletteChange: true,
         });
 
-        onPencilColorChange(value);
+        onPaletteColorChange(value);
         focusedActiveButton(buttonActiveId);
         setOpened(false);
     };
@@ -70,7 +70,10 @@ const SketchColorMenu = React.memo((props) => {
         <View style={propsStyle} key={currentColorSetup.color}>
             <Menu
                 renderer={Popover}
-                rendererProps={{ preferredPlacement: 'bottom' }}
+                rendererProps={{
+                    preferredPlacement: 'bottom',
+                    anchorStyle: { backgroundColor: Colors.colorPaletteMenu },
+                }}
                 opened={isOpened}
                 onBackdropPress={() => {
                     onSecondClickOpen(false);
@@ -78,9 +81,9 @@ const SketchColorMenu = React.memo((props) => {
                 <MenuTrigger
                     onPress={() => {
                         if (activeId != 0) {
-                            pencil,
-                                buttonOnPress(),
-                                focusedActiveButton(buttonActiveId);
+                            onEraserPencilSwitch();
+                            console.log(pencilSize, pencilColor);
+                            focusedActiveButton(buttonActiveId);
                             onSecondClickOpen(false);
                         } else {
                             onSecondClickOpen(true);
@@ -98,12 +101,14 @@ const SketchColorMenu = React.memo((props) => {
                         color={currentColorSetup.color}
                     />
                 </MenuTrigger>
-                <MenuOptions>
+                <MenuOptions optionsContainerStyle={styles.menuOptions}>
                     <MenuOption
+                        style={{ backgroundColor: Colors.colorPaletteMenu }}
                         onSelect={() => {
                             onSecondClickOpen(false);
                         }}>
                         <ColorPalette
+                            style={{ backgroundColor: Colors.colorPaletteMenu }}
                             value={color}
                             swatchStyle={{
                                 width: 250 / colors.length,
@@ -111,7 +116,7 @@ const SketchColorMenu = React.memo((props) => {
                             }}
                             onValueChange={onPaletteValueChange}
                             colors={colors}
-                            numberOfRows={2}
+                            numberOfRows={3}
                             containerWidth={250}
                             usePagination={false}
                         />
@@ -195,6 +200,26 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    menuOptions: {
+        borderBottomLeftRadius: 40,
+        borderBottomRightRadius: 40,
+        backgroundColor: Colors.colorPaletteMenu,
+        color: Colors.colorPaletteMenu,
+    },
 });
+
+const optionsStyles = {
+    optionsContainer: {},
+    optionsWrapper: {
+        borderBottomLeftRadius: 40,
+        borderBottomRightRadius: 40,
+        borderRadius: 10,
+        borderWidth: 1,
+        overflow: 'hidden',
+    },
+    optionWrapper: {},
+    optionTouchable: {},
+    optionText: {},
+};
 
 export default SketchColorMenu;

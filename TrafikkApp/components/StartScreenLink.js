@@ -29,21 +29,21 @@ const StartScreenLink = React.memo((props) => {
 
 const styles = StyleSheet.create({
     buttonContainer: {
-        // justifyContent: 'center',
-        // alignItems: 'center',
+        justifyContent: 'space-evenly',
         margin: 12,
         elevation: 5,
         ...Buttons.largeRounded,
     },
     icon: {
-        // alignSelf: 'flex-start',
+        position: 'absolute',
+        top: 0,
+        left: 0,
         padding: 15,
     },
     buttonText: {
-        marginTop: 15,
         color: Colors.textDark,
-        textAlign: 'center',
-        fontWeight: 'bold',
+        alignSelf: 'center',
+        // fontWeight: 'bold',
         ...Typography.medium,
     },
 });
