@@ -38,13 +38,16 @@ const StartScreen = React.memo(({ navigation }) => {
                         />
                         <StartScreenLink
                             name="pen-alt"
-                            text="Vei"
-                            onPress={() => navigation.navigate('RoadScreen')}
+                            text="Landevei"
+                            onPress={() =>
+                                navigation.navigate('CountryRoadScreen')
+                            }
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
                         <StartScreenLink
                             name="pen-alt"
-                            text="tba"
+                            text={'Fartsøknings- og reduksjonsfelt'}
+                            onPress={() => navigation.navigate('HighwayScreen')}
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
                     </View>

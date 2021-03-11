@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import {
-    StyleSheet,
-    View,
-    TouchableOpacity,
-    Text,
-    Image,
-    Dimensions,
-} from 'react-native';
-import { RadioGroup, RadioButton } from 'react-native-ui-lib';
+import { StyleSheet, View, TouchableOpacity, Text, Image } from 'react-native';
 
-import { Colors, Icons, Typography, Buttons } from '../../styles';
+import { Colors, Typography, Buttons } from '../../styles';
 import backgroundImagePath from '../sketchComponents/backgroundImagePath';
 
 /**
@@ -98,10 +90,10 @@ const BottomMenuContent = React.memo(
          * Changes the type of intersection design that is chosen (x, y, t)
          * @param {String} radioValue
          */
-        const radioButtonChange = (radioValue) => {
-            setIntersectionType(radioValue);
+        const intersectionTypeChange = (intersectionType) => {
+            setIntersectionType(intersectionType);
             const imgSource =
-                thisRoadType[roadDesign][radioValue][extensionType];
+                thisRoadType[roadDesign][intersectionType][extensionType];
             setImage(imgSource);
         };
 
@@ -113,41 +105,58 @@ const BottomMenuContent = React.memo(
         const getImage = (designName) => {
             let imgSource = '';
             if (roadType == 'Veikryss') {
-                imgSource = thisRoadType[designName]['X']['vanlig'];
+                imgSource = thisRoadType[designName]['X']['Vanlig'];
             } else {
-                imgSource = thisRoadType[designName]['vanlig'];
+                imgSource = thisRoadType[designName]['Vanlig'];
             }
             return imgSource;
         };
 
         return (
-            <View style={styles.btnAndRadios}>
-                {/* START * The radio buttons (X, T, Y) */}
+            <View style={styles.main}>
+                {/* START * The intersectionType buttons (X, T, Y) */}
                 {roadType == 'Veikryss' && (
-                    <View style={styles.radioView}>
-                        <RadioGroup
-                            style={styles.radioGroup}
-                            initialValue={intersectionType}
-                            onValueChange={(value) => radioButtonChange(value)}>
-                            {IntersectionTypes.map((name, i) => {
-                                return (
-                                    <RadioButton
-                                        key={i}
-                                        label={name}
-                                        value={name}
-                                        size={Icons.small}
-                                        labelStyle={{
-                                            color: Colors.textLight,
-                                            ...Typography.medium,
-                                        }}
-                                        style={styles.radioBtn}
-                                        color={Colors.bottomMenyButtons}
-                                    />
-                                );
-                            })}
-                        </RadioGroup>
+                    <View style={styles.intersectionTypeBtnsGroup}>
+                        {IntersectionTypes.map((name, i) => {
+                            const activeBtn = name === intersectionType;
+
+                            return (
+                                <TouchableOpacity
+                                    key={i}
+                                    activeOpacity={0.6}
+                                    onPress={() => intersectionTypeChange(name)}
+                                    style={[
+                                        styles.intersectionTypeButton,
+                                        activeBtn
+                                            ? {
+                                                  backgroundColor:
+                                                      Colors.bottomMenyButtons,
+                                              }
+                                            : {
+                                                  backgroundColor:
+                                                      Colors.bottomMeny,
+                                              },
+                                    ]}
+                                    color={Colors.bottomMenyButtons}>
+                                    <Text
+                                        style={[
+                                            styles.intersectionTypeBtnText,
+                                            activeBtn
+                                                ? {
+                                                      color: Colors.textLight,
+                                                  }
+                                                : {
+                                                      color: Colors.icons,
+                                                  },
+                                        ]}>
+                                        {name}
+                                    </Text>
+                                </TouchableOpacity>
+                            );
+                        })}
                     </View>
                 )}
+                {/* END * The intersectionType buttons (X, T, Y) */}
 
                 {/* START * The main buttons (Høyrekryss, forkjørs, lys) */}
                 <View style={styles.buttonGroup}>
@@ -157,18 +166,7 @@ const BottomMenuContent = React.memo(
                         return (
                             <View key={i}>
                                 <TouchableOpacity
-                                    style={[
-                                        styles.buttonContainer,
-                                        // activeBtn
-                                        //     ? {
-                                        //           backgroundColor:
-                                        //               Colors.bottomMenyButtons,
-                                        //       }
-                                        //     : {
-                                        //           backgroundColor:
-                                        //               Colors.bottomMeny,
-                                        //       },
-                                    ]}
+                                    style={styles.buttonContainer}
                                     activeOpacity={0.6}
                                     onPress={() => onPressButton(label)}>
                                     <Image
@@ -209,7 +207,7 @@ const BottomMenuContent = React.memo(
 );
 
 const styles = StyleSheet.create({
-    btnAndRadios: {
+    main: {
         flexDirection: 'column',
         paddingTop: 20,
         paddingBottom: 10,
@@ -217,16 +215,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '100%',
     },
-    radioView: {
-        width: '50%',
+    intersectionTypeBtnsGroup: {
+        flexDirection: 'row',
         marginBottom: 20,
     },
-    radioGroup: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
+    intersectionTypeButton: {
+        borderWidth: 1,
+        borderColor: Colors.bottomMenyButtons,
+        padding: 5,
+        elevation: 5,
+        ...Buttons.small,
     },
-    radioBtn: {
-        backgroundColor: Colors.icons,
+    intersectionTypeBtnText: {
+        textAlign: 'center',
+        ...Typography.medium,
     },
     buttonGroup: {
         flexDirection: 'row',

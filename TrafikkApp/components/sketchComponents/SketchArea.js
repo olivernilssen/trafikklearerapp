@@ -38,7 +38,7 @@ const SketchArea = React.memo((props) => {
     const [draggables, setDraggables] = useState([]);
     const [actionList, setActionList] = useState([]);
     const [deletingItemId, setDeletingItemId] = useState(null);
-    const [extensionType, setExtensionType] = useState('vanlig');
+    const [extensionType, setExtensionType] = useState('Vanlig');
 
     /**
      * useEffect that is triggered when currentImg is changed
@@ -178,8 +178,10 @@ const SketchArea = React.memo((props) => {
                         setDraggables={setDraggables}
                         topMenuHidden={topMenuHidden}
                         deletingItemId={deletingItemId}
+                        name={props.name}
                         setActionList={setActionList}
                         actionList={actionList}
+                        extensionType={extensionType}
                         setExtensionType={setExtensionType}
                     />
 

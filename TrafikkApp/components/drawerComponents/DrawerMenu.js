@@ -4,6 +4,7 @@ import { StyleSheet, View, FlatList } from 'react-native';
 import { Colors } from '../../styles';
 import DrawerToggleMenuItem from './DrawerToggleItem';
 import DrawerItem from './DrawerItem';
+import Divider from '../Divider';
 
 /**
  * Component to display the menu as a flatlist in
@@ -16,6 +17,7 @@ const DrawerMenu = React.memo((props) => {
                 navigation={props.navigation}
                 icon={'times'}
             />
+            <Divider style={styles.divider} borderColor={Colors.iconActive} />
             <FlatList
                 data={props.state.routes}
                 renderItem={({ item }) => (
@@ -38,6 +40,9 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.background,
         paddingTop: 15,
         paddingHorizontal: 15,
+    },
+    divider: {
+        marginBottom: 10,
     },
 });
 
