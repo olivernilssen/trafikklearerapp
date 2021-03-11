@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Animated, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-// import { View, TabBar } from 'react-native-ui-lib';
-
 import { Colors, Icons } from '../../styles';
 import { useCallback } from 'react';
 import BottomMenuContent from './BottomMenuContent';
@@ -16,6 +14,7 @@ const BottomMenuAnimated = React.memo((props) => {
     const {
         roadType,
         setImage,
+        setRoadDesignChange,
         extensionType,
         bottomSheetHidden,
         setBottomSheetHidden,
@@ -100,6 +99,7 @@ const BottomMenuAnimated = React.memo((props) => {
                     roadType={roadType}
                     extensionType={extensionType}
                     setImage={setImage}
+                    setRoadDesignChange={setRoadDesignChange}
                 />
             </View>
         </Animated.View>

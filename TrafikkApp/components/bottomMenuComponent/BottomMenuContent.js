@@ -10,7 +10,7 @@ import backgroundImagePath from '../sketchComponents/backgroundImagePath';
  * which screen they are on
  */
 const BottomMenuContent = React.memo(
-    ({ roadType, setImage, extensionType }) => {
+    ({ roadType, setImage, setRoadDesignChange, extensionType }) => {
         //Get the roadtype json this component applies too based on roadType prop
         const thisRoadType = backgroundImagePath[roadType];
 
@@ -27,7 +27,6 @@ const BottomMenuContent = React.memo(
         //States for selected roadDesign and intersectionType
         const [roadDesign, setRoadDesign] = useState(RoadDesigns[0]);
         const [intersectionType, setIntersectionType] = useState('X');
-        // const [selectedRadioBtn, setSelectedRadioBtn] = useState(0);
 
         //Get the intersection types if the road design is intersection (veikryss)
         if (roadType === 'Veikryss') {
@@ -55,8 +54,10 @@ const BottomMenuContent = React.memo(
         /**
          * Is triggered when extensionType state is changed
          * Will update the background image according to this parameter
+         * Also sets the roadDesignChange to false so that the canvas is not cleared
          */
         useEffect(() => {
+            setRoadDesignChange(false);
             if (roadType == 'Veikryss') {
                 const imgSource =
                     thisRoadType[roadDesign][intersectionType][extensionType];
@@ -71,9 +72,11 @@ const BottomMenuContent = React.memo(
          * Button event that changes the background image of the screen
          * Depending on if it is a intersection or not, the handling is different
          * Also sets the roadDesign state.
+         * Also sets the roadDesignChange to true so that the canvas is cleared
          * @param {String} designName
          */
         const onPressButton = (designName) => {
+            setRoadDesignChange(true);
             if (roadType == 'Veikryss') {
                 const imgSource = thisRoadType[designName]['X'][extensionType];
                 setImage(imgSource);
@@ -88,9 +91,11 @@ const BottomMenuContent = React.memo(
         /**
          * Triggered when the radiobuttons are clicked
          * Changes the type of intersection design that is chosen (x, y, t)
+         * Also sets the roadDesignChange to true so that the canvas is cleared
          * @param {String} radioValue
          */
         const intersectionTypeChange = (intersectionType) => {
+            setRoadDesignChange(true);
             setIntersectionType(intersectionType);
             const imgSource =
                 thisRoadType[roadDesign][intersectionType][extensionType];
