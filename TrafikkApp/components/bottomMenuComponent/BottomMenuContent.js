@@ -91,7 +91,6 @@ const BottomMenuContent = React.memo(
          * @param {String} radioValue
          */
         const intersectionTypeChange = (intersectionType) => {
-            // console.log(radioValue);
             setIntersectionType(intersectionType);
             const imgSource =
                 thisRoadType[roadDesign][intersectionType][extensionType];
@@ -106,9 +105,9 @@ const BottomMenuContent = React.memo(
         const getImage = (designName) => {
             let imgSource = '';
             if (roadType == 'Veikryss') {
-                imgSource = thisRoadType[designName]['X']['vanlig'];
+                imgSource = thisRoadType[designName]['X']['Vanlig'];
             } else {
-                imgSource = thisRoadType[designName]['vanlig'];
+                imgSource = thisRoadType[designName]['Vanlig'];
             }
             return imgSource;
         };
