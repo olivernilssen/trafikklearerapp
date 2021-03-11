@@ -41,7 +41,9 @@ const SketchArea = React.memo((props) => {
      * Will clear the canvas and delete all objects on the screen
      */
     useEffect(() => {
-        clearCanvas();
+        if (roadDesignChange) {
+            clearCanvas();
+        }
     }, [currentImg]);
 
     /**
@@ -109,10 +111,10 @@ const SketchArea = React.memo((props) => {
      * Only clear canvas if roadDesignChange is true
      */
     const clearCanvas = useCallback(() => {
-        if (roadDesignChange) {
-            sketchRef.current.clear();
-            setDraggables([]);
-        }
+        // if (roadDesignChange) {
+        sketchRef.current.clear();
+        setDraggables([]);
+        // }
     });
 
     /**
