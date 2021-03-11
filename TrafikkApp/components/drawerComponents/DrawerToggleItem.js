@@ -26,9 +26,7 @@ const styles = StyleSheet.create({
     menuItem: {
         flexDirection: 'row',
         marginBottom: 15,
-        paddingBottom: 20,
-        borderBottomWidth: 1,
-        borderBottomColor: Colors.iconActive,
+        paddingBottom: 10,
     },
     menuIcon: {
         marginTop: 10,

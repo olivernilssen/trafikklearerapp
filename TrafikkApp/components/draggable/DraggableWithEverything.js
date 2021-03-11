@@ -21,6 +21,8 @@ const DraggableWithEverything = React.memo((props) => {
         actionList,
         setActionList,
         deletingItemId,
+        name,
+        extensionType,
         setExtensionType,
     } = props;
 
@@ -77,7 +79,9 @@ const DraggableWithEverything = React.memo((props) => {
             <DraggableComponentsMenu
                 topMenuHidden={topMenuHidden}
                 onNewDraggable={onNewDraggable}
+                extensionType={extensionType}
                 setExtensionType={setExtensionType}
+                name={name}
             />
 
             <DraggableDropZone

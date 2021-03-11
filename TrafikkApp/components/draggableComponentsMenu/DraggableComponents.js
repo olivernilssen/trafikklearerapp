@@ -51,6 +51,7 @@ const DraggableComponents = React.memo(({ onNewDraggable }) => {
 
 const styles = StyleSheet.create({
     imageContainer: {
+        justifyContent: 'center',
         marginTop: 10,
         marginHorizontal: 10,
     },
