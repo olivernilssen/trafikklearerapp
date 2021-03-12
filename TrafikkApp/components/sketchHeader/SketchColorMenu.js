@@ -9,6 +9,7 @@ import {
     MenuTrigger,
     renderers,
 } from 'react-native-popup-menu';
+
 import PencilSizePopup from './PencilSizePopup';
 import { Colors, Typography, Buttons } from '../../styles';
 
@@ -115,7 +116,7 @@ const SketchColorMenu = React.memo((props) => {
                             }}
                             onValueChange={onPaletteValueChange}
                             colors={colors}
-                            numberOfRows={2}
+                            numberOfRows={3}
                             containerWidth={250}
                             usePagination={false}
                         />

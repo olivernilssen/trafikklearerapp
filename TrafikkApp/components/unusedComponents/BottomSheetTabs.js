@@ -1,9 +1,10 @@
+/**
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Animated, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { View, TabBar } from 'react-native-ui-lib';
 
-import Color from '../../styles/Colors';
+import { Colors } from '../../styles';
 
 const BottomSheetTabs = React.memo((props) => {
     const { selectedRoadType, roadTypes, selectedRoad, onImageSelect } = props;
@@ -46,19 +47,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         marginTop: 10,
-        backgroundColor: Color.tabViewBg,
+        backgroundColor: Colors.tabViewBg,
     },
     activeButton: {
         borderWidth: 1,
         borderRadius: 5,
-        borderColor: Color.tabHeaderTextActive,
+        borderColor: Colors.tabHeaderTextActive,
         padding: 10,
         marginHorizontal: 10,
     },
     inActiveButton: {
         borderWidth: 1,
         borderRadius: 5,
-        borderColor: Color.tabButtonBorder,
+        borderColor: Colors.tabButtonBorder,
         padding: 10,
         marginHorizontal: 10,
     },
@@ -71,3 +72,4 @@ const styles = StyleSheet.create({
 });
 
 export default BottomSheetTabs;
+*/
