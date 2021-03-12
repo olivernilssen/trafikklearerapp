@@ -1,11 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useRef, useState, useEffect, useCallback } from 'react';
-import {
-    View,
-    StyleSheet,
-    ImageBackground,
-    TouchableWithoutFeedback,
-} from 'react-native';
+import { View, StyleSheet, ImageBackground } from 'react-native';
 
 import MainView from '../MainView';
 import SketchHeader from '../sketchHeader/SketchHeader';
@@ -32,6 +27,7 @@ const SketchArea = React.memo((props) => {
     const [chosenPencilSize, setChosenPencilSize] = useState(null);
     // const [prevPencilSize, setPrevPencilSize] = useState(null);
 
+    const [roadDesignChange, setRoadDesignChange] = useState(true);
     const [currentImg, setImage] = useState();
     const [topMenuHidden, setTopMenuHidden] = useState(true);
     const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
@@ -45,7 +41,9 @@ const SketchArea = React.memo((props) => {
      * Will clear the canvas and delete all objects on the screen
      */
     useEffect(() => {
-        clearCanvas();
+        if (roadDesignChange) {
+            clearCanvas();
+        }
     }, [currentImg]);
 
     /**
@@ -110,10 +108,13 @@ const SketchArea = React.memo((props) => {
 
     /**
      * Function to clear the canvas and set draggables to empty list
+     * Only clear canvas if roadDesignChange is true
      */
     const clearCanvas = useCallback(() => {
+        // if (roadDesignChange) {
         sketchRef.current.clear();
         setDraggables([]);
+        // }
     });
 
     /**
@@ -188,6 +189,7 @@ const SketchArea = React.memo((props) => {
                     <BottomMenuAnimated
                         roadType={props.name}
                         setImage={setImage}
+                        setRoadDesignChange={setRoadDesignChange}
                         extensionType={extensionType}
                         bottomSheetHidden={bottomSheetHidden}
                         setBottomSheetHidden={setBottomSheetHidden}
