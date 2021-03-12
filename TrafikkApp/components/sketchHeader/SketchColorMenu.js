@@ -27,16 +27,6 @@ const SketchColorMenu = React.memo((props) => {
     const [colorButtonID, setColorButtonID] = useState(0);
     const [chosenColorButtonID, setChosenColorButtonID] = useState(0);
 
-    const [currentColorSetup, setCurrentColorSetup] = useState({
-        color: INITIAL_COLOR,
-        textColor: Colors.header,
-        paletteChange: false,
-    });
-
-    const chosenColorButton = (value) => {
-        setColorButtonID(value);
-    };
-
     const {
         onPaletteColorChange,
         onChangePencilSize,
@@ -63,6 +53,10 @@ const SketchColorMenu = React.memo((props) => {
 
     const onSecondClickOpen = (value) => {
         setOpened(value);
+    };
+
+    const chosenColorButton = (value) => {
+        setColorButtonID(value);
     };
 
     return (

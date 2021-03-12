@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from '../../styles';
 
 /**
@@ -26,9 +26,7 @@ const styles = StyleSheet.create({
     menuItem: {
         flexDirection: 'row',
         marginBottom: 15,
-        paddingBottom: 20,
-        borderBottomWidth: 1,
-        borderBottomColor: Colors.iconActive,
+        paddingBottom: 10,
     },
     menuIcon: {
         marginTop: 10,

@@ -7,7 +7,8 @@ import StartScreen from '../../screens/StartScreen';
 import SettingsScreen from '../../screens/SettingsScreen';
 import IntersectionScreen from '../../screens/IntersectionScreen';
 import RoundaboutScreen from '../../screens/RoundaboutScreen';
-import RoadScreen from '../../screens/RoadScreen';
+import CountryRoadScreen from '../../screens/CountryRoadScreen';
+import HighwayScreen from '../../screens/HighwayScreen';
 import RoadSignScreen from '../../screens/RoadSignScreen';
 
 const Drawer = createDrawerNavigator();
@@ -41,7 +42,7 @@ const Navigator = () => {
                 component={IntersectionScreen}
                 initialParams={{
                     title: 'Veikryss',
-                    icon: 'road',
+                    icon: 'plus',
                     screenName: 'IntersectionScreen',
                     value: 1,
                 }}
@@ -51,29 +52,39 @@ const Navigator = () => {
                 component={RoundaboutScreen}
                 initialParams={{
                     title: 'Rundkjøring',
-                    icon: 'crosshairs',
+                    icon: 'dot-circle',
                     screenName: 'RoundaboutScreen',
                     value: 2,
                 }}
             />
             <Drawer.Screen
-                name="RoadScreen"
-                component={RoadScreen}
+                name="CountryRoadScreen"
+                component={CountryRoadScreen}
                 initialParams={{
-                    title: 'Vei',
+                    title: 'Landevei',
                     icon: 'road',
-                    screenName: 'RoadScreen',
+                    screenName: 'CountryRoadScreen',
                     value: 3,
+                }}
+            />
+            <Drawer.Screen
+                name="HighwayScreen"
+                component={HighwayScreen}
+                initialParams={{
+                    title: 'Fartsøkning- og reduksjon',
+                    icon: 'road',
+                    screenName: 'HighwayScreen',
+                    value: 4,
                 }}
             />
             <Drawer.Screen
                 name="RoadSignScreen"
                 component={RoadSignScreen}
                 initialParams={{
-                    title: 'Skilt',
+                    title: 'Trafikkskilt',
                     icon: 'map-signs',
                     screenName: 'RoadSignScreen',
-                    value: 4,
+                    value: 5,
                 }}
             />
             <Drawer.Screen
@@ -81,9 +92,9 @@ const Navigator = () => {
                 component={SettingsScreen}
                 initialParams={{
                     title: 'Innstillinger',
-                    icon: 'sliders',
+                    icon: 'cog',
                     screenName: 'SettingsScreen',
-                    value: 5,
+                    value: 6,
                 }}
             />
         </Drawer.Navigator>

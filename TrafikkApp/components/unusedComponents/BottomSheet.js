@@ -1,3 +1,4 @@
+/** 
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Animated, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -5,7 +6,7 @@ import { View, TabBar } from 'react-native-ui-lib';
 
 import BottomSheetTabs from './BottomSheetTabs';
 
-import Color from '../../styles/Colors';
+import { Colors } from '../../styles';
 import { useCallback } from 'react';
 
 const BottomSheet = React.memo((props) => {
@@ -172,3 +173,4 @@ var styles = StyleSheet.create({
 });
 
 export default BottomSheet;
+*/

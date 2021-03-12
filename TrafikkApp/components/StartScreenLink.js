@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: Colors.textDark,
-        alignSelf: 'center',
-        fontWeight: 'bold',
+        textAlign: 'center',
+        // fontWeight: 'bold',
         ...Typography.medium,
     },
 });

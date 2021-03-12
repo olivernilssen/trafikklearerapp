@@ -1,20 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useCallback } from 'react';
-import { StyleSheet, View, Animated } from 'react-native';
-import { RadioGroup, RadioButton } from 'react-native-ui-lib';
+import {
+    StyleSheet,
+    View,
+    Animated,
+    TouchableOpacity,
+    Text,
+} from 'react-native';
 
-import { Colors, Typography, Icons } from '../../styles';
+import { Colors, Typography, Buttons } from '../../styles';
 import DraggableComponents from './DraggableComponents';
+import Divider from '../Divider';
 
-const extensionTypes = ['vanlig', 'gangfelt', 'sykkelfelt', 'busslomme'];
+const extensionTypes = ['Gangfelt', 'Sykkelfelt'];
 
 /**
  * Component for the draggable top menu, which displayes objects
  * that can be turned into draggables.
  */
 const DraggableComponentsMenu = React.memo(
-    ({ topMenuHidden, onNewDraggable, setExtensionType }) => {
-        const [radioBtn, setRadioBtn] = useState(extensionTypes[0]);
+    ({
+        topMenuHidden,
+        onNewDraggable,
+        name,
+        extensionType,
+        setExtensionType,
+    }) => {
         const [yPosHidden, setYPosHidden] = useState(-200);
         const [bounceValue, setBounceValue] = useState(
             new Animated.Value(yPosHidden)
@@ -71,9 +82,12 @@ const DraggableComponentsMenu = React.memo(
          * aswell as the extensiontype and to change backgroundImage
          * @param {String} value
          */
-        const radioButtonChange = (value) => {
-            setRadioBtn(value);
-            setExtensionType(value);
+        const extensionTypeChange = (value) => {
+            if (extensionType != value) {
+                setExtensionType(value);
+            } else {
+                setExtensionType('Vanlig');
+            }
         };
 
         return (
@@ -89,29 +103,58 @@ const DraggableComponentsMenu = React.memo(
                     onLayout={(event) => {
                         getTopMenuLayout(event.nativeEvent.layout);
                     }}>
-                    <View style={styles.radioView}>
-                        <RadioGroup
-                            initialValue={radioBtn}
-                            onValueChange={(value) => radioButtonChange(value)}
-                            style={styles.buttonGroup}>
-                            {extensionTypes.map((name, i) => {
-                                return (
-                                    <RadioButton
-                                        key={i}
-                                        label={name}
-                                        value={name}
-                                        size={Icons.small}
-                                        labelStyle={{
-                                            color: Colors.icons,
-                                            ...Typography.medium,
-                                        }}
-                                        style={styles.radioBtn}
-                                        color={Colors.componentMenuButtons}
-                                    />
-                                );
-                            })}
-                        </RadioGroup>
-                    </View>
+                    {(name == 'Veikryss' || name == 'Rundkjoring') && (
+                        <View style={styles.extensionTypeContainer}>
+                            <View style={styles.extensionTypeBtnsgroup}>
+                                {extensionTypes.map((name, i) => {
+                                    const activeBtn = name === extensionType;
+
+                                    return (
+                                        <TouchableOpacity
+                                            key={i}
+                                            activeOpacity={0.6}
+                                            onPress={() =>
+                                                extensionTypeChange(name)
+                                            }
+                                            style={[
+                                                styles.extensionTypeButton,
+                                                activeBtn
+                                                    ? {
+                                                          backgroundColor:
+                                                              Colors.componentMenuButtons,
+                                                      }
+                                                    : {
+                                                          backgroundColor:
+                                                              Colors.componentMenu,
+                                                      },
+                                            ]}
+                                            color={Colors.bottomMenyButtons}>
+                                            <Text
+                                                style={[
+                                                    styles.extensionBtnText,
+                                                    activeBtn
+                                                        ? {
+                                                              color:
+                                                                  Colors.textLight,
+                                                          }
+                                                        : {
+                                                              color:
+                                                                  Colors.icons,
+                                                          },
+                                                ]}>
+                                                {name}
+                                            </Text>
+                                        </TouchableOpacity>
+                                    );
+                                })}
+                            </View>
+                            <Divider
+                                style={styles.divider}
+                                borderColor={Colors.componentMenuButtons}
+                            />
+                        </View>
+                    )}
+
                     <DraggableComponents onNewDraggable={onNewDraggable} />
                 </View>
             </Animated.View>
@@ -131,25 +174,42 @@ const styles = StyleSheet.create({
         zIndex: 1,
     },
     menuContent: {
-        flexDirection: 'column',
+        flexDirection: 'row',
         backgroundColor: Colors.componentMenu,
         elevation: 10,
-        width: '85%',
+        width: '90%',
         height: '100%',
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,
-        // borderTopWidth: 3,
-        // borderTopColor: Color.borderColor,
     },
-    radioView: {
-        padding: 20,
-    },
-    buttonGroup: {
+    extensionTypeContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
-        // padding: 5,
     },
-    radioBtn: {},
+    extensionTypeBtnsgroup: {
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        padding: 10,
+        marginBottom: 10,
+        marginLeft: 10,
+    },
+    extensionTypeButton: {
+        borderWidth: 1,
+        borderColor: Colors.componentMenuButtons,
+        padding: 5,
+        elevation: 5,
+        ...Buttons.medium,
+    },
+    extensionBtnText: {
+        padding: 3,
+        textAlign: 'center',
+        ...Typography.medium,
+    },
+    divider: {
+        padding: 10,
+        paddingLeft: 5,
+        marginBottom: 10,
+        marginLeft: 10,
+    },
 });
 
 export default DraggableComponentsMenu;
