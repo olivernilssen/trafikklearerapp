@@ -55,7 +55,7 @@ const SketchArea = React.memo((props) => {
     };
 
     /**
-     * Changes the pencil color when switching between eraser and pencil
+     * Changes the pencil color and size when switching between eraser and pencil
      */
     const onEraserPencilSwitch = useCallback(() => {
         if (pencilColor === eraserColor) {
@@ -121,10 +121,12 @@ const SketchArea = React.memo((props) => {
      * Function to set the pencil to an eraser
      */
     const eraser = () => {
-        setChosenColor(pencilColor);
-        setChosenPencilSize(pencilSize);
-        setPencilColor(eraserColor);
-        setPencilSize(eraserSize);
+        if (pencilColor != eraserColor) {
+            setChosenColor(pencilColor);
+            setChosenPencilSize(pencilSize);
+            setPencilColor(eraserColor);
+            setPencilSize(eraserSize);
+        }
     };
 
     /**
@@ -158,6 +160,7 @@ const SketchArea = React.memo((props) => {
                 onChangePencilSize={onChangePencilSize}
                 pencilColor={pencilColor}
                 pencilSize={pencilSize}
+                chosenColor={chosenColor}
             />
 
             <View style={styles.main}>

@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import {
+    StyleSheet,
+    TouchableOpacity,
+    TouchableHighlight,
+    TouchableWithoutFeedback,
+    Text,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { View, ColorPalette } from 'react-native-ui-lib';
 import {
@@ -9,8 +15,8 @@ import {
     MenuTrigger,
     renderers,
 } from 'react-native-popup-menu';
-
 import PencilSizePopup from './PencilSizePopup';
+import ColorButton from './ColorButton';
 import { Colors, Typography, Buttons } from '../../styles';
 
 const { Popover } = renderers;
@@ -18,12 +24,8 @@ const { Popover } = renderers;
 const SketchColorMenu = React.memo((props) => {
     const INITIAL_COLOR = '#CF262F';
     const [isOpened, setOpened] = useState(false);
-
-    const [currentColorSetup, setCurrentColorSetup] = useState({
-        color: INITIAL_COLOR,
-        textColor: Colors.header,
-        paletteChange: false,
-    });
+    const [colorButtonID, setColorButtonID] = useState(0);
+    const [chosenColorButtonID, setChosenColorButtonID] = useState(0);
 
     const {
         onPaletteColorChange,
@@ -35,6 +37,7 @@ const SketchColorMenu = React.memo((props) => {
         focusedActiveButton,
         pencilColor,
         pencilSize,
+        chosenColor,
     } = props;
 
     const colors = [
@@ -48,26 +51,16 @@ const SketchColorMenu = React.memo((props) => {
         '#8B1079',
     ];
 
-    const onPaletteValueChange = (value, options) => {
-        setCurrentColorSetup({
-            color: value,
-            textColor: options ? options.tintColor : undefined,
-            paletteChange: true,
-        });
-
-        onPaletteColorChange(value);
-        focusedActiveButton(buttonActiveId);
-        setOpened(false);
-    };
-
     const onSecondClickOpen = (value) => {
         setOpened(value);
     };
 
-    const { color } = currentColorSetup;
+    const chosenColorButton = (value) => {
+        setColorButtonID(value);
+    };
 
     return (
-        <View style={propsStyle} key={currentColorSetup.color}>
+        <View style={propsStyle}>
             <Menu
                 renderer={Popover}
                 rendererProps={{
@@ -82,7 +75,6 @@ const SketchColorMenu = React.memo((props) => {
                     onPress={() => {
                         if (activeId != 0) {
                             onEraserPencilSwitch();
-                            console.log(pencilSize, pencilColor);
                             focusedActiveButton(buttonActiveId);
                             onSecondClickOpen(false);
                         } else {
@@ -98,29 +90,95 @@ const SketchColorMenu = React.memo((props) => {
                         name={activeId === 0 ? 'chevron-down' : 'pen'}
                         size={30}
                         solid
-                        color={currentColorSetup.color}
+                        color={
+                            pencilColor != '#00000000'
+                                ? pencilColor
+                                : chosenColor
+                        }
                     />
                 </MenuTrigger>
                 <MenuOptions optionsContainerStyle={styles.menuOptions}>
-                    <MenuOption
-                        style={{ backgroundColor: Colors.colorPaletteMenu }}
-                        onSelect={() => {
-                            onSecondClickOpen(false);
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            paddingTop: 10,
                         }}>
-                        <ColorPalette
-                            style={{ backgroundColor: Colors.colorPaletteMenu }}
-                            value={color}
-                            swatchStyle={{
-                                width: 250 / colors.length,
-                                height: 250 / colors.length,
-                            }}
-                            onValueChange={onPaletteValueChange}
-                            colors={colors}
-                            numberOfRows={3}
-                            containerWidth={250}
-                            usePagination={false}
+                        <ColorButton
+                            colorName={colors[0]}
+                            colorButtonID={colorButtonID}
+                            buttonID={0}
+                            onPaletteColorChange={onPaletteColorChange}
+                            chosenColorButton={chosenColorButton}
+                            setOpened={setOpened}
+                            propsStyle={styles}
                         />
-                    </MenuOption>
+
+                        <ColorButton
+                            colorName={colors[1]}
+                            colorButtonID={colorButtonID}
+                            buttonID={0}
+                            onPaletteColorChange={onPaletteColorChange}
+                            chosenColorButton={chosenColorButton}
+                            setOpened={setOpened}
+                            propsStyle={styles}
+                        />
+                        <ColorButton
+                            colorName={colors[2]}
+                            colorButtonID={colorButtonID}
+                            buttonID={0}
+                            onPaletteColorChange={onPaletteColorChange}
+                            chosenColorButton={chosenColorButton}
+                            setOpened={setOpened}
+                            propsStyle={styles}
+                        />
+                        <ColorButton
+                            colorName={colors[3]}
+                            colorButtonID={colorButtonID}
+                            buttonID={0}
+                            onPaletteColorChange={onPaletteColorChange}
+                            chosenColorButton={chosenColorButton}
+                            setOpened={setOpened}
+                            propsStyle={styles}
+                        />
+                        <ColorButton
+                            colorName={colors[4]}
+                            colorButtonID={colorButtonID}
+                            buttonID={0}
+                            onPaletteColorChange={onPaletteColorChange}
+                            chosenColorButton={chosenColorButton}
+                            setOpened={setOpened}
+                            propsStyle={styles}
+                        />
+                        <ColorButton
+                            colorName={colors[5]}
+                            colorButtonID={colorButtonID}
+                            buttonID={0}
+                            onPaletteColorChange={onPaletteColorChange}
+                            chosenColorButton={chosenColorButton}
+                            setOpened={setOpened}
+                            propsStyle={styles}
+                        />
+                        <ColorButton
+                            colorName={colors[6]}
+                            colorButtonID={colorButtonID}
+                            buttonID={0}
+                            onPaletteColorChange={onPaletteColorChange}
+                            chosenColorButton={chosenColorButton}
+                            setOpened={setOpened}
+                            propsStyle={styles}
+                        />
+                        <ColorButton
+                            colorName={colors[7]}
+                            colorButtonID={colorButtonID}
+                            buttonID={0}
+                            onPaletteColorChange={onPaletteColorChange}
+                            chosenColorButton={chosenColorButton}
+                            setOpened={setOpened}
+                            propsStyle={styles}
+                        />
+                    </View>
                     <MenuOptions>
                         <View style={styles.iconPlacement}>
                             <MenuOption
@@ -188,38 +246,55 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         height: '100%',
-        width: 100,
+        width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
     },
     iconPlacement: {
         flexDirection: 'row',
-        width: 320,
-        height: 80,
-        left: 60,
-        justifyContent: 'center',
         alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    pencilSizeLeft: {
+        borderBottomLeftRadius: 40,
+        backgroundColor: 'yellow',
     },
     menuOptions: {
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,
         backgroundColor: Colors.colorPaletteMenu,
-        color: Colors.colorPaletteMenu,
+
+        overflow: 'hidden',
     },
 });
 
-const optionsStyles = {
-    optionsContainer: {},
-    optionsWrapper: {
+const testLeft = {
+    optionTouchable: {
+        activeOpacity: 40,
         borderBottomLeftRadius: 40,
-        borderBottomRightRadius: 40,
-        borderRadius: 10,
-        borderWidth: 1,
-        overflow: 'hidden',
+        backgroundColor: 'green',
+        color: 'green',
+        underlayColor: 'gold',
+        activeOpacity: 70,
     },
-    optionWrapper: {},
-    optionTouchable: {},
-    optionText: {},
+    optionWrapper: {
+        borderBottomLeftRadius: 40,
+        underlayColor: 'gold',
+    },
+    optionText: {
+        color: 'black',
+        borderBottomLeftRadius: 40,
+    },
+};
+
+const touchableOpacityProps = {
+    borderBottomLeftRadius: 40,
+    activeOpacity: 0.6,
+};
+
+const touchableHighlightProps = {
+    borderBottomLeftRadius: 40,
+    activeOpacity: 0.5,
 };
 
 export default SketchColorMenu;

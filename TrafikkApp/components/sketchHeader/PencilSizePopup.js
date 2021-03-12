@@ -1,16 +1,6 @@
-import React, { useState } from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import React from 'react';
 import { StyleSheet } from 'react-native';
 import { View } from 'react-native-ui-lib';
-import {
-    Menu,
-    MenuOptions,
-    MenuOption,
-    MenuTrigger,
-    renderers,
-} from 'react-native-popup-menu';
-
-const { Popover } = renderers;
 
 // import { Colors } from '../../styles';
 
@@ -26,29 +16,6 @@ const PencilSizePopup = (props) => {
                 }}></View>
         </View>
     );
-    // };
-
-    // return (
-    //     <View style={props.propsStyle}>
-    //         <Menu
-    //             renderer={Popover}
-    //             rendererProps={{ preferredPlacement: 'bottom' }}>
-    //             <MenuTrigger>
-    //                 <Icon name={'minus'} solid size={32} color={'black'} />
-    //             </MenuTrigger>
-    //             <MenuOptions
-    //                 style={{
-    //                     flexDirection: 'row',
-    //                     justifyContent: 'center',
-    //                     alignItems: 'center',
-    //                 }}>
-    //                 <MenuOption>{pencilSizeButton(5)}</MenuOption>
-    //                 <MenuOption>{pencilSizeButton(8)}</MenuOption>
-    //                 <MenuOption>{pencilSizeButton(11)}</MenuOption>
-    //             </MenuOptions>
-    //         </Menu>
-    //     </View>
-    // );
 };
 
 const styles = StyleSheet.create({
