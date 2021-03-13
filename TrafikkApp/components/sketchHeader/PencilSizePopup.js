@@ -21,24 +21,9 @@ const PencilSizePopup = (props) => {
 const styles = StyleSheet.create({
     iconPlacement: {
         height: 60,
-        width: 100,
+        width: 135,
         justifyContent: 'center',
         alignItems: 'center',
-    },
-    iconSmall: {
-        height: 5,
-        width: 32,
-        backgroundColor: Colors.pencilThicknessBox,
-    },
-    iconMedium: {
-        height: 8,
-        width: 32,
-        backgroundColor: Colors.pencilThicknessBox,
-    },
-    iconBig: {
-        height: 11,
-        width: 32,
-        backgroundColor: Colors.pencilThicknessBox,
     },
 });
 
