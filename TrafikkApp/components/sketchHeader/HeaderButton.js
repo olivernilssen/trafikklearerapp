@@ -9,7 +9,7 @@ import { Colors, Buttons, Icons } from '../../styles';
  * IconButtons is the buttons at the top menu for the sketcharea
  * @param {props} props
  */
-const HeaderButton = (props) => {
+const HeaderButton = React.memo((props) => {
     const {
         iconName,
         buttonOnPress,
@@ -32,7 +32,15 @@ const HeaderButton = (props) => {
                         size={Icons.small}
                         style={
                             activeId === buttonActiveId
-                                ? styles.buttonActive
+                                ? [
+                                      styles.buttonActive,
+                                      {
+                                          backgroundColor:
+                                              iconName === 'eraser'
+                                                  ? Colors.eraserIconActive
+                                                  : Colors.iconActive,
+                                      },
+                                  ]
                                 : [styles.buttonSize, styles.buttonInactive]
                         }
                     />
@@ -40,7 +48,7 @@ const HeaderButton = (props) => {
             </View>
         </View>
     );
-};
+});
 
 const styles = StyleSheet.create({
     buttonSize: {
@@ -50,9 +58,9 @@ const styles = StyleSheet.create({
     },
     buttonActive: {
         color: Colors.textLight,
-        backgroundColor: Colors.iconActive,
         paddingVertical: 12,
         paddingHorizontal: 14,
+        backgroundColor: Colors.iconActive,
         ...Buttons.round,
     },
     buttonInactive: {

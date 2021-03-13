@@ -3,23 +3,25 @@
 //
 const charcoal = '#4A4A4A';
 const lightGray = '#DAD8D8';
-const black = '#3B3B3B';
+const darkGray = '#3B3B3B';
+const black = '#242424';
 const white = '#FFFFFF';
 const mustard = '#E2BD38';
 
 const green = '#66DA8D';
 const blue = '#79B7DA';
 const blueGray = '#CDD7DC';
+const blueGreen = '#56B897';
 
 const red = '#FB5555';
 
 export default {
-    background: black,
-    header: black,
-    bottomMeny: black,
-    componentMenuButtons: black,
+    background: darkGray,
+    header: darkGray,
+    bottomMeny: darkGray,
+    componentMenuButtons: darkGray,
 
-    textDark: black,
+    textDark: darkGray,
     textLight: white,
 
     componentMenu: charcoal,
@@ -28,6 +30,9 @@ export default {
 
     icons: lightGray,
     iconActive: charcoal, // or mustard?
+    boxIconActive: mustard,
+    eraserIconActive: blueGreen,
+    pencilThicknessBox: black,
 
     colorPaletteMenu: charcoal,
 
@@ -35,6 +40,6 @@ export default {
     startScreenLinkTheory: blue,
     startScreenLinkLink: blueGray,
 
-    deleteButton: black,
+    deleteButton: darkGray,
     deleteButtonActive: red,
 };

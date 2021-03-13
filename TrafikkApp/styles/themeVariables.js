@@ -5,7 +5,7 @@ const { height, width } = Dimensions.get('window');
 
 export default {
     // FONTS
-    FONT_SIZE_SMALL: 12,
+    FONT_SIZE_SMALL: 14,
     FONT_SIZE_MEDIUM: 18,
     FONT_SIZE_LARGE: RUtils.isSmallScreen() ? 20 : 30,
 
