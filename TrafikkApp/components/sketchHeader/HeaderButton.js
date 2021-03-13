@@ -24,7 +24,8 @@ const HeaderButton = React.memo((props) => {
             <View style={propsStyle}>
                 <TouchableOpacity
                     onPress={() => {
-                        buttonOnPress(), focusedActiveButton(buttonActiveId);
+                        buttonOnPress();
+                        focusedActiveButton(buttonActiveId);
                     }}>
                     <Icon
                         name={iconName}

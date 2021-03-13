@@ -23,6 +23,7 @@ const SketchHeader = React.memo((props, navigation) => {
         onChangePencilSize,
         pencilColor,
         pencilSize,
+        chosenColor,
     } = props;
 
     const focusedActiveButton = (value) => {
@@ -49,8 +50,7 @@ const SketchHeader = React.memo((props, navigation) => {
                     propsStyle={styles.spacedLeft}
                 />
 
-                <PencilSizePopup propsStyle={styles.spacedCenter} />
-
+                {/* <PencilSizePopup propsStyle={styles.spacedCenter} /> */}
                 <SketchColorMenu
                     onPaletteColorChange={onPaletteColorChange}
                     onChangePencilSize={onChangePencilSize}
@@ -62,6 +62,7 @@ const SketchHeader = React.memo((props, navigation) => {
                     focusedActiveButton={focusedActiveButton}
                     pencilColor={pencilColor}
                     pencilSize={pencilSize}
+                    chosenColor={chosenColor}
                 />
                 <HeaderButton
                     iconName={'eraser'}
