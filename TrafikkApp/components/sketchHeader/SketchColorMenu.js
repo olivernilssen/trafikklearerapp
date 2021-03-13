@@ -211,20 +211,10 @@ const SketchColorMenu = React.memo((props) => {
 
 const styles = StyleSheet.create({
     buttonSize: {
-        // fontSize: 30,
         ...Typography.large,
     },
     buttonActive: {
-        // backgroundColor: 'yellow',
-        // flex: 1,
-        // color: Color.iconPrimary,
-        // fontSize: 30,
         backgroundColor: Colors.iconActive,
-        // borderRightWidth: 1,
-        // borderLeftWidth: 1,
-        // borderColor: Color.tabButtonBorder,
-        // width: '100%',
-        // height: '100%',
         paddingVertical: 12,
         paddingHorizontal: 16,
         ...Buttons.round,
@@ -232,11 +222,7 @@ const styles = StyleSheet.create({
     },
     buttonInactive: {
         color: Colors.icons,
-        // fontSize: 30,
-        backgroundColor: Colors.header,
-        // borderRightWidth: 1,
-        // borderLeftWidth: 1,
-        // borderColor: Color.tabButtonBorder,
+        backgroundColor: 'transparent',
         paddingVertical: 12,
         paddingHorizontal: 16,
         ...Typography.large,
@@ -253,10 +239,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-    },
-    pencilSizeLeft: {
-        borderBottomLeftRadius: 40,
-        backgroundColor: 'yellow',
     },
     menuOptions: {
         borderBottomLeftRadius: 40,

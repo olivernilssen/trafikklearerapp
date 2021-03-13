@@ -42,22 +42,17 @@ const SketchHeader = React.memo((props, navigation) => {
                 name={''}
                 navigation={props.navigation}
                 style={styles.header}>
-                <DeleteButtonPopover clearCanvas={clearCanvas} />
-                {/* <HeaderButton
-                    iconName={'trash'}
-                    buttonOnPress={clearCanvas}
-                    buttonActiveId={2}
-                    activeId={activeId}
-                    focusedActiveButton={focusedActiveButton}
+                <DeleteButtonPopover
+                    clearCanvas={clearCanvas}
                     propsStyle={styles.spacedLeft}
-                /> */}
+                />
 
                 {/* <PencilSizePopup propsStyle={styles.spacedCenter} /> */}
                 <SketchColorMenu
                     onPaletteColorChange={onPaletteColorChange}
                     onChangePencilSize={onChangePencilSize}
                     iconSize={styles.buttonSize}
-                    propsStyle={styles.spacedCenter}
+                    propsStyle={styles.spacedRight}
                     onEraserPencilSwitch={onEraserPencilSwitch}
                     buttonActiveId={0}
                     activeId={activeId}
