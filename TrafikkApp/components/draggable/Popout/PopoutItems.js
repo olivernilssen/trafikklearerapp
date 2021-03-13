@@ -2,6 +2,7 @@ import React from 'react';
 
 import { View, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import Animated from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 /**
@@ -41,6 +42,13 @@ const PopoutItems = (props) => {
         return { x, y };
     };
 
+    const onPressColor = (color, isExitButton, isResetButton) => {
+        !isExitButton
+            ? !isResetButton
+                ? setTintColor(color)
+                : setTintColor(null) //ERROR THIS ONE DOES NOT WORK, makes the image invisible
+            : setPopoutActive(false);
+    };
     /**
      * This returns each object that is in the array
      * as a small circle placed according to the function calculateXY
@@ -67,14 +75,10 @@ const PopoutItems = (props) => {
                 ]}>
                 <TouchableOpacity
                     color={color}
-                    onPress={() => {
-                        !isExitButton
-                            ? !isResetButton
-                                ? setTintColor(color)
-                                : setTintColor(null) //ERROR THIS ONE DOES NOT WORK, makes the image invisible
-                            : setPopoutActive(false);
-                    }}>
-                    <View
+                    onPressIn={() =>
+                        onPressColor(color, isExitButton, isResetButton)
+                    }>
+                    <Animated.View
                         style={[
                             styles.circleInTouchable,
                             {
@@ -100,7 +104,7 @@ const PopoutItems = (props) => {
                                 color={'black'}
                             />
                         )}
-                    </View>
+                    </Animated.View>
                 </TouchableOpacity>
             </View>
         );
@@ -117,11 +121,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     buttonView: {
-        position: 'absolute',
+        // position: 'absolute',
     },
     circleInTouchable: {
         justifyContent: 'center',
-        // alignContent: 'center',
         alignItems: 'center',
     },
 });

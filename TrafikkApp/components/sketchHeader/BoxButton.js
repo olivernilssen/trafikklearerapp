@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     },
     buttonActive: {
         color: Colors.textLight,
-        backgroundColor: Colors.iconActive,
+        backgroundColor: Colors.boxIconActive,
         paddingVertical: 12,
         paddingHorizontal: 10,
         ...Buttons.round,

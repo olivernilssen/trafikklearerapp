@@ -92,7 +92,7 @@ const SketchArea = React.memo((props) => {
         } else if (lastItem.type == 'draggable') {
             setDeletingItemId(lastItem.id);
         } else {
-            console.log('error occured with deleting');
+            console.warn('error occured with deleting');
         }
 
         setActionList(copyList);

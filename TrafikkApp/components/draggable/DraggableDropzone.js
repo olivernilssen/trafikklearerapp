@@ -38,10 +38,8 @@ const DraggableDropZone = (props) => {
                 },
             ]}>
             <Icon
-                color={
-                    trashHover ? Colors.deleteButtonActive : Colors.deleteButton
-                }
-                name={trashHover ? 'trash-restore' : 'trash'}
+                color={Colors.deleteButtonActive}
+                name={'trash-restore'}
                 size={iconSize}
             />
         </View>

@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { View } from 'react-native-ui-lib';
 
-// import { Colors } from '../../styles';
+import { Colors } from '../../styles';
 
 const PencilSizePopup = (props) => {
     // const pencilSizeButton = (pencilThickness) => {
@@ -12,7 +12,7 @@ const PencilSizePopup = (props) => {
                 style={{
                     width: 50,
                     height: props.pencilThickness,
-                    backgroundColor: 'black',
+                    backgroundColor: Colors.pencilThicknessBox,
                 }}></View>
         </View>
     );
@@ -28,17 +28,17 @@ const styles = StyleSheet.create({
     iconSmall: {
         height: 5,
         width: 32,
-        backgroundColor: 'black',
+        backgroundColor: Colors.pencilThicknessBox,
     },
     iconMedium: {
         height: 8,
         width: 32,
-        backgroundColor: 'black',
+        backgroundColor: Colors.pencilThicknessBox,
     },
     iconBig: {
         height: 11,
         width: 32,
-        backgroundColor: 'black',
+        backgroundColor: Colors.pencilThicknessBox,
     },
 });
 

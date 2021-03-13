@@ -10,7 +10,7 @@ const MappingDraggable = React.memo((props) => {
     //Get props
     const {
         draggables,
-        setDraggables,
+        setDraggableMoving,
         setTrashHover,
         dropZoneValues,
         onRemoveItem,
@@ -27,7 +27,8 @@ const MappingDraggable = React.memo((props) => {
                         source={itemInfo.source}
                         onRemoveItem={onRemoveItem}
                         dropZoneValues={dropZoneValues}
-                        tintColor={'red'}
+                        tintColor={null}
+                        setDraggableMoving={setDraggableMoving}
                     />
                 );
             })}

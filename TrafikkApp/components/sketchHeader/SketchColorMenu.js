@@ -83,18 +83,17 @@ const SketchColorMenu = React.memo((props) => {
                     }}
                     style={
                         activeId === buttonActiveId
-                            ? styles.buttonActive
+                            ? [
+                                  styles.buttonActive,
+                                  { backgroundColor: pencilColor },
+                              ]
                             : [styles.buttonSize, styles.buttonInactive]
                     }>
                     <Icon
                         name={activeId === 0 ? 'chevron-down' : 'pen'}
                         size={30}
                         solid
-                        color={
-                            pencilColor != '#00000000'
-                                ? pencilColor
-                                : chosenColor
-                        }
+                        color={Colors.textLight}
                     />
                 </MenuTrigger>
                 <MenuOptions optionsContainerStyle={styles.menuOptions}>
