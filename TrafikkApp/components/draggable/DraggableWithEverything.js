@@ -4,7 +4,7 @@ import { useCallback } from 'react';
 import { useEffect } from 'react';
 
 import DraggableComponentsMenu from '../draggableComponentsMenu/DraggableComponentsMenu';
-import DraggableDropZone from './DraggableDropzone';
+import DraggableDropZone from '../unusedComponents/DraggableDropzone';
 import MappingDraggable from './MappingDraggables';
 
 /**
@@ -36,10 +36,7 @@ const DraggableWithEverything = React.memo((props) => {
     }, [deletingItemId]);
 
     //States and states from props
-    const [dropZoneValues, setDropZoneValues] = useState(0);
     const [counter, setCounter] = useState(0);
-    const [trashHover, setTrashHover] = useState(false);
-    const [draggableMoving, setDraggableMoving] = useState(false);
 
     /**
      * Adds a new draggable to the array draggables
@@ -85,21 +82,10 @@ const DraggableWithEverything = React.memo((props) => {
                 name={name}
             />
 
-            {draggableMoving && (
-                <DraggableDropZone
-                    setDropZoneValues={setDropZoneValues}
-                    iconSize={60}
-                    trashHover={trashHover}
-                />
-            )}
-
             <MappingDraggable
                 draggables={draggables}
                 setDraggables={setDraggables}
-                setTrashHover={setTrashHover}
-                dropZoneValues={dropZoneValues}
                 onRemoveItem={onRemoveItem}
-                setDraggableMoving={setDraggableMoving}
             />
         </>
     );

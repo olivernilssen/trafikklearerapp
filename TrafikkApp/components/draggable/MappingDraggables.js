@@ -8,13 +8,7 @@ import Draggable from './Draggable';
  */
 const MappingDraggable = React.memo((props) => {
     //Get props
-    const {
-        draggables,
-        setDraggableMoving,
-        setTrashHover,
-        dropZoneValues,
-        onRemoveItem,
-    } = props;
+    const { draggables, onRemoveItem } = props;
 
     return (
         <>
@@ -22,13 +16,10 @@ const MappingDraggable = React.memo((props) => {
                 return (
                     <Draggable
                         key={itemInfo.id}
-                        onTrashHover={setTrashHover}
                         id={itemInfo.id}
                         source={itemInfo.source}
                         onRemoveItem={onRemoveItem}
-                        dropZoneValues={dropZoneValues}
                         tintColor={null}
-                        setDraggableMoving={setDraggableMoving}
                     />
                 );
             })}
