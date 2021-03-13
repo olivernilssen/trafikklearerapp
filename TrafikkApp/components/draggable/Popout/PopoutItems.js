@@ -4,6 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import { Colors } from '../../../styles';
 
 /**
  * Component for the items inside the animated popout menu
@@ -15,9 +16,10 @@ const PopoutItems = (props) => {
         radius,
         array,
         setPopoutActive,
-        exitButtonPos,
+        removeButtonPos,
         setTintColor,
         buttonSize,
+        removeItem,
     } = props;
 
     /**
@@ -42,22 +44,26 @@ const PopoutItems = (props) => {
         return { x, y };
     };
 
-    const onPressColor = (color, isExitButton, isResetButton) => {
-        !isExitButton
-            ? !isResetButton
-                ? setTintColor(color)
-                : setTintColor(null) //ERROR THIS ONE DOES NOT WORK, makes the image invisible
-            : setPopoutActive(false);
+    const onPressOption = (color, isRemoveButton, isResetButton) => {
+        isRemoveButton
+            ? removeItem()
+            : !isResetButton
+            ? setTintColor(color)
+            : setTintColor(null); //ERROR THIS ONE DOES NOT WORK, makes the image invisible
     };
+
     /**
      * This returns each object that is in the array
      * as a small circle placed according to the function calculateXY
      */
     return array.map((color, i) => {
         const isResetButton = color == 'reset';
-        color = isResetButton ? '#DDDDDD' : color;
-
-        const isExitButton = i == exitButtonPos;
+        const isRemoveButton = i == removeButtonPos;
+        color = isResetButton
+            ? '#DDDDDD'
+            : isRemoveButton
+            ? Colors.deleteButtonActive
+            : color;
 
         const coords = calculateXY(i);
         return (
@@ -75,8 +81,8 @@ const PopoutItems = (props) => {
                 ]}>
                 <TouchableOpacity
                     color={color}
-                    onPressIn={() =>
-                        onPressColor(color, isExitButton, isResetButton)
+                    onPressOut={() =>
+                        onPressOption(color, isRemoveButton, isResetButton)
                     }>
                     <Animated.View
                         style={[
@@ -88,12 +94,12 @@ const PopoutItems = (props) => {
                                 borderRadius: buttonSize,
                             },
                         ]}>
-                        {isExitButton && (
+                        {isRemoveButton && (
                             <Icon
                                 name={'times'}
                                 solid
                                 size={buttonSize - 10}
-                                color={'black'}
+                                color={Colors.textLight}
                             />
                         )}
                         {isResetButton && (
@@ -113,15 +119,10 @@ const PopoutItems = (props) => {
 
 const styles = StyleSheet.create({
     button: {
-        height: '100%',
-        width: '100%',
         justifyContent: 'center',
         position: 'absolute',
         elevation: 10,
         alignItems: 'center',
-    },
-    buttonView: {
-        // position: 'absolute',
     },
     circleInTouchable: {
         justifyContent: 'center',
