@@ -1,4 +1,4 @@
-import Colors from './colorsss';
+import Colors from './colors';
 import * as Spacing from './spacing';
 import * as Typography from './typography';
 import * as Buttons from './buttons';
