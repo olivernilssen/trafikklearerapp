@@ -93,11 +93,7 @@ const SketchColorMenu = React.memo((props) => {
                         name={activeId === 0 ? 'chevron-down' : 'pen'}
                         size={30}
                         solid
-<<<<<<< HEAD
-                        color={Colors.icons}
-=======
                         color={Colors.textLight}
->>>>>>> b8f0cbe7c1b9c2eb992538d173e16a7948974dad
                     />
                 </MenuTrigger>
                 <MenuOptions optionsContainerStyle={styles.menuOptions}>
@@ -171,21 +167,18 @@ const SketchColorMenu = React.memo((props) => {
                             <MenuOption
                                 onSelect={() => {
                                     onChangePencilSize(5);
-                                    onSecondClickOpen(false);
                                 }}>
                                 <PencilSizePopup pencilThickness={8} />
                             </MenuOption>
                             <MenuOption
                                 onSelect={() => {
                                     onChangePencilSize(8);
-                                    onSecondClickOpen(false);
                                 }}>
                                 <PencilSizePopup pencilThickness={11} />
                             </MenuOption>
                             <MenuOption
                                 onSelect={() => {
                                     onChangePencilSize(11);
-                                    onSecondClickOpen(false);
                                 }}>
                                 <PencilSizePopup pencilThickness={14} />
                             </MenuOption>
