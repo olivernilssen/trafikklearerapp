@@ -19,7 +19,7 @@ const colors = [
     '#284b63',
     '#3a5a40',
     'reset',
-    '#DDDDDD',
+    'delete',
 ];
 
 import Gestures from 'react-native-easy-gestures';
@@ -120,7 +120,6 @@ const Draggable = React.memo((props) => {
                             array={colors}
                             setPopoutActive={setPopoutActive}
                             popoutActive={popoutActive}
-                            removeButtonPos={colors.length - 1}
                             setTintColor={setTintColor}
                             buttonSize={buttonSize}
                             itemSize={ITEM_SIZE}

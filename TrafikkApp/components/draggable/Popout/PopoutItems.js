@@ -12,15 +12,7 @@ import { Colors } from '../../../styles';
  * @returns popoutItems as small circles
  */
 const PopoutItems = (props) => {
-    const {
-        radius,
-        array,
-        setPopoutActive,
-        removeButtonPos,
-        setTintColor,
-        buttonSize,
-        removeItem,
-    } = props;
+    const { radius, array, setTintColor, buttonSize, removeItem } = props;
 
     /**
      * Function to calculate the x and y coordinates as a half circle
@@ -44,6 +36,13 @@ const PopoutItems = (props) => {
         return { x, y };
     };
 
+    /**
+     * Check what button is pressed
+     * and change either tintcolor, remove it or delete item
+     * @param {hex} color
+     * @param {boolean} isRemoveButton
+     * @param {boolean} isResetButton
+     */
     const onPressOption = (color, isRemoveButton, isResetButton) => {
         isRemoveButton
             ? removeItem()
@@ -58,7 +57,7 @@ const PopoutItems = (props) => {
      */
     return array.map((color, i) => {
         const isResetButton = color == 'reset';
-        const isRemoveButton = i == removeButtonPos;
+        const isRemoveButton = color == 'delete';
         color = isResetButton
             ? '#DDDDDD'
             : isRemoveButton
