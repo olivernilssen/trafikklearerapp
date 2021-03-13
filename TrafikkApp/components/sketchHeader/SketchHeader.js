@@ -5,7 +5,8 @@ import { View } from 'react-native-ui-lib';
 import SketchColorMenu from './SketchColorMenu';
 import HeaderButton from './HeaderButton';
 import BoxButton from './BoxButton';
-import PencilSizePopup from './PencilSizePopup';
+// import PencilSizePopup from './PencilSizePopup';
+import DeleteButtonPopover from './DeleteButtonPopover';
 import { Colors, Typography } from '../../styles';
 
 const SketchHeader = React.memo((props, navigation) => {
@@ -41,14 +42,15 @@ const SketchHeader = React.memo((props, navigation) => {
                 name={''}
                 navigation={props.navigation}
                 style={styles.header}>
-                <HeaderButton
+                <DeleteButtonPopover clearCanvas={clearCanvas} />
+                {/* <HeaderButton
                     iconName={'trash'}
                     buttonOnPress={clearCanvas}
-                    buttonActiveId={null}
+                    buttonActiveId={2}
                     activeId={activeId}
                     focusedActiveButton={focusedActiveButton}
                     propsStyle={styles.spacedLeft}
-                />
+                /> */}
 
                 {/* <PencilSizePopup propsStyle={styles.spacedCenter} /> */}
                 <SketchColorMenu
