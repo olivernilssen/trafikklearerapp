@@ -26,42 +26,62 @@ const ColorButton = (props) => {
                 OptionTouchableComponent: TouchableWithoutFeedback,
             }}
             value={TouchableWithoutFeedback}>
-            <View style={{}}>
-                <View style={250 / 8}>
-                    <TouchableOpacity
-                        onPress={() => {
-                            onPaletteColorChange(colorName);
-                            chosenColorButton(buttonID);
-                            setOpened(false);
+            <View
+                style={
+                    buttonID != colorButtonID
+                        ? styles.buttonSpacing
+                        : styles.iconActiveCircle
+                }>
+                <TouchableOpacity
+                    onPress={() => {
+                        onPaletteColorChange(colorName);
+                        chosenColorButton(buttonID);
+                        // setOpened(false);
+                    }}>
+                    <View
+                        style={{
+                            ...styles.colorButton,
+                            backgroundColor: colorName,
+                            justifyContent: 'center',
+                            alignItems: 'center',
                         }}>
                         <Icon
-                            name={'circle'}
-                            fontcolor={colorName}
-                            color={colorName}
-                            solid
-                            size={Icons.small}
+                            name={'chevron-down'}
                             style={
-                                colorButtonID === buttonID
-                                    ? styles.buttonSpacing
-                                    : [
-                                          propsStyle.buttonSize,
-                                          propsStyle.buttonInactive,
-                                      ]
+                                buttonID != colorButtonID
+                                    ? styles.iconColorInactive
+                                    : styles.iconColorActive
                             }
                         />
-                    </TouchableOpacity>
-                </View>
+                    </View>
+                </TouchableOpacity>
             </View>
         </MenuOption>
     );
 };
 
 const styles = StyleSheet.create({
-    buttonSpacing: {
+    buttonSpacing: { padding: 5 },
+    colorButton: {
+        height: 32,
+        width: 32,
         ...Buttons.round,
-        backgroundColor: Colors.header,
-        paddingVertical: 5,
-        paddingHorizontal: 5,
+    },
+    iconColorActive: {
+        color: 'white',
+        fontSize: 20,
+    },
+    iconColorInactive: {
+        ...Buttons.round,
+        color: '#00000000',
+        fontSize: 20,
+        padding: 5,
+    },
+    iconActiveCircle: {
+        backgroundColor: Colors.background,
+        padding: 5,
+        ...Buttons.round,
+        opacity: 0.8,
     },
 });
 

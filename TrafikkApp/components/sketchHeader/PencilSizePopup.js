@@ -25,21 +25,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    iconSmall: {
-        height: 5,
-        width: 32,
-        backgroundColor: 'black',
-    },
-    iconMedium: {
-        height: 8,
-        width: 32,
-        backgroundColor: 'black',
-    },
-    iconBig: {
-        height: 11,
-        width: 32,
-        backgroundColor: 'black',
-    },
 });
 
 export default PencilSizePopup;

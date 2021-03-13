@@ -83,18 +83,17 @@ const SketchColorMenu = React.memo((props) => {
                     }}
                     style={
                         activeId === buttonActiveId
-                            ? styles.buttonActive
+                            ? [
+                                  styles.buttonActive,
+                                  { backgroundColor: pencilColor },
+                              ]
                             : [styles.buttonSize, styles.buttonInactive]
                     }>
                     <Icon
                         name={activeId === 0 ? 'chevron-down' : 'pen'}
                         size={30}
                         solid
-                        color={
-                            pencilColor != '#00000000'
-                                ? pencilColor
-                                : chosenColor
-                        }
+                        color={Colors.icons}
                     />
                 </MenuTrigger>
                 <MenuOptions optionsContainerStyle={styles.menuOptions}>
@@ -111,72 +110,56 @@ const SketchColorMenu = React.memo((props) => {
                             buttonID={0}
                             onPaletteColorChange={onPaletteColorChange}
                             chosenColorButton={chosenColorButton}
-                            setOpened={setOpened}
-                            propsStyle={styles}
                         />
 
                         <ColorButton
                             colorName={colors[1]}
                             colorButtonID={colorButtonID}
-                            buttonID={0}
+                            buttonID={1}
                             onPaletteColorChange={onPaletteColorChange}
                             chosenColorButton={chosenColorButton}
-                            setOpened={setOpened}
-                            propsStyle={styles}
                         />
                         <ColorButton
                             colorName={colors[2]}
                             colorButtonID={colorButtonID}
-                            buttonID={0}
+                            buttonID={2}
                             onPaletteColorChange={onPaletteColorChange}
                             chosenColorButton={chosenColorButton}
-                            setOpened={setOpened}
-                            propsStyle={styles}
                         />
                         <ColorButton
                             colorName={colors[3]}
                             colorButtonID={colorButtonID}
-                            buttonID={0}
+                            buttonID={3}
                             onPaletteColorChange={onPaletteColorChange}
                             chosenColorButton={chosenColorButton}
-                            setOpened={setOpened}
-                            propsStyle={styles}
                         />
                         <ColorButton
                             colorName={colors[4]}
                             colorButtonID={colorButtonID}
-                            buttonID={0}
+                            buttonID={4}
                             onPaletteColorChange={onPaletteColorChange}
                             chosenColorButton={chosenColorButton}
-                            setOpened={setOpened}
-                            propsStyle={styles}
                         />
                         <ColorButton
                             colorName={colors[5]}
                             colorButtonID={colorButtonID}
-                            buttonID={0}
+                            buttonID={5}
                             onPaletteColorChange={onPaletteColorChange}
                             chosenColorButton={chosenColorButton}
-                            setOpened={setOpened}
-                            propsStyle={styles}
                         />
                         <ColorButton
                             colorName={colors[6]}
                             colorButtonID={colorButtonID}
-                            buttonID={0}
+                            buttonID={6}
                             onPaletteColorChange={onPaletteColorChange}
                             chosenColorButton={chosenColorButton}
-                            setOpened={setOpened}
-                            propsStyle={styles}
                         />
                         <ColorButton
                             colorName={colors[7]}
                             colorButtonID={colorButtonID}
-                            buttonID={0}
+                            buttonID={7}
                             onPaletteColorChange={onPaletteColorChange}
                             chosenColorButton={chosenColorButton}
-                            setOpened={setOpened}
-                            propsStyle={styles}
                         />
                     </View>
                     <MenuOptions>
@@ -263,7 +246,6 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,
         backgroundColor: Colors.colorPaletteMenu,
-
         overflow: 'hidden',
     },
 });
