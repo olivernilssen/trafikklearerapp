@@ -39,6 +39,7 @@ const DraggableWithEverything = React.memo((props) => {
     const [dropZoneValues, setDropZoneValues] = useState(0);
     const [counter, setCounter] = useState(0);
     const [trashHover, setTrashHover] = useState(false);
+    const [draggableMoving, setDraggableMoving] = useState(false);
 
     /**
      * Adds a new draggable to the array draggables
@@ -84,11 +85,13 @@ const DraggableWithEverything = React.memo((props) => {
                 name={name}
             />
 
-            <DraggableDropZone
-                setDropZoneValues={setDropZoneValues}
-                iconSize={60}
-                trashHover={trashHover}
-            />
+            {draggableMoving && (
+                <DraggableDropZone
+                    setDropZoneValues={setDropZoneValues}
+                    iconSize={60}
+                    trashHover={trashHover}
+                />
+            )}
 
             <MappingDraggable
                 draggables={draggables}
@@ -96,6 +99,7 @@ const DraggableWithEverything = React.memo((props) => {
                 setTrashHover={setTrashHover}
                 dropZoneValues={dropZoneValues}
                 onRemoveItem={onRemoveItem}
+                setDraggableMoving={setDraggableMoving}
             />
         </>
     );

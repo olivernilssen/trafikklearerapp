@@ -82,7 +82,7 @@ const SketchColorMenu = React.memo((props) => {
                     onPress={() => {
                         if (activeId != 0) {
                             onEraserPencilSwitch();
-                            console.log(pencilSize, pencilColor);
+                            // console.log(pencilSize, pencilColor);
                             focusedActiveButton(buttonActiveId);
                             onSecondClickOpen(false);
                         } else {
@@ -91,14 +91,17 @@ const SketchColorMenu = React.memo((props) => {
                     }}
                     style={
                         activeId === buttonActiveId
-                            ? styles.buttonActive
+                            ? [
+                                  styles.buttonActive,
+                                  { backgroundColor: currentColorSetup.color },
+                              ]
                             : [styles.buttonSize, styles.buttonInactive]
                     }>
                     <Icon
                         name={activeId === 0 ? 'chevron-down' : 'pen'}
                         size={30}
                         solid
-                        color={currentColorSetup.color}
+                        color={Colors.textLight}
                     />
                 </MenuTrigger>
                 <MenuOptions optionsContainerStyle={styles.menuOptions}>

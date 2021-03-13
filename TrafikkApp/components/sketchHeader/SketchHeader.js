@@ -50,6 +50,7 @@ const SketchHeader = React.memo((props, navigation) => {
                 />
 
                 <PencilSizePopup propsStyle={styles.spacedCenter} />
+
                 <SketchColorMenu
                     onPaletteColorChange={onPaletteColorChange}
                     onChangePencilSize={onChangePencilSize}

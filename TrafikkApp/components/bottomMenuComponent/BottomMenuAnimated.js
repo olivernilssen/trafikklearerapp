@@ -39,7 +39,7 @@ const BottomMenuAnimated = React.memo((props) => {
      * It also animates the menu to either be hidden or shown
      */
     const toggleSubview = useCallback(() => {
-        setHiddenViewButton(bottomSheetHidden ? 'ellipsis-h' : 'chevron-down');
+        setHiddenViewButton(bottomSheetHidden ? 'chevron-up' : 'chevron-down');
         var toValue = bottomSheetHeight;
 
         if (!bottomSheetHidden) {

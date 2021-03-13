@@ -35,7 +35,7 @@ const buttonSize = 25;
  */
 const Draggable = React.memo((props) => {
     //States
-    const { source, dropZoneValues } = props;
+    const { source, dropZoneValues, setDraggableMoving } = props;
     const [imgScale, setimgScale] = useState(new Animated.Value(1));
     const [isScaling, setIsScaling] = useState(false);
     const [tintColor, setTintColor] = useState(props.tintColor);
@@ -60,6 +60,7 @@ const Draggable = React.memo((props) => {
     const onDragStart = (gesture) => {
         //Start spring animation (user feedback)
         setPopoutActive(false);
+        setDraggableMoving(true);
 
         Animated.spring(imgScale, {
             toValue: 1.2,
@@ -68,19 +69,19 @@ const Draggable = React.memo((props) => {
         }).start();
     };
 
-    /**
-     * While the user is dragging the object
-     * it will check if the object is in the view
-     * of the trashcan and then send feedback to trashcan
-     * @param {Event} gesture
-     */
-    const onDragMove = (gesture) => {
-        if (isDropArea(gesture) && !isScaling) {
-            props.onTrashHover(true);
-        } else {
-            props.onTrashHover(false);
-        }
-    };
+    // /**
+    //  * While the user is dragging the object
+    //  * it will check if the object is in the view
+    //  * of the trashcan and then send feedback to trashcan
+    //  * @param {Event} gesture
+    //  */
+    // const onDragMove = (gesture) => {
+    //     if (isDropArea(gesture) && !isScaling) {
+    //         props.onTrashHover(true);
+    //     } else {
+    //         props.onTrashHover(false);
+    //     }
+    // };
 
     /**
      * When dragging event has ended, the
@@ -108,6 +109,7 @@ const Draggable = React.memo((props) => {
         }
 
         setIsScaling(false);
+        setDraggableMoving(false);
     };
 
     /**
@@ -117,7 +119,7 @@ const Draggable = React.memo((props) => {
      */
     const removeItem = useCallback(() => {
         props.onRemoveItem(props.id);
-        props.onTrashHover(false);
+        // props.onTrashHover(false);
     });
 
     /**
@@ -144,38 +146,39 @@ const Draggable = React.memo((props) => {
             rotatable={true}
             style={styles.container}
             onEnd={(event) => onDragEnd(event)}
-            onChange={(event) => onDragMove(event)}
+            // onChange={(event) => onDragMove(event)}
             onStart={(event) => onDragStart(event)}
             onScaleStart={() => setIsScaling(true)}>
             <View>
                 <TouchableWithoutFeedback
                     onLongPress={() => setPopoutActive(!popoutActive)}
                     accessibilityRole={'image'}>
-                    <Animated.Image
-                        source={source}
-                        resizeMode={'contain'}
-                        style={[
-                            styles.item,
-                            tintColor === null
-                                ? null
-                                : { tintColor: tintColor },
-                            {
-                                transform: [{ scale: imgScale }],
-                            },
-                        ]}
-                    />
+                    <View>
+                        <Animated.Image
+                            source={source}
+                            resizeMode={'contain'}
+                            style={[
+                                styles.item,
+                                tintColor === null
+                                    ? null
+                                    : { tintColor: tintColor },
+                                {
+                                    transform: [{ scale: imgScale }],
+                                },
+                            ]}
+                        />
+                        <Popout
+                            radius={radius}
+                            array={colors}
+                            setPopoutActive={setPopoutActive}
+                            popoutActive={popoutActive}
+                            exitButtonPos={colors.length - 1}
+                            setTintColor={setTintColor}
+                            buttonSize={buttonSize}
+                            itemSize={ITEM_SIZE}
+                        />
+                    </View>
                 </TouchableWithoutFeedback>
-
-                <Popout
-                    radius={radius}
-                    array={colors}
-                    setPopoutActive={setPopoutActive}
-                    popoutActive={popoutActive}
-                    exitButtonPos={colors.length - 1}
-                    setTintColor={setTintColor}
-                    buttonSize={buttonSize}
-                    itemSize={ITEM_SIZE}
-                />
             </View>
         </Gestures>
     );

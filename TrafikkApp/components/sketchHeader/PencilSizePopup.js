@@ -9,6 +9,7 @@ import {
     MenuTrigger,
     renderers,
 } from 'react-native-popup-menu';
+import colors from '../../styles/colors';
 
 const { Popover } = renderers;
 
@@ -22,7 +23,7 @@ const PencilSizePopup = (props) => {
                 style={{
                     width: 50,
                     height: props.pencilThickness,
-                    backgroundColor: 'black',
+                    backgroundColor: colors.pencilThicknessBox,
                 }}></View>
         </View>
     );
@@ -61,17 +62,17 @@ const styles = StyleSheet.create({
     iconSmall: {
         height: 5,
         width: 32,
-        backgroundColor: 'black',
+        backgroundColor: colors.pencilThicknessBox,
     },
     iconMedium: {
         height: 8,
         width: 32,
-        backgroundColor: 'black',
+        backgroundColor: colors.pencilThicknessBox,
     },
     iconBig: {
         height: 11,
         width: 32,
-        backgroundColor: 'black',
+        backgroundColor: colors.pencilThicknessBox,
     },
 });
 
