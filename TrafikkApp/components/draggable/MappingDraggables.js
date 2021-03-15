@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, { useContext } from 'react';
 import Draggable from './Draggable';
-
+import AppContext from '../../AppContext';
 /**
  * Helper function to map through all the draggables objects
  * then to display them in DraggableWithEverything
@@ -9,6 +9,7 @@ import Draggable from './Draggable';
 const MappingDraggable = React.memo((props) => {
     //Get props
     const { draggables, onRemoveItem } = props;
+    const appContext = useContext(AppContext);
 
     return (
         <>
@@ -19,7 +20,7 @@ const MappingDraggable = React.memo((props) => {
                         id={itemInfo.id}
                         source={itemInfo.source}
                         onRemoveItem={onRemoveItem}
-                        tintColor={null}
+                        tintColor={appContext.draggableColor}
                     />
                 );
             })}

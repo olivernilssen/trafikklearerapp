@@ -38,7 +38,9 @@ const DeleteButtonPopover = React.memo((props) => {
                 renderer={Popover}
                 rendererProps={{
                     preferredPlacement: 'bottom',
-                    anchorStyle: { backgroundColor: Colors.colorPaletteMenu },
+                    anchorStyle: {
+                        backgroundColor: Colors.colorPaletteMenu,
+                    },
                 }}
                 opened={isOpened}
                 onBackdropPress={() => {
@@ -72,8 +74,13 @@ const DeleteButtonPopover = React.memo((props) => {
                         <TouchableOpacity
                             style={styles.deleteAllButton}
                             onPress={clearButtonPressed}>
-                            <Text style={{ color: Colors.textLight }}>
-                                Slett alt
+                            <Text
+                                style={{
+                                    fontSize: 20,
+                                    fontWeight: 'bold',
+                                    color: Colors.textLight,
+                                }}>
+                                Slett
                             </Text>
                         </TouchableOpacity>
                     </View>
@@ -92,14 +99,15 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 16,
         ...Buttons.round,
-        ...Typography.large,
+        // ...Typography.large,
     },
     buttonInactive: {
         color: Colors.icons,
         backgroundColor: Colors.header,
         paddingVertical: 12,
         paddingHorizontal: 16,
-        ...Typography.large,
+        ...Buttons.round,
+        // ...Typography.large,
     },
     deleteAllButton: {
         backgroundColor: Colors.deleteButtonActive,

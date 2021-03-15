@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
         width: 100,
         alignItems: 'center',
         justifyContent: 'center',
+        borderRadius: 20,
     },
     spacedLeft: {
         flex: 1,
@@ -110,6 +111,7 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         justifyContent: 'flex-start',
+        borderRadius: 20,
     },
     spacedRight: {
         flex: 1,
@@ -118,6 +120,7 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
+        borderRadius: 20,
     },
 });
 

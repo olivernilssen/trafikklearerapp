@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {
@@ -11,11 +11,13 @@ import {
 import PencilSizePopup from './PencilSizePopup';
 import ColorButton from './ColorButton';
 import { Colors, Typography, Buttons } from '../../styles';
+import AppContext from '../../AppContext';
 
 const { Popover } = renderers;
 
 const SketchColorMenu = React.memo((props) => {
-    const INITIAL_COLOR = '#CF262F';
+    const appContext = useContext(AppContext);
+    const INITIAL_COLOR = appContext.penColor;
     const [isOpened, setOpened] = useState(false);
     const [colorButtonID, setColorButtonID] = useState(0);
     const [chosenColorButtonID, setChosenColorButtonID] = useState(0);

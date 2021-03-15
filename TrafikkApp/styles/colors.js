@@ -34,6 +34,11 @@ export default {
     eraserIconActive: blueGreen,
     pencilThicknessBox: black,
 
+    slideActiveBg: blueGreen,
+    slideInactiveBg: darkGray,
+    slideTextActive: darkGray,
+    slideTextInactive: blueGreen,
+
     colorPaletteMenu: charcoal,
 
     startScreenLinkDrawing: green,
@@ -42,4 +47,6 @@ export default {
 
     deleteButton: darkGray,
     deleteButtonActive: red,
+
+    textInputBg: charcoal,
 };
