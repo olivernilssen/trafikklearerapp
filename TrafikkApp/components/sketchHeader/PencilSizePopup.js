@@ -1,13 +1,19 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { View } from 'react-native-ui-lib';
+import { StyleSheet, View } from 'react-native';
 
 import { Colors } from '../../styles';
 
 const PencilSizePopup = (props) => {
     // const pencilSizeButton = (pencilThickness) => {
+    const { pencilThickness, buttonID, pencilThicknessID } = props;
+
     return (
-        <View style={styles.iconPlacement}>
+        <View
+            style={
+                buttonID === pencilThicknessID
+                    ? [styles.iconPlacement, { backgroundColor: Colors.header }]
+                    : styles.iconPlacement
+            }>
             <View
                 style={{
                     width: 50,

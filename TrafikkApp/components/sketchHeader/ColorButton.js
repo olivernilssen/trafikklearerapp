@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     TouchableOpacity,
     StyleSheet,
     TouchableWithoutFeedback,
+    View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { View, ColorPalette } from 'react-native-ui-lib';
-import { Colors, Buttons, Icons, Typography } from '../../styles';
-import { Menu, MenuOption } from 'react-native-popup-menu';
+import { Colors, Buttons } from '../../styles';
+import { MenuOption } from 'react-native-popup-menu';
 
 const ColorButton = (props) => {
     const {
@@ -16,8 +16,6 @@ const ColorButton = (props) => {
         colorButtonID,
         onPaletteColorChange,
         chosenColorButton,
-        setOpened,
-        propsStyle,
     } = props;
 
     return (

@@ -26,12 +26,14 @@ const SketchArea = React.memo((props) => {
     const sketchRef = useRef();
     const eraserSize = parseInt(appContext.eraserSize);
     const eraserColor = '#00000000';
+    const defaultPencilColor = appContext.penColor;
+    const defaultPencilSize = 5;
 
-    const [pencilColor, setPencilColor] = useState(appContext.penColor);
+    const [pencilColor, setPencilColor] = useState(defaultPencilColor);
     const [chosenColor, setChosenColor] = useState('');
     // const [prevPencilColor, setPrevPencilColor] = useState('red');
 
-    const [pencilSize, setPencilSize] = useState(5);
+    const [pencilSize, setPencilSize] = useState(defaultPencilSize);
     const [chosenPencilSize, setChosenPencilSize] = useState(null);
     // const [prevPencilSize, setPrevPencilSize] = useState(null);
 
