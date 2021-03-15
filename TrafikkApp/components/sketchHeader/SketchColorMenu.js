@@ -244,33 +244,4 @@ const styles = StyleSheet.create({
     },
 });
 
-const testLeft = {
-    optionTouchable: {
-        activeOpacity: 40,
-        borderBottomLeftRadius: 40,
-        backgroundColor: 'green',
-        color: 'green',
-        underlayColor: 'gold',
-        activeOpacity: 70,
-    },
-    optionWrapper: {
-        borderBottomLeftRadius: 40,
-        underlayColor: 'gold',
-    },
-    optionText: {
-        color: 'black',
-        borderBottomLeftRadius: 40,
-    },
-};
-
-const touchableOpacityProps = {
-    borderBottomLeftRadius: 40,
-    activeOpacity: 0.6,
-};
-
-const touchableHighlightProps = {
-    borderBottomLeftRadius: 40,
-    activeOpacity: 0.5,
-};
-
 export default SketchColorMenu;
