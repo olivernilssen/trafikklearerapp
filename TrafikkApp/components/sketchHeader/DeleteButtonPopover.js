@@ -38,7 +38,9 @@ const DeleteButtonPopover = React.memo((props) => {
                 renderer={Popover}
                 rendererProps={{
                     preferredPlacement: 'bottom',
-                    anchorStyle: { backgroundColor: Colors.colorPaletteMenu },
+                    anchorStyle: {
+                        backgroundColor: Colors.colorPaletteMenu,
+                    },
                 }}
                 opened={isOpened}
                 onBackdropPress={() => {
@@ -92,14 +94,15 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 16,
         ...Buttons.round,
-        ...Typography.large,
+        // ...Typography.large,
     },
     buttonInactive: {
         color: Colors.icons,
         backgroundColor: Colors.header,
         paddingVertical: 12,
         paddingHorizontal: 16,
-        ...Typography.large,
+        ...Buttons.round,
+        // ...Typography.large,
     },
     deleteAllButton: {
         backgroundColor: Colors.deleteButtonActive,

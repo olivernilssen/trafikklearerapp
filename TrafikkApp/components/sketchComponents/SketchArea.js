@@ -1,5 +1,11 @@
 /* eslint-disable prettier/prettier */
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, {
+    useRef,
+    useState,
+    useEffect,
+    useCallback,
+    useContext,
+} from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
 
 import MainView from '../MainView';
@@ -10,16 +16,18 @@ import { Colors } from '../../styles';
 import DraggableWithEverything from '../draggable/DraggableWithEverything';
 import BottomMenuAnimated from '../bottomMenuComponent/BottomMenuAnimated';
 
+import AppContext from '../../AppContext';
 /**
  * This is a big component that contains all the components that are visible
  * on the sketcharea screens.
  */
 const SketchArea = React.memo((props) => {
+    const appContext = useContext(AppContext);
     const sketchRef = useRef();
-    const eraserSize = 80;
+    const eraserSize = parseInt(appContext.eraserSize);
     const eraserColor = '#00000000';
 
-    const [pencilColor, setPencilColor] = useState('#CF262F');
+    const [pencilColor, setPencilColor] = useState(appContext.penColor);
     const [chosenColor, setChosenColor] = useState('');
     // const [prevPencilColor, setPrevPencilColor] = useState('red');
 
