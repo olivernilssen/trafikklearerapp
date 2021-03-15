@@ -3,7 +3,7 @@ import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Colors } from '../../styles';
 import objectPaths from '../draggable/draggableObjectPaths';
 
-import Carousel from '../Carousel';
+import Carousel from '../reusableComponents/Carousel';
 
 /**
  * Component for the items that are in the draggable top menu

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, Image } from 'react-native';
 
 import { Colors, Typography, Buttons } from '../../styles';
-import Divider from '../Divider';
+import Divider from '../reusableComponents/Divider';
+import ButtonGroup from '../reusableComponents/ButtonGroup';
 import backgroundImagePath from '../sketchComponents/backgroundImagePath';
 
 /**
@@ -87,6 +88,7 @@ const BottomMenuContent = React.memo(
                 setImage(imgSource);
             }
             setRoadDesign(designName);
+            console.log(intersectionType);
         };
 
         /**
@@ -174,6 +176,19 @@ const BottomMenuContent = React.memo(
                         <Text style={styles.intersectionTypeInfoText}>
                             Kryssutforming
                         </Text>
+
+                        <ButtonGroup
+                            selectedValue={intersectionType}
+                            values={IntersectionTypes}
+                            onSelect={(newValue) =>
+                                intersectionTypeChange(newValue)
+                            }
+                            groupWidth={300}
+                            highlightBackgroundColor={Colors.slideActiveBg}
+                            highlightTextColor={Colors.slideTextActive}
+                            inactiveBackgroundColor={Colors.slideInactiveBg}
+                            inactiveTextColor={Colors.slideTextInactive}
+                        />
                         <View style={styles.intersectionTypeBtnsGroup}>
                             {IntersectionTypes.map((name, i) => {
                                 const activeBtn = name === intersectionType;
@@ -266,7 +281,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     divider: {
-        width: '90%',
+        width: '80%',
         alignSelf: 'center',
         marginBottom: 20,
     },
