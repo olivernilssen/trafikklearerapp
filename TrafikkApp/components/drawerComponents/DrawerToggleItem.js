@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginBottom: 15,
         paddingBottom: 10,
+        paddingLeft: 15,
     },
     menuIcon: {
         marginTop: 10,

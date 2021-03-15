@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.background,
         paddingTop: 15,
-        paddingHorizontal: 15,
+        // paddingHorizontal: 15,
     },
     divider: {
         marginBottom: 10,
