@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
-import {
-    StyleSheet,
-    TouchableOpacity,
-    TouchableHighlight,
-    TouchableWithoutFeedback,
-    Text,
-} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { View, ColorPalette } from 'react-native-ui-lib';
 import {
     Menu,
     MenuOptions,
@@ -26,6 +19,7 @@ const SketchColorMenu = React.memo((props) => {
     const [isOpened, setOpened] = useState(false);
     const [colorButtonID, setColorButtonID] = useState(0);
     const [chosenColorButtonID, setChosenColorButtonID] = useState(0);
+    const [pencilThicknessID, setPencilThicknessID] = useState(0);
 
     const {
         onPaletteColorChange,
@@ -57,6 +51,10 @@ const SketchColorMenu = React.memo((props) => {
 
     const chosenColorButton = (value) => {
         setColorButtonID(value);
+    };
+
+    const chosenThicknessButton = (value) => {
+        setPencilThicknessID(value);
     };
 
     return (
@@ -167,20 +165,35 @@ const SketchColorMenu = React.memo((props) => {
                             <MenuOption
                                 onSelect={() => {
                                     onChangePencilSize(5);
+                                    chosenThicknessButton(0);
                                 }}>
-                                <PencilSizePopup pencilThickness={8} />
+                                <PencilSizePopup
+                                    pencilThickness={8}
+                                    buttonID={0}
+                                    pencilThicknessID={pencilThicknessID}
+                                />
                             </MenuOption>
                             <MenuOption
                                 onSelect={() => {
                                     onChangePencilSize(8);
+                                    chosenThicknessButton(1);
                                 }}>
-                                <PencilSizePopup pencilThickness={11} />
+                                <PencilSizePopup
+                                    pencilThickness={11}
+                                    buttonID={1}
+                                    pencilThicknessID={pencilThicknessID}
+                                />
                             </MenuOption>
                             <MenuOption
                                 onSelect={() => {
                                     onChangePencilSize(11);
+                                    chosenThicknessButton(2);
                                 }}>
-                                <PencilSizePopup pencilThickness={14} />
+                                <PencilSizePopup
+                                    pencilThickness={14}
+                                    buttonID={2}
+                                    pencilThicknessID={pencilThicknessID}
+                                />
                             </MenuOption>
                         </View>
                     </MenuOptions>
@@ -219,7 +232,7 @@ const styles = StyleSheet.create({
     iconPlacement: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
     },
     menuOptions: {
         borderBottomLeftRadius: 40,

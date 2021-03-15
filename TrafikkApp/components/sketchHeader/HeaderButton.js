@@ -1,7 +1,6 @@
-import { TouchableOpacity, StyleSheet } from 'react-native';
+import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { View } from 'react-native-ui-lib';
 
 import { Colors, Buttons, Icons } from '../../styles';
 

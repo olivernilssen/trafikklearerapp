@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Header from '../Header';
-import { View } from 'react-native-ui-lib';
 import SketchColorMenu from './SketchColorMenu';
 import HeaderButton from './HeaderButton';
 import BoxButton from './BoxButton';
-// import PencilSizePopup from './PencilSizePopup';
 import DeleteButtonPopover from './DeleteButtonPopover';
 import { Colors, Typography } from '../../styles';
 
-const SketchHeader = React.memo((props, navigation) => {
+const SketchHeader = React.memo((props) => {
     const [activeId, setActiveId] = useState(0);
     const [prevActiveId, setPrevActiveId] = useState(0);
 
