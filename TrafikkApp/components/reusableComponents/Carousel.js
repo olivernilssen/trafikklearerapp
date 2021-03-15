@@ -14,7 +14,7 @@ const Carousel = (props) => {
         setWidth(width);
 
         // Initialise total number of slides
-        const totalItems = props.objectArray.length * 2; // * 2 for testing
+        const totalItems = props.objectArray.length; // * 2 for testing
         setNumberOfSlides(Math.ceil(totalItems / itemsPerSlide));
     };
 
@@ -70,7 +70,7 @@ const Carousel = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 5,
+        paddingTop: 15,
         alignItems: 'center',
     },
     carousel: {

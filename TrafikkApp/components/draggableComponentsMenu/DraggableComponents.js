@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
-import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { Colors } from '../../styles';
+import {
+    View,
+    Image,
+    StyleSheet,
+    TouchableOpacity,
+    TouchableHighlight,
+} from 'react-native';
+import { Buttons, Colors } from '../../styles';
 import objectPaths from '../draggable/draggableObjectPaths';
 
 import Carousel from '../reusableComponents/Carousel';
@@ -28,8 +34,8 @@ const DraggableComponents = React.memo(({ onNewDraggable }) => {
         return (
             <View key={i} style={styles.imageContainer}>
                 <TouchableOpacity
-                    style={styles.imageButton}
                     activeOpacity={0.4}
+                    style={styles.imageButton}
                     onPress={() => onElementPress(source)}>
                     <Image
                         source={objectPaths[source]}
@@ -42,8 +48,7 @@ const DraggableComponents = React.memo(({ onNewDraggable }) => {
     });
 
     return (
-        <Carousel objectArray={images} itemsPerSlide={9}>
-            {images}
+        <Carousel objectArray={images} itemsPerSlide={7}>
             {images}
         </Carousel>
     );

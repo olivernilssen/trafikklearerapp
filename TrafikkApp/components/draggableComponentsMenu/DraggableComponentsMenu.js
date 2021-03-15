@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useCallback } from 'react';
-import {
-    StyleSheet,
-    View,
-    Animated,
-    TouchableOpacity,
-    Text,
-} from 'react-native';
+import { StyleSheet, View, Animated, Text } from 'react-native';
 
-import { Colors, Typography, Buttons } from '../../styles';
+import { Colors, Typography } from '../../styles';
 import DraggableComponents from './DraggableComponents';
 import Divider from '../reusableComponents/Divider';
+import ButtonGroup from '../reusableComponents/ButtonGroup';
 
-const extensionTypes = ['Gangfelt', 'Sykkelfelt'];
+const extensionTypes = ['Gangfelt', 'O', 'Sykkelfelt'];
 
 /**
  * Component for the draggable top menu, which displayes objects
@@ -30,6 +25,7 @@ const DraggableComponentsMenu = React.memo(
         const [bounceValue, setBounceValue] = useState(
             new Animated.Value(yPosHidden)
         );
+        const [buttonValue, setButtonValue] = useState('O');
 
         /**
          * useEffect that is triggered when topMenuHidden
@@ -83,10 +79,12 @@ const DraggableComponentsMenu = React.memo(
          * @param {String} value
          */
         const extensionTypeChange = (value) => {
-            if (extensionType != value) {
-                setExtensionType(value);
-            } else {
+            if (value != 'Gangfelt' && value != 'Sykkelfelt') {
                 setExtensionType('Vanlig');
+                setButtonValue(value);
+            } else {
+                setExtensionType(value);
+                setButtonValue(value);
             }
         };
 
@@ -104,49 +102,35 @@ const DraggableComponentsMenu = React.memo(
                         getTopMenuLayout(event.nativeEvent.layout);
                     }}>
                     {(name == 'Veikryss' || name == 'Rundkjoring') && (
-                        <View style={styles.extensionTypeContainer}>
-                            <View style={styles.extensionTypeBtnsgroup}>
-                                {extensionTypes.map((name, i) => {
-                                    const activeBtn = name === extensionType;
-
-                                    return (
-                                        <TouchableOpacity
-                                            key={i}
-                                            activeOpacity={0.6}
-                                            onPress={() =>
-                                                extensionTypeChange(name)
-                                            }
-                                            style={[
-                                                styles.extensionTypeButton,
-                                                activeBtn
-                                                    ? {
-                                                          backgroundColor:
-                                                              Colors.componentMenuButtons,
-                                                      }
-                                                    : {
-                                                          backgroundColor:
-                                                              Colors.componentMenu,
-                                                      },
-                                            ]}
-                                            color={Colors.bottomMenyButtons}>
-                                            <Text
-                                                style={[
-                                                    styles.extensionBtnText,
-                                                    activeBtn
-                                                        ? {
-                                                              color:
-                                                                  Colors.textLight,
-                                                          }
-                                                        : {
-                                                              color:
-                                                                  Colors.icons,
-                                                          },
-                                                ]}>
-                                                {name}
-                                            </Text>
-                                        </TouchableOpacity>
-                                    );
-                                })}
+                        <View style={styles.extensionSection}>
+                            <View>
+                                <Text style={styles.extensionText}>
+                                    Tilvalg:
+                                </Text>
+                                <View style={styles.extensionButtonGroup}>
+                                    <ButtonGroup
+                                        selectedValue={buttonValue}
+                                        values={extensionTypes}
+                                        onSelect={(newValue) =>
+                                            extensionTypeChange(newValue)
+                                        }
+                                        groupWidth={270}
+                                        height={45}
+                                        highlightBackgroundColor={
+                                            Colors.secSlideActiveBg
+                                        }
+                                        highlightTextColor={
+                                            Colors.secSlideTextActive
+                                        }
+                                        inactiveBackgroundColor={
+                                            Colors.secSlideInactiveBg
+                                        }
+                                        inactiveTextColor={
+                                            Colors.secSlideTextInactive
+                                        }
+                                        textSize={17}
+                                    />
+                                </View>
                             </View>
                             <Divider
                                 style={styles.divider}
@@ -177,34 +161,30 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: Colors.componentMenu,
         elevation: 10,
-        width: '90%',
+        width: '95%',
         height: '100%',
-        borderBottomLeftRadius: 40,
-        borderBottomRightRadius: 40,
+        borderBottomLeftRadius: 30,
+        borderBottomRightRadius: 30,
     },
-    extensionTypeContainer: {
+    extensionSection: {
         flexDirection: 'row',
+        paddingTop: 10,
     },
-    extensionTypeBtnsgroup: {
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        padding: 10,
-        marginBottom: 10,
-        marginLeft: 10,
-    },
-    extensionTypeButton: {
-        borderWidth: 1,
-        borderColor: Colors.componentMenuButtons,
+    extensionButtonGroup: {
+        flexDirection: 'row',
+        alignSelf: 'flex-end',
         padding: 5,
-        elevation: 5,
-        ...Buttons.medium,
+        marginLeft: 5,
     },
-    extensionBtnText: {
-        padding: 3,
-        textAlign: 'center',
+    extensionText: {
+        color: Colors.icons,
+        opacity: 0.6,
+        textAlignVertical: 'center',
+        paddingLeft: 15,
         ...Typography.medium,
     },
     divider: {
+        height: '100%',
         padding: 10,
         paddingLeft: 5,
         marginBottom: 10,

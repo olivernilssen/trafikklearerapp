@@ -1,8 +1,13 @@
 //
 // ALL COLORS USED IN THE APP SHOULD BE DECLARED HERE
+
+import { medium } from './typography';
+
 //
 const charcoal = '#4A4A4A';
+const darkerCharchoal = '#404040';
 const lightGray = '#DAD8D8';
+const mediumGray = '#C3C2C2';
 const darkGray = '#3B3B3B';
 const black = '#242424';
 const white = '#FFFFFF';
@@ -16,37 +21,50 @@ const blueGreen = '#56B897';
 const red = '#FB5555';
 
 export default {
+    // Main
     background: darkGray,
     header: darkGray,
-    bottomMeny: darkGray,
-    componentMenuButtons: darkGray,
 
+    // Text and icons
     textDark: darkGray,
     textLight: white,
-
-    componentMenu: charcoal,
-    bottomMenyButtons: charcoal,
-    sketchBackground: charcoal,
-
     icons: lightGray,
     iconActive: charcoal, // or mustard?
-    boxIconActive: mustard,
-    eraserIconActive: blueGreen,
-    pencilThicknessBox: black,
+    drawerIconActive: blueGreen,
+    links: 'blue',
 
+    // Buttongroup
     slideActiveBg: blueGreen,
     slideInactiveBg: darkGray,
     slideTextActive: darkGray,
-    slideTextInactive: blueGreen,
+    slideTextInactive: mediumGray,
 
-    colorPaletteMenu: charcoal,
-
-    startScreenLinkDrawing: green,
+    // StartScreen
+    startScreenLinkDrawing: blueGreen,
     startScreenLinkTheory: blue,
-    startScreenLinkLink: blueGray,
+    startScreenLinkLink: lightGray,
 
+    // Sketch screens
+    sketchBackground: charcoal,
+    componentMenu: charcoal,
+    componentMenuSection: darkerCharchoal,
+    componentMenuButtons: darkGray,
+    bottomMeny: darkGray,
+    bottomMenyButtons: charcoal,
+
+    // SketchHeader
+    boxIconActive: mustard,
+    eraserIconActive: blueGreen,
+    pencilThicknessBox: black,
+    colorPaletteMenu: charcoal,
     deleteButton: darkGray,
     deleteButtonActive: red,
+
+    // ButtonGroup in ComponentMenu
+    secSlideActiveBg: blueGreen,
+    secSlideInactiveBg: darkerCharchoal,
+    secSlideTextActive: darkGray,
+    secSlideTextInactive: mediumGray,
 
     textInputBg: charcoal,
 };

@@ -17,7 +17,7 @@ const DrawerItem = React.memo(
                     {
                         backgroundColor:
                             screenIndex == value
-                                ? Colors.iconActive
+                                ? Colors.drawerIconActive
                                 : Colors.background,
                     },
                 ]}
@@ -31,7 +31,7 @@ const DrawerItem = React.memo(
                     name={icon}
                     size={Icons.small}
                     color={
-                        screenIndex == value ? Colors.textLight : Colors.icons
+                        screenIndex == value ? Colors.textDark : Colors.icons
                     }
                     style={{ margin: 15 }}
                 />
@@ -41,7 +41,7 @@ const DrawerItem = React.memo(
                         {
                             color:
                                 screenIndex == value
-                                    ? Colors.textLight
+                                    ? Colors.textDark
                                     : Colors.icons,
                         },
                     ]}>
@@ -58,7 +58,9 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         alignItems: 'center',
         color: Colors.icons,
-        borderRadius: 10,
+        borderBottomRightRadius: 10,
+        borderTopRightRadius: 10,
+        paddingLeft: 10,
     },
     menuItemText: {
         // fontSize: 20,
