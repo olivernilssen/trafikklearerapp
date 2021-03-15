@@ -74,8 +74,13 @@ const DeleteButtonPopover = React.memo((props) => {
                         <TouchableOpacity
                             style={styles.deleteAllButton}
                             onPress={clearButtonPressed}>
-                            <Text style={{ color: Colors.textLight }}>
-                                Slett alt
+                            <Text
+                                style={{
+                                    fontSize: 20,
+                                    fontWeight: 'bold',
+                                    color: Colors.textLight,
+                                }}>
+                                Slett
                             </Text>
                         </TouchableOpacity>
                     </View>
