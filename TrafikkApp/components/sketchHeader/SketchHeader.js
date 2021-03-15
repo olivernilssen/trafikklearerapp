@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import Header from '../Header';
+import Header from '../reusableComponents/Header';
 import SketchColorMenu from './SketchColorMenu';
 import HeaderButton from './HeaderButton';
 import BoxButton from './BoxButton';

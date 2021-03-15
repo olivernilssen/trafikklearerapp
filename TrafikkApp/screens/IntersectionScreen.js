@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import MainView from '../components/MainView';
+import MainView from '../components/reusableComponents/MainView';
 import SketchArea from '../components/sketchComponents/SketchArea';
 
 /**

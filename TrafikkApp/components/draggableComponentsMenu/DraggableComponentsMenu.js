@@ -10,7 +10,7 @@ import {
 
 import { Colors, Typography, Buttons } from '../../styles';
 import DraggableComponents from './DraggableComponents';
-import Divider from '../Divider';
+import Divider from '../reusableComponents/Divider';
 
 const extensionTypes = ['Gangfelt', 'Sykkelfelt'];
 

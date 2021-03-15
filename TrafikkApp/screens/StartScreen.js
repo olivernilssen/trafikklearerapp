@@ -1,10 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-// import { RView } from 'react-native-responsive-component';
 
-import MainView from '../components/MainView';
-import Header from '../components/Header.js';
-import StartScreenLink from '../components/StartScreenLink.js';
+import MainView from '../components/reusableComponents/MainView';
+import Header from '../components/reusableComponents/Header';
+import StartScreenLink from '../components/startScreenComponents/StartScreenLink';
 
 import { Colors, Typography } from '../styles';
 
@@ -21,7 +20,7 @@ const StartScreen = React.memo(({ navigation }) => {
                     <Text style={styles.text}>Illustrer trafikksituasjon</Text>
                     <View style={styles.linksContainer}>
                         <StartScreenLink
-                            name="pen-alt"
+                            // name="pen-alt"
                             text="Veikryss"
                             onPress={() =>
                                 navigation.navigate('IntersectionScreen')
@@ -29,7 +28,7 @@ const StartScreen = React.memo(({ navigation }) => {
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
                         <StartScreenLink
-                            name="pen-alt"
+                            // name="pen-alt"
                             text="Rundkjøring"
                             onPress={() =>
                                 navigation.navigate('RoundaboutScreen')
@@ -37,7 +36,7 @@ const StartScreen = React.memo(({ navigation }) => {
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
                         <StartScreenLink
-                            name="pen-alt"
+                            // name="pen-alt"
                             text="Landevei"
                             onPress={() =>
                                 navigation.navigate('CountryRoadScreen')
@@ -45,7 +44,7 @@ const StartScreen = React.memo(({ navigation }) => {
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
                         <StartScreenLink
-                            name="pen-alt"
+                            // name="pen-alt"
                             text={'Fartsøknings- og reduksjonsfelt'}
                             onPress={() => navigation.navigate('HighwayScreen')}
                             backgroundColor={Colors.startScreenLinkDrawing}
@@ -82,18 +81,23 @@ const StartScreen = React.memo(({ navigation }) => {
                     <View style={styles.linksContainer}>
                         <StartScreenLink
                             name="globe"
-                            text="tba"
+                            text="Link til internett"
+                            textStyle={{ textDecorationLine: 'underline' }}
                             backgroundColor={Colors.startScreenLinkLink}
+                            isLink={true}
                         />
                         <StartScreenLink
                             name="globe"
-                            text="tba"
+                            text="Link til nettside"
                             backgroundColor={Colors.startScreenLinkLink}
+                            isLink={true}
                         />
                         <StartScreenLink
                             name="globe"
-                            text="tba"
+                            text="Link til nettside"
+                            textStyle={{ textDecorationLine: 'underline' }}
                             backgroundColor={Colors.startScreenLinkLink}
+                            isLink={true}
                         />
                     </View>
                 </View>

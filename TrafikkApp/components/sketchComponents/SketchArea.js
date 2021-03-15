@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
 
-import MainView from '../MainView';
+import MainView from '../reusableComponents/MainView';
 import SketchHeader from '../sketchHeader/SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import { Colors } from '../../styles';
