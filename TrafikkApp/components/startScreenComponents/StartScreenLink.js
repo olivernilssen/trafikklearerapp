@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { Buttons, Icons, Colors, Typography } from '../styles';
+import { Buttons, Icons, Colors, Typography } from '../../styles';
 
 const StartScreenLink = React.memo((props) => {
-    const { name, text, onPress, backgroundColor } = props;
+    const { name, text, onPress, backgroundColor, isLink } = props;
 
     return (
         <View>
@@ -18,10 +18,12 @@ const StartScreenLink = React.memo((props) => {
                 <Icon
                     name={name}
                     size={Icons.small}
-                    color={Colors.iconActive}
+                    color={isLink ? Colors.links : Colors.iconActive}
                     style={styles.icon}
                 />
-                <Text style={styles.buttonText}>{text}</Text>
+                <Text style={[isLink ? styles.linkText : styles.buttonTextOld]}>
+                    {text}
+                </Text>
             </TouchableOpacity>
         </View>
     );
@@ -31,7 +33,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         justifyContent: 'space-evenly',
         margin: 12,
-        elevation: 5,
+        elevation: 10,
         ...Buttons.largeRounded,
     },
     icon: {
@@ -40,11 +42,28 @@ const styles = StyleSheet.create({
         left: 0,
         padding: 15,
     },
-    buttonText: {
+    buttonTextOld: {
         color: Colors.textDark,
         textAlign: 'center',
         // fontWeight: 'bold',
-        ...Typography.medium,
+        ...Typography.mediumPlus,
+    },
+    buttonText: {
+        color: Colors.textLight,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        textShadowColor: Colors.background,
+        textShadowRadius: 1,
+        textShadowOffset: { width: 0, height: -1 },
+        textAlign: 'center',
+        ...Typography.mediumPlus,
+    },
+
+    linkText: {
+        textAlign: 'center',
+        color: 'blue',
+        textDecorationLine: 'underline',
+        ...Typography.mediumPlus,
     },
 });
 

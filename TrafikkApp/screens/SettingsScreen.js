@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import MainView from '../components/MainView';
-import Header from '../components/Header.js';
+import MainView from '../components/reusableComponents/MainView';
+import Header from '../components/reusableComponents/Header';
 import { Colors } from '../styles';
-import SettingsView from '../components/SettingsComponents/SettingsView';
+import SettingsView from '../components/settingsComponents/SettingsView';
 
 /**
  * Screen component for the settings screen (TODO)

@@ -7,6 +7,7 @@ export default {
     // FONTS
     FONT_SIZE_SMALL: 14,
     FONT_SIZE_MEDIUM: 18,
+    FONT_SIZE_MEDIUM_PLUS: RUtils.isSmallScreen() ? 18 : 22,
     FONT_SIZE_LARGE: RUtils.isSmallScreen() ? 20 : 30,
 
     // ICONS

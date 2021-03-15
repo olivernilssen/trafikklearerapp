@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, StyleSheet, View, Text, Image } from 'react-native';
-import Header from '../components/Header';
-import MainView from '../components/MainView';
+import Header from '../components/reusableComponents/Header';
+import MainView from '../components/reusableComponents/MainView';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from '../styles';
 import signSource from '../components/roadSignComponents/signPath';

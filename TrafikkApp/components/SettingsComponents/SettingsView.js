@@ -4,7 +4,7 @@ import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
 import { Colors, Typography } from '../../styles/index';
 // import ButtonToggleGroup from 'react-native-button-toggle-group';
-import ButtonGroup from './ButtonGroup';
+import ButtonGroup from '../reusableComponents/ButtonGroup';
 
 const SettingsView = () => {
     const myContext = useContext(AppContext);

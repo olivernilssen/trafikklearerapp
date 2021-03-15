@@ -4,7 +4,7 @@ import { StyleSheet, View, FlatList } from 'react-native';
 import { Colors } from '../../styles';
 import DrawerToggleMenuItem from './DrawerToggleItem';
 import DrawerItem from './DrawerItem';
-import Divider from '../Divider';
+import Divider from '../reusableComponents/Divider';
 
 /**
  * Component to display the menu as a flatlist in

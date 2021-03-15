@@ -7,6 +7,7 @@ import {
     TouchableOpacity,
     Animated,
 } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const ButtonGroup = (props) => {
     const {
@@ -34,6 +35,10 @@ const ButtonGroup = (props) => {
     const [boxPos, setBoxPos] = useState(
         new Animated.Value(chosenIndex * buttonSize)
     );
+
+    useEffect(() => {
+        setChosenIndex(values.indexOf(selectedValue));
+    }, [selectedValue]);
 
     useEffect(() => {
         Animated.spring(boxPos, {

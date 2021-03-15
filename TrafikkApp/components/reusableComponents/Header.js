@@ -1,7 +1,7 @@
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Colors, Icons, Typography } from '../styles';
+import { Colors, Icons, Typography } from '../../styles';
 
 const Header = React.memo((props) => (
     <View style={styles.header}>
