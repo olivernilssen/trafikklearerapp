@@ -7,7 +7,7 @@ import PopoutItems from './PopoutItems';
  * Popout component that shows a half circle of colors around
  * an object/view
  * @param {dictionary} props
- * @returns
+ * @returns void
  */
 const Popout = (props) => {
     const { popoutActive, itemSize } = props;

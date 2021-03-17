@@ -17,7 +17,7 @@ const Drawer = createDrawerNavigator();
  * This is the Navigator for our side drawer
  * Holds all the information about the screens and
  * the screen parameters
- * @returns The Drawer Navigator
+ * @returns Navigator component
  */
 const Navigator = () => {
     return (
