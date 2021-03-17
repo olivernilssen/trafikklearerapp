@@ -1,0 +1,27 @@
+{
+    "source": {
+        "includePattern": ".+\\.js",
+        "include": ["."],
+        "exclude": [
+            "node_modules",
+            "android",
+            "ios",
+            ".vscode",
+            "assets",
+            ".buckconfig",
+            ".prettierrc",
+            "app.json",
+            "jsdoc-config.json",
+            "metro.config.js",
+            "package.json",
+            "package-lock.json",
+            "docs",
+            "./components/unusedComponents"
+        ]
+    },
+    "recurseDepth": 5,
+    "opts": {
+        "destination": "./docs/",
+        "recurse": true
+    }
+}
