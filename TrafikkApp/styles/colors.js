@@ -1,8 +1,5 @@
 //
 // ALL COLORS USED IN THE APP SHOULD BE DECLARED HERE
-
-import { medium } from './typography';
-
 //
 const charcoal = '#4A4A4A';
 const darkerCharchoal = '#404040';
@@ -31,7 +28,7 @@ export default {
     icons: lightGray,
     iconActive: charcoal, // or mustard?
     drawerIconActive: blueGreen,
-    links: 'blue',
+    links: lightGray,
 
     // Buttongroup
     slideActiveBg: blueGreen,
@@ -42,7 +39,7 @@ export default {
     // StartScreen
     startScreenLinkDrawing: blueGreen,
     startScreenLinkTheory: blue,
-    startScreenLinkLink: lightGray,
+    startScreenLinkLink: charcoal,
 
     // Sketch screens
     sketchBackground: charcoal,
