@@ -59,7 +59,7 @@ const ColorButton = (props) => {
 };
 
 const styles = StyleSheet.create({
-    buttonSpacing: { padding: 5 },
+    buttonSpacing: { padding: 8 },
     colorButton: {
         height: 32,
         width: 32,
@@ -73,11 +73,10 @@ const styles = StyleSheet.create({
         ...Buttons.round,
         color: '#00000000',
         fontSize: 20,
-        padding: 5,
+        padding: 8,
     },
     iconActiveCircle: {
-        backgroundColor: Colors.background,
-        padding: 5,
+        padding: 8,
         ...Buttons.round,
         opacity: 0.8,
     },

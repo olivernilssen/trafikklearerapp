@@ -20,6 +20,8 @@ import AppContext from '../../AppContext';
 /**
  * This is a big component that contains all the components that are visible
  * on the sketcharea screens.
+ * @function SketchArea
+ * @namespace SketchArea
  */
 const SketchArea = React.memo((props) => {
     const appContext = useContext(AppContext);
@@ -58,7 +60,9 @@ const SketchArea = React.memo((props) => {
 
     /**
      * Changes the pencil color according to user input
-     * @param {String} color
+     * @memberof SketchArea
+     * @function onPaletteColorChange
+     * @param {String} color The color thats been chosen
      */
     const onPaletteColorChange = (color) => {
         setPencilColor(color);
@@ -66,6 +70,8 @@ const SketchArea = React.memo((props) => {
 
     /**
      * Changes the pencil color and size when switching between eraser and pencil
+     * @memberof SketchArea
+     * @function onEraserPencilSwitch
      */
     const onEraserPencilSwitch = useCallback(() => {
         if (pencilColor === eraserColor) {
@@ -79,7 +85,11 @@ const SketchArea = React.memo((props) => {
 
     /**
      * Function to change the pencil brush size
-     * @param {int} newPencilSize
+     * @memberof SketchArea
+     * @function onChangePencilSize
+     * @param {int} newPencilSize The thickness of the pencil
+     * @description Changes the thickness of the pencil
+     *
      */
     const onChangePencilSize = (newPencilSize) => {
         setPencilSize(newPencilSize);
@@ -90,6 +100,8 @@ const SketchArea = React.memo((props) => {
      * Function to undo the previous action of the user
      * will remove strokes or draggables
      * Does not unto draggable movements
+     * @memberof SketchArea
+     * @function undoChange
      */
     const undoChange = useCallback(() => {
         if (actionList.length == 0) return;
