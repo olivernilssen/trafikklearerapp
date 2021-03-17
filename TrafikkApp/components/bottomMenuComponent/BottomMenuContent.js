@@ -4,7 +4,7 @@ import { StyleSheet, View, TouchableOpacity, Text, Image } from 'react-native';
 import { Colors, Typography, Buttons } from '../../styles';
 import Divider from '../reusableComponents/Divider';
 import ButtonGroup from '../reusableComponents/ButtonGroup';
-import backgroundImagePath from '../sketchComponents/backgroundImagePath';
+import backgroundImagePath from './backgroundImagePath';
 
 /**
  * BottomMenuContent is a menu that slides up from the bottom of the screen
@@ -88,7 +88,6 @@ const BottomMenuContent = React.memo(
                 setImage(imgSource);
             }
             setRoadDesign(designName);
-            console.log(intersectionType);
         };
 
         /**
@@ -174,7 +173,7 @@ const BottomMenuContent = React.memo(
                             borderColor={Colors.bottomMenyButtons}
                         />
                         <Text style={styles.intersectionTypeInfoText}>
-                            Kryssutforming
+                            Kryssutforming:
                         </Text>
 
                         <ButtonGroup
@@ -184,53 +183,11 @@ const BottomMenuContent = React.memo(
                                 intersectionTypeChange(newValue)
                             }
                             groupWidth={300}
-                            highlightBackgroundColor={Colors.slideActiveBg}
-                            highlightTextColor={Colors.slideTextActive}
-                            inactiveBackgroundColor={Colors.slideInactiveBg}
-                            inactiveTextColor={Colors.slideTextInactive}
+                            highlightBackgroundColor={Colors.secSlideActiveBg}
+                            highlightTextColor={Colors.secSlideTextActive}
+                            inactiveBackgroundColor={Colors.bottomMenyButtons}
+                            inactiveTextColor={Colors.secSlideTextInactive}
                         />
-                        <View style={styles.intersectionTypeBtnsGroup}>
-                            {IntersectionTypes.map((name, i) => {
-                                const activeBtn = name === intersectionType;
-
-                                return (
-                                    <TouchableOpacity
-                                        key={i}
-                                        activeOpacity={0.6}
-                                        onPress={() =>
-                                            intersectionTypeChange(name)
-                                        }
-                                        style={[
-                                            styles.intersectionTypeButton,
-                                            activeBtn
-                                                ? {
-                                                      backgroundColor:
-                                                          Colors.bottomMenyButtons,
-                                                  }
-                                                : {
-                                                      backgroundColor:
-                                                          Colors.bottomMeny,
-                                                  },
-                                        ]}
-                                        color={Colors.bottomMenyButtons}>
-                                        <Text
-                                            style={[
-                                                styles.intersectionTypeBtnText,
-                                                activeBtn
-                                                    ? {
-                                                          color:
-                                                              Colors.textLight,
-                                                      }
-                                                    : {
-                                                          color: Colors.icons,
-                                                      },
-                                            ]}>
-                                            {name}
-                                        </Text>
-                                    </TouchableOpacity>
-                                );
-                            })}
-                        </View>
                     </View>
                 )}
                 {/* END * The intersectionType buttons (X, T, Y) */}
@@ -278,7 +235,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         width: '100%',
         marginVertical: 20,
-        justifyContent: 'center',
+        alignItems: 'center',
     },
     divider: {
         width: '80%',
@@ -287,24 +244,9 @@ const styles = StyleSheet.create({
     },
     intersectionTypeInfoText: {
         textAlign: 'center',
+        paddingBottom: 15,
         color: Colors.icons,
         opacity: 0.5,
-        ...Typography.small,
-    },
-    intersectionTypeBtnsGroup: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        marginTop: 10,
-    },
-    intersectionTypeButton: {
-        borderWidth: 1,
-        borderColor: Colors.bottomMenyButtons,
-        padding: 5,
-        elevation: 5,
-        ...Buttons.small,
-    },
-    intersectionTypeBtnText: {
-        textAlign: 'center',
         ...Typography.medium,
     },
 });

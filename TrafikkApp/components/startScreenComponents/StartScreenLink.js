@@ -15,15 +15,15 @@ const StartScreenLink = React.memo((props) => {
                 ]}
                 activeOpacity={0.6}
                 onPress={onPress}>
+                <Text style={[isLink ? styles.linkText : styles.buttonTextOld]}>
+                    {text}
+                </Text>
                 <Icon
                     name={name}
                     size={Icons.small}
                     color={isLink ? Colors.links : Colors.iconActive}
-                    style={styles.icon}
+                    style={isLink ? styles.linkIcon : styles.icon}
                 />
-                <Text style={[isLink ? styles.linkText : styles.buttonTextOld]}>
-                    {text}
-                </Text>
             </TouchableOpacity>
         </View>
     );
@@ -38,9 +38,19 @@ const styles = StyleSheet.create({
     },
     icon: {
         position: 'absolute',
+        opacity: 0.6,
+        bottom: 0,
+        right: 0,
+        paddingVertical: 20,
+        paddingHorizontal: 20,
+    },
+    linkIcon: {
+        position: 'absolute',
+        opacity: 0.6,
         top: 0,
-        left: 0,
-        padding: 15,
+        right: 0,
+        paddingVertical: 20,
+        paddingHorizontal: 20,
     },
     buttonTextOld: {
         color: Colors.textDark,
@@ -50,7 +60,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: Colors.textLight,
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         textAlign: 'center',
         textShadowColor: Colors.background,
         textShadowRadius: 1,
@@ -61,7 +71,8 @@ const styles = StyleSheet.create({
 
     linkText: {
         textAlign: 'center',
-        color: 'blue',
+        color: Colors.icons,
+        // fontWeight: 'bold',
         textDecorationLine: 'underline',
         ...Typography.mediumPlus,
     },

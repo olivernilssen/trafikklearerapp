@@ -19,7 +19,7 @@ const BoxButton = (props) => {
                     justifyContent: 'space-around',
                 }}>
                 <Icon
-                    name={!toggleRightMenuState ? 'box-open' : 'box'}
+                    name={!toggleRightMenuState ? 'car-crash' : 'car'}
                     size={Icons.small}
                     style={
                         !toggleRightMenuState

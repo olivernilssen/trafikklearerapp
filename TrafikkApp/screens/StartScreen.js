@@ -20,7 +20,7 @@ const StartScreen = React.memo(({ navigation }) => {
                     <Text style={styles.text}>Illustrer trafikksituasjon</Text>
                     <View style={styles.linksContainer}>
                         <StartScreenLink
-                            // name="pen-alt"
+                            name="arrow-right"
                             text="Veikryss"
                             onPress={() =>
                                 navigation.navigate('IntersectionScreen')
@@ -28,7 +28,7 @@ const StartScreen = React.memo(({ navigation }) => {
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
                         <StartScreenLink
-                            // name="pen-alt"
+                            name="arrow-right"
                             text="Rundkjøring"
                             onPress={() =>
                                 navigation.navigate('RoundaboutScreen')
@@ -36,7 +36,7 @@ const StartScreen = React.memo(({ navigation }) => {
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
                         <StartScreenLink
-                            // name="pen-alt"
+                            name="arrow-right"
                             text="Landevei"
                             onPress={() =>
                                 navigation.navigate('CountryRoadScreen')
@@ -44,7 +44,7 @@ const StartScreen = React.memo(({ navigation }) => {
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
                         <StartScreenLink
-                            // name="pen-alt"
+                            name="arrow-right"
                             text={'Fartsøknings- og reduksjonsfelt'}
                             onPress={() => navigation.navigate('HighwayScreen')}
                             backgroundColor={Colors.startScreenLinkDrawing}
@@ -56,7 +56,7 @@ const StartScreen = React.memo(({ navigation }) => {
                     <Text style={styles.text}>Trafikkskilt og teori</Text>
                     <View style={styles.linksContainer}>
                         <StartScreenLink
-                            name="book"
+                            name="arrow-right"
                             text="Trafikkskilt"
                             onPress={() =>
                                 navigation.navigate('RoadSignScreen')
@@ -64,12 +64,12 @@ const StartScreen = React.memo(({ navigation }) => {
                             backgroundColor={Colors.startScreenLinkTheory}
                         />
                         <StartScreenLink
-                            name="book"
+                            name="arrow-right"
                             text="tba"
                             backgroundColor={Colors.startScreenLinkTheory}
                         />
                         <StartScreenLink
-                            name="book"
+                            name="arrow-right"
                             text="tba"
                             backgroundColor={Colors.startScreenLinkTheory}
                         />
@@ -80,20 +80,20 @@ const StartScreen = React.memo(({ navigation }) => {
                     <Text style={styles.text}>Nyttige lenker</Text>
                     <View style={styles.linksContainer}>
                         <StartScreenLink
-                            name="globe"
+                            name="external-link-alt"
                             text="Link til internett"
                             textStyle={{ textDecorationLine: 'underline' }}
                             backgroundColor={Colors.startScreenLinkLink}
                             isLink={true}
                         />
                         <StartScreenLink
-                            name="globe"
+                            name="external-link-alt"
                             text="Link til nettside"
                             backgroundColor={Colors.startScreenLinkLink}
                             isLink={true}
                         />
                         <StartScreenLink
-                            name="globe"
+                            name="external-link-alt"
                             text="Link til nettside"
                             textStyle={{ textDecorationLine: 'underline' }}
                             backgroundColor={Colors.startScreenLinkLink}

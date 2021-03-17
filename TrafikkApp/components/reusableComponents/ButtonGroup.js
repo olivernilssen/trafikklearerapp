@@ -21,12 +21,13 @@ const ButtonGroup = (props) => {
         inactiveBackgroundColor,
         inactiveTextColor,
         isColorOptions,
+        height,
     } = props;
 
     const isColorOption = isColorOptions != null ? isColorOptions : false;
     const width = groupWidth != null ? groupWidth : 300;
     const fontSize = textSize != null ? textSize : width / 15;
-    const height = width / 6;
+    const isHeight = height != null ? height : width / 6;
     const buttonSize = width / values.length;
 
     const [chosenIndex, setChosenIndex] = useState(
@@ -60,7 +61,7 @@ const ButtonGroup = (props) => {
                 styles.mainView,
                 {
                     width: width,
-                    height: height,
+                    height: isHeight,
                     backgroundColor: inactiveBackgroundColor,
                 },
             ]}>
@@ -69,7 +70,7 @@ const ButtonGroup = (props) => {
                     style={[
                         styles.slider,
                         {
-                            height: height,
+                            height: isHeight,
                             width: buttonSize,
                             backgroundColor: highlightBackgroundColor,
                             transform: [{ translateX: boxPos }],
@@ -124,10 +125,10 @@ const ButtonGroup = (props) => {
                     style={[
                         styles.slider,
                         {
-                            height: height,
+                            height: isHeight,
                             width: buttonSize,
-                            backgroundColor: 'transparent',
-                            borderBottomColor: 'white',
+                            // backgroundColor: 'transparent',
+                            // borderBottomColor: 'white',
                             borderBottomWidth: 5,
                             borderRadius: 0,
                             transform: [{ translateX: boxPos }],
