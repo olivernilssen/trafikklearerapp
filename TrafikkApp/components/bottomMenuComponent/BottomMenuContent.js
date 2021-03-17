@@ -4,7 +4,7 @@ import { StyleSheet, View, TouchableOpacity, Text, Image } from 'react-native';
 import { Colors, Typography, Buttons } from '../../styles';
 import Divider from '../reusableComponents/Divider';
 import ButtonGroup from '../reusableComponents/ButtonGroup';
-import backgroundImagePath from '../sketchComponents/backgroundImagePath';
+import backgroundImagePath from './backgroundImagePath';
 
 /**
  * BottomMenuContent is a menu that slides up from the bottom of the screen
