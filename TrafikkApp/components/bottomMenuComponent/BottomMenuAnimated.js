@@ -10,6 +10,7 @@ import BottomMenuContent from './BottomMenuContent';
  * It has properties to move or hide the view and will
  * show the content of it's children
  */
+
 const BottomMenuAnimated = React.memo((props) => {
     const {
         roadType,
@@ -50,7 +51,7 @@ const BottomMenuAnimated = React.memo((props) => {
             useNativeDriver: true,
             toValue: toValue,
             velocity: 3,
-            tension: 2,
+            tension: 20,
             friction: 8,
         }).start();
     }, [bottomSheetHidden]);
@@ -114,6 +115,7 @@ var styles = StyleSheet.create({
         left: 0,
         right: 0,
         backgroundColor: 'transparent',
+        zIndex: 10,
     },
     button: {
         paddingBottom: 10,

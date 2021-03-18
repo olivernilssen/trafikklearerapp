@@ -48,14 +48,14 @@ const DraggableComponentsMenu = React.memo(
                 Animated.spring(bounceValue, {
                     toValue: toValue,
                     bounciness: 1,
-                    speed: 4,
+                    speed: 6,
                     useNativeDriver: true,
                 }).start();
             } else {
                 Animated.spring(bounceValue, {
                     toValue: toValue,
                     bounciness: 1,
-                    speed: 4,
+                    speed: 6,
                     useNativeDriver: true,
                 }).start();
             }
