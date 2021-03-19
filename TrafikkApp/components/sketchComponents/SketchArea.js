@@ -6,7 +6,12 @@ import React, {
     useCallback,
     useContext,
 } from 'react';
-import { View, StyleSheet, ImageBackground } from 'react-native';
+import {
+    View,
+    StyleSheet,
+    ImageBackground,
+    TouchableWithoutFeedback,
+} from 'react-native';
 
 import MainView from '../reusableComponents/MainView';
 import SketchHeader from '../sketchHeader/SketchHeader';
@@ -180,23 +185,29 @@ const SketchArea = React.memo((props) => {
 
     return (
         <MainView>
-            <SketchHeader
-                onEraserPencilSwitch={onEraserPencilSwitch}
-                undoChange={undoChange}
-                clearCanvas={clearCanvas}
-                eraser={eraser}
-                onPaletteColorChange={onPaletteColorChange}
-                navigation={props.navigation}
-                name={props.name}
-                topMenuHidden={toggleMenu}
-                toggleRightMenuState={topMenuHidden}
-                onChangePencilSize={onChangePencilSize}
-                pencilColor={pencilColor}
-                pencilSize={pencilSize}
-                chosenColor={chosenColor}
-            />
+            <View style={bottomSheetHidden ? styles.noOverlay : styles.overlay}>
+                <TouchableWithoutFeedback
+                    onPress={() => setBottomSheetHidden(true)}>
+                    <View style={{ flex: 1 }}></View>
+                </TouchableWithoutFeedback>
+            </View>
 
             <View style={styles.main}>
+                <SketchHeader
+                    onEraserPencilSwitch={onEraserPencilSwitch}
+                    undoChange={undoChange}
+                    clearCanvas={clearCanvas}
+                    eraser={eraser}
+                    onPaletteColorChange={onPaletteColorChange}
+                    navigation={props.navigation}
+                    name={props.name}
+                    topMenuHidden={toggleMenu}
+                    toggleRightMenuState={topMenuHidden}
+                    onChangePencilSize={onChangePencilSize}
+                    pencilColor={pencilColor}
+                    pencilSize={pencilSize}
+                    chosenColor={chosenColor}
+                />
                 <ImageBackground
                     resizeMode={'cover'}
                     style={styles.backgroundImage}
@@ -221,17 +232,17 @@ const SketchArea = React.memo((props) => {
                         extensionType={extensionType}
                         setExtensionType={setExtensionType}
                     />
-
-                    <BottomMenuAnimated
-                        roadType={props.name}
-                        setImage={setImage}
-                        setRoadDesignChange={setRoadDesignChange}
-                        extensionType={extensionType}
-                        bottomSheetHidden={bottomSheetHidden}
-                        setBottomSheetHidden={setBottomSheetHidden}
-                    />
                 </ImageBackground>
             </View>
+
+            <BottomMenuAnimated
+                roadType={props.name}
+                setImage={setImage}
+                setRoadDesignChange={setRoadDesignChange}
+                extensionType={extensionType}
+                bottomSheetHidden={bottomSheetHidden}
+                setBottomSheetHidden={setBottomSheetHidden}
+            />
         </MainView>
     );
 });
@@ -244,11 +255,29 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.sketchBackground,
         justifyContent: 'center',
     },
+
     sketchCanvas: {
         flex: 1,
         width: '100%',
         height: '100%',
         backgroundColor: 'transparent',
+    },
+    noOverlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        // height: '100%',
+        // width: '100%',
+        zIndex: -100,
+    },
+    overlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        height: '100%',
+        width: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        zIndex: 10,
     },
     backgroundImage: {
         flex: 1, // Denne må fjernes hvis bildet ikke skal skalere opp

@@ -199,8 +199,8 @@ const BottomMenuContent = React.memo(
 const styles = StyleSheet.create({
     main: {
         flexDirection: 'column',
-        paddingTop: 20,
-        paddingBottom: 10,
+        paddingTop: 40,
+        paddingBottom: 20,
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
