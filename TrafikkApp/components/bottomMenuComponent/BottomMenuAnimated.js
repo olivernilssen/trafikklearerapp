@@ -18,7 +18,7 @@ const BottomMenuAnimated = React.memo((props) => {
         setRoadDesignChange,
         extensionType,
         bottomSheetHidden,
-        setBottomSheetHidden,
+        setBottomSheetHidden
     } = props;
 
     const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
@@ -60,9 +60,10 @@ const BottomMenuAnimated = React.memo((props) => {
      * Change the state of the bottomSheetHidden state
      * This will also trigger a useEffect to run afterwards
      */
-    const onHiddenViewChange = useCallback(() => {
+    const onHiddenViewChange = () => {
         setBottomSheetHidden(!bottomSheetHidden);
-    });
+
+    };
 
     /**
      * Is triggered to get the layout (height, width) of the
