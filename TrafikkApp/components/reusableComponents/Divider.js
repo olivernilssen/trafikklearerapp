@@ -1,12 +1,22 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-const Divider = React.memo((props) => (
-    <View style={props.style}>
-        <View
-            style={[styles.divider, { borderColor: props.borderColor }]}></View>
-    </View>
-));
+/**
+ * Component that displays a divider
+ * @namespace Divider
+ * @memberof reusableComponents
+ * @prop {stylesheetObject} [style] Style of the divider
+ * @prop {color} borderColor Color of the divider
+ */
+const Divider = React.memo((props) => {
+    const { style, borderColor } = props;
+
+    return (
+        <View style={style}>
+            <View style={[styles.divider, { borderColor: borderColor }]}></View>
+        </View>
+    );
+});
 
 const styles = StyleSheet.create({
     divider: {

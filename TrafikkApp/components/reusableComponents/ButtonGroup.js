@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import {
     View,
@@ -7,8 +7,22 @@ import {
     TouchableOpacity,
     Animated,
 } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
+/**
+ * Component that displays a button group
+ * @namespace ButtonGroup
+ * @memberof reusableComponents
+ * @prop {array} values The buttons of the button group
+ * @prop {int} selectedValue Selected button
+ * @prop {number} [groupWidth] The width of the button group
+ * @prop {number} [textSize] Font size of the buttons
+ * @prop {function} onSelect Handler to be called when the user taps a button
+ * @prop {color} highlightBackgroundColor BachgroundColor of the selected button
+ * @prop {color} highlightTextColor Text color of the selected button
+ * @prop {color} inactiveBackgroundColor BackgroundColor of the inactive button(s)
+ * @prop {color} inactiveTextColor Text color of the inactive button(s)
+ * @prop {number} [height] The height of the button group
+ */
 const ButtonGroup = (props) => {
     const {
         values,
@@ -24,6 +38,7 @@ const ButtonGroup = (props) => {
         height,
     } = props;
 
+    // Set the value of the optional props, if they are not set
     const isColorOption = isColorOptions != null ? isColorOptions : false;
     const width = groupWidth != null ? groupWidth : 300;
     const fontSize = textSize != null ? textSize : width / 15;
@@ -37,10 +52,18 @@ const ButtonGroup = (props) => {
         new Animated.Value(chosenIndex * buttonSize)
     );
 
+    /**
+     * useEffect that is triggered when selectedValue is changed.
+     * Will set the state chosenIndex to the index of the selected value
+     */
     useEffect(() => {
         setChosenIndex(values.indexOf(selectedValue));
     }, [selectedValue]);
 
+    /**
+     * useEffect that is triggered when chosenValue is changed.
+     * Will animate the changing of the selected button
+     */
     useEffect(() => {
         Animated.spring(boxPos, {
             toValue: buttonSize * chosenIndex,
@@ -50,6 +73,13 @@ const ButtonGroup = (props) => {
         }).start();
     }, [chosenIndex]);
 
+    /**
+     * Handler that is called when the user taps a button.
+     * Sets the state of the chosenIndex
+     * @memberof reusableComponents.ButtonGroup
+     * @param {string} value The name of the button
+     * @param {int} i The index of the button
+     */
     const onValueChanged = (value, i) => {
         onSelect(value);
         setChosenIndex(i);

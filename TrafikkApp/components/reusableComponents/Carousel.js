@@ -1,23 +1,42 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, Text } from 'react-native';
-import { Colors } from '../../styles';
 
+/**
+ * Component that displays a carousel
+ * @namespace Carousel
+ * @memberof reusableComponents
+ * @prop {int} itemsPerSlide Number of items to be displayed per slide in the Carousel
+ * @prop {array} objectArray The items of the slide
+ */
 const Carousel = (props) => {
-    const itemsPerSlide = props.itemsPerSlide;
+    const { itemsPerSlide, objectArray } = props;
 
     const [numberOfSlides, setNumberOfSlides] = useState(1);
     const [activeSlide, setActiveSlide] = useState(1);
     const [width, setWidth] = useState(0);
+    let bullets = [];
 
-    const getCarouselLayout = (width) => {
+    /**
+     * Function to set the layout of the carousel.
+     * Sets the width of the carousel, and the number of slides
+     * @memberof reusableComponents.Carousel
+     * @param {number} width Width of the carousel
+     */
+    const setCarouselLayout = (width) => {
         // Initialise width of carousel
         setWidth(width);
 
         // Initialise total number of slides
-        const totalItems = props.objectArray.length; // * 2 for testing
+        const totalItems = objectArray.length; // * 2 for testing
         setNumberOfSlides(Math.ceil(totalItems / itemsPerSlide));
     };
 
+    /**
+     * Function to get the active slide
+     * @memberof reusableComponents.Carousel
+     * @param {number} offset The content offset of the carousel
+     * @returns {int} The active slide
+     */
     const getActiveSlide = (offset) => {
         for (let i = 1; i <= numberOfSlides; i++) {
             if (offset * 2 < (width / numberOfSlides) * i) {
@@ -29,8 +48,10 @@ const Carousel = (props) => {
         }
     };
 
-    // x bulletpoints for x number of slides
-    let bullets = [];
+    /**
+     * Generate bulletpoints to show number of slide
+     * Bulletpoint for active slide is highlighted
+     */
     for (let i = 1; i <= numberOfSlides; i++) {
         bullets.push(
             <Text
@@ -52,7 +73,7 @@ const Carousel = (props) => {
                 decelerationRate="fast"
                 contentContainerStyle={{ width: `${100 * numberOfSlides}%` }}
                 pagingEnabled
-                onContentSizeChange={(w, h) => getCarouselLayout(w)}
+                onContentSizeChange={(w, h) => setCarouselLayout(w)}
                 style={styles.carousel}
                 onScroll={(data) => {
                     setActiveSlide(
@@ -60,7 +81,7 @@ const Carousel = (props) => {
                     );
                 }}
                 scrollEventThrottle={200}>
-                {props.children}
+                {objectArray}
             </ScrollView>
             <View style={styles.bulletContainer}>{bullets}</View>
         </View>

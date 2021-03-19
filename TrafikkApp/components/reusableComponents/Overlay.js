@@ -9,6 +9,10 @@ import {
 /**
  * Component that displays a transparent overlay on the SketchArea-screens,
  * when the BottomMenu is open
+ * @namespace Overlay
+ * @memberof reusableComponents
+ * @prop {function} setBottomSheetHidden Set the state bottomSheetHidden
+ * @prop {boolean} bottomSheetHidden The state bottomSheetHidden
  */
 const Overlay = React.memo((props) => {
     const { setBottomSheetHidden, bottomSheetHidden } = props;
@@ -17,7 +21,7 @@ const Overlay = React.memo((props) => {
     const [zIndex, setZIndex] = useState(10);
 
     /**
-     * useEffect that is triggered when bottomSheetHidden is changed
+     * useEffect that is triggered when bottomSheetHidden is changed.
      * Will animate the overlay into view and out of view
      */
     useEffect(() => {
@@ -25,9 +29,10 @@ const Overlay = React.memo((props) => {
     }, [bottomSheetHidden]);
 
     /**
-     * Function to animate the showing and hiding of the overlay
+     * Function to animate the showing and hiding of the overlay.
      * Will set the value of the backgroundColor,
      * duration of the animation and zIndex of the overlay
+     * @memberof reusableComponents.Overlay
      */
     const handleAnimation = () => {
         if (bottomSheetHidden) {
@@ -50,6 +55,10 @@ const Overlay = React.memo((props) => {
 
     /**
      * Defines which colors to animate between
+     * @memberof reusableComponents.Overlay
+     * @function
+     * @param {Array} inputRange The ranges to interpolate between
+     * @param {Array} outputRange The colors to interpolate between
      */
     const boxInterpolation = animation.interpolate({
         inputRange: [0, 1],
