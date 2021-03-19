@@ -59,6 +59,16 @@ const SketchColorMenu = React.memo((props) => {
         setPencilThicknessID(value);
     };
 
+    const onPressMenuTrigger = () => {
+        if (activeId != 0) {
+            onEraserPencilSwitch();
+            focusedActiveButton(buttonActiveId);
+            onSecondClickOpen(false);
+        } else {
+            onSecondClickOpen(true);
+        }
+    };
+
     return (
         <View style={propsStyle}>
             <Menu
@@ -73,13 +83,7 @@ const SketchColorMenu = React.memo((props) => {
                 }}>
                 <MenuTrigger
                     onPress={() => {
-                        if (activeId != 0) {
-                            onEraserPencilSwitch();
-                            focusedActiveButton(buttonActiveId);
-                            onSecondClickOpen(false);
-                        } else {
-                            onSecondClickOpen(true);
-                        }
+                        onPressMenuTrigger();
                     }}
                     style={
                         activeId === buttonActiveId
@@ -90,10 +94,24 @@ const SketchColorMenu = React.memo((props) => {
                             : [styles.buttonSize, styles.buttonInactive]
                     }>
                     <Icon
-                        name={activeId === 0 ? 'chevron-down' : 'pen'}
+                        name={'pen'}
                         size={30}
                         solid
                         color={Colors.textLight}
+                    />
+                    <Icon
+                        name={'sort-down'}
+                        size={25}
+                        solid
+                        color={Colors.textLight}
+                        style={
+                            activeId === 0
+                                ? [styles.downIconMenu, styles.iconActive]
+                                : [
+                                      styles.downIconMenu,
+                                      styles.iconColorInactive,
+                                  ]
+                        }
                     />
                 </MenuTrigger>
                 <MenuOptions optionsContainerStyle={styles.menuOptions}>
@@ -209,9 +227,14 @@ const styles = StyleSheet.create({
     buttonSize: {
         ...Typography.large,
     },
+    downIconMenu: {
+        position: 'absolute',
+        alignSelf: 'center',
+        top: 32,
+    },
     buttonActive: {
         backgroundColor: Colors.iconActive,
-        paddingVertical: 12,
+        paddingVertical: 14,
         paddingHorizontal: 16,
         ...Buttons.round,
         ...Typography.large,
@@ -230,6 +253,12 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    iconColorActive: {
+        color: Colors.iconActive,
+    },
+    iconColorInactive: {
+        color: '#00000000',
     },
     iconPlacement: {
         flexDirection: 'row',
