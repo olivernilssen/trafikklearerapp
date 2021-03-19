@@ -25,6 +25,9 @@ import AppContext from '../../AppContext';
 /**
  * This is a big component that contains all the components that are visible
  * on the sketcharea screens.
+ * @namespace SketchArea
+ * @function SketchArea
+ * @returns {component} All the components related to the drawing-screens
  */
 const SketchArea = React.memo((props) => {
     const appContext = useContext(AppContext);
@@ -63,7 +66,8 @@ const SketchArea = React.memo((props) => {
 
     /**
      * Changes the pencil color according to user input
-     * @param {String} color
+     * @memberof SketchArea
+     * @param {String} color The color thats been chosen
      */
     const onPaletteColorChange = (color) => {
         setPencilColor(color);
@@ -71,6 +75,8 @@ const SketchArea = React.memo((props) => {
 
     /**
      * Changes the pencil color and size when switching between eraser and pencil
+     * @memberof SketchArea
+     * @function
      */
     const onEraserPencilSwitch = useCallback(() => {
         if (pencilColor === eraserColor) {
@@ -84,7 +90,11 @@ const SketchArea = React.memo((props) => {
 
     /**
      * Function to change the pencil brush size
-     * @param {int} newPencilSize
+     * @memberof SketchArea
+     * @function
+     * @param {int} newPencilSize The thickness of the pencil
+     * @description Changes the thickness of the pencil
+     *
      */
     const onChangePencilSize = (newPencilSize) => {
         setPencilSize(newPencilSize);
@@ -95,6 +105,8 @@ const SketchArea = React.memo((props) => {
      * Function to undo the previous action of the user
      * will remove strokes or draggables
      * Does not unto draggable movements
+     * @memberof SketchArea
+     * @function
      */
     const undoChange = useCallback(() => {
         if (actionList.length == 0) return;
@@ -116,6 +128,8 @@ const SketchArea = React.memo((props) => {
     /**
      * When strokeEnded the added path/stroke
      * is added to actionList to keep track of undo actions
+     * @memberof SketchArea
+     * @function
      */
     const onStrokeEnd = useCallback(() => {
         setActionList([...actionList, { type: 'stroke' }]);
@@ -124,6 +138,9 @@ const SketchArea = React.memo((props) => {
     /**
      * Function to clear the canvas and set draggables to empty list
      * Only clear canvas if roadDesignChange is true
+     *
+     * @memberof SketchArea
+     * @function
      */
     const clearCanvas = useCallback(() => {
         // if (roadDesignChange) {
@@ -134,6 +151,8 @@ const SketchArea = React.memo((props) => {
 
     /**
      * Function to set the pencil to an eraser
+     * @memberof SketchArea
+     * @function
      */
     const eraser = () => {
         if (pencilColor != eraserColor) {
@@ -147,6 +166,8 @@ const SketchArea = React.memo((props) => {
     /**
      * Function to hide the bottomsheet when user starts
      * drawing on the canvas
+     * @memberof SketchArea
+     * @function
      */
     const onStrokeStart = useCallback(() => {
         if (bottomSheetHidden == false)
@@ -155,6 +176,8 @@ const SketchArea = React.memo((props) => {
 
     /**
      * Function to toggle the topmenu to hidden or not hidden
+     * @memberof SketchArea
+     * @function
      */
     const toggleMenu = () => {
         setTopMenuHidden(!topMenuHidden);
