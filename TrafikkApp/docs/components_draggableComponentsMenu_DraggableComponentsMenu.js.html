@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/draggableComponentsMenu/DraggableComponentsMenu.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/draggableComponentsMenu/DraggableComponentsMenu.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect } from 'react';
+import { useCallback } from 'react';
+import { StyleSheet, View, Animated, Text } from 'react-native';
+
+import { Colors, Typography } from '../../styles';
+import DraggableComponents from './DraggableComponents';
+import Divider from '../reusableComponents/Divider';
+import ButtonGroup from '../reusableComponents/ButtonGroup';
+
+const extensionTypes = ['Gangfelt', 'O', 'Sykkelfelt'];
+
+/**
+ * Component for the draggable top menu, which displayes objects
+ * that can be turned into draggables.
+ */
+const DraggableComponentsMenu = React.memo(
+    ({
+        topMenuHidden,
+        onNewDraggable,
+        name,
+        extensionType,
+        setExtensionType,
+    }) => {
+        const [yPosHidden, setYPosHidden] = useState(-200);
+        const [bounceValue, setBounceValue] = useState(
+            new Animated.Value(yPosHidden)
+        );
+        const [buttonValue, setButtonValue] = useState('O');
+
+        /**
+         * useEffect that is triggered when topMenuHidden
+         * is changed. Will toggle the view of the top menu
+         */
+        useEffect(() => {
+            toggleView();
+        }, [topMenuHidden]);
+
+        /**
+         * Animates the topmenu in and out of view
+         */
+        const toggleView = useCallback(() => {
+            var toValue = 0;
+
+            if (topMenuHidden) {
+                toValue = yPosHidden;
+            }
+            if (!topMenuHidden) {
+                Animated.spring(bounceValue, {
+                    toValue: toValue,
+                    bounciness: 1,
+                    speed: 6,
+                    useNativeDriver: true,
+                }).start();
+            } else {
+                Animated.spring(bounceValue, {
+                    toValue: toValue,
+                    bounciness: 1,
+                    speed: 6,
+                    useNativeDriver: true,
+                }).start();
+            }
+        });
+
+        /**
+         * Get's the layout of the topmenu view
+         * This is so we know how far down the object needs to
+         * "slide" to be fully in view for the user
+         * @param {dictionary} layout
+         */
+        const getTopMenuLayout = (layout) => {
+            const { x, y, width, height } = layout;
+            setYPosHidden(-height);
+        };
+
+        /**
+         * Triggered when the radiobuttons on the topmenu is
+         * changed or clicked. Will set the value of the radiobutton
+         * aswell as the extensiontype and to change backgroundImage
+         * @param {String} value
+         */
+        const extensionTypeChange = (value) => {
+            if (value != 'Gangfelt' &amp;&amp; value != 'Sykkelfelt') {
+                setExtensionType('Vanlig');
+                setButtonValue(value);
+            } else {
+                setExtensionType(value);
+                setButtonValue(value);
+            }
+        };
+
+        return (
+            &lt;Animated.View
+                style={[
+                    styles.animatedView,
+                    {
+                        transform: [{ translateY: bounceValue }],
+                    },
+                ]}>
+                &lt;View
+                    style={styles.menuContent}
+                    onLayout={(event) => {
+                        getTopMenuLayout(event.nativeEvent.layout);
+                    }}>
+                    {(name == 'Veikryss' || name == 'Rundkjoring') &amp;&amp; (
+                        &lt;View style={styles.extensionSection}>
+                            &lt;View>
+                                &lt;Text style={styles.extensionText}>
+                                    Tilvalg:
+                                &lt;/Text>
+                                &lt;View style={styles.extensionButtonGroup}>
+                                    &lt;ButtonGroup
+                                        selectedValue={buttonValue}
+                                        values={extensionTypes}
+                                        onSelect={(newValue) =>
+                                            extensionTypeChange(newValue)
+                                        }
+                                        groupWidth={270}
+                                        height={45}
+                                        highlightBackgroundColor={
+                                            Colors.secSlideActiveBg
+                                        }
+                                        highlightTextColor={
+                                            Colors.secSlideTextActive
+                                        }
+                                        inactiveBackgroundColor={
+                                            Colors.secSlideInactiveBg
+                                        }
+                                        inactiveTextColor={
+                                            Colors.secSlideTextInactive
+                                        }
+                                        textSize={17}
+                                    />
+                                &lt;/View>
+                            &lt;/View>
+                            &lt;Divider
+                                style={styles.divider}
+                                borderColor={Colors.componentMenuButtons}
+                            />
+                        &lt;/View>
+                    )}
+
+                    &lt;DraggableComponents onNewDraggable={onNewDraggable} />
+                &lt;/View>
+            &lt;/Animated.View>
+        );
+    }
+);
+
+const styles = StyleSheet.create({
+    animatedView: {
+        position: 'absolute',
+        alignItems: 'center',
+        top: 0,
+        left: 0,
+        right: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 1,
+    },
+    menuContent: {
+        flexDirection: 'row',
+        backgroundColor: Colors.componentMenu,
+        elevation: 10,
+        width: '95%',
+        height: '100%',
+        borderBottomLeftRadius: 30,
+        borderBottomRightRadius: 30,
+    },
+    extensionSection: {
+        flexDirection: 'row',
+        paddingTop: 10,
+    },
+    extensionButtonGroup: {
+        flexDirection: 'row',
+        alignSelf: 'flex-end',
+        padding: 5,
+        marginLeft: 5,
+    },
+    extensionText: {
+        color: Colors.icons,
+        opacity: 0.6,
+        textAlignVertical: 'center',
+        paddingLeft: 15,
+        ...Typography.medium,
+    },
+    divider: {
+        height: '100%',
+        padding: 10,
+        paddingLeft: 5,
+        marginBottom: 10,
+        marginLeft: 10,
+    },
+});
+
+export default DraggableComponentsMenu;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="SketchArea.SketchHeaderComponents.html">SketchHeaderComponents</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BottomMenuAnimated">BottomMenuAnimated</a></li><li><a href="global.html#BottomMenuContent">BottomMenuContent</a></li><li><a href="global.html#clearStorage">clearStorage</a></li><li><a href="global.html#CountryRoadScreen">CountryRoadScreen</a></li><li><a href="global.html#Draggable">Draggable</a></li><li><a href="global.html#DraggableComponents">DraggableComponents</a></li><li><a href="global.html#DraggableComponentsMenu">DraggableComponentsMenu</a></li><li><a href="global.html#DraggableWithEverything">DraggableWithEverything</a></li><li><a href="global.html#DrawerItem">DrawerItem</a></li><li><a href="global.html#DrawerMenu">DrawerMenu</a></li><li><a href="global.html#DrawerToggleMenuItem">DrawerToggleMenuItem</a></li><li><a href="global.html#HeaderButton">HeaderButton</a></li><li><a href="global.html#HighwayScreen">HighwayScreen</a></li><li><a href="global.html#IntersectionScreen">IntersectionScreen</a></li><li><a href="global.html#MappingDraggable">MappingDraggable</a></li><li><a href="global.html#Navigator">Navigator</a></li><li><a href="global.html#Popout">Popout</a></li><li><a href="global.html#PopoutItems">PopoutItems</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#RoadSignScreen">RoadSignScreen</a></li><li><a href="global.html#RoundaboutScreen">RoundaboutScreen</a></li><li><a href="global.html#saveData">saveData</a></li><li><a href="global.html#SettingsScreen">SettingsScreen</a></li><li><a href="global.html#SketchArea">SketchArea</a></li><li><a href="global.html#StartScreen">StartScreen</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Sun Mar 21 2021 21:58:50 GMT+0100 (sentraleuropeisk normaltid)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

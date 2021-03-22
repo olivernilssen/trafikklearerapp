@@ -15,12 +15,25 @@ const HeaderButton = React.memo((props) => {
         focusedActiveButton,
         activeId,
         buttonActiveId,
-        propsStyle,
     } = props;
 
     return (
-        <View style={{ paddingHorizontal: 10 }}>
-            <View style={propsStyle}>
+        <View>
+            <View
+                style={
+                    activeId === buttonActiveId
+                        ? [
+                              styles.buttonSize,
+                              styles.buttonActive,
+                              {
+                                  backgroundColor:
+                                      iconName === 'eraser'
+                                          ? Colors.eraserIconActive
+                                          : Colors.iconActive,
+                              },
+                          ]
+                        : [styles.buttonSize, styles.buttonInactive]
+                }>
                 <TouchableOpacity
                     onPress={() => {
                         buttonOnPress();
@@ -29,19 +42,7 @@ const HeaderButton = React.memo((props) => {
                     <Icon
                         name={iconName}
                         size={Icons.small}
-                        style={
-                            activeId === buttonActiveId
-                                ? [
-                                      styles.buttonActive,
-                                      {
-                                          backgroundColor:
-                                              iconName === 'eraser'
-                                                  ? Colors.eraserIconActive
-                                                  : Colors.iconActive,
-                                      },
-                                  ]
-                                : [styles.buttonSize, styles.buttonInactive]
-                        }
+                        color={Colors.textLight}
                     />
                 </TouchableOpacity>
             </View>
@@ -51,22 +52,19 @@ const HeaderButton = React.memo((props) => {
 
 const styles = StyleSheet.create({
     buttonSize: {
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // ...Typography.large,
+        height: 62,
+        width: 62,
+        justifyContent: 'center',
+        alignItems: 'center',
+        ...Buttons.round,
     },
     buttonActive: {
         color: Colors.textLight,
-        paddingVertical: 12,
-        paddingHorizontal: 14,
         backgroundColor: Colors.iconActive,
-        ...Buttons.round,
     },
     buttonInactive: {
         color: Colors.icons,
         backgroundColor: Colors.header,
-        paddingVertical: 12,
-        paddingHorizontal: 14,
     },
     spacedRight: {
         flex: 1,

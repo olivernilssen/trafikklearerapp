@@ -10,18 +10,18 @@ import {
 } from 'react-native-popup-menu';
 import PencilSizePopup from './PencilSizePopup';
 import ColorButton from './ColorButton';
-import { Colors, Typography, Buttons } from '../../styles';
+import { Colors, Typography, Buttons, Icons } from '../../styles';
 import AppContext from '../../AppContext';
 
 const { Popover } = renderers;
 
 const SketchColorMenu = React.memo((props) => {
-    const appContext = useContext(AppContext);
-    const INITIAL_COLOR = appContext.penColor;
+    // const appContext = useContext(AppContext);
+    // const INITIAL_COLOR = appContext.penColor;
     const [isOpened, setOpened] = useState(false);
     const [colorButtonID, setColorButtonID] = useState(0);
-    const [chosenColorButtonID, setChosenColorButtonID] = useState(0);
     const [pencilThicknessID, setPencilThicknessID] = useState(0);
+    const [menuArrow, setMenuArrow] = useState(false);
 
     const {
         onPaletteColorChange,
@@ -32,11 +32,9 @@ const SketchColorMenu = React.memo((props) => {
         activeId,
         focusedActiveButton,
         pencilColor,
-        pencilSize,
-        chosenColor,
     } = props;
 
-    const colors = [
+    const colorArray = [
         '#20303C',
         '#3182C8',
         '#00AAAF',
@@ -59,12 +57,18 @@ const SketchColorMenu = React.memo((props) => {
         setPencilThicknessID(value);
     };
 
+    const onPressMenuArrow = (value) => {
+        setMenuArrow(value);
+    };
+
     const onPressMenuTrigger = () => {
         if (activeId != 0) {
             onEraserPencilSwitch();
             focusedActiveButton(buttonActiveId);
+            onPressMenuArrow(false);
             onSecondClickOpen(false);
         } else {
+            onPressMenuArrow(true);
             onSecondClickOpen(true);
         }
     };
@@ -80,39 +84,49 @@ const SketchColorMenu = React.memo((props) => {
                 opened={isOpened}
                 onBackdropPress={() => {
                     onSecondClickOpen(false);
+                    onPressMenuArrow(false);
                 }}>
                 <MenuTrigger
                     onPress={() => {
                         onPressMenuTrigger();
                     }}
-                    style={
-                        activeId === buttonActiveId
-                            ? [
-                                  styles.buttonActive,
-                                  { backgroundColor: pencilColor },
-                              ]
-                            : [styles.buttonSize, styles.buttonInactive]
-                    }>
-                    <Icon
-                        name={'pen'}
-                        size={30}
-                        solid
-                        color={Colors.textLight}
-                    />
-                    <Icon
-                        name={'sort-down'}
-                        size={25}
-                        solid
-                        color={Colors.textLight}
+                    // style={
+                    //     activeId === buttonActiveId
+                    //         ? [
+                    //               styles.buttonActive,
+                    //               { backgroundColor: pencilColor },
+                    //           ]
+                    //         : [styles.buttonSize, styles.buttonInactive]
+                    // }
+                >
+                    <View
                         style={
-                            activeId === 0
-                                ? [styles.downIconMenu, styles.iconActive]
-                                : [
-                                      styles.downIconMenu,
-                                      styles.iconColorInactive,
+                            activeId === buttonActiveId
+                                ? [
+                                      styles.buttonSize,
+                                      styles.buttonActive,
+                                      { backgroundColor: pencilColor },
                                   ]
-                        }
-                    />
+                                : [styles.buttonSize, styles.buttonInactive]
+                        }>
+                        <Icon
+                            name={'pen'}
+                            size={Icons.small}
+                            solid
+                            color={Colors.textLight}
+                        />
+                        <Icon
+                            name={menuArrow ? 'sort-up' : 'sort-down'}
+                            size={25}
+                            solid
+                            color={Colors.textLight}
+                            style={
+                                isOpened
+                                    ? [styles.upIconMenu]
+                                    : [styles.downIconMenu]
+                            }
+                        />
+                    </View>
                 </MenuTrigger>
                 <MenuOptions optionsContainerStyle={styles.menuOptions}>
                     <View
@@ -123,7 +137,7 @@ const SketchColorMenu = React.memo((props) => {
                             paddingTop: 10,
                         }}>
                         <ColorButton
-                            colorName={colors[0]}
+                            colorName={colorArray[0]}
                             colorButtonID={colorButtonID}
                             buttonID={0}
                             onPaletteColorChange={onPaletteColorChange}
@@ -131,49 +145,49 @@ const SketchColorMenu = React.memo((props) => {
                         />
 
                         <ColorButton
-                            colorName={colors[1]}
+                            colorName={colorArray[1]}
                             colorButtonID={colorButtonID}
                             buttonID={1}
                             onPaletteColorChange={onPaletteColorChange}
                             chosenColorButton={chosenColorButton}
                         />
                         <ColorButton
-                            colorName={colors[2]}
+                            colorName={colorArray[2]}
                             colorButtonID={colorButtonID}
                             buttonID={2}
                             onPaletteColorChange={onPaletteColorChange}
                             chosenColorButton={chosenColorButton}
                         />
                         <ColorButton
-                            colorName={colors[3]}
+                            colorName={colorArray[3]}
                             colorButtonID={colorButtonID}
                             buttonID={3}
                             onPaletteColorChange={onPaletteColorChange}
                             chosenColorButton={chosenColorButton}
                         />
                         <ColorButton
-                            colorName={colors[4]}
+                            colorName={colorArray[4]}
                             colorButtonID={colorButtonID}
                             buttonID={4}
                             onPaletteColorChange={onPaletteColorChange}
                             chosenColorButton={chosenColorButton}
                         />
                         <ColorButton
-                            colorName={colors[5]}
+                            colorName={colorArray[5]}
                             colorButtonID={colorButtonID}
                             buttonID={5}
                             onPaletteColorChange={onPaletteColorChange}
                             chosenColorButton={chosenColorButton}
                         />
                         <ColorButton
-                            colorName={colors[6]}
+                            colorName={colorArray[6]}
                             colorButtonID={colorButtonID}
                             buttonID={6}
                             onPaletteColorChange={onPaletteColorChange}
                             chosenColorButton={chosenColorButton}
                         />
                         <ColorButton
-                            colorName={colors[7]}
+                            colorName={colorArray[7]}
                             colorButtonID={colorButtonID}
                             buttonID={7}
                             onPaletteColorChange={onPaletteColorChange}
@@ -225,35 +239,36 @@ const SketchColorMenu = React.memo((props) => {
 
 const styles = StyleSheet.create({
     buttonSize: {
-        ...Typography.large,
+        height: 62,
+        width: 62,
+        ...Buttons.round,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     downIconMenu: {
         position: 'absolute',
         alignSelf: 'center',
         top: 32,
     },
+    upIconMenu: {
+        position: 'absolute',
+        alignSelf: 'center',
+        top: 40,
+    },
     buttonActive: {
         backgroundColor: Colors.iconActive,
-        paddingVertical: 14,
-        paddingHorizontal: 16,
-        ...Buttons.round,
-        ...Typography.large,
     },
     buttonInactive: {
         color: Colors.icons,
-        backgroundColor: 'transparent',
-        paddingVertical: 12,
-        paddingHorizontal: 16,
-        ...Typography.large,
     },
-    spacedCenter: {
-        flex: 1,
-        flexDirection: 'row',
-        height: '100%',
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+    // spacedCenter: {
+    //     flex: 1,
+    //     flexDirection: 'row',
+    //     height: '100%',
+    //     width: '100%',
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    // },
     iconColorActive: {
         color: Colors.iconActive,
     },

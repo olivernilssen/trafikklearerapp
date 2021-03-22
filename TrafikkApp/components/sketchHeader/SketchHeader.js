@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import Header from '../reusableComponents/Header';
 import SketchColorMenu from './SketchColorMenu';
 import HeaderButton from './HeaderButton';
-import BoxButton from './BoxButton';
+import DraggableComponentsButton from './DraggableComponentsButton';
 import DeleteButtonPopover from './DeleteButtonPopover';
 import { Colors, Typography } from '../../styles';
 
@@ -44,12 +44,9 @@ const SketchHeader = React.memo((props) => {
                     clearCanvas={clearCanvas}
                     propsStyle={styles.spacedLeft}
                 />
-
-                {/* <PencilSizePopup propsStyle={styles.spacedCenter} /> */}
                 <SketchColorMenu
                     onPaletteColorChange={onPaletteColorChange}
                     onChangePencilSize={onChangePencilSize}
-                    iconSize={styles.buttonSize}
                     propsStyle={styles.spacedRight}
                     onEraserPencilSwitch={onEraserPencilSwitch}
                     buttonActiveId={0}
@@ -59,6 +56,7 @@ const SketchHeader = React.memo((props) => {
                     pencilSize={pencilSize}
                     chosenColor={chosenColor}
                 />
+                <View style={{ paddingHorizontal: 5 }} />
                 <HeaderButton
                     iconName={'eraser'}
                     buttonOnPress={eraser}
@@ -66,6 +64,7 @@ const SketchHeader = React.memo((props) => {
                     activeId={activeId}
                     focusedActiveButton={focusedActiveButton}
                 />
+                <View style={{ paddingHorizontal: 5 }} />
                 <HeaderButton
                     iconName={'undo-alt'}
                     buttonOnPress={undoChange}
@@ -73,7 +72,8 @@ const SketchHeader = React.memo((props) => {
                     activeId={activeId}
                     focusedActiveButton={focusedActiveButton}
                 />
-                <BoxButton
+                <View style={{ paddingHorizontal: 5 }} />
+                <DraggableComponentsButton
                     activeIconName={'box-open'}
                     inactiveIconName={'box'}
                     toggleRightMenuState={toggleRightMenuState}
@@ -86,7 +86,11 @@ const SketchHeader = React.memo((props) => {
 
 const styles = StyleSheet.create({
     buttonSize: {
-        ...Typography.medium,
+        height: 62,
+        width: 62,
+        justifyContent: 'center',
+        alignItems: 'center',
+        ...Buttons.round,
     },
     header: {
         backgroundColor: Colors.header,
@@ -94,15 +98,6 @@ const styles = StyleSheet.create({
     toolBar: {
         width: '100%',
         elevation: 10,
-    },
-    spacedCenter: {
-        flex: 1,
-        flexDirection: 'row',
-        height: '100%',
-        width: 100,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 20,
     },
     spacedLeft: {
         flex: 1,

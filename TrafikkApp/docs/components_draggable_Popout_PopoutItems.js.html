@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/draggable/Popout/PopoutItems.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/draggable/Popout/PopoutItems.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+
+import { View, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import Animated from 'react-native-reanimated';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import { Colors } from '../../../styles';
+
+/**
+ * Component for the items inside the animated popout menu
+ * @param {dictionary} props
+ * @returns popoutItems as small circles
+ */
+const PopoutItems = (props) => {
+    const { radius, array, setTintColor, buttonSize, removeItem } = props;
+
+    /**
+     * Function to calculate the x and y coordinates as a half circle
+     * around an object. depending on which position the item has in
+     * the array it is placed in
+     * @param {Int} i
+     * @returns the x and y position of the circle
+     */
+    const calculateXY = (i) => {
+        const so = 0; //start offset
+        const rx = radius; //radius along x
+        const ry = radius; //radius along y
+        const n = array.length; //length of items
+        const maxCircle = 180;
+
+        const x =
+            ry + ry * -Math.sin((150 / n / maxCircle) * (i + 1 + so) * Math.PI);
+        const y =
+            rx + -rx * Math.cos((150 / n / maxCircle) * (i + 1 + so) * Math.PI);
+
+        return { x, y };
+    };
+
+    /**
+     * Check what button is pressed
+     * and change either tintcolor, remove it or delete item
+     * @param {hex} color
+     * @param {boolean} isRemoveButton
+     * @param {boolean} isResetButton
+     */
+    const onPressOption = (color, isRemoveButton, isResetButton) => {
+        isRemoveButton
+            ? removeItem()
+            : !isResetButton
+            ? setTintColor(color)
+            : setTintColor(null); //ERROR THIS ONE DOES NOT WORK, makes the image invisible
+    };
+
+    /**
+     * This returns each object that is in the array
+     * as a small circle placed according to the function calculateXY
+     */
+    return array.map((color, i) => {
+        const isResetButton = color == 'reset';
+        const isRemoveButton = color == 'delete';
+        color = isResetButton
+            ? '#DDDDDD'
+            : isRemoveButton
+            ? Colors.deleteButtonActive
+            : color;
+
+        const coords = calculateXY(i);
+        return (
+            &lt;View
+                key={color + i}
+                style={[
+                    styles.button,
+                    {
+                        top: coords.y - buttonSize / 2,
+                        right: coords.x - buttonSize / 2,
+                        height: buttonSize,
+                        width: buttonSize,
+                        padding: 5,
+                    },
+                ]}>
+                &lt;TouchableOpacity
+                    color={color}
+                    onPressOut={() =>
+                        onPressOption(color, isRemoveButton, isResetButton)
+                    }>
+                    &lt;Animated.View
+                        style={[
+                            styles.circleInTouchable,
+                            {
+                                width: buttonSize,
+                                height: buttonSize,
+                                backgroundColor: color,
+                                borderRadius: buttonSize,
+                            },
+                        ]}>
+                        {isRemoveButton &amp;&amp; (
+                            &lt;Icon
+                                name={'times'}
+                                solid
+                                size={buttonSize - 10}
+                                color={Colors.textLight}
+                            />
+                        )}
+                        {isResetButton &amp;&amp; (
+                            &lt;Icon
+                                name={'undo'}
+                                solid
+                                size={buttonSize - 10}
+                                color={'black'}
+                            />
+                        )}
+                    &lt;/Animated.View>
+                &lt;/TouchableOpacity>
+            &lt;/View>
+        );
+    });
+};
+
+const styles = StyleSheet.create({
+    button: {
+        justifyContent: 'center',
+        position: 'absolute',
+        elevation: 10,
+        alignItems: 'center',
+    },
+    circleInTouchable: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+});
+
+export default PopoutItems;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="SketchArea.SketchHeaderComponents.html">SketchHeaderComponents</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BottomMenuAnimated">BottomMenuAnimated</a></li><li><a href="global.html#BottomMenuContent">BottomMenuContent</a></li><li><a href="global.html#clearStorage">clearStorage</a></li><li><a href="global.html#CountryRoadScreen">CountryRoadScreen</a></li><li><a href="global.html#Draggable">Draggable</a></li><li><a href="global.html#DraggableComponents">DraggableComponents</a></li><li><a href="global.html#DraggableComponentsMenu">DraggableComponentsMenu</a></li><li><a href="global.html#DraggableWithEverything">DraggableWithEverything</a></li><li><a href="global.html#DrawerItem">DrawerItem</a></li><li><a href="global.html#DrawerMenu">DrawerMenu</a></li><li><a href="global.html#DrawerToggleMenuItem">DrawerToggleMenuItem</a></li><li><a href="global.html#HeaderButton">HeaderButton</a></li><li><a href="global.html#HighwayScreen">HighwayScreen</a></li><li><a href="global.html#IntersectionScreen">IntersectionScreen</a></li><li><a href="global.html#MappingDraggable">MappingDraggable</a></li><li><a href="global.html#Navigator">Navigator</a></li><li><a href="global.html#Popout">Popout</a></li><li><a href="global.html#PopoutItems">PopoutItems</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#RoadSignScreen">RoadSignScreen</a></li><li><a href="global.html#RoundaboutScreen">RoundaboutScreen</a></li><li><a href="global.html#saveData">saveData</a></li><li><a href="global.html#SettingsScreen">SettingsScreen</a></li><li><a href="global.html#SketchArea">SketchArea</a></li><li><a href="global.html#StartScreen">StartScreen</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Sun Mar 21 2021 21:58:50 GMT+0100 (sentraleuropeisk normaltid)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

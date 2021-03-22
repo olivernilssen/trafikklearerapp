@@ -49,18 +49,20 @@ const DeleteButtonPopover = React.memo((props) => {
                 <MenuTrigger
                     onPress={() => {
                         setOpened(true);
-                    }}
-                    style={
-                        isOpened
-                            ? [styles.buttonSize, styles.buttonActive]
-                            : [styles.buttonSize, styles.buttonInactive]
-                    }>
-                    <Icon
-                        name={'trash'}
-                        size={30}
-                        solid
-                        color={Colors.textLight}
-                    />
+                    }}>
+                    <View
+                        style={
+                            isOpened
+                                ? [styles.buttonSize, styles.buttonActive]
+                                : [styles.buttonSize, styles.buttonInactive]
+                        }>
+                        <Icon
+                            name={'trash'}
+                            size={30}
+                            solid
+                            color={Colors.textLight}
+                        />
+                    </View>
                 </MenuTrigger>
 
                 <MenuOptions optionsContainerStyle={styles.menuOptions}>
@@ -92,21 +94,23 @@ const DeleteButtonPopover = React.memo((props) => {
 
 const styles = StyleSheet.create({
     buttonSize: {
-        ...Typography.large,
+        height: 62,
+        width: 62,
+        ...Buttons.round,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     buttonActive: {
         backgroundColor: Colors.deleteButtonActive,
-        paddingVertical: 12,
+        paddingVertical: 16,
         paddingHorizontal: 16,
-        ...Buttons.round,
         // ...Typography.large,
     },
     buttonInactive: {
         color: Colors.icons,
         backgroundColor: Colors.header,
-        paddingVertical: 12,
+        paddingVertical: 16,
         paddingHorizontal: 16,
-        ...Buttons.round,
         // ...Typography.large,
     },
     deleteAllButton: {
