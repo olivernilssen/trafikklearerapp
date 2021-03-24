@@ -32,8 +32,6 @@ const SketchColorMenu = React.memo((props) => {
         activeId,
         focusedActiveButton,
         pencilColor,
-        pencilSize,
-        chosenColor,
     } = props;
 
     const colors = [

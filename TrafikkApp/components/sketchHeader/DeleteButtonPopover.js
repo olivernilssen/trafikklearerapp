@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
-import {
-    StyleSheet,
-    TouchableOpacity,
-    TouchableHighlight,
-    TouchableWithoutFeedback,
-    Text,
-    View,
-} from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {
     Menu,
