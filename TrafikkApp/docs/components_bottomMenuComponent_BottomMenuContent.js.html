@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/bottomMenuComponent/BottomMenuContent.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/bottomMenuComponent/BottomMenuContent.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, TouchableOpacity, Text, Image } from 'react-native';
+
+import { Colors, Typography, Buttons } from '../../styles';
+import Divider from '../reusableComponents/Divider';
+import ButtonGroup from '../reusableComponents/ButtonGroup';
+import backgroundImagePath from './backgroundImagePath';
+
+/**
+ * BottomMenuContent is a menu that slides up from the bottom of the screen
+ * This menu allows the user to change the background image according to
+ * which screen they are on
+ */
+const BottomMenuContent = React.memo(
+    ({ roadType, setImage, setRoadDesignChange, extensionType }) => {
+        //Get the roadtype json this component applies too based on roadType prop
+        const thisRoadType = backgroundImagePath[roadType];
+
+        //RoadDesign == "høyrekryss", "lyskryss etc"
+        const RoadDesigns = [];
+        const IntersectionTypes = [];
+
+        //Get the keys of all the road designs for this road type (høyrekryss, lyskryss etc.)
+        const keys = Object.keys(thisRoadType);
+        keys.map((key) => {
+            RoadDesigns.push(key);
+        });
+
+        //States for selected roadDesign and intersectionType
+        const [roadDesign, setRoadDesign] = useState(RoadDesigns[0]);
+        const [intersectionType, setIntersectionType] = useState('X');
+
+        //Get the intersection types if the road design is intersection (veikryss)
+        if (roadType === 'Veikryss') {
+            const keys = Object.keys(thisRoadType[roadDesign]);
+            keys.map((key) => {
+                IntersectionTypes.push(key);
+            });
+        }
+
+        /**
+         * Is triggered on mount and unmount, will help set the background
+         * when the screen is first mounted
+         */
+        useEffect(() => {
+            if (roadType == 'Veikryss') {
+                const imgSource =
+                    thisRoadType[roadDesign][intersectionType][extensionType];
+                setImage(imgSource);
+            } else {
+                const imgSource = thisRoadType[roadDesign][extensionType];
+                setImage(imgSource);
+            }
+        }, []);
+
+        /**
+         * Is triggered when extensionType state is changed
+         * Will update the background image according to this parameter
+         * Also sets the roadDesignChange to false so that the canvas is not cleared
+         */
+        useEffect(() => {
+            setRoadDesignChange(false);
+            if (roadType == 'Veikryss') {
+                const imgSource =
+                    thisRoadType[roadDesign][intersectionType][extensionType];
+                setImage(imgSource);
+            } else {
+                const imgSource = thisRoadType[roadDesign][extensionType];
+                setImage(imgSource);
+            }
+        }, [extensionType]);
+
+        /**
+         * Button event that changes the background image of the screen
+         * Depending on if it is a intersection or not, the handling is different
+         * Also sets the roadDesign state.
+         * Also sets the roadDesignChange to true so that the canvas is cleared
+         * @param {String} designName
+         */
+        const onPressButton = (designName) => {
+            setRoadDesignChange(true);
+            if (roadType == 'Veikryss') {
+                const imgSource = thisRoadType[designName]['X'][extensionType];
+                setImage(imgSource);
+                setIntersectionType('X');
+            } else {
+                const imgSource = thisRoadType[designName][extensionType];
+                setImage(imgSource);
+            }
+            setRoadDesign(designName);
+        };
+
+        /**
+         * Triggered when the radiobuttons are clicked
+         * Changes the type of intersection design that is chosen (x, y, t)
+         * Also sets the roadDesignChange to true so that the canvas is cleared
+         * @param {String} radioValue
+         */
+        const intersectionTypeChange = (intersectionType) => {
+            setRoadDesignChange(true);
+            setIntersectionType(intersectionType);
+            const imgSource =
+                thisRoadType[roadDesign][intersectionType][extensionType];
+            setImage(imgSource);
+        };
+
+        /**
+         * Returns the source of the image to be displayed as a background image
+         * of the buttons in the BottomMenu.
+         * @param {String} designName
+         */
+        const getImage = (designName) => {
+            let imgSource = '';
+            if (roadType == 'Veikryss') {
+                imgSource = thisRoadType[designName]['X']['Vanlig'];
+            } else {
+                imgSource = thisRoadType[designName]['Vanlig'];
+            }
+            return imgSource;
+        };
+
+        return (
+            &lt;View style={styles.main}>
+                {/* START * The main buttons (Høyrekryss, forkjørs, lys) */}
+                &lt;View style={styles.buttonGroup}>
+                    {RoadDesigns.map((label, i) => {
+                        const activeBtn = label === roadDesign;
+                        const imgSource = getImage(label);
+                        return (
+                            &lt;View key={i}>
+                                &lt;TouchableOpacity
+                                    style={styles.buttonContainer}
+                                    activeOpacity={0.6}
+                                    onPress={() => onPressButton(label)}>
+                                    &lt;Image
+                                        source={imgSource}
+                                        style={[
+                                            styles.buttonImage,
+                                            activeBtn
+                                                ? {
+                                                      opacity: 1,
+                                                  }
+                                                : {
+                                                      opacity: 0.6,
+                                                  },
+                                        ]}
+                                    />
+                                &lt;/TouchableOpacity>
+                                &lt;Text
+                                    style={[
+                                        styles.buttonText,
+                                        activeBtn
+                                            ? {
+                                                  color: Colors.textLight,
+                                              }
+                                            : {
+                                                  color: Colors.icons,
+                                              },
+                                    ]}>
+                                    {label}
+                                &lt;/Text>
+                            &lt;/View>
+                        );
+                    })}
+                &lt;/View>
+                {/* END * The main buttons (Høyrekryss, forkjørs, lys) */}
+
+                {/* START * The intersectionType buttons (X, T, Y) */}
+                {roadType == 'Veikryss' &amp;&amp; (
+                    &lt;View style={styles.intersectionTypeSection}>
+                        &lt;Divider
+                            style={styles.divider}
+                            borderColor={Colors.bottomMenyButtons}
+                        />
+                        &lt;Text style={styles.intersectionTypeInfoText}>
+                            Kryssutforming:
+                        &lt;/Text>
+
+                        &lt;ButtonGroup
+                            selectedValue={intersectionType}
+                            values={IntersectionTypes}
+                            onSelect={(newValue) =>
+                                intersectionTypeChange(newValue)
+                            }
+                            groupWidth={300}
+                            highlightBackgroundColor={Colors.secSlideActiveBg}
+                            highlightTextColor={Colors.secSlideTextActive}
+                            inactiveBackgroundColor={Colors.bottomMenyButtons}
+                            inactiveTextColor={Colors.secSlideTextInactive}
+                        />
+                    &lt;/View>
+                )}
+                {/* END * The intersectionType buttons (X, T, Y) */}
+            &lt;/View>
+        );
+    }
+);
+
+const styles = StyleSheet.create({
+    main: {
+        flexDirection: 'column',
+        paddingTop: 40,
+        paddingBottom: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+    },
+    buttonGroup: {
+        flexDirection: 'row',
+        marginVertical: 10,
+    },
+    buttonContainer: {
+        padding: 25,
+        marginRight: 5,
+        marginHorizontal: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
+        elevation: 3,
+        backgroundColor: Colors.bottomMeny,
+        ...Buttons.largeWidthRounded,
+    },
+    buttonImage: {
+        overflow: 'hidden',
+        height: undefined,
+        width: undefined,
+        ...Buttons.rounded,
+        ...StyleSheet.absoluteFillObject,
+    },
+    buttonText: {
+        paddingTop: 5,
+        textAlign: 'center',
+        ...Typography.medium,
+    },
+    intersectionTypeSection: {
+        flexDirection: 'column',
+        width: '100%',
+        marginVertical: 20,
+        alignItems: 'center',
+    },
+    divider: {
+        width: '80%',
+        alignSelf: 'center',
+        marginBottom: 20,
+    },
+    intersectionTypeInfoText: {
+        textAlign: 'center',
+        paddingBottom: 15,
+        color: Colors.icons,
+        opacity: 0.5,
+        ...Typography.medium,
+    },
+});
+
+export default BottomMenuContent;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="reusableComponents.html">reusableComponents</a></li><li><a href="reusableComponents.ButtonGroup.html">ButtonGroup</a></li><li><a href="reusableComponents.Carousel.html">Carousel</a></li><li><a href="reusableComponents.Divider.html">Divider</a></li><li><a href="reusableComponents.Header.html">Header</a></li><li><a href="reusableComponents.MainView.html">MainView</a></li><li><a href="reusableComponents.Overlay.html">Overlay</a></li><li><a href="SketchArea.html">SketchArea</a></li><li><a href="SketchHeader.html">SketchHeader</a></li><li><a href="SketchHeader.ColorButton.html">ColorButton</a></li><li><a href="SketchHeader.DeleteButtonPopover.html">DeleteButtonPopover</a></li><li><a href="SketchHeader.DraggableComponentsButton.html">DraggableComponentsButton</a></li><li><a href="SketchHeader.HeaderButton.html">HeaderButton</a></li><li><a href="SketchHeader.PencilSizePopup.html">PencilSizePopup</a></li><li><a href="SketchHeader.SketchColorMenu.html">SketchColorMenu</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BottomMenuAnimated">BottomMenuAnimated</a></li><li><a href="global.html#BottomMenuContent">BottomMenuContent</a></li><li><a href="global.html#clearStorage">clearStorage</a></li><li><a href="global.html#CountryRoadScreen">CountryRoadScreen</a></li><li><a href="global.html#Draggable">Draggable</a></li><li><a href="global.html#DraggableComponents">DraggableComponents</a></li><li><a href="global.html#DraggableComponentsMenu">DraggableComponentsMenu</a></li><li><a href="global.html#DraggableWithEverything">DraggableWithEverything</a></li><li><a href="global.html#DrawerItem">DrawerItem</a></li><li><a href="global.html#DrawerMenu">DrawerMenu</a></li><li><a href="global.html#DrawerToggleMenuItem">DrawerToggleMenuItem</a></li><li><a href="global.html#HighwayScreen">HighwayScreen</a></li><li><a href="global.html#IntersectionScreen">IntersectionScreen</a></li><li><a href="global.html#MappingDraggable">MappingDraggable</a></li><li><a href="global.html#Navigator">Navigator</a></li><li><a href="global.html#Popout">Popout</a></li><li><a href="global.html#PopoutItems">PopoutItems</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#RoadSignScreen">RoadSignScreen</a></li><li><a href="global.html#RoundaboutScreen">RoundaboutScreen</a></li><li><a href="global.html#saveData">saveData</a></li><li><a href="global.html#SettingsScreen">SettingsScreen</a></li><li><a href="global.html#StartScreen">StartScreen</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Mon Mar 22 2021 22:16:29 GMT+0100 (sentraleuropeisk normaltid)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
