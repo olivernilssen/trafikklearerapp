@@ -53,6 +53,11 @@ const styles = StyleSheet.create({
         width: '100%',
         padding: 20,
         backgroundColor: Colors.sketchBackground,
+        // backgroundColor: '#202124',
+        // backgroundColor: '#6A7B76',
+        // backgroundColor: '#474954',
+        // backgroundColor: '#304B46',
+        backgroundColor: Colors.curriculumBg,
     },
     header: {
         width: '80%',

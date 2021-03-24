@@ -49,7 +49,7 @@ const CurriculumContent = React.memo(
         return (
             <View style={styles.main}>
                 <Text style={styles.subHeading}>{subHeading}</Text>
-                <Divider borderColor={Colors.header} />
+                {/* <Divider borderColor={Colors.header} style={styles.divider} /> */}
                 {contents}
             </View>
         );
@@ -58,23 +58,26 @@ const CurriculumContent = React.memo(
 
 const styles = StyleSheet.create({
     main: {
-        width: '100%',
-        // backgroundColor: Colors.sketchBackground,
         marginBottom: '12%',
     },
     subHeading: {
-        color: Colors.textLight,
+        color: Colors.icons,
         fontSize: 25,
-        paddingVertical: 10,
-        paddingHorizontal: 10,
-        // fontWeight: 'bold',
+        paddingTop: '2%',
+        paddingBottom: '2%',
+        paddingLeft: '2%',
+    },
+    divider: {
+        width: '96%',
+        alignSelf: 'center',
     },
     content: {
-        padding: 15,
+        paddingHorizontal: '2%',
+        paddingVertical: '1%',
         marginVertical: 10,
         borderRadius: 10,
-        // backgroundColor: Colors.secSlideInactiveBg,
-        // elevation: 5,
+        backgroundColor: Colors.curriculumCards,
+        elevation: 5,
     },
     curriculumObjective: {
         fontSize: 21,
@@ -82,7 +85,7 @@ const styles = StyleSheet.create({
     },
     curriculumContent: {
         fontSize: 18,
-        color: Colors.icons,
+        color: Colors.textLight,
         paddingVertical: 5,
         lineHeight: 30,
     },

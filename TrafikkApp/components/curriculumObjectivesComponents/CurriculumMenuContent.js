@@ -66,7 +66,7 @@ const CurriculumMenuContent = React.memo(
                                               }
                                             : {
                                                   backgroundColor:
-                                                      Colors.secSlideInactiveBg,
+                                                      Colors.bottomMenyButtons,
                                               },
                                     ]}
                                     activeOpacity={0.6}
@@ -135,6 +135,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 40,
         borderTopRightRadius: 40,
         overflow: 'hidden',
+        elevation: 1,
     },
     buttonContainer: {
         padding: 25,

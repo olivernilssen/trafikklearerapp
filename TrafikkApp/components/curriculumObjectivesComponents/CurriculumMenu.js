@@ -123,7 +123,7 @@ var styles = StyleSheet.create({
         backgroundColor: Colors.bottomMeny,
         paddingBottom: 10,
         alignItems: 'center',
-        elevation: 20,
+        elevation: 22,
         width: '100%',
         borderTopLeftRadius: 40,
         borderTopRightRadius: 40,
