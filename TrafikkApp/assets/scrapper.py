@@ -48,6 +48,7 @@ for i, pakke in enumerate(dokumentpakker):
         if len(splitByCode) > 1:
             newSubCode = splitByCode[1].split(' ', 1)
             
+            # Change '.' to '_'?
             undercodes[code[0]+'.'+newSubCode[0]] = newSubCode[1].rstrip()
         else:
             undercodes[code[0]] = code[1].rstrip()
