@@ -8,16 +8,16 @@ import {
     MenuTrigger,
     renderers,
 } from 'react-native-popup-menu';
-import PencilSizePopup from './PencilSizePopup';
+import PencilSizeButton from './PencilSizeButton';
 import ColorButton from './ColorButton';
 import { Colors, Typography, Buttons, Icons } from '../../styles';
 import AppContext from '../../AppContext';
 
 const { Popover } = renderers;
 
-/** A menu for the drawing component of the sketchheader
+/** A button with a menu for the drawing component of the sketchheader
  * @namespace SketchColorMenu
- * @memberof SketchHeader
+ * @memberof sketchHeaderComponents
  * @prop {function} onPaletteColorChange Changes the color
  * @prop {function} onChangePencilSize Changes pencil size
  * @prop {object} propsStyle StyleSheet
@@ -27,7 +27,6 @@ const { Popover } = renderers;
  * @prop {function} focusedActiveButton Handles the states of the active buttons
  * @prop {string} chosenColor The state chosenColor
  */
-
 const SketchColorMenu = React.memo((props) => {
     // const appContext = useContext(AppContext);
     // const INITIAL_COLOR = appContext.penColor;
@@ -75,7 +74,7 @@ const SketchColorMenu = React.memo((props) => {
     ];
 
     /**Used to handle the state of the color menu, if it is open or not
-     * @memberof SketchHeader.SketchColorMenu
+     * @memberof sketchHeaderComponents.SketchColorMenu
      * @param {boolean} value The state of isOpened
      */
     const onSecondClickOpen = (value) => {
@@ -83,7 +82,7 @@ const SketchColorMenu = React.memo((props) => {
     };
 
     /** Used to assign an id to the color buttons
-     * @memberof SketchHeader.SketchColorMenu
+     * @memberof sketchHeaderComponents.SketchColorMenu
      * @param {number} value The id for the color buttons
      */
     const chosenColorButton = (value) => {
@@ -91,7 +90,7 @@ const SketchColorMenu = React.memo((props) => {
     };
 
     /** Used to assign an id to the pencil thickness buttons
-     * @memberof SketchHeader.SketchColorMenu
+     * @memberof sketchHeaderComponents.SketchColorMenu
      * @param {number} value The id for the pencil thickness button
      */
     const chosenThicknessButton = (value) => {
@@ -99,7 +98,7 @@ const SketchColorMenu = React.memo((props) => {
     };
 
     /** Handles what happens to the pencil button when you press it or when you press another button after the pencil button
-     * @memberof SketchHeader.SketchColorMenu
+     * @memberof sketchHeaderComponents.SketchColorMenu
      */
     const onPressMenuTrigger = () => {
         if (activeId != 0) {
@@ -113,7 +112,7 @@ const SketchColorMenu = React.memo((props) => {
 
     /**Maps through an array of color codes and returns a button for each color
      * the button is used for changing the color of the pencil
-     * @memberof SketchHeader.SketchColorMenu
+     * @memberof sketchHeaderComponents.SketchColorMenu
      * @param {object} value Contains the color code and the unique key
      * @param {number} index The index of the objects in the array
      */
@@ -132,7 +131,7 @@ const SketchColorMenu = React.memo((props) => {
 
     /**Maps through an array of objects containing numbers and returns a button for for each object
      * The button is used for changing the thickness of the pencil
-     * @memberof SketchHeader.SketchColorMenu
+     * @memberof sketchHeaderComponents.SketchColorMenu
      * @param {object} value Contains the thickness of the pencil, thickness of the view and the unique key
      * @param {number} index The index of the objects in the array
      */
@@ -144,7 +143,7 @@ const SketchColorMenu = React.memo((props) => {
                     onChangePencilSize(value.pencilThickness);
                     chosenThicknessButton(index);
                 }}>
-                <PencilSizePopup
+                <PencilSizeButton
                     pencilThickness={value.viewThickness}
                     buttonID={index}
                     pencilThicknessID={pencilThicknessID}
@@ -190,7 +189,9 @@ const SketchColorMenu = React.memo((props) => {
                             size={25}
                             solid
                             color={
-                                activeId === 0 ? Colors.textLight : '#00000000'
+                                activeId === 0
+                                    ? Colors.textLight
+                                    : 'transparent'
                             }
                             style={styles.downIconMenu}
                         />
