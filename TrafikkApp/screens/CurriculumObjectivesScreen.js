@@ -9,7 +9,7 @@ import { Colors, Typography } from '../styles';
 /**
  * The screen component for the curriculum objectives for traffic training
  */
-const CurriculumObjectives = React.memo(({ navigation }) => {
+const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
     const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
     const [mainHeading, setMainHeading] = useState('Klasse B');
     const [subHeading, setSubHeading] = useState();
@@ -80,4 +80,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default CurriculumObjectives;
+export default CurriculumObjectivesScreen;

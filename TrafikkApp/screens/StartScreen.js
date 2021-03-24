@@ -67,7 +67,9 @@ const StartScreen = React.memo(({ navigation }) => {
                             name="arrow-right"
                             text="Læreplanmål"
                             onPress={() =>
-                                navigation.navigate('CurriculumObjectives')
+                                navigation.navigate(
+                                    'CurriculumObjectivesScreen'
+                                )
                             }
                             backgroundColor={Colors.startScreenLinkTheory}
                         />
