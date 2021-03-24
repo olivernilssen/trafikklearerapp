@@ -5,6 +5,7 @@ import MainView from '../components/reusableComponents/MainView';
 import Header from '../components/reusableComponents/Header';
 import { Colors } from '../styles';
 import SettingsView from '../components/settingsComponents/SettingsView';
+// import SettingsView from '../components/settingsComponents/SettingsView';
 
 /**
  * Screen component for the settings screen (TODO)

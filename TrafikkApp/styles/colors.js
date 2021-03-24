@@ -17,6 +17,9 @@ const blueGreen = '#56B897';
 
 const red = '#FB5555';
 
+const blackest = '#201F1F';
+const lightBlack = '#323131';
+
 export default {
     // Main
     background: darkGray,
@@ -64,4 +67,8 @@ export default {
     secSlideTextInactive: mediumGray,
 
     textInputBg: charcoal,
+
+    // Curriculum screen
+    curriculumBg: blackest,
+    curriculumCards: lightBlack,
 };

@@ -1,68 +1,62 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-from urllib.request import urlopen
+import requests
+import urllib.request
+import time
 from bs4 import BeautifulSoup
 import re
 import json
 
-url = "https://www.vegvesen.no/trafikkinformasjon/langs-veien/trafikkskilt/forbudsskilt"
-html = urlopen(url)
+url = "https://www.vegvesen.no/trafikkinformasjon/langs-veien/trafikkskilt/fareskilt"
+url_vikeplit = "https://www.vegvesen.no/trafikkinformasjon/langs-veien/trafikkskilt/vikeplikt-og-forkjorsskilt"
+response = requests.get(url_vikeplit)
 
-soup = BeautifulSoup(html, 'html.parser')
+soup = BeautifulSoup(response.text, 'html.parser')
 type(soup)
 
-rows = soup.find_all('div')
+dokumentpakker = []
+for item in soup.find_all('div', {'class': 'dokumentpakke'}):
+    dokumentpakker.append(item.get_text());
+
 # print(rows[20:22])
-print(rows[0])
 
-# list_rows = []
-# for row in rows[22:]:
-#     cells = row.find_all('td')
-#     str_cells = str(cells)
-#     clean = re.compile('<.*?>')
-#     clean2 = (re.sub(clean, '', str_cells))
-#     clean2 = clean2.replace('[', '')
-#     clean2 = clean2.replace(']', '')
-#     clean3 = clean2.split(',');
-#     list_rows.append(clean3)
+# print(dokumentpakker[1]);
 
-# # print(list_rows[:20])
-# type(clean2)
-# sample = list_rows[:20]
-# with open('scrapperJson.json', 'w') as f:
-#     f.write(json.dumps(list_rows))
+dangerSigns = dict()
 
-json = {}
-
-# for row in list_rows:
-#     key = ''
-#     if len(row) != 1:
-#         key = row[0].split('.')[0]
-#         print(row)
-#         tempJson = {}
-#         split_last = row[len(row) - 1].split(None, 1)
-#         print(split_last)
-#         tempJson[split_last[0]] = split_last[1]
-
-#         for value in row[:-1]:
-#             tempJson[value] = ''
-
-#         json[key] = tempJson
-#     else:
-#         split_row = row[0].split(None, 1)
-#         json[split_row[0]] = split_row[1]
+for i, pakke in enumerate(dokumentpakker):
+    # print(i)
+    # print(pakke)
+    code = pakke.split(' ', 1);
+    # print(code)
+    undercodes = dict()
+    if code[0] in dangerSigns:
+        subCode = code[1].split(code[0], 1)
+        # print(subCode)
+        if (len(subCode) == 1):
+            undercodes[code[0]] = newSubCode[1].rstrip()
+            dangerSigns[code[0]].update(undercodes)
+        else:
+            newSubCode = subCode[1].split(' ', 1)
+            undercodes[code[0] + newSubCode[0]] = newSubCode[1].rstrip()
+            dangerSigns[code[0]].update(undercodes)
+    else:
+        splitByCode = code[1].split('.', 1)
+        # print(splitByCode)
         
-# print(json)
+        if (len(splitByCode) > 1 and (splitByCode[1] == '' or splitByCode[1] == ' ' or splitByCode[1] == ' \r')):
+            splitByCode.pop(1)
 
-# 100:
-#     100: 'Farlig Sving',
-#     100.1: '',
-#     100.2: ''
-# 102:
-#     102: 'Farlige Svinger',
-#     102.1: '',
-#     102.2: ''
-    
+        if len(splitByCode) > 1:
+            newSubCode = splitByCode[1].split(' ', 1)
+            
+            # Change '.' to '_'?
+            undercodes[code[0]+'.'+newSubCode[0]] = newSubCode[1].rstrip()
+        else:
+            undercodes[code[0]] = code[1].rstrip()
+
+        dangerSigns[code[0]] = undercodes
+
+
+# print(dangerSigns)
+with open('vikteplitSkiltBeskrivelse.json', 'w', encoding='utf-8') as f:
+    json.dump(dangerSigns, f, ensure_ascii=False, indent=4)
+    print('wrote to file vikteplitSkiltBeskrivelse')

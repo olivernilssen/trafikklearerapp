@@ -80,9 +80,10 @@ const BottomMenuContent = React.memo(
         const onPressButton = (designName) => {
             setRoadDesignChange(true);
             if (roadType == 'Veikryss') {
-                const imgSource = thisRoadType[designName]['X'][extensionType];
+                const imgSource =
+                    thisRoadType[designName][intersectionType][extensionType];
                 setImage(imgSource);
-                setIntersectionType('X');
+                // setIntersectionType('X');
             } else {
                 const imgSource = thisRoadType[designName][extensionType];
                 setImage(imgSource);

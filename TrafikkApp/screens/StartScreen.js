@@ -65,7 +65,12 @@ const StartScreen = React.memo(({ navigation }) => {
                         />
                         <StartScreenLink
                             name="arrow-right"
-                            text="tba"
+                            text="Læreplanmål"
+                            onPress={() =>
+                                navigation.navigate(
+                                    'CurriculumObjectivesScreen'
+                                )
+                            }
                             backgroundColor={Colors.startScreenLinkTheory}
                         />
                         <StartScreenLink
@@ -81,13 +86,6 @@ const StartScreen = React.memo(({ navigation }) => {
                     <View style={styles.linksContainer}>
                         <StartScreenLink
                             name="external-link-alt"
-                            text="Link til internett"
-                            textStyle={{ textDecorationLine: 'underline' }}
-                            backgroundColor={Colors.startScreenLinkLink}
-                            isLink={true}
-                        />
-                        <StartScreenLink
-                            name="external-link-alt"
                             text="Link til nettside"
                             backgroundColor={Colors.startScreenLinkLink}
                             isLink={true}
@@ -95,7 +93,12 @@ const StartScreen = React.memo(({ navigation }) => {
                         <StartScreenLink
                             name="external-link-alt"
                             text="Link til nettside"
-                            textStyle={{ textDecorationLine: 'underline' }}
+                            backgroundColor={Colors.startScreenLinkLink}
+                            isLink={true}
+                        />
+                        <StartScreenLink
+                            name="external-link-alt"
+                            text="Link til nettside"
                             backgroundColor={Colors.startScreenLinkLink}
                             isLink={true}
                         />
