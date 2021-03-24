@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ToastAndroid } from 'react-native';
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
-import { Colors, Typography } from '../../styles/index';
+import { Colors } from '../../styles/index';
 // import ButtonToggleGroup from 'react-native-button-toggle-group';
 import ButtonGroup from '../reusableComponents/ButtonGroup';
 
@@ -29,23 +29,27 @@ const SettingsView = () => {
     ];
     const themeValues = ['Mørk', 'Lys'];
 
-    const onChangeValue = (value, setValue, key) => {
+    const onChangeValue = (type, value, setValue, key) => {
         myContext.saveNewSettings(value, setValue, key);
+        ToastAndroid.show(
+            type + 'har blitt endret til ' + value,
+            ToastAndroid.SHORT,
+            ToastAndroid.BOTTOM
+        );
     };
 
     return (
         <View style={styles.view}>
             {/* CHANGE THEME COLORS */}
             <View style={styles.rowView}>
-                <Text style={styles.leftColumn}>
-                    Slette alt ved illustrasjonsbytte:
-                </Text>
+                <Text style={styles.leftColumn}>Tema farger:</Text>
                 <View style={styles.rightColumn}>
                     <ButtonGroup
                         selectedValue={myContext.theme}
                         values={themeValues}
                         onSelect={(newValue) =>
                             onChangeValue(
+                                'Temafarge',
                                 newValue,
                                 myContext.setTheme,
                                 USER_KEYS.THEME_KEY
@@ -69,6 +73,7 @@ const SettingsView = () => {
                         values={eraserSizeValues}
                         onSelect={(newValue) =>
                             onChangeValue(
+                                'Viskelær størrelse',
                                 newValue,
                                 myContext.setEraserSize,
                                 USER_KEYS.ERASER_SIZE_KEY
@@ -94,6 +99,7 @@ const SettingsView = () => {
                         values={onDelChangeValues}
                         onSelect={(newValue) =>
                             onChangeValue(
+                                'Slett illustrasjon',
                                 newValue,
                                 myContext.setDeleteOnChange,
                                 USER_KEYS.DELETE_KEY
@@ -117,6 +123,7 @@ const SettingsView = () => {
                         values={penColorValues}
                         onSelect={(newValue) =>
                             onChangeValue(
+                                'Innledende pennfarge',
                                 newValue,
                                 myContext.setPenColor,
                                 USER_KEYS.PEN_COLOR_KEY
@@ -143,6 +150,7 @@ const SettingsView = () => {
                         values={draggableColorValues}
                         onSelect={(newValue) =>
                             onChangeValue(
+                                'Innledende drabarfarge',
                                 newValue,
                                 myContext.setDraggableColor,
                                 USER_KEYS.DRAGGABLE_COLOR_KEY

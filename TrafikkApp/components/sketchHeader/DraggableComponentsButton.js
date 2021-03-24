@@ -6,26 +6,25 @@ import { Buttons, Colors, Icons } from '../../styles';
 /**
  * This is the button component for the
  * box that is either open or closed on the sketchheader
- * @param {props} props
+ * @namespace DraggableComponentsButton
+ * @memberof SketchHeader
+ * @prop {function} topMenuHidden handler to be called when user presses button
+ * @prop {boolean} toggleRightMenuState the state toggleRightMenuState
  */
-const BoxButton = (props) => {
+const DraggableComponentsButton = (props) => {
     const { topMenuHidden, toggleRightMenuState } = props;
     return (
-        <View style={{ paddingLeft: 5 }}>
-            <TouchableOpacity
-                onPress={() => topMenuHidden()}
-                style={{
-                    flex: 1,
-                    justifyContent: 'space-around',
-                }}>
+        <View
+            style={
+                !toggleRightMenuState
+                    ? [styles.buttonSize, styles.buttonActive]
+                    : [styles.buttonSize, styles.buttonInactive]
+            }>
+            <TouchableOpacity onPress={() => topMenuHidden()}>
                 <Icon
                     name={!toggleRightMenuState ? 'car-crash' : 'car'}
                     size={Icons.small}
-                    style={
-                        !toggleRightMenuState
-                            ? styles.buttonActive
-                            : [styles.buttonSize, styles.buttonInactive]
-                    }
+                    color={Colors.textLight}
                 />
             </TouchableOpacity>
         </View>
@@ -34,24 +33,20 @@ const BoxButton = (props) => {
 
 const styles = StyleSheet.create({
     buttonSize: {
-        // fontSize: 30,
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // ...Typography.medium,
+        height: 62,
+        width: 62,
+        justifyContent: 'center',
+        alignItems: 'center',
+        ...Buttons.round,
     },
     buttonActive: {
         color: Colors.textLight,
         backgroundColor: Colors.boxIconActive,
-        paddingVertical: 12,
-        paddingHorizontal: 10,
-        ...Buttons.round,
     },
     buttonInactive: {
         color: Colors.icons,
         backgroundColor: Colors.header,
-        paddingVertical: 12,
-        paddingHorizontal: 14,
     },
 });
 
-export default BoxButton;
+export default DraggableComponentsButton;
