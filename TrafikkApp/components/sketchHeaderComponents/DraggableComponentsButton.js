@@ -3,11 +3,10 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Buttons, Colors, Icons } from '../../styles';
 
-/**
- * This is the button component for the
+/**This is the button component for the
  * box that is either open or closed on the sketchheader
  * @namespace DraggableComponentsButton
- * @memberof SketchHeader
+ * @memberof sketchHeaderComponents
  * @prop {function} topMenuHidden handler to be called when user presses button
  * @prop {boolean} toggleRightMenuState the state toggleRightMenuState
  */

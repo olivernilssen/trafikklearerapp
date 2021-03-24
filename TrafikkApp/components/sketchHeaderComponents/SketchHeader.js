@@ -7,19 +7,20 @@ import DraggableComponentsButton from './DraggableComponentsButton';
 import DeleteButtonPopover from './DeleteButtonPopover';
 import { Colors, Typography, Buttons } from '../../styles';
 
-/**
+/**The SketchHeader, contains all the buttons and menu's related to the drawing and placement of draggable components
  * @namespace SketchHeader
- * @prop {Function} onEraserPencilSwitch Changes the pencil color and size when switching between eraser and pencil
- * @prop {Function} undoChange Function to undo the previous action of the user
- * @prop {Function} clearCanvas
- * @prop {Function} eraser
- * @prop {Function} onPaletteColorChange changes the pencil color according to user input
+ * @memberof sketchHeaderComponents
+ * @prop {function} onEraserPencilSwitch Changes the pencil color and size when switching between eraser and pencil
+ * @prop {function} undoChange Function to undo the previous action of the user
+ * @prop {function} clearCanvas Clears the canvas of all illustrations
+ * @prop {function} eraser Sets the pencil to an eraser, erases lines instead of drawing
+ * @prop {function} onPaletteColorChange changes the pencil color according to user input
  * @prop {boolean} topMenuHidden The state topMenuHidden
- * @prop {} toggleRightMenuState
- * @prop {} onChangePencilSize
- * @prop {} pencilColor
- * @prop {} pencilSize
- * @prop {string} chosenColor
+ * @prop {function} toggleRightMenuState Toggles the state of topMenuHidden
+ * @prop {function} onChangePencilSize Changes the pencil thickness
+ * @prop {string} pencilColor The state pencilColor
+ * @prop {number} pencilSize The state pencilSize
+ * @prop {string} chosenColor The state chosenColor
  */
 const SketchHeader = React.memo((props) => {
     const [activeId, setActiveId] = useState(0);
@@ -40,7 +41,8 @@ const SketchHeader = React.memo((props) => {
     } = props;
 
     /**Handles the states for active buttons
-     * @memberof SketchHeader
+     * @memberof sketchHeaderComponents.SketchHeader
+     * @function
      */
     const focusedActiveButton = (value) => {
         if (value === null) {
