@@ -15,6 +15,19 @@ import AppContext from '../../AppContext';
 
 const { Popover } = renderers;
 
+/** A menu for the drawing component of the sketchheader
+ * @namespace SketchColorMenu
+ * @memberof SketchHeader
+ * @prop {function} onPaletteColorChange Changes the color
+ * @prop {function} onChangePencilSize Changes pencil size
+ * @prop {object} propsStyle StyleSheet
+ * @prop {function} onEraserPencilSwitch handles the switch between eraser and pencil
+ * @prop {number} buttonActiveId The id of the pencil button in the header
+ * @prop {number} activeId The state activeId
+ * @prop {function} focusedActiveButton Handles the states of the active buttons
+ * @prop {string} chosenColor The state chosenColor
+ */
+
 const SketchColorMenu = React.memo((props) => {
     // const appContext = useContext(AppContext);
     // const INITIAL_COLOR = appContext.penColor;
@@ -31,47 +44,114 @@ const SketchColorMenu = React.memo((props) => {
         buttonActiveId,
         activeId,
         focusedActiveButton,
+        chosenColor,
         pencilColor,
     } = props;
 
+    /**
+     * An array that holds the colors that are used for the color buttons
+     * These are also the colors used to draw with
+     */
+
     const colorArray = [
-        '#20303C',
-        '#3182C8',
-        '#00AAAF',
-        '#00A65F',
-        '#E2902B',
-        '#D9644A',
-        '#CF262F',
-        '#8B1079',
+        { colorCode: '#20303C', key: '20403C' },
+        { colorCode: '#3182C8', key: '3182C8' },
+        { colorCode: '#00AAAF', key: '00AAAF' },
+        { colorCode: '#00A65F', key: '00A65F' },
+        { colorCode: '#E2902B', key: 'E2902B' },
+        { colorCode: '#D9644A', key: 'D9644A' },
+        { colorCode: '#CF262F', key: 'CF262F' },
+        { colorCode: '#8B1079', key: '8B1079' },
     ];
 
+    /**
+     * An array that holds the thickness of the "icons" (view) for the pencil thickness buttons
+     * and the pencil thickness used for changing the thickness of the pencil
+     */
+    const pencilThicknessArray = [
+        { viewThickness: 8, pencilThickness: 5, key: 85 },
+        { viewThickness: 11, pencilThickness: 8, key: 118 },
+        { viewThickness: 14, pencilThickness: 11, key: 1411 },
+    ];
+
+    /**Used to handle the state of the color menu, if it is open or not
+     * @memberof SketchHeader.SketchColorMenu
+     * @param {boolean} value The state of isOpened
+     */
     const onSecondClickOpen = (value) => {
         setOpened(value);
     };
 
+    /** Used to assign an id to the color buttons
+     * @memberof SketchHeader.SketchColorMenu
+     * @param {number} value The id for the color buttons
+     */
     const chosenColorButton = (value) => {
         setColorButtonID(value);
     };
 
+    /** Used to assign an id to the pencil thickness buttons
+     * @memberof SketchHeader.SketchColorMenu
+     * @param {number} value The id for the pencil thickness button
+     */
     const chosenThicknessButton = (value) => {
         setPencilThicknessID(value);
     };
 
-    const onPressMenuArrow = (value) => {
-        setMenuArrow(value);
-    };
-
+    /** Handles what happens to the pencil button when you press it or when you press another button after the pencil button
+     * @memberof SketchHeader.SketchColorMenu
+     */
     const onPressMenuTrigger = () => {
         if (activeId != 0) {
             onEraserPencilSwitch();
             focusedActiveButton(buttonActiveId);
-            onPressMenuArrow(false);
             onSecondClickOpen(false);
         } else {
-            onPressMenuArrow(true);
             onSecondClickOpen(true);
         }
     };
+
+    /**Maps through an array of color codes and returns a button for each color
+     * the button is used for changing the color of the pencil
+     * @memberof SketchHeader.SketchColorMenu
+     * @param {object} value Contains the color code and the unique key
+     * @param {number} index The index of the objects in the array
+     */
+    const ColorButtons = colorArray.map((value, index) => {
+        return (
+            <ColorButton
+                key={value.key}
+                colorName={value.colorCode}
+                colorButtonID={colorButtonID}
+                buttonID={index}
+                onPaletteColorChange={onPaletteColorChange}
+                chosenColorButton={chosenColorButton}
+            />
+        );
+    });
+
+    /**Maps through an array of objects containing numbers and returns a button for for each object
+     * The button is used for changing the thickness of the pencil
+     * @memberof SketchHeader.SketchColorMenu
+     * @param {object} value Contains the thickness of the pencil, thickness of the view and the unique key
+     * @param {number} index The index of the objects in the array
+     */
+    const pencilThicknessButtons = pencilThicknessArray.map((value, index) => {
+        return (
+            <MenuOption
+                key={value.key}
+                onSelect={() => {
+                    onChangePencilSize(value.pencilThickness);
+                    chosenThicknessButton(index);
+                }}>
+                <PencilSizePopup
+                    pencilThickness={value.viewThickness}
+                    buttonID={index}
+                    pencilThicknessID={pencilThicknessID}
+                />
+            </MenuOption>
+        );
+    });
 
     return (
         <View style={propsStyle}>
@@ -84,31 +164,21 @@ const SketchColorMenu = React.memo((props) => {
                 opened={isOpened}
                 onBackdropPress={() => {
                     onSecondClickOpen(false);
-                    onPressMenuArrow(false);
                 }}>
                 <MenuTrigger
                     onPress={() => {
                         onPressMenuTrigger();
-                    }}
-                    // style={
-                    //     activeId === buttonActiveId
-                    //         ? [
-                    //               styles.buttonActive,
-                    //               { backgroundColor: pencilColor },
-                    //           ]
-                    //         : [styles.buttonSize, styles.buttonInactive]
-                    // }
-                >
+                    }}>
                     <View
-                        style={
+                        style={[
+                            styles.buttonSize,
                             activeId === buttonActiveId
                                 ? [
-                                      styles.buttonSize,
                                       styles.buttonActive,
                                       { backgroundColor: pencilColor },
                                   ]
-                                : [styles.buttonSize, styles.buttonInactive]
-                        }>
+                                : [styles.buttonInactive],
+                        ]}>
                         <Icon
                             name={'pen'}
                             size={Icons.small}
@@ -116,15 +186,13 @@ const SketchColorMenu = React.memo((props) => {
                             color={Colors.textLight}
                         />
                         <Icon
-                            name={menuArrow ? 'sort-up' : 'sort-down'}
+                            name={'sort-down'}
                             size={25}
                             solid
-                            color={Colors.textLight}
-                            style={
-                                isOpened
-                                    ? [styles.upIconMenu]
-                                    : [styles.downIconMenu]
+                            color={
+                                activeId === 0 ? Colors.textLight : '#00000000'
                             }
+                            style={styles.downIconMenu}
                         />
                     </View>
                 </MenuTrigger>
@@ -136,99 +204,16 @@ const SketchColorMenu = React.memo((props) => {
                             justifyContent: 'center',
                             paddingTop: 10,
                         }}>
-                        <ColorButton
-                            colorName={colorArray[0]}
-                            colorButtonID={colorButtonID}
-                            buttonID={0}
-                            onPaletteColorChange={onPaletteColorChange}
-                            chosenColorButton={chosenColorButton}
-                        />
-
-                        <ColorButton
-                            colorName={colorArray[1]}
-                            colorButtonID={colorButtonID}
-                            buttonID={1}
-                            onPaletteColorChange={onPaletteColorChange}
-                            chosenColorButton={chosenColorButton}
-                        />
-                        <ColorButton
-                            colorName={colorArray[2]}
-                            colorButtonID={colorButtonID}
-                            buttonID={2}
-                            onPaletteColorChange={onPaletteColorChange}
-                            chosenColorButton={chosenColorButton}
-                        />
-                        <ColorButton
-                            colorName={colorArray[3]}
-                            colorButtonID={colorButtonID}
-                            buttonID={3}
-                            onPaletteColorChange={onPaletteColorChange}
-                            chosenColorButton={chosenColorButton}
-                        />
-                        <ColorButton
-                            colorName={colorArray[4]}
-                            colorButtonID={colorButtonID}
-                            buttonID={4}
-                            onPaletteColorChange={onPaletteColorChange}
-                            chosenColorButton={chosenColorButton}
-                        />
-                        <ColorButton
-                            colorName={colorArray[5]}
-                            colorButtonID={colorButtonID}
-                            buttonID={5}
-                            onPaletteColorChange={onPaletteColorChange}
-                            chosenColorButton={chosenColorButton}
-                        />
-                        <ColorButton
-                            colorName={colorArray[6]}
-                            colorButtonID={colorButtonID}
-                            buttonID={6}
-                            onPaletteColorChange={onPaletteColorChange}
-                            chosenColorButton={chosenColorButton}
-                        />
-                        <ColorButton
-                            colorName={colorArray[7]}
-                            colorButtonID={colorButtonID}
-                            buttonID={7}
-                            onPaletteColorChange={onPaletteColorChange}
-                            chosenColorButton={chosenColorButton}
-                        />
+                        {ColorButtons}
                     </View>
                     <MenuOptions>
-                        <View style={styles.iconPlacement}>
-                            <MenuOption
-                                onSelect={() => {
-                                    onChangePencilSize(5);
-                                    chosenThicknessButton(0);
-                                }}>
-                                <PencilSizePopup
-                                    pencilThickness={8}
-                                    buttonID={0}
-                                    pencilThicknessID={pencilThicknessID}
-                                />
-                            </MenuOption>
-                            <MenuOption
-                                onSelect={() => {
-                                    onChangePencilSize(8);
-                                    chosenThicknessButton(1);
-                                }}>
-                                <PencilSizePopup
-                                    pencilThickness={11}
-                                    buttonID={1}
-                                    pencilThicknessID={pencilThicknessID}
-                                />
-                            </MenuOption>
-                            <MenuOption
-                                onSelect={() => {
-                                    onChangePencilSize(11);
-                                    chosenThicknessButton(2);
-                                }}>
-                                <PencilSizePopup
-                                    pencilThickness={14}
-                                    buttonID={2}
-                                    pencilThicknessID={pencilThicknessID}
-                                />
-                            </MenuOption>
+                        <View
+                            style={{
+                                flexShrink: 1,
+                                flexDirection: 'row',
+                                justifyContent: 'space-evenly',
+                            }}>
+                            {pencilThicknessButtons}
                         </View>
                     </MenuOptions>
                 </MenuOptions>
@@ -241,34 +226,33 @@ const styles = StyleSheet.create({
     buttonSize: {
         height: 62,
         width: 62,
-        ...Buttons.round,
         justifyContent: 'center',
         alignItems: 'center',
+        ...Buttons.round,
     },
     downIconMenu: {
         position: 'absolute',
         alignSelf: 'center',
-        top: 32,
+        top: 26,
+        left: 35,
+        transform: [{ rotate: '-45deg' }],
     },
     upIconMenu: {
         position: 'absolute',
         alignSelf: 'center',
-        top: 40,
+        top: 31,
+        left: 35,
+        transform: [{ rotate: '-45deg' }],
     },
     buttonActive: {
         backgroundColor: Colors.iconActive,
+        ...Buttons.round,
+        overflow: 'hidden',
     },
     buttonInactive: {
         color: Colors.icons,
+        ...Buttons.round,
     },
-    // spacedCenter: {
-    //     flex: 1,
-    //     flexDirection: 'row',
-    //     height: '100%',
-    //     width: '100%',
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    // },
     iconColorActive: {
         color: Colors.iconActive,
     },
@@ -277,8 +261,7 @@ const styles = StyleSheet.create({
     },
     iconPlacement: {
         flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: 'yellow',
     },
     menuOptions: {
         borderBottomLeftRadius: 40,

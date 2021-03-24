@@ -5,8 +5,22 @@ import SketchColorMenu from './SketchColorMenu';
 import HeaderButton from './HeaderButton';
 import DraggableComponentsButton from './DraggableComponentsButton';
 import DeleteButtonPopover from './DeleteButtonPopover';
-import { Colors, Typography } from '../../styles';
+import { Colors, Typography, Buttons } from '../../styles';
 
+/**
+ * @namespace SketchHeader
+ * @prop {Function} onEraserPencilSwitch Changes the pencil color and size when switching between eraser and pencil
+ * @prop {Function} undoChange Function to undo the previous action of the user
+ * @prop {Function} clearCanvas
+ * @prop {Function} eraser
+ * @prop {Function} onPaletteColorChange changes the pencil color according to user input
+ * @prop {boolean} topMenuHidden The state topMenuHidden
+ * @prop {} toggleRightMenuState
+ * @prop {} onChangePencilSize
+ * @prop {} pencilColor
+ * @prop {} pencilSize
+ * @prop {string} chosenColor
+ */
 const SketchHeader = React.memo((props) => {
     const [activeId, setActiveId] = useState(0);
     const [prevActiveId, setPrevActiveId] = useState(0);
@@ -25,6 +39,9 @@ const SketchHeader = React.memo((props) => {
         chosenColor,
     } = props;
 
+    /**Handles the states for active buttons
+     * @memberof SketchHeader
+     */
     const focusedActiveButton = (value) => {
         if (value === null) {
             setPrevActiveId(prevActiveId);

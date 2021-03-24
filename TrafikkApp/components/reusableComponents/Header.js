@@ -3,6 +3,14 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Colors, Icons, Typography } from '../../styles';
 
+/**
+ * Component that displays a Header.
+ * Takes in other React Native components as children.
+ * @namespace Header
+ * @memberof reusableComponents
+ * @prop {object} navigation Navigation object
+ * @prop {array} [name] The header text
+ */
 const Header = React.memo((props) => (
     <View style={styles.header}>
         <TouchableOpacity onPress={props.navigation.toggleDrawer}>

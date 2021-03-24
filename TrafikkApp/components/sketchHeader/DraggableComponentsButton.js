@@ -6,10 +6,10 @@ import { Buttons, Colors, Icons } from '../../styles';
 /**
  * This is the button component for the
  * box that is either open or closed on the sketchheader
- * @namespace SketchHeaderComponents
- * @memberof SketchArea
- * @prop {Object} topMenuHidden
- * @prop {boolean} toggleRightMenuState
+ * @namespace DraggableComponentsButton
+ * @memberof SketchHeader
+ * @prop {function} topMenuHidden handler to be called when user presses button
+ * @prop {boolean} toggleRightMenuState the state toggleRightMenuState
  */
 const DraggableComponentsButton = (props) => {
     const { topMenuHidden, toggleRightMenuState } = props;

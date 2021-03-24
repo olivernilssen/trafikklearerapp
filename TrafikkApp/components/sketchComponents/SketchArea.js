@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, {
     useRef,
     useState,
@@ -6,12 +5,7 @@ import React, {
     useCallback,
     useContext,
 } from 'react';
-import {
-    View,
-    StyleSheet,
-    ImageBackground,
-    TouchableWithoutFeedback,
-} from 'react-native';
+import { View, StyleSheet, ImageBackground } from 'react-native';
 
 import MainView from '../reusableComponents/MainView';
 import SketchHeader from '../sketchHeader/SketchHeader';
@@ -20,12 +14,14 @@ import { Colors } from '../../styles';
 
 import DraggableWithEverything from '../draggable/DraggableWithEverything';
 import BottomMenuAnimated from '../bottomMenuComponent/BottomMenuAnimated';
+import Overlay from '../reusableComponents/Overlay';
 
 import AppContext from '../../AppContext';
 
 /**
  * This is a big component that contains all the components that are visible
  * on the SketchArea screens.
+ * @namespace SketchArea
  * @prop {number} navigation
  * @prop {string} name
  */
@@ -138,10 +134,8 @@ const SketchArea = React.memo((props) => {
      * @function
      */
     const clearCanvas = useCallback(() => {
-        // if (roadDesignChange) {
         sketchRef.current.clear();
         setDraggables([]);
-        // }
     });
 
     /**
@@ -180,13 +174,10 @@ const SketchArea = React.memo((props) => {
 
     return (
         <MainView>
-            <View style={bottomSheetHidden ? styles.noOverlay : styles.overlay}>
-                <TouchableWithoutFeedback
-                    onPress={() => setBottomSheetHidden(true)}>
-                    <View style={{ flex: 1 }}></View>
-                </TouchableWithoutFeedback>
-            </View>
-
+            <Overlay
+                bottomSheetHidden={bottomSheetHidden}
+                setBottomSheetHidden={setBottomSheetHidden}
+            />
             <View style={styles.main}>
                 <SketchHeader
                     onEraserPencilSwitch={onEraserPencilSwitch}
@@ -250,29 +241,11 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.sketchBackground,
         justifyContent: 'center',
     },
-
     sketchCanvas: {
         flex: 1,
         width: '100%',
         height: '100%',
         backgroundColor: 'transparent',
-    },
-    noOverlay: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        // height: '100%',
-        // width: '100%',
-        zIndex: -100,
-    },
-    overlay: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        height: '100%',
-        width: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.4)',
-        zIndex: 10,
     },
     backgroundImage: {
         flex: 1, // Denne må fjernes hvis bildet ikke skal skalere opp

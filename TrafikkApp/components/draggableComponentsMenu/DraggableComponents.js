@@ -1,14 +1,7 @@
-import React, { useState } from 'react';
-import {
-    View,
-    Image,
-    StyleSheet,
-    TouchableOpacity,
-    TouchableHighlight,
-} from 'react-native';
-import { Buttons, Colors } from '../../styles';
-import objectPaths from '../draggable/draggableObjectPaths';
+import React from 'react';
+import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
+import objectPaths from '../draggable/draggableObjectPaths';
 import Carousel from '../reusableComponents/Carousel';
 
 /**
@@ -47,11 +40,7 @@ const DraggableComponents = React.memo(({ onNewDraggable }) => {
         );
     });
 
-    return (
-        <Carousel objectArray={images} itemsPerSlide={7}>
-            {images}
-        </Carousel>
-    );
+    return <Carousel objectArray={images} itemsPerSlide={7} />;
 });
 
 const styles = StyleSheet.create({

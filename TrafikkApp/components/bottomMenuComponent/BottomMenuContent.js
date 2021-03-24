@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, Image } from 'react-native';
 
-import { colors, typography, buttons } from '../../styles';
+import { Colors, Typography, Buttons } from '../../styles';
 import Divider from '../reusableComponents/Divider';
 import ButtonGroup from '../reusableComponents/ButtonGroup';
 import backgroundImagePath from './backgroundImagePath';
@@ -151,10 +151,10 @@ const BottomMenuContent = React.memo(
                                         styles.buttonText,
                                         activeBtn
                                             ? {
-                                                  color: colors.textLight,
+                                                  color: Colors.textLight,
                                               }
                                             : {
-                                                  color: colors.icons,
+                                                  color: Colors.icons,
                                               },
                                     ]}>
                                     {label}
@@ -170,7 +170,7 @@ const BottomMenuContent = React.memo(
                     <View style={styles.intersectionTypeSection}>
                         <Divider
                             style={styles.divider}
-                            borderColor={colors.bottomMenybuttons}
+                            borderColor={Colors.bottomMenyButtons}
                         />
                         <Text style={styles.intersectionTypeInfoText}>
                             Kryssutforming:
@@ -183,10 +183,10 @@ const BottomMenuContent = React.memo(
                                 intersectionTypeChange(newValue)
                             }
                             groupWidth={300}
-                            highlightBackgroundColor={colors.secSlideActiveBg}
-                            highlightTextColor={colors.secSlideTextActive}
-                            inactiveBackgroundColor={colors.bottomMenybuttons}
-                            inactiveTextColor={colors.secSlideTextInactive}
+                            highlightBackgroundColor={Colors.secSlideActiveBg}
+                            highlightTextColor={Colors.secSlideTextActive}
+                            inactiveBackgroundColor={Colors.bottomMenyButtons}
+                            inactiveTextColor={Colors.secSlideTextInactive}
                         />
                     </View>
                 )}
@@ -216,20 +216,20 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         elevation: 3,
-        backgroundColor: colors.bottomMeny,
-        ...buttons.largeWidthRounded,
+        backgroundColor: Colors.bottomMeny,
+        ...Buttons.largeWidthRounded,
     },
     buttonImage: {
         overflow: 'hidden',
         height: undefined,
         width: undefined,
-        ...buttons.rounded,
+        ...Buttons.rounded,
         ...StyleSheet.absoluteFillObject,
     },
     buttonText: {
         paddingTop: 5,
         textAlign: 'center',
-        ...typography.medium,
+        ...Typography.medium,
     },
     intersectionTypeSection: {
         flexDirection: 'column',
@@ -245,9 +245,9 @@ const styles = StyleSheet.create({
     intersectionTypeInfoText: {
         textAlign: 'center',
         paddingBottom: 15,
-        color: colors.icons,
+        color: Colors.icons,
         opacity: 0.5,
-        ...typography.medium,
+        ...Typography.medium,
     },
 });
 

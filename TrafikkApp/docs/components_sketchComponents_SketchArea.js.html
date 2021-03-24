@@ -26,20 +26,14 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/* eslint-disable prettier/prettier */
-import React, {
+            <pre class="prettyprint source linenums"><code>import React, {
     useRef,
     useState,
     useEffect,
     useCallback,
     useContext,
 } from 'react';
-import {
-    View,
-    StyleSheet,
-    ImageBackground,
-    TouchableWithoutFeedback,
-} from 'react-native';
+import { View, StyleSheet, ImageBackground } from 'react-native';
 
 import MainView from '../reusableComponents/MainView';
 import SketchHeader from '../sketchHeader/SketchHeader';
@@ -48,17 +42,14 @@ import { Colors } from '../../styles';
 
 import DraggableWithEverything from '../draggable/DraggableWithEverything';
 import BottomMenuAnimated from '../bottomMenuComponent/BottomMenuAnimated';
+import Overlay from '../reusableComponents/Overlay';
 
 import AppContext from '../../AppContext';
 
 /**
- * NameSpace for all components related to the SketchFunction
- * * @namespace SketchComponents
- */
-
-/**
  * This is a big component that contains all the components that are visible
  * on the SketchArea screens.
+ * @namespace SketchArea
  * @prop {number} navigation
  * @prop {string} name
  */
@@ -171,10 +162,8 @@ const SketchArea = React.memo((props) => {
      * @function
      */
     const clearCanvas = useCallback(() => {
-        // if (roadDesignChange) {
         sketchRef.current.clear();
         setDraggables([]);
-        // }
     });
 
     /**
@@ -213,13 +202,10 @@ const SketchArea = React.memo((props) => {
 
     return (
         &lt;MainView>
-            &lt;View style={bottomSheetHidden ? styles.noOverlay : styles.overlay}>
-                &lt;TouchableWithoutFeedback
-                    onPress={() => setBottomSheetHidden(true)}>
-                    &lt;View style={{ flex: 1 }}>&lt;/View>
-                &lt;/TouchableWithoutFeedback>
-            &lt;/View>
-
+            &lt;Overlay
+                bottomSheetHidden={bottomSheetHidden}
+                setBottomSheetHidden={setBottomSheetHidden}
+            />
             &lt;View style={styles.main}>
                 &lt;SketchHeader
                     onEraserPencilSwitch={onEraserPencilSwitch}
@@ -283,29 +269,11 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.sketchBackground,
         justifyContent: 'center',
     },
-
     sketchCanvas: {
         flex: 1,
         width: '100%',
         height: '100%',
         backgroundColor: 'transparent',
-    },
-    noOverlay: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        // height: '100%',
-        // width: '100%',
-        zIndex: -100,
-    },
-    overlay: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        height: '100%',
-        width: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.4)',
-        zIndex: 10,
     },
     backgroundImage: {
         flex: 1, // Denne må fjernes hvis bildet ikke skal skalere opp
@@ -329,13 +297,13 @@ export default SketchArea;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="SketchArea.SketchHeaderComponents.html">SketchHeaderComponents</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BottomMenuAnimated">BottomMenuAnimated</a></li><li><a href="global.html#BottomMenuContent">BottomMenuContent</a></li><li><a href="global.html#clearStorage">clearStorage</a></li><li><a href="global.html#CountryRoadScreen">CountryRoadScreen</a></li><li><a href="global.html#Draggable">Draggable</a></li><li><a href="global.html#DraggableComponents">DraggableComponents</a></li><li><a href="global.html#DraggableComponentsMenu">DraggableComponentsMenu</a></li><li><a href="global.html#DraggableWithEverything">DraggableWithEverything</a></li><li><a href="global.html#DrawerItem">DrawerItem</a></li><li><a href="global.html#DrawerMenu">DrawerMenu</a></li><li><a href="global.html#DrawerToggleMenuItem">DrawerToggleMenuItem</a></li><li><a href="global.html#HeaderButton">HeaderButton</a></li><li><a href="global.html#HighwayScreen">HighwayScreen</a></li><li><a href="global.html#IntersectionScreen">IntersectionScreen</a></li><li><a href="global.html#MappingDraggable">MappingDraggable</a></li><li><a href="global.html#Navigator">Navigator</a></li><li><a href="global.html#Popout">Popout</a></li><li><a href="global.html#PopoutItems">PopoutItems</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#RoadSignScreen">RoadSignScreen</a></li><li><a href="global.html#RoundaboutScreen">RoundaboutScreen</a></li><li><a href="global.html#saveData">saveData</a></li><li><a href="global.html#SettingsScreen">SettingsScreen</a></li><li><a href="global.html#SketchArea">SketchArea</a></li><li><a href="global.html#StartScreen">StartScreen</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="reusableComponents.html">reusableComponents</a></li><li><a href="reusableComponents.ButtonGroup.html">ButtonGroup</a></li><li><a href="reusableComponents.Carousel.html">Carousel</a></li><li><a href="reusableComponents.Divider.html">Divider</a></li><li><a href="reusableComponents.Header.html">Header</a></li><li><a href="reusableComponents.MainView.html">MainView</a></li><li><a href="reusableComponents.Overlay.html">Overlay</a></li><li><a href="SketchArea.html">SketchArea</a></li><li><a href="SketchHeader.html">SketchHeader</a></li><li><a href="SketchHeader.ColorButton.html">ColorButton</a></li><li><a href="SketchHeader.DeleteButtonPopover.html">DeleteButtonPopover</a></li><li><a href="SketchHeader.DraggableComponentsButton.html">DraggableComponentsButton</a></li><li><a href="SketchHeader.HeaderButton.html">HeaderButton</a></li><li><a href="SketchHeader.PencilSizePopup.html">PencilSizePopup</a></li><li><a href="SketchHeader.SketchColorMenu.html">SketchColorMenu</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BottomMenuAnimated">BottomMenuAnimated</a></li><li><a href="global.html#BottomMenuContent">BottomMenuContent</a></li><li><a href="global.html#clearStorage">clearStorage</a></li><li><a href="global.html#CountryRoadScreen">CountryRoadScreen</a></li><li><a href="global.html#Draggable">Draggable</a></li><li><a href="global.html#DraggableComponents">DraggableComponents</a></li><li><a href="global.html#DraggableComponentsMenu">DraggableComponentsMenu</a></li><li><a href="global.html#DraggableWithEverything">DraggableWithEverything</a></li><li><a href="global.html#DrawerItem">DrawerItem</a></li><li><a href="global.html#DrawerMenu">DrawerMenu</a></li><li><a href="global.html#DrawerToggleMenuItem">DrawerToggleMenuItem</a></li><li><a href="global.html#HighwayScreen">HighwayScreen</a></li><li><a href="global.html#IntersectionScreen">IntersectionScreen</a></li><li><a href="global.html#MappingDraggable">MappingDraggable</a></li><li><a href="global.html#Navigator">Navigator</a></li><li><a href="global.html#Popout">Popout</a></li><li><a href="global.html#PopoutItems">PopoutItems</a></li><li><a href="global.html#readData">readData</a></li><li><a href="global.html#RoadSignScreen">RoadSignScreen</a></li><li><a href="global.html#RoundaboutScreen">RoundaboutScreen</a></li><li><a href="global.html#saveData">saveData</a></li><li><a href="global.html#SettingsScreen">SettingsScreen</a></li><li><a href="global.html#StartScreen">StartScreen</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Sun Mar 21 2021 21:58:50 GMT+0100 (sentraleuropeisk normaltid)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Mon Mar 22 2021 22:16:29 GMT+0100 (sentraleuropeisk normaltid)
 </footer>
 
 <script> prettyPrint(); </script>

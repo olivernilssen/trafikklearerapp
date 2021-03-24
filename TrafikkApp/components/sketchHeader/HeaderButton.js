@@ -6,7 +6,13 @@ import { Colors, Buttons, Icons } from '../../styles';
 
 /**
  * IconButtons is the buttons at the top menu for the sketcharea
- * @param {props} props
+ * @namespace HeaderButton
+ * @memberof SketchHeader
+ * @prop {String} iconName the name of the Icon
+ * @prop {Function} buttonOnPress The function you want to use when the button is pressed
+ * @prop {number} focusedActiveButton Handles the states of the active buttons
+ * @prop {number} activeId The state activeId
+ * @prop {number} buttonActiveId The id of the button
  */
 const HeaderButton = React.memo((props) => {
     const {

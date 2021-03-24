@@ -3,8 +3,14 @@ import { StyleSheet, View } from 'react-native';
 
 import { Colors } from '../../styles';
 
+/** Component for making the pencil size buttons
+ * @namespace PencilSizePopup
+ * @memberof SketchHeader
+ * @prop {number} pencilThickness Determines the height of the View used for making the "icons" for the pencil thickness buttons
+ * @prop {number} buttonID assigned uniq number for the button
+ * @prop {number} pencilThicknessID The state pencilThicknessID
+ */
 const PencilSizePopup = (props) => {
-    // const pencilSizeButton = (pencilThickness) => {
     const { pencilThickness, buttonID, pencilThicknessID } = props;
 
     return (
@@ -16,8 +22,8 @@ const PencilSizePopup = (props) => {
             }>
             <View
                 style={{
-                    width: 50,
-                    height: props.pencilThickness,
+                    width: 60,
+                    height: pencilThickness,
                     backgroundColor: Colors.pencilThicknessBox,
                 }}></View>
         </View>
@@ -27,9 +33,10 @@ const PencilSizePopup = (props) => {
 const styles = StyleSheet.create({
     iconPlacement: {
         height: 60,
-        width: 135,
+        width: 160,
         justifyContent: 'center',
         alignItems: 'center',
+        margin: -5,
     },
 });
 
