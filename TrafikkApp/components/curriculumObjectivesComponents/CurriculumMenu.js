@@ -3,22 +3,20 @@ import { StyleSheet, Animated, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Icons } from '../../styles';
 import { useCallback } from 'react';
-import BottomMenuContent from './BottomMenuContent';
+import CurriculumMenuContent from './CurriculumMenuContent';
 
 /**
- * This function class is the mainview of the bottomSheet
- * It has properties to move or hide the view and will
- * show the content of it's children
+ * This is the main component for the BottomMenu in the CurriculumObjectives screen
+ * It has properties to move or hide the view and will show the content of it's children
  */
-
-const BottomMenuAnimated = React.memo((props) => {
+const CurriculumMenu = React.memo((props) => {
     const {
-        roadType,
-        setImage,
-        setRoadDesignChange,
-        extensionType,
         bottomSheetHidden,
         setBottomSheetHidden,
+        curriculumObjective,
+        setCurriculumObjective,
+        trafficClass,
+        setTrafficClass,
     } = props;
 
     const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
@@ -66,7 +64,7 @@ const BottomMenuAnimated = React.memo((props) => {
 
     /**
      * Is triggered to get the layout (height, width) of the
-     * bottomsheet view. This is to accuractly decide how far up
+     * bottom menu view. This is to accuractly decide how far up
      * on the screen the menu needs to slide
      * @param {dictionary} layout
      */
@@ -96,11 +94,11 @@ const BottomMenuAnimated = React.memo((props) => {
                     getLayout(event.nativeEvent.layout);
                 }}
                 style={styles.bottomContainer}>
-                <BottomMenuContent
-                    roadType={roadType}
-                    extensionType={extensionType}
-                    setImage={setImage}
-                    setRoadDesignChange={setRoadDesignChange}
+                <CurriculumMenuContent
+                    curriculumObjective={curriculumObjective}
+                    setCurriculumObjective={setCurriculumObjective}
+                    trafficClass={trafficClass}
+                    setTrafficClass={setTrafficClass}
                 />
             </View>
         </Animated.View>
@@ -132,4 +130,4 @@ var styles = StyleSheet.create({
     },
 });
 
-export default BottomMenuAnimated;
+export default CurriculumMenu;

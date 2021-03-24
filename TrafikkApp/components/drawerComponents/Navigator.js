@@ -10,6 +10,7 @@ import RoundaboutScreen from '../../screens/RoundaboutScreen';
 import CountryRoadScreen from '../../screens/CountryRoadScreen';
 import HighwayScreen from '../../screens/HighwayScreen';
 import RoadSignScreen from '../../screens/RoadSignScreen';
+import CurriculumObjectives from '../../screens/CurriculumObjectives';
 
 const Drawer = createDrawerNavigator();
 
@@ -88,13 +89,23 @@ const Navigator = () => {
                 }}
             />
             <Drawer.Screen
+                name="CurriculumObjectives"
+                component={CurriculumObjectives}
+                initialParams={{
+                    title: 'Læreplanmål',
+                    icon: 'graduation-cap',
+                    screenName: 'CurriculumObjectives',
+                    value: 6,
+                }}
+            />
+            <Drawer.Screen
                 name="SettingsScreen"
                 component={SettingsScreen}
                 initialParams={{
                     title: 'Innstillinger',
                     icon: 'cog',
                     screenName: 'SettingsScreen',
-                    value: 6,
+                    value: 7,
                 }}
             />
         </Drawer.Navigator>
