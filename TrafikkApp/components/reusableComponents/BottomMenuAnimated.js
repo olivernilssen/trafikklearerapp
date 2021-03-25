@@ -3,7 +3,6 @@ import { StyleSheet, Animated, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Icons } from '../../styles';
 import { useCallback } from 'react';
-import BottomMenuContent from './BottomMenuContent';
 
 /**
  * This function class is the mainview of the bottomSheet
@@ -12,14 +11,7 @@ import BottomMenuContent from './BottomMenuContent';
  */
 
 const BottomMenuAnimated = React.memo((props) => {
-    const {
-        roadType,
-        setImage,
-        setRoadDesignChange,
-        extensionType,
-        bottomSheetHidden,
-        setBottomSheetHidden,
-    } = props;
+    const { bottomSheetHidden, setBottomSheetHidden } = props;
 
     const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
     const [hiddenViewButton, setHiddenViewButton] = useState('chevron-down');
@@ -96,12 +88,7 @@ const BottomMenuAnimated = React.memo((props) => {
                     getLayout(event.nativeEvent.layout);
                 }}
                 style={styles.bottomContainer}>
-                <BottomMenuContent
-                    roadType={roadType}
-                    extensionType={extensionType}
-                    setImage={setImage}
-                    setRoadDesignChange={setRoadDesignChange}
-                />
+                {props.children}
             </View>
         </Animated.View>
     );

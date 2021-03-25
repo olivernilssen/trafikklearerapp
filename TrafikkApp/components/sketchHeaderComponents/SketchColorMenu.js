@@ -180,9 +180,9 @@ const SketchColorMenu = React.memo((props) => {
                         ]}>
                         <Icon
                             name={'pen'}
-                            size={Icons.small}
+                            size={Icons.medium}
                             solid
-                            color={Colors.textLight}
+                            color={Colors.textPrimary}
                         />
                         <Icon
                             name={'sort-down'}
@@ -190,7 +190,7 @@ const SketchColorMenu = React.memo((props) => {
                             solid
                             color={
                                 activeId === 0
-                                    ? Colors.textLight
+                                    ? Colors.textPrimary
                                     : 'transparent'
                             }
                             style={styles.downIconMenu}

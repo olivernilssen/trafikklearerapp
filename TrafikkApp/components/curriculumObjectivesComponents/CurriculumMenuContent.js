@@ -14,6 +14,7 @@ const CurriculumMenuContent = React.memo(
         setCurriculumObjective,
         trafficClass,
         setTrafficClass,
+        scrollRef,
     }) => {
         // The traffic classes (klasse B, klasse B kode 96 og BE)
         const trafficClasses = [];
@@ -46,6 +47,7 @@ const CurriculumMenuContent = React.memo(
          */
         const onCurriculumObjectiveChange = (curriculumObjective) => {
             setCurriculumObjective(curriculumObjective);
+            scrollRef.current.scrollTo({ y: 0, animated: true });
         };
 
         return (
@@ -76,7 +78,7 @@ const CurriculumMenuContent = React.memo(
                                             styles.buttonText,
                                             activeBtn
                                                 ? {
-                                                      color: Colors.textLight,
+                                                      color: Colors.textPrimary,
                                                   }
                                                 : {
                                                       color: Colors.icons,
@@ -145,7 +147,7 @@ const styles = StyleSheet.create({
     buttonText: {
         paddingTop: 5,
         textAlign: 'center',
-        ...Typography.mediumPlus,
+        ...Typography.section,
     },
     curriculumObjectivesSection: {
         flexDirection: 'column',
@@ -158,7 +160,7 @@ const styles = StyleSheet.create({
         paddingBottom: 15,
         color: Colors.icons,
         opacity: 0.5,
-        ...Typography.medium,
+        ...Typography.label,
     },
 });
 

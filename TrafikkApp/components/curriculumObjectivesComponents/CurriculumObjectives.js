@@ -2,9 +2,8 @@ import React, { useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Colors, Typography } from '../../styles';
 import curriculumData from './curriculumData';
-import { Divider } from '../reusableComponents';
 
-const CurriculumContent = React.memo(
+const CurriculumObjectives = React.memo(
     ({
         curriculumObjective,
         trafficClass,
@@ -49,7 +48,6 @@ const CurriculumContent = React.memo(
         return (
             <View style={styles.main}>
                 <Text style={styles.subHeading}>{subHeading}</Text>
-                {/* <Divider borderColor={Colors.header} style={styles.divider} /> */}
                 {contents}
             </View>
         );
@@ -61,34 +59,31 @@ const styles = StyleSheet.create({
         marginBottom: '12%',
     },
     subHeading: {
-        color: Colors.icons,
-        fontSize: 25,
         paddingTop: '2%',
         paddingBottom: '2%',
         paddingLeft: '2%',
-    },
-    divider: {
-        width: '96%',
-        alignSelf: 'center',
+        fontWeight: 'bold',
+        color: Colors.icons,
+        ...Typography.section,
     },
     content: {
         paddingHorizontal: '2%',
         paddingVertical: '1%',
         marginVertical: 10,
-        borderRadius: 10,
+        borderRadius: 5,
         backgroundColor: Colors.curriculumCards,
         elevation: 5,
     },
     curriculumObjective: {
-        fontSize: 21,
-        color: Colors.textLight,
+        color: Colors.textPrimary,
+        ...Typography.section,
     },
     curriculumContent: {
-        fontSize: 18,
-        color: Colors.textLight,
         paddingVertical: 5,
         lineHeight: 30,
+        color: Colors.icons,
+        ...Typography.body,
     },
 });
 
-export default CurriculumContent;
+export default CurriculumObjectives;

@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
         height: '100%',
         paddingTop: 20,
         alignSelf: 'center',
-        backgroundColor: Colors.background,
+        backgroundColor: Colors.startScreenBg,
     },
     container: {
         justifyContent: 'center',
@@ -129,10 +129,10 @@ const styles = StyleSheet.create({
     text: {
         width: '85%',
         borderBottomWidth: 1,
-        borderColor: Colors.iconActive,
+        borderColor: Colors.dividerPrimary,
         color: Colors.icons,
         paddingVertical: 5,
-        ...Typography.medium,
+        ...Typography.section,
     },
 });
 

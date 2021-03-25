@@ -1,17 +1,28 @@
 import ThemeVariables from './themeVariables';
 
-export const small = {
-    fontSize: ThemeVariables.FONT_SIZE_SMALL,
+export const body = {
+    fontSize: ThemeVariables.FONT_SIZE_BODY,
+    fontFamily: '',
 };
 
-export const medium = {
-    fontSize: ThemeVariables.FONT_SIZE_MEDIUM,
+export const button = {
+    fontSize: ThemeVariables.FONT_SIZE_BODY,
+    fontWeight: 'bold',
+    fontFamily: '',
 };
 
-export const mediumPlus = {
-    fontSize: ThemeVariables.FONT_SIZE_MEDIUM_PLUS,
+export const heading = {
+    fontSize: ThemeVariables.FONT_SIZE_HEADING,
+    fontWeight: 'bold',
+    fontFamily: '',
 };
 
-export const large = {
-    fontSize: ThemeVariables.FONT_SIZE_LARGE,
+export const section = {
+    fontSize: ThemeVariables.FONT_SIZE_SECTION,
+    fontFamily: '',
+};
+
+export const label = {
+    fontSize: ThemeVariables.FONT_SIZE_BODY,
+    fontFamily: '',
 };
