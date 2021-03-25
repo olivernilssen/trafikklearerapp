@@ -14,7 +14,7 @@ import { Colors, Icons, Typography } from '../../styles';
 const Header = React.memo((props) => (
     <View style={styles.header}>
         <TouchableOpacity onPress={props.navigation.toggleDrawer}>
-            <Icon name={'bars'} size={Icons.small} color={Colors.icons} />
+            <Icon name={'bars'} size={Icons.medium} color={Colors.icons} />
         </TouchableOpacity>
         <Text style={styles.headerText}>{props.name}</Text>
         {props.children}
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 20,
-        backgroundColor: Colors.background,
+        backgroundColor: Colors.headerBg,
         elevation: 5,
     },
     headerText: {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         color: Colors.icons,
         paddingRight: 30,
         textAlign: 'center',
-        ...Typography.large,
+        ...Typography.heading,
     },
 });
 

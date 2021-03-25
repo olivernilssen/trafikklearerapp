@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
         opacity: 0.6,
         textAlignVertical: 'center',
         paddingLeft: 15,
-        ...Typography.medium,
+        ...Typography.label,
     },
     divider: {
         height: '100%',

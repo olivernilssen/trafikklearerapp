@@ -22,8 +22,8 @@ const DraggableComponentsButton = (props) => {
             <TouchableOpacity onPress={() => topMenuHidden()}>
                 <Icon
                     name={!toggleRightMenuState ? 'car-crash' : 'car'}
-                    size={Icons.small}
-                    color={Colors.textLight}
+                    size={Icons.medium}
+                    color={Colors.textPrimary}
                 />
             </TouchableOpacity>
         </View>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         ...Buttons.round,
     },
     buttonActive: {
-        color: Colors.textLight,
+        color: Colors.textPrimary,
         backgroundColor: Colors.boxIconActive,
     },
     buttonInactive: {

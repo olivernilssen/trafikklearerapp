@@ -46,8 +46,8 @@ const HeaderButton = React.memo((props) => {
                     }}>
                     <Icon
                         name={iconName}
-                        size={Icons.small}
-                        color={Colors.textLight}
+                        size={Icons.medium}
+                        color={Colors.textPrimary}
                     />
                 </TouchableOpacity>
             </View>
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         ...Buttons.round,
     },
     buttonActive: {
-        color: Colors.textLight,
+        color: Colors.textPrimary,
         backgroundColor: Colors.iconActive,
     },
     buttonInactive: {

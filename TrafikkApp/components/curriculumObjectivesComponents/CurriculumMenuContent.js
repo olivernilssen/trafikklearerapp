@@ -76,7 +76,7 @@ const CurriculumMenuContent = React.memo(
                                             styles.buttonText,
                                             activeBtn
                                                 ? {
-                                                      color: Colors.textLight,
+                                                      color: Colors.textPrimary,
                                                   }
                                                 : {
                                                       color: Colors.icons,
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     buttonText: {
         paddingTop: 5,
         textAlign: 'center',
-        ...Typography.mediumPlus,
+        ...Typography.section,
     },
     curriculumObjectivesSection: {
         flexDirection: 'column',
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
         paddingBottom: 15,
         color: Colors.icons,
         opacity: 0.5,
-        ...Typography.medium,
+        ...Typography.label,
     },
 });
 

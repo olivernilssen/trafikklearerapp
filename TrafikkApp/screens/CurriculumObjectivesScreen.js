@@ -52,11 +52,6 @@ const styles = StyleSheet.create({
     main: {
         width: '100%',
         padding: 20,
-        backgroundColor: Colors.sketchBackground,
-        // backgroundColor: '#202124',
-        // backgroundColor: '#6A7B76',
-        // backgroundColor: '#474954',
-        // backgroundColor: '#304B46',
         backgroundColor: Colors.curriculumBg,
     },
     header: {
@@ -69,14 +64,14 @@ const styles = StyleSheet.create({
         flex: 1,
         color: Colors.icons,
         textAlign: 'right',
-        ...Typography.large,
+        ...Typography.heading,
     },
     heading: {
         flex: 1,
-        fontSize: 23,
         color: Colors.icons,
         opacity: 0.7,
         textAlign: 'right',
+        ...Typography.section,
     },
 });
 
