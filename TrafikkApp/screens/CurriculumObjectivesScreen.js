@@ -5,6 +5,7 @@ import { MainView, Header } from '../components/reusableComponents';
 import CurriculumMenu from '../components/curriculumObjectivesComponents/CurriculumMenu';
 import CurriculumContent from '../components/curriculumObjectivesComponents/CurriculumContent';
 import { Colors, Typography } from '../styles';
+import { Overlay } from '../components/reusableComponents';
 
 /**
  * The screen component for the curriculum objectives for traffic training
@@ -18,6 +19,10 @@ const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
 
     return (
         <MainView>
+            <Overlay
+                bottomSheetHidden={bottomSheetHidden}
+                setBottomSheetHidden={setBottomSheetHidden}
+            />
             <Header navigation={navigation}>
                 <View style={styles.header}>
                     <Text style={styles.screenName}>Læreplanmål</Text>
