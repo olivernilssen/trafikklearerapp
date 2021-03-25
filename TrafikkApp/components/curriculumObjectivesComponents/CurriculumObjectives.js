@@ -3,7 +3,7 @@ import { View, StyleSheet, Text } from 'react-native';
 import { Colors, Typography } from '../../styles';
 import curriculumData from './curriculumData';
 
-const CurriculumContent = React.memo(
+const CurriculumObjectives = React.memo(
     ({
         curriculumObjective,
         trafficClass,
@@ -86,4 +86,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default CurriculumContent;
+export default CurriculumObjectives;

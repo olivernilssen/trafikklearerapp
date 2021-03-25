@@ -7,11 +7,11 @@ import ButtonGroup from '../reusableComponents/ButtonGroup';
 import backgroundImagePath from './backgroundImagePath';
 
 /**
- * BottomMenuContent is a menu that slides up from the bottom of the screen
+ * SketchAreaMenuContent is a menu that slides up from the bottom of the screen
  * This menu allows the user to change the background image according to
  * which screen they are on
  */
-const BottomMenuContent = React.memo(
+const SketchAreaMenuContent = React.memo(
     ({ roadType, setImage, setRoadDesignChange, extensionType }) => {
         //Get the roadtype json this component applies too based on roadType prop
         const thisRoadType = backgroundImagePath[roadType];
@@ -252,4 +252,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default BottomMenuContent;
+export default SketchAreaMenuContent;

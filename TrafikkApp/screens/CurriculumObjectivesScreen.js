@@ -2,10 +2,11 @@ import React, { useState, useRef } from 'react';
 import { View, StyleSheet, Text, ScrollView } from 'react-native';
 
 import { MainView, Header } from '../components/reusableComponents';
-import CurriculumMenu from '../components/curriculumObjectivesComponents/CurriculumMenu';
-import CurriculumContent from '../components/curriculumObjectivesComponents/CurriculumContent';
+import CurriculumMenuContent from '../components/curriculumObjectivesComponents/CurriculumMenuContent';
+import CurriculumObjectives from '../components/curriculumObjectivesComponents/CurriculumObjectives';
 import { Colors, Typography } from '../styles';
 import { Overlay } from '../components/reusableComponents';
+import BottomMenuAnimated from '../components/reusableComponents/BottomMenuAnimated';
 
 /**
  * The screen component for the curriculum objectives for traffic training
@@ -25,40 +26,50 @@ const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
                 bottomSheetHidden={bottomSheetHidden}
                 setBottomSheetHidden={setBottomSheetHidden}
             />
-            <Header navigation={navigation}>
-                <View style={styles.header}>
-                    <Text style={styles.screenName}>Læreplanmål</Text>
-                    <Text style={styles.heading}>{mainHeading}</Text>
-                </View>
-            </Header>
-            <ScrollView
-                ref={scrollRef}
-                persistentScrollbar={true}
-                showsVerticalScrollIndicator={true}
-                style={styles.main}>
-                <CurriculumContent
-                    curriculumObjective={curriculumObjective}
-                    trafficClass={trafficClass}
-                    subHeading={subHeading}
-                    setSubHeading={setSubHeading}
-                    setMainHeading={setMainHeading}
-                />
-            </ScrollView>
-            <CurriculumMenu
+            <View style={styles.main}>
+                <Header navigation={navigation}>
+                    <View style={styles.header}>
+                        <Text style={styles.screenName}>Læreplanmål</Text>
+                        <Text style={styles.heading}>{mainHeading}</Text>
+                    </View>
+                </Header>
+                <ScrollView
+                    ref={scrollRef}
+                    persistentScrollbar={true}
+                    showsVerticalScrollIndicator={true}
+                    style={styles.scrollView}>
+                    <CurriculumObjectives
+                        curriculumObjective={curriculumObjective}
+                        trafficClass={trafficClass}
+                        subHeading={subHeading}
+                        setSubHeading={setSubHeading}
+                        setMainHeading={setMainHeading}
+                    />
+                </ScrollView>
+            </View>
+            <BottomMenuAnimated
                 bottomSheetHidden={bottomSheetHidden}
-                setBottomSheetHidden={setBottomSheetHidden}
-                curriculumObjective={curriculumObjective}
-                setCurriculumObjective={setCurriculumObjective}
-                trafficClass={trafficClass}
-                setTrafficClass={setTrafficClass}
-                scrollRef={scrollRef}
-            />
+                setBottomSheetHidden={setBottomSheetHidden}>
+                <CurriculumMenuContent
+                    curriculumObjective={curriculumObjective}
+                    setCurriculumObjective={setCurriculumObjective}
+                    trafficClass={trafficClass}
+                    setTrafficClass={setTrafficClass}
+                    scrollRef={scrollRef}
+                />
+            </BottomMenuAnimated>
         </MainView>
     );
 });
 
 const styles = StyleSheet.create({
     main: {
+        flex: 1,
+        height: '100%',
+        width: '100%',
+        zIndex: 1,
+    },
+    scrollView: {
         width: '100%',
         padding: 20,
         backgroundColor: Colors.curriculumBg,

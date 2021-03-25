@@ -13,7 +13,8 @@ import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import { Colors } from '../../styles';
 
 import DraggableWithEverything from '../draggable/DraggableWithEverything';
-import BottomMenuAnimated from '../bottomMenuComponent/BottomMenuAnimated';
+import BottomMenuAnimated from '../reusableComponents/BottomMenuAnimated';
+import SketchAreaMenuContent from './SketchAreaMenuContent';
 import Overlay from '../reusableComponents/Overlay';
 
 import AppContext from '../../AppContext';
@@ -210,13 +211,15 @@ const SketchArea = React.memo((props) => {
             </View>
 
             <BottomMenuAnimated
-                roadType={name}
-                setImage={setImage}
-                setRoadDesignChange={setRoadDesignChange}
-                extensionType={extensionType}
                 bottomSheetHidden={bottomSheetHidden}
-                setBottomSheetHidden={setBottomSheetHidden}
-            />
+                setBottomSheetHidden={setBottomSheetHidden}>
+                <SketchAreaMenuContent
+                    roadType={name}
+                    setImage={setImage}
+                    setRoadDesignChange={setRoadDesignChange}
+                    extensionType={extensionType}
+                />
+            </BottomMenuAnimated>
         </MainView>
     );
 });
