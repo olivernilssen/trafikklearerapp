@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, StyleSheet, Text, ScrollView } from 'react-native';
 
 import { MainView, Header } from '../components/reusableComponents';
@@ -17,6 +17,8 @@ const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
     const [curriculumObjective, setCurriculumObjective] = useState('Hovedmål');
     const [trafficClass, setTrafficClass] = useState('Klasse B');
 
+    const [scrollRef, setScrollRef] = useState(useRef());
+
     return (
         <MainView>
             <Overlay
@@ -30,6 +32,7 @@ const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
                 </View>
             </Header>
             <ScrollView
+                ref={scrollRef}
                 persistentScrollbar={true}
                 showsVerticalScrollIndicator={true}
                 style={styles.main}>
@@ -48,6 +51,7 @@ const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
                 setCurriculumObjective={setCurriculumObjective}
                 trafficClass={trafficClass}
                 setTrafficClass={setTrafficClass}
+                scrollRef={scrollRef}
             />
         </MainView>
     );

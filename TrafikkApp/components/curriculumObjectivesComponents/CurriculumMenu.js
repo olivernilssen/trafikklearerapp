@@ -17,6 +17,7 @@ const CurriculumMenu = React.memo((props) => {
         setCurriculumObjective,
         trafficClass,
         setTrafficClass,
+        scrollRef,
     } = props;
 
     const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
@@ -99,6 +100,7 @@ const CurriculumMenu = React.memo((props) => {
                     setCurriculumObjective={setCurriculumObjective}
                     trafficClass={trafficClass}
                     setTrafficClass={setTrafficClass}
+                    scrollRef={scrollRef}
                 />
             </View>
         </Animated.View>

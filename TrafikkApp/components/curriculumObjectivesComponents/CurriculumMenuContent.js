@@ -14,6 +14,7 @@ const CurriculumMenuContent = React.memo(
         setCurriculumObjective,
         trafficClass,
         setTrafficClass,
+        scrollRef,
     }) => {
         // The traffic classes (klasse B, klasse B kode 96 og BE)
         const trafficClasses = [];
@@ -46,6 +47,7 @@ const CurriculumMenuContent = React.memo(
          */
         const onCurriculumObjectiveChange = (curriculumObjective) => {
             setCurriculumObjective(curriculumObjective);
+            scrollRef.current.scrollTo({ y: 0, animated: true });
         };
 
         return (

@@ -59,11 +59,11 @@ const styles = StyleSheet.create({
         marginBottom: '12%',
     },
     subHeading: {
-        color: Colors.icons,
         paddingTop: '2%',
         paddingBottom: '2%',
         paddingLeft: '2%',
         fontWeight: 'bold',
+        color: Colors.icons,
         ...Typography.section,
     },
     content: {
@@ -79,9 +79,9 @@ const styles = StyleSheet.create({
         ...Typography.section,
     },
     curriculumContent: {
-        color: Colors.textPrimary,
         paddingVertical: 5,
         lineHeight: 30,
+        color: Colors.icons,
         ...Typography.body,
     },
 });
