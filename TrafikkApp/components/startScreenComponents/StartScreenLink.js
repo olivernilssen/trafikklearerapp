@@ -20,7 +20,7 @@ const StartScreenLink = React.memo((props) => {
                 </Text>
                 <Icon
                     name={name}
-                    size={Icons.small}
+                    size={Icons.medium}
                     color={isLink ? Colors.links : Colors.iconActive}
                     style={isLink ? styles.linkIcon : styles.icon}
                 />
@@ -53,17 +53,17 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     buttonText: {
-        color: Colors.textDark,
+        color: Colors.textSecondary,
         textAlign: 'center',
         // fontWeight: 'bold',
-        ...Typography.mediumPlus,
+        ...Typography.section,
     },
     linkText: {
         textAlign: 'center',
         color: Colors.icons,
         // fontWeight: 'bold',
         textDecorationLine: 'underline',
-        ...Typography.mediumPlus,
+        ...Typography.section,
     },
 });
 

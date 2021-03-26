@@ -60,7 +60,7 @@ const DeleteButtonPopover = React.memo((props) => {
                             name={'trash'}
                             size={30}
                             solid
-                            color={Colors.textLight}
+                            color={Colors.textPrimary}
                         />
                     </View>
                 </MenuTrigger>
@@ -80,7 +80,7 @@ const DeleteButtonPopover = React.memo((props) => {
                                 style={{
                                     fontSize: 20,
                                     fontWeight: 'bold',
-                                    color: Colors.textLight,
+                                    color: Colors.textPrimary,
                                 }}>
                                 Slett
                             </Text>
@@ -104,14 +104,12 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.deleteButtonActive,
         paddingVertical: 16,
         paddingHorizontal: 16,
-        // ...Typography.large,
     },
     buttonInactive: {
         color: Colors.icons,
         backgroundColor: Colors.header,
         paddingVertical: 16,
         paddingHorizontal: 16,
-        // ...Typography.large,
     },
     deleteAllButton: {
         backgroundColor: Colors.deleteButtonActive,

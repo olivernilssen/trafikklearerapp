@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     leftColumn: {
-        color: Colors.textLight,
+        color: Colors.textPrimary,
         justifyContent: 'flex-start',
         flex: 1,
         fontSize: 25,
