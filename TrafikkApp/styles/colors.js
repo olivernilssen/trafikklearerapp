@@ -71,6 +71,6 @@ export default {
     deleteButtonActive: red,
 
     // Curriculum screen
-    curriculumBg: black,
-    curriculumCards: evenDarkerGray, //'#171717',
+    curriculumBg: blueGreen,
+    curriculumCards: darkerCharchoal, //'#171717',
 };
