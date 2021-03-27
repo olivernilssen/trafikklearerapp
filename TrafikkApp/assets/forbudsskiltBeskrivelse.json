@@ -1,0 +1,199 @@
+{
+    "302": {
+        "navn": "Innkjøring forbudt",
+        "beskrivelse": "Skiltet angir forbud mot å kjøre forbi skiltet. Sykling på fortau kan likevel foregå i samsvar med trafikkreglene."
+    },
+    "306": {
+        "navn": "Trafikkforbud ",
+        "306.0": "Forbudt for alle kjøretøy"
+    },
+    "306.1": {
+        "navn": "Forbudt for motorvogn",
+        "beskrivelse": ""
+    },
+    "306.3": {
+        "navn": "Forbudt for alle traktorer og for motorredskap konstruert for fart mindre enn 40 km/t",
+        "beskrivelse": ""
+    },
+    "306.4": {
+        "navn": "Forbudt for motorsykkel og moped",
+        "beskrivelse": ""
+    },
+    "306.5": {
+        "navn": "Forbudt for lastebil og trekkbil",
+        "beskrivelse": ""
+    },
+    "306.6": {
+        "navn": "Forbudt for syklende ",
+        "beskrivelse": ""
+    },
+    "306.7": {
+        "navn": "Forbudt for gående ",
+        "beskrivelse": ""
+    },
+    "306.8": {
+        "navn": "Forbudt for gående og syklende ",
+        "beskrivelse": ""
+    },
+    "306.9": {
+        "navn": "Forbudt for ridende ",
+        "beskrivelse": ""
+    },
+    "308": {
+        "navn": "Forbudt for transport av farlig gods",
+        "beskrivelse": "Forbudet gjelder for kjøretøy som transporterer farlig gods hvor merking med oransje skilter i henhold til avsnitt 5.3.2 i ADR kreves for transportenheten. I de tilfeller hvor forbudet gjelder for vegtunneler, omfatter forbudet de kjøretøy som angis i avsnitt 1.9.5.3.6 i ADR."
+    },
+    "310": {
+        "navn": "Forbudt for motorvogn med flere enn to hjul og med tillatt totalvekt høyere enn angitt",
+        "beskrivelse": ""
+    },
+    "312": {
+        "navn": "Breddegrense ",
+        "beskrivelse": "Forbudet gjelder kjøretøy, medregnet gods, med større bredde enn angitt."
+    },
+    "314": {
+        "navn": "Høydegrense",
+        "beskrivelse": "Forbudet gjelder kjøretøy, medregnet gods, med større høyde enn angitt."
+    },
+    "316": {
+        "navn": "Lengdegrense ",
+        "beskrivelse": "Forbudet gjelder kjøretøy eller vogntog, medregnet gods, med større lengde enn angitt."
+    },
+    "318": {
+        "navn": "Totalvektgrense ",
+        "318.1": "for kjøretøy Forbudet gjelder kjøretøy hvor aktuell totalvekt er høyere enn angitt. For vogntog gjelder forbudet hvert enkelt kjøretøy.",
+        "318.2": "for vogntog Forbudet gjelder vogntog hvor samlet aktuell totalvekt er høyere enn angitt. Forbudet gjelder også enkelt kjøretøy hvor aktuell totalvekt er høyere enn angitt."
+    },
+    "320": {
+        "navn": "Aksellastgrense",
+        "beskrivelse": "Forbudet gjelder kjøretøy med aktuell aksellast høyere enn angitt, aktuell boggilast høyere enn 1,5 ganger angitt aksellast eller aktuell trippelboggilast høyere enn 2 ganger angitt aksellast. "
+    },
+    "322": {
+        "navn": "Boggilastgrense ",
+        "beskrivelse": "Forbudet gjelder kjøretøy med aktuell boggilast høyere enn angitt."
+    },
+    "324.1": {
+        "navn": "Stopp for angitt formål - Kontroll",
+        "beskrivelse": "Skiltet angir forbud mot å kjøre videre før det er foretatt stans for det formål som er angitt i tekst på skiltet."
+    },
+    "326": {
+        "navn": "Stopp for toll ",
+        "beskrivelse": "Skiltet angir plikt til å stanse for tollklarering i samsvar med gjeldende tollbestemmelser."
+    },
+    "324.2": {
+        "navn": "Stopp for angitt formål - Avgift",
+        "beskrivelse": "Skiltet angir forbud mot å kjøre videre før det er foretatt stans for det formål som er angitt i tekst på skiltet."
+    },
+    "330.1": {
+        "navn": " Svingeforbud til høyre",
+        "beskrivelse": "Forbudet gjelder bare for det veikryss som skiltet er plassert i eller ved, eventuelt for første veikryss etter skiltet. Annet virkeområde kan fastsettes ved underskilt.\r"
+    },
+    "330.2": {
+        "navn": "Svingeforbud til venstre",
+        "beskrivelse": "Forbudet gjelder bare for det veikryss som skiltet er plassert i eller ved, eventuelt for første veikryss etter skiltet. Annet virkeområde kan fastsettes ved underskilt."
+    },
+    "332": {
+        "navn": "Vendingsforbud",
+        "beskrivelse": "Forbudet gjelder til og med første veikryss."
+    },
+    "334": {
+        "navn": "Forbikjøringsforbud ",
+        "beskrivelse": "Forbudet gjelder forbikjøring av motorvogn som har flere enn to hjul.Forbudet gjelder ikke forbikjøring som etter trafikkreglene lovlig kan skje til høyre. Forbudet gjelder fram til skilt 336 «Slutt på forbikjøringsforbud», eller over en strekning som angitt med underskilt."
+    },
+    "335": {
+        "navn": "Forbikjøringsforbud for lastebil",
+        "beskrivelse": "Forbudet gjelder lastebil med tillatt totalvekt over 3 500 kg som kjører forbi motorvogn som har flere enn to hjul. Forbudet gjelder ikke forbikjøring som etter trafikkreglene lovlig kan skje til høyre. Forbudet gjelder fram til skilt 337 «Slutt på forbikjøringsforbud for lastebil», eller over en strekning som angitt med underskilt."
+    },
+    "336": {
+        "navn": "Slutt på forbikjøringsforbud ",
+        "beskrivelse": ""
+    },
+    "337": {
+        "navn": "Slutt på forbikjøringsforbud for lastebil",
+        "beskrivelse": ""
+    },
+    "362": {
+        "navn": "Fartsgrense ",
+        "beskrivelse": ""
+    },
+    "362.30": {
+        "navn": "Fartsgrense",
+        "beskrivelse": ""
+    },
+    "362.40": {
+        "navn": "Fartsgrense",
+        "beskrivelse": ""
+    },
+    "362.50": {
+        "navn": "Fartsgrense",
+        "beskrivelse": ""
+    },
+    "362.60": {
+        "navn": "Fartsgrense",
+        "beskrivelse": ""
+    },
+    "362.70": {
+        "navn": "Fartsgrense",
+        "beskrivelse": ""
+    },
+    "362.80": {
+        "navn": "Fartsgrense",
+        "beskrivelse": ""
+    },
+    "362.90": {
+        "navn": "Fartsgrense",
+        "beskrivelse": ""
+    },
+    "364": {
+        "navn": "Slutt på særskilt fartsgrense",
+        "beskrivelse": ""
+    },
+    "364.40": {
+        "navn": "Slutt på særskilt fartsgrense",
+        "beskrivelse": ""
+    },
+    "364.50": {
+        "navn": "Slutt på særskilt fartsgrense",
+        "beskrivelse": ""
+    },
+    "364.60": {
+        "navn": "Slutt på særskilt fartsgrense",
+        "beskrivelse": ""
+    },
+    "364.70": {
+        "navn": "Slutt på særskilt fartsgrense",
+        "beskrivelse": ""
+    },
+    "366": {
+        "navn": "Fartsgrensesone ",
+        "beskrivelse": "Skiltet angir grense for område hvor det gjelder forbud mot kjøring med større fart enn angitt antall km/t.Forbudet gjelder til det blir opphevet ved skilt 368 «Slutt på fartsgrensesone», skilt 540 «Gatetun» eller skilt 548 «Gågate».Skiltet varsler også at fysiske fartsdempende anordninger kan være plassert i kjørebanen."
+    },
+    "368": {
+        "navn": "Slutt på fartsgrensesone ",
+        "beskrivelse": ""
+    },
+    "370": {
+        "navn": "Stans forbudt",
+        "beskrivelse": "Skiltet angir forbud mot å stanse kjøretøy på den side av veien hvor skiltet er satt opp. Skiltet gjelder fram til nærmeste veikryss, eller til nytt skilt 370 «Stans forbudt», 372 «Parkering forbudt», 376 «Parkeringssone», 378 «Slutt på parkeringssone» og 552 «Parkering». "
+    },
+    "372": {
+        "navn": "Parkering forbudt",
+        "beskrivelse": "Skiltet angir forbud mot parkering på den side av veien hvor skiltet er satt opp. Skiltet gjelder fram til nærmeste veikryss, eller til nytt skilt 372 «Parkering forbudt», 370 «Stans forbudt», 376 «Parkeringssone», 378 «Slutt på parkeringssone» og 552 «Parkering». "
+    },
+    "376": {
+        "navn": "Parkeringssone ",
+        "beskrivelse": "Skiltet angir grense for område hvor det gjelder særlige bestemmelser om parkering eller stans av kjøretøy. De særlige bestemmelser som gjelder, framgår av symboler og tekst på skiltet. Skiltet gjelder til det blir opphevet av skilt 378 «Slutt på parkeringssone». For bestemte veistrekninger innenfor området kan det ved skilt være fastsatt avvikende bestemmelser om parkering eller stans. For disse veistrekninger gjelder ikke soneskiltets bestemmelser. Se bilde av skilt 376.1 (eksempel)"
+    },
+    "376.2": {
+        "navn": "Parkeringssone (eksempel)",
+        "376.2": "(Eksempel)"
+    },
+    "378": {
+        "navn": " Slutt på parkeringssone ",
+        "beskrivelse": ""
+    },
+    "378.2": {
+        "navn": " Slutt på parkeringssone ",
+        "beskrivelse": ""
+    }
+}
