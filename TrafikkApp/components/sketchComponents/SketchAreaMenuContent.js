@@ -7,11 +7,11 @@ import ButtonGroup from '../reusableComponents/ButtonGroup';
 import backgroundImagePath from './backgroundImagePath';
 
 /**
- * BottomMenuContent is a menu that slides up from the bottom of the screen
+ * SketchAreaMenuContent is a menu that slides up from the bottom of the screen
  * This menu allows the user to change the background image according to
  * which screen they are on
  */
-const BottomMenuContent = React.memo(
+const SketchAreaMenuContent = React.memo(
     ({ roadType, setImage, setRoadDesignChange, extensionType }) => {
         //Get the roadtype json this component applies too based on roadType prop
         const thisRoadType = backgroundImagePath[roadType];
@@ -80,9 +80,10 @@ const BottomMenuContent = React.memo(
         const onPressButton = (designName) => {
             setRoadDesignChange(true);
             if (roadType == 'Veikryss') {
-                const imgSource = thisRoadType[designName]['X'][extensionType];
+                const imgSource =
+                    thisRoadType[designName][intersectionType][extensionType];
                 setImage(imgSource);
-                setIntersectionType('X');
+                // setIntersectionType('X');
             } else {
                 const imgSource = thisRoadType[designName][extensionType];
                 setImage(imgSource);
@@ -151,7 +152,7 @@ const BottomMenuContent = React.memo(
                                         styles.buttonText,
                                         activeBtn
                                             ? {
-                                                  color: Colors.textLight,
+                                                  color: Colors.textPrimary,
                                               }
                                             : {
                                                   color: Colors.icons,
@@ -229,7 +230,7 @@ const styles = StyleSheet.create({
     buttonText: {
         paddingTop: 5,
         textAlign: 'center',
-        ...Typography.medium,
+        ...Typography.body,
     },
     intersectionTypeSection: {
         flexDirection: 'column',
@@ -247,8 +248,8 @@ const styles = StyleSheet.create({
         paddingBottom: 15,
         color: Colors.icons,
         opacity: 0.5,
-        ...Typography.medium,
+        ...Typography.label,
     },
 });
 
-export default BottomMenuContent;
+export default SketchAreaMenuContent;

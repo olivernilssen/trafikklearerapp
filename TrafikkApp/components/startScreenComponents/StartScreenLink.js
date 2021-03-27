@@ -15,12 +15,12 @@ const StartScreenLink = React.memo((props) => {
                 ]}
                 activeOpacity={0.6}
                 onPress={onPress}>
-                <Text style={[isLink ? styles.linkText : styles.buttonTextOld]}>
+                <Text style={[isLink ? styles.linkText : styles.buttonText]}>
                     {text}
                 </Text>
                 <Icon
                     name={name}
-                    size={Icons.small}
+                    size={Icons.medium}
                     color={isLink ? Colors.links : Colors.iconActive}
                     style={isLink ? styles.linkIcon : styles.icon}
                 />
@@ -52,29 +52,18 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         paddingHorizontal: 20,
     },
-    buttonTextOld: {
-        color: Colors.textDark,
-        textAlign: 'center',
-        // fontWeight: 'bold',
-        ...Typography.mediumPlus,
-    },
     buttonText: {
-        color: Colors.textLight,
+        color: Colors.textSecondary,
+        textAlign: 'center',
         // fontWeight: 'bold',
-        textAlign: 'center',
-        textShadowColor: Colors.background,
-        textShadowRadius: 1,
-        textShadowOffset: { width: 0, height: -1 },
-        textAlign: 'center',
-        ...Typography.mediumPlus,
+        ...Typography.section,
     },
-
     linkText: {
         textAlign: 'center',
         color: Colors.icons,
         // fontWeight: 'bold',
         textDecorationLine: 'underline',
-        ...Typography.mediumPlus,
+        ...Typography.section,
     },
 });
 

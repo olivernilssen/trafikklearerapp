@@ -2,7 +2,7 @@ import ColorButton from './ColorButton';
 import DeleteButtonPopover from './DeleteButtonPopover';
 import DraggableComponentsButton from './DraggableComponentsButton';
 import HeaderButton from './HeaderButton';
-import PencilSizePopup from './PencilSizePopup';
+import PencilSizeButton from './PencilSizeButton';
 import SketchColorMenu from './SketchColorMenu';
 import SketchHeader from './SketchHeader';
 
@@ -11,11 +11,11 @@ export {
     DeleteButtonPopover,
     DraggableComponentsButton,
     HeaderButton,
-    PencilSizePopup,
+    PencilSizeButton,
     SketchColorMenu,
     SketchHeader,
 };
 
-/** SketchHeader
- * @namespace SketchHeader
+/** SketchHeaderComponents
+ * @namespace sketchHeaderComponents
  */

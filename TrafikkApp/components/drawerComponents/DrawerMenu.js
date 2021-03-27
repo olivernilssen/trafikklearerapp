@@ -37,7 +37,7 @@ const DrawerMenu = React.memo((props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.background,
+        backgroundColor: Colors.drawerBg,
         paddingTop: 15,
         // paddingHorizontal: 15,
     },

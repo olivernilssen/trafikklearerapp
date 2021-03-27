@@ -3,14 +3,14 @@ import { StyleSheet, View } from 'react-native';
 
 import { Colors } from '../../styles';
 
-/** Component for making the pencil size buttons
- * @namespace PencilSizePopup
- * @memberof SketchHeader
+/** Component for making the pencil size buttons in the sketchColorMenu
+ * @namespace PencilSizeButton
+ * @memberof sketchHeaderComponents
  * @prop {number} pencilThickness Determines the height of the View used for making the "icons" for the pencil thickness buttons
  * @prop {number} buttonID assigned uniq number for the button
  * @prop {number} pencilThicknessID The state pencilThicknessID
  */
-const PencilSizePopup = (props) => {
+const PencilSizeButton = (props) => {
     const { pencilThickness, buttonID, pencilThicknessID } = props;
 
     return (
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default PencilSizePopup;
+export default PencilSizeButton;

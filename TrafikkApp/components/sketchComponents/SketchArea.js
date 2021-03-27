@@ -8,18 +8,18 @@ import React, {
 import { View, StyleSheet, ImageBackground } from 'react-native';
 
 import MainView from '../reusableComponents/MainView';
-import SketchHeader from '../sketchHeader/SketchHeader';
+import SketchHeader from '../sketchHeaderComponents/SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import { Colors } from '../../styles';
 
 import DraggableWithEverything from '../draggable/DraggableWithEverything';
-import BottomMenuAnimated from '../bottomMenuComponent/BottomMenuAnimated';
+import BottomMenuAnimated from '../reusableComponents/BottomMenuAnimated';
+import SketchAreaMenuContent from './SketchAreaMenuContent';
 import Overlay from '../reusableComponents/Overlay';
 
 import AppContext from '../../AppContext';
 
-/**
- * This is a big component that contains all the components that are visible
+/**This is a big component that contains all the components that are visible
  * on the SketchArea screens.
  * @namespace SketchArea
  * @prop {number} navigation
@@ -29,11 +29,12 @@ const SketchArea = React.memo((props) => {
     const appContext = useContext(AppContext);
     const sketchRef = useRef();
     const eraserSize = parseInt(appContext.eraserSize);
-    const eraserColor = '#00000000';
-    const defaultPencilColor = appContext.penColor;
+    const eraserColor = 'transparent';
     const defaultPencilSize = 5;
 
-    const [pencilColor, setPencilColor] = useState(defaultPencilColor);
+    const { name, navigation } = props;
+
+    const [pencilColor, setPencilColor] = useState(appContext.penColor);
     const [chosenColor, setChosenColor] = useState('');
     const [pencilSize, setPencilSize] = useState(defaultPencilSize);
     const [chosenPencilSize, setChosenPencilSize] = useState(null);
@@ -46,8 +47,7 @@ const SketchArea = React.memo((props) => {
     const [deletingItemId, setDeletingItemId] = useState(null);
     const [extensionType, setExtensionType] = useState('Vanlig');
 
-    /**
-     * useEffect that is triggered when currentImg is changed
+    /**useEffect that is triggered when currentImg is changed
      * Will clear the canvas and delete all objects on the screen
      */
     useEffect(() => {
@@ -56,8 +56,7 @@ const SketchArea = React.memo((props) => {
         }
     }, [currentImg]);
 
-    /**
-     * Changes the pencil color according to user input
+    /**Changes the pencil color according to user input
      * @memberof SketchArea
      * @param {String} color The color thats been chosen
      */
@@ -65,8 +64,7 @@ const SketchArea = React.memo((props) => {
         setPencilColor(color);
     };
 
-    /**
-     * Changes the pencil color and size when switching between eraser and pencil
+    /**Changes the pencil color and size when switching between eraser and pencil
      * @memberof SketchArea
      * @function
      */
@@ -80,20 +78,17 @@ const SketchArea = React.memo((props) => {
         }
     }, [pencilColor]);
 
-    /**
-     * Function to change the pencil brush size
+    /**Function to change the pencil brush size
      * @memberof SketchArea
      * @function
      * @param {int} newPencilSize The thickness of the pencil
-     *
      */
     const onChangePencilSize = (newPencilSize) => {
         setPencilSize(newPencilSize);
         setChosenPencilSize(newPencilSize);
     };
 
-    /**
-     * Function to undo the previous action of the user
+    /**Function to undo the previous action of the user
      * will remove strokes or draggables
      * Does not unto draggable movements
      * @memberof SketchArea
@@ -116,8 +111,7 @@ const SketchArea = React.memo((props) => {
         setActionList(copyList);
     }, [actionList]);
 
-    /**
-     * When strokeEnded the added path/stroke
+    /**When strokeEnded the added path/stroke
      * is added to actionList to keep track of undo actions
      * @memberof SketchArea
      * @function
@@ -126,10 +120,8 @@ const SketchArea = React.memo((props) => {
         setActionList([...actionList, { type: 'stroke' }]);
     });
 
-    /**
-     * Function to clear the canvas and set draggables to empty list
+    /**Function to clear the canvas and set draggables to empty list
      * Only clear canvas if roadDesignChange is true
-     *
      * @memberof SketchArea
      * @function
      */
@@ -138,8 +130,7 @@ const SketchArea = React.memo((props) => {
         setDraggables([]);
     });
 
-    /**
-     * Function to set the pencil to an eraser
+    /**Function to set the pencil to an eraser
      * @memberof SketchArea
      * @function
      */
@@ -152,8 +143,7 @@ const SketchArea = React.memo((props) => {
         }
     };
 
-    /**
-     * Function to hide the bottomsheet when user starts
+    /**Function to hide the bottomsheet when user starts
      * drawing on the canvas
      * @memberof SketchArea
      * @function
@@ -163,8 +153,7 @@ const SketchArea = React.memo((props) => {
             setBottomSheetHidden(!bottomSheetHidden);
     }, [bottomSheetHidden]);
 
-    /**
-     * Function to toggle the topmenu to hidden or not hidden
+    /**Function to toggle the topmenu to hidden or not hidden
      * @memberof SketchArea
      * @function
      */
@@ -185,8 +174,8 @@ const SketchArea = React.memo((props) => {
                     clearCanvas={clearCanvas}
                     eraser={eraser}
                     onPaletteColorChange={onPaletteColorChange}
-                    navigation={props.navigation}
-                    name={props.name}
+                    navigation={navigation}
+                    name={name}
                     topMenuHidden={toggleMenu}
                     toggleRightMenuState={topMenuHidden}
                     onChangePencilSize={onChangePencilSize}
@@ -212,7 +201,7 @@ const SketchArea = React.memo((props) => {
                         setDraggables={setDraggables}
                         topMenuHidden={topMenuHidden}
                         deletingItemId={deletingItemId}
-                        name={props.name}
+                        name={name}
                         setActionList={setActionList}
                         actionList={actionList}
                         extensionType={extensionType}
@@ -222,13 +211,15 @@ const SketchArea = React.memo((props) => {
             </View>
 
             <BottomMenuAnimated
-                roadType={props.name}
-                setImage={setImage}
-                setRoadDesignChange={setRoadDesignChange}
-                extensionType={extensionType}
                 bottomSheetHidden={bottomSheetHidden}
-                setBottomSheetHidden={setBottomSheetHidden}
-            />
+                setBottomSheetHidden={setBottomSheetHidden}>
+                <SketchAreaMenuContent
+                    roadType={name}
+                    setImage={setImage}
+                    setRoadDesignChange={setRoadDesignChange}
+                    extensionType={extensionType}
+                />
+            </BottomMenuAnimated>
         </MainView>
     );
 });

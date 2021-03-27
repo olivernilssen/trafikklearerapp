@@ -5,15 +5,15 @@ const { height, width } = Dimensions.get('window');
 
 export default {
     // FONTS
-    FONT_SIZE_SMALL: 14,
-    FONT_SIZE_MEDIUM: 18,
-    FONT_SIZE_MEDIUM_PLUS: RUtils.isSmallScreen() ? 18 : 22,
-    FONT_SIZE_LARGE: RUtils.isSmallScreen() ? 20 : 30,
+    FONT_SIZE_BODY: 18,
+    FONT_SIZE_SECONDARY: 16,
+    FONT_SIZE_HEADING: 30, // RUtils.isSmallScreen() ? 26 : 30,
+    FONT_SIZE_SECTION: 22, // RUtils.isSmallScreen() ? 18 : 22,
 
     // ICONS
-    ICON_SIZE_SMALL: RUtils.isSmallScreen() ? 20 : 30,
-    ICON_SIZE_MEDIUM: RUtils.isSmallScreen() ? 30 : 40,
-    ICON_SIZE_LARGE: RUtils.isSmallScreen() ? 50 : 100,
+    ICON_SIZE_SMALL: RUtils.isSmallScreen() ? 15 : 20,
+    ICON_SIZE_MEDIUM: RUtils.isSmallScreen() ? 20 : 30,
+    ICON_SIZE_LARGE: RUtils.isSmallScreen() ? 30 : 40,
 
     // BUTTONS
     BUTTON_WIDTH_SMALL: 80,

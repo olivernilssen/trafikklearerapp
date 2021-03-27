@@ -3,13 +3,16 @@
 //
 const charcoal = '#4A4A4A';
 const darkerCharchoal = '#404040';
+
 const lightGray = '#DAD8D8';
 const mediumGray = '#C3C2C2';
 const darkGray = '#3B3B3B';
+const evenDarkerGray = '#2E2E2E';
+
 const black = '#242424';
 const white = '#FFFFFF';
-const mustard = '#E2BD38';
 
+const mustard = '#E2BD38';
 const green = '#66DA8D';
 const blue = '#79B7DA';
 const blueGray = '#CDD7DC';
@@ -19,12 +22,14 @@ const red = '#FB5555';
 
 export default {
     // Main
-    background: darkGray,
-    header: darkGray,
+    headerBg: darkGray,
+    drawerBg: darkGray,
+    dividerPrimary: charcoal,
+    dividerSecondary: lightGray,
 
     // Text and icons
-    textDark: darkGray,
-    textLight: white,
+    textSecondary: darkGray,
+    textPrimary: white,
     icons: lightGray,
     iconActive: charcoal, // or mustard?
     drawerIconActive: blueGreen,
@@ -36,7 +41,17 @@ export default {
     slideTextActive: darkGray,
     slideTextInactive: mediumGray,
 
+    secSlideActiveBg: blueGreen,
+    secSlideInactiveBg: darkerCharchoal,
+    secSlideTextActive: darkGray,
+    secSlideTextInactive: mediumGray,
+
+    // BottomMenu
+    bottomMeny: darkGray,
+    bottomMenyButtons: charcoal,
+
     // StartScreen
+    startScreenBg: darkGray,
     startScreenLinkDrawing: blueGreen,
     startScreenLinkTheory: blue,
     startScreenLinkLink: charcoal,
@@ -46,8 +61,6 @@ export default {
     componentMenu: charcoal,
     componentMenuSection: darkerCharchoal,
     componentMenuButtons: darkGray,
-    bottomMeny: darkGray,
-    bottomMenyButtons: charcoal,
 
     // SketchHeader
     boxIconActive: mustard,
@@ -57,11 +70,7 @@ export default {
     deleteButton: darkGray,
     deleteButtonActive: red,
 
-    // ButtonGroup in ComponentMenu
-    secSlideActiveBg: blueGreen,
-    secSlideInactiveBg: darkerCharchoal,
-    secSlideTextActive: darkGray,
-    secSlideTextInactive: mediumGray,
-
-    textInputBg: charcoal,
+    // Curriculum screen
+    curriculumBg: blueGreen,
+    curriculumCards: darkerCharchoal, //'#171717',
 };

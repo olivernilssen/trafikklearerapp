@@ -9,10 +9,10 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Buttons } from '../../styles';
 import { MenuOption } from 'react-native-popup-menu';
 
-/** Colorbutton component
+/** Color button component
  * returns a color button based on the props it receives
  * @namespace ColorButton
- * @memberof SketchHeader
+ * @memberof sketchHeaderComponents
  * @prop {string} colorName The color from the colorArray
  * @prop {number} buttonID A number used to identify the button
  * @prop {number} colorButtonID The state colorButtonID

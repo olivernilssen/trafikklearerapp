@@ -98,7 +98,7 @@ const PopoutItems = (props) => {
                                 name={'times'}
                                 solid
                                 size={buttonSize - 10}
-                                color={Colors.textLight}
+                                color={Colors.textPrimary}
                             />
                         )}
                         {isResetButton && (

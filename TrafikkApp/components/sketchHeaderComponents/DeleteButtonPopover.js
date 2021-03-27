@@ -14,7 +14,7 @@ const { Popover } = renderers;
 
 /** A button for clearing the sketch screen, drops down a button for confirmation
  * @namespace DeleteButtonPopover
- * @memberof SketchHeader
+ * @memberof sketchHeaderComponents
  * @prop {object} propsStyle StyleSheet
  * @prop {function} clearCanvas Clears the canvas
  */
@@ -24,9 +24,8 @@ const DeleteButtonPopover = React.memo((props) => {
 
     const { propsStyle, clearCanvas } = props;
 
-    /**
-     * Clear canvas and close the "popover" modal
-     * @memberof SketchHeader.DeleteButtonPopover
+    /** Clear canvas and close the "popover" modal
+     * @memberof sketchHeaderComponents.DeleteButtonPopover
      */
     const clearButtonPressed = () => {
         clearCanvas();
@@ -61,7 +60,7 @@ const DeleteButtonPopover = React.memo((props) => {
                             name={'trash'}
                             size={30}
                             solid
-                            color={Colors.textLight}
+                            color={Colors.textPrimary}
                         />
                     </View>
                 </MenuTrigger>
@@ -81,7 +80,7 @@ const DeleteButtonPopover = React.memo((props) => {
                                 style={{
                                     fontSize: 20,
                                     fontWeight: 'bold',
-                                    color: Colors.textLight,
+                                    color: Colors.textPrimary,
                                 }}>
                                 Slett
                             </Text>
@@ -105,14 +104,12 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.deleteButtonActive,
         paddingVertical: 16,
         paddingHorizontal: 16,
-        // ...Typography.large,
     },
     buttonInactive: {
         color: Colors.icons,
         backgroundColor: Colors.header,
         paddingVertical: 16,
         paddingHorizontal: 16,
-        // ...Typography.large,
     },
     deleteAllButton: {
         backgroundColor: Colors.deleteButtonActive,

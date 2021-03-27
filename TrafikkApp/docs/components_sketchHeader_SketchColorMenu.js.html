@@ -73,6 +73,7 @@ const SketchColorMenu = React.memo((props) => {
         activeId,
         focusedActiveButton,
         chosenColor,
+        pencilColor,
     } = props;
 
     /**
@@ -125,15 +126,6 @@ const SketchColorMenu = React.memo((props) => {
         setPencilThicknessID(value);
     };
 
-    /** Used to switch between down- or up-arrow on the pencil icon
-     * false equals down, true equals up
-     * @memberof SketchHeader.SketchColorMenu
-     * @param {boolean} value The state of the menuArrow
-     */
-    const onPressMenuArrow = (value) => {
-        setMenuArrow(value);
-    };
-
     /** Handles what happens to the pencil button when you press it or when you press another button after the pencil button
      * @memberof SketchHeader.SketchColorMenu
      */
@@ -141,10 +133,8 @@ const SketchColorMenu = React.memo((props) => {
         if (activeId != 0) {
             onEraserPencilSwitch();
             focusedActiveButton(buttonActiveId);
-            onPressMenuArrow(false);
             onSecondClickOpen(false);
         } else {
-            onPressMenuArrow(true);
             onSecondClickOpen(true);
         }
     };
@@ -155,7 +145,7 @@ const SketchColorMenu = React.memo((props) => {
      * @param {object} value Contains the color code and the unique key
      * @param {number} index The index of the objects in the array
      */
-    const colorButtons = colorArray.map((value, index) => {
+    const ColorButtons = colorArray.map((value, index) => {
         return (
             &lt;ColorButton
                 key={value.key}
@@ -202,22 +192,21 @@ const SketchColorMenu = React.memo((props) => {
                 opened={isOpened}
                 onBackdropPress={() => {
                     onSecondClickOpen(false);
-                    onPressMenuArrow(false);
                 }}>
                 &lt;MenuTrigger
                     onPress={() => {
                         onPressMenuTrigger();
                     }}>
                     &lt;View
-                        style={
+                        style={[
+                            styles.buttonSize,
                             activeId === buttonActiveId
                                 ? [
-                                      styles.buttonSize,
                                       styles.buttonActive,
-                                      { backgroundColor: chosenColor },
+                                      { backgroundColor: pencilColor },
                                   ]
-                                : [styles.buttonSize, styles.buttonInactive]
-                        }>
+                                : [styles.buttonInactive],
+                        ]}>
                         &lt;Icon
                             name={'pen'}
                             size={Icons.small}
@@ -225,17 +214,13 @@ const SketchColorMenu = React.memo((props) => {
                             color={Colors.textLight}
                         />
                         &lt;Icon
-                            name={menuArrow ? 'sort-up' : 'sort-down'}
+                            name={'sort-down'}
                             size={25}
                             solid
                             color={
-                                activeId === 0 ? Colors.textLight : chosenColor
+                                activeId === 0 ? Colors.textLight : '#00000000'
                             }
-                            style={
-                                isOpened
-                                    ? [styles.upIconMenu]
-                                    : [styles.downIconMenu]
-                            }
+                            style={styles.downIconMenu}
                         />
                     &lt;/View>
                 &lt;/MenuTrigger>
@@ -247,10 +232,15 @@ const SketchColorMenu = React.memo((props) => {
                             justifyContent: 'center',
                             paddingTop: 10,
                         }}>
-                        {colorButtons}
+                        {ColorButtons}
                     &lt;/View>
                     &lt;MenuOptions>
-                        &lt;View style={styles.iconPlacement}>
+                        &lt;View
+                            style={{
+                                flexShrink: 1,
+                                flexDirection: 'row',
+                                justifyContent: 'space-evenly',
+                            }}>
                             {pencilThicknessButtons}
                         &lt;/View>
                     &lt;/MenuOptions>
@@ -264,27 +254,32 @@ const styles = StyleSheet.create({
     buttonSize: {
         height: 62,
         width: 62,
-        ...Buttons.round,
         justifyContent: 'center',
         alignItems: 'center',
+        ...Buttons.round,
     },
     downIconMenu: {
         position: 'absolute',
-        alignSelf: 'flex-start',
-        top: 5,
-        left: 5,
+        alignSelf: 'center',
+        top: 26,
+        left: 35,
+        transform: [{ rotate: '-45deg' }],
     },
     upIconMenu: {
         position: 'absolute',
-        alignSelf: 'flex-start',
-        top: 10,
-        left: 5,
+        alignSelf: 'center',
+        top: 31,
+        left: 35,
+        transform: [{ rotate: '-45deg' }],
     },
     buttonActive: {
         backgroundColor: Colors.iconActive,
+        ...Buttons.round,
+        overflow: 'hidden',
     },
     buttonInactive: {
         color: Colors.icons,
+        ...Buttons.round,
     },
     iconColorActive: {
         color: Colors.iconActive,
@@ -321,7 +316,7 @@ export default SketchColorMenu;
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Mon Mar 22 2021 22:16:29 GMT+0100 (sentraleuropeisk normaltid)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Wed Mar 24 2021 09:12:52 GMT+0100 (sentraleuropeisk normaltid)
 </footer>
 
 <script> prettyPrint(); </script>

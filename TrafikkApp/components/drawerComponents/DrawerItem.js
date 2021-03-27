@@ -18,7 +18,7 @@ const DrawerItem = React.memo(
                         backgroundColor:
                             screenIndex == value
                                 ? Colors.drawerIconActive
-                                : Colors.background,
+                                : Colors.drawerBg,
                     },
                 ]}
                 activeOpacity={0.2}
@@ -29,9 +29,11 @@ const DrawerItem = React.memo(
                 }>
                 <Icon
                     name={icon}
-                    size={Icons.small}
+                    size={Icons.medium}
                     color={
-                        screenIndex == value ? Colors.textDark : Colors.icons
+                        screenIndex == value
+                            ? Colors.textSecondary
+                            : Colors.icons
                     }
                     style={{ margin: 15 }}
                 />
@@ -41,7 +43,7 @@ const DrawerItem = React.memo(
                         {
                             color:
                                 screenIndex == value
-                                    ? Colors.textDark
+                                    ? Colors.textSecondary
                                     : Colors.icons,
                         },
                     ]}>
@@ -67,7 +69,7 @@ const styles = StyleSheet.create({
         fontWeight: '300',
         margin: 12,
         textAlign: 'center',
-        ...Typography.medium,
+        ...Typography.body,
     },
 });
 
