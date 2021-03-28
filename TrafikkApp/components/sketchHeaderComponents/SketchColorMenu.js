@@ -63,17 +63,6 @@ const SketchColorMenu = React.memo((props) => {
         { colorCode: '#8B1079', key: '8B1079' },
     ];
 
-    const appContext = useContext(AppContext);
-
-    useEffect(() => {
-        for (let i = 0; i < colorArray.length; i++) {
-            if (colorArray[i].colorCode == appContext.penColor) {
-                console.log('found ' + appContext.penColor + ' at index ' + i);
-                setColorButtonID(i);
-            }
-        }
-    }, []);
-
     /**
      * An array that holds the thickness of the "icons" (view) for the pencil thickness buttons
      * and the pencil thickness used for changing the thickness of the pencil
@@ -83,6 +72,21 @@ const SketchColorMenu = React.memo((props) => {
         { viewThickness: 11, pencilThickness: 8, key: 118 },
         { viewThickness: 14, pencilThickness: 11, key: 1411 },
     ];
+
+    const appContext = useContext(AppContext);
+
+    /**
+     * useEffect to get out the colorId of the correct color
+     * depending on what the settings has stored
+     */
+    useEffect(() => {
+        for (let i = 0; i < colorArray.length; i++) {
+            if (colorArray[i].colorCode == appContext.penColor) {
+                console.log('found ' + appContext.penColor + ' at index ' + i);
+                setColorButtonID(i);
+            }
+        }
+    }, []);
 
     /**Used to handle the state of the color menu, if it is open or not
      * @memberof sketchHeaderComponents.SketchColorMenu
