@@ -82,7 +82,6 @@ const SketchColorMenu = React.memo((props) => {
     useEffect(() => {
         for (let i = 0; i < colorArray.length; i++) {
             if (colorArray[i].colorCode == appContext.penColor) {
-                console.log('found ' + appContext.penColor + ' at index ' + i);
                 setColorButtonID(i);
             }
         }
