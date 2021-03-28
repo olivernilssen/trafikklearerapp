@@ -3,9 +3,14 @@ import { View, Text, StyleSheet, ToastAndroid } from 'react-native';
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
 import { Colors } from '../../styles/index';
-// import ButtonToggleGroup from 'react-native-button-toggle-group';
 import ButtonGroup from '../reusableComponents/ButtonGroup';
 
+/**
+ * The view for the settings screen. It takes in data from
+ * AppContext and has arrays for possible values for the different settings
+ * @namespace SettingsComponents
+ * @memberof SettingsView
+ */
 const SettingsView = () => {
     const myContext = useContext(AppContext);
     const onDelChangeValues = ['Ja', 'Nei'];
@@ -29,6 +34,16 @@ const SettingsView = () => {
     ];
     const themeValues = ['Mørk', 'Lys'];
 
+    /**
+     * Function to handle changing a value in settings
+     * it also launches a toast on the screen to let the user know
+     * that the change has been saved
+     * @memberof SettingsComponents.SettingsView
+     * @param {string} type the name of the settings that is changed
+     * @param {string} value the value to update the storage key to
+     * @param {function} setValue the state set function associated with this value
+     * @param {string} key the asyncStorage key for this value to update it
+     */
     const onChangeValue = (type, value, setValue, key) => {
         myContext.saveNewSettings(value, setValue, key);
         ToastAndroid.show(

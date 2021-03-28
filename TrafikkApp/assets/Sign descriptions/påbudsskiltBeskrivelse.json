@@ -1,0 +1,50 @@
+{
+    "402.1": {
+        "navn": "Påbudt kjøreretning",
+        "beskrivelse": "Skiltet angir at kjørende skal forlate veikrysset i den retning som er angitt på skiltet."
+    },
+    "402.2": {
+        "navn": "Påbudt kjøreretning",
+        "beskrivelse": ""
+    },
+    "402.3": {
+        "navn": "Påbudt kjøreretning",
+        "beskrivelse": ""
+    },
+    "402.4": {
+        "navn": "Påbudt kjøreretning",
+        "beskrivelse": ""
+    },
+    "402.5": {
+        "navn": "Påbudt kjøreretning",
+        "beskrivelse": ""
+    },
+    "402.6": {
+        "navn": "Påbudt kjøreretning",
+        "beskrivelse": ""
+    },
+    "402.7": {
+        "navn": "Påbudt kjøreretning",
+        "beskrivelse": ""
+    },
+    "402.8": {
+        "navn": "Påbudt kjøreretning",
+        "beskrivelse": ""
+    },
+    "404.1": {
+        "navn": "Påbudt kjørefelt høyre",
+        "beskrivelse": "Skiltet angir at kjørende skal passere skiltet på høyre side."
+    },
+    "404.2": {
+        "navn": "Påbudt kjørefelt venstre",
+        "beskrivelse": "Skiltet angir at kjørende skal passere skiltet på venstre side. "
+    },
+    "406": {
+        "navn": "Påbudt rundkjøring",
+        "beskrivelse": ""
+    },
+    "408": {
+        "navn": "Påbudt kjøreretning i rundkjøring",
+        "beskrivelse": ""
+    }
+}

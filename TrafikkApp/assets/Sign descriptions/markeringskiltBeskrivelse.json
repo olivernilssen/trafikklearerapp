@@ -1,0 +1,54 @@
+{
+    "902": {
+        "navn": " Bakgrunnsmarkering",
+        "beskrivelse": "",
+        "902H": "",
+        "902V": ""
+    },
+    "904": {
+        "navn": " Retningsmarkering ",
+        "beskrivelse": "",
+        "904H": "",
+        "904V": ""
+    },
+    "906": {
+        "navn": " Hindermarkering",
+        "beskrivelse": "",
+        "906H": "Skråstripene peker ned mot den side markeringen kan passeres på",
+        "906V": "Skråstripene peker ned mot den side markeringen kan passeres på",
+        "906VH": "Skråstripene peker ned mot den side markeringen kan passeres på"
+    },
+    "908": {
+        "navn": "Hindermarkering",
+        "beskrivelse": ""
+    },
+    "912": {
+        "navn": "Avkjøringsmarkering",
+        "beskrivelse": "Skiltet markerer avkjøringsvei fra motorvei eller annen vei med høy standard. "
+    },
+    "914": {
+        "navn": "Tunnelmarkering",
+        "beskrivelse": "",
+        "914V": "",
+        "914H": ""
+    },
+    "916": {
+        "navn": " Avstandsmerking i tunnel",
+        "beskrivelse": "Skiltet markerer avstand til tunnelåpninger."
+    },
+    "920": {
+        "navn": "Kantstolpe",
+        "beskrivelse": "",
+        "920VM": "",
+        "920H": "",
+        "920VE": ""
+    },
+    "940": {
+        "navn": "Trafikkjegle",
+        "beskrivelse": ""
+    },
+    "942": {
+        "navn": "Trafikksylinder ",
+        "beskrivelse": ""
+    }
+}

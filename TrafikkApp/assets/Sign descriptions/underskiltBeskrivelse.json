@@ -1,0 +1,133 @@
+{
+    "802": {
+        "navn": "Avstand",
+        "beskrivelse": "Underskiltet angir avstanden til det sted hvor hovedskiltet begynner å gjelde, eller til sted hvor tilsvarende hovedskilt er satt opp (forvarsling). "
+    },
+    "804": {
+        "navn": "Utstrekning ",
+        "beskrivelse": "Underskiltet angir at hovedskiltet gjelder for bestemt vegstrekning. Tallene angir avstanden til vegstrekningens begynnelse og slutt. "
+    },
+    "806": {
+        "navn": "Tid ",
+        "beskrivelse": "Underskiltet angir at hovedskiltet bare gjelder i det eller de tidsrom som er angitt med klokkeslett. Sorte tall gjelder hverdag unntatt lørdag, sorte tall i parentes gjelder lørdag, røde tall gjelder søndag, helligdag og offentlig høytidsdag. "
+    },
+    "807": {
+        "navn": "Symbol ",
+        "beskrivelse": ""
+    },
+    "807.1": {
+        "navn": "Personbil ",
+        "beskrivelse": ""
+    },
+    "807.2": {
+        "navn": "Varebil, lastebil og trekkbil ",
+        "beskrivelse": ""
+    },
+    "807.3": {
+        "navn": "Buss ",
+        "beskrivelse": ""
+    },
+    "807.4": {
+        "navn": "Vogntog ",
+        "beskrivelse": ""
+    },
+    "807.5": {
+        "navn": "Tilhenger særskilt innredet til campingbruk, samt eventuell trekkvogn ",
+        "beskrivelse": ""
+    },
+    "807.6": {
+        "navn": "Sykkel",
+        "beskrivelse": ""
+    },
+    "807.7": {
+        "navn": "Tohjuls motorsykkel med og uten sidevogn og tohjuls moped",
+        "beskrivelse": ""
+    },
+    "807.8": {
+        "navn": "Forflytningshemmede med parkeringstillatelse ",
+        "beskrivelse": ""
+    },
+    "807.9": {
+        "navn": "Kjøretøy særskilt innredet til campingbruk (bobil)",
+        "beskrivelse": ""
+    },
+    "808": {
+        "navn": " Tekst",
+        "beskrivelse": "Underskiltet brukes når det ikke er hensiktsmessig å gi vedkommende regulering eller informasjon med underskilt med symbol, tall eller annet. "
+    },
+    "810": {
+        "navn": "Svingpil",
+        "beskrivelse": "",
+        "810.H45": "",
+        "810.H90": "",
+        "810.H135": "",
+        "810.R": "",
+        "810.V45": "",
+        "810.V90": "",
+        "810.V135": ""
+    },
+    "812": {
+        "navn": "Anbefalt fart ",
+        "beskrivelse": "Underskiltet angir den høyeste fart som den varslede fare tilsier under normale vær-, føre-, sikt- og lysforhold."
+    },
+    "813": {
+        "813.1": "",
+        "beskrivelse": "",
+        "813.2": ""
+    },
+    "814": {
+        "navn": "Virkelig fri vegbredde",
+        "beskrivelse": " "
+    },
+    "816": {
+        "navn": "Kryssende tømmertransport ",
+        "beskrivelse": " "
+    },
+    "817": {
+        "navn": "Særlig ulykkesfare",
+        "beskrivelse": "",
+        "817.1": "",
+        "817.2": "",
+        "817.3": "",
+        "817.4": "",
+        "817.5": ""
+    },
+    "822": {
+        "navn": "Forløp av forkjørsveg",
+        "beskrivelse": "",
+        "822.1": "",
+        "822.2": "",
+        "822.3": "",
+        "822.4": "",
+        "822.5": "",
+        "822.6": "",
+        "822.7": ""
+    },
+    "824": {
+        "navn": "Forvarsling av stopp",
+        "beskrivelse": "Underskiltet brukes sammen med skilt 202 «Vikeplikt» for å varsle om at skilt 204 «Stopp» er satt opp i angitt avstand. "
+    },
+    "826": {
+        "navn": "Sykkeltrafikk i begge kjøreretninger",
+        "beskrivelse": "Underskiltet viser at det er sykkeltrafikk i begge kjøreretninger på kryssende sykkelvei eller gang- og sykkelvei. "
+    },
+    "828": {
+        "navn": "Utstrekning av stans og parkeringsregulering",
+        "beskrivelse": "",
+        "828.1": "",
+        "828.2": "",
+        "828.3": ""
+    },
+    "829": {
+        "navn": "Oppstiling av parkert kjøretøy",
+        "beskrivelse": ""
+    },
+    "831": {
+        "navn": "Parkeringsskive  ",
+        "beskrivelse": "Underskiltet angir at parkering bare er tillatt på stedet når anordning som angir tidspunktet for når kjøretøyet er parkert, er plassert godt synlig bak frontruten i kjøretøyet. "
+    },
+    "834": {
+        "navn": "Kombinert regulering ",
+        "beskrivelse": "Underskiltet angir parkeringsregulering ved kombinasjon av tekst, tall, symbol mv. som nyttes på andre underskilt. "
+    }
+}

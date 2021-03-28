@@ -1,0 +1,139 @@
+{
+    "601": {
+        "navn": "Lytt til radio",
+        "beskrivelse": ""
+    },
+    "602": {
+        "navn": "Førstehjelp ",
+        "beskrivelse": ""
+    },
+    "605": {
+        "navn": "Nødtelefon",
+        "beskrivelse": ""
+    },
+    "606": {
+        "navn": "Brannslokningsapparat",
+        "beskrivelse": ""
+    },
+    "608": {
+        "navn": "Kjøretøyverksted ",
+        "beskrivelse": ""
+    },
+    "609": {
+        "navn": "Hurtiglading av motorvogn",
+        "beskrivelse": ""
+    },
+    "610.1": {
+        "navn": "Drivstoff",
+        "beskrivelse": ""
+    },
+    "610.2": {
+        "navn": "Eksempel",
+        "610.2": "Eksempel "
+    },
+    "611": {
+        "navn": "Toalettømmeanlegg ",
+        "beskrivelse": "Skiltet angir mottaksanlegg for toalettavfall fra campingvogner, bobiler og busser. "
+    },
+    "612": {
+        "navn": "Toalett ",
+        "beskrivelse": " "
+    },
+    "613": {
+        "navn": "Rasteplass",
+        "613.1": "(628)",
+        "613.2": ""
+    },
+    "614": {
+        "navn": "Enklere servering",
+        "beskrivelse": ""
+    },
+    "616": {
+        "navn": "Spisested ",
+        "beskrivelse": ""
+    },
+    "618": {
+        "navn": "Campingplass",
+        "beskrivelse": ""
+    },
+    "621": {
+        "navn": "Bobilplass",
+        "beskrivelse": ""
+    },
+    "622": {
+        "navn": "Campinghytter",
+        "beskrivelse": ""
+    },
+    "624": {
+        "navn": "Vandrerhjem ",
+        "beskrivelse": ""
+    },
+    "625": {
+        "navn": "Rom og frokost ",
+        "625": "Rom og frokost "
+    },
+    "626": {
+        "navn": "Overnattingssted ",
+        "beskrivelse": ""
+    },
+    "635": {
+        "navn": "Informasjon",
+        "beskrivelse": ""
+    },
+    "637": {
+        "navn": "Turistkontor ",
+        "beskrivelse": ""
+    },
+    "640.10": {
+        "navn": "Severdighet",
+        "beskrivelse": "For severdighet av særlig stor betydning kan symbolet erstattes av symbol tilpasset severdigheten."
+    },
+    "640.12": {
+        "navn": "Museum/ galleri",
+        "beskrivelse": ""
+    },
+    "640.20": {
+        "navn": "Utsiktspunkt",
+        "beskrivelse": ""
+    },
+    "640.30": {
+        "navn": "Naturvernområde",
+        "beskrivelse": ""
+    },
+    "640.101": {
+        "navn": "Verdensarv",
+        "beskrivelse": ""
+    },
+    "640.102": {
+        "navn": "Nasjonale festningsverk",
+        "beskrivelse": ""
+    },
+    "650.10": {
+        "navn": "Badeplass",
+        "beskrivelse": ""
+    },
+    "650.11": {
+        "navn": "Fiskeplass",
+        "beskrivelse": ""
+    },
+    "650.20": {
+        "navn": "Tursti",
+        "beskrivelse": ""
+    },
+    "650.21": {
+        "navn": "Skiløype",
+        "beskrivelse": ""
+    },
+    "650.22": {
+        "navn": "Sykkelløype",
+        "beskrivelse": ""
+    },
+    "650.40": {
+        "navn": "Gardsmat/ bygdeturisme",
+        "beskrivelse": ""
+    },
+    "650.41": {
+        "navn": "Olavsrosa",
+        "beskrivelse": ""
+    }
+}

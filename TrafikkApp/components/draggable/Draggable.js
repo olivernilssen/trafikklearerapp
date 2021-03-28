@@ -30,8 +30,10 @@ const radius = (ITEM_SIZE * 2) / 2;
 const buttonSize = 25;
 
 /**
- * The component which is draggable
- * Can be moved freely around the view it belongs too
+ * Component that holds the actual draggable component
+ * @namespace Draggable
+ * @memberof draggable
+ * @prop {string} source image source of the draggable object
  */
 const Draggable = React.memo((props) => {
     //States
@@ -43,6 +45,7 @@ const Draggable = React.memo((props) => {
     /**
      * useEffect that is triggered when tintColor is changed
      * Will make the popout inactive
+     * @memberof draggable.draggable
      */
     useEffect(() => {
         setPopoutActive(!popoutActive);
@@ -53,7 +56,8 @@ const Draggable = React.memo((props) => {
      * will remove the popout if it is active
      * and make the item hover as a feedback that the dragging has
      * started
-     * @param {Event} gesture
+     * @memberof draggable.draggable
+     * @param {array[]} gesture
      */
     const onDragStart = (gesture) => {
         //Start spring animation (user feedback)
@@ -70,7 +74,8 @@ const Draggable = React.memo((props) => {
      * When dragging event has ended, the
      * hoved animation will end and pop back to it's
      * original size
-     * @param {Event} gesture
+     * @memberof draggable.draggable
+     * @param {array[]} gesture
      */
     const onDragEnd = (gesture) => {
         Animated.spring(imgScale, {
@@ -84,6 +89,7 @@ const Draggable = React.memo((props) => {
      * Helper function so useEffects are triggered
      * when the user stops dragging the element on top of
      * the trashcan. This will initate the removal of the item
+     * @memberof draggable.draggable
      */
     const removeItem = useCallback(() => {
         props.onRemoveItem(props.id);
