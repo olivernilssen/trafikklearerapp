@@ -51,8 +51,9 @@ const SketchArea = React.memo((props) => {
      * Will clear the canvas and delete all objects on the screen
      */
     useEffect(() => {
-        if (roadDesignChange) {
+        if (roadDesignChange && appContext.deleteOnChange == 'Ja') {
             clearCanvas();
+            setDraggables([]);
         }
     }, [currentImg]);
 
@@ -195,7 +196,6 @@ const SketchArea = React.memo((props) => {
                         strokeColor={pencilColor}
                         strokeWidth={pencilSize}
                     />
-
                     <DraggableWithEverything
                         draggables={draggables}
                         setDraggables={setDraggables}

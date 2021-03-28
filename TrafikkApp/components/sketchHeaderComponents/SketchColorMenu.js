@@ -12,6 +12,7 @@ import PencilSizeButton from './PencilSizeButton';
 import ColorButton from './ColorButton';
 import { Colors, Typography, Buttons, Icons } from '../../styles';
 import AppContext from '../../AppContext';
+import { useEffect } from 'react';
 
 const { Popover } = renderers;
 
@@ -28,7 +29,6 @@ const { Popover } = renderers;
  * @prop {string} chosenColor The state chosenColor
  */
 const SketchColorMenu = React.memo((props) => {
-    // const appContext = useContext(AppContext);
     // const INITIAL_COLOR = appContext.penColor;
     const [isOpened, setOpened] = useState(false);
     const [colorButtonID, setColorButtonID] = useState(0);
@@ -62,6 +62,17 @@ const SketchColorMenu = React.memo((props) => {
         { colorCode: '#CF262F', key: 'CF262F' },
         { colorCode: '#8B1079', key: '8B1079' },
     ];
+
+    const appContext = useContext(AppContext);
+
+    useEffect(() => {
+        for (let i = 0; i < colorArray.length; i++) {
+            if (colorArray[i].colorCode == appContext.penColor) {
+                console.log('found ' + appContext.penColor + ' at index ' + i);
+                setColorButtonID(i);
+            }
+        }
+    }, []);
 
     /**
      * An array that holds the thickness of the "icons" (view) for the pencil thickness buttons
