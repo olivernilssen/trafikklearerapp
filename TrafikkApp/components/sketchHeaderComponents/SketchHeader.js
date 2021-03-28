@@ -112,7 +112,10 @@ const styles = StyleSheet.create({
         ...Buttons.round,
     },
     header: {
-        backgroundColor: Colors.header,
+        // backgroundColor: Colors.header,
+        borderBottomWidth: 1,
+        borderBottomColor: Colors.dividerPrimary,
+        elevation: 8,
     },
     toolBar: {
         width: '100%',

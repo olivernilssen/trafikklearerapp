@@ -77,6 +77,7 @@ const CurriculumMenuContent = React.memo(
                                             ? {
                                                   backgroundColor:
                                                       Colors.bottomMeny,
+                                                  elevation: 8,
                                               }
                                             : {
                                                   backgroundColor:
@@ -118,12 +119,12 @@ const CurriculumMenuContent = React.memo(
                         onSelect={(newValue) =>
                             onCurriculumObjectiveChange(newValue)
                         }
-                        groupWidth={600}
+                        groupWidth={700}
                         height={50}
                         textSize={20}
-                        highlightBackgroundColor={Colors.secSlideActiveBg}
+                        highlightBackgroundColor={Colors.startScreenLinkTheory}
                         highlightTextColor={Colors.secSlideTextActive}
-                        inactiveBackgroundColor={Colors.bottomMenyButtons}
+                        inactiveBackgroundColor={Colors.secSlideInactiveBg}
                         inactiveTextColor={Colors.secSlideTextInactive}
                     />
                 </View>
@@ -146,10 +147,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'center',
-        borderTopLeftRadius: 40,
-        borderTopRightRadius: 40,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
         overflow: 'hidden',
-        elevation: 1,
+        // elevation: 1,
     },
     buttonContainer: {
         padding: 25,

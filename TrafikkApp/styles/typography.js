@@ -13,8 +13,8 @@ export const button = {
 
 export const heading = {
     fontSize: ThemeVariables.FONT_SIZE_HEADING,
-    fontWeight: 'bold',
-    fontFamily: '',
+    // fontWeight: 'bold',
+    // fontFamily: 'monospace',
 };
 
 export const section = {
