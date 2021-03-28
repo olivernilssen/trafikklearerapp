@@ -44,8 +44,9 @@
         "beskrivelse": " "
     },
     "510.2": {
-        "510.2": "",
-        "beskrivelse": ""
+        "navn": "Slutt på kollektivfelt",
+        "beskrivelse": "",
+        "510.2": ""
     },
     "511": {
         "navn": "Slutt på sambruksfelt ",
@@ -149,12 +150,14 @@
     },
     "534": {
         "navn": "Kjørefelt begynner ",
+        "beskrivelse": "",
         "534.H02": "Eksempel",
         "534.V01": "Eksempel",
         "534.V11": "Eksempel"
     },
     "536": {
         "navn": "Påkjøring fortsetter i eget kjørefelt",
+        "beskrivelse": "",
         "536.101": "Eksempel ",
         "536.102": "Eksempel",
         "536.201": "Eksempel",
@@ -210,11 +213,13 @@
     },
     "565": {
         "navn": "Feil kjøreretning ",
+        "beskrivelse": "",
         "565": "Feil kjøreretning "
     },
     "570": {
-        "570.1H": "",
+        "navn": "Nødutgangsskilt for tunnel ",
         "beskrivelse": "",
+        "570.1H": "",
         "570.1V": "",
         "570.2H": "",
         "570.2V": ""

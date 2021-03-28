@@ -221,6 +221,7 @@
     },
     "790": {
         "navn": "Andre reisemål",
+        "beskrivelse": "",
         "790.10": "Kirke",
         "790.15": "Næringsområde",
         "790.16": "Kjøpesenter",
@@ -232,6 +233,7 @@
     },
     "792": {
         "navn": "Betalingsmåte i bomstasjon/ betalingssystem på veg",
+        "beskrivelse": "",
         "792.11": "Betaling med elektronisk brikke "
     },
     "792.12": {

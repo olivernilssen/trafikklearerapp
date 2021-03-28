@@ -5,6 +5,7 @@
     },
     "306": {
         "navn": "Trafikkforbud ",
+        "beskrivelse": "",
         "306.0": "Forbudt for alle kjøretøy"
     },
     "306.1": {
@@ -61,6 +62,7 @@
     },
     "318": {
         "navn": "Totalvektgrense ",
+        "beskrivelse": "",
         "318.1": "for kjøretøy Forbudet gjelder kjøretøy hvor aktuell totalvekt er høyere enn angitt. For vogntog gjelder forbudet hvert enkelt kjøretøy.",
         "318.2": "for vogntog Forbudet gjelder vogntog hvor samlet aktuell totalvekt er høyere enn angitt. Forbudet gjelder også enkelt kjøretøy hvor aktuell totalvekt er høyere enn angitt."
     },
@@ -186,6 +188,7 @@
     },
     "376.2": {
         "navn": "Parkeringssone (eksempel)",
+        "beskrivelse": "",
         "376.2": "(Eksempel)"
     },
     "378": {

@@ -17,7 +17,7 @@ urls = [
     ['https://www.vegvesen.no/trafikkinformasjon/langs-veien/trafikkskilt/markeringsskilt', 'markeringskiltBeskrivelse.json']]
 
 #go through all the urls and add to json
-for url in urls: 
+for url in urls[4:]: 
     response = requests.get(url[0])
 
     #get the html from url
@@ -65,7 +65,7 @@ for url in urls:
                         signDescription[headerTitle[0]].update({'beskrivelse': newDescription[1]}) #update sign code with description
         else:
             # check if there is a description for this sign code
-            if hasDescription and description != '':
+            if hasDescription and description != '' and description != ' ':
                 #check if there is a sub-number to this code aswell
                 if description[0].isdigit():
                     newDescription = description.split(' ', 1) #split the number away from the rest
@@ -75,6 +75,8 @@ for url in urls:
                         signDescription[headerTitle[0]] = {'navn': headerTitle[1], 'beskrivelse': '', newDescription[0]: newDescription[1]} #add key=code, name of sign, empty description and sub-code with description
                 else:
                     lenOfDesc = len(description)
+                    # print(lenOfDesc)
+                    # print('description' + description)
                     #check if the sub-code is at the end of the description
                     if (description[lenOfDesc-4].isdigit()):
                         splitDescription = description.split('.', 1) #split the sub-code away form the rest

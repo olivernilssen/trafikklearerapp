@@ -71,8 +71,9 @@
         "beskrivelse": "Underskiltet angir den høyeste fart som den varslede fare tilsier under normale vær-, føre-, sikt- og lysforhold."
     },
     "813": {
-        "813.1": "",
+        "navn": "Stigningsgrad ",
         "beskrivelse": "",
+        "813.1": "",
         "813.2": ""
     },
     "814": {

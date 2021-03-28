@@ -29,6 +29,7 @@
     },
     "610.2": {
         "navn": "Eksempel",
+        "beskrivelse": "",
         "610.2": "Eksempel "
     },
     "611": {
@@ -41,6 +42,7 @@
     },
     "613": {
         "navn": "Rasteplass",
+        "beskrivelse": "",
         "613.1": "(628)",
         "613.2": ""
     },
@@ -70,6 +72,7 @@
     },
     "625": {
         "navn": "Rom og frokost ",
+        "beskrivelse": "",
         "625": "Rom og frokost "
     },
     "626": {
