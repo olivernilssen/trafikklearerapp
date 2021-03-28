@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
  * Save data based on key and value to async storage
+ * @memberof helpers
  * @param {string} key
  * @param {string} value
  */
@@ -16,8 +17,10 @@ const saveData = async (key, value) => {
 
 /**
  * Read data from async storage and return
- * @param {string} key
- * @returns value from Asyncstorage
+ * @memberof helpers
+ * @param {string} key the key that is stored in the asyncStorage to be updated
+ * @param {function} setValue the state set function for this key
+ * @param {string} defaultValue the default value of this key
  */
 const readData = async (key, setValue, defaultValue) => {
     try {
@@ -36,6 +39,7 @@ const readData = async (key, setValue, defaultValue) => {
 
 /**
  * Clear the entire asyncStorage
+ * @memberof helpers
  */
 const clearStorage = async () => {
     try {

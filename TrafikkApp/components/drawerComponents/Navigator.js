@@ -15,10 +15,15 @@ import CurriculumObjectivesScreen from '../../screens/CurriculumObjectivesScreen
 const Drawer = createDrawerNavigator();
 
 /**
+
+ * @returns Navigator component
+ */
+/**
  * This is the Navigator for our side drawer
  * Holds all the information about the screens and
  * the screen parameters
- * @returns Navigator component
+ * @namespace drawerComponents
+ * @memberof Navigator
  */
 const Navigator = () => {
     return (
