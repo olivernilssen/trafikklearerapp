@@ -80,7 +80,7 @@ const CurriculumObjectives = React.memo(
 
         return (
             <View style={styles.main}>
-                <Text style={styles.subHeading}>{subHeading}</Text>
+                {/* <Text style={styles.subHeading}>{subHeading}</Text> */}
                 {contents}
             </View>
         );
@@ -95,8 +95,8 @@ const styles = StyleSheet.create({
         paddingTop: '2%',
         paddingBottom: '2%',
         paddingLeft: '2%',
-        fontWeight: 'bold',
-        color: Colors.textSecondary,
+        // fontWeight: 'bold',
+        color: Colors.icons,
         ...Typography.section,
     },
     content: {
@@ -104,14 +104,18 @@ const styles = StyleSheet.create({
         paddingVertical: '1%',
         marginVertical: 10,
         borderRadius: 5,
+        borderWidth: 1,
+        borderColor: Colors.dividerPrimary,
         backgroundColor: Colors.curriculumCards,
-        elevation: 5,
+        elevation: 2,
     },
     curriculumObjective: {
         color: Colors.textPrimary,
+        lineHeight: 30,
         ...Typography.section,
     },
     curriculumObjectiveContent: {
+        marginTop: 10,
         paddingVertical: 5,
         lineHeight: 30,
         color: Colors.icons,

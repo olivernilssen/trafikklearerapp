@@ -85,7 +85,7 @@ const BottomMenuAnimated = React.memo((props) => {
                 <Icon
                     name={hiddenViewButton}
                     size={Icons.medium}
-                    color={Colors.icons}
+                    color={Colors.iconActive}
                 />
             </TouchableOpacity>
 
@@ -120,8 +120,10 @@ var styles = StyleSheet.create({
         alignItems: 'center',
         elevation: 20,
         width: '100%',
-        borderTopLeftRadius: 40,
-        borderTopRightRadius: 40,
+        borderWidth: 1,
+        borderColor: Colors.dividerPrimary,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
     },
 });
 

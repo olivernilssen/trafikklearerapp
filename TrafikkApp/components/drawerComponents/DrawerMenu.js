@@ -20,7 +20,10 @@ const DrawerMenu = React.memo((props) => {
                 navigation={props.navigation}
                 icon={'times'}
             />
-            <Divider style={styles.divider} borderColor={Colors.iconActive} />
+            <Divider
+                style={styles.divider}
+                borderColor={Colors.dividerPrimary}
+            />
             <FlatList
                 data={props.state.routes}
                 renderItem={({ item }) => (

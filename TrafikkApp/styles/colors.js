@@ -2,11 +2,14 @@
 // ALL COLORS USED IN THE APP SHOULD BE DECLARED HERE
 //
 const charcoal = '#4A4A4A';
+const darkCharcoal = '#434343';
 const darkerCharchoal = '#404040';
 
 const lightGray = '#DAD8D8';
 const mediumGray = '#C3C2C2';
+
 const darkGray = '#3B3B3B';
+const darkerGray = '#393939';
 const evenDarkerGray = '#2E2E2E';
 
 const black = '#242424';
@@ -42,7 +45,7 @@ export default {
     slideTextInactive: mediumGray,
 
     secSlideActiveBg: blueGreen,
-    secSlideInactiveBg: darkerCharchoal,
+    secSlideInactiveBg: darkerGray,
     secSlideTextActive: darkGray,
     secSlideTextInactive: mediumGray,
 
@@ -59,7 +62,7 @@ export default {
     // Sketch screens
     sketchBackground: charcoal,
     componentMenu: charcoal,
-    componentMenuSection: darkerCharchoal,
+    componentMenuSection: darkCharcoal,
     componentMenuButtons: darkGray,
 
     // SketchHeader
@@ -71,6 +74,6 @@ export default {
     deleteButtonActive: red,
 
     // Curriculum screen
-    curriculumBg: blueGreen,
-    curriculumCards: darkerCharchoal, //'#171717',
+    curriculumBg: evenDarkerGray,
+    curriculumCards: darkGray, //'#171717',
 };

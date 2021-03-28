@@ -124,16 +124,14 @@ const DraggableComponentsMenu = React.memo(
                                         groupWidth={270}
                                         height={45}
                                         highlightBackgroundColor={
-                                            Colors.secSlideActiveBg
+                                            Colors.componentMenuButtons
                                         }
-                                        highlightTextColor={
-                                            Colors.secSlideTextActive
-                                        }
+                                        highlightTextColor={Colors.icons}
                                         inactiveBackgroundColor={
-                                            Colors.secSlideInactiveBg
+                                            Colors.componentMenuSection
                                         }
                                         inactiveTextColor={
-                                            Colors.secSlideTextInactive
+                                            Colors.slideTextInactive
                                         }
                                         textSize={17}
                                     />
@@ -170,8 +168,8 @@ const styles = StyleSheet.create({
         elevation: 10,
         width: '95%',
         height: '100%',
-        borderBottomLeftRadius: 30,
-        borderBottomRightRadius: 30,
+        borderBottomLeftRadius: 15,
+        borderBottomRightRadius: 15,
     },
     extensionSection: {
         flexDirection: 'row',
@@ -192,10 +190,11 @@ const styles = StyleSheet.create({
     },
     divider: {
         height: '100%',
-        padding: 10,
+        // padding: 10,
         paddingLeft: 5,
+        paddingBottom: 5,
         marginBottom: 10,
-        marginLeft: 10,
+        // marginLeft: 10,
     },
 });
 

@@ -184,9 +184,9 @@ const SketchAreaMenuContent = React.memo(
                                 intersectionTypeChange(newValue)
                             }
                             groupWidth={300}
-                            highlightBackgroundColor={Colors.secSlideActiveBg}
-                            highlightTextColor={Colors.secSlideTextActive}
-                            inactiveBackgroundColor={Colors.bottomMenyButtons}
+                            highlightBackgroundColor={Colors.bottomMenyButtons}
+                            highlightTextColor={Colors.icons}
+                            inactiveBackgroundColor={Colors.secSlideInactiveBg}
                             inactiveTextColor={Colors.secSlideTextInactive}
                         />
                     </View>
