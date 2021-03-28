@@ -31,7 +31,8 @@ const PopoutItems = (props) => {
      * the array it is placed in
      * @memberof MappingDraggable.Popout.PopoutItems
      * @param {int} index index of a popout item
-     * @returns {int, int} the x and y position of the circle
+     * @returns {int} the x position of the circle
+     * @returns {int} the y position of the circle
      */
     const calculateXY = (index) => {
         const so = 0; //start offset
