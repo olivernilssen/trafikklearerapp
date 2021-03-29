@@ -23,14 +23,14 @@
         "navn": "Hurtiglading av motorvogn",
         "beskrivelse": ""
     },
-    "610.1": {
+    "610_1": {
         "navn": "Drivstoff",
         "beskrivelse": ""
     },
-    "610.2": {
+    "610_2": {
         "navn": "Eksempel",
         "beskrivelse": "",
-        "610.2": "Eksempel "
+        "610_2": "Eksempel "
     },
     "611": {
         "navn": "Toalettømmeanlegg ",
@@ -43,8 +43,8 @@
     "613": {
         "navn": "Rasteplass",
         "beskrivelse": "",
-        "613.1": "(628)",
-        "613.2": ""
+        "613_1": "(628)",
+        "613_2": ""
     },
     "614": {
         "navn": "Enklere servering",
@@ -87,55 +87,55 @@
         "navn": "Turistkontor ",
         "beskrivelse": ""
     },
-    "640.10": {
+    "640_10": {
         "navn": "Severdighet",
         "beskrivelse": "For severdighet av særlig stor betydning kan symbolet erstattes av symbol tilpasset severdigheten."
     },
-    "640.12": {
+    "640_12": {
         "navn": "Museum/ galleri",
         "beskrivelse": ""
     },
-    "640.20": {
+    "640_20": {
         "navn": "Utsiktspunkt",
         "beskrivelse": ""
     },
-    "640.30": {
+    "640_30": {
         "navn": "Naturvernområde",
         "beskrivelse": ""
     },
-    "640.101": {
+    "640_101": {
         "navn": "Verdensarv",
         "beskrivelse": ""
     },
-    "640.102": {
+    "640_102": {
         "navn": "Nasjonale festningsverk",
         "beskrivelse": ""
     },
-    "650.10": {
+    "650_10": {
         "navn": "Badeplass",
         "beskrivelse": ""
     },
-    "650.11": {
+    "650_11": {
         "navn": "Fiskeplass",
         "beskrivelse": ""
     },
-    "650.20": {
+    "650_20": {
         "navn": "Tursti",
         "beskrivelse": ""
     },
-    "650.21": {
+    "650_21": {
         "navn": "Skiløype",
         "beskrivelse": ""
     },
-    "650.22": {
+    "650_22": {
         "navn": "Sykkelløype",
         "beskrivelse": ""
     },
-    "650.40": {
+    "650_40": {
         "navn": "Gardsmat/ bygdeturisme",
         "beskrivelse": ""
     },
-    "650.41": {
+    "650_41": {
         "navn": "Olavsrosa",
         "beskrivelse": ""
     }

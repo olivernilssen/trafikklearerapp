@@ -2,27 +2,27 @@
     "100": {
         "navn": "Farlig sving ",
         "beskrivelse": "",
-        "100.1": "til høyre ",
-        "100.2": "til venstre"
+        "100_1": "til høyre ",
+        "100_2": "til venstre"
     },
     "102": {
         "navn": "Farlige svinger ",
         "beskrivelse": "",
-        "102.1": "den første til høyre",
-        "102.2": "den første til venstre "
+        "102_1": "den første til høyre",
+        "102_2": "den første til venstre "
     },
     "104": {
         "navn": "Bratt bakke ",
         "beskrivelse": "",
-        "104.1": "stigning",
-        "104.2": "fall"
+        "104_1": "stigning",
+        "104_2": "fall"
     },
     "106": {
         "navn": "Smalere veg ",
         "beskrivelse": "",
-        "106.1": "innsnevring på begge sider  ",
-        "106.2": "innsnevring på høyre side",
-        "106.3": "innsnevring på venstre side"
+        "106_1": "innsnevring på begge sider  ",
+        "106_2": "innsnevring på høyre side",
+        "106_3": "innsnevring på venstre side"
     },
     "108": {
         "navn": "Ujevn veg",
@@ -88,17 +88,17 @@
         "navn": "Avstandsskilt ",
         "beskrivelse": ""
     },
-    "136.1": {
+    "136_1": {
         "navn": "Avstandsskilt ",
         "beskrivelse": "",
         "": "Skiltet gir forvarsel om planovergang varslet med skilt 134 eller 135"
     },
-    "136.2": {
+    "136_2": {
         "navn": "Avstandsskilt ",
         "beskrivelse": "",
         "": "Skiltet gir forvarsel om planovergang varslet med skilt 134 eller 135"
     },
-    "136.3": {
+    "136_3": {
         "navn": "Avstandsskilt ",
         "beskrivelse": "",
         "": "Skiltet gir forvarsel om planovergang varslet med skilt 134 eller 135"
@@ -106,8 +106,8 @@
     "138": {
         "navn": "Jernbanespor ",
         "beskrivelse": "",
-        "138.1": "Enkeltsporet. Skiltet angir stedet hvor jernbane eller forstadsbane krysser veien i plan.",
-        "138.2": "Flersporet. Skiltet angir stedet hvor jernbane eller forstadsbane krysser veien i plan. "
+        "138_1": "Enkeltsporet. Skiltet angir stedet hvor jernbane eller forstadsbane krysser veien i plan.",
+        "138_2": "Flersporet. Skiltet angir stedet hvor jernbane eller forstadsbane krysser veien i plan. "
     },
     "139": {
         "navn": "Sporvogn",
@@ -128,11 +128,11 @@
     "146": {
         "navn": "Dyr ",
         "beskrivelse": "",
-        "146.1.": "Skiltet varsler at elg ofte ferdes over eller langs veien. ",
-        "146.2.": "Skiltet varsler at rein ofte ferdes over eller langs veien.",
-        "146.3.": "Skiltet varsler at hjort ofte ferdes over eller langs veien. ",
-        "146.4.": "Skiltet varsler at kyr ofte ferdes over eller langs veien. ",
-        "146.5.": "Skiltet varsler at sauer ofte ferdes over eller langs veien. "
+        "146_1_": "Skiltet varsler at elg ofte ferdes over eller langs veien. ",
+        "146_2_": "Skiltet varsler at rein ofte ferdes over eller langs veien.",
+        "146_3_": "Skiltet varsler at hjort ofte ferdes over eller langs veien. ",
+        "146_4_": "Skiltet varsler at kyr ofte ferdes over eller langs veien. ",
+        "146_5_": "Skiltet varsler at sauer ofte ferdes over eller langs veien. "
     },
     "148": {
         "navn": "Møtende trafikk ",

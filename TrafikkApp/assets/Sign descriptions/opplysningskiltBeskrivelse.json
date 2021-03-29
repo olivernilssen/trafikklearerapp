@@ -27,11 +27,11 @@
         "navn": "Kollektivfelt ",
         "beskrivelse": ""
     },
-    "508.1": {
+    "508_1": {
         "navn": "for buss ",
         "beskrivelse": ""
     },
-    "508.2": {
+    "508_2": {
         "navn": "for buss og drosje",
         "beskrivelse": ""
     },
@@ -39,11 +39,11 @@
         "navn": "Sambruksfelt ",
         "beskrivelse": "Skiltet angir at sambruksfelt begynner, at trafikkreglenes bestemmelser om sambruksfelt gjelder og at i tillegg til drosje og buss i tjeneste kan motorvogn som transporterer minst det antall personer som er angitt ved tall på skiltet, bruke feltet.Skiltet gjelder fram til skilt 511 «Slutt på sambruksfelt» eller til første vegkryss. Skiltet oppheves også av vegvisningsskilt som angir annen bruk av feltet."
     },
-    "510.1": {
+    "510_1": {
         "navn": "Slutt på kollektivfelt",
         "beskrivelse": " "
     },
-    "510.2": {
+    "510_2": {
         "navn": "Slutt på kollektivfelt",
         "beskrivelse": "",
         "510.2": ""
@@ -76,11 +76,11 @@
         "navn": "Sykkelveg ",
         "beskrivelse": "Skiltet angir veg som er anlagt for syklende. Skiltet angir dessuten at trafikkreglenes bestemmelser om bruk av slik veg gjelder."
     },
-    "521.1": {
+    "521_1": {
         "navn": "Sykkelfelt - sideplassert",
         "beskrivelse": "Skiltet angir at kjørebanen har eget kjørefelt for syklende. Skiltet angir dessuten at trafikkreglenes bestemmelser om bruk av sykkelfelt gjelder.\r"
     },
-    "521.2": {
+    "521_2": {
         "navn": "Sykkelfelt - Midtstilt ",
         "beskrivelse": "Skiltet angir at kjørebanen har eget kjørefelt for syklende. Skiltet angir dessuten at trafikkreglenes bestemmelser om bruk av sykkelfelt gjelder. \r "
     },
@@ -92,11 +92,11 @@
         "navn": " Møteplass ",
         "beskrivelse": "Skiltet angir sted hvor trafikkreglenes bestemmelser om møteplass gjelder."
     },
-    "526.1": {
+    "526_1": {
         "navn": " Envegskjøring",
         "beskrivelse": "Skiltet angir at kjøring bare er tillatt i pilens retning fram til første vegkryss."
     },
-    "526.": {
+    "526_": {
         "navn": " Envegskjøring",
         "beskrivelse": "Skiltet angir at kjøring bare er tillatt i pilens retning fram til første vegkryss."
     },
@@ -104,19 +104,19 @@
         "navn": "Blindveg ",
         "beskrivelse": ""
     },
-    "527.1": {
+    "527_1": {
         "navn": "Blindveg ",
         "beskrivelse": "Skiltet viser at vegen er fysisk stengt. "
     },
-    "527.2": {
+    "527_2": {
         "navn": "Blindveg ",
         "beskrivelse": "Skiltet viser at kryssende veg er fysisk stengt. "
     },
-    "527.3": {
+    "527_3": {
         "navn": "Blindveg ",
         "beskrivelse": "Skiltet viser at vegen er stengt for biltrafikk, men åpen for gående og syklende."
     },
-    "527.4": {
+    "527_4": {
         "navn": "Blindveg ",
         "beskrivelse": "Skiltet viser at kryssende veg er stengt for biltrafikk, men åpen for gående og syklende. "
     },
@@ -128,40 +128,40 @@
         "navn": " Sammenfletting",
         "beskrivelse": ""
     },
-    "530.01": {
+    "530_01": {
         "navn": "Eksempel Sammenfletting",
         "beskrivelse": ""
     },
-    "530.11": {
+    "530_11": {
         "navn": "Eksempel Sammenfletting",
         "beskrivelse": ""
     },
     "531": {
         "navn": "Felt for fartsøkning",
         "beskrivelse": "",
-        "531.102": "Eksempel ",
-        "531.202": "Eksempel  "
+        "531_102": "Eksempel ",
+        "531_202": "Eksempel  "
     },
     "532": {
         "navn": "Kjørefelt slutter",
         "beskrivelse": "",
-        "532.H02": "Eksempel",
-        "532.H11": "Eksempel"
+        "532_H02": "Eksempel",
+        "532_H11": "Eksempel"
     },
     "534": {
         "navn": "Kjørefelt begynner ",
         "beskrivelse": "",
-        "534.H02": "Eksempel",
-        "534.V01": "Eksempel",
-        "534.V11": "Eksempel"
+        "534_H02": "Eksempel",
+        "534_V01": "Eksempel",
+        "534_V11": "Eksempel"
     },
     "536": {
         "navn": "Påkjøring fortsetter i eget kjørefelt",
         "beskrivelse": "",
-        "536.101": "Eksempel ",
-        "536.102": "Eksempel",
-        "536.201": "Eksempel",
-        "536.202": "Eksempel"
+        "536_101": "Eksempel ",
+        "536_102": "Eksempel",
+        "536_201": "Eksempel",
+        "536_202": "Eksempel"
     },
     "538": {
         "navn": " Kjørefeltinndeling",
@@ -195,11 +195,11 @@
         "navn": "SOS-lomme ",
         "beskrivelse": "Er skiltet plassert på eller ved særskilt avgrenset område, f.eks. parkeringsplass, gjelder skiltet for hele området. Ellers gjelder skiltet bare på den side av vegen hvor det er satt opp. Skiltet gjelder da fram til nærmeste vegkryss eller til nytt skilt 552 «Parkering», skilt 370 «Stans forbudt», skilt 372 «Parkering forbudt» eller til skilt 376 «Parkeringssone». Dersom miniatyr av skiltet, eventuelt med underskilt, er anbrakt på parkometer, er parkering tillatt i overensstemmelse med særlige regler om avgiftsparkering. Skiltet gjelder da for vedkommende parkeringsfelt uten hensyn til trafikkreglenes bestemmelser om stans og parkering. "
     },
-    "556.1": {
+    "556_1": {
         "navn": "Automatisk trafikkontroll - punktmåling",
         "beskrivelse": ""
     },
-    "556.2": {
+    "556_2": {
         "navn": "Automatisk trafikkontroll - strekningsmåling",
         "beskrivelse": ""
     },
@@ -220,8 +220,8 @@
         "navn": "Nødutgangsskilt for tunnel ",
         "beskrivelse": "",
         "570.1H": "",
-        "570.1V": "",
-        "570.2H": "",
-        "570.2V": ""
+        "570_1V": "",
+        "570_2H": "",
+        "570_2V": ""
     }
 }

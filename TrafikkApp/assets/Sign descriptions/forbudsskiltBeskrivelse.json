@@ -6,37 +6,37 @@
     "306": {
         "navn": "Trafikkforbud ",
         "beskrivelse": "",
-        "306.0": "Forbudt for alle kjøretøy"
+        "306_0": "Forbudt for alle kjøretøy"
     },
-    "306.1": {
+    "306_1": {
         "navn": "Forbudt for motorvogn",
         "beskrivelse": ""
     },
-    "306.3": {
+    "306_3": {
         "navn": "Forbudt for alle traktorer og for motorredskap konstruert for fart mindre enn 40 km/t",
         "beskrivelse": ""
     },
-    "306.4": {
+    "306_4": {
         "navn": "Forbudt for motorsykkel og moped",
         "beskrivelse": ""
     },
-    "306.5": {
+    "306_5": {
         "navn": "Forbudt for lastebil og trekkbil",
         "beskrivelse": ""
     },
-    "306.6": {
+    "306_6": {
         "navn": "Forbudt for syklende ",
         "beskrivelse": ""
     },
-    "306.7": {
+    "306_7": {
         "navn": "Forbudt for gående ",
         "beskrivelse": ""
     },
-    "306.8": {
+    "306_8": {
         "navn": "Forbudt for gående og syklende ",
         "beskrivelse": ""
     },
-    "306.9": {
+    "306_9": {
         "navn": "Forbudt for ridende ",
         "beskrivelse": ""
     },
@@ -63,8 +63,8 @@
     "318": {
         "navn": "Totalvektgrense ",
         "beskrivelse": "",
-        "318.1": "for kjøretøy Forbudet gjelder kjøretøy hvor aktuell totalvekt er høyere enn angitt. For vogntog gjelder forbudet hvert enkelt kjøretøy.",
-        "318.2": "for vogntog Forbudet gjelder vogntog hvor samlet aktuell totalvekt er høyere enn angitt. Forbudet gjelder også enkelt kjøretøy hvor aktuell totalvekt er høyere enn angitt."
+        "318_1": "for kjøretøy Forbudet gjelder kjøretøy hvor aktuell totalvekt er høyere enn angitt. For vogntog gjelder forbudet hvert enkelt kjøretøy.",
+        "318_2": "for vogntog Forbudet gjelder vogntog hvor samlet aktuell totalvekt er høyere enn angitt. Forbudet gjelder også enkelt kjøretøy hvor aktuell totalvekt er høyere enn angitt."
     },
     "320": {
         "navn": "Aksellastgrense",
@@ -74,7 +74,7 @@
         "navn": "Boggilastgrense ",
         "beskrivelse": "Forbudet gjelder kjøretøy med aktuell boggilast høyere enn angitt."
     },
-    "324.1": {
+    "324_1": {
         "navn": "Stopp for angitt formål - Kontroll",
         "beskrivelse": "Skiltet angir forbud mot å kjøre videre før det er foretatt stans for det formål som er angitt i tekst på skiltet."
     },
@@ -82,15 +82,15 @@
         "navn": "Stopp for toll ",
         "beskrivelse": "Skiltet angir plikt til å stanse for tollklarering i samsvar med gjeldende tollbestemmelser."
     },
-    "324.2": {
+    "324_2": {
         "navn": "Stopp for angitt formål - Avgift",
         "beskrivelse": "Skiltet angir forbud mot å kjøre videre før det er foretatt stans for det formål som er angitt i tekst på skiltet."
     },
-    "330.1": {
+    "330_1": {
         "navn": " Svingeforbud til høyre",
         "beskrivelse": "Forbudet gjelder bare for det veikryss som skiltet er plassert i eller ved, eventuelt for første veikryss etter skiltet. Annet virkeområde kan fastsettes ved underskilt.\r"
     },
-    "330.2": {
+    "330_2": {
         "navn": "Svingeforbud til venstre",
         "beskrivelse": "Forbudet gjelder bare for det veikryss som skiltet er plassert i eller ved, eventuelt for første veikryss etter skiltet. Annet virkeområde kan fastsettes ved underskilt."
     },
@@ -118,31 +118,31 @@
         "navn": "Fartsgrense ",
         "beskrivelse": ""
     },
-    "362.30": {
+    "362_30": {
         "navn": "Fartsgrense",
         "beskrivelse": ""
     },
-    "362.40": {
+    "362_40": {
         "navn": "Fartsgrense",
         "beskrivelse": ""
     },
-    "362.50": {
+    "362_50": {
         "navn": "Fartsgrense",
         "beskrivelse": ""
     },
-    "362.60": {
+    "362_60": {
         "navn": "Fartsgrense",
         "beskrivelse": ""
     },
-    "362.70": {
+    "362_70": {
         "navn": "Fartsgrense",
         "beskrivelse": ""
     },
-    "362.80": {
+    "362_80": {
         "navn": "Fartsgrense",
         "beskrivelse": ""
     },
-    "362.90": {
+    "362_90": {
         "navn": "Fartsgrense",
         "beskrivelse": ""
     },
@@ -150,19 +150,19 @@
         "navn": "Slutt på særskilt fartsgrense",
         "beskrivelse": ""
     },
-    "364.40": {
+    "364_40": {
         "navn": "Slutt på særskilt fartsgrense",
         "beskrivelse": ""
     },
-    "364.50": {
+    "364_50": {
         "navn": "Slutt på særskilt fartsgrense",
         "beskrivelse": ""
     },
-    "364.60": {
+    "364_60": {
         "navn": "Slutt på særskilt fartsgrense",
         "beskrivelse": ""
     },
-    "364.70": {
+    "364_70": {
         "navn": "Slutt på særskilt fartsgrense",
         "beskrivelse": ""
     },
@@ -186,16 +186,16 @@
         "navn": "Parkeringssone ",
         "beskrivelse": "Skiltet angir grense for område hvor det gjelder særlige bestemmelser om parkering eller stans av kjøretøy. De særlige bestemmelser som gjelder, framgår av symboler og tekst på skiltet. Skiltet gjelder til det blir opphevet av skilt 378 «Slutt på parkeringssone». For bestemte veistrekninger innenfor området kan det ved skilt være fastsatt avvikende bestemmelser om parkering eller stans. For disse veistrekninger gjelder ikke soneskiltets bestemmelser. Se bilde av skilt 376.1 (eksempel)"
     },
-    "376.2": {
+    "376_2": {
         "navn": "Parkeringssone (eksempel)",
         "beskrivelse": "",
-        "376.2": "(Eksempel)"
+        "376_2": "(Eksempel)"
     },
     "378": {
         "navn": " Slutt på parkeringssone ",
         "beskrivelse": ""
     },
-    "378.2": {
+    "378_2": {
         "navn": " Slutt på parkeringssone ",
         "beskrivelse": ""
     }

@@ -15,39 +15,39 @@
         "navn": "Symbol ",
         "beskrivelse": ""
     },
-    "807.1": {
+    "807_1": {
         "navn": "Personbil ",
         "beskrivelse": ""
     },
-    "807.2": {
+    "807_2": {
         "navn": "Varebil, lastebil og trekkbil ",
         "beskrivelse": ""
     },
-    "807.3": {
+    "807_3": {
         "navn": "Buss ",
         "beskrivelse": ""
     },
-    "807.4": {
+    "807_4": {
         "navn": "Vogntog ",
         "beskrivelse": ""
     },
-    "807.5": {
+    "807_5": {
         "navn": "Tilhenger særskilt innredet til campingbruk, samt eventuell trekkvogn ",
         "beskrivelse": ""
     },
-    "807.6": {
+    "807_6": {
         "navn": "Sykkel",
         "beskrivelse": ""
     },
-    "807.7": {
+    "807_7": {
         "navn": "Tohjuls motorsykkel med og uten sidevogn og tohjuls moped",
         "beskrivelse": ""
     },
-    "807.8": {
+    "807_8": {
         "navn": "Forflytningshemmede med parkeringstillatelse ",
         "beskrivelse": ""
     },
-    "807.9": {
+    "807_9": {
         "navn": "Kjøretøy særskilt innredet til campingbruk (bobil)",
         "beskrivelse": ""
     },
@@ -58,13 +58,13 @@
     "810": {
         "navn": "Svingpil",
         "beskrivelse": "",
-        "810.H45": "",
-        "810.H90": "",
-        "810.H135": "",
-        "810.R": "",
-        "810.V45": "",
-        "810.V90": "",
-        "810.V135": ""
+        "810_H45": "",
+        "810_H90": "",
+        "810_H135": "",
+        "810_R": "",
+        "810_V45": "",
+        "810_V90": "",
+        "810_V135": ""
     },
     "812": {
         "navn": "Anbefalt fart ",
@@ -74,7 +74,7 @@
         "navn": "Stigningsgrad ",
         "beskrivelse": "",
         "813.1": "",
-        "813.2": ""
+        "813_2": ""
     },
     "814": {
         "navn": "Virkelig fri vegbredde",
@@ -87,22 +87,22 @@
     "817": {
         "navn": "Særlig ulykkesfare",
         "beskrivelse": "",
-        "817.1": "",
-        "817.2": "",
-        "817.3": "",
-        "817.4": "",
-        "817.5": ""
+        "817_1": "",
+        "817_2": "",
+        "817_3": "",
+        "817_4": "",
+        "817_5": ""
     },
     "822": {
         "navn": "Forløp av forkjørsveg",
         "beskrivelse": "",
-        "822.1": "",
-        "822.2": "",
-        "822.3": "",
-        "822.4": "",
-        "822.5": "",
-        "822.6": "",
-        "822.7": ""
+        "822_1": "",
+        "822_2": "",
+        "822_3": "",
+        "822_4": "",
+        "822_5": "",
+        "822_6": "",
+        "822_7": ""
     },
     "824": {
         "navn": "Forvarsling av stopp",
@@ -115,9 +115,9 @@
     "828": {
         "navn": "Utstrekning av stans og parkeringsregulering",
         "beskrivelse": "",
-        "828.1": "",
-        "828.2": "",
-        "828.3": ""
+        "828_1": "",
+        "828_2": "",
+        "828_3": ""
     },
     "829": {
         "navn": "Oppstiling av parkert kjøretøy",

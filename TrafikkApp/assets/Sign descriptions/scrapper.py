@@ -17,7 +17,7 @@ urls = [
     ['https://www.vegvesen.no/trafikkinformasjon/langs-veien/trafikkskilt/markeringsskilt', 'markeringskiltBeskrivelse.json']]
 
 #go through all the urls and add to json
-for url in urls[4:]: 
+for url in urls[8:9]: 
     response = requests.get(url[0])
 
     #get the html from url
@@ -45,24 +45,24 @@ for url in urls[4:]:
         #check if the sign number is in the dict
         if headerTitle[0] in signDescription:
             #check if there is a description on this sign
-            if hasDescription and description != '':
+            if hasDescription and description != '' and description != ' ':
                 #check if the description has a sub-number at the begining
-                if description != ' ' and description[0].isdigit():
+                if description[0].isdigit():
                     #split the sub-number with the rest of the description
                     newDescription = description.split(' ', 1)
                     #if the length is 1, then there is only a sub-number and no description
                     if len(newDescription) == 1:
-                        signDescription[headerTitle[0]].update({description: ''}) #add sub-number without description
+                        signDescription[headerTitle[0].replace('.', '_')].update({description.replace('.', '_'): ''}) #add sub-number without description
                     else:
-                        signDescription[headerTitle[0]].update({newDescription[0]: newDescription[1]}) #add sub number with description for it
+                        signDescription[headerTitle[0].replace('.', '_')].update({newDescription[0].replace('.', '_'): newDescription[1]}) #add sub number with description for it
                 else:
                     lenOfDesc = len(description)
                     #check if there is a sub-number at the end of the description (happens sometimes)
                     if (description[lenOfDesc-4].isdigit()):
                         splitDescription = description.split('.', 1) #split the description to get sub-number alone
-                        signDescription[headerTitle[0]].update({splitDescription[1].strip(): splitDescription[0].strip()}) #update code with sub-number with description
+                        signDescription[headerTitle[0].replace('.', '_')].update({splitDescription[1].strip().replace('.', '_'): splitDescription[0].strip()}) #update code with sub-number with description
                     else:
-                        signDescription[headerTitle[0]].update({'beskrivelse': newDescription[1]}) #update sign code with description
+                        signDescription[headerTitle[0].replace('.', '_')].update({'beskrivelse': newDescription[1]}) #update sign code with description
         else:
             # check if there is a description for this sign code
             if hasDescription and description != '' and description != ' ':
@@ -70,21 +70,20 @@ for url in urls[4:]:
                 if description[0].isdigit():
                     newDescription = description.split(' ', 1) #split the number away from the rest
                     if len(newDescription) == 1: #if the number is alone, then there is no description for it
-                        signDescription[headerTitle[0]] = {'navn': headerTitle[1], 'beskrivelse': '', description: ''} #add key=code, name of sign, empty descriptuon and sub-code
+                        signDescription[headerTitle[0].replace('.', '_')] = {'navn': headerTitle[1], 'beskrivelse': '', description: ''} #add key=code, name of sign, empty descriptuon and sub-code
                     else:
-                        signDescription[headerTitle[0]] = {'navn': headerTitle[1], 'beskrivelse': '', newDescription[0]: newDescription[1]} #add key=code, name of sign, empty description and sub-code with description
+                        signDescription[headerTitle[0].replace('.', '_')] = {'navn': headerTitle[1], 'beskrivelse': '', newDescription[0].replace('.', '_'): newDescription[1]} #add key=code, name of sign, empty description and sub-code with description
                 else:
                     lenOfDesc = len(description)
-                    # print(lenOfDesc)
-                    # print('description' + description)
+
                     #check if the sub-code is at the end of the description
                     if (description[lenOfDesc-4].isdigit()):
                         splitDescription = description.split('.', 1) #split the sub-code away form the rest
-                        signDescription[headerTitle[0]] = {'navn': headerTitle[1], 'beskrivelse': '', splitDescription[1].strip(): splitDescription[0].strip()} #add key=code, name, empty description and sub-code with description
+                        signDescription[headerTitle[0].replace('.', '_')] = {'navn': headerTitle[1], 'beskrivelse': '', splitDescription[1].strip().replace('.', '_'): splitDescription[0].strip()} #add key=code, name, empty description and sub-code with description
                     else:
-                        signDescription[headerTitle[0]] = {'navn': headerTitle[1], 'beskrivelse': description} #add key=code, name and description 
+                        signDescription[headerTitle[0].replace('.', '_')] = {'navn': headerTitle[1], 'beskrivelse': description} #add key=code, name and description 
             else:
-                signDescription[headerTitle[0]] = {'navn': headerTitle[1], 'beskrivelse': description} #add key=code, name and description
+                signDescription[headerTitle[0].replace('.', '_')] = {'navn': headerTitle[1], 'beskrivelse': description} #add key=code, name and description
 
 
 

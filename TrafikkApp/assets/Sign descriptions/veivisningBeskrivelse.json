@@ -39,83 +39,83 @@
         "navn": "(724.2-4) Portalvegviser  ",
         "beskrivelse": "Skiltet viser hvilke reisemål kjørefelt er beregnet for. (Eksempel)"
     },
-    "723.11": {
+    "723_11": {
         "navn": "Vegnummer for europaveg ",
         "beskrivelse": "(Eksempel)"
     },
-    "723.12": {
+    "723_12": {
         "navn": "Vegnummer for europaveg",
         "beskrivelse": ""
     },
-    "723.13": {
+    "723_13": {
         "navn": "Vegnummer for riksveg som ikke er europaveg ",
         "beskrivelse": ""
     },
-    "723.14": {
+    "723_14": {
         "navn": "Vegnummer for riksveg som ikke er europaveg",
         "beskrivelse": ""
     },
-    "723.15": {
+    "723_15": {
         "navn": "Vegnummer for nummerert fylkesveg",
         "beskrivelse": ""
     },
-    "723.16": {
+    "723_16": {
         "navn": "Vegnummer for nummerert fylkesveg",
         "beskrivelse": ""
     },
-    "723.21": {
+    "723_21": {
         "navn": "Ringveg/ ringrute",
         "beskrivelse": ""
     },
-    "723.22": {
+    "723_22": {
         "navn": "Ringveg/ ringrute",
         "beskrivelse": ""
     },
-    "723.31": {
+    "723_31": {
         "navn": "Nasjonal turistveg  ",
         "beskrivelse": "Symbolet kan vises på serviceskilt"
     },
-    "723.41": {
+    "723_41": {
         "navn": "Omkjøringsrute for store kjøretøy",
         "beskrivelse": ""
     },
-    "723.51": {
+    "723_51": {
         "navn": "Rute for transport av farlig gods",
         "beskrivelse": ""
     },
-    "723.61": {
+    "723_61": {
         "navn": "Andre omkjøringsruter",
         "beskrivelse": ""
     },
-    "723.62": {
+    "723_62": {
         "navn": "Andre omkjøringsruter",
         "beskrivelse": ""
     },
-    "723.63": {
+    "723_63": {
         "navn": "Andre omkjøringsruter",
         "beskrivelse": ""
     },
-    "723.64": {
+    "723_64": {
         "navn": "Andre omkjøringsruter ",
         "beskrivelse": ""
     },
-    "723.65": {
+    "723_65": {
         "navn": "Andre omkjøringsruter",
         "beskrivelse": ""
     },
-    "723.66": {
+    "723_66": {
         "navn": "Andre omkjøringsruter",
         "beskrivelse": ""
     },
-    "723.71": {
+    "723_71": {
         "navn": "Kryssnummer på flerfeltsveg",
         "beskrivelse": ""
     },
-    "723.72": {
+    "723_72": {
         "navn": "Kryssnummer på flerfeltsveg",
         "beskrivelse": ""
     },
-    "723.73": {
+    "723_73": {
         "navn": "Kryssnummer på tofeltsveg",
         "beskrivelse": ""
     },
@@ -139,11 +139,11 @@
         "navn": "Omkjøring for bestemte kjøretøygrupper  ",
         "beskrivelse": "Skiltet varsler om at veien er stengt for bestemte kjøretøygrupper, og at slike kjøretøy må følge omkjøring. "
     },
-    "743.1": {
+    "743_1": {
         "navn": "(742) Midlertidig omkjøring ",
         "beskrivelse": "Skiltet varsler om at veien er midlertidig stengt, og at gjennomgående trafikk må følge omkjøring. "
     },
-    "743.2": {
+    "743_2": {
         "navn": "Midlertidig omkjøring ",
         "beskrivelse": ""
     },
@@ -222,45 +222,45 @@
     "790": {
         "navn": "Andre reisemål",
         "beskrivelse": "",
-        "790.10": "Kirke",
-        "790.15": "Næringsområde",
-        "790.16": "Kjøpesenter",
-        "790.20": "Svømmehall",
-        "790.30": "Alpinanlegg ",
-        "790.31": "Hoppbakke",
-        "790.32": "Skistadion",
-        "790.40": "Golfbane"
+        "790_10": "Kirke",
+        "790_15": "Næringsområde",
+        "790_16": "Kjøpesenter",
+        "790_20": "Svømmehall",
+        "790_30": "Alpinanlegg ",
+        "790_31": "Hoppbakke",
+        "790_32": "Skistadion",
+        "790_40": "Golfbane"
     },
     "792": {
         "navn": "Betalingsmåte i bomstasjon/ betalingssystem på veg",
         "beskrivelse": "",
-        "792.11": "Betaling med elektronisk brikke "
+        "792_11": "Betaling med elektronisk brikke "
     },
-    "792.12": {
+    "792_12": {
         "navn": "Betaling til betjent",
         "beskrivelse": ""
     },
-    "792.13": {
+    "792_13": {
         "navn": "Betaling med mynter til automat",
         "beskrivelse": ""
     },
-    "792.14": {
+    "792_14": {
         "navn": "Betaling med kort til automat",
         "beskrivelse": ""
     },
-    "792.15": {
+    "792_15": {
         "navn": "betaling med sedler til automat",
         "beskrivelse": ""
     },
-    "792.16": {
+    "792_16": {
         "navn": "Ta billett i et lukket betalingssystem",
         "beskrivelse": ""
     },
-    "792.17": {
+    "792_17": {
         "navn": "Lever billett i et lukket betalingssystem",
         "beskrivelse": ""
     },
-    "792.30": {
+    "792_30": {
         "navn": "Helautomatisk bomstasjon som passeres uten å stanse ",
         "beskrivelse": ""
     }
