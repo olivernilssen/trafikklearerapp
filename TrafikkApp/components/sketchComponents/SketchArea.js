@@ -5,7 +5,7 @@ import React, {
     useCallback,
     useContext,
 } from 'react';
-import { View, StyleSheet, ImageBackground } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 
 import MainView from '../reusableComponents/MainView';
 import SketchHeader from '../sketchHeaderComponents/SketchHeader';
@@ -184,10 +184,15 @@ const SketchArea = React.memo((props) => {
                     pencilSize={pencilSize}
                     chosenColor={chosenColor}
                 />
-                <ImageBackground
-                    resizeMode={'cover'}
-                    style={styles.backgroundImage}
-                    source={currentImg}>
+                <View style={styles.backgroundImageContainer}>
+                    <Image
+                        resizeMode={'cover'}
+                        style={styles.backgroundImage}
+                        source={currentImg}
+                    />
+                </View>
+
+                <View style={styles.sketchArea}>
                     <SketchCanvas
                         onStrokeStart={() => onStrokeStart()}
                         onStrokeEnd={() => onStrokeEnd()}
@@ -207,7 +212,7 @@ const SketchArea = React.memo((props) => {
                         extensionType={extensionType}
                         setExtensionType={setExtensionType}
                     />
-                </ImageBackground>
+                </View>
             </View>
 
             <BottomMenuAnimated
@@ -232,20 +237,33 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.sketchBackground,
         justifyContent: 'center',
     },
+    sketchArea: {
+        flex: 1,
+        width: '100%',
+        height: '100%',
+    },
     sketchCanvas: {
         flex: 1,
         width: '100%',
         height: '100%',
         backgroundColor: 'transparent',
     },
-    backgroundImage: {
-        flex: 1, // Denne må fjernes hvis bildet ikke skal skalere opp
-        // marginVertical: 100,
+    backgroundImageContainer: {
+        position: 'absolute',
+        top: 80,
+        left: 0,
+        height: '100%',
         width: '100%',
-        height: '100%', // Må stå som 'undefined'
-        // aspectRatio: 1752 / 2263,
-        // alignSelf: 'center', // Må stå som 'stretch' hvis bildet ikke skal skalere opp
+        justifyContent: 'center',
+    },
+    backgroundImage: {
+        marginBottom: 80,
+        width: '100%',
+        height: undefined, // Må stå som 'undefined'
+        aspectRatio: 1752 / 2263,
+        alignSelf: 'center',
         backgroundColor: Colors.sketchBackground,
+        zIndex: 0,
     },
 });
 

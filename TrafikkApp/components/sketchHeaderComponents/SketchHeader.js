@@ -105,6 +105,7 @@ const SketchHeader = React.memo((props) => {
 
 const styles = StyleSheet.create({
     buttonSize: {
+        // flex: 1,
         height: 62,
         width: 62,
         justifyContent: 'center',
@@ -115,11 +116,12 @@ const styles = StyleSheet.create({
         // backgroundColor: Colors.header,
         borderBottomWidth: 1,
         borderBottomColor: Colors.dividerPrimary,
-        elevation: 8,
+        elevation: 10,
     },
     toolBar: {
         width: '100%',
         elevation: 10,
+        zIndex: 2,
     },
     spacedLeft: {
         flex: 1,
