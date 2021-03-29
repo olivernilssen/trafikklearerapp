@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     header: {
         borderBottomWidth: 1,
         borderBottomColor: Colors.dividerPrimary,
-        elevation: 8,
+        elevation: 10,
     },
     scrollView: {
         width: '100%',

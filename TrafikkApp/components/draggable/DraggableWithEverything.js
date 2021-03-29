@@ -1,10 +1,6 @@
-/* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
-import { useCallback } from 'react';
-import { useEffect } from 'react';
-
+import React, { useState, useCallback, useEffect } from 'react';
 import DraggableComponentsMenu from '../draggableComponentsMenu/DraggableComponentsMenu';
-import DraggableDropZone from '../unusedComponents/DraggableDropzone';
+// import DraggableDropZone from '../unusedComponents/DraggableDropzone';
 import MappingDraggable from './MappingDraggables';
 
 /**

@@ -8,14 +8,8 @@ import { Colors } from '../../../styles';
 
 /**
  * Component for the items inside the animated popout menu
- * @param {dictionary} props
- * @returns popoutItems as small circles
- */
-
-/**
- * Component for the items inside the animated popout menu
- * @namespace MappingDraggable.Popout
- * @memberof PopoutItems
+ * @namespace PopoutItems
+ * @memberof Popout
  * @prop {int} radius radius of popout item
  * @prop {array[]} array array of colors or items in popout menu
  * @prop {function} setTintColor function to set the tintcolor of draggable
@@ -29,7 +23,7 @@ const PopoutItems = (props) => {
      * Function to calculate the x and y coordinates as a half circle
      * around an object. depending on which position the item has in
      * the array it is placed in
-     * @memberof MappingDraggable.Popout.PopoutItems
+     * @memberof Popout.PopoutItems
      * @param {int} index index of a popout item
      * @returns {int} the x position of the circle
      * @returns {int} the y position of the circle
@@ -54,7 +48,7 @@ const PopoutItems = (props) => {
     /**
      * Check what button is pressed
      * and change either tintcolor, remove it or delete item
-     * @memberof MappingDraggable.Popout.PopoutItems
+     * @memberof Popout.PopoutItems
      * @param {hex} color color of selected tint
      * @param {boolean} isRemoveButton if button is the remove button
      * @param {boolean} isResetButton if the button is the reset button (not working)
