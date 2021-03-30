@@ -17,8 +17,7 @@ const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
     const [subHeading, setSubHeading] = useState();
     const [curriculumObjective, setCurriculumObjective] = useState('Hovedmål');
     const [trafficClass, setTrafficClass] = useState('Klasse B');
-
-    const [scrollRef, setScrollRef] = useState(useRef());
+    const scrollRef = useRef();
 
     return (
         <MainView>
@@ -63,6 +62,7 @@ const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
                     trafficClass={trafficClass}
                     setTrafficClass={setTrafficClass}
                     scrollRef={scrollRef}
+                    setBottomSheetHidden={setBottomSheetHidden}
                 />
             </BottomMenuAnimated>
         </MainView>

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
-
 import { Colors, Typography } from '../../styles';
 import ButtonGroup from '../reusableComponents/ButtonGroup';
 import curriculumData from './curriculumData';
@@ -23,6 +22,7 @@ const CurriculumMenuContent = React.memo(
         trafficClass,
         setTrafficClass,
         scrollRef,
+        setBottomSheetHidden,
     }) => {
         // The traffic classes (klasse B, klasse B kode 96 og BE)
         const trafficClasses = [];
@@ -60,6 +60,8 @@ const CurriculumMenuContent = React.memo(
         const onCurriculumObjectiveChange = (curriculumObjective) => {
             setCurriculumObjective(curriculumObjective);
             scrollRef.current.scrollTo({ y: 0, animated: true });
+            scrollRef.current.scrollTo({ y: 0, animated: true });
+            setBottomSheetHidden(true);
         };
 
         return (
