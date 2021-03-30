@@ -111,15 +111,16 @@ const StartScreen = React.memo(({ navigation }) => {
 
 const styles = StyleSheet.create({
     main: {
+        flex: 1,
         height: '100%',
-        paddingTop: 20,
-        alignSelf: 'center',
+        justifyContent: 'flex-start',
+        paddingVertical: '3%',
         backgroundColor: Colors.startScreenBg,
     },
     container: {
         justifyContent: 'center',
         alignItems: 'center',
-        paddingVertical: 10,
+        paddingBottom: '1%',
     },
     linksContainer: {
         flexDirection: 'row',

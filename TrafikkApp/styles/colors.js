@@ -31,8 +31,8 @@ export default {
     dividerSecondary: lightGray,
 
     // Text and icons
-    textSecondary: darkGray,
     textPrimary: white,
+    textSecondary: darkGray,
     icons: lightGray,
     iconActive: charcoal, // or mustard?
     drawerIconActive: blueGreen,
@@ -60,10 +60,10 @@ export default {
     startScreenLinkLink: charcoal,
 
     // Sketch screens
-    sketchBackground: charcoal,
+    sketchBackground: evenDarkerGray,
     componentMenu: charcoal,
-    componentMenuSection: darkCharcoal,
     componentMenuButtons: darkGray,
+    componentMenuSection: darkCharcoal,
 
     // SketchHeader
     boxIconActive: mustard,

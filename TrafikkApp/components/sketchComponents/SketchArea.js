@@ -5,7 +5,7 @@ import React, {
     useCallback,
     useContext,
 } from 'react';
-import { View, StyleSheet, ImageBackground } from 'react-native';
+import { View, StyleSheet, Image, Dimensions } from 'react-native';
 
 import MainView from '../reusableComponents/MainView';
 import SketchHeader from '../sketchHeaderComponents/SketchHeader';
@@ -18,6 +18,8 @@ import SketchAreaMenuContent from './SketchAreaMenuContent';
 import Overlay from '../reusableComponents/Overlay';
 
 import AppContext from '../../AppContext';
+
+const { width, height } = Dimensions.get('screen');
 
 /**This is a big component that contains all the components that are visible
  * on the SketchArea screens.
@@ -184,10 +186,15 @@ const SketchArea = React.memo((props) => {
                     pencilSize={pencilSize}
                     chosenColor={chosenColor}
                 />
-                <ImageBackground
-                    resizeMode={'cover'}
-                    style={styles.backgroundImage}
-                    source={currentImg}>
+                <View style={styles.backgroundImageContainer}>
+                    <Image
+                        resizeMode={'cover'}
+                        style={styles.backgroundImage}
+                        source={currentImg}
+                    />
+                </View>
+
+                <View style={styles.sketchArea}>
                     <SketchCanvas
                         onStrokeStart={() => onStrokeStart()}
                         onStrokeEnd={() => onStrokeEnd()}
@@ -207,7 +214,7 @@ const SketchArea = React.memo((props) => {
                         extensionType={extensionType}
                         setExtensionType={setExtensionType}
                     />
-                </ImageBackground>
+                </View>
             </View>
 
             <BottomMenuAnimated
@@ -218,6 +225,7 @@ const SketchArea = React.memo((props) => {
                     setImage={setImage}
                     setRoadDesignChange={setRoadDesignChange}
                     extensionType={extensionType}
+                    setBottomSheetHidden={setBottomSheetHidden}
                 />
             </BottomMenuAnimated>
         </MainView>
@@ -232,20 +240,34 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.sketchBackground,
         justifyContent: 'center',
     },
+    sketchArea: {
+        flex: 1,
+        width: '100%',
+        height: '100%',
+    },
     sketchCanvas: {
         flex: 1,
         width: '100%',
         height: '100%',
         backgroundColor: 'transparent',
     },
-    backgroundImage: {
-        flex: 1, // Denne må fjernes hvis bildet ikke skal skalere opp
-        // marginVertical: 100,
+    backgroundImageContainer: {
+        position: 'absolute',
+        top: 80,
+        left: 0,
+        height: '92%',
         width: '100%',
-        height: '100%', // Må stå som 'undefined'
-        // aspectRatio: 1752 / 2263,
-        // alignSelf: 'center', // Må stå som 'stretch' hvis bildet ikke skal skalere opp
+        justifyContent: 'center',
+    },
+    backgroundImage: {
+        height: undefined,
+        width: '100%',
+        maxHeight: height - 149,
+        maxWidth: width,
+        aspectRatio: 1752 / 2263,
+        alignSelf: 'center',
         backgroundColor: Colors.sketchBackground,
+        zIndex: 0,
     },
 });
 
