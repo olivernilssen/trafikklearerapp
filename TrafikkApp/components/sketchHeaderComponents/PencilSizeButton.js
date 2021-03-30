@@ -17,7 +17,10 @@ const PencilSizeButton = (props) => {
         <View
             style={
                 buttonID === pencilThicknessID
-                    ? [styles.iconPlacement, { backgroundColor: Colors.header }]
+                    ? [
+                          styles.iconPlacement,
+                          { backgroundColor: Colors.headerBg },
+                      ]
                     : styles.iconPlacement
             }>
             <View

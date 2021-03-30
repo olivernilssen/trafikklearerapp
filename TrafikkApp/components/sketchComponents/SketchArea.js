@@ -5,7 +5,7 @@ import React, {
     useCallback,
     useContext,
 } from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, Dimensions } from 'react-native';
 
 import MainView from '../reusableComponents/MainView';
 import SketchHeader from '../sketchHeaderComponents/SketchHeader';
@@ -18,6 +18,8 @@ import SketchAreaMenuContent from './SketchAreaMenuContent';
 import Overlay from '../reusableComponents/Overlay';
 
 import AppContext from '../../AppContext';
+
+const { width, height } = Dimensions.get('screen');
 
 /**This is a big component that contains all the components that are visible
  * on the SketchArea screens.
@@ -223,6 +225,7 @@ const SketchArea = React.memo((props) => {
                     setImage={setImage}
                     setRoadDesignChange={setRoadDesignChange}
                     extensionType={extensionType}
+                    setBottomSheetHidden={setBottomSheetHidden}
                 />
             </BottomMenuAnimated>
         </MainView>
@@ -252,14 +255,15 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 80,
         left: 0,
-        height: '100%',
+        height: '92%',
         width: '100%',
         justifyContent: 'center',
     },
     backgroundImage: {
-        marginBottom: 80,
+        height: undefined,
         width: '100%',
-        height: undefined, // Må stå som 'undefined'
+        maxHeight: height - 149,
+        maxWidth: width,
         aspectRatio: 1752 / 2263,
         alignSelf: 'center',
         backgroundColor: Colors.sketchBackground,
