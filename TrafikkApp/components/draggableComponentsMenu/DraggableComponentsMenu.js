@@ -121,7 +121,7 @@ const DraggableComponentsMenu = React.memo(
                                         onSelect={(newValue) =>
                                             extensionTypeChange(newValue)
                                         }
-                                        groupWidth={270}
+                                        groupWidth={220}
                                         height={45}
                                         highlightBackgroundColor={
                                             Colors.componentMenuButtons
@@ -134,6 +134,7 @@ const DraggableComponentsMenu = React.memo(
                                             Colors.slideTextInactive
                                         }
                                         textSize={17}
+                                        middleButtonSize={'small'}
                                     />
                                 </View>
                             </View>

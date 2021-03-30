@@ -7,6 +7,7 @@ import {
     TouchableOpacity,
     Animated,
 } from 'react-native';
+import { button } from '../../styles/typography';
 
 /**
  * Component that displays a button group
@@ -22,6 +23,7 @@ import {
  * @prop {color} inactiveBackgroundColor BackgroundColor of the inactive button(s)
  * @prop {color} inactiveTextColor Text color of the inactive button(s)
  * @prop {number} [height] The height of the button group
+ * @prop {int} middleButtonSize if the middle button should be small in a 3 length group
  */
 const ButtonGroup = (props) => {
     const {
@@ -36,22 +38,35 @@ const ButtonGroup = (props) => {
         inactiveTextColor,
         isColorOptions,
         height,
+        middleButtonSize,
     } = props;
 
-    // Set the value of the optional props, if they are not set
-    const isColorOption = isColorOptions != null ? isColorOptions : false;
     const width = groupWidth != null ? groupWidth : 300;
-    const fontSize = textSize != null ? textSize : width / 15;
     const isHeight = height != null ? height : width / 6;
-    const buttonSize = width / values.length;
 
+    const [buttonSize, setButtonSize] = useState(width / values.length);
+    const [middleSize, setMiddleSize] = useState(buttonSize);
+    const [fontSize, setFontSize] = useState(
+        textSize != null ? textSize : width / 15
+    );
+    const [isColorOption, setIsColorOption] = useState(
+        isColorOptions != null ? isColorOptions : false
+    );
     const [chosenIndex, setChosenIndex] = useState(
         values.indexOf(selectedValue)
     );
     const [boxPos, setBoxPos] = useState(
         new Animated.Value(chosenIndex * buttonSize)
     );
+    const hasThreeValues =
+        values.length == 3 && middleButtonSize == 'small' ? true : false;
 
+    useEffect(() => {
+        if (hasThreeValues) {
+            setMiddleSize(buttonSize / 3);
+            setButtonSize((width - middleSize) / 2);
+        }
+    }, []);
     /**
      * useEffect that is triggered when selectedValue is changed.
      * Will set the state chosenIndex to the index of the selected value
@@ -65,12 +80,27 @@ const ButtonGroup = (props) => {
      * Will animate the changing of the selected button
      */
     useEffect(() => {
-        Animated.spring(boxPos, {
-            toValue: buttonSize * chosenIndex,
-            bounciness: 0,
-            speed: 2,
-            useNativeDriver: true,
-        }).start();
+        if (hasThreeValues) {
+            const moveTo =
+                chosenIndex != 1
+                    ? chosenIndex == 0
+                        ? 0
+                        : width - buttonSize
+                    : buttonSize;
+            Animated.spring(boxPos, {
+                toValue: moveTo,
+                bounciness: 0,
+                speed: 2,
+                useNativeDriver: true,
+            }).start();
+        } else {
+            Animated.spring(boxPos, {
+                toValue: buttonSize * chosenIndex,
+                bounciness: 0,
+                speed: 2,
+                useNativeDriver: true,
+            }).start();
+        }
     }, [chosenIndex]);
 
     /**
@@ -101,7 +131,10 @@ const ButtonGroup = (props) => {
                         styles.slider,
                         {
                             height: isHeight,
-                            width: buttonSize,
+                            width:
+                                hasThreeValues && chosenIndex == 1
+                                    ? middleSize
+                                    : buttonSize,
                             backgroundColor: highlightBackgroundColor,
                             transform: [{ translateX: boxPos }],
                         },
@@ -128,7 +161,15 @@ const ButtonGroup = (props) => {
                                 : null,
                         ]}>
                         <TouchableOpacity
-                            style={[styles.touchable, { width: buttonSize }]}
+                            style={[
+                                styles.touchable,
+                                {
+                                    width:
+                                        hasThreeValues && i == 1
+                                            ? middleSize
+                                            : buttonSize,
+                                },
+                            ]}
                             onPress={() => onValueChanged(value, i)}>
                             {!isColorOption && (
                                 <Text
