@@ -12,7 +12,13 @@ import backgroundImagePath from './backgroundImagePath';
  * which screen they are on
  */
 const SketchAreaMenuContent = React.memo(
-    ({ roadType, setImage, setRoadDesignChange, extensionType }) => {
+    ({
+        roadType,
+        setImage,
+        setRoadDesignChange,
+        extensionType,
+        setBottomSheetHidden,
+    }) => {
         //Get the roadtype json this component applies too based on roadType prop
         const thisRoadType = backgroundImagePath[roadType];
 
@@ -89,6 +95,7 @@ const SketchAreaMenuContent = React.memo(
                 setImage(imgSource);
             }
             setRoadDesign(designName);
+            setBottomSheetHidden(true);
         };
 
         /**
@@ -122,6 +129,33 @@ const SketchAreaMenuContent = React.memo(
 
         return (
             <View style={styles.main}>
+                {/* START * The intersectionType buttons (X, T, Y) */}
+                {roadType == 'Veikryss' && (
+                    <View style={styles.intersectionTypeSection}>
+                        <Text style={styles.intersectionTypeInfoText}>
+                            Kryssutforming:
+                        </Text>
+
+                        <ButtonGroup
+                            selectedValue={intersectionType}
+                            values={IntersectionTypes}
+                            onSelect={(newValue) =>
+                                intersectionTypeChange(newValue)
+                            }
+                            groupWidth={300}
+                            highlightBackgroundColor={Colors.bottomMenyButtons}
+                            highlightTextColor={Colors.icons}
+                            inactiveBackgroundColor={Colors.secSlideInactiveBg}
+                            inactiveTextColor={Colors.secSlideTextInactive}
+                        />
+                        <Divider
+                            style={styles.divider}
+                            borderColor={Colors.bottomMenyButtons}
+                        />
+                    </View>
+                )}
+                {/* END * The intersectionType buttons (X, T, Y) */}
+
                 {/* START * The main buttons (Høyrekryss, forkjørs, lys) */}
                 <View style={styles.buttonGroup}>
                     {RoadDesigns.map((label, i) => {
@@ -165,33 +199,6 @@ const SketchAreaMenuContent = React.memo(
                     })}
                 </View>
                 {/* END * The main buttons (Høyrekryss, forkjørs, lys) */}
-
-                {/* START * The intersectionType buttons (X, T, Y) */}
-                {roadType == 'Veikryss' && (
-                    <View style={styles.intersectionTypeSection}>
-                        <Divider
-                            style={styles.divider}
-                            borderColor={Colors.bottomMenyButtons}
-                        />
-                        <Text style={styles.intersectionTypeInfoText}>
-                            Kryssutforming:
-                        </Text>
-
-                        <ButtonGroup
-                            selectedValue={intersectionType}
-                            values={IntersectionTypes}
-                            onSelect={(newValue) =>
-                                intersectionTypeChange(newValue)
-                            }
-                            groupWidth={300}
-                            highlightBackgroundColor={Colors.bottomMenyButtons}
-                            highlightTextColor={Colors.icons}
-                            inactiveBackgroundColor={Colors.secSlideInactiveBg}
-                            inactiveTextColor={Colors.secSlideTextInactive}
-                        />
-                    </View>
-                )}
-                {/* END * The intersectionType buttons (X, T, Y) */}
             </View>
         );
     }
@@ -200,15 +207,33 @@ const SketchAreaMenuContent = React.memo(
 const styles = StyleSheet.create({
     main: {
         flexDirection: 'column',
-        paddingTop: 40,
+        paddingTop: 30,
         paddingBottom: 20,
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
     },
+    intersectionTypeInfoText: {
+        textAlign: 'center',
+        paddingBottom: 15,
+        color: Colors.icons,
+        opacity: 0.5,
+        ...Typography.label,
+    },
+    intersectionTypeSection: {
+        flexDirection: 'column',
+        width: '100%',
+        marginBottom: 10,
+        alignItems: 'center',
+    },
+    divider: {
+        width: '80%',
+        alignSelf: 'center',
+        marginTop: 20,
+    },
     buttonGroup: {
         flexDirection: 'row',
-        marginVertical: 10,
+        paddingVertical: 20,
     },
     buttonContainer: {
         padding: 25,
@@ -231,24 +256,6 @@ const styles = StyleSheet.create({
         paddingTop: 5,
         textAlign: 'center',
         ...Typography.body,
-    },
-    intersectionTypeSection: {
-        flexDirection: 'column',
-        width: '100%',
-        marginVertical: 20,
-        alignItems: 'center',
-    },
-    divider: {
-        width: '80%',
-        alignSelf: 'center',
-        marginBottom: 20,
-    },
-    intersectionTypeInfoText: {
-        textAlign: 'center',
-        paddingBottom: 15,
-        color: Colors.icons,
-        opacity: 0.5,
-        ...Typography.label,
     },
 });
 
