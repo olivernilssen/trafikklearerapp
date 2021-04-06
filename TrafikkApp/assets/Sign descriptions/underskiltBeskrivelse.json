@@ -64,20 +64,55 @@
         "beskrivelse": "Underskiltet brukes når det ikke er hensiktsmessig å gi vedkommende regulering eller informasjon med underskilt med symbol, tall eller annet. ",
         "source": "require(../roadSigns/Underskilt/808_0.png)"
     },
-    "810_0": {
+    "810_H45-": {
         "navn": " Svingpil",
         "beskrivelse": "Underskiltet angir at hovedskiltet gjelder etter sving i veikryss. ",
-        "source": "require(../roadSigns/Underskilt/810_0.png)"
+        "source": "require(../roadSigns/Underskilt/810_H45-.png)"
+    },
+    "810_H90": {
+        "navn": " Svingpil",
+        "beskrivelse": "- Underskiltet angir at hovedskiltet gjelder etter sving i veikryss. ",
+        "source": "require(../roadSigns/Underskilt/810_H90.png)"
+    },
+    "810_H135-": {
+        "navn": " Svingpil",
+        "beskrivelse": "Underskiltet angir at hovedskiltet gjelder etter sving i veikryss. ",
+        "source": "require(../roadSigns/Underskilt/810_H135-.png)"
+    },
+    "810_R-": {
+        "navn": " Svingpil",
+        "beskrivelse": "Underskiltet angir at hovedskiltet gjelder etter sving i veikryss. ",
+        "source": "require(../roadSigns/Underskilt/810_R-.png)"
+    },
+    "810_V45-": {
+        "navn": " Svingpil",
+        "beskrivelse": "Underskiltet angir at hovedskiltet gjelder etter sving i veikryss. ",
+        "source": "require(../roadSigns/Underskilt/810_V45-.png)"
+    },
+    "810_V90-": {
+        "navn": " Svingpil",
+        "beskrivelse": "Underskiltet angir at hovedskiltet gjelder etter sving i veikryss. ",
+        "source": "require(../roadSigns/Underskilt/810_V90-.png)"
+    },
+    "810_V135-": {
+        "navn": " Svingpil",
+        "beskrivelse": "Underskiltet angir at hovedskiltet gjelder etter sving i veikryss. ",
+        "source": "require(../roadSigns/Underskilt/810_V135-.png)"
     },
     "812_0": {
         "navn": "Anbefalt fart ",
         "beskrivelse": "Underskiltet angir den høyeste fart som den varslede fare tilsier under normale vær-, føre-, sikt- og lysforhold.",
         "source": "require(../roadSigns/Underskilt/812_0.png)"
     },
-    "813_0": {
+    "813_1": {
+        "navn": "Stigningsgrad ",
+        "beskrivelse": "813.1",
+        "source": "require(../roadSigns/Underskilt/813_1.png)"
+    },
+    "813_2": {
         "navn": "Stigningsgrad ",
         "beskrivelse": "813.2",
-        "source": "require(../roadSigns/Underskilt/813_0.png)"
+        "source": "require(../roadSigns/Underskilt/813_2.png)"
     },
     "814_0": {
         "navn": "Virkelig fri vegbredde",
@@ -89,15 +124,65 @@
         "beskrivelse": " ",
         "source": "require(../roadSigns/Underskilt/816_0.png)"
     },
-    "817_0": {
+    "817_1-": {
         "navn": "Særlig ulykkesfare",
         "beskrivelse": "Utformingen tilpasses den aktuelle faresituasjonen.",
-        "source": "require(../roadSigns/Underskilt/817_0.png)"
+        "source": "require(../roadSigns/Underskilt/817_1-.png)"
     },
-    "822_0": {
+    "817_2-": {
+        "navn": "Særlig ulykkesfare",
+        "beskrivelse": "Utformingen tilpasses den aktuelle faresituasjonen.",
+        "source": "require(../roadSigns/Underskilt/817_2-.png)"
+    },
+    "817_3-": {
+        "navn": "Særlig ulykkesfare",
+        "beskrivelse": "Utformingen tilpasses den aktuelle faresituasjonen.",
+        "source": "require(../roadSigns/Underskilt/817_3-.png)"
+    },
+    "817_4-": {
+        "navn": "Særlig ulykkesfare",
+        "beskrivelse": "Utformingen tilpasses den aktuelle faresituasjonen.",
+        "source": "require(../roadSigns/Underskilt/817_4-.png)"
+    },
+    "817_5-": {
+        "navn": "Særlig ulykkesfare",
+        "beskrivelse": "Utformingen tilpasses den aktuelle faresituasjonen.",
+        "source": "require(../roadSigns/Underskilt/817_5-.png)"
+    },
+    "822_1-": {
         "navn": "Forløp av forkjørsveg",
         "beskrivelse": "Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp. ",
-        "source": "require(../roadSigns/Underskilt/822_0.png)"
+        "source": "require(../roadSigns/Underskilt/822_1-.png)"
+    },
+    "822_2-": {
+        "navn": "Forløp av forkjørsveg",
+        "beskrivelse": "Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp. ",
+        "source": "require(../roadSigns/Underskilt/822_2-.png)"
+    },
+    "822_3-": {
+        "navn": "Forløp av forkjørsveg",
+        "beskrivelse": "Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp. ",
+        "source": "require(../roadSigns/Underskilt/822_3-.png)"
+    },
+    "822_4-": {
+        "navn": "Forløp av forkjørsveg",
+        "beskrivelse": "Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp. ",
+        "source": "require(../roadSigns/Underskilt/822_4-.png)"
+    },
+    "822_5-": {
+        "navn": "Forløp av forkjørsveg",
+        "beskrivelse": "Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp. ",
+        "source": "require(../roadSigns/Underskilt/822_5-.png)"
+    },
+    "822_6-": {
+        "navn": "Forløp av forkjørsveg",
+        "beskrivelse": "Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp. ",
+        "source": "require(../roadSigns/Underskilt/822_6-.png)"
+    },
+    "822_7-": {
+        "navn": "Forløp av forkjørsveg",
+        "beskrivelse": "Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp. ",
+        "source": "require(../roadSigns/Underskilt/822_7-.png)"
     },
     "824_0": {
         "navn": "Forvarsling av stopp",
@@ -109,10 +194,20 @@
         "beskrivelse": "Underskiltet viser at det er sykkeltrafikk i begge kjøreretninger på kryssende sykkelvei eller gang- og sykkelvei. ",
         "source": "require(../roadSigns/Underskilt/826_0.png)"
     },
-    "828_0": {
+    "828_1-": {
         "navn": "Utstrekning av stans og parkeringsregulering",
         "beskrivelse": "Underskiltet angir at reguleringen gjelder i pilens retning, eventuelt i den avstand som er angitt. Skiltet kan være plassert vannrett. Pilsymbolene kan også plasseres på andre underskilt som regulerer stans eller parkering. ",
-        "source": "require(../roadSigns/Underskilt/828_0.png)"
+        "source": "require(../roadSigns/Underskilt/828_1-.png)"
+    },
+    "828_2-": {
+        "navn": "Utstrekning av stans og parkeringsregulering",
+        "beskrivelse": "Underskiltet angir at reguleringen gjelder i pilens retning, eventuelt i den avstand som er angitt. Skiltet kan være plassert vannrett. Pilsymbolene kan også plasseres på andre underskilt som regulerer stans eller parkering. ",
+        "source": "require(../roadSigns/Underskilt/828_2-.png)"
+    },
+    "828_3-": {
+        "navn": "Utstrekning av stans og parkeringsregulering",
+        "beskrivelse": "Underskiltet angir at reguleringen gjelder i pilens retning, eventuelt i den avstand som er angitt. Skiltet kan være plassert vannrett. Pilsymbolene kan også plasseres på andre underskilt som regulerer stans eller parkering. ",
+        "source": "require(../roadSigns/Underskilt/828_3-.png)"
     },
     "829_0": {
         "navn": "Oppstiling av parkert kjøretøy",

@@ -37,7 +37,7 @@ for url in urls:
         headerTitle = ''
         description = ''
         listChildren = list(item.children) #list all the children to "dokumentpakke"
-        
+
         #check if there is a description to this "dokumentpakke" (<p>)
         if (len(listChildren) > 2):
             hasDescription = True
@@ -46,7 +46,7 @@ for url in urls:
         else:
             if(len(listChildren) == 1):
                 continue
-            if (len(listChildren[1].get_text()) > 0):
+            elif (len(listChildren[1].get_text()) > 0):
                 tempDescription = [listChildren[0].get_text().split(' ', 1)[0], listChildren[1].get_text()]
                 continue
             headerTitle = listChildren[0].get_text().split(' ', 1)
@@ -96,12 +96,14 @@ for url in urls:
                 #check if there is a sub-number to this code aswell
                 if description[0].isdigit():
                     newDescription = description.split(' ', 1) #split the number away from the rest
+                    newtitle = newDescription[0]
                     if ("." not in newDescription[0]):
-                        title = newDescription[0] + '_0'
+                        newtitle = newDescription[0] + '_0'
+
                     if len(newDescription) == 1: #if the number is alone, then there is no description for it
-                        signDescription[title.replace('.', '_')] = {'navn': headerTitle[1], 'beskrivelse': description, 'source' : "require(" + imgSource + title.replace('.', '_') + ".png)"} #add key=code, name of sign, empty descriptuon and sub-code
+                        signDescription[newtitle.replace('.', '_')] = {'navn': headerTitle[1], 'beskrivelse': description, 'source' : "require(" + imgSource + newtitle.replace('.', '_') + ".png)"} #add key=code, name of sign, empty descriptuon and sub-code
                     else:
-                        signDescription[title.replace('.', '_')] = {'navn': headerTitle[1], 'beskrivelse': newDescription[1], 'source' : "require(" + imgSource + title.replace('.', '_') + ".png)"} #add key=code, name of sign, empty description and sub-code with description
+                        signDescription[newtitle.replace('.', '_')] = {'navn': headerTitle[1], 'beskrivelse': newDescription[1], 'source' : "require(" + imgSource + newtitle.replace('.', '_') + ".png)"} #add key=code, name of sign, empty description and sub-code with description
                 else:
                     lenOfDesc = len(description)
 

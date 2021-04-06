@@ -49,10 +49,15 @@
         "beskrivelse": " ",
         "source": "require(../roadSigns/Serviceskilt/612_0.png)"
     },
-    "613_0": {
+    "613_1": {
+        "navn": "Rasteplass",
+        "beskrivelse": "(628)",
+        "source": "require(../roadSigns/Serviceskilt/613_1.png)"
+    },
+    "613_2": {
         "navn": "Rasteplass",
         "beskrivelse": "613.2",
-        "source": "require(../roadSigns/Serviceskilt/613_0.png)"
+        "source": "require(../roadSigns/Serviceskilt/613_2.png)"
     },
     "614_0": {
         "navn": "Enklere servering",

@@ -1,23 +1,48 @@
 {
-    "100_0": {
+    "100_1": {
+        "navn": "Farlig sving ",
+        "beskrivelse": "til høyre ",
+        "source": "require(../roadSigns/Fareskilt/100_1.png)"
+    },
+    "100_2": {
         "navn": "Farlig sving ",
         "beskrivelse": "til venstre",
-        "source": "require(../roadSigns/Fareskilt/100_0.png)"
+        "source": "require(../roadSigns/Fareskilt/100_2.png)"
     },
-    "102_0": {
+    "102_1": {
+        "navn": "Farlige svinger ",
+        "beskrivelse": "den første til høyre",
+        "source": "require(../roadSigns/Fareskilt/102_1.png)"
+    },
+    "102_2": {
         "navn": "Farlige svinger ",
         "beskrivelse": "den første til venstre ",
-        "source": "require(../roadSigns/Fareskilt/102_0.png)"
+        "source": "require(../roadSigns/Fareskilt/102_2.png)"
     },
-    "104_0": {
+    "104_1": {
+        "navn": "Bratt bakke ",
+        "beskrivelse": "stigning",
+        "source": "require(../roadSigns/Fareskilt/104_1.png)"
+    },
+    "104_2": {
         "navn": "Bratt bakke ",
         "beskrivelse": "fall",
-        "source": "require(../roadSigns/Fareskilt/104_0.png)"
+        "source": "require(../roadSigns/Fareskilt/104_2.png)"
     },
-    "106_0": {
+    "106_1": {
+        "navn": "Smalere veg ",
+        "beskrivelse": "innsnevring på begge sider  ",
+        "source": "require(../roadSigns/Fareskilt/106_1.png)"
+    },
+    "106_2": {
+        "navn": "Smalere veg ",
+        "beskrivelse": "innsnevring på høyre side",
+        "source": "require(../roadSigns/Fareskilt/106_2.png)"
+    },
+    "106_3": {
         "navn": "Smalere veg ",
         "beskrivelse": "innsnevring på venstre side",
-        "source": "require(../roadSigns/Fareskilt/106_0.png)"
+        "source": "require(../roadSigns/Fareskilt/106_3.png)"
     },
     "108_0": {
         "navn": "Ujevn veg",
@@ -109,10 +134,15 @@
         "beskrivelse": "Skiltet gir forvarsel om planovergang varslet med skilt 134 eller 135",
         "source": "require(../roadSigns/Fareskilt/136_3.png)"
     },
-    "138_0": {
+    "138_1": {
+        "navn": "Jernbanespor ",
+        "beskrivelse": "Enkeltsporet. Skiltet angir stedet hvor jernbane eller forstadsbane krysser veien i plan.",
+        "source": "require(../roadSigns/Fareskilt/138_1.png)"
+    },
+    "138_2": {
         "navn": "Jernbanespor ",
         "beskrivelse": "Flersporet. Skiltet angir stedet hvor jernbane eller forstadsbane krysser veien i plan. ",
-        "source": "require(../roadSigns/Fareskilt/138_0.png)"
+        "source": "require(../roadSigns/Fareskilt/138_2.png)"
     },
     "139_0": {
         "navn": "Sporvogn",
@@ -134,10 +164,30 @@
         "beskrivelse": "Skiltet varsler om sted hvor syklende ofte krysser eller kjører ut på veien.",
         "source": "require(../roadSigns/Fareskilt/144_0.png)"
     },
-    "146_0": {
+    "146_1_": {
+        "navn": "Dyr ",
+        "beskrivelse": "Skiltet varsler at elg ofte ferdes over eller langs veien. ",
+        "source": "require(../roadSigns/Fareskilt/146_1_.png)"
+    },
+    "146_2_": {
+        "navn": "Dyr ",
+        "beskrivelse": "Skiltet varsler at rein ofte ferdes over eller langs veien.",
+        "source": "require(../roadSigns/Fareskilt/146_2_.png)"
+    },
+    "146_3_": {
+        "navn": "Dyr ",
+        "beskrivelse": "Skiltet varsler at hjort ofte ferdes over eller langs veien. ",
+        "source": "require(../roadSigns/Fareskilt/146_3_.png)"
+    },
+    "146_4_": {
+        "navn": "Dyr ",
+        "beskrivelse": "Skiltet varsler at kyr ofte ferdes over eller langs veien. ",
+        "source": "require(../roadSigns/Fareskilt/146_4_.png)"
+    },
+    "146_5_": {
         "navn": "Dyr ",
         "beskrivelse": "Skiltet varsler at sauer ofte ferdes over eller langs veien. ",
-        "source": "require(../roadSigns/Fareskilt/146_0.png)"
+        "source": "require(../roadSigns/Fareskilt/146_5_.png)"
     },
     "148_0": {
         "navn": "Møtende trafikk ",

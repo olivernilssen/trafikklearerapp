@@ -74,10 +74,15 @@
         "beskrivelse": "Forbudet gjelder kjøretøy eller vogntog, medregnet gods, med større lengde enn angitt.",
         "source": "require(../roadSigns/Forbudsskilt/316_0.png)"
     },
-    "318_0": {
+    "318_1": {
+        "navn": "Totalvektgrense ",
+        "beskrivelse": "for kjøretøy Forbudet gjelder kjøretøy hvor aktuell totalvekt er høyere enn angitt. For vogntog gjelder forbudet hvert enkelt kjøretøy.",
+        "source": "require(../roadSigns/Forbudsskilt/318_1.png)"
+    },
+    "318_2": {
         "navn": "Totalvektgrense",
         "beskrivelse": "for vogntog Forbudet gjelder vogntog hvor samlet aktuell totalvekt er høyere enn angitt. Forbudet gjelder også enkelt kjøretøy hvor aktuell totalvekt er høyere enn angitt.",
-        "source": "require(../roadSigns/Forbudsskilt/318_0.png)"
+        "source": "require(../roadSigns/Forbudsskilt/318_2.png)"
     },
     "320_0": {
         "navn": "Aksellastgrense",

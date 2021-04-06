@@ -154,25 +154,60 @@
         "beskrivelse": "",
         "source": "require(../roadSigns/Opplysningsskilt/530_11.png)"
     },
-    "531_0": {
+    "531_102": {
+        "navn": "Felt for fartsøkning",
+        "beskrivelse": "Eksempel - Skiltet angir at felt for fartsøkning føres inn på annet kjørefelt med gjensidig tilpassing i samsvar med trafikkreglenes bestemmelser (fletting). ",
+        "source": "require(../roadSigns/Opplysningsskilt/531_102.png)"
+    },
+    "531_202": {
         "navn": "Felt for fartsøkning",
         "beskrivelse": "Eksempel  - Skiltet angir at felt for fartsøkning føres inn på annet kjørefelt med gjensidig tilpassing i samsvar med trafikkreglenes bestemmelser (fletting). ",
-        "source": "require(../roadSigns/Opplysningsskilt/531_0.png)"
+        "source": "require(../roadSigns/Opplysningsskilt/531_202.png)"
     },
-    "532_0": {
+    "532_H02": {
+        "navn": "Kjørefelt slutter  ",
+        "beskrivelse": "Eksempel- Kjørende i felt som slutter, skal skifte felt og har vikeplikt i samsvar med trafikkreglenes bestemmelser. ",
+        "source": "require(../roadSigns/Opplysningsskilt/532_H02.png)"
+    },
+    "532_H11": {
         "navn": "Kjørefelt slutter ",
         "beskrivelse": "Eksempel- Kjørende i felt som slutter, skal skifte felt og har vikeplikt i samsvar med trafikkreglenes bestemmelser. ",
-        "source": "require(../roadSigns/Opplysningsskilt/532_0.png)"
+        "source": "require(../roadSigns/Opplysningsskilt/532_H11.png)"
     },
-    "534_0": {
+    "534_H02": {
         "navn": "Kjørefelt begynner ",
         "beskrivelse": "Eksempel",
-        "source": "require(../roadSigns/Opplysningsskilt/534_0.png)"
+        "source": "require(../roadSigns/Opplysningsskilt/534_H02.png)"
     },
-    "536_0": {
+    "534_V01": {
+        "navn": "Kjørefelt begynner ",
+        "beskrivelse": "Eksempel",
+        "source": "require(../roadSigns/Opplysningsskilt/534_V01.png)"
+    },
+    "534_V11": {
+        "navn": "Kjørefelt begynner ",
+        "beskrivelse": "Eksempel",
+        "source": "require(../roadSigns/Opplysningsskilt/534_V11.png)"
+    },
+    "536_101": {
+        "navn": "Påkjøring fortsetter i eget kjørefelt",
+        "beskrivelse": "Eksempel ",
+        "source": "require(../roadSigns/Opplysningsskilt/536_101.png)"
+    },
+    "536_102": {
         "navn": "Påkjøring fortsetter i eget kjørefelt",
         "beskrivelse": "Eksempel",
-        "source": "require(../roadSigns/Opplysningsskilt/536_0.png)"
+        "source": "require(../roadSigns/Opplysningsskilt/536_102.png)"
+    },
+    "536_201": {
+        "navn": "Påkjøring fortsetter i eget kjørefelt",
+        "beskrivelse": "Eksempel",
+        "source": "require(../roadSigns/Opplysningsskilt/536_201.png)"
+    },
+    "536_202": {
+        "navn": "Påkjøring fortsetter i eget kjørefelt",
+        "beskrivelse": "Eksempel",
+        "source": "require(../roadSigns/Opplysningsskilt/536_202.png)"
     },
     "538_0": {
         "navn": " Kjørefeltinndeling",
@@ -239,9 +274,24 @@
         "beskrivelse": "Feil kjøreretning ",
         "source": "require(../roadSigns/Opplysningsskilt/565_0.png)"
     },
-    "570_0": {
+    "570_1H": {
+        "navn": "Nødutgangsskilt for tunnel ",
+        "beskrivelse": "570.1H",
+        "source": "require(../roadSigns/Opplysningsskilt/570_1H.png)"
+    },
+    "570_1V": {
+        "navn": "Nødutgangsskilt for tunnel ",
+        "beskrivelse": "570.1V",
+        "source": "require(../roadSigns/Opplysningsskilt/570_1V.png)"
+    },
+    "570_2H": {
+        "navn": "Nødutgangsskilt for tunnel ",
+        "beskrivelse": "570.2H",
+        "source": "require(../roadSigns/Opplysningsskilt/570_2H.png)"
+    },
+    "570_2V": {
         "navn": "Nødutgangsskilt for tunnel ",
         "beskrivelse": "570.2V",
-        "source": "require(../roadSigns/Opplysningsskilt/570_0.png)"
+        "source": "require(../roadSigns/Opplysningsskilt/570_2V.png)"
     }
 }

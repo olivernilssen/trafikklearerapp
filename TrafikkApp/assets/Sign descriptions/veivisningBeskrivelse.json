@@ -274,15 +274,50 @@
         "beskrivelse": "",
         "source": "require(../roadSigns/Vegvisningsskilt/780_0.png)"
     },
-    "790_0": {
+    "790_10": {
+        "navn": "Andre reisemål",
+        "beskrivelse": "Kirke",
+        "source": "require(../roadSigns/Vegvisningsskilt/790_10.png)"
+    },
+    "790_15": {
+        "navn": "Andre reisemål",
+        "beskrivelse": "Næringsområde",
+        "source": "require(../roadSigns/Vegvisningsskilt/790_15.png)"
+    },
+    "790_16": {
+        "navn": "Andre reisemål",
+        "beskrivelse": "Kjøpesenter",
+        "source": "require(../roadSigns/Vegvisningsskilt/790_16.png)"
+    },
+    "790_20": {
+        "navn": "Andre reisemål",
+        "beskrivelse": "Svømmehall",
+        "source": "require(../roadSigns/Vegvisningsskilt/790_20.png)"
+    },
+    "790_30": {
+        "navn": "Andre reisemål",
+        "beskrivelse": "Alpinanlegg ",
+        "source": "require(../roadSigns/Vegvisningsskilt/790_30.png)"
+    },
+    "790_31": {
+        "navn": "Andre reisemål",
+        "beskrivelse": "Hoppbakke",
+        "source": "require(../roadSigns/Vegvisningsskilt/790_31.png)"
+    },
+    "790_32": {
+        "navn": "Andre reisemål",
+        "beskrivelse": "Skistadion",
+        "source": "require(../roadSigns/Vegvisningsskilt/790_32.png)"
+    },
+    "790_40": {
         "navn": "Andre reisemål",
         "beskrivelse": "Golfbane",
-        "source": "require(../roadSigns/Vegvisningsskilt/790_0.png)"
+        "source": "require(../roadSigns/Vegvisningsskilt/790_40.png)"
     },
-    "792_0": {
+    "792_11": {
         "navn": "Betalingsmåte i bomstasjon/ betalingssystem på veg",
         "beskrivelse": "Betaling med elektronisk brikke ",
-        "source": "require(../roadSigns/Vegvisningsskilt/792_0.png)"
+        "source": "require(../roadSigns/Vegvisningsskilt/792_11.png)"
     },
     "792_12": {
         "navn": "Betaling til betjent",
