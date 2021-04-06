@@ -10,6 +10,9 @@ import { Colors, Typography } from '../styles';
 /**
  * Screen component for the start screen
  * contains a list of all the clickable screens in the navigator
+ * @namespace StartScreen
+ * @memberof Screens
+ * @prop {object} navigation Used for navigation between the different screens
  */
 const StartScreen = React.memo(({ navigation }) => {
     return (

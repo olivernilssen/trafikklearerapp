@@ -6,6 +6,9 @@ import SketchArea from '../components/sketchComponents/SketchArea';
 
 /**
  * Screen component for roundbaout screen / rundkjøring
+ * @namespace RoundaboutScreen
+ * @memberof Screens
+ * @prop {object} navigation Used for navigation between the different screens
  */
 const RoundaboutScreen = React.memo(({ navigation }) => {
     return (

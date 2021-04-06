@@ -6,7 +6,9 @@ import SketchArea from '../components/sketchComponents/SketchArea';
 
 /**
  * The screen component for roadScreen "Landevei"
- * Denne er langt fra ferdig!
+ * @namespace CountryRoadScreen
+ * @memberof Screens
+ * @prop {object} navigation Used for navigation between the different screens
  */
 const CountryRoadScreen = React.memo(({ navigation }) => {
     return (

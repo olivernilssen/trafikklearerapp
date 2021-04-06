@@ -1,13 +1,19 @@
 const signSource = {
-    Fareskilt: {
-        farligSvingHøyre: require('../../assets/roadSigns/fareskilt/100_1.png'),
-        // infoFarligSvingHøyre: 'Farlig sving til høyre',
+    skilt: {
+        fareskilt: {
+            100_1: {
+                signImg: require('../../assets/roadSigns/fareskilt/100_1.png'),
+                signDescription: 'Farlig sving til høyre',
+            },
 
-        farligSvingVenstre: require('../../assets/roadSigns/fareskilt/100_2.png'),
-        // infoFarligSvingVenstre: 'Farlig sving til venstre',
+            100_2: {
+                signImg: require('../../assets/roadSigns/fareskilt/100_2.png'),
+                signDescription: 'Farlig sving til venstre',
+            },
+        },
+        markeringsskilt: {},
+        opplysningsskilt: {},
     },
-    Markeringsskilt: {},
-    Opplysningsskilt: {},
 };
 
 export default signSource;

@@ -1,65 +1,65 @@
-import React from 'react';
-import { FlatList, StyleSheet, View, Text, Image } from 'react-native';
+import React, { useState } from 'react';
+import {
+    FlatList,
+    StyleSheet,
+    View,
+    Text,
+    Image,
+    ScrollView,
+} from 'react-native';
 import Header from '../components/reusableComponents/Header';
 import MainView from '../components/reusableComponents/MainView';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from '../styles';
 import signSource from '../components/roadSignComponents/signPath';
+import dangerSignDescription from '../assets/fareskiltBeskrivelse.js';
 
 /**
  * Screen component for sign screen
- * @param {navigator} navigation
+ * Langt fra ferdig!!!
+ * @namespace RoadSignScreen
+ * @memberof Screens
+ * @prop {object} navigation Used for navigation between the different screens
  */
 const RoadSignScreen = ({ navigation }) => {
-    const labelsArray = [];
-    const testSkilt = signSource['Fareskilt'];
-    const skiltGruppeArray = Object.keys(signSource);
+    const [testData, setTestData] = useState([signSource]);
 
-    skiltGruppeArray.map((keys) => {
-        labelsArray.push(keys);
+    console.log(testData);
+    const thisSignType = dangerSignDescription;
+
+    const SignDesigns = [];
+
+    const keys = Object.keys(thisSignType);
+    keys.map((key) => {
+        SignDesigns.push(key);
     });
 
-    const initialImageSrcName = Object.keys(signSource[labelsArray[0]])[0];
+    console.log(SignDesigns);
 
-    const InitialImageSrc =
-        signSource[skiltGruppeArray[0]][initialImageSrcName];
-
-    const importAll = (r) => {
-        var images = {};
-        r.keys().map((item, index) => {
-            images[item.replace('./', '')] = r(item);
-        });
-        return images;
+    // console.log(signSource['skilt'][0]['fareskilt'][0]['signImg']);
+    const testHandler = () => {
+        setTestData(signSource);
     };
-
-    const images = importAll(
-        require.context(
-            '../../assets/roadSigns/fareskilt',
-            false,
-            /\.(png|jpe?g|svg)$/
-        )
-    );
-
-    console.log(images['100_1']);
-
-    // const images = skiltGruppeArray.map((item, index) => {
-    //     return (
-    //         <View key={index}>
-    //             <Image source={skiltGruppeArray[item]} resizeMode={'contain'} />
-    //         </View>
-    //     );
-    // });
-
-    // const fareSkiltDisplay = fareSkilt.map((item, index) => (
-    //     <Image source={item} />
-    // ));
 
     return (
         <MainView>
             <View>
                 <Header name={'Skilt'} navigation={navigation} />
             </View>
-            {images}
+            <View style={{ flex: 1, marginTop: 22 }}>
+                <FlatList
+                    data={SignDesigns}
+                    renderItem={({ item, index }) => {
+                        console.log(item, index);
+                        return (
+                            <Image
+                                source={
+                                    item['skilt']['fareskilt'][100_1].signImg
+                                }
+                            />
+                        );
+                    }}></FlatList>
+            </View>
         </MainView>
     );
 };

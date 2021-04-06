@@ -9,6 +9,9 @@ import SettingsView from '../components/settingsComponents/SettingsView';
 
 /**
  * Screen component for the settings screen (TODO)
+ * @namespace SettingsScreen
+ * @memberof Screens
+ * @prop {object} navigation Used for navigation between the different screens
  */
 const SettingsScreen = React.memo(({ navigation }) => {
     return (
