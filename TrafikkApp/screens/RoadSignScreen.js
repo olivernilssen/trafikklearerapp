@@ -24,17 +24,31 @@ const RoadSignScreen = ({ navigation }) => {
     const InitialImageSrc =
         signSource[skiltGruppeArray[0]][initialImageSrcName];
 
-    // console.log(initialImageSrcName);
-    // console.log(InitialImageSrc);
-    // console.log(labelsArray);
+    const importAll = (r) => {
+        var images = {};
+        r.keys().map((item, index) => {
+            images[item.replace('./', '')] = r(item);
+        });
+        return images;
+    };
 
-    const images = skiltGruppeArray.map((item, index) => {
-        return (
-            <View key={index}>
-                <Image source={skiltGruppeArray[item]} resizeMode={'contain'} />
-            </View>
-        );
-    });
+    const images = importAll(
+        require.context(
+            '../../assets/roadSigns/fareskilt',
+            false,
+            /\.(png|jpe?g|svg)$/
+        )
+    );
+
+    console.log(images['100_1']);
+
+    // const images = skiltGruppeArray.map((item, index) => {
+    //     return (
+    //         <View key={index}>
+    //             <Image source={skiltGruppeArray[item]} resizeMode={'contain'} />
+    //         </View>
+    //     );
+    // });
 
     // const fareSkiltDisplay = fareSkilt.map((item, index) => (
     //     <Image source={item} />

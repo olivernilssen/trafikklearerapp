@@ -38,35 +38,23 @@ const ButtonGroup = (props) => {
         inactiveTextColor,
         isColorOptions,
         height,
-        middleButtonSize,
     } = props;
 
     const width = groupWidth != null ? groupWidth : 300;
     const isHeight = height != null ? height : width / 6;
 
-    const [buttonSize, setButtonSize] = useState(width / values.length);
-    const [middleSize, setMiddleSize] = useState(buttonSize);
-    const [fontSize, setFontSize] = useState(
-        textSize != null ? textSize : width / 15
-    );
-    const [isColorOption, setIsColorOption] = useState(
-        isColorOptions != null ? isColorOptions : false
-    );
+    const buttonSize = width / values.length;
+
+    const fontSize = textSize != null ? textSize : width / 15;
+    const isColorOption = isColorOptions != null ? isColorOptions : false;
+
     const [chosenIndex, setChosenIndex] = useState(
         values.indexOf(selectedValue)
     );
     const [boxPos, setBoxPos] = useState(
         new Animated.Value(chosenIndex * buttonSize)
     );
-    const hasThreeValues =
-        values.length == 3 && middleButtonSize == 'small' ? true : false;
 
-    useEffect(() => {
-        if (hasThreeValues) {
-            setMiddleSize(buttonSize / 3);
-            setButtonSize((width - middleSize) / 2);
-        }
-    }, []);
     /**
      * useEffect that is triggered when selectedValue is changed.
      * Will set the state chosenIndex to the index of the selected value
@@ -80,27 +68,12 @@ const ButtonGroup = (props) => {
      * Will animate the changing of the selected button
      */
     useEffect(() => {
-        if (hasThreeValues) {
-            const moveTo =
-                chosenIndex != 1
-                    ? chosenIndex == 0
-                        ? 0
-                        : width - buttonSize
-                    : buttonSize;
-            Animated.spring(boxPos, {
-                toValue: moveTo,
-                bounciness: 0,
-                speed: 2,
-                useNativeDriver: true,
-            }).start();
-        } else {
-            Animated.spring(boxPos, {
-                toValue: buttonSize * chosenIndex,
-                bounciness: 0,
-                speed: 2,
-                useNativeDriver: true,
-            }).start();
-        }
+        Animated.spring(boxPos, {
+            toValue: buttonSize * chosenIndex,
+            bounciness: 0,
+            speed: 2,
+            useNativeDriver: true,
+        }).start();
     }, [chosenIndex]);
 
     /**
@@ -131,10 +104,7 @@ const ButtonGroup = (props) => {
                         styles.slider,
                         {
                             height: isHeight,
-                            width:
-                                hasThreeValues && chosenIndex == 1
-                                    ? middleSize
-                                    : buttonSize,
+                            width: buttonSize,
                             backgroundColor: highlightBackgroundColor,
                             transform: [{ translateX: boxPos }],
                         },
@@ -164,10 +134,7 @@ const ButtonGroup = (props) => {
                             style={[
                                 styles.touchable,
                                 {
-                                    width:
-                                        hasThreeValues && i == 1
-                                            ? middleSize
-                                            : buttonSize,
+                                    width: buttonSize,
                                 },
                             ]}
                             onPress={() => onValueChanged(value, i)}>
