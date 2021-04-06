@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
-
-import objectPaths from '../draggable/draggableObjectPaths';
+import AppContext from '../../AppContext';
 import Carousel from '../reusableComponents/Carousel';
 
 /**
@@ -11,7 +10,9 @@ import Carousel from '../reusableComponents/Carousel';
  * @prop {function} onNewDraggable function from parent to add new draggable
  */
 const DraggableComponents = React.memo(({ onNewDraggable }) => {
-    const objects = Object.keys(objectPaths);
+    const appContext = useContext(AppContext);
+    const objects = JSON.parse(appContext.draggableObjects);
+    const objectKeys = Object.keys(objects);
 
     /**
      * Get's the image source of the draggable
@@ -20,14 +21,14 @@ const DraggableComponents = React.memo(({ onNewDraggable }) => {
      * @param {int} source image source of new draggable
      */
     const onElementPress = (source) => {
-        onNewDraggable(objectPaths[source]);
+        onNewDraggable(objects[source]);
     };
 
     /**
      * Displayes the available draggable images that can be used
      * @return all the images that are in the "objects" array
      */
-    const images = objects.map((source, i) => {
+    const images = objectKeys.map((source, i) => {
         return (
             <View key={i} style={styles.imageContainer}>
                 <TouchableOpacity
@@ -35,7 +36,7 @@ const DraggableComponents = React.memo(({ onNewDraggable }) => {
                     style={styles.imageButton}
                     onPress={() => onElementPress(source)}>
                     <Image
-                        source={objectPaths[source]}
+                        source={objects[source]}
                         style={styles.image}
                         resizeMode={'contain'}
                     />

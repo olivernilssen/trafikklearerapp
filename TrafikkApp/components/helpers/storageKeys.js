@@ -4,6 +4,7 @@ const USER_KEYS = {
     DELETE_KEY: '@delete_on_change',
     DRAGGABLE_COLOR_KEY: '@draggable_color_key',
     ERASER_SIZE_KEY: '@eraser_size',
+    DRAGGABLE_OBJECTS: '@draggable_objects',
 };
 
 export default USER_KEYS;
