@@ -10,6 +10,12 @@ import backgroundImagePath from './backgroundImagePath';
  * SketchAreaMenuContent is a menu that slides up from the bottom of the screen
  * This menu allows the user to change the background image according to
  * which screen they are on
+ * @namespace SketchAreaMenuContent
+ * @memberof SketchComponents
+ * @prop {string} roadType Name of roadtype
+ * @prop {function} setImage Changes the state currentImage
+ * @prop {function} setRoadDesignChange Changes the state roadDesignChange and sets
+ * @prop {string} extensionType Stien til bakgrunnsbildet
  */
 const SketchAreaMenuContent = React.memo(
     ({ roadType, setImage, setRoadDesignChange, extensionType }) => {
@@ -75,6 +81,8 @@ const SketchAreaMenuContent = React.memo(
          * Depending on if it is a intersection or not, the handling is different
          * Also sets the roadDesign state.
          * Also sets the roadDesignChange to true so that the canvas is cleared
+         * @memberof SketchAreaMenuContent
+         * @function
          * @param {String} designName
          */
         const onPressButton = (designName) => {
@@ -95,6 +103,8 @@ const SketchAreaMenuContent = React.memo(
          * Triggered when the radiobuttons are clicked
          * Changes the type of intersection design that is chosen (x, y, t)
          * Also sets the roadDesignChange to true so that the canvas is cleared
+         * @memberof SketchAreaMenuContent
+         * @function
          * @param {String} radioValue
          */
         const intersectionTypeChange = (intersectionType) => {
@@ -108,6 +118,8 @@ const SketchAreaMenuContent = React.memo(
         /**
          * Returns the source of the image to be displayed as a background image
          * of the buttons in the BottomMenu.
+         * @memberof SketchAreaMenuContent
+         * @function
          * @param {String} designName
          */
         const getImage = (designName) => {

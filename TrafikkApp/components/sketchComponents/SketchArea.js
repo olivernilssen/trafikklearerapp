@@ -22,6 +22,7 @@ import AppContext from '../../AppContext';
 /**This is a big component that contains all the components that are visible
  * on the SketchArea screens.
  * @namespace SketchArea
+ * @memberof SketchComponents
  * @prop {number} navigation
  * @prop {string} name
  */
