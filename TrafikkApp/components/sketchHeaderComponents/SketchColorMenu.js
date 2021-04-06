@@ -10,7 +10,7 @@ import {
 } from 'react-native-popup-menu';
 import PencilSizeButton from './PencilSizeButton';
 import ColorButton from './ColorButton';
-import { Colors, Typography, Buttons, Icons } from '../../styles';
+import { Colors, Buttons, Icons } from '../../styles';
 import AppContext from '../../AppContext';
 import { useEffect } from 'react';
 
@@ -33,7 +33,7 @@ const SketchColorMenu = React.memo((props) => {
     const [isOpened, setOpened] = useState(false);
     const [colorButtonID, setColorButtonID] = useState(0);
     const [pencilThicknessID, setPencilThicknessID] = useState(0);
-    const [menuArrow, setMenuArrow] = useState(false);
+    // const [menuArrow, setMenuArrow] = useState(false);
 
     const {
         onPaletteColorChange,
@@ -43,7 +43,7 @@ const SketchColorMenu = React.memo((props) => {
         buttonActiveId,
         activeId,
         focusedActiveButton,
-        chosenColor,
+        // chosenColor,
         pencilColor,
     } = props;
 
@@ -101,6 +101,7 @@ const SketchColorMenu = React.memo((props) => {
      */
     const chosenColorButton = (value) => {
         setColorButtonID(value);
+        setOpened(false);
     };
 
     /** Used to assign an id to the pencil thickness buttons
@@ -109,6 +110,7 @@ const SketchColorMenu = React.memo((props) => {
      */
     const chosenThicknessButton = (value) => {
         setPencilThicknessID(value);
+        setOpened(false);
     };
 
     /** Handles what happens to the pencil button when you press it or when you press another button after the pencil button
@@ -196,11 +198,15 @@ const SketchColorMenu = React.memo((props) => {
                             name={'pen'}
                             size={Icons.medium}
                             solid
-                            color={Colors.textPrimary}
+                            color={
+                                activeId === buttonActiveId
+                                    ? Colors.textPrimary
+                                    : Colors.icons
+                            }
                         />
                         <Icon
                             name={'sort-down'}
-                            size={25}
+                            size={Icons.small}
                             solid
                             color={
                                 activeId === 0
@@ -212,22 +218,11 @@ const SketchColorMenu = React.memo((props) => {
                     </View>
                 </MenuTrigger>
                 <MenuOptions optionsContainerStyle={styles.menuOptions}>
-                    <View
-                        style={{
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            paddingTop: 10,
-                        }}>
+                    <View style={styles.colorButtonsContainer}>
                         {ColorButtons}
                     </View>
                     <MenuOptions>
-                        <View
-                            style={{
-                                flexShrink: 1,
-                                flexDirection: 'row',
-                                justifyContent: 'space-evenly',
-                            }}>
+                        <View style={styles.pencilThicknessContainer}>
                             {pencilThicknessButtons}
                         </View>
                     </MenuOptions>
@@ -239,10 +234,17 @@ const SketchColorMenu = React.memo((props) => {
 
 const styles = StyleSheet.create({
     buttonSize: {
-        height: 62,
-        width: 62,
         justifyContent: 'center',
         alignItems: 'center',
+        ...Buttons.sketchHeaderButton,
+    },
+    buttonActive: {
+        backgroundColor: Colors.iconActive,
+        overflow: 'hidden',
+        ...Buttons.round,
+    },
+    buttonInactive: {
+        color: Colors.icons,
         ...Buttons.round,
     },
     downIconMenu: {
@@ -252,37 +254,40 @@ const styles = StyleSheet.create({
         left: 35,
         transform: [{ rotate: '-45deg' }],
     },
-    upIconMenu: {
-        position: 'absolute',
-        alignSelf: 'center',
-        top: 31,
-        left: 35,
-        transform: [{ rotate: '-45deg' }],
-    },
-    buttonActive: {
-        backgroundColor: Colors.iconActive,
-        ...Buttons.round,
-        overflow: 'hidden',
-    },
-    buttonInactive: {
-        color: Colors.icons,
-        ...Buttons.round,
-    },
-    iconColorActive: {
-        color: Colors.iconActive,
-    },
-    iconColorInactive: {
-        color: '#00000000',
-    },
-    iconPlacement: {
-        flexDirection: 'row',
-        backgroundColor: 'yellow',
-    },
+    // upIconMenu: {
+    //     position: 'absolute',
+    //     alignSelf: 'center',
+    //     top: 31,
+    //     left: 35,
+    //     transform: [{ rotate: '-45deg' }],
+    // },
+
+    // iconColorActive: {
+    //     color: Colors.iconActive,
+    // },
+    // iconColorInactive: {
+    //     color: '#00000000',
+    // },
+    // iconPlacement: {
+    //     flexDirection: 'row',
+    //     backgroundColor: 'yellow',
+    // },
     menuOptions: {
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,
         backgroundColor: Colors.colorPaletteMenu,
         overflow: 'hidden',
+    },
+    colorButtonsContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: 10,
+    },
+    pencilThicknessContainer: {
+        flexShrink: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
     },
 });
 
