@@ -49,15 +49,10 @@
         "beskrivelse": " ",
         "source": "require(../roadSigns/Serviceskilt/612_0.png)"
     },
-    "613_1": {
+    "613_0": {
         "navn": "Rasteplass",
-        "beskrivelse": "(628)",
-        "source": "require(../roadSigns/Serviceskilt/613_1.png)"
-    },
-    "613_2": {
-        "navn": "Rasteplass",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Serviceskilt/613_2)"
+        "beskrivelse": "613.2",
+        "source": "require(../roadSigns/Serviceskilt/613_0.png)"
     },
     "614_0": {
         "navn": "Enklere servering",
@@ -89,10 +84,10 @@
         "beskrivelse": "",
         "source": "require(../roadSigns/Serviceskilt/624_0.png)"
     },
-    "625": {
+    "625_0": {
         "navn": "Rom og frokost ",
         "beskrivelse": "Rom og frokost ",
-        "source": "require(../roadSigns/Serviceskilt/625.png)"
+        "source": "require(../roadSigns/Serviceskilt/625_0.png)"
     },
     "626_0": {
         "navn": "Overnattingssted ",

@@ -14,11 +14,6 @@
         "beskrivelse": "Underskiltet angir at hovedskiltet bare gjelder i det eller de tidsrom som er angitt med klokkeslett. Sorte tall gjelder hverdag unntatt lørdag, sorte tall i parentes gjelder lørdag, røde tall gjelder søndag, helligdag og offentlig høytidsdag. ",
         "source": "require(../roadSigns/Underskilt/806_0.png)"
     },
-    "807_0": {
-        "navn": "Symbol ",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/807_0.png)"
-    },
     "807_1": {
         "navn": "Personbil ",
         "beskrivelse": "",
@@ -70,59 +65,19 @@
         "source": "require(../roadSigns/Underskilt/808_0.png)"
     },
     "810_0": {
-        "navn": "Svingpil",
-        "beskrivelse": "",
+        "navn": " Svingpil",
+        "beskrivelse": "Underskiltet angir at hovedskiltet gjelder etter sving i veikryss. ",
         "source": "require(../roadSigns/Underskilt/810_0.png)"
-    },
-    "810_H45": {
-        "navn": " Svingpil",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/810_H45)"
-    },
-    "810_H90": {
-        "navn": " Svingpil",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/810_H90.png)"
-    },
-    "810_H135": {
-        "navn": " Svingpil",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/810_H135)"
-    },
-    "810_R": {
-        "navn": " Svingpil",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/810_R)"
-    },
-    "810_V45": {
-        "navn": " Svingpil",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/810_V45)"
-    },
-    "810_V90": {
-        "navn": " Svingpil",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/810_V90)"
-    },
-    "810_V135": {
-        "navn": " Svingpil",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/810_V135)"
     },
     "812_0": {
         "navn": "Anbefalt fart ",
         "beskrivelse": "Underskiltet angir den høyeste fart som den varslede fare tilsier under normale vær-, føre-, sikt- og lysforhold.",
         "source": "require(../roadSigns/Underskilt/812_0.png)"
     },
-    "813_1": {
+    "813_0": {
         "navn": "Stigningsgrad ",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/813_1)"
-    },
-    "813_2": {
-        "navn": "Stigningsgrad ",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/813_2)"
+        "beskrivelse": "813.2",
+        "source": "require(../roadSigns/Underskilt/813_0.png)"
     },
     "814_0": {
         "navn": "Virkelig fri vegbredde",
@@ -136,73 +91,13 @@
     },
     "817_0": {
         "navn": "Særlig ulykkesfare",
-        "beskrivelse": "",
+        "beskrivelse": "Utformingen tilpasses den aktuelle faresituasjonen.",
         "source": "require(../roadSigns/Underskilt/817_0.png)"
-    },
-    "817_1": {
-        "navn": "Særlig ulykkesfare",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/817_1)"
-    },
-    "817_2": {
-        "navn": "Særlig ulykkesfare",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/817_2)"
-    },
-    "817_3": {
-        "navn": "Særlig ulykkesfare",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/817_3)"
-    },
-    "817_4": {
-        "navn": "Særlig ulykkesfare",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/817_4)"
-    },
-    "817_5": {
-        "navn": "Særlig ulykkesfare",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/817_5)"
     },
     "822_0": {
         "navn": "Forløp av forkjørsveg",
-        "beskrivelse": "",
+        "beskrivelse": "Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp. ",
         "source": "require(../roadSigns/Underskilt/822_0.png)"
-    },
-    "822_1": {
-        "navn": "Forløp av forkjørsveg",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/822_1)"
-    },
-    "822_2": {
-        "navn": "Forløp av forkjørsveg",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/822_2)"
-    },
-    "822_3": {
-        "navn": "Forløp av forkjørsveg",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/822_3)"
-    },
-    "822_4": {
-        "navn": "Forløp av forkjørsveg",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/822_4)"
-    },
-    "822_5": {
-        "navn": "Forløp av forkjørsveg",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/822_5)"
-    },
-    "822_6": {
-        "navn": "Forløp av forkjørsveg",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/822_6)"
-    },
-    "822_7": {
-        "navn": "Forløp av forkjørsveg",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/822_7)"
     },
     "824_0": {
         "navn": "Forvarsling av stopp",
@@ -216,23 +111,8 @@
     },
     "828_0": {
         "navn": "Utstrekning av stans og parkeringsregulering",
-        "beskrivelse": "",
+        "beskrivelse": "Underskiltet angir at reguleringen gjelder i pilens retning, eventuelt i den avstand som er angitt. Skiltet kan være plassert vannrett. Pilsymbolene kan også plasseres på andre underskilt som regulerer stans eller parkering. ",
         "source": "require(../roadSigns/Underskilt/828_0.png)"
-    },
-    "828_1": {
-        "navn": "Utstrekning av stans og parkeringsregulering",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/828_1)"
-    },
-    "828_2": {
-        "navn": "Utstrekning av stans og parkeringsregulering",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/828_2)"
-    },
-    "828_3": {
-        "navn": "Utstrekning av stans og parkeringsregulering",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Underskilt/828_3)"
     },
     "829_0": {
         "navn": "Oppstiling av parkert kjøretøy",

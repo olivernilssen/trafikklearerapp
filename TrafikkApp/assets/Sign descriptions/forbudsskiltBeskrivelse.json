@@ -74,15 +74,10 @@
         "beskrivelse": "Forbudet gjelder kjøretøy eller vogntog, medregnet gods, med større lengde enn angitt.",
         "source": "require(../roadSigns/Forbudsskilt/316_0.png)"
     },
-    "318_1": {
-        "navn": "Totalvektgrense ",
-        "beskrivelse": "for kjøretøy Forbudet gjelder kjøretøy hvor aktuell totalvekt er høyere enn angitt. For vogntog gjelder forbudet hvert enkelt kjøretøy.",
-        "source": "require(../roadSigns/Forbudsskilt/318_1.png)"
-    },
-    "318_2": {
+    "318_0": {
         "navn": "Totalvektgrense",
         "beskrivelse": "for vogntog Forbudet gjelder vogntog hvor samlet aktuell totalvekt er høyere enn angitt. Forbudet gjelder også enkelt kjøretøy hvor aktuell totalvekt er høyere enn angitt.",
-        "source": "require(../roadSigns/Forbudsskilt/318_2.png)"
+        "source": "require(../roadSigns/Forbudsskilt/318_0.png)"
     },
     "320_0": {
         "navn": "Aksellastgrense",
@@ -144,11 +139,6 @@
         "beskrivelse": "",
         "source": "require(../roadSigns/Forbudsskilt/337_0.png)"
     },
-    "362_0": {
-        "navn": "Fartsgrense ",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Forbudsskilt/362_0.png)"
-    },
     "362_30": {
         "navn": "Fartsgrense",
         "beskrivelse": "",
@@ -183,11 +173,6 @@
         "navn": "Fartsgrense",
         "beskrivelse": "",
         "source": "require(../roadSigns/Forbudsskilt/362_90.png)"
-    },
-    "364_0": {
-        "navn": "Slutt på særskilt fartsgrense",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Forbudsskilt/364_0.png)"
     },
     "364_40": {
         "navn": "Slutt på særskilt fartsgrense",
