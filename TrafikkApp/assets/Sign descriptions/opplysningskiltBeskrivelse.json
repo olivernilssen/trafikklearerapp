@@ -1,227 +1,322 @@
 {
-    "502": {
+    "502_0": {
         "navn": "Motorveg ",
-        "beskrivelse": "Skiltet angir at trafikkreglenes bestemmelser om motorveg gjelder fra skiltet og til skilt 504 «Slutt på motorveg», til skilt 503 «Motortrafikkveg» eller til kryss mellom avkjøringsveg fra motorveg og veg som ikke er motorveg."
+        "beskrivelse": "Skiltet angir at trafikkreglenes bestemmelser om motorveg gjelder fra skiltet og til skilt 504 «Slutt på motorveg», til skilt 503 «Motortrafikkveg» eller til kryss mellom avkjøringsveg fra motorveg og veg som ikke er motorveg.",
+        "source": "require(../roadSigns/Opplysningsskilt/502_0.png)"
     },
-    "503": {
+    "503_0": {
         "navn": "Motortrafikkveg ",
-        "beskrivelse": "Skiltet angir at trafikkreglenes bestemmelser om motortrafikkveg gjelder fra skiltet og til skilt 505 «Slutt på motortrafikkveg», til skilt 502 «Motorveg» eller til kryss mellom avkjøringsveg fra motortrafikkveg og veg som ikke er motortrafikkveg."
+        "beskrivelse": "Skiltet angir at trafikkreglenes bestemmelser om motortrafikkveg gjelder fra skiltet og til skilt 505 «Slutt på motortrafikkveg», til skilt 502 «Motorveg» eller til kryss mellom avkjøringsveg fra motortrafikkveg og veg som ikke er motortrafikkveg.",
+        "source": "require(../roadSigns/Opplysningsskilt/503_0.png)"
     },
-    "504": {
+    "504_0": {
         "navn": "Slutt på motorveg ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/504_0.png)"
     },
-    "505": {
+    "505_0": {
         "navn": "Slutt på motortrafikkveg ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/505_0.png)"
     },
-    "506": {
+    "506_0": {
         "navn": "Tungtrafikkfelt",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/506_0.png)"
     },
-    "507": {
+    "507_0": {
         "navn": "Slutt på tungtrafikkfelt",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/507_0.png)"
     },
-    "508": {
+    "508_0": {
         "navn": "Kollektivfelt ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/508_0.png)"
     },
     "508_1": {
         "navn": "for buss ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/508_1.png)"
     },
     "508_2": {
         "navn": "for buss og drosje",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/508_2.png)"
     },
-    "509": {
+    "509_0": {
         "navn": "Sambruksfelt ",
-        "beskrivelse": "Skiltet angir at sambruksfelt begynner, at trafikkreglenes bestemmelser om sambruksfelt gjelder og at i tillegg til drosje og buss i tjeneste kan motorvogn som transporterer minst det antall personer som er angitt ved tall på skiltet, bruke feltet.Skiltet gjelder fram til skilt 511 «Slutt på sambruksfelt» eller til første vegkryss. Skiltet oppheves også av vegvisningsskilt som angir annen bruk av feltet."
+        "beskrivelse": "Skiltet angir at sambruksfelt begynner, at trafikkreglenes bestemmelser om sambruksfelt gjelder og at i tillegg til drosje og buss i tjeneste kan motorvogn som transporterer minst det antall personer som er angitt ved tall på skiltet, bruke feltet.Skiltet gjelder fram til skilt 511 «Slutt på sambruksfelt» eller til første vegkryss. Skiltet oppheves også av vegvisningsskilt som angir annen bruk av feltet.",
+        "source": "require(../roadSigns/Opplysningsskilt/509_0.png)"
     },
     "510_1": {
         "navn": "Slutt på kollektivfelt",
-        "beskrivelse": " "
+        "beskrivelse": " ",
+        "source": "require(../roadSigns/Opplysningsskilt/510_1.png)"
     },
     "510_2": {
         "navn": "Slutt på kollektivfelt",
         "beskrivelse": "",
-        "510.2": ""
+        "source": "require(../roadSigns/Opplysningsskilt/510_2)"
     },
-    "511": {
+    "511_0": {
         "navn": "Slutt på sambruksfelt ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/511_0.png)"
     },
-    "512": {
+    "512_0": {
         "navn": "Holdeplass for buss ",
-        "beskrivelse": "Skiltet angir at det er holdeplass for buss på stedet og at trafikkreglenes bestemmelser om holdeplass gjelder. Skiltet kan plasseres på leskur og på rutetavle."
+        "beskrivelse": "Skiltet angir at det er holdeplass for buss på stedet og at trafikkreglenes bestemmelser om holdeplass gjelder. Skiltet kan plasseres på leskur og på rutetavle.",
+        "source": "require(../roadSigns/Opplysningsskilt/512_0.png)"
     },
-    "513": {
+    "513_0": {
         "navn": "Holdeplass for sporvogn  ",
-        "beskrivelse": "Skiltet angir at det er holdeplass for sporvogn på stedet og at trafikkreglenes bestemmelser om holdeplass gjelder. Skiltet kan plasseres på leskur og på rutetavle."
+        "beskrivelse": "Skiltet angir at det er holdeplass for sporvogn på stedet og at trafikkreglenes bestemmelser om holdeplass gjelder. Skiltet kan plasseres på leskur og på rutetavle.",
+        "source": "require(../roadSigns/Opplysningsskilt/513_0.png)"
     },
-    "514": {
+    "514_0": {
         "navn": "Holdeplass for drosje",
-        "beskrivelse": "Skiltet angir at det er holdeplass for drosje på stedet og at trafikkreglenes bestemmelser om holdeplass gjelder. Skiltet kan plasseres på leskur."
+        "beskrivelse": "Skiltet angir at det er holdeplass for drosje på stedet og at trafikkreglenes bestemmelser om holdeplass gjelder. Skiltet kan plasseres på leskur.",
+        "source": "require(../roadSigns/Opplysningsskilt/514_0.png)"
     },
-    "516": {
-        "navn": "Gangfelt",
-        "beskrivelse": ""
+    "516_0": {
+        "navn": "V",
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/516_0.png)"
     },
-    "518": {
+    "518_0": {
         "navn": "Gangveg  ",
-        "beskrivelse": "Skiltet angir veg som er anlagt for gående. Skiltet angir dessuten at trafikkreglenes bestemmelser om bruk av slik veg gjelder."
+        "beskrivelse": "Skiltet angir veg som er anlagt for gående. Skiltet angir dessuten at trafikkreglenes bestemmelser om bruk av slik veg gjelder.",
+        "source": "require(../roadSigns/Opplysningsskilt/518_0.png)"
     },
-    "520": {
+    "520_0": {
         "navn": "Sykkelveg ",
-        "beskrivelse": "Skiltet angir veg som er anlagt for syklende. Skiltet angir dessuten at trafikkreglenes bestemmelser om bruk av slik veg gjelder."
+        "beskrivelse": "Skiltet angir veg som er anlagt for syklende. Skiltet angir dessuten at trafikkreglenes bestemmelser om bruk av slik veg gjelder.",
+        "source": "require(../roadSigns/Opplysningsskilt/520_0.png)"
     },
     "521_1": {
         "navn": "Sykkelfelt - sideplassert",
-        "beskrivelse": "Skiltet angir at kjørebanen har eget kjørefelt for syklende. Skiltet angir dessuten at trafikkreglenes bestemmelser om bruk av sykkelfelt gjelder.\r"
+        "beskrivelse": "Skiltet angir at kjørebanen har eget kjørefelt for syklende. Skiltet angir dessuten at trafikkreglenes bestemmelser om bruk av sykkelfelt gjelder.\r",
+        "source": "require(../roadSigns/Opplysningsskilt/521_1.png)"
     },
     "521_2": {
         "navn": "Sykkelfelt - Midtstilt ",
-        "beskrivelse": "Skiltet angir at kjørebanen har eget kjørefelt for syklende. Skiltet angir dessuten at trafikkreglenes bestemmelser om bruk av sykkelfelt gjelder. \r "
+        "beskrivelse": "Skiltet angir at kjørebanen har eget kjørefelt for syklende. Skiltet angir dessuten at trafikkreglenes bestemmelser om bruk av sykkelfelt gjelder. \r ",
+        "source": "require(../roadSigns/Opplysningsskilt/521_2.png)"
     },
-    "522": {
+    "522_0": {
         "navn": "Gang- og sykkelveg ",
-        "beskrivelse": "Skiltet angir veg som er anlagt for gående og syklende. Skiltet angir dessuten at trafikkreglenes bestemmelser om bruk av slik veg gjelder."
+        "beskrivelse": "Skiltet angir veg som er anlagt for gående og syklende. Skiltet angir dessuten at trafikkreglenes bestemmelser om bruk av slik veg gjelder.",
+        "source": "require(../roadSigns/Opplysningsskilt/522_0.png)"
     },
-    "524": {
+    "524_0": {
         "navn": " Møteplass ",
-        "beskrivelse": "Skiltet angir sted hvor trafikkreglenes bestemmelser om møteplass gjelder."
+        "beskrivelse": "Skiltet angir sted hvor trafikkreglenes bestemmelser om møteplass gjelder.",
+        "source": "require(../roadSigns/Opplysningsskilt/524_0.png)"
     },
     "526_1": {
         "navn": " Envegskjøring",
-        "beskrivelse": "Skiltet angir at kjøring bare er tillatt i pilens retning fram til første vegkryss."
+        "beskrivelse": "Skiltet angir at kjøring bare er tillatt i pilens retning fram til første vegkryss.",
+        "source": "require(../roadSigns/Opplysningsskilt/526_1.png)"
     },
     "526_": {
         "navn": " Envegskjøring",
-        "beskrivelse": "Skiltet angir at kjøring bare er tillatt i pilens retning fram til første vegkryss."
+        "beskrivelse": "Skiltet angir at kjøring bare er tillatt i pilens retning fram til første vegkryss.",
+        "source": "require(../roadSigns/Opplysningsskilt/526_.png)"
     },
-    "527": {
+    "527_0": {
         "navn": "Blindveg ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/527_0.png)"
     },
     "527_1": {
         "navn": "Blindveg ",
-        "beskrivelse": "Skiltet viser at vegen er fysisk stengt. "
+        "beskrivelse": "Skiltet viser at vegen er fysisk stengt. ",
+        "source": "require(../roadSigns/Opplysningsskilt/527_1.png)"
     },
     "527_2": {
         "navn": "Blindveg ",
-        "beskrivelse": "Skiltet viser at kryssende veg er fysisk stengt. "
+        "beskrivelse": "Skiltet viser at kryssende veg er fysisk stengt. ",
+        "source": "require(../roadSigns/Opplysningsskilt/527_2.png)"
     },
     "527_3": {
         "navn": "Blindveg ",
-        "beskrivelse": "Skiltet viser at vegen er stengt for biltrafikk, men åpen for gående og syklende."
+        "beskrivelse": "Skiltet viser at vegen er stengt for biltrafikk, men åpen for gående og syklende.",
+        "source": "require(../roadSigns/Opplysningsskilt/527_3.png)"
     },
     "527_4": {
         "navn": "Blindveg ",
-        "beskrivelse": "Skiltet viser at kryssende veg er stengt for biltrafikk, men åpen for gående og syklende. "
+        "beskrivelse": "Skiltet viser at kryssende veg er stengt for biltrafikk, men åpen for gående og syklende. ",
+        "source": "require(../roadSigns/Opplysningsskilt/527_4.png)"
     },
-    "528": {
+    "528_0": {
         "navn": "Valgfritt kjørefelt ",
-        "beskrivelse": "Skiltet angir at fører av kjøretøy kan passere skiltet på den side som passer best. Skiltet er plassert slik forholdene på stedet tilsier  "
+        "beskrivelse": "Skiltet angir at fører av kjøretøy kan passere skiltet på den side som passer best. Skiltet er plassert slik forholdene på stedet tilsier  ",
+        "source": "require(../roadSigns/Opplysningsskilt/528_0.png)"
     },
-    "530": {
+    "530_0": {
         "navn": " Sammenfletting",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/530_0.png)"
     },
     "530_01": {
         "navn": "Eksempel Sammenfletting",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/530_01.png)"
     },
     "530_11": {
         "navn": "Eksempel Sammenfletting",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/530_11.png)"
     },
-    "531": {
+    "531_0": {
         "navn": "Felt for fartsøkning",
         "beskrivelse": "",
-        "531_102": "Eksempel ",
-        "531_202": "Eksempel  "
+        "source": "require(../roadSigns/Opplysningsskilt/531_0.png)"
     },
-    "532": {
+    "531_102": {
+        "navn": "Felt for fartsøkning",
+        "beskrivelse": "Eksempel ",
+        "source": "require(../roadSigns/Opplysningsskilt/531_102.png)"
+    },
+    "531_202": {
+        "navn": "Felt for fartsøkning",
+        "beskrivelse": "Eksempel  ",
+        "source": "require(../roadSigns/Opplysningsskilt/531_202.png)"
+    },
+    "532_0": {
         "navn": "Kjørefelt slutter",
         "beskrivelse": "",
-        "532_H02": "Eksempel",
-        "532_H11": "Eksempel"
+        "source": "require(../roadSigns/Opplysningsskilt/532_0.png)"
     },
-    "534": {
+    "532_H02": {
+        "navn": "Kjørefelt slutter  ",
+        "beskrivelse": "Eksempel",
+        "source": "require(../roadSigns/Opplysningsskilt/532_H02.png)"
+    },
+    "532_H11": {
+        "navn": "Kjørefelt slutter ",
+        "beskrivelse": "Eksempel",
+        "source": "require(../roadSigns/Opplysningsskilt/532_H11.png)"
+    },
+    "534_H02": {
         "navn": "Kjørefelt begynner ",
-        "beskrivelse": "",
-        "534_H02": "Eksempel",
-        "534_V01": "Eksempel",
-        "534_V11": "Eksempel"
+        "beskrivelse": "Eksempel",
+        "source": "require(../roadSigns/Opplysningsskilt/534_H02.png)"
     },
-    "536": {
+    "534_V01": {
+        "navn": "Kjørefelt begynner ",
+        "beskrivelse": "Eksempel",
+        "source": "require(../roadSigns/Opplysningsskilt/534_V01.png)"
+    },
+    "534_V11": {
+        "navn": "Kjørefelt begynner ",
+        "beskrivelse": "Eksempel",
+        "source": "require(../roadSigns/Opplysningsskilt/534_V11.png)"
+    },
+    "536_101": {
         "navn": "Påkjøring fortsetter i eget kjørefelt",
-        "beskrivelse": "",
-        "536_101": "Eksempel ",
-        "536_102": "Eksempel",
-        "536_201": "Eksempel",
-        "536_202": "Eksempel"
+        "beskrivelse": "Eksempel ",
+        "source": "require(../roadSigns/Opplysningsskilt/536_101.png)"
     },
-    "538": {
+    "536_102": {
+        "navn": "Påkjøring fortsetter i eget kjørefelt",
+        "beskrivelse": "Eksempel",
+        "source": "require(../roadSigns/Opplysningsskilt/536_102.png)"
+    },
+    "536_201": {
+        "navn": "Påkjøring fortsetter i eget kjørefelt",
+        "beskrivelse": "Eksempel",
+        "source": "require(../roadSigns/Opplysningsskilt/536_201.png)"
+    },
+    "536_202": {
+        "navn": "Påkjøring fortsetter i eget kjørefelt",
+        "beskrivelse": "Eksempel",
+        "source": "require(../roadSigns/Opplysningsskilt/536_202.png)"
+    },
+    "538_0": {
         "navn": " Kjørefeltinndeling",
-        "beskrivelse": "Eksempel"
+        "beskrivelse": "Skiltet angir antall kjørefelt på kjørebanen, og kjøreretningen for de enkelte felt. Spesielle reguleringer som gjelder for enkelte felt, kan være vist på skiltet. 538.21 Eksempel ",
+        "source": "require(../roadSigns/Opplysningsskilt/538_0.png)"
     },
-    "539": {
+    "539_0": {
         "navn": "Endret kjøremønster",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/539_0.png)"
     },
-    "540": {
+    "540_0": {
         "navn": "Gatetun",
-        "beskrivelse": "Skiltet angir grense for område hvor trafikkreglenes bestemmelser om gatetun gjelder. Hindringer er ikke særskilt merket eller varslet. Skiltet gjelder til det blir opphevet av skilt 542 «Slutt på gatetun»."
+        "beskrivelse": "Skiltet angir grense for område hvor trafikkreglenes bestemmelser om gatetun gjelder. Hindringer er ikke særskilt merket eller varslet. Skiltet gjelder til det blir opphevet av skilt 542 «Slutt på gatetun».",
+        "source": "require(../roadSigns/Opplysningsskilt/540_0.png)"
     },
-    "542": {
+    "542_0": {
         "navn": "Slutt på gatetun ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/542_0.png)"
     },
-    "548": {
+    "548_0": {
         "navn": "Gågate",
-        "beskrivelse": "Skiltet angir grense for område hvor det er forbudt å kjøre motorvogn og hvor trafikkreglenes bestemmelser om gågate gjelder. Skiltet gjelder til det blir opphevet av skilt 550 «Slutt på gågate». "
+        "beskrivelse": "Skiltet angir grense for område hvor det er forbudt å kjøre motorvogn og hvor trafikkreglenes bestemmelser om gågate gjelder. Skiltet gjelder til det blir opphevet av skilt 550 «Slutt på gågate». ",
+        "source": "require(../roadSigns/Opplysningsskilt/548_0.png)"
     },
-    "550": {
+    "550_0": {
         "navn": "Slutt på gågate",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/550_0.png)"
     },
-    "552": {
+    "552_0": {
         "navn": "Parkering ",
-        "beskrivelse": "Skiltet angir at parkering er tillatt på stedet, dersom parkeringen ikke er i strid med trafikkreglenes bestemmelser om stans eller parkering. Har skiltet underskilt 828 «Utstrekning av stans- eller parkeringsregulering», er det likevel tillatt å parkere i anvist retning selv om parkeringen er i strid med trafikkreglenes bestemmelser om stans og parkering. Dersom underskilt angir at parkering er forbeholdt bestemte kjøretøy- eller trafikantgrupper, er parkering forbudt for andre. Er skiltet plassert på eller ved særskilt avgrenset område, f.eks. parkeringsplass, gjelder skiltet for hele området. Ellers gjelder skiltet bare på den side av vegen hvor det er satt opp. Skiltet gjelder da fram til nærmeste vegkryss eller til nytt skilt 552 «Parkering», skilt 370 «Stans forbudt», skilt 372 «Parkering forbudt» eller til skilt 376 «Parkeringssone». Dersom miniatyr av skiltet, eventuelt med underskilt, er anbrakt på parkometer, er parkering tillatt i overensstemmelse med særlige regler om avgiftsparkering. Skiltet gjelder da for vedkommende parkeringsfelt uten hensyn til trafikkreglenes bestemmelser om stans og parkering. "
+        "beskrivelse": "Skiltet angir at parkering er tillatt på stedet, dersom parkeringen ikke er i strid med trafikkreglenes bestemmelser om stans eller parkering. Har skiltet underskilt 828 «Utstrekning av stans- eller parkeringsregulering», er det likevel tillatt å parkere i anvist retning selv om parkeringen er i strid med trafikkreglenes bestemmelser om stans og parkering. Dersom underskilt angir at parkering er forbeholdt bestemte kjøretøy- eller trafikantgrupper, er parkering forbudt for andre. Er skiltet plassert på eller ved særskilt avgrenset område, f.eks. parkeringsplass, gjelder skiltet for hele området. Ellers gjelder skiltet bare på den side av vegen hvor det er satt opp. Skiltet gjelder da fram til nærmeste vegkryss eller til nytt skilt 552 «Parkering», skilt 370 «Stans forbudt», skilt 372 «Parkering forbudt» eller til skilt 376 «Parkeringssone». Dersom miniatyr av skiltet, eventuelt med underskilt, er anbrakt på parkometer, er parkering tillatt i overensstemmelse med særlige regler om avgiftsparkering. Skiltet gjelder da for vedkommende parkeringsfelt uten hensyn til trafikkreglenes bestemmelser om stans og parkering. ",
+        "source": "require(../roadSigns/Opplysningsskilt/552_0.png)"
     },
-    "555": {
+    "555_0": {
         "navn": "SOS-lomme ",
-        "beskrivelse": "Er skiltet plassert på eller ved særskilt avgrenset område, f.eks. parkeringsplass, gjelder skiltet for hele området. Ellers gjelder skiltet bare på den side av vegen hvor det er satt opp. Skiltet gjelder da fram til nærmeste vegkryss eller til nytt skilt 552 «Parkering», skilt 370 «Stans forbudt», skilt 372 «Parkering forbudt» eller til skilt 376 «Parkeringssone». Dersom miniatyr av skiltet, eventuelt med underskilt, er anbrakt på parkometer, er parkering tillatt i overensstemmelse med særlige regler om avgiftsparkering. Skiltet gjelder da for vedkommende parkeringsfelt uten hensyn til trafikkreglenes bestemmelser om stans og parkering. "
+        "beskrivelse": "Er skiltet plassert på eller ved særskilt avgrenset område, f.eks. parkeringsplass, gjelder skiltet for hele området. Ellers gjelder skiltet bare på den side av vegen hvor det er satt opp. Skiltet gjelder da fram til nærmeste vegkryss eller til nytt skilt 552 «Parkering», skilt 370 «Stans forbudt», skilt 372 «Parkering forbudt» eller til skilt 376 «Parkeringssone». Dersom miniatyr av skiltet, eventuelt med underskilt, er anbrakt på parkometer, er parkering tillatt i overensstemmelse med særlige regler om avgiftsparkering. Skiltet gjelder da for vedkommende parkeringsfelt uten hensyn til trafikkreglenes bestemmelser om stans og parkering. ",
+        "source": "require(../roadSigns/Opplysningsskilt/555_0.png)"
     },
     "556_1": {
         "navn": "Automatisk trafikkontroll - punktmåling",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/556_1.png)"
     },
     "556_2": {
         "navn": "Automatisk trafikkontroll - strekningsmåling",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/556_2.png)"
     },
-    "558": {
+    "558_0": {
         "navn": "Videokontroll/-overvåking",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/558_0.png)"
     },
-    "560": {
+    "560_0": {
         "navn": " Opplysningstavle ",
-        "beskrivelse": "Skiltet kan gi opplysning om veg- og trafikkforhold som ikke kan formidles ved andre trafikkskilt. Ved opplysning av særlig interesse for turisttrafikk kan skiltet ha brun bunnfarge. Ved midlertidig opplysning kan skiltet ha gul bunn, sort bord og sort symbol eller tekst. Ved opplysning om omkjøring kan skiltet ha oransje bunn, sort bord og sort symbol eller tekst. "
+        "beskrivelse": "Skiltet kan gi opplysning om veg- og trafikkforhold som ikke kan formidles ved andre trafikkskilt. Ved opplysning av særlig interesse for turisttrafikk kan skiltet ha brun bunnfarge. Ved midlertidig opplysning kan skiltet ha gul bunn, sort bord og sort symbol eller tekst. Ved opplysning om omkjøring kan skiltet ha oransje bunn, sort bord og sort symbol eller tekst. ",
+        "source": "require(../roadSigns/Opplysningsskilt/560_0.png)"
     },
     "565": {
         "navn": "Feil kjøreretning ",
-        "beskrivelse": "",
-        "565": "Feil kjøreretning "
+        "beskrivelse": "Feil kjøreretning ",
+        "source": "require(../roadSigns/Opplysningsskilt/565.png)"
     },
-    "570": {
+    "570_1H": {
         "navn": "Nødutgangsskilt for tunnel ",
         "beskrivelse": "",
-        "570.1H": "",
-        "570_1V": "",
-        "570_2H": "",
-        "570_2V": ""
+        "source": "require(../roadSigns/Opplysningsskilt/570_1H)"
+    },
+    "570_1V": {
+        "navn": "Nødutgangsskilt for tunnel ",
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/570_1V)"
+    },
+    "570_2H": {
+        "navn": "Nødutgangsskilt for tunnel ",
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/570_2H)"
+    },
+    "570_2V": {
+        "navn": "Nødutgangsskilt for tunnel ",
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Opplysningsskilt/570_2V)"
     }
 }

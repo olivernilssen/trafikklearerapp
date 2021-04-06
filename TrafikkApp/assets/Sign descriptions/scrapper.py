@@ -18,7 +18,7 @@ urls = [
 
 mainpath = '../roadSigns/'
 #go through all the urls and add to json
-for url in urls[0:1]: 
+for url in urls[1:]: 
     response = requests.get(url[0])
     imgSource = mainpath + url[2] + '/'
 

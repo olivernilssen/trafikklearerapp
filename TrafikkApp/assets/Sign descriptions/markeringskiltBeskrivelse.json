@@ -1,54 +1,77 @@
 {
-    "902": {
+    "902H": {
         "navn": " Bakgrunnsmarkering",
         "beskrivelse": "",
-        "902H": "",
-        "902V": ""
+        "source": "require(../roadSigns/Markeringsskilt/902H)"
     },
-    "904": {
+    "902V": {
+        "navn": " Bakgrunnsmarkering",
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Markeringsskilt/902V)"
+    },
+    "904H": {
         "navn": " Retningsmarkering ",
         "beskrivelse": "",
-        "904H": "",
-        "904V": ""
+        "source": "require(../roadSigns/Markeringsskilt/904H)"
     },
-    "906": {
-        "navn": " Hindermarkering",
+    "904V": {
+        "navn": " Retningsmarkering ",
         "beskrivelse": "",
-        "906H": "Skråstripene peker ned mot den side markeringen kan passeres på",
-        "906V": "Skråstripene peker ned mot den side markeringen kan passeres på",
-        "906VH": "Skråstripene peker ned mot den side markeringen kan passeres på"
+        "source": "require(../roadSigns/Markeringsskilt/904V)"
     },
-    "908": {
+    "906_0": {
+        "navn": " Hindermarkering",
+        "beskrivelse": "Skråstripene peker ned mot den side markeringen kan passeres på",
+        "source": "require(../roadSigns/Markeringsskilt/906_0.png)"
+    },
+    "908_0": {
         "navn": "Hindermarkering",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Markeringsskilt/908_0.png)"
     },
-    "912": {
+    "912_0": {
         "navn": "Avkjøringsmarkering",
-        "beskrivelse": "Skiltet markerer avkjøringsvei fra motorvei eller annen vei med høy standard. "
+        "beskrivelse": "Skiltet markerer avkjøringsvei fra motorvei eller annen vei med høy standard. ",
+        "source": "require(../roadSigns/Markeringsskilt/912_0.png)"
     },
-    "914": {
+    "914V": {
         "navn": "Tunnelmarkering",
         "beskrivelse": "",
-        "914V": "",
-        "914H": ""
+        "source": "require(../roadSigns/Markeringsskilt/914V)"
     },
-    "916": {
+    "914H": {
+        "navn": "Tunnelmarkering",
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Markeringsskilt/914H)"
+    },
+    "916_0": {
         "navn": " Avstandsmerking i tunnel",
-        "beskrivelse": "Skiltet markerer avstand til tunnelåpninger."
+        "beskrivelse": "Skiltet markerer avstand til tunnelåpninger.",
+        "source": "require(../roadSigns/Markeringsskilt/916_0.png)"
     },
-    "920": {
+    "920VM": {
         "navn": "Kantstolpe",
         "beskrivelse": "",
-        "920VM": "",
-        "920H": "",
-        "920VE": ""
+        "source": "require(../roadSigns/Markeringsskilt/920VM.png)"
     },
-    "940": {
+    "920H": {
+        "navn": "Kantstolpe",
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Markeringsskilt/920H)"
+    },
+    "920VE": {
+        "navn": "Kantstolpe",
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Markeringsskilt/920VE)"
+    },
+    "940_0": {
         "navn": "Trafikkjegle",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Markeringsskilt/940_0.png)"
     },
-    "942": {
+    "942_0": {
         "navn": "Trafikksylinder ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Markeringsskilt/942_0.png)"
     }
 }

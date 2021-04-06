@@ -1,267 +1,357 @@
 {
-    "701": {
+    "701_0": {
         "navn": "(720.4) Tabellorienteringstavle ",
-        "beskrivelse": "Eksempler: tabellorienteringstavle"
+        "beskrivelse": "Eksempler: tabellorienteringstavle",
+        "source": "require(../roadSigns/Vegvisningsskilt/701_0.png)"
     },
-    "703": {
+    "703_0": {
         "navn": "(720.3) Diagramorienteringstavle ",
-        "beskrivelse": "(Eksempler)"
+        "beskrivelse": "(Eksempler)",
+        "source": "require(../roadSigns/Vegvisningsskilt/703_0.png)"
     },
-    "705": {
+    "705_0": {
         "navn": "(720.1-2) Avkjøringstavle ",
-        "beskrivelse": "(Eksempler)"
+        "beskrivelse": "(Eksempler)",
+        "source": "require(../roadSigns/Vegvisningsskilt/705_0.png)"
     },
-    "707": {
+    "707_0": {
         "navn": "(706) Kjørefeltorienteringstavle ",
-        "beskrivelse": "(Eksempler) \r Skiltet viser antall kjørefelt fram mot kryss eller avkjøringsvei, og hvilke kjøreretninger eller reisemål de enkelte kjørefelt er beregnet for. "
+        "beskrivelse": "(Eksempler) \r Skiltet viser antall kjørefelt fram mot kryss eller avkjøringsvei, og hvilke kjøreretninger eller reisemål de enkelte kjørefelt er beregnet for. ",
+        "source": "require(../roadSigns/Vegvisningsskilt/707_0.png)"
     },
-    "709": {
+    "709_0": {
         "navn": "(724.2-4) Portalorienteringstavle ",
-        "beskrivelse": "(Eksempler)Skiltet viser hvilke kjøreretninger eller reisemål kjørefelt er beregnet for. "
+        "beskrivelse": "(Eksempler)Skiltet viser hvilke kjøreretninger eller reisemål kjørefelt er beregnet for. ",
+        "source": "require(../roadSigns/Vegvisningsskilt/709_0.png)"
     },
-    "711": {
+    "711_0": {
         "navn": "(721.2) Tabellvegviser ",
-        "beskrivelse": "(Eksempel)"
+        "beskrivelse": "(Eksempel)",
+        "source": "require(../roadSigns/Vegvisningsskilt/711_0.png)"
     },
-    "713": {
+    "713_0": {
         "navn": "(722.2-3) Vanlig vegviser ",
-        "beskrivelse": "(Eksempel)"
+        "beskrivelse": "(Eksempel)",
+        "source": "require(../roadSigns/Vegvisningsskilt/713_0.png)"
     },
-    "715": {
+    "715_0": {
         "navn": "(721.1) Avkjøringsvegviser ",
-        "beskrivelse": "(Eksempel)"
+        "beskrivelse": "(Eksempel)",
+        "source": "require(../roadSigns/Vegvisningsskilt/715_0.png)"
     },
-    "717": {
+    "717_0": {
         "navn": "Kjørefeltvegviser ",
-        "beskrivelse": "Skiltet viser hvilke reisemål kjørefelt er beregnet for.(Eksempel)"
+        "beskrivelse": "Skiltet viser hvilke reisemål kjørefelt er beregnet for.(Eksempel)",
+        "source": "require(../roadSigns/Vegvisningsskilt/717_0.png)"
     },
-    "719": {
+    "719_0": {
         "navn": "(724.2-4) Portalvegviser  ",
-        "beskrivelse": "Skiltet viser hvilke reisemål kjørefelt er beregnet for. (Eksempel)"
+        "beskrivelse": "Skiltet viser hvilke reisemål kjørefelt er beregnet for. (Eksempel)",
+        "source": "require(../roadSigns/Vegvisningsskilt/719_0.png)"
     },
     "723_11": {
         "navn": "Vegnummer for europaveg ",
-        "beskrivelse": "(Eksempel)"
+        "beskrivelse": "(Eksempel)",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_11.png)"
     },
     "723_12": {
         "navn": "Vegnummer for europaveg",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_12.png)"
     },
     "723_13": {
         "navn": "Vegnummer for riksveg som ikke er europaveg ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_13.png)"
     },
     "723_14": {
         "navn": "Vegnummer for riksveg som ikke er europaveg",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_14.png)"
     },
     "723_15": {
         "navn": "Vegnummer for nummerert fylkesveg",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_15.png)"
     },
     "723_16": {
         "navn": "Vegnummer for nummerert fylkesveg",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_16.png)"
     },
     "723_21": {
         "navn": "Ringveg/ ringrute",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_21.png)"
     },
     "723_22": {
         "navn": "Ringveg/ ringrute",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_22.png)"
     },
     "723_31": {
         "navn": "Nasjonal turistveg  ",
-        "beskrivelse": "Symbolet kan vises på serviceskilt"
+        "beskrivelse": "Symbolet kan vises på serviceskilt",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_31.png)"
     },
     "723_41": {
         "navn": "Omkjøringsrute for store kjøretøy",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_41.png)"
     },
     "723_51": {
         "navn": "Rute for transport av farlig gods",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_51.png)"
     },
     "723_61": {
         "navn": "Andre omkjøringsruter",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_61.png)"
     },
     "723_62": {
         "navn": "Andre omkjøringsruter",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_62.png)"
     },
     "723_63": {
         "navn": "Andre omkjøringsruter",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_63.png)"
     },
     "723_64": {
         "navn": "Andre omkjøringsruter ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_64.png)"
     },
     "723_65": {
         "navn": "Andre omkjøringsruter",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_65.png)"
     },
     "723_66": {
         "navn": "Andre omkjøringsruter",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_66.png)"
     },
     "723_71": {
         "navn": "Kryssnummer på flerfeltsveg",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_71.png)"
     },
     "723_72": {
         "navn": "Kryssnummer på flerfeltsveg",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_72.png)"
     },
     "723_73": {
         "navn": "Kryssnummer på tofeltsveg",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/723_73.png)"
     },
-    "725": {
+    "725_0": {
         "navn": "(710) Avstandsskilt",
-        "beskrivelse": "Skiltet viser avstanden i kilometer til angitte mål eller til nærmeste kryss eller avkjøringsmulighet."
+        "beskrivelse": "Skiltet viser avstanden i kilometer til angitte mål eller til nærmeste kryss eller avkjøringsmulighet.",
+        "source": "require(../roadSigns/Vegvisningsskilt/725_0.png)"
     },
-    "727": {
+    "727_0": {
         "navn": "(712) Stedsnavnskilt ",
-        "beskrivelse": "Skiltet viser by, tettsted, administrativ grense eller annet sted av betydning for orienteringen."
+        "beskrivelse": "Skiltet viser by, tettsted, administrativ grense eller annet sted av betydning for orienteringen.",
+        "source": "require(../roadSigns/Vegvisningsskilt/727_0.png)"
     },
-    "729": {
+    "729_0": {
         "navn": "Gate-/vegnavnskilt",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/729_0.png)"
     },
-    "731": {
+    "731_0": {
         "navn": "Samleskilt for vegvisning  ",
-        "beskrivelse": "Skiltet viser steder eller virksomheter som kan nås via et felles veivalg i etterfølgende veikryss eller avkjøring. "
+        "beskrivelse": "Skiltet viser steder eller virksomheter som kan nås via et felles veivalg i etterfølgende veikryss eller avkjøring. ",
+        "source": "require(../roadSigns/Vegvisningsskilt/731_0.png)"
     },
-    "741": {
+    "741_0": {
         "navn": "Omkjøring for bestemte kjøretøygrupper  ",
-        "beskrivelse": "Skiltet varsler om at veien er stengt for bestemte kjøretøygrupper, og at slike kjøretøy må følge omkjøring. "
+        "beskrivelse": "Skiltet varsler om at veien er stengt for bestemte kjøretøygrupper, og at slike kjøretøy må følge omkjøring. ",
+        "source": "require(../roadSigns/Vegvisningsskilt/741_0.png)"
     },
     "743_1": {
         "navn": "(742) Midlertidig omkjøring ",
-        "beskrivelse": "Skiltet varsler om at veien er midlertidig stengt, og at gjennomgående trafikk må følge omkjøring. "
+        "beskrivelse": "Skiltet varsler om at veien er midlertidig stengt, og at gjennomgående trafikk må følge omkjøring. ",
+        "source": "require(../roadSigns/Vegvisningsskilt/743_1.png)"
     },
     "743_2": {
         "navn": "Midlertidig omkjøring ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/743_2.png)"
     },
-    "745": {
+    "745_0": {
         "navn": "Slutt på midlertidig omkjøring",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/745_0.png)"
     },
-    "749": {
+    "749_0": {
         "navn": "(722.4) Vegviser for gangtrafikk",
-        "beskrivelse": "Skiltet kan vise symbol for forflytningshemmet. "
+        "beskrivelse": "Skiltet kan vise symbol for forflytningshemmet. ",
+        "source": "require(../roadSigns/Vegvisningsskilt/749_0.png)"
     },
-    "751": {
+    "751_0": {
         "navn": "Vegviser for sykkelrute ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/751_0.png)"
     },
-    "753": {
+    "753_0": {
         "navn": "Tabellvegviser for sykkelrute ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/753_0.png)"
     },
-    "755": {
+    "755_0": {
         "navn": "Sykkelruteskilt",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/755_0.png)"
     },
-    "757": {
+    "757_0": {
         "navn": "Avstandsskilt for sykkelrute",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/757_0.png)"
     },
-    "761": {
+    "761_0": {
         "navn": "Motorveg ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/761_0.png)"
     },
-    "763": {
+    "763_0": {
         "navn": "Motortrafikkveg",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/763_0.png)"
     },
-    "765": {
+    "765_0": {
         "navn": "Bomveg/ brukerbetaling på veg",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/765_0.png)"
     },
-    "767": {
+    "767_0": {
         "navn": "Parkering",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/767_0.png)"
     },
-    "769": {
+    "769_0": {
         "navn": "Parkeringshus ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/769_0.png)"
     },
-    "771": {
+    "771_0": {
         "navn": "Lufthavn/ flyplass",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/771_0.png)"
     },
-    "772": {
+    "772_0": {
         "navn": "Helikopterplass",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/772_0.png)"
     },
-    "773": {
+    "773_0": {
         "navn": "Busstasjon/ bussterminal ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/773_0.png)"
     },
-    "774": {
+    "774_0": {
         "navn": "Jernbanestasjon/ togterminal",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/774_0.png)"
     },
-    "775": {
+    "775_0": {
         "navn": "Bilferje",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/775_0.png)"
     },
-    "776": {
+    "776_0": {
         "navn": "Godshavn",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/776_0.png)"
     },
-    "780": {
+    "780_0": {
         "navn": "Kjetting ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/780_0.png)"
     },
-    "790": {
+    "790_10": {
         "navn": "Andre reisemål",
-        "beskrivelse": "",
-        "790_10": "Kirke",
-        "790_15": "Næringsområde",
-        "790_16": "Kjøpesenter",
-        "790_20": "Svømmehall",
-        "790_30": "Alpinanlegg ",
-        "790_31": "Hoppbakke",
-        "790_32": "Skistadion",
-        "790_40": "Golfbane"
+        "beskrivelse": "Kirke",
+        "source": "require(../roadSigns/Vegvisningsskilt/790_10.png)"
     },
-    "792": {
+    "790_15": {
+        "navn": "Andre reisemål",
+        "beskrivelse": "Næringsområde",
+        "source": "require(../roadSigns/Vegvisningsskilt/790_15.png)"
+    },
+    "790_16": {
+        "navn": "Andre reisemål",
+        "beskrivelse": "Kjøpesenter",
+        "source": "require(../roadSigns/Vegvisningsskilt/790_16.png)"
+    },
+    "790_20": {
+        "navn": "Andre reisemål",
+        "beskrivelse": "Svømmehall",
+        "source": "require(../roadSigns/Vegvisningsskilt/790_20.png)"
+    },
+    "790_30": {
+        "navn": "Andre reisemål",
+        "beskrivelse": "Alpinanlegg ",
+        "source": "require(../roadSigns/Vegvisningsskilt/790_30.png)"
+    },
+    "790_31": {
+        "navn": "Andre reisemål",
+        "beskrivelse": "Hoppbakke",
+        "source": "require(../roadSigns/Vegvisningsskilt/790_31.png)"
+    },
+    "790_32": {
+        "navn": "Andre reisemål",
+        "beskrivelse": "Skistadion",
+        "source": "require(../roadSigns/Vegvisningsskilt/790_32.png)"
+    },
+    "790_40": {
+        "navn": "Andre reisemål",
+        "beskrivelse": "Golfbane",
+        "source": "require(../roadSigns/Vegvisningsskilt/790_40.png)"
+    },
+    "792_11": {
         "navn": "Betalingsmåte i bomstasjon/ betalingssystem på veg",
-        "beskrivelse": "",
-        "792_11": "Betaling med elektronisk brikke "
+        "beskrivelse": "Betaling med elektronisk brikke ",
+        "source": "require(../roadSigns/Vegvisningsskilt/792_11.png)"
     },
     "792_12": {
         "navn": "Betaling til betjent",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/792_12.png)"
     },
     "792_13": {
         "navn": "Betaling med mynter til automat",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/792_13.png)"
     },
     "792_14": {
         "navn": "Betaling med kort til automat",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/792_14.png)"
     },
     "792_15": {
         "navn": "betaling med sedler til automat",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/792_15.png)"
     },
     "792_16": {
         "navn": "Ta billett i et lukket betalingssystem",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/792_16.png)"
     },
     "792_17": {
         "navn": "Lever billett i et lukket betalingssystem",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/792_17.png)"
     },
     "792_30": {
         "navn": "Helautomatisk bomstasjon som passeres uten å stanse ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Vegvisningsskilt/792_30.png)"
     }
 }
