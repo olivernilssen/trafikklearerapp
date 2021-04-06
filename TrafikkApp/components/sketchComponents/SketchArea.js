@@ -5,7 +5,13 @@ import React, {
     useCallback,
     useContext,
 } from 'react';
-import { View, StyleSheet, Image, Dimensions } from 'react-native';
+import {
+    View,
+    StyleSheet,
+    Image,
+    Dimensions,
+    ImageBackground,
+} from 'react-native';
 
 import MainView from '../reusableComponents/MainView';
 import SketchHeader from '../sketchHeaderComponents/SketchHeader';
@@ -19,7 +25,7 @@ import Overlay from '../reusableComponents/Overlay';
 
 import AppContext from '../../AppContext';
 
-const { width, height } = Dimensions.get('screen');
+const { width, height } = Dimensions.get('window');
 
 /**This is a big component that contains all the components that are visible
  * on the SketchArea screens.
@@ -48,6 +54,7 @@ const SketchArea = React.memo((props) => {
     const [draggables, setDraggables] = useState([]);
     const [actionList, setActionList] = useState([]);
     const [deletingItemId, setDeletingItemId] = useState(null);
+
     const [extensionType, setExtensionType] = useState('Vanlig');
 
     /**useEffect that is triggered when currentImg is changed
@@ -254,16 +261,17 @@ const styles = StyleSheet.create({
     },
     backgroundImageContainer: {
         position: 'absolute',
-        top: 80,
+        top: 0,
         left: 0,
-        height: '92%',
+        paddingTop: 80,
+        height: '100%',
         width: '100%',
         justifyContent: 'center',
     },
     backgroundImage: {
         height: undefined,
+        maxHeight: '100%',
         width: '100%',
-        maxHeight: height - 149,
         maxWidth: width,
         aspectRatio: 1752 / 2263,
         alignSelf: 'center',

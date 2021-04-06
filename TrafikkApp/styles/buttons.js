@@ -5,6 +5,7 @@ export const small = {
 };
 
 export const medium = {
+    height: ThemeVariables.BUTTON_HEIGTH_MEDIUM,
     width: ThemeVariables.BUTTON_WIDTH_MEDIUM,
 };
 
@@ -44,4 +45,16 @@ export const largeRounded = {
 export const largeWidthRounded = {
     ...largeWidt,
     ...rounded,
+};
+
+export const sketchHeaderButton = {
+    height: 62,
+    width: 62,
+    ...round,
+};
+
+export const sketchHeaderButtonSmall = {
+    height: 32,
+    width: 32,
+    ...round,
 };

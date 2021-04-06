@@ -6,7 +6,7 @@ import {
     View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { Colors, Buttons } from '../../styles';
+import { Colors, Buttons, Typography } from '../../styles';
 import { MenuOption } from 'react-native-popup-menu';
 
 /** Color button component
@@ -47,12 +47,10 @@ const ColorButton = (props) => {
                         // setOpened(false);
                     }}>
                     <View
-                        style={{
-                            ...styles.colorButton,
-                            backgroundColor: colorName,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}>
+                        style={[
+                            styles.colorButton,
+                            { backgroundColor: colorName },
+                        ]}>
                         <Icon
                             name={'chevron-down'}
                             style={
@@ -69,26 +67,28 @@ const ColorButton = (props) => {
 };
 
 const styles = StyleSheet.create({
-    buttonSpacing: { padding: 8 },
-    colorButton: {
-        height: 32,
-        width: 32,
-        ...Buttons.round,
-    },
-    iconColorActive: {
-        color: 'white',
-        fontSize: 20,
-    },
-    iconColorInactive: {
-        ...Buttons.round,
-        color: '#00000000',
-        fontSize: 20,
+    buttonSpacing: {
         padding: 8,
     },
     iconActiveCircle: {
         padding: 8,
-        ...Buttons.round,
         opacity: 0.8,
+        ...Buttons.round,
+    },
+    colorButton: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        ...Buttons.sketchHeaderButtonSmall,
+    },
+    iconColorActive: {
+        color: Colors.textPrimary,
+        fontSize: 20,
+    },
+    iconColorInactive: {
+        color: '#00000000',
+        padding: 8,
+        ...Buttons.round,
+        ...Typography.body,
     },
 });
 
