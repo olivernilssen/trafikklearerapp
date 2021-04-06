@@ -22,37 +22,40 @@ import { Colors } from '../styles';
  * @prop {object} navigation Used for navigation between the different screens
  */
 const RoadSignScreen = ({ navigation }) => {
-    const [testData, setTestData] = useState([dangerSignDescription]);
-
-    console.log(testData);
-    const thisSignType = dangerSignDescription;
-
-    const SignDesigns = [];
-
-    const keys = Object.keys(thisSignType);
-    keys.map((key) => {
-        SignDesigns.push(key);
-    });
-
-    console.log(SignDesigns);
-
-    // console.log(signSource['skilt'][0]['fareskilt'][0]['signImg']);
-
-    return (
-        <MainView>
-            <View>
-                <Header name={'Skilt'} navigation={navigation} />
-            </View>
-            <View style={{ flex: 1, marginTop: 22 }}>
-                <FlatList
-                    data={SignDesigns}
-                    renderItem={({ item, index }) => {
-                        console.log(item);
-                        return <Image source={item['skilt']} />;
-                    }}></FlatList>
-            </View>
-        </MainView>
-    );
+    // const [testData, setTestData] = useState([signSource]);
+    // console.log(testData);
+    // const thisSignType = dangerSignDescription;
+    // const SignDesigns = [];
+    // const keys = Object.keys(thisSignType);
+    // keys.map((key) => {
+    //     SignDesigns.push(key);
+    // });
+    // console.log(SignDesigns);
+    // // console.log(signSource['skilt'][0]['fareskilt'][0]['signImg']);
+    // const testHandler = () => {
+    //     setTestData(signSource);
+    // };
+    // return (
+    //     <MainView>
+    //         <View>
+    //             <Header name={'Skilt'} navigation={navigation} />
+    //         </View>
+    //         <View style={{ flex: 1, marginTop: 22 }}>
+    //             <FlatList
+    //                 data={SignDesigns}
+    //                 renderItem={({ item, index }) => {
+    //                     console.log(item, index);
+    //                     return (
+    //                         <Image
+    //                             source={
+    //                                 item['skilt']['fareskilt'][100_1].signImg
+    //                             }
+    //                         />
+    //                     );
+    //                 }}></FlatList>
+    //         </View>
+    //     </MainView>
+    // );
 };
 
 export default RoadSignScreen;

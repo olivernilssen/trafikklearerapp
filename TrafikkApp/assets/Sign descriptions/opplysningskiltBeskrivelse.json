@@ -29,11 +29,6 @@
         "beskrivelse": "",
         "source": "require(../roadSigns/Opplysningsskilt/507_0.png)"
     },
-    "508_0": {
-        "navn": "Kollektivfelt ",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Opplysningsskilt/508_0.png)"
-    },
     "508_1": {
         "navn": "for buss ",
         "beskrivelse": "",
@@ -56,8 +51,8 @@
     },
     "510_2": {
         "navn": "Slutt på kollektivfelt",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Opplysningsskilt/510_2)"
+        "beskrivelse": "510.2",
+        "source": "require(../roadSigns/Opplysningsskilt/510_2.png)"
     },
     "511_0": {
         "navn": "Slutt på sambruksfelt ",
@@ -81,7 +76,7 @@
     },
     "516_0": {
         "navn": "V",
-        "beskrivelse": "",
+        "beskrivelse": "- Skiltet angir kryssingssted for gående hvor trafikkreglenes bestemmelser om gangfelt gjelder.",
         "source": "require(../roadSigns/Opplysningsskilt/516_0.png)"
     },
     "518_0": {
@@ -124,11 +119,6 @@
         "beskrivelse": "Skiltet angir at kjøring bare er tillatt i pilens retning fram til første vegkryss.",
         "source": "require(../roadSigns/Opplysningsskilt/526_.png)"
     },
-    "527_0": {
-        "navn": "Blindveg ",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Opplysningsskilt/527_0.png)"
-    },
     "527_1": {
         "navn": "Blindveg ",
         "beskrivelse": "Skiltet viser at vegen er fysisk stengt. ",
@@ -154,11 +144,6 @@
         "beskrivelse": "Skiltet angir at fører av kjøretøy kan passere skiltet på den side som passer best. Skiltet er plassert slik forholdene på stedet tilsier  ",
         "source": "require(../roadSigns/Opplysningsskilt/528_0.png)"
     },
-    "530_0": {
-        "navn": " Sammenfletting",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Opplysningsskilt/530_0.png)"
-    },
     "530_01": {
         "navn": "Eksempel Sammenfletting",
         "beskrivelse": "",
@@ -169,34 +154,24 @@
         "beskrivelse": "",
         "source": "require(../roadSigns/Opplysningsskilt/530_11.png)"
     },
-    "531_0": {
-        "navn": "Felt for fartsøkning",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Opplysningsskilt/531_0.png)"
-    },
     "531_102": {
         "navn": "Felt for fartsøkning",
-        "beskrivelse": "Eksempel ",
+        "beskrivelse": "Eksempel - Skiltet angir at felt for fartsøkning føres inn på annet kjørefelt med gjensidig tilpassing i samsvar med trafikkreglenes bestemmelser (fletting). ",
         "source": "require(../roadSigns/Opplysningsskilt/531_102.png)"
     },
     "531_202": {
         "navn": "Felt for fartsøkning",
-        "beskrivelse": "Eksempel  ",
+        "beskrivelse": "Eksempel  - Skiltet angir at felt for fartsøkning føres inn på annet kjørefelt med gjensidig tilpassing i samsvar med trafikkreglenes bestemmelser (fletting). ",
         "source": "require(../roadSigns/Opplysningsskilt/531_202.png)"
-    },
-    "532_0": {
-        "navn": "Kjørefelt slutter",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Opplysningsskilt/532_0.png)"
     },
     "532_H02": {
         "navn": "Kjørefelt slutter  ",
-        "beskrivelse": "Eksempel",
+        "beskrivelse": "Eksempel- Kjørende i felt som slutter, skal skifte felt og har vikeplikt i samsvar med trafikkreglenes bestemmelser. ",
         "source": "require(../roadSigns/Opplysningsskilt/532_H02.png)"
     },
     "532_H11": {
         "navn": "Kjørefelt slutter ",
-        "beskrivelse": "Eksempel",
+        "beskrivelse": "Eksempel- Kjørende i felt som slutter, skal skifte felt og har vikeplikt i samsvar med trafikkreglenes bestemmelser. ",
         "source": "require(../roadSigns/Opplysningsskilt/532_H11.png)"
     },
     "534_H02": {
@@ -294,29 +269,29 @@
         "beskrivelse": "Skiltet kan gi opplysning om veg- og trafikkforhold som ikke kan formidles ved andre trafikkskilt. Ved opplysning av særlig interesse for turisttrafikk kan skiltet ha brun bunnfarge. Ved midlertidig opplysning kan skiltet ha gul bunn, sort bord og sort symbol eller tekst. Ved opplysning om omkjøring kan skiltet ha oransje bunn, sort bord og sort symbol eller tekst. ",
         "source": "require(../roadSigns/Opplysningsskilt/560_0.png)"
     },
-    "565": {
+    "565_0": {
         "navn": "Feil kjøreretning ",
         "beskrivelse": "Feil kjøreretning ",
-        "source": "require(../roadSigns/Opplysningsskilt/565.png)"
+        "source": "require(../roadSigns/Opplysningsskilt/565_0.png)"
     },
     "570_1H": {
         "navn": "Nødutgangsskilt for tunnel ",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Opplysningsskilt/570_1H)"
+        "beskrivelse": "570.1H",
+        "source": "require(../roadSigns/Opplysningsskilt/570_1H.png)"
     },
     "570_1V": {
         "navn": "Nødutgangsskilt for tunnel ",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Opplysningsskilt/570_1V)"
+        "beskrivelse": "570.1V",
+        "source": "require(../roadSigns/Opplysningsskilt/570_1V.png)"
     },
     "570_2H": {
         "navn": "Nødutgangsskilt for tunnel ",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Opplysningsskilt/570_2H)"
+        "beskrivelse": "570.2H",
+        "source": "require(../roadSigns/Opplysningsskilt/570_2H.png)"
     },
     "570_2V": {
         "navn": "Nødutgangsskilt for tunnel ",
-        "beskrivelse": "",
-        "source": "require(../roadSigns/Opplysningsskilt/570_2V)"
+        "beskrivelse": "570.2V",
+        "source": "require(../roadSigns/Opplysningsskilt/570_2V.png)"
     }
 }
