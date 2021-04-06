@@ -1,20 +1,10 @@
-import ColorButton from './ColorButton';
-import DeleteButtonPopover from './DeleteButtonPopover';
-import DraggableComponentsButton from './DraggableComponentsButton';
-import HeaderButton from './HeaderButton';
-import PencilSizeButton from './PencilSizeButton';
-import SketchColorMenu from './SketchColorMenu';
-import SketchHeader from './SketchHeader';
-
-export {
-    ColorButton,
-    DeleteButtonPopover,
-    DraggableComponentsButton,
-    HeaderButton,
-    PencilSizeButton,
-    SketchColorMenu,
-    SketchHeader,
-};
+export { default as ColorButton } from './ColorButton';
+export { default as DeleteButtonPopover } from './DeleteButtonPopover';
+export { default as DraggableComponentsButton } from './DraggableComponentsButton';
+export { default as HeaderButton } from './HeaderButton';
+export { default as PencilSizeButton } from './PencilSizeButton';
+export { default as SketchColorMenu } from './SketchColorMenu';
+export { default as SketchHeader } from './SketchHeader';
 
 /** SketchHeaderComponents
  * @namespace sketchHeaderComponents

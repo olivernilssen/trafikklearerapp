@@ -10,6 +10,9 @@ import BottomMenuAnimated from '../components/reusableComponents/BottomMenuAnima
 
 /**
  * The screen component for the curriculum objectives for traffic training
+ * @namespace CurriculumObjectivesScreen
+ * @memberof Screens
+ * @prop {object} navigation Used for navigation between the different screens
  */
 const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
     const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
