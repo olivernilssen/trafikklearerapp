@@ -1,6 +1,7 @@
 //
 // ALL COLORS USED IN THE APP SHOULD BE DECLARED HERE
 //
+const lightCharcoal = '#747474';
 const charcoal = '#4A4A4A';
 const darkCharcoal = '#434343';
 const darkerCharchoal = '#404040';
@@ -20,6 +21,7 @@ const green = '#66DA8D';
 const blue = '#79B7DA';
 const blueGray = '#CDD7DC';
 const blueGreen = '#56B897';
+const darkerBlue = '#22a6dd';
 
 const red = '#FB5555';
 
@@ -76,4 +78,12 @@ export default {
     // Curriculum screen
     curriculumBg: evenDarkerGray,
     curriculumCards: darkGray, //'#171717',
+
+    //imagePicker
+    selectedBorder: darkerBlue,
+    modalBg: lightGray,
+    modalButton: blueGreen,
+    modalText: charcoal,
+    //misc
+    warning: red,
 };
