@@ -259,3 +259,5 @@ const fareskilt = {
         source: require('../roadSigns/Fareskilt/156_0.png'),
     },
 };
+
+export default fareskilt;
