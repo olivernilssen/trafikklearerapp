@@ -106,14 +106,11 @@ const SketchHeader = React.memo((props) => {
 const styles = StyleSheet.create({
     buttonSize: {
         // flex: 1,
-        height: 62,
-        width: 62,
         justifyContent: 'center',
         alignItems: 'center',
-        ...Buttons.round,
+        ...Buttons.sketchHeaderButton,
     },
     header: {
-        // backgroundColor: Colors.header,
         borderBottomWidth: 1,
         borderBottomColor: Colors.dividerPrimary,
         elevation: 10,

@@ -14,16 +14,21 @@ const DraggableComponentsButton = (props) => {
     const { topMenuHidden, toggleRightMenuState } = props;
     return (
         <View
-            style={
+            style={[
+                styles.buttonSize,
                 !toggleRightMenuState
-                    ? [styles.buttonSize, styles.buttonActive]
-                    : [styles.buttonSize, styles.buttonInactive]
-            }>
+                    ? styles.buttonActive
+                    : styles.buttonInactive,
+            ]}>
             <TouchableOpacity onPress={() => topMenuHidden()}>
                 <Icon
                     name={!toggleRightMenuState ? 'car-crash' : 'car'}
                     size={Icons.medium}
-                    color={Colors.textPrimary}
+                    color={
+                        !toggleRightMenuState
+                            ? Colors.textPrimary
+                            : Colors.icons
+                    }
                 />
             </TouchableOpacity>
         </View>
@@ -32,19 +37,16 @@ const DraggableComponentsButton = (props) => {
 
 const styles = StyleSheet.create({
     buttonSize: {
-        height: 62,
-        width: 62,
         justifyContent: 'center',
         alignItems: 'center',
-        ...Buttons.round,
+        ...Buttons.sketchHeaderButton,
     },
     buttonActive: {
-        color: Colors.textPrimary,
         backgroundColor: Colors.boxIconActive,
+        ...Buttons.sketchHeaderButton,
     },
     buttonInactive: {
-        color: Colors.icons,
-        backgroundColor: Colors.header,
+        backgroundColor: Colors.headerBg,
     },
 });
 

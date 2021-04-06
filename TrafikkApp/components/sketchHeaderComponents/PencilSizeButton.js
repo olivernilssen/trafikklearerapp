@@ -24,11 +24,7 @@ const PencilSizeButton = (props) => {
                     : styles.iconPlacement
             }>
             <View
-                style={{
-                    width: 60,
-                    height: pencilThickness,
-                    backgroundColor: Colors.pencilThicknessBox,
-                }}></View>
+                style={[styles.sizeIcons, { height: pencilThickness }]}></View>
         </View>
     );
 };
@@ -40,6 +36,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         margin: -5,
+    },
+    sizeIcons: {
+        width: 60,
+        backgroundColor: Colors.pencilThicknessBox,
     },
 });
 

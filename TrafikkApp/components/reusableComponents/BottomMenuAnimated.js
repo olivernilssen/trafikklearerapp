@@ -85,7 +85,7 @@ const BottomMenuAnimated = React.memo((props) => {
                 <Icon
                     name={hiddenViewButton}
                     size={Icons.medium}
-                    color={Colors.iconActive}
+                    color={Colors.icons}
                 />
             </TouchableOpacity>
 

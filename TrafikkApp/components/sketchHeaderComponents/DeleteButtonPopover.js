@@ -8,7 +8,7 @@ import {
     renderers,
 } from 'react-native-popup-menu';
 
-import { Colors, Typography, Buttons } from '../../styles';
+import { Colors, Typography, Buttons, Icons } from '../../styles';
 
 const { Popover } = renderers;
 
@@ -51,37 +51,27 @@ const DeleteButtonPopover = React.memo((props) => {
                         setOpened(true);
                     }}>
                     <View
-                        style={
+                        style={[
+                            styles.buttonSize,
                             isOpened
-                                ? [styles.buttonSize, styles.buttonActive]
-                                : [styles.buttonSize, styles.buttonInactive]
-                        }>
+                                ? styles.buttonActive
+                                : styles.buttonInactive,
+                        ]}>
                         <Icon
                             name={'trash'}
-                            size={30}
+                            size={Icons.medium}
                             solid
-                            color={Colors.textPrimary}
+                            color={Colors.icons}
                         />
                     </View>
                 </MenuTrigger>
 
                 <MenuOptions optionsContainerStyle={styles.menuOptions}>
-                    <View
-                        style={{
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            paddingTop: 20,
-                        }}>
+                    <View style={styles.menuOptionsContainer}>
                         <TouchableOpacity
                             style={styles.deleteAllButton}
                             onPress={clearButtonPressed}>
-                            <Text
-                                style={{
-                                    fontSize: 20,
-                                    fontWeight: 'bold',
-                                    color: Colors.textPrimary,
-                                }}>
+                            <Text style={styles.deleteAllButtonText}>
                                 Slett
                             </Text>
                         </TouchableOpacity>
@@ -94,27 +84,18 @@ const DeleteButtonPopover = React.memo((props) => {
 
 const styles = StyleSheet.create({
     buttonSize: {
-        height: 62,
-        width: 62,
-        ...Buttons.round,
         justifyContent: 'center',
         alignItems: 'center',
+        paddingVertical: 16,
+        paddingHorizontal: 16,
+        ...Buttons.sketchHeaderButton,
     },
     buttonActive: {
         backgroundColor: Colors.deleteButtonActive,
-        paddingVertical: 16,
-        paddingHorizontal: 16,
     },
     buttonInactive: {
         color: Colors.icons,
-        backgroundColor: Colors.header,
-        paddingVertical: 16,
-        paddingHorizontal: 16,
-    },
-    deleteAllButton: {
-        backgroundColor: Colors.deleteButtonActive,
-        padding: 10,
-        borderRadius: 10,
+        backgroundColor: Colors.headerBg,
     },
     menuOptions: {
         height: 80,
@@ -123,6 +104,22 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 20,
         backgroundColor: Colors.colorPaletteMenu,
         // overflow: 'hidden',
+    },
+    menuOptionsContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: 20,
+    },
+    deleteAllButton: {
+        backgroundColor: Colors.deleteButtonActive,
+        padding: 10,
+        borderRadius: 10,
+    },
+
+    deleteAllButtonText: {
+        color: Colors.textPrimary,
+        ...Typography.button,
     },
 });
 

@@ -53,6 +53,7 @@ const SketchArea = React.memo((props) => {
     const [draggables, setDraggables] = useState([]);
     const [actionList, setActionList] = useState([]);
     const [deletingItemId, setDeletingItemId] = useState(null);
+
     const [extensionType, setExtensionType] = useState('Vanlig');
 
     /**useEffect that is triggered when currentImg is changed
@@ -193,21 +194,11 @@ const SketchArea = React.memo((props) => {
                     chosenColor={chosenColor}
                 />
                 <View style={styles.backgroundImageContainer}>
-                    {/* <ImageBackground
-                        source={require('../../assets/images/paper.jpg')}
-                        resizeMode={'stretch'}
-                        style={{
-                            // flex: 1,
-                            height: '100%',
-                            // width: '100%',
-                            justifyContent: 'center',
-                        }}> */}
                     <Image
                         resizeMode={'cover'}
                         style={styles.backgroundImage}
                         source={currentImg}
                     />
-                    {/* </ImageBackground> */}
                 </View>
 
                 <View style={styles.sketchArea}>

@@ -113,14 +113,19 @@ const styles = StyleSheet.create({
     main: {
         flex: 1,
         height: '100%',
-        justifyContent: 'flex-start',
-        paddingVertical: '3%',
+        // justifyContent: 'flex-start',
+        justifyContent: 'center',
+        paddingTop: '1%',
+        paddingBottom: '5%',
         backgroundColor: Colors.startScreenBg,
+        // backgroundColor: 'red',
     },
     container: {
+        // paddingVertical: '3%',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingBottom: '1%',
+        paddingBottom: '2%',
+        // backgroundColor: 'blue',
     },
     linksContainer: {
         flexDirection: 'row',
