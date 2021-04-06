@@ -11,7 +11,6 @@ import Header from '../components/reusableComponents/Header';
 import MainView from '../components/reusableComponents/MainView';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from '../styles';
-import signSource from '../components/roadSignComponents/signPath';
 import dangerSignDescription from '../assets/fareskiltBeskrivelse.js';
 
 /**
@@ -22,7 +21,7 @@ import dangerSignDescription from '../assets/fareskiltBeskrivelse.js';
  * @prop {object} navigation Used for navigation between the different screens
  */
 const RoadSignScreen = ({ navigation }) => {
-    const [testData, setTestData] = useState([signSource]);
+    const [testData, setTestData] = useState([dangerSignDescription]);
 
     console.log(testData);
     const thisSignType = dangerSignDescription;
@@ -37,9 +36,6 @@ const RoadSignScreen = ({ navigation }) => {
     console.log(SignDesigns);
 
     // console.log(signSource['skilt'][0]['fareskilt'][0]['signImg']);
-    const testHandler = () => {
-        setTestData(signSource);
-    };
 
     return (
         <MainView>
@@ -50,14 +46,8 @@ const RoadSignScreen = ({ navigation }) => {
                 <FlatList
                     data={SignDesigns}
                     renderItem={({ item, index }) => {
-                        console.log(item, index);
-                        return (
-                            <Image
-                                source={
-                                    item['skilt']['fareskilt'][100_1].signImg
-                                }
-                            />
-                        );
+                        console.log(item);
+                        return <Image source={item['skilt']} />;
                     }}></FlatList>
             </View>
         </MainView>
