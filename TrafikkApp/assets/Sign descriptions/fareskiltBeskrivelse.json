@@ -1,0 +1,173 @@
+{
+    "100": {
+        "navn": "Farlig sving ",
+        "beskrivelse": "",
+        "100_1": "til høyre ",
+        "100_2": "til venstre"
+    },
+    "102": {
+        "navn": "Farlige svinger ",
+        "beskrivelse": "",
+        "102_1": "den første til høyre",
+        "102_2": "den første til venstre "
+    },
+    "104": {
+        "navn": "Bratt bakke ",
+        "beskrivelse": "",
+        "104_1": "stigning",
+        "104_2": "fall"
+    },
+    "106": {
+        "navn": "Smalere veg ",
+        "beskrivelse": "",
+        "106_1": "innsnevring på begge sider  ",
+        "106_2": "innsnevring på høyre side",
+        "106_3": "innsnevring på venstre side"
+    },
+    "108": {
+        "navn": "Ujevn veg",
+        "beskrivelse": ""
+    },
+    "109": {
+        "navn": "Fartshump",
+        "beskrivelse": ""
+    },
+    "110": {
+        "navn": "Vegarbeid",
+        "beskrivelse": ""
+    },
+    "112": {
+        "navn": "Steinsprut",
+        "beskrivelse": ""
+    },
+    "114": {
+        "navn": "Rasfare",
+        "beskrivelse": "Skiltet varsler om fare for ras av stein, jord, snø, eller lignende, og at rasmaterialer kan ligge på kjørebanen."
+    },
+    "116": {
+        "navn": "Glatt kjørebane ",
+        "beskrivelse": "Skiltet varsler om fare for glatt kjørebane på grunn av særlige forhold."
+    },
+    "117": {
+        "navn": "Farlig vegskulder",
+        "beskrivelse": ""
+    },
+    "118": {
+        "navn": "Bevegelig bru",
+        "beskrivelse": ""
+    },
+    "120": {
+        "navn": "Kai, strand eller ferjeleie",
+        "beskrivelse": ""
+    },
+    "122": {
+        "navn": "Tunnel",
+        "beskrivelse": ""
+    },
+    "124": {
+        "navn": "Farlig vegkryss ",
+        "beskrivelse": "Skiltet varsler om farlig veikryss hvor det gjelder vanlig vikeplikt overfor kjørende fra høyre. \r"
+    },
+    "126": {
+        "navn": "Rundkjøring",
+        "beskrivelse": ""
+    },
+    "132": {
+        "navn": "Trafikklyssignal",
+        "beskrivelse": ""
+    },
+    "134": {
+        "navn": "Planovergang med bom ",
+        "beskrivelse": ""
+    },
+    "135": {
+        "navn": "(134.2) Planovergang uten bom",
+        "beskrivelse": ""
+    },
+    "136": {
+        "navn": "Avstandsskilt ",
+        "beskrivelse": ""
+    },
+    "136_1": {
+        "navn": "Avstandsskilt ",
+        "beskrivelse": "",
+        "": "Skiltet gir forvarsel om planovergang varslet med skilt 134 eller 135"
+    },
+    "136_2": {
+        "navn": "Avstandsskilt ",
+        "beskrivelse": "",
+        "": "Skiltet gir forvarsel om planovergang varslet med skilt 134 eller 135"
+    },
+    "136_3": {
+        "navn": "Avstandsskilt ",
+        "beskrivelse": "",
+        "": "Skiltet gir forvarsel om planovergang varslet med skilt 134 eller 135"
+    },
+    "138": {
+        "navn": "Jernbanespor ",
+        "beskrivelse": "",
+        "138_1": "Enkeltsporet. Skiltet angir stedet hvor jernbane eller forstadsbane krysser veien i plan.",
+        "138_2": "Flersporet. Skiltet angir stedet hvor jernbane eller forstadsbane krysser veien i plan. "
+    },
+    "139": {
+        "navn": "Sporvogn",
+        "beskrivelse": ""
+    },
+    "140": {
+        "navn": "Avstand til gangfelt",
+        "beskrivelse": ""
+    },
+    "142": {
+        "navn": "Barn  ",
+        "beskrivelse": "Skiltet varsler om sted på eller langs vei hvor barn ofte ferdes eller oppholder seg i forbindelse med skole, barnehage, lekeplass, eller lignende. "
+    },
+    "144": {
+        "navn": "Syklende ",
+        "beskrivelse": "Skiltet varsler om sted hvor syklende ofte krysser eller kjører ut på veien."
+    },
+    "146": {
+        "navn": "Dyr ",
+        "beskrivelse": "",
+        "146_1_": "Skiltet varsler at elg ofte ferdes over eller langs veien. ",
+        "146_2_": "Skiltet varsler at rein ofte ferdes over eller langs veien.",
+        "146_3_": "Skiltet varsler at hjort ofte ferdes over eller langs veien. ",
+        "146_4_": "Skiltet varsler at kyr ofte ferdes over eller langs veien. ",
+        "146_5_": "Skiltet varsler at sauer ofte ferdes over eller langs veien. "
+    },
+    "148": {
+        "navn": "Møtende trafikk ",
+        "beskrivelse": "Skiltet varsler at kjørebanen har kjørende trafikk i begge retninger. "
+    },
+    "149": {
+        "navn": "Kø",
+        "beskrivelse": ""
+    },
+    "150": {
+        "navn": "Fly",
+        "beskrivelse": "Skiltet varsler at fly kan fly lavt over eller nær veien. "
+    },
+    "151": {
+        "navn": "Militær aktivitet",
+        "beskrivelse": ""
+    },
+    "152": {
+        "navn": "Sidevind ",
+        "beskrivelse": "Skiltet varsler om sted hvor det ofte forekommer sterk sidevind. "
+    },
+    "153": {
+        "navn": "Trafikkulykke",
+        "beskrivelse": ""
+    },
+    "154": {
+        "navn": "Skiløpere  ",
+        "beskrivelse": "Skiltet varsler om sted hvor skiløpere ofte krysser veien. "
+    },
+    "155": {
+        "navn": "Ridende ",
+        "beskrivelse": "Skiltet varsler om sted hvor ridende ofte krysser eller rir ut i veien."
+    },
+    "156": {
+        "navn": "Annen fare ",
+        "beskrivelse": "Farens art er angitt på underskilt."
+    }
+}

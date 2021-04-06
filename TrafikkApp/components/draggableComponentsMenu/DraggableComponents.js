@@ -6,6 +6,9 @@ import Carousel from '../reusableComponents/Carousel';
 
 /**
  * Component for the items that are in the draggable top menu
+ * @namespace draggableComponentsMenu
+ * @memberof DraggableComponents
+ * @prop {function} onNewDraggable function from parent to add new draggable
  */
 const DraggableComponents = React.memo(({ onNewDraggable }) => {
     const objects = Object.keys(objectPaths);
@@ -13,7 +16,8 @@ const DraggableComponents = React.memo(({ onNewDraggable }) => {
     /**
      * Get's the image source of the draggable
      * and creates a new draggable item
-     * @param {int} source
+     * @memberof draggableComponentsMenu.DraggableComponents
+     * @param {int} source image source of new draggable
      */
     const onElementPress = (source) => {
         onNewDraggable(objectPaths[source]);
@@ -46,7 +50,7 @@ const DraggableComponents = React.memo(({ onNewDraggable }) => {
 const styles = StyleSheet.create({
     imageContainer: {
         justifyContent: 'center',
-        marginTop: 10,
+        marginTop: 15,
         marginHorizontal: 10,
     },
     imageButton: {

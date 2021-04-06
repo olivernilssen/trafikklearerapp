@@ -10,9 +10,10 @@ import { Colors, Icons, Typography } from '../../styles';
  * @memberof reusableComponents
  * @prop {object} navigation Navigation object
  * @prop {array} [name] The header text
+ * @prop {styleSheet} [style] Optional styling of the Header
  */
 const Header = React.memo((props) => (
-    <View style={styles.header}>
+    <View style={{ ...styles.header, ...props.style }}>
         <TouchableOpacity onPress={props.navigation.toggleDrawer}>
             <Icon name={'bars'} size={Icons.medium} color={Colors.icons} />
         </TouchableOpacity>
@@ -29,7 +30,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 20,
         backgroundColor: Colors.headerBg,
-        elevation: 5,
+        // borderBottomWidth: 1,
+        // borderBottomColor: Colors.dividerPrimary,
+        // elevation: 8,
     },
     headerText: {
         flex: 1,

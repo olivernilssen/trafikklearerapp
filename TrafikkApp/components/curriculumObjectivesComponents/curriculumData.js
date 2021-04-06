@@ -94,8 +94,7 @@ const curriculumData = {
     },
     'Klasse B kode 96 og BE': {
         Hovedmål: {
-            overskrift:
-                'Hovedmål for opplæring klasse B kode 96 og BE jf. § 12-1',
+            overskrift: 'Hovedmål for opplæringen jf. § 12-1',
             Mål:
                 'Etter å ha gjennomført trafikkopplæringen i klasse BE, skal eleven ha den kompetansen som er nødvendig for å kjøre bil med tilhenger på en ansvarlig måte.\n\nEleven skal ha de kunnskaper, ferdigheter, den selvinnsikt og risikoforståelse som er nødvendig for å kjøre på en måte som:\n- er trafikksikker\n- gir god samhandling\n- fører til god trafikkavvikling\n- tar hensyn til helse og miljø og andres behov\n- er i samsvar med gjeldende lovgivning og regelverk',
         },

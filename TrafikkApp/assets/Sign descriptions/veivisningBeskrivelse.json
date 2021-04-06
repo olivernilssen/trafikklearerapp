@@ -1,0 +1,267 @@
+{
+    "701": {
+        "navn": "(720.4) Tabellorienteringstavle ",
+        "beskrivelse": "Eksempler: tabellorienteringstavle"
+    },
+    "703": {
+        "navn": "(720.3) Diagramorienteringstavle ",
+        "beskrivelse": "(Eksempler)"
+    },
+    "705": {
+        "navn": "(720.1-2) Avkjøringstavle ",
+        "beskrivelse": "(Eksempler)"
+    },
+    "707": {
+        "navn": "(706) Kjørefeltorienteringstavle ",
+        "beskrivelse": "(Eksempler) \r Skiltet viser antall kjørefelt fram mot kryss eller avkjøringsvei, og hvilke kjøreretninger eller reisemål de enkelte kjørefelt er beregnet for. "
+    },
+    "709": {
+        "navn": "(724.2-4) Portalorienteringstavle ",
+        "beskrivelse": "(Eksempler)Skiltet viser hvilke kjøreretninger eller reisemål kjørefelt er beregnet for. "
+    },
+    "711": {
+        "navn": "(721.2) Tabellvegviser ",
+        "beskrivelse": "(Eksempel)"
+    },
+    "713": {
+        "navn": "(722.2-3) Vanlig vegviser ",
+        "beskrivelse": "(Eksempel)"
+    },
+    "715": {
+        "navn": "(721.1) Avkjøringsvegviser ",
+        "beskrivelse": "(Eksempel)"
+    },
+    "717": {
+        "navn": "Kjørefeltvegviser ",
+        "beskrivelse": "Skiltet viser hvilke reisemål kjørefelt er beregnet for.(Eksempel)"
+    },
+    "719": {
+        "navn": "(724.2-4) Portalvegviser  ",
+        "beskrivelse": "Skiltet viser hvilke reisemål kjørefelt er beregnet for. (Eksempel)"
+    },
+    "723_11": {
+        "navn": "Vegnummer for europaveg ",
+        "beskrivelse": "(Eksempel)"
+    },
+    "723_12": {
+        "navn": "Vegnummer for europaveg",
+        "beskrivelse": ""
+    },
+    "723_13": {
+        "navn": "Vegnummer for riksveg som ikke er europaveg ",
+        "beskrivelse": ""
+    },
+    "723_14": {
+        "navn": "Vegnummer for riksveg som ikke er europaveg",
+        "beskrivelse": ""
+    },
+    "723_15": {
+        "navn": "Vegnummer for nummerert fylkesveg",
+        "beskrivelse": ""
+    },
+    "723_16": {
+        "navn": "Vegnummer for nummerert fylkesveg",
+        "beskrivelse": ""
+    },
+    "723_21": {
+        "navn": "Ringveg/ ringrute",
+        "beskrivelse": ""
+    },
+    "723_22": {
+        "navn": "Ringveg/ ringrute",
+        "beskrivelse": ""
+    },
+    "723_31": {
+        "navn": "Nasjonal turistveg  ",
+        "beskrivelse": "Symbolet kan vises på serviceskilt"
+    },
+    "723_41": {
+        "navn": "Omkjøringsrute for store kjøretøy",
+        "beskrivelse": ""
+    },
+    "723_51": {
+        "navn": "Rute for transport av farlig gods",
+        "beskrivelse": ""
+    },
+    "723_61": {
+        "navn": "Andre omkjøringsruter",
+        "beskrivelse": ""
+    },
+    "723_62": {
+        "navn": "Andre omkjøringsruter",
+        "beskrivelse": ""
+    },
+    "723_63": {
+        "navn": "Andre omkjøringsruter",
+        "beskrivelse": ""
+    },
+    "723_64": {
+        "navn": "Andre omkjøringsruter ",
+        "beskrivelse": ""
+    },
+    "723_65": {
+        "navn": "Andre omkjøringsruter",
+        "beskrivelse": ""
+    },
+    "723_66": {
+        "navn": "Andre omkjøringsruter",
+        "beskrivelse": ""
+    },
+    "723_71": {
+        "navn": "Kryssnummer på flerfeltsveg",
+        "beskrivelse": ""
+    },
+    "723_72": {
+        "navn": "Kryssnummer på flerfeltsveg",
+        "beskrivelse": ""
+    },
+    "723_73": {
+        "navn": "Kryssnummer på tofeltsveg",
+        "beskrivelse": ""
+    },
+    "725": {
+        "navn": "(710) Avstandsskilt",
+        "beskrivelse": "Skiltet viser avstanden i kilometer til angitte mål eller til nærmeste kryss eller avkjøringsmulighet."
+    },
+    "727": {
+        "navn": "(712) Stedsnavnskilt ",
+        "beskrivelse": "Skiltet viser by, tettsted, administrativ grense eller annet sted av betydning for orienteringen."
+    },
+    "729": {
+        "navn": "Gate-/vegnavnskilt",
+        "beskrivelse": ""
+    },
+    "731": {
+        "navn": "Samleskilt for vegvisning  ",
+        "beskrivelse": "Skiltet viser steder eller virksomheter som kan nås via et felles veivalg i etterfølgende veikryss eller avkjøring. "
+    },
+    "741": {
+        "navn": "Omkjøring for bestemte kjøretøygrupper  ",
+        "beskrivelse": "Skiltet varsler om at veien er stengt for bestemte kjøretøygrupper, og at slike kjøretøy må følge omkjøring. "
+    },
+    "743_1": {
+        "navn": "(742) Midlertidig omkjøring ",
+        "beskrivelse": "Skiltet varsler om at veien er midlertidig stengt, og at gjennomgående trafikk må følge omkjøring. "
+    },
+    "743_2": {
+        "navn": "Midlertidig omkjøring ",
+        "beskrivelse": ""
+    },
+    "745": {
+        "navn": "Slutt på midlertidig omkjøring",
+        "beskrivelse": ""
+    },
+    "749": {
+        "navn": "(722.4) Vegviser for gangtrafikk",
+        "beskrivelse": "Skiltet kan vise symbol for forflytningshemmet. "
+    },
+    "751": {
+        "navn": "Vegviser for sykkelrute ",
+        "beskrivelse": ""
+    },
+    "753": {
+        "navn": "Tabellvegviser for sykkelrute ",
+        "beskrivelse": ""
+    },
+    "755": {
+        "navn": "Sykkelruteskilt",
+        "beskrivelse": ""
+    },
+    "757": {
+        "navn": "Avstandsskilt for sykkelrute",
+        "beskrivelse": ""
+    },
+    "761": {
+        "navn": "Motorveg ",
+        "beskrivelse": ""
+    },
+    "763": {
+        "navn": "Motortrafikkveg",
+        "beskrivelse": ""
+    },
+    "765": {
+        "navn": "Bomveg/ brukerbetaling på veg",
+        "beskrivelse": ""
+    },
+    "767": {
+        "navn": "Parkering",
+        "beskrivelse": ""
+    },
+    "769": {
+        "navn": "Parkeringshus ",
+        "beskrivelse": ""
+    },
+    "771": {
+        "navn": "Lufthavn/ flyplass",
+        "beskrivelse": ""
+    },
+    "772": {
+        "navn": "Helikopterplass",
+        "beskrivelse": ""
+    },
+    "773": {
+        "navn": "Busstasjon/ bussterminal ",
+        "beskrivelse": ""
+    },
+    "774": {
+        "navn": "Jernbanestasjon/ togterminal",
+        "beskrivelse": ""
+    },
+    "775": {
+        "navn": "Bilferje",
+        "beskrivelse": ""
+    },
+    "776": {
+        "navn": "Godshavn",
+        "beskrivelse": ""
+    },
+    "780": {
+        "navn": "Kjetting ",
+        "beskrivelse": ""
+    },
+    "790": {
+        "navn": "Andre reisemål",
+        "beskrivelse": "",
+        "790_10": "Kirke",
+        "790_15": "Næringsområde",
+        "790_16": "Kjøpesenter",
+        "790_20": "Svømmehall",
+        "790_30": "Alpinanlegg ",
+        "790_31": "Hoppbakke",
+        "790_32": "Skistadion",
+        "790_40": "Golfbane"
+    },
+    "792": {
+        "navn": "Betalingsmåte i bomstasjon/ betalingssystem på veg",
+        "beskrivelse": "",
+        "792_11": "Betaling med elektronisk brikke "
+    },
+    "792_12": {
+        "navn": "Betaling til betjent",
+        "beskrivelse": ""
+    },
+    "792_13": {
+        "navn": "Betaling med mynter til automat",
+        "beskrivelse": ""
+    },
+    "792_14": {
+        "navn": "Betaling med kort til automat",
+        "beskrivelse": ""
+    },
+    "792_15": {
+        "navn": "betaling med sedler til automat",
+        "beskrivelse": ""
+    },
+    "792_16": {
+        "navn": "Ta billett i et lukket betalingssystem",
+        "beskrivelse": ""
+    },
+    "792_17": {
+        "navn": "Lever billett i et lukket betalingssystem",
+        "beskrivelse": ""
+    },
+    "792_30": {
+        "navn": "Helautomatisk bomstasjon som passeres uten å stanse ",
+        "beskrivelse": ""
+    }
+}

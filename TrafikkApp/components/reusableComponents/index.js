@@ -1,11 +1,9 @@
-import ButtonGroup from './ButtonGroup';
-import Carousel from './Carousel';
-import MainView from './MainView';
-import Divider from './Divider';
-import Header from './Header';
-import Overlay from './Overlay';
-
-export { ButtonGroup, Carousel, MainView, Divider, Header, Overlay };
+export { default as ButtonGroup } from './ButtonGroup';
+export { default as Carousel } from './Carousel';
+export { default as MainView } from './MainView';
+export { default as Divider } from './Divider';
+export { default as Header } from './Header';
+export { default as Overlay } from './Overlay';
 
 /** Reusable components
  * @namespace reusableComponents

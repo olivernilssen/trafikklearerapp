@@ -9,6 +9,9 @@ import Divider from '../reusableComponents/Divider';
 /**
  * Component to display the menu as a flatlist in
  * the navigation drawer (will add all items that are in props.state.routes)
+ * @namespace drawerComponents
+ * @memberof DrawerMenu
+ * @prop {function} navigation functions for the drawer navigation
  */
 const DrawerMenu = React.memo((props) => {
     return (
@@ -17,7 +20,10 @@ const DrawerMenu = React.memo((props) => {
                 navigation={props.navigation}
                 icon={'times'}
             />
-            <Divider style={styles.divider} borderColor={Colors.iconActive} />
+            <Divider
+                style={styles.divider}
+                borderColor={Colors.dividerPrimary}
+            />
             <FlatList
                 data={props.state.routes}
                 renderItem={({ item }) => (

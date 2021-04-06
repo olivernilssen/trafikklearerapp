@@ -12,6 +12,7 @@ import PencilSizeButton from './PencilSizeButton';
 import ColorButton from './ColorButton';
 import { Colors, Typography, Buttons, Icons } from '../../styles';
 import AppContext from '../../AppContext';
+import { useEffect } from 'react';
 
 const { Popover } = renderers;
 
@@ -28,7 +29,6 @@ const { Popover } = renderers;
  * @prop {string} chosenColor The state chosenColor
  */
 const SketchColorMenu = React.memo((props) => {
-    // const appContext = useContext(AppContext);
     // const INITIAL_COLOR = appContext.penColor;
     const [isOpened, setOpened] = useState(false);
     const [colorButtonID, setColorButtonID] = useState(0);
@@ -72,6 +72,20 @@ const SketchColorMenu = React.memo((props) => {
         { viewThickness: 11, pencilThickness: 8, key: 118 },
         { viewThickness: 14, pencilThickness: 11, key: 1411 },
     ];
+
+    const appContext = useContext(AppContext);
+
+    /**
+     * useEffect to get out the colorId of the correct color
+     * depending on what the settings has stored
+     */
+    useEffect(() => {
+        for (let i = 0; i < colorArray.length; i++) {
+            if (colorArray[i].colorCode == appContext.penColor) {
+                setColorButtonID(i);
+            }
+        }
+    }, []);
 
     /**Used to handle the state of the color menu, if it is open or not
      * @memberof sketchHeaderComponents.SketchColorMenu

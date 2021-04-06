@@ -30,10 +30,17 @@ const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
                 setBottomSheetHidden={setBottomSheetHidden}
             />
             <View style={styles.main}>
-                <Header navigation={navigation}>
-                    <View style={styles.header}>
-                        <Text style={styles.screenName}>Læreplanmål</Text>
-                        <Text style={styles.heading}>{mainHeading}</Text>
+                <Header navigation={navigation} style={styles.header}>
+                    <View style={styles.heading}>
+                        <View>
+                            <Text style={styles.screenName}>Læreplanmål</Text>
+                        </View>
+                        <View style={styles.subHeadingContainer}>
+                            <Text style={styles.mainHeading}>
+                                {mainHeading}
+                            </Text>
+                            <Text style={styles.subHeading}>{subHeading}</Text>
+                        </View>
                     </View>
                 </Header>
                 <ScrollView
@@ -72,29 +79,45 @@ const styles = StyleSheet.create({
         width: '100%',
         zIndex: 1,
     },
+    header: {
+        borderBottomWidth: 1,
+        borderBottomColor: Colors.dividerPrimary,
+        elevation: 10,
+    },
     scrollView: {
         width: '100%',
-        padding: 20,
+        padding: '2%',
         backgroundColor: Colors.curriculumBg,
     },
-    header: {
-        width: '80%',
+    heading: {
+        width: '95%',
         flexDirection: 'row',
-        justifyContent: 'center',
         alignItems: 'center',
     },
     screenName: {
         flex: 1,
+        textAlign: 'left',
+        textAlignVertical: 'center',
         color: Colors.icons,
-        textAlign: 'right',
         ...Typography.heading,
     },
-    heading: {
+    subHeadingContainer: {
         flex: 1,
+        alignItems: 'flex-end',
+        marginRight: '2%',
+    },
+    mainHeading: {
+        flex: 1,
+        textAlignVertical: 'bottom',
+        color: Colors.icons,
+        ...Typography.body,
+    },
+    subHeading: {
+        flex: 1,
+        textAlignVertical: 'top',
         color: Colors.icons,
         opacity: 0.7,
-        textAlign: 'right',
-        ...Typography.section,
+        ...Typography.label,
     },
 });
 

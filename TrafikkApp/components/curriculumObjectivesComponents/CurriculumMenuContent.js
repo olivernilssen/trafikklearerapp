@@ -6,7 +6,15 @@ import ButtonGroup from '../reusableComponents/ButtonGroup';
 import curriculumData from './curriculumData';
 
 /**
- * BottomMenuContent is a menu that slides up from the bottom of the screen
+ * Component to display the content of the BottomMenu on the screen
+ * for the CurriculumObjectives.
+ * @namespace CurriculumMenuContent
+ * @memberof curriculumObjectivesComponents
+ * @prop {string} curriculumObjective The name of the chosen curriculum objective
+ * @prop {function} setCurriculumObjective Sets the state curriculumObjective
+ * @prop {string} trafficClass The name of the chosen traffic class
+ * @prop {function} setTrafficClass Sets the state trafficClass
+ * @prop {object} scrollRef Reference to the scrollview component in the CurriculumObjectiveScreen
  */
 const CurriculumMenuContent = React.memo(
     ({
@@ -31,8 +39,10 @@ const CurriculumMenuContent = React.memo(
         });
 
         /**
-         * Button event that changes the content of the screen
-         * Also sets the trafficClass state.
+         * Button event that is triggered when the tab bars is clicked.
+         * Sets the state trafficClass according to the tab that is pressed.
+         * Also sets the state curriculumObjective to "main goals".
+         * @memberof curriculumObjectivesComponents.CurriculumMenuContent
          * @param {String} trafficClassName
          */
         const onTrafficClassChange = (trafficClassName) => {
@@ -41,8 +51,10 @@ const CurriculumMenuContent = React.memo(
         };
 
         /**
-         * Triggered when the radiobuttons are clicked
-         * Changes the type of curriculumObjective (trinn 1, trinn 2 osv)
+         * Triggered when the radiobuttons are clicked.
+         * Sets the state curriculumObjective according to the button that is pressed.
+         * Also scrolls to the top of the screen.
+         * @memberof curriculumObjectivesComponents.CurriculumMenuContent
          * @param {String} curriculumObjective
          */
         const onCurriculumObjectiveChange = (curriculumObjective) => {
@@ -65,6 +77,7 @@ const CurriculumMenuContent = React.memo(
                                             ? {
                                                   backgroundColor:
                                                       Colors.bottomMeny,
+                                                  elevation: 8,
                                               }
                                             : {
                                                   backgroundColor:
@@ -106,12 +119,12 @@ const CurriculumMenuContent = React.memo(
                         onSelect={(newValue) =>
                             onCurriculumObjectiveChange(newValue)
                         }
-                        groupWidth={600}
+                        groupWidth={700}
                         height={50}
                         textSize={20}
-                        highlightBackgroundColor={Colors.secSlideActiveBg}
+                        highlightBackgroundColor={Colors.startScreenLinkTheory}
                         highlightTextColor={Colors.secSlideTextActive}
-                        inactiveBackgroundColor={Colors.bottomMenyButtons}
+                        inactiveBackgroundColor={Colors.secSlideInactiveBg}
                         inactiveTextColor={Colors.secSlideTextInactive}
                     />
                 </View>
@@ -134,10 +147,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'center',
-        borderTopLeftRadius: 40,
-        borderTopRightRadius: 40,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
         overflow: 'hidden',
-        elevation: 1,
+        // elevation: 1,
     },
     buttonContainer: {
         padding: 25,

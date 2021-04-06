@@ -1,11 +1,17 @@
 import React from 'react';
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Typography, Icons } from '../../styles';
 
 /**
  * Components item that are shown in the navigation drawer
+ * @namespace drawerComponents
+ * @memberof DrawerItem
+ * @prop {function} navigation functions for the drawer navigation
+ * @prop {int} screenIndex the index number of the screenIndex
+ * @prop {string} screenName screen name of the view
+ * @prop {array[]} params parameters for this view
  */
 const DrawerItem = React.memo(
     ({ navigation, screenIndex, screenName, params }) => {
@@ -27,16 +33,19 @@ const DrawerItem = React.memo(
                         isStatusBarHidden: false,
                     })
                 }>
-                <Icon
-                    name={icon}
-                    size={Icons.medium}
-                    color={
-                        screenIndex == value
-                            ? Colors.textSecondary
-                            : Colors.icons
-                    }
-                    style={{ margin: 15 }}
-                />
+                <View style={styles.iconContainer}>
+                    <Icon
+                        name={icon}
+                        size={Icons.medium}
+                        color={
+                            screenIndex == value
+                                ? Colors.textSecondary
+                                : Colors.slideTextInactive
+                        }
+                        style={styles.icon}
+                    />
+                </View>
+
                 <Text
                     style={[
                         styles.menuItemText,
@@ -44,7 +53,7 @@ const DrawerItem = React.memo(
                             color:
                                 screenIndex == value
                                     ? Colors.textSecondary
-                                    : Colors.icons,
+                                    : Colors.slideTextInactive,
                         },
                     ]}>
                     {title}
@@ -63,6 +72,12 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 10,
         borderTopRightRadius: 10,
         paddingLeft: 10,
+    },
+    iconContainer: {
+        width: 65,
+    },
+    icon: {
+        margin: 15,
     },
     menuItemText: {
         // fontSize: 20,
