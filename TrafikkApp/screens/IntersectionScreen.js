@@ -6,6 +6,9 @@ import SketchArea from '../components/sketchComponents/SketchArea';
 
 /**
  * The scren component to show the sketcharea of Veikryss
+ * @namespace IntersectionScreen
+ * @memberof Screens
+ * @prop {object} navigation Used for navigation between the different screens
  */
 const IntersectionScreen = React.memo(({ navigation }) => {
     return (
