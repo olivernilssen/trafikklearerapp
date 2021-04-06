@@ -121,7 +121,7 @@ const DraggableComponentsMenu = React.memo(
                                         onSelect={(newValue) =>
                                             extensionTypeChange(newValue)
                                         }
-                                        groupWidth={220}
+                                        groupWidth={260}
                                         height={45}
                                         highlightBackgroundColor={
                                             Colors.componentMenuButtons
@@ -134,7 +134,6 @@ const DraggableComponentsMenu = React.memo(
                                             Colors.slideTextInactive
                                         }
                                         textSize={17}
-                                        middleButtonSize={'small'}
                                     />
                                 </View>
                             </View>
@@ -167,7 +166,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: Colors.componentMenu,
         elevation: 10,
-        width: '95%',
+        width: '97%',
         height: '100%',
         borderBottomLeftRadius: 15,
         borderBottomRightRadius: 15,

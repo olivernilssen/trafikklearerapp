@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import { View, Text, StyleSheet, ToastAndroid } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { View, Text, StyleSheet, ToastAndroid, Button } from 'react-native';
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
 import { Colors } from '../../styles/index';
 import ButtonGroup from '../reusableComponents/ButtonGroup';
-
+import OptionPicker from './optionPicker';
 /**
  * The view for the settings screen. It takes in data from
  * AppContext and has arrays for possible values for the different settings
@@ -13,6 +13,8 @@ import ButtonGroup from '../reusableComponents/ButtonGroup';
  */
 const SettingsView = () => {
     const myContext = useContext(AppContext);
+    const [pickerVisible, setPickerVisible] = useState(false);
+
     const onDelChangeValues = ['Ja', 'Nei'];
     const penColorValues = [
         '#20303C',
@@ -55,6 +57,10 @@ const SettingsView = () => {
 
     return (
         <View style={styles.view}>
+            <OptionPicker
+                modalVisible={pickerVisible}
+                setModalVisible={setPickerVisible}
+            />
             {/* CHANGE THEME COLORS */}
             <View style={styles.rowView}>
                 <Text style={styles.leftColumn}>Tema farger:</Text>
@@ -180,6 +186,20 @@ const SettingsView = () => {
                     />
                 </View>
             </View>
+
+            {/* DRAGGABLE INITAL COLOR */}
+            <View style={styles.rowView}>
+                <Text style={styles.leftColumn}>
+                    Drabare elementer velger (max 20):
+                </Text>
+                <View style={styles.rightColumn}>
+                    <Button
+                        title="openPicker"
+                        onPress={() =>
+                            setPickerVisible(!pickerVisible)
+                        }></Button>
+                </View>
+            </View>
         </View>
     );
 };
@@ -201,14 +221,14 @@ const styles = StyleSheet.create({
     textInput: {
         backgroundColor: 'gray',
         color: 'white',
-        fontSize: 25,
+        fontSize: 15,
         width: '100%',
     },
     leftColumn: {
         color: Colors.textPrimary,
         justifyContent: 'flex-start',
         flex: 1,
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: '300',
     },
     rightColumn: {

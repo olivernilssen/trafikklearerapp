@@ -1,142 +1,177 @@
 {
-    "601": {
+    "601_0": {
         "navn": "Lytt til radio",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/601_0.png)"
     },
-    "602": {
+    "602_0": {
         "navn": "Førstehjelp ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/602_0.png)"
     },
-    "605": {
+    "605_0": {
         "navn": "Nødtelefon",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/605_0.png)"
     },
-    "606": {
+    "606_0": {
         "navn": "Brannslokningsapparat",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/606_0.png)"
     },
-    "608": {
+    "608_0": {
         "navn": "Kjøretøyverksted ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/608_0.png)"
     },
-    "609": {
+    "609_0": {
         "navn": "Hurtiglading av motorvogn",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/609_0.png)"
     },
     "610_1": {
         "navn": "Drivstoff",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/610_1.png)"
     },
     "610_2": {
         "navn": "Eksempel",
-        "beskrivelse": "",
-        "610_2": "Eksempel "
+        "beskrivelse": "Eksempel ",
+        "source": "require(../roadSigns/Serviceskilt/610_2.png)"
     },
-    "611": {
+    "611_0": {
         "navn": "Toalettømmeanlegg ",
-        "beskrivelse": "Skiltet angir mottaksanlegg for toalettavfall fra campingvogner, bobiler og busser. "
+        "beskrivelse": "Skiltet angir mottaksanlegg for toalettavfall fra campingvogner, bobiler og busser. ",
+        "source": "require(../roadSigns/Serviceskilt/611_0.png)"
     },
-    "612": {
+    "612_0": {
         "navn": "Toalett ",
-        "beskrivelse": " "
+        "beskrivelse": " ",
+        "source": "require(../roadSigns/Serviceskilt/612_0.png)"
     },
-    "613": {
+    "613_1": {
+        "navn": "Rasteplass",
+        "beskrivelse": "(628)",
+        "source": "require(../roadSigns/Serviceskilt/613_1.png)"
+    },
+    "613_2": {
         "navn": "Rasteplass",
         "beskrivelse": "",
-        "613_1": "(628)",
-        "613_2": ""
+        "source": "require(../roadSigns/Serviceskilt/613_2)"
     },
-    "614": {
+    "614_0": {
         "navn": "Enklere servering",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/614_0.png)"
     },
-    "616": {
+    "616_0": {
         "navn": "Spisested ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/616_0.png)"
     },
-    "618": {
+    "618_0": {
         "navn": "Campingplass",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/618_0.png)"
     },
-    "621": {
+    "621_0": {
         "navn": "Bobilplass",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/621_0.png)"
     },
-    "622": {
+    "622_0": {
         "navn": "Campinghytter",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/622_0.png)"
     },
-    "624": {
+    "624_0": {
         "navn": "Vandrerhjem ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/624_0.png)"
     },
     "625": {
         "navn": "Rom og frokost ",
-        "beskrivelse": "",
-        "625": "Rom og frokost "
+        "beskrivelse": "Rom og frokost ",
+        "source": "require(../roadSigns/Serviceskilt/625.png)"
     },
-    "626": {
+    "626_0": {
         "navn": "Overnattingssted ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/626_0.png)"
     },
-    "635": {
+    "635_0": {
         "navn": "Informasjon",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/635_0.png)"
     },
-    "637": {
+    "637_0": {
         "navn": "Turistkontor ",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/637_0.png)"
     },
     "640_10": {
         "navn": "Severdighet",
-        "beskrivelse": "For severdighet av særlig stor betydning kan symbolet erstattes av symbol tilpasset severdigheten."
+        "beskrivelse": "For severdighet av særlig stor betydning kan symbolet erstattes av symbol tilpasset severdigheten.",
+        "source": "require(../roadSigns/Serviceskilt/640_10.png)"
     },
     "640_12": {
         "navn": "Museum/ galleri",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/640_12.png)"
     },
     "640_20": {
         "navn": "Utsiktspunkt",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/640_20.png)"
     },
     "640_30": {
         "navn": "Naturvernområde",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/640_30.png)"
     },
     "640_101": {
         "navn": "Verdensarv",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/640_101.png)"
     },
     "640_102": {
         "navn": "Nasjonale festningsverk",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/640_102.png)"
     },
     "650_10": {
         "navn": "Badeplass",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/650_10.png)"
     },
     "650_11": {
         "navn": "Fiskeplass",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/650_11.png)"
     },
     "650_20": {
         "navn": "Tursti",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/650_20.png)"
     },
     "650_21": {
         "navn": "Skiløype",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/650_21.png)"
     },
     "650_22": {
         "navn": "Sykkelløype",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/650_22.png)"
     },
     "650_40": {
         "navn": "Gardsmat/ bygdeturisme",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/650_40.png)"
     },
     "650_41": {
         "navn": "Olavsrosa",
-        "beskrivelse": ""
+        "beskrivelse": "",
+        "source": "require(../roadSigns/Serviceskilt/650_41.png)"
     }
 }

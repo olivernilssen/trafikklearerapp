@@ -11,7 +11,8 @@ import Header from '../components/reusableComponents/Header';
 import MainView from '../components/reusableComponents/MainView';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from '../styles';
-import dangerSignDescription from '../assets/fareskiltBeskrivelse.js';
+// import signSource from '../components/roadSignComponents/signPath';
+// import dangerSignDescription from '../assets/fareskiltBeskrivelse.js';
 
 /**
  * Screen component for sign screen

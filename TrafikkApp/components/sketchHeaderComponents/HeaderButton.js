@@ -47,7 +47,11 @@ const HeaderButton = React.memo((props) => {
                     <Icon
                         name={iconName}
                         size={Icons.medium}
-                        color={Colors.textPrimary}
+                        color={
+                            activeId === buttonActiveId
+                                ? Colors.textPrimary
+                                : Colors.icons
+                        }
                     />
                 </TouchableOpacity>
             </View>
@@ -57,19 +61,16 @@ const HeaderButton = React.memo((props) => {
 
 const styles = StyleSheet.create({
     buttonSize: {
-        height: 62,
-        width: 62,
         justifyContent: 'center',
         alignItems: 'center',
-        ...Buttons.round,
+        ...Buttons.sketchHeaderButton,
     },
     buttonActive: {
-        color: Colors.textPrimary,
         backgroundColor: Colors.iconActive,
+        ...Buttons.sketchHeaderButton,
     },
     buttonInactive: {
-        color: Colors.icons,
-        backgroundColor: Colors.header,
+        backgroundColor: Colors.headerBg,
     },
     spacedRight: {
         flex: 1,

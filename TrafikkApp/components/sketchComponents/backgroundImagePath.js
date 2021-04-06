@@ -74,10 +74,10 @@ const backgroundImagePath = {
     },
     'Fartsøknings- og reduksjonsfelt': {
         Fartsøkningsfelt: {
-            Vanlig: require('../../assets/vei/e6/avkjøringsrampe.png'),
+            Vanlig: require('../../assets/vei/e6/påkjøringsrampe.png'),
         },
         Reduksjonsfelt: {
-            Vanlig: require('../../assets/vei/e6/påkjøringsrampe.png'),
+            Vanlig: require('../../assets/vei/e6/avkjøringsrampe.png'),
         },
     },
 };

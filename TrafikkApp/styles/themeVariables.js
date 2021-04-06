@@ -11,7 +11,7 @@ export default {
     FONT_SIZE_SECTION: 22, // RUtils.isSmallScreen() ? 18 : 22,
 
     // ICONS
-    ICON_SIZE_SMALL: RUtils.isSmallScreen() ? 15 : 20,
+    ICON_SIZE_SMALL: RUtils.isSmallScreen() ? 15 : 25,
     ICON_SIZE_MEDIUM: RUtils.isSmallScreen() ? 20 : 30,
     ICON_SIZE_LARGE: RUtils.isSmallScreen() ? 30 : 40,
 
