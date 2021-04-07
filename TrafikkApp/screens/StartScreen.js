@@ -121,14 +121,12 @@ const styles = StyleSheet.create({
         paddingTop: '1%',
         paddingBottom: '5%',
         backgroundColor: Colors.startScreenBg,
-        // backgroundColor: 'red',
     },
     container: {
         // paddingVertical: '3%',
         justifyContent: 'center',
         alignItems: 'center',
         paddingBottom: '2%',
-        // backgroundColor: 'blue',
     },
     linksContainer: {
         flexDirection: 'row',

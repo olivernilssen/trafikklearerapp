@@ -1,4 +1,4 @@
-const objectPaths = {
+const draggables = {
     Bicycle: require('../../assets/Elements/bicycle.png'),
     Bus: require('../../assets/Elements/bus.png'),
     'Bicycle-man': require('../../assets/Elements/bicycle-man.png'),
@@ -10,4 +10,4 @@ const objectPaths = {
     'Walking-person': require('../../assets/Elements/walk.png'),
 };
 
-export default objectPaths;
+export default draggables;
