@@ -5,8 +5,8 @@ import Navigator from './components/drawerComponents/Navigator';
 import USER_KEYS from './components/helpers/storageKeys';
 import { readData, saveData } from './components/helpers/useAsyncStorage';
 import AppContext from './AppContext';
-import objectPaths from './components/settingsComponents/draggableObjectPaths';
-// import SplashScreen from 'react-native-splash-screen';
+import objectPaths from './components/settingsComponents/inital-draggable-paths';
+import SplashScreen from 'react-native-splash-screen';
 
 const App = () => {
     const [theme, setTheme] = useState('');
@@ -17,7 +17,7 @@ const App = () => {
     const [draggableObjects, setDraggableObjects] = useState('');
 
     useEffect(() => {
-        // SplashScreen.hide();
+        SplashScreen.hide();
         readData(USER_KEYS.THEME_KEY, setTheme, 'Mørk');
         readData(USER_KEYS.PEN_COLOR_KEY, setPenColor, '#20303C');
         readData(USER_KEYS.DRAGGABLE_COLOR_KEY, setDraggableColor, '#e09f3e');
