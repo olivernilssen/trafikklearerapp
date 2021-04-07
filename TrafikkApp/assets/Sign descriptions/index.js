@@ -1,2 +1,2 @@
-export { default as fareskilt } from './fareskiltBeskrivelse';
-export { default as forbudsskilt } from './forbudsskiltBeskrivelse';
+export { default as fareSkilt } from './fareskiltBeskrivelse';
+export { default as forbudsSkilt } from './forbudsskiltBeskrivelse';

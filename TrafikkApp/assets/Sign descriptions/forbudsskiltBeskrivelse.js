@@ -1,4 +1,4 @@
-const forbudsskilt = {
+const forbudsSkilt = {
     '302_0': {
         navn: 'Innkjøring forbudt',
         beskrivelse:
@@ -162,11 +162,6 @@ const forbudsskilt = {
         beskrivelse: '',
         source: 'require(../roadSigns/Forbudsskilt/337_0.png)',
     },
-    '362_0': {
-        navn: 'Fartsgrense ',
-        beskrivelse: '',
-        source: 'require(../roadSigns/Forbudsskilt/362_0.png)',
-    },
     '362_30': {
         navn: 'Fartsgrense',
         beskrivelse: '',
@@ -201,11 +196,6 @@ const forbudsskilt = {
         navn: 'Fartsgrense',
         beskrivelse: '',
         source: 'require(../roadSigns/Forbudsskilt/362_90.png)',
-    },
-    '364_0': {
-        navn: 'Slutt på særskilt fartsgrense',
-        beskrivelse: '',
-        source: 'require(../roadSigns/Forbudsskilt/364_0.png)',
     },
     '364_40': {
         navn: 'Slutt på særskilt fartsgrense',
@@ -273,4 +263,4 @@ const forbudsskilt = {
     },
 };
 
-export default forbudsskilt;
+export default forbudsSkilt;
