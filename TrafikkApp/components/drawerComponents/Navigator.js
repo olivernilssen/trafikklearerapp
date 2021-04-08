@@ -77,7 +77,7 @@ const Navigator = () => {
                 name="HighwayScreen"
                 component={HighwayScreen}
                 initialParams={{
-                    title: 'Fartsøkning- og reduksjon',
+                    title: 'Fartsøkning- og reduksjonsfelt',
                     icon: 'road',
                     screenName: 'HighwayScreen',
                     value: 4,

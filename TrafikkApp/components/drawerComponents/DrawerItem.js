@@ -80,10 +80,11 @@ const styles = StyleSheet.create({
         margin: 15,
     },
     menuItemText: {
-        // fontSize: 20,
+        flex: 1,
+        flexWrap: 'wrap',
         fontWeight: '300',
         margin: 12,
-        textAlign: 'center',
+        textAlign: 'left',
         ...Typography.body,
     },
 });
