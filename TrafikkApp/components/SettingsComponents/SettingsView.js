@@ -1,10 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, StyleSheet, ToastAndroid, Button } from 'react-native';
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
-import { Colors } from '../../styles/index';
+import { Colors, Typography } from '../../styles/index';
 import ButtonGroup from '../reusableComponents/ButtonGroup';
 import OptionPicker from './optionPicker';
+import { Divider } from '../reusableComponents';
+
 /**
  * The view for the settings screen. It takes in data from
  * AppContext and has arrays for possible values for the different settings
@@ -63,7 +65,7 @@ const SettingsView = () => {
             />
             {/* CHANGE THEME COLORS */}
             <View style={styles.rowView}>
-                <Text style={styles.leftColumn}>Tema farger:</Text>
+                <Text style={styles.leftColumn}>Fargetema:</Text>
                 <View style={styles.rightColumn}>
                     <ButtonGroup
                         selectedValue={myContext.theme}
@@ -84,10 +86,10 @@ const SettingsView = () => {
                     />
                 </View>
             </View>
-
+            <Divider borderColor={Colors.headerBg} />
             {/* STANDARD SIZE OF ERASER */}
             <View style={styles.rowView}>
-                <Text style={styles.leftColumn}>Viskelær størrelse: </Text>
+                <Text style={styles.leftColumn}>Viskelærstørrelse: </Text>
                 <View style={styles.rightColumn}>
                     <ButtonGroup
                         selectedValue={myContext.eraserSize}
@@ -108,7 +110,7 @@ const SettingsView = () => {
                     />
                 </View>
             </View>
-
+            <Divider borderColor={Colors.headerBg} />
             {/* DELETE EVERYTHING ON ILLUSTRASTION CHANGE */}
             <View style={styles.rowView}>
                 <Text style={styles.leftColumn}>
@@ -134,10 +136,10 @@ const SettingsView = () => {
                     />
                 </View>
             </View>
-
+            <Divider borderColor={Colors.headerBg} />
             {/* PEN INITAL COLOR */}
             <View style={styles.rowView}>
-                <Text style={styles.leftColumn}>Innledende farge på pen:</Text>
+                <Text style={styles.leftColumn}>Innledende farge på penn:</Text>
                 <View style={styles.rightColumn}>
                     <ButtonGroup
                         selectedValue={myContext.penColor}
@@ -159,7 +161,7 @@ const SettingsView = () => {
                     />
                 </View>
             </View>
-
+            <Divider borderColor={Colors.headerBg} />
             {/* DRAGGABLE INITAL COLOR */}
             <View style={styles.rowView}>
                 <Text style={styles.leftColumn}>
@@ -186,7 +188,7 @@ const SettingsView = () => {
                     />
                 </View>
             </View>
-
+            <Divider borderColor={Colors.headerBg} />
             {/* DRAGGABLE INITAL COLOR */}
             <View style={styles.rowView}>
                 <Text style={styles.leftColumn}>
@@ -210,7 +212,7 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         padding: 30,
-        borderColor: 'black',
+        // borderColor: 'black',
         justifyContent: 'space-evenly',
     },
     rowView: {
@@ -218,18 +220,20 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         // justifyContent: 'space-between',
     },
-    textInput: {
-        backgroundColor: 'gray',
-        color: 'white',
-        fontSize: 15,
-        width: '100%',
-    },
+    // textInput: {
+    //     backgroundColor: 'gray',
+    //     color: 'white',
+    //     fontSize: 15,
+    //     width: '100%',
+    // },
     leftColumn: {
         color: Colors.textPrimary,
         justifyContent: 'flex-start',
         flex: 1,
-        fontSize: 20,
-        fontWeight: '300',
+        textAlignVertical: 'center',
+        // fontSize: 20,
+        // fontWeight: '300',
+        ...Typography.body,
     },
     rightColumn: {
         flex: 0,

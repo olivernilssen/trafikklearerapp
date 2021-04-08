@@ -17,7 +17,28 @@ import { Colors, Typography } from '../styles';
 const StartScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
-            <Header name="Hjem" navigation={navigation} />
+            <Header navigation={navigation}>
+                <View
+                    style={{
+                        width: '100%',
+                        flexDirection: 'row',
+                    }}>
+                    <Text
+                        style={{
+                            ...Typography.heading,
+                            ...{ color: Colors.startScreenLinkDrawing },
+                        }}>
+                        illus
+                    </Text>
+                    <Text
+                        style={{
+                            ...Typography.heading,
+                            ...{ color: Colors.icons },
+                        }}>
+                        Trafikk
+                    </Text>
+                </View>
+            </Header>
             <View style={styles.main}>
                 <View style={styles.container}>
                     <Text style={styles.text}>Illustrer trafikksituasjon</Text>
