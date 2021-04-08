@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import MainView from '../components/reusableComponents/MainView';
 import Header from '../components/reusableComponents/Header';
 import StartScreenLink from '../components/startScreenComponents/StartScreenLink';
-
-import { Colors, Typography } from '../styles';
+import HeaderName from '../components/startScreenComponents/HeaderName';
+import { Colors, Typography, Icons } from '../styles';
 
 /**
  * Screen component for the start screen
@@ -18,25 +19,18 @@ const StartScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
             <Header navigation={navigation}>
-                <View
-                    style={{
-                        width: '100%',
-                        flexDirection: 'row',
-                    }}>
-                    <Text
-                        style={{
-                            ...Typography.heading,
-                            ...{ color: Colors.startScreenLinkDrawing },
-                        }}>
-                        illus
-                    </Text>
-                    <Text
-                        style={{
-                            ...Typography.heading,
-                            ...{ color: Colors.icons },
-                        }}>
-                        Trafikk
-                    </Text>
+                <View style={styles.headerItems}>
+                    <HeaderName />
+                    <TouchableOpacity
+                        style={styles.iconContainer}
+                        activeOpacity={0.6}
+                        onPress={() => navigation.navigate('SettingsScreen')}>
+                        <Icon
+                            name={'cog'}
+                            size={Icons.medium}
+                            color={Colors.icons}
+                        />
+                    </TouchableOpacity>
                 </View>
             </Header>
             <View style={styles.main}>
@@ -139,9 +133,19 @@ const styles = StyleSheet.create({
         height: '100%',
         // justifyContent: 'flex-start',
         justifyContent: 'center',
-        paddingTop: '1%',
+        paddingTop: '2%',
         paddingBottom: '5%',
         backgroundColor: Colors.startScreenBg,
+    },
+    headerItems: {
+        alignSelf: 'center',
+        width: '93%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    iconContainer: {
+        marginRight: 15,
+        justifyContent: 'center',
     },
     container: {
         // paddingVertical: '3%',
@@ -156,7 +160,7 @@ const styles = StyleSheet.create({
     },
     text: {
         width: '85%',
-        borderBottomWidth: 1,
+        borderBottomWidth: 2,
         borderColor: Colors.dividerPrimary,
         color: Colors.icons,
         paddingVertical: 5,
