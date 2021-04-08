@@ -5,6 +5,7 @@ const USER_KEYS = {
     DRAGGABLE_COLOR_KEY: '@draggable_color_key',
     ERASER_SIZE_KEY: '@eraser_size',
     DRAGGABLE_OBJECTS: '@draggable_objects',
+    SHOW_DELETE_ALERT_KEY: '@show_delete_alert',
 };
 
 export default USER_KEYS;

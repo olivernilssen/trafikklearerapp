@@ -6,7 +6,7 @@ import USER_KEYS from './components/helpers/storageKeys';
 import { readData, saveData } from './components/helpers/useAsyncStorage';
 import AppContext from './AppContext';
 import objectPaths from './components/settingsComponents/draggableObjectPaths';
-// import SplashScreen from 'react-native-splash-screen';
+import SplashScreen from 'react-native-splash-screen';
 
 const App = () => {
     const [theme, setTheme] = useState('');
@@ -14,15 +14,17 @@ const App = () => {
     const [draggableColor, setDraggableColor] = useState('');
     const [deleteOnChange, setDeleteOnChange] = useState('');
     const [eraserSize, setEraserSize] = useState('');
+    const [showDeleteAlert, setShowDeleteAlert] = useState('');
     const [draggableObjects, setDraggableObjects] = useState('');
 
     useEffect(() => {
-        // SplashScreen.hide();
+        SplashScreen.hide();
         readData(USER_KEYS.THEME_KEY, setTheme, 'Mørk');
         readData(USER_KEYS.PEN_COLOR_KEY, setPenColor, '#20303C');
         readData(USER_KEYS.DRAGGABLE_COLOR_KEY, setDraggableColor, '#e09f3e');
         readData(USER_KEYS.DELETE_KEY, setDeleteOnChange, 'Ja');
         readData(USER_KEYS.ERASER_SIZE_KEY, setEraserSize, '80');
+        readData(USER_KEYS.SHOW_DELETE_ALERT_KEY, setShowDeleteAlert, 'true');
         readData(
             USER_KEYS.DRAGGABLE_OBJECTS,
             setDraggableObjects,
@@ -36,19 +38,21 @@ const App = () => {
     };
 
     const userSettings = {
+        saveNewSettings,
         theme: theme,
         penColor: penColor,
         draggableColor: draggableColor,
         deleteOnChange: deleteOnChange,
         eraserSize: eraserSize,
+        showDeleteAlert: showDeleteAlert,
         draggableObjects: draggableObjects,
-        setDraggableObjects,
-        saveNewSettings,
         setTheme,
         setPenColor,
         setDraggableColor,
         setDeleteOnChange,
         setEraserSize,
+        setShowDeleteAlert,
+        setDraggableObjects,
     };
 
     return (

@@ -46,24 +46,24 @@ const DeleteButtonPopover = React.memo((props) => {
                 onBackdropPress={() => {
                     setOpened(false);
                 }}>
-                <MenuTrigger
-                    onPress={() => {
-                        setOpened(true);
-                    }}>
-                    <View
+                <MenuTrigger>
+                    <TouchableOpacity
                         style={[
                             styles.buttonSize,
                             isOpened
                                 ? styles.buttonActive
                                 : styles.buttonInactive,
-                        ]}>
+                        ]}
+                        onPress={() => {
+                            setOpened(true);
+                        }}>
                         <Icon
                             name={'trash'}
                             size={Icons.medium}
                             solid
                             color={Colors.icons}
                         />
-                    </View>
+                    </TouchableOpacity>
                 </MenuTrigger>
 
                 <MenuOptions optionsContainerStyle={styles.menuOptions}>
@@ -103,7 +103,6 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
         backgroundColor: Colors.colorPaletteMenu,
-        // overflow: 'hidden',
     },
     menuOptionsContainer: {
         flexDirection: 'row',

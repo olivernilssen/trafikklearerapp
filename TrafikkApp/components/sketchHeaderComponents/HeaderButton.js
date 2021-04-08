@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     },
     buttonInactive: {
         backgroundColor: Colors.headerBg,
+        ...Buttons.sketchHeaderButton,
     },
     spacedRight: {
         flex: 1,

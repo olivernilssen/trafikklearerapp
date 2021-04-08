@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {
     Menu,
@@ -180,20 +180,21 @@ const SketchColorMenu = React.memo((props) => {
                 onBackdropPress={() => {
                     onSecondClickOpen(false);
                 }}>
-                <MenuTrigger
-                    onPress={() => {
-                        onPressMenuTrigger();
-                    }}>
-                    <View
+                <MenuTrigger>
+                    <TouchableOpacity
                         style={[
                             styles.buttonSize,
                             activeId === buttonActiveId
-                                ? [
-                                      styles.buttonActive,
-                                      { backgroundColor: pencilColor },
-                                  ]
-                                : [styles.buttonInactive],
-                        ]}>
+                                ? {
+                                      backgroundColor: pencilColor,
+                                  }
+                                : {
+                                      backgroundColor: Colors.headerBg,
+                                  },
+                        ]}
+                        onPress={() => {
+                            onPressMenuTrigger();
+                        }}>
                         <Icon
                             name={'pen'}
                             size={Icons.medium}
@@ -215,7 +216,7 @@ const SketchColorMenu = React.memo((props) => {
                             }
                             style={styles.downIconMenu}
                         />
-                    </View>
+                    </TouchableOpacity>
                 </MenuTrigger>
                 <MenuOptions optionsContainerStyle={styles.menuOptions}>
                     <View style={styles.colorButtonsContainer}>
@@ -238,15 +239,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         ...Buttons.sketchHeaderButton,
     },
-    buttonActive: {
-        backgroundColor: Colors.iconActive,
-        overflow: 'hidden',
-        ...Buttons.round,
-    },
-    buttonInactive: {
-        color: Colors.icons,
-        ...Buttons.round,
-    },
     downIconMenu: {
         position: 'absolute',
         alignSelf: 'center',
@@ -254,24 +246,6 @@ const styles = StyleSheet.create({
         left: 35,
         transform: [{ rotate: '-45deg' }],
     },
-    // upIconMenu: {
-    //     position: 'absolute',
-    //     alignSelf: 'center',
-    //     top: 31,
-    //     left: 35,
-    //     transform: [{ rotate: '-45deg' }],
-    // },
-
-    // iconColorActive: {
-    //     color: Colors.iconActive,
-    // },
-    // iconColorInactive: {
-    //     color: '#00000000',
-    // },
-    // iconPlacement: {
-    //     flexDirection: 'row',
-    //     backgroundColor: 'yellow',
-    // },
     menuOptions: {
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,
