@@ -5,7 +5,7 @@ import Navigator from './components/drawerComponents/Navigator';
 import USER_KEYS from './components/helpers/storageKeys';
 import { readData, saveData } from './components/helpers/useAsyncStorage';
 import AppContext from './AppContext';
-import objectPaths from './components/settingsComponents/draggableObjectPaths';
+import objectPaths from './components/settingsComponents/inital-draggable-paths';
 import SplashScreen from 'react-native-splash-screen';
 
 const App = () => {

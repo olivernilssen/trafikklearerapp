@@ -6,6 +6,9 @@ import {
     Text,
     Image,
     ScrollView,
+    TouchableOpacity,
+    SectionList,
+    Dimensions,
 } from 'react-native';
 import Header from '../components/reusableComponents/Header';
 import MainView from '../components/reusableComponents/MainView';
@@ -13,7 +16,10 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from '../styles';
 // import signSource from '../components/roadSignComponents/signPath';
 // import dangerSignDescription from '../assets/fareskiltBeskrivelse.js';
+import { fareSkilt, forbudsSkilt } from '../assets/Sign descriptions/index';
 
+const numColumns = 4;
+const signObjectKeys = Object.keys(fareSkilt);
 /**
  * Screen component for sign screen
  * Langt fra ferdig!!!
@@ -21,41 +27,50 @@ import { Colors } from '../styles';
  * @memberof Screens
  * @prop {object} navigation Used for navigation between the different screens
  */
+
 const RoadSignScreen = ({ navigation }) => {
-    // const [testData, setTestData] = useState([signSource]);
-    // console.log(testData);
-    // const thisSignType = dangerSignDescription;
-    // const SignDesigns = [];
-    // const keys = Object.keys(thisSignType);
-    // keys.map((key) => {
-    //     SignDesigns.push(key);
-    // });
-    // console.log(SignDesigns);
-    // // console.log(signSource['skilt'][0]['fareskilt'][0]['signImg']);
-    // const testHandler = () => {
-    //     setTestData(signSource);
-    // };
-    // return (
-    //     <MainView>
-    //         <View>
-    //             <Header name={'Skilt'} navigation={navigation} />
-    //         </View>
-    //         <View style={{ flex: 1, marginTop: 22 }}>
-    //             <FlatList
-    //                 data={SignDesigns}
-    //                 renderItem={({ item, index }) => {
-    //                     console.log(item, index);
-    //                     return (
-    //                         <Image
-    //                             source={
-    //                                 item['skilt']['fareskilt'][100_1].signImg
-    //                             }
-    //                         />
-    //                     );
-    //                 }}></FlatList>
-    //         </View>
-    //     </MainView>
-    // );
+    // const signObjectKeys = Object.keys(fareSkilt);
+
+    const renderItem = ({ item }) => {
+        return (
+            <TouchableOpacity style={styles.item}>
+                <Image
+                    style={{ width: '100%', height: '100%' }}
+                    source={fareSkilt[item].source}
+                    resizeMode={'contain'}></Image>
+            </TouchableOpacity>
+        );
+    };
+
+    return (
+        <MainView>
+            <View>
+                <Header name={'Skilt'} navigation={navigation} />
+            </View>
+            {/* <ScrollView>{imageMapper}</ScrollView> */}
+            <FlatList
+                data={signObjectKeys}
+                style={styles.imageContainer}
+                keyExtractor={(item, index) => item + index}
+                renderItem={renderItem}
+                numColumns={4}></FlatList>
+        </MainView>
+    );
 };
+
+const styles = StyleSheet.create({
+    imageContainer: {
+        flex: 1,
+        marginVertical: 1,
+        backgroundColor: 'grey',
+    },
+    item: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: Dimensions.get('screen').width / numColumns - 3,
+        margin: 1,
+        height: Dimensions.get('screen').height / 7.5,
+    },
+});
 
 export default RoadSignScreen;

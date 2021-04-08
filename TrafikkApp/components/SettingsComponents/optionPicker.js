@@ -7,8 +7,8 @@ import {
     Pressable,
     TouchableOpacity,
     Image,
-    ToastAndroid,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
 import { Colors } from '../../styles/index';
@@ -72,6 +72,14 @@ const OptionPicker = (props) => {
         }
     };
 
+    /**
+     * Close the modal and don't save the state of selected values
+     */
+    const closeModalWithoutSave = () => {
+        setModalVisible(!modalVisible);
+        setSelectedImages(JSON.parse(appContext.draggableObjects));
+    };
+
     return (
         <>
             <Modal
@@ -83,10 +91,17 @@ const OptionPicker = (props) => {
                 }}>
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Text style={styles.modalText}>
-                            Velg opp til 15 elementer som vises på
-                            tegneskjermen!
-                        </Text>
+                        <View style={styles.modalTopView}>
+                            <Text style={styles.modalText}>
+                                Velg opp til 15 elementer som vises på
+                                tegneskjermen!
+                            </Text>
+                            <TouchableOpacity
+                                style={[styles.buttonClose]}
+                                onPress={() => closeModalWithoutSave()}>
+                                <Icon name={'times-circle'} size={30} />
+                            </TouchableOpacity>
+                        </View>
                         {warningShow && (
                             <View style={styles.warningContainer}>
                                 <Text style={styles.warningText}>
@@ -123,13 +138,20 @@ const OptionPicker = (props) => {
                                 );
                             })}
                         </View>
-                        <Pressable
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={() => saveSelectedtDraggables()}>
-                            <Text style={styles.textStyle}>
-                                Lagre innstillinger
-                            </Text>
-                        </Pressable>
+                        <View style={styles.buttonGroup}>
+                            <Pressable
+                                style={[styles.button, styles.buttonDeselect]}
+                                onPress={() => setSelectedImages({})}>
+                                <Text style={styles.textStyle}>
+                                    Avmarker alt
+                                </Text>
+                            </Pressable>
+                            <Pressable
+                                style={[styles.button, styles.buttonSave]}
+                                onPress={() => saveSelectedtDraggables()}>
+                                <Text style={styles.textStyle}>Lagre</Text>
+                            </Pressable>
+                        </View>
                     </View>
                 </View>
             </Modal>
@@ -153,6 +175,11 @@ const styles = StyleSheet.create({
         padding: 35,
         alignItems: 'center',
         elevation: 5,
+    },
+    modalTopView: {
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'space-evenly',
     },
     containerView: {
         // flex: 1,
@@ -180,9 +207,21 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         padding: 10,
         elevation: 2,
+        width: '30%',
     },
     buttonClose: {
-        backgroundColor: Colors.modalButton,
+        height: '45%',
+    },
+    buttonSave: {
+        backgroundColor: Colors.modalButtonSave,
+    },
+    buttonDeselect: {
+        backgroundColor: Colors.modalButtonDeselect,
+    },
+    buttonGroup: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
     },
     imageButton: {
         height: 75,
