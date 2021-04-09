@@ -6,8 +6,9 @@ import PopoutItems from './PopoutItems';
 /**
  * Popout component that shows a half circle of colors around
  * an object/view
- * @namespace MappingDraggable.Popout
- * @memberof Popout
+ * @namespace Popout
+ * @category Draggable
+ * @subcategory Popout
  * @prop {boolean} popoutActive Bool to represent if popout is active or not
  * @prop {function} itemSize size of items shown in popout
  */
@@ -20,7 +21,7 @@ const Popout = (props) => {
      * useEffect that is triggered when popoutActive state
      * is changed. Will animate the menu in or out of view
      * of the user
-     * @memberof MappingDraggable.Popout.Popout
+     * @memberof Popout
      */
     useEffect(() => {
         //Animation effect to "hide or show" popup

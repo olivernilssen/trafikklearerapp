@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
  * Component that displays a safe area view around the contents of a screen.
  * Takes in other React Native components as children.
  * @namespace MainView
- * @memberof reusableComponents
+ * @category ReusableComponents
  */
 const MainView = React.memo((props) => {
     return (

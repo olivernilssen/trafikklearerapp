@@ -4,7 +4,7 @@ import { View, StyleSheet, ScrollView, Text } from 'react-native';
 /**
  * Component that displays a carousel
  * @namespace Carousel
- * @memberof reusableComponents
+ * @category ReusableComponents
  * @prop {int} itemsPerSlide Number of items to be displayed per slide in the Carousel
  * @prop {array} objectArray The items of the slide
  */
@@ -19,7 +19,7 @@ const Carousel = (props) => {
     /**
      * Function to set the layout of the carousel.
      * Sets the width of the carousel, and the number of slides
-     * @memberof reusableComponents.Carousel
+     * @memberof Carousel
      * @param {number} width Width of the carousel
      */
     const setCarouselLayout = (width) => {
@@ -33,7 +33,7 @@ const Carousel = (props) => {
 
     /**
      * Function to get the active slide
-     * @memberof reusableComponents.Carousel
+     * @memberof Carousel
      * @param {number} offset The content offset of the carousel
      * @returns {int} The active slide
      */

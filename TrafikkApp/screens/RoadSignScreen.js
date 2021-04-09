@@ -24,7 +24,7 @@ const signObjectKeys = Object.keys(fareSkilt);
  * Screen component for sign screen
  * Langt fra ferdig!!!
  * @namespace RoadSignScreen
- * @memberof Screens
+ * @category Screens
  * @prop {object} navigation Used for navigation between the different screens
  */
 

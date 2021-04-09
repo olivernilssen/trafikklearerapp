@@ -7,7 +7,7 @@ import AppContext from '../../AppContext';
  * Helper function to map through all the draggables objects
  * then to display them in DraggableWithEverything
  * @namespace MappingDraggable
- * @memberof draggable
+ * @category Draggable
  * @prop {array[]} draggables list of all draggables in view
  * @prop {function} onRemoveItem function to remove item from draggables list
  */
