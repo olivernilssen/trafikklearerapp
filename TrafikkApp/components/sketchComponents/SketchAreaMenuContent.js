@@ -109,7 +109,8 @@ const SketchAreaMenuContent = React.memo(
         const onPressButton = (designName) => {
             if (
                 appContext.deleteOnChange == 'Ja' &&
-                appContext.showDeleteAlert == 'true'
+                appContext.showDeleteAlert == 'true' &&
+                designName != roadDesign
             ) {
                 setModalVisible(!modalVisible);
 
@@ -154,27 +155,28 @@ const SketchAreaMenuContent = React.memo(
          * @function
          * @param {String} radioValue
          */
-        const intersectionTypeChange = (intersectionType) => {
+        const intersectionTypeChange = (intersectionName) => {
             if (
                 appContext.deleteOnChange == 'Ja' &&
-                appContext.showDeleteAlert == 'true'
+                appContext.showDeleteAlert == 'true' &&
+                intersectionName != intersectionType
             ) {
                 setModalVisible(!modalVisible);
 
-                setTempIntersectionType(intersectionType);
+                setTempIntersectionType(intersectionName);
 
                 const imgSource =
-                    thisRoadType[roadDesign][intersectionType][extensionType];
+                    thisRoadType[roadDesign][intersectionName][extensionType];
                 setTempImage(imgSource);
 
                 setIsIntersectionBtn(true);
                 setIsDesignBtn(false);
             } else {
                 setRoadDesignChange(true);
-                setIntersectionType(intersectionType);
+                setIntersectionType(intersectionName);
 
                 const imgSource =
-                    thisRoadType[roadDesign][intersectionType][extensionType];
+                    thisRoadType[roadDesign][intersectionName][extensionType];
                 setImage(imgSource);
             }
         };
