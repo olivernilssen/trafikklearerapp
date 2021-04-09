@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import DraggableComponentsMenu from '../draggableComponentsMenu/DraggableComponentsMenu';
+import { DraggableComponentsMenu } from '../draggableComponentsMenu/';
 // import DraggableDropZone from '../unusedComponents/DraggableDropzone';
-import MappingDraggable from './MappingDraggables';
+import { MappingDraggables } from '.';
 
 /**
  * Collects all the draggable components into one
@@ -36,7 +36,6 @@ const DraggableWithEverything = React.memo((props) => {
     /**
      * useEffect that is triggered when deletingItemId is changed
      * Will delete according to this state's value
-     * @namespace DraggableWithEverything
      */
     useEffect(() => {
         if (deletingItemId == null) return;
@@ -50,7 +49,7 @@ const DraggableWithEverything = React.memo((props) => {
      * Adds a new draggable to the array draggables
      * also adds this value to the actionList to be used
      * when the user presses the undo button
-     * @namespace DraggableWithEverything
+     * @memberof DraggableWithEverything
      * @param {string} itemSrc image source of draggable to add
      */
     const onNewDraggable = useCallback((itemSrc) => {
@@ -68,7 +67,7 @@ const DraggableWithEverything = React.memo((props) => {
      * Function to remove an item from the list draggables
      * Filters the list according to the provided itemID
      * Also filteres the actionList the same way
-     * @namespace DraggableWithEverything
+     * @memberof DraggableWithEverything
      * @param {int} itemId
      */
     const onRemoveItem = (itemId) => {
@@ -93,7 +92,7 @@ const DraggableWithEverything = React.memo((props) => {
                 name={name}
             />
 
-            <MappingDraggable
+            <MappingDraggables
                 draggables={draggables}
                 setDraggables={setDraggables}
                 onRemoveItem={onRemoveItem}

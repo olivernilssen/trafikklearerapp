@@ -1,6 +1,5 @@
-/* eslint-disable prettier/prettier */
 import React, { useContext } from 'react';
-import Draggable from './Draggable';
+import { Draggable } from '.';
 import AppContext from '../../AppContext';
 
 /**

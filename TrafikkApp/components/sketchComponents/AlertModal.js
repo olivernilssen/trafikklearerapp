@@ -7,9 +7,9 @@ import {
     TouchableOpacity,
     CheckBox,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Typography, Icons } from '../../styles';
 import { Divider } from '../reusableComponents';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 
 /**
  * Alert is a component that pops up to alert the user that the drawing is set to be deleted.

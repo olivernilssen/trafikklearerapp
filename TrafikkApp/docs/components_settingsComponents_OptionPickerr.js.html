@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IllusTrafikk | Doc components/sketchComponents/AlertModal.js</title>
+  <title>IllusTrafikk | Doc components/settingsComponents/OptionPickerr.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -97,7 +97,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>components/sketchComponents/AlertModal.js</h1>
+                    <h1>components/settingsComponents/OptionPickerr.js</h1>
                 </header>
                 
 
@@ -106,190 +106,273 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
+            <pre class="prettyprint source linenums"><code>import React, { useContext, useState } from 'react';
 import {
-    Modal,
-    StyleSheet,
-    Text,
     View,
+    Text,
+    StyleSheet,
+    Modal,
+    Pressable,
     TouchableOpacity,
-    CheckBox,
+    Image,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { Colors, Typography, Icons } from '../../styles';
-import { Divider } from '../reusableComponents';
+import USER_KEYS from '../helpers/storageKeys';
+import AppContext from '../../AppContext';
+import { Colors } from '../../styles/index';
+import draggables from './draggableObjectPaths';
 
 /**
- * Alert is a component that pops up to alert the user that the drawing is set to be deleted.
- * @namespace AlertModal
- * @category SketchComponents
- * @prop {object} navigation Used for navigation between the different screens
- * @prop {boolean} modalVisible If the modal is visible or not
- * @prop {function} setModalVisible Changes the state modalVisible
- * @prop {boolean} hideAlert If the checkbox to never show alert again, is checked
- * @prop {function} setHideAlert Changes the state hideAlert
- * @prop {function} onOK What to do when the 'OK' button in the Alert is triggered
+ * The view modal picker. This shows so the user can select
+ * which traggable images they want visible in the drawing
+ * board.
+ * @namespace OptionPicker
+ * @category SettingsComponents
+ * @prop {boolean} modalVisible bool to determine if the modal is showing or not
+ * @prop {function} setModalVisible function to set the value of the modal boolean
+ *
  */
-const AlertModal = React.memo(
-    ({
-        navigation,
-        modalVisible,
-        setModalVisible,
-        hideAlert,
-        setHideAlert,
-        onOK,
-    }) => {
-        return (
-            &lt;View style={styles.centeredView}>
-                &lt;Modal
-                    animationType="fade"
-                    transparent={true}
-                    visible={modalVisible}
-                    onRequestClose={() => setModalVisible(!modalVisible)}>
-                    &lt;View style={styles.centeredView}>
-                        &lt;View style={styles.modalView}>
-                            &lt;View style={styles.alertHeader}>
-                                &lt;Text style={styles.modalTitle}>Advarsel&lt;/Text>
-                                &lt;TouchableOpacity
-                                    onPress={() =>
-                                        setModalVisible(!modalVisible)
-                                    }
-                                    activeOpacity={0.4}>
-                                    &lt;Icon
-                                        name="times"
-                                        size={Icons.medium}
-                                        color={Colors.alertButtonSecondary}
-                                    />
-                                &lt;/TouchableOpacity>
-                            &lt;/View>
+const OptionPicker = (props) => {
+    const { modalVisible, setModalVisible } = props;
+    const appContext = useContext(AppContext);
+    const allKeys = Object.keys(draggables);
 
+    const [selectedImages, setSelectedImages] = useState(
+        JSON.parse(appContext.draggableObjects)
+    );
+    const [warningShow, setWarningShow] = useState(false);
+
+    /**
+     * Save the settings to asyncStorage
+     * and make modal go away/invisible
+     * @memberof OptionPicker
+     */
+    const saveSelectedtDraggables = () => {
+        appContext.saveNewSettings(
+            JSON.stringify(selectedImages),
+            appContext.setDraggableObjects,
+            USER_KEYS.DRAGGABLE_OBJECTS
+        );
+
+        setModalVisible(!modalVisible);
+    };
+
+    /**
+     * Update which images that are selected in the modal view
+     * can be selected or unselected
+     * @memberof OptionPicker
+     * @param {string} newValue the source key of selected image
+     */
+    const updateSelectedImages = (newValue) => {
+        if (warningShow) setWarningShow(false);
+
+        if (selectedImages[newValue]) {
+            const copyArray = { ...selectedImages };
+            delete copyArray[newValue]; //delete an item from our object of paths
+            setSelectedImages(copyArray);
+        } else {
+            if (Object.keys(selectedImages).length >= 15) {
+                setWarningShow(true); //Show warning because  max limit is 15
+            } else {
+                const pair = {}; //make the keypair to put into a shallow copy array
+                pair[newValue] = draggables[newValue];
+                const copyArray = { ...selectedImages, ...pair };
+                setSelectedImages(copyArray);
+            }
+        }
+    };
+
+    /**
+     * Close the modal and don't save the state of selected values
+     * @memberof OptionPicker
+     */
+    const closeModalWithoutSave = () => {
+        setModalVisible(!modalVisible);
+        setSelectedImages(JSON.parse(appContext.draggableObjects));
+    };
+
+    return (
+        &lt;>
+            &lt;Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                    setModalVisible(!modalVisible);
+                }}>
+                &lt;View style={styles.centeredView}>
+                    &lt;View style={styles.modalView}>
+                        &lt;View style={styles.modalTopView}>
                             &lt;Text style={styles.modalText}>
-                                Hvis du bytter bilde vil tegningen bli slettet.
-                                Dette kan endres i innstillinger.
+                                Velg opp til 15 elementer som vises på
+                                tegneskjermen!
                             &lt;/Text>
                             &lt;TouchableOpacity
-                                style={styles.checkboxContainer}
-                                activeOpacity={0.4}
-                                onPress={() => setHideAlert(!hideAlert)}>
-                                &lt;CheckBox
-                                    value={hideAlert}
-                                    onValueChange={setHideAlert}
-                                    style={styles.checkbox}
-                                    tintColors={
-                                        hideAlert
-                                            ? Colors.alertButton
-                                            : Colors.alertButton
-                                    }
-                                />
-                                &lt;Text
-                                    style={[
-                                        styles.label,
-                                        hideAlert
-                                            ? { color: Colors.alertButton }
-                                            : {
-                                                  color:
-                                                      Colors.alertButtonSecondary,
-                                              },
-                                    ]}>
-                                    Ikke vis igjen
-                                &lt;/Text>
+                                style={[styles.buttonClose]}
+                                onPress={() => closeModalWithoutSave()}>
+                                &lt;Icon name={'times-circle'} size={30} />
                             &lt;/TouchableOpacity>
-                            &lt;Divider
-                                borderColor={Colors.iconActive}
-                                style={styles.divider}
-                            />
-                            &lt;View style={styles.buttonsView}>
-                                &lt;TouchableOpacity
-                                    style={[styles.button, styles.buttonClose]}
-                                    onPress={() => {
-                                        setModalVisible(!modalVisible);
-                                        navigation.navigate('SettingsScreen');
-                                    }}
-                                    activeOpacity={0.4}>
-                                    &lt;Text style={styles.textStyle}>
-                                        Gå til innstillinger
-                                    &lt;/Text>
-                                &lt;/TouchableOpacity>
-
-                                &lt;TouchableOpacity
-                                    style={[styles.button, styles.buttonClose]}
-                                    onPress={onOK}
-                                    activeOpacity={0.4}>
-                                    &lt;Text style={styles.textStyle}>OK&lt;/Text>
-                                &lt;/TouchableOpacity>
+                        &lt;/View>
+                        {warningShow &amp;&amp; (
+                            &lt;View style={styles.warningContainer}>
+                                &lt;Text style={styles.warningText}>
+                                    Du kan ikke velge mer enn 15 ikoner
+                                    samtidig. Du kan trykke på valgte ikoner for
+                                    å fjerne de om du vil.
+                                &lt;/Text>
                             &lt;/View>
+                        )}
+                        &lt;View style={styles.containerView}>
+                            {allKeys.map((source, i) => {
+                                const selected =
+                                    selectedImages[source] != null
+                                        ? true
+                                        : false;
+                                return (
+                                    &lt;TouchableOpacity
+                                        key={i}
+                                        activeOpacity={0.4}
+                                        style={
+                                            selected
+                                                ? styles.selectedImageButton
+                                                : styles.imageButton
+                                        }
+                                        onPress={() =>
+                                            updateSelectedImages(source)
+                                        }>
+                                        &lt;Image
+                                            source={draggables[source]}
+                                            style={styles.image}
+                                            resizeMode={'contain'}
+                                        />
+                                    &lt;/TouchableOpacity>
+                                );
+                            })}
+                        &lt;/View>
+                        &lt;View style={styles.buttonGroup}>
+                            &lt;Pressable
+                                style={[styles.button, styles.buttonDeselect]}
+                                onPress={() => setSelectedImages({})}>
+                                &lt;Text style={styles.textStyle}>
+                                    Avmarker alt
+                                &lt;/Text>
+                            &lt;/Pressable>
+                            &lt;Pressable
+                                style={[styles.button, styles.buttonSave]}
+                                onPress={() => saveSelectedtDraggables()}>
+                                &lt;Text style={styles.textStyle}>Lagre&lt;/Text>
+                            &lt;/Pressable>
                         &lt;/View>
                     &lt;/View>
-                &lt;/Modal>
-            &lt;/View>
-        );
-    }
-);
+                &lt;/View>
+            &lt;/Modal>
+        &lt;/>
+    );
+};
 
 const styles = StyleSheet.create({
     centeredView: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'rgba(0,0,0,0.6)',
+        flexDirection: 'column',
+        height: '100%',
+        width: '100%',
+        padding: 30,
+        justifyContent: 'space-evenly',
     },
     modalView: {
-        maxWidth: 500,
-        backgroundColor: Colors.sketchBackground,
-        borderRadius: 10,
-        padding: 20,
-        justifyContent: 'space-between',
+        // flex: 1,
+        margin: 20,
+        backgroundColor: Colors.modalBg,
+        borderRadius: 20,
+        padding: 35,
+        alignItems: 'center',
         elevation: 5,
     },
-    alertHeader: {
+    modalTopView: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        width: '100%',
+        justifyContent: 'space-evenly',
     },
-    modalTitle: {
-        margin: 5,
-        // textAlign: 'center',
+    containerView: {
+        // flex: 1,
+        justifyContent: 'center',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+        marginBottom: 25,
+    },
+    warningContainer: {
+        width: '90%',
+        padding: 20,
+        borderRadius: 20,
+        backgroundColor: Colors.warning,
+        textAlign: 'center',
+        marginBottom: 15,
+    },
+    warningText: {
+        fontSize: 20,
+        color: Colors.textPrimary,
+        textAlign: 'center',
         fontWeight: 'bold',
-        color: Colors.icons,
-        ...Typography.section,
-    },
-    modalText: {
-        margin: 5,
-        // textAlign: 'center',
-        color: Colors.icons,
-        ...Typography.body,
-    },
-    checkboxContainer: {
-        width: '50%',
-        flexDirection: 'row',
-        marginVertical: 5,
-    },
-    checkbox: {
-        alignSelf: 'center',
-    },
-    label: {
-        margin: 8,
-        ...Typography.label,
-    },
-    divider: {
-        marginVertical: 10,
-        height: 1,
-    },
-    buttonsView: {
-        padding: 5,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
     },
     button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+        width: '30%',
+    },
+    buttonClose: {
+        height: '45%',
+    },
+    buttonSave: {
+        backgroundColor: Colors.modalButtonSave,
+    },
+    buttonDeselect: {
+        backgroundColor: Colors.modalButtonDeselect,
+    },
+    buttonGroup: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+    },
+    imageButton: {
+        height: 75,
+        width: 75,
+        margin: 5,
+        padding: 10,
+    },
+    selectedImageButton: {
+        height: 75,
+        width: 75,
+        margin: 5,
+        padding: 10,
+        borderColor: Colors.selectedBorder,
+        borderWidth: 4,
         borderRadius: 5,
     },
+    image: {
+        height: '100%',
+        width: '100%',
+    },
+    selectedImage: {
+        height: '100%',
+        width: '100%',
+    },
     textStyle: {
-        color: Colors.alertButton,
+        color: Colors.textPrimary,
+        fontWeight: 'bold',
         textAlign: 'center',
-        ...Typography.button,
+        fontSize: 20,
+    },
+    modalText: {
+        marginBottom: 15,
+        fontSize: 25,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: Colors.modalText,
     },
 });
 
-export default AlertModal;
+export default OptionPicker;
 </code></pre>
         </article>
     </section>

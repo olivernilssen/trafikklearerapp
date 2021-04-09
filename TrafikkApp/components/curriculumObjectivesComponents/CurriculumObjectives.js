@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import { curriculumData } from '.';
 import { Colors, Typography } from '../../styles';
-import curriculumData from './curriculumData';
 
 /**
  * Component to actually display the curriculum objectives.

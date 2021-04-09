@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 
+import { DrawerToggleItem, DrawerItem } from '.';
+import { Divider } from '../reusableComponents/';
 import { Colors } from '../../styles';
-import DrawerToggleMenuItem from './DrawerToggleItem';
-import DrawerItem from './DrawerItem';
-import Divider from '../reusableComponents/Divider';
 
 /**
  * Component to display the menu as a flatlist in
@@ -16,10 +15,7 @@ import Divider from '../reusableComponents/Divider';
 const DrawerMenu = React.memo((props) => {
     return (
         <View style={styles.container}>
-            <DrawerToggleMenuItem
-                navigation={props.navigation}
-                icon={'times'}
-            />
+            <DrawerToggleItem navigation={props.navigation} icon={'times'} />
             <Divider
                 style={styles.divider}
                 borderColor={Colors.dividerPrimary}

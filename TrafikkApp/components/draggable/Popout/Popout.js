@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
 import { StyleSheet, Animated } from 'react-native';
-import PopoutItems from './PopoutItems';
+import { PopoutItems } from '.';
 
 /**
  * Popout component that shows a half circle of colors around

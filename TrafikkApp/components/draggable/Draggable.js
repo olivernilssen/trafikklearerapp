@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import Gestures from 'react-native-easy-gestures';
 import {
     StyleSheet,
     Animated,
@@ -7,7 +8,7 @@ import {
     TouchableWithoutFeedback,
 } from 'react-native';
 
-import Popout from './Popout/Popout';
+import { Popout } from './Popout/';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -21,9 +22,6 @@ const colors = [
     'reset',
     'delete',
 ];
-
-import Gestures from 'react-native-easy-gestures';
-import { useCallback } from 'react';
 
 const ITEM_SIZE = 100;
 const radius = (ITEM_SIZE * 2) / 2;

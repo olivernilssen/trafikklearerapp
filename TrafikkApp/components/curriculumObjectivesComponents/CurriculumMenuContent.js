@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import { ButtonGroup } from '../reusableComponents/';
+import { curriculumData } from '.';
 import { Colors, Typography } from '../../styles';
-import ButtonGroup from '../reusableComponents/ButtonGroup';
-import curriculumData from './curriculumData';
 
 /**
  * Component to display the content of the BottomMenu on the screen

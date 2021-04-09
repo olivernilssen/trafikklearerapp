@@ -1,12 +1,17 @@
 import React, { useState, useRef } from 'react';
 import { View, StyleSheet, Text, ScrollView } from 'react-native';
 
-import { MainView, Header } from '../components/reusableComponents';
-import CurriculumMenuContent from '../components/curriculumObjectivesComponents/CurriculumMenuContent';
-import CurriculumObjectives from '../components/curriculumObjectivesComponents/CurriculumObjectives';
+import {
+    MainView,
+    Header,
+    Overlay,
+    BottomMenuAnimated,
+} from '../components/reusableComponents';
+import {
+    CurriculumMenuContent,
+    CurriculumObjectives,
+} from '../components/curriculumObjectivesComponents/';
 import { Colors, Typography } from '../styles';
-import { Overlay } from '../components/reusableComponents';
-import BottomMenuAnimated from '../components/reusableComponents/BottomMenuAnimated';
 
 /**
  * The screen component for the curriculum objectives for traffic training
