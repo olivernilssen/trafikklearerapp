@@ -3,9 +3,8 @@ import { View, Text, StyleSheet, ToastAndroid, Button } from 'react-native';
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
 import { Colors, Typography } from '../../styles/index';
-import ButtonGroup from '../reusableComponents/ButtonGroup';
-import OptionPicker from './optionPicker';
-import { Divider } from '../reusableComponents';
+import { ButtonGroup, Divider } from '../reusableComponents/';
+import { OptionPicker } from '.';
 
 /**
  * The view for the settings screen. It takes in data from

@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { StyleSheet, Animated, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Icons } from '../../styles';
-import { useCallback } from 'react';
 
 /**
  * Component that displays a menu on the bottom of the screen.

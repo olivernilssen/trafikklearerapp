@@ -2,10 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import MainView from '../components/reusableComponents/MainView';
-import Header from '../components/reusableComponents/Header';
-import StartScreenLink from '../components/startScreenComponents/StartScreenLink';
-import HeaderName from '../components/startScreenComponents/HeaderName';
+import { MainView, Header } from '../components/reusableComponents/';
+import {
+    StartScreenLink,
+    HeaderName,
+} from '../components/startScreenComponents/';
 import { Colors, Typography, Icons } from '../styles';
 
 /**

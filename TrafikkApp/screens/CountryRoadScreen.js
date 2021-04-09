@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import MainView from '../components/reusableComponents/MainView';
-import SketchArea from '../components/sketchComponents/SketchArea';
+import { MainView } from '../components/reusableComponents/';
+import { SketchArea } from '../components/sketchComponents/';
 
 /**
  * The screen component for roadScreen "Landevei"

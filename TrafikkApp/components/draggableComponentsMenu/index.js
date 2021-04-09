@@ -1,6 +1,2 @@
-export { default as draggableComponent } from './draggableComponent';
-export { default as draggableComponentsMenu } from './draggableComponentsMenu';
-
-/** Reusable components
- * @namespace draggableComponentsMenu
- */
+export { default as DraggableComponents } from './DraggableComponents';
+export { default as DraggableComponentsMenu } from './DraggableComponentsMenu';

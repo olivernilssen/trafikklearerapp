@@ -2,10 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, Image } from 'react-native';
 
 import { Colors, Typography, Buttons } from '../../styles';
-import Divider from '../reusableComponents/Divider';
-import ButtonGroup from '../reusableComponents/ButtonGroup';
-import backgroundImagePath from './backgroundImagePath';
-import AlertModal from './AlertModal';
+import { Divider, ButtonGroup } from '../reusableComponents/';
+import { backgroundImagePath, AlertModal } from '.';
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
 

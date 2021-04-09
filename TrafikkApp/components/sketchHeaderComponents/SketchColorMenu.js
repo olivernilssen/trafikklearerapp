@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {
@@ -8,11 +8,9 @@ import {
     MenuTrigger,
     renderers,
 } from 'react-native-popup-menu';
-import PencilSizeButton from './PencilSizeButton';
-import ColorButton from './ColorButton';
+import { PencilSizeButton, ColorButton } from '.';
 import { Colors, Buttons, Icons } from '../../styles';
 import AppContext from '../../AppContext';
-import { useEffect } from 'react';
 
 const { Popover } = renderers;
 

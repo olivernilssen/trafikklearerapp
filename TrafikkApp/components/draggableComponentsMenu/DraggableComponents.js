@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Carousel } from '../reusableComponents/';
 import AppContext from '../../AppContext';
-import Carousel from '../reusableComponents/Carousel';
 
 /**
  * Component for the items that are in the draggable top menu

@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     View,
     Text,
@@ -8,7 +7,6 @@ import {
     Animated,
 } from 'react-native';
 import ThemeVariables from '../../styles/themeVariables';
-import { button } from '../../styles/typography';
 
 /**
  * Component that displays a button group

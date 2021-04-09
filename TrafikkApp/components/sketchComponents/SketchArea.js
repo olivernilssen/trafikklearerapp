@@ -6,17 +6,13 @@ import React, {
     useContext,
 } from 'react';
 import { View, StyleSheet, Image, Dimensions } from 'react-native';
-
-import MainView from '../reusableComponents/MainView';
-import SketchHeader from '../sketchHeaderComponents/SketchHeader';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
+
+import { MainView, BottomMenuAnimated, Overlay } from '../reusableComponents/';
+import { SketchHeader } from '../sketchHeaderComponents/';
+import { DraggableWithEverything } from '../draggable/';
+import { SketchAreaMenuContent } from '.';
 import { Colors } from '../../styles';
-
-import DraggableWithEverything from '../draggable/DraggableWithEverything';
-import BottomMenuAnimated from '../reusableComponents/BottomMenuAnimated';
-import SketchAreaMenuContent from './SketchAreaMenuContent';
-import Overlay from '../reusableComponents/Overlay';
-
 import AppContext from '../../AppContext';
 
 const { width, height } = Dimensions.get('window');

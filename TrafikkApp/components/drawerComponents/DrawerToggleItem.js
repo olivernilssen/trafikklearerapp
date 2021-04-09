@@ -12,7 +12,7 @@ import { Colors } from '../../styles';
  * @prop {function} navigation functions for the drawer navigation
  * @prop {string} icon the icon name for this screen item
  */
-const DrawerToggleMenuItem = React.memo(({ navigation, icon }) => (
+const DrawerToggleItem = React.memo(({ navigation, icon }) => (
     <TouchableOpacity
         style={styles.menuItem}
         activeOpacity={0.8}
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default DrawerToggleMenuItem;
+export default DrawerToggleItem;

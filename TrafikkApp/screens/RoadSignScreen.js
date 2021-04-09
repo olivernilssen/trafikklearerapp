@@ -10,13 +10,12 @@ import {
     SectionList,
     Dimensions,
 } from 'react-native';
-import Header from '../components/reusableComponents/Header';
-import MainView from '../components/reusableComponents/MainView';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import { Header, MainView } from '../components/reusableComponents/';
 import { Colors } from '../styles';
 // import signSource from '../components/roadSignComponents/signPath';
 // import dangerSignDescription from '../assets/fareskiltBeskrivelse.js';
-import { fareSkilt, forbudsSkilt } from '../assets/sign_descriptions/index';
+import { fareSkilt, forbudsSkilt } from '../assets/sign_descriptions/';
 
 const numColumns = 4;
 const signObjectKeys = Object.keys(fareSkilt);

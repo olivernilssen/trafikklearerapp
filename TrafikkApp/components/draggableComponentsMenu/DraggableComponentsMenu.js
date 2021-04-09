@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { StyleSheet, View, Animated, Text } from 'react-native';
 
+import { Divider, ButtonGroup } from '../reusableComponents/';
+import { DraggableComponents } from '.';
 import { Colors, Typography } from '../../styles';
-import DraggableComponents from './DraggableComponents';
-import Divider from '../reusableComponents/Divider';
-import ButtonGroup from '../reusableComponents/ButtonGroup';
 
 const extensionTypes = ['Gangfelt', 'O', 'Sykkelfelt'];
 
-/**
-
- */
 /**
  * Component for the draggable top menu, which displayes objects
  * that can be turned into draggables.
