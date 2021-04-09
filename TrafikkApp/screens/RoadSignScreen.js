@@ -16,7 +16,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from '../styles';
 // import signSource from '../components/roadSignComponents/signPath';
 // import dangerSignDescription from '../assets/fareskiltBeskrivelse.js';
-import { fareSkilt, forbudsSkilt } from '../assets/Sign descriptions/index';
+import { fareSkilt, forbudsSkilt } from '../assets/sign_descriptions/index';
 
 const numColumns = 4;
 const signObjectKeys = Object.keys(fareSkilt);
