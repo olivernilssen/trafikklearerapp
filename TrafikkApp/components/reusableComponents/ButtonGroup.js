@@ -7,6 +7,7 @@ import {
     TouchableOpacity,
     Animated,
 } from 'react-native';
+import ThemeVariables from '../../styles/themeVariables';
 import { button } from '../../styles/typography';
 
 /**
@@ -45,7 +46,8 @@ const ButtonGroup = (props) => {
 
     const buttonSize = width / values.length;
 
-    const fontSize = textSize != null ? textSize : width / 15;
+    // const fontSize = textSize != null ? textSize : width / 15;
+    const fontSize = ThemeVariables.FONT_SIZE_BODY;
     const isColorOption = isColorOptions != null ? isColorOptions : false;
 
     const [chosenIndex, setChosenIndex] = useState(

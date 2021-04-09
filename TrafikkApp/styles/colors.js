@@ -25,6 +25,9 @@ const darkerBlue = '#22a6dd';
 
 const red = '#FB5555';
 
+// DEFINING PRIMARY COLOR, SECONDARY COLOR, ACCENT COLOR ++
+const accentColor = blueGreen;
+
 export default {
     // Main
     headerBg: darkGray,
@@ -86,6 +89,9 @@ export default {
     modalButtonClose: red,
     modalButtonDeselect: blue,
     modalText: charcoal,
+
     //misc
     warning: red,
+    alertButton: accentColor,
+    alertButtonSecondary: lightCharcoal,
 };

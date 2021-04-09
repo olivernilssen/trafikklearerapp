@@ -5,13 +5,7 @@ import React, {
     useCallback,
     useContext,
 } from 'react';
-import {
-    View,
-    StyleSheet,
-    Image,
-    Dimensions,
-    ImageBackground,
-} from 'react-native';
+import { View, StyleSheet, Image, Dimensions } from 'react-native';
 
 import MainView from '../reusableComponents/MainView';
 import SketchHeader from '../sketchHeaderComponents/SketchHeader';
@@ -234,6 +228,7 @@ const SketchArea = React.memo((props) => {
                     setRoadDesignChange={setRoadDesignChange}
                     extensionType={extensionType}
                     setBottomSheetHidden={setBottomSheetHidden}
+                    navigation={navigation}
                 />
             </BottomMenuAnimated>
         </MainView>
