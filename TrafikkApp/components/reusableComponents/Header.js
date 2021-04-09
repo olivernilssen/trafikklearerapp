@@ -7,7 +7,7 @@ import { Colors, Icons, Typography } from '../../styles';
  * Component that displays a Header.
  * Takes in other React Native components as children.
  * @namespace Header
- * @memberof reusableComponents
+ * @category ReusableComponents
  * @prop {object} navigation Navigation object
  * @prop {array} [name] The header text
  * @prop {styleSheet} [style] Optional styling of the Header

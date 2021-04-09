@@ -6,8 +6,8 @@ import { Colors, Typography, Icons } from '../../styles';
 
 /**
  * Components item that are shown in the navigation drawer
- * @namespace drawerComponents
- * @memberof DrawerItem
+ * @namespace DrawerItem
+ * @category DrawerComponents
  * @prop {function} navigation functions for the drawer navigation
  * @prop {int} screenIndex the index number of the screenIndex
  * @prop {string} screenName screen name of the view
@@ -80,10 +80,11 @@ const styles = StyleSheet.create({
         margin: 15,
     },
     menuItemText: {
-        // fontSize: 20,
+        flex: 1,
+        flexWrap: 'wrap',
         fontWeight: '300',
         margin: 12,
-        textAlign: 'center',
+        textAlign: 'left',
         ...Typography.body,
     },
 });

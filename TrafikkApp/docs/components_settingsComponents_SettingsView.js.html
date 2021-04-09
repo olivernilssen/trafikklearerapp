@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> components/settingsComponents/SettingsView.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="DraggableWithEverything.html">DraggableWithEverything</a></li></ul></div><div class="category"><h2>Draggable</h2><h3>Namespaces</h3><ul><li><a href="Draggable.html">Draggable</a></li><li><a href="DraggableWithEverything.html">DraggableWithEverything</a></li><li><a href="MappingDraggable.html">MappingDraggable</a></li></ul><h3>Namespaces / Popout</h3><ul><li><a href="Popout.html">Popout</a></li><li><a href="PopoutItems.html">PopoutItems</a></li></ul></div><div class="category"><h2>DraggableComponentsMenu</h2><h3>Namespaces</h3><ul><li><a href="DraggableComponents.html">DraggableComponents</a></li><li><a href="DraggableComponentsMenu.html">DraggableComponentsMenu</a></li></ul></div><div class="category"><h2>DrawerComponents</h2><h3>Namespaces</h3><ul><li><a href="DrawerItem.html">DrawerItem</a></li><li><a href="DrawerMenu.html">DrawerMenu</a></li><li><a href="DrawerToggleItem.html">DrawerToggleItem</a></li><li><a href="Navigator.html">Navigator</a></li></ul></div><div class="category"><h2>ReusableComponents</h2><h3>Namespaces</h3><ul><li><a href="BottomMenuAnimated.html">BottomMenuAnimated</a></li><li><a href="ButtonGroup.html">ButtonGroup</a></li><li><a href="Carousel.html">Carousel</a></li><li><a href="Divider.html">Divider</a></li><li><a href="Header.html">Header</a></li><li><a href="MainView.html">MainView</a></li><li><a href="Overlay.html">Overlay</a></li></ul></div><div class="category"><h2>Screens</h2><h3>Namespaces</h3><ul><li><a href="IntersectionScreen.html">IntersectionScreen</a></li><li><a href="RoadSignScreen.html">RoadSignScreen</a></li><li><a href="RoundaboutScreen.html">RoundaboutScreen</a></li><li><a href="SettingsScreen.html">SettingsScreen</a></li><li><a href="StartScreen.html">StartScreen</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CountryRoadScreen">CountryRoadScreen</a></li><li><a href="global.html#CurriculumObjectivesScreen">CurriculumObjectivesScreen</a></li><li><a href="global.html#HighwayScreen">HighwayScreen</a></li></ul></div><div class="category"><h2>SettingsComponents</h2><h3>Namespaces</h3><ul><li><a href="OptionPicker.html">OptionPicker</a></li><li><a href="SettingsView.html">SettingsView</a></li></ul></div><div class="category"><h2>SketchComponents</h2><h3>Namespaces</h3><ul><li><a href="AlertModal.html">AlertModal</a></li><li><a href="SketchArea.html">SketchArea</a></li><li><a href="SketchAreaMenuContent.html">SketchAreaMenuContent</a></li></ul></div><div class="category"><h2>curriculumObjectivesComponents</h2><h3>Namespaces</h3><ul><li><a href="CurriculumMenuContent.html">CurriculumMenuContent</a></li><li><a href="CurriculumObjectives.html">CurriculumObjectives</a></li></ul></div><div class="category"><h2>sketchHeaderComponents</h2><h3>Namespaces</h3><ul><li><a href="ColorButton.html">ColorButton</a></li><li><a href="DeleteButtonPopover.html">DeleteButtonPopover</a></li><li><a href="DraggableComponentsButton.html">DraggableComponentsButton</a></li><li><a href="HeaderButton.html">HeaderButton</a></li><li><a href="PencilSizeButton.html">PencilSizeButton</a></li><li><a href="SketchColorMenu.html">SketchColorMenu</a></li><li><a href="SketchHeader.html">SketchHeader</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>components/settingsComponents/SettingsView.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useContext } from 'react';
+import { View, Text, StyleSheet, ToastAndroid, Button } from 'react-native';
+import USER_KEYS from '../helpers/storageKeys';
+import AppContext from '../../AppContext';
+import { Colors, Typography } from '../../styles/index';
+import ButtonGroup from '../reusableComponents/ButtonGroup';
+import OptionPicker from './optionPicker';
+import { Divider } from '../reusableComponents';
+
+/**
+ * The view for the settings screen. It takes in data from
+ * AppContext and has arrays for possible values for the different settings
+ * @namespace SettingsView
+ * @category SettingsComponents
+ */
+const SettingsView = () => {
+    const myContext = useContext(AppContext);
+    const [pickerVisible, setPickerVisible] = useState(false);
+
+    const onDelChangeValues = ['Ja', 'Nei'];
+    const penColorValues = [
+        '#20303C',
+        '#3182C8',
+        '#00AAAF',
+        '#00A65F',
+        '#E2902B',
+        '#D9644A',
+        '#CF262F',
+        '#8B1079',
+    ];
+    const eraserSizeValues = ['50', '60', '70', '80', '90', '100'];
+    const draggableColorValues = [
+        '#000000',
+        '#e09f3e',
+        '#9e2a2b',
+        '#284b63',
+        '#3a5a40',
+    ];
+    const themeValues = ['Mørk', 'Lys'];
+
+    /**
+     * Function to handle changing a value in settings
+     * it also launches a toast on the screen to let the user know
+     * that the change has been saved
+     * @memberof SettingsView
+     * @param {string} type the name of the settings that is changed
+     * @param {string} value the value to update the storage key to
+     * @param {function} setValue the state set function associated with this value
+     * @param {string} key the asyncStorage key for this value to update it
+     */
+    const onChangeValue = (type, value, setValue, key) => {
+        myContext.saveNewSettings(value, setValue, key);
+        ToastAndroid.show(
+            type + 'har blitt endret til ' + value,
+            ToastAndroid.SHORT,
+            ToastAndroid.BOTTOM
+        );
+    };
+
+    return (
+        &lt;View style={styles.view}>
+            &lt;OptionPicker
+                modalVisible={pickerVisible}
+                setModalVisible={setPickerVisible}
+            />
+            {/* CHANGE THEME COLORS */}
+            &lt;View style={styles.rowView}>
+                &lt;Text style={styles.leftColumn}>Fargetema:&lt;/Text>
+                &lt;View style={styles.rightColumn}>
+                    &lt;ButtonGroup
+                        selectedValue={myContext.theme}
+                        values={themeValues}
+                        onSelect={(newValue) =>
+                            onChangeValue(
+                                'Temafarge',
+                                newValue,
+                                myContext.setTheme,
+                                USER_KEYS.THEME_KEY
+                            )
+                        }
+                        groupWidth={300}
+                        highlightBackgroundColor={Colors.slideActiveBg}
+                        highlightTextColor={Colors.slideTextActive}
+                        inactiveBackgroundColor={Colors.slideInactiveBg}
+                        inactiveTextColor={Colors.slideTextInactive}
+                    />
+                &lt;/View>
+            &lt;/View>
+            &lt;Divider borderColor={Colors.headerBg} />
+            {/* STANDARD SIZE OF ERASER */}
+            &lt;View style={styles.rowView}>
+                &lt;Text style={styles.leftColumn}>Viskelærstørrelse: &lt;/Text>
+                &lt;View style={styles.rightColumn}>
+                    &lt;ButtonGroup
+                        selectedValue={myContext.eraserSize}
+                        values={eraserSizeValues}
+                        onSelect={(newValue) =>
+                            onChangeValue(
+                                'Viskelær størrelse',
+                                newValue,
+                                myContext.setEraserSize,
+                                USER_KEYS.ERASER_SIZE_KEY
+                            )
+                        }
+                        groupWidth={300}
+                        highlightBackgroundColor={Colors.slideActiveBg}
+                        highlightTextColor={Colors.slideTextActive}
+                        inactiveBackgroundColor={Colors.slideInactiveBg}
+                        inactiveTextColor={Colors.slideTextInactive}
+                    />
+                &lt;/View>
+            &lt;/View>
+            &lt;Divider borderColor={Colors.headerBg} />
+            {/* DELETE EVERYTHING ON ILLUSTRASTION CHANGE */}
+            &lt;View style={styles.rowView}>
+                &lt;Text style={styles.leftColumn}>
+                    Slette alt ved illustrasjonsbytte:
+                &lt;/Text>
+                &lt;View style={styles.rightColumn}>
+                    &lt;ButtonGroup
+                        selectedValue={myContext.deleteOnChange}
+                        values={onDelChangeValues}
+                        onSelect={(newValue) =>
+                            onChangeValue(
+                                'Slett illustrasjon',
+                                newValue,
+                                myContext.setDeleteOnChange,
+                                USER_KEYS.DELETE_KEY
+                            )
+                        }
+                        groupWidth={300}
+                        highlightBackgroundColor={Colors.slideActiveBg}
+                        highlightTextColor={Colors.slideTextActive}
+                        inactiveBackgroundColor={Colors.slideInactiveBg}
+                        inactiveTextColor={Colors.slideTextInactive}
+                    />
+                &lt;/View>
+            &lt;/View>
+            &lt;Divider borderColor={Colors.headerBg} />
+            {/* PEN INITAL COLOR */}
+            &lt;View style={styles.rowView}>
+                &lt;Text style={styles.leftColumn}>Innledende farge på penn:&lt;/Text>
+                &lt;View style={styles.rightColumn}>
+                    &lt;ButtonGroup
+                        selectedValue={myContext.penColor}
+                        values={penColorValues}
+                        onSelect={(newValue) =>
+                            onChangeValue(
+                                'Innledende pennfarge',
+                                newValue,
+                                myContext.setPenColor,
+                                USER_KEYS.PEN_COLOR_KEY
+                            )
+                        }
+                        groupWidth={300}
+                        highlightBackgroundColor={Colors.slideActiveBg}
+                        highlightTextColor={Colors.slideTextActive}
+                        inactiveBackgroundColor={Colors.slideInactiveBg}
+                        inactiveTextColor={Colors.slideTextInactive}
+                        isColorOptions={true}
+                    />
+                &lt;/View>
+            &lt;/View>
+            &lt;Divider borderColor={Colors.headerBg} />
+            {/* DRAGGABLE INITAL COLOR */}
+            &lt;View style={styles.rowView}>
+                &lt;Text style={styles.leftColumn}>
+                    Innledende farge på drabare elementer:
+                &lt;/Text>
+                &lt;View style={styles.rightColumn}>
+                    &lt;ButtonGroup
+                        selectedValue={myContext.draggableColor}
+                        values={draggableColorValues}
+                        onSelect={(newValue) =>
+                            onChangeValue(
+                                'Innledende drabarfarge',
+                                newValue,
+                                myContext.setDraggableColor,
+                                USER_KEYS.DRAGGABLE_COLOR_KEY
+                            )
+                        }
+                        groupWidth={300}
+                        highlightBackgroundColor={Colors.slideActiveBg}
+                        highlightTextColor={Colors.slideTextActive}
+                        inactiveBackgroundColor={Colors.slideInactiveBg}
+                        inactiveTextColor={Colors.slideTextInactive}
+                        isColorOptions={true}
+                    />
+                &lt;/View>
+            &lt;/View>
+            &lt;Divider borderColor={Colors.headerBg} />
+            {/* DRAGGABLE INITAL COLOR */}
+            &lt;View style={styles.rowView}>
+                &lt;Text style={styles.leftColumn}>
+                    Drabare elementer velger (max 20):
+                &lt;/Text>
+                &lt;View style={styles.rightColumn}>
+                    &lt;Button
+                        title="openPicker"
+                        onPress={() =>
+                            setPickerVisible(!pickerVisible)
+                        }>&lt;/Button>
+                &lt;/View>
+            &lt;/View>
+        &lt;/View>
+    );
+};
+
+const styles = StyleSheet.create({
+    view: {
+        flexDirection: 'column',
+        height: '100%',
+        width: '100%',
+        padding: 30,
+        // borderColor: 'black',
+        justifyContent: 'space-evenly',
+    },
+    rowView: {
+        width: '100%',
+        flexDirection: 'row',
+        // justifyContent: 'space-between',
+    },
+    // textInput: {
+    //     backgroundColor: 'gray',
+    //     color: 'white',
+    //     fontSize: 15,
+    //     width: '100%',
+    // },
+    leftColumn: {
+        color: Colors.textPrimary,
+        justifyContent: 'flex-start',
+        flex: 1,
+        textAlignVertical: 'center',
+        // fontSize: 20,
+        // fontWeight: '300',
+        ...Typography.body,
+    },
+    rightColumn: {
+        flex: 0,
+        justifyContent: 'flex-end',
+        alignContent: 'flex-end',
+    },
+});
+
+export default SettingsView;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

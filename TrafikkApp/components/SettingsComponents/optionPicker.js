@@ -18,8 +18,8 @@ import draggables from './draggableObjectPaths';
  * The view modal picker. This shows so the user can select
  * which traggable images they want visible in the drawing
  * board.
- * @namespace SettingsComponents
- * @memberof OptionPicker
+ * @namespace OptionPicker
+ * @category SettingsComponents
  * @prop {boolean} modalVisible bool to determine if the modal is showing or not
  * @prop {function} setModalVisible function to set the value of the modal boolean
  *
@@ -37,6 +37,7 @@ const OptionPicker = (props) => {
     /**
      * Save the settings to asyncStorage
      * and make modal go away/invisible
+     * @memberof OptionPicker
      */
     const saveSelectedtDraggables = () => {
         appContext.saveNewSettings(
@@ -51,6 +52,7 @@ const OptionPicker = (props) => {
     /**
      * Update which images that are selected in the modal view
      * can be selected or unselected
+     * @memberof OptionPicker
      * @param {string} newValue the source key of selected image
      */
     const updateSelectedImages = (newValue) => {
@@ -74,6 +76,7 @@ const OptionPicker = (props) => {
 
     /**
      * Close the modal and don't save the state of selected values
+     * @memberof OptionPicker
      */
     const closeModalWithoutSave = () => {
         setModalVisible(!modalVisible);

@@ -7,8 +7,8 @@ import { Colors } from '../../styles';
 /**
  * Component to display the menu as a flatlist in
  * the navigation drawer (will add all items that are in props.state.routes)
- * @namespace drawerComponents
- * @memberof DrawerToggleMenuItem
+ * @namespace DrawerToggleItem
+ * @category DrawerComponents
  * @prop {function} navigation functions for the drawer navigation
  * @prop {string} icon the icon name for this screen item
  */

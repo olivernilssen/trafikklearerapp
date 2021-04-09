@@ -13,7 +13,7 @@ import { button } from '../../styles/typography';
 /**
  * Component that displays a button group
  * @namespace ButtonGroup
- * @memberof reusableComponents
+ * @category ReusableComponents
  * @prop {array} values The buttons of the button group
  * @prop {int} selectedValue Selected button
  * @prop {number} [groupWidth] The width of the button group
@@ -81,7 +81,7 @@ const ButtonGroup = (props) => {
     /**
      * Handler that is called when the user taps a button.
      * Sets the state of the chosenIndex
-     * @memberof reusableComponents.ButtonGroup
+     * @memberof ButtonGroup
      * @param {string} value The name of the button
      * @param {int} i The index of the button
      */

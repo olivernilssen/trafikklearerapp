@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 /**
  * Component that displays a divider
  * @namespace Divider
- * @memberof reusableComponents
+ * @category ReusableComponents
  * @prop {stylesheetObject} [style] Style of the divider
  * @prop {color} borderColor Color of the divider
  */

@@ -22,6 +22,11 @@
     "recurseDepth": 5,
     "opts": {
         "destination": "./docs/",
-        "recurse": true
-    }
+        "recurse": true,
+        "template": "node_modules/better-docs"
+    },
+    "tags": {
+        "allowUnknownTags": true
+    },
+    "plugins": ["./node_modules/better-docs/category"]
 }

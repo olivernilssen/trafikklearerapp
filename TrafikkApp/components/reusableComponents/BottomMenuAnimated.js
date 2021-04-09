@@ -9,7 +9,7 @@ import { useCallback } from 'react';
  * It has properties to move or hide the view and will show the content of it's children.
  * Takes in other React Native components as children.
  * @namespace BottomMenuAnimated
- * @memberof reusableComponents
+ * @category ReusableComponents
  * @prop {boolean} bottomSheetHidden If the bottomMenu is hidden or in view
  * @prop {function} setBottomSheetHidden Set the state bottomSheetHidden
  */
@@ -33,7 +33,7 @@ const BottomMenuAnimated = React.memo((props) => {
      * This function will change the little icon at the top of the bottom menu
      * to either show a chevorn of elipsis.
      * It also animates the menu to either be hidden or shown
-     * @memberof reusableComponents.BottomMenuAnimated
+     * @memberof BottomMenuAnimated
      */
     const toggleSubview = useCallback(() => {
         setHiddenViewButton(bottomSheetHidden ? 'chevron-up' : 'chevron-down');
@@ -55,7 +55,7 @@ const BottomMenuAnimated = React.memo((props) => {
     /**
      * Changes the state of the bottomSheetHidden state
      * This will also trigger a useEffect to run afterwards
-     * @memberof reusableComponents.BottomMenuAnimated
+     * @memberof BottomMenuAnimated
      */
     const onHiddenViewChange = () => {
         setBottomSheetHidden(!bottomSheetHidden);
@@ -65,7 +65,7 @@ const BottomMenuAnimated = React.memo((props) => {
      * Is triggered to get the layout (height, width) of the
      * bottomsheet view. This is to accuractly decide how far up
      * on the screen the menu needs to slide
-     * @memberof reusableComponents.BottomMenuAnimated
+     * @memberof BottomMenuAnimated
      * @param {dictionary} layout
      */
     const getLayout = (layout) => {

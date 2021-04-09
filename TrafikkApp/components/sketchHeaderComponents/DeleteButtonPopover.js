@@ -14,7 +14,7 @@ const { Popover } = renderers;
 
 /** A button for clearing the sketch screen, drops down a button for confirmation
  * @namespace DeleteButtonPopover
- * @memberof sketchHeaderComponents
+ * @category sketchHeaderComponents
  * @prop {object} propsStyle StyleSheet
  * @prop {function} clearCanvas Clears the canvas
  */
@@ -25,7 +25,7 @@ const DeleteButtonPopover = React.memo((props) => {
     const { propsStyle, clearCanvas } = props;
 
     /** Clear canvas and close the "popover" modal
-     * @memberof sketchHeaderComponents.DeleteButtonPopover
+     * @memberof DeleteButtonPopover
      */
     const clearButtonPressed = () => {
         clearCanvas();

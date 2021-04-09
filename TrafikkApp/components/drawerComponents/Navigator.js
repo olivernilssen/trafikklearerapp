@@ -22,8 +22,8 @@ const Drawer = createDrawerNavigator();
  * This is the Navigator for our side drawer
  * Holds all the information about the screens and
  * the screen parameters
- * @namespace drawerComponents
- * @memberof Navigator
+ * @namespace Navigator
+ * @category DrawerComponents
  */
 const Navigator = () => {
     return (
@@ -77,7 +77,7 @@ const Navigator = () => {
                 name="HighwayScreen"
                 component={HighwayScreen}
                 initialParams={{
-                    title: 'Fartsøkning- og reduksjon',
+                    title: 'Fartsøkning- og reduksjonsfelt',
                     icon: 'road',
                     screenName: 'HighwayScreen',
                     value: 4,

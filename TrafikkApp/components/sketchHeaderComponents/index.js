@@ -5,7 +5,3 @@ export { default as HeaderButton } from './HeaderButton';
 export { default as PencilSizeButton } from './PencilSizeButton';
 export { default as SketchColorMenu } from './SketchColorMenu';
 export { default as SketchHeader } from './SketchHeader';
-
-/** SketchHeaderComponents
- * @namespace sketchHeaderComponents
- */

@@ -5,7 +5,7 @@ import { Colors } from '../../styles';
 
 /** Component for making the pencil size buttons in the sketchColorMenu
  * @namespace PencilSizeButton
- * @memberof sketchHeaderComponents
+ * @category sketchHeaderComponents
  * @prop {number} pencilThickness Determines the height of the View used for making the "icons" for the pencil thickness buttons
  * @prop {number} buttonID assigned uniq number for the button
  * @prop {number} pencilThicknessID The state pencilThicknessID

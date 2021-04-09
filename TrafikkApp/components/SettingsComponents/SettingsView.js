@@ -10,8 +10,8 @@ import { Divider } from '../reusableComponents';
 /**
  * The view for the settings screen. It takes in data from
  * AppContext and has arrays for possible values for the different settings
- * @namespace SettingsComponents
- * @memberof SettingsView
+ * @namespace SettingsView
+ * @category SettingsComponents
  */
 const SettingsView = () => {
     const myContext = useContext(AppContext);
@@ -42,7 +42,7 @@ const SettingsView = () => {
      * Function to handle changing a value in settings
      * it also launches a toast on the screen to let the user know
      * that the change has been saved
-     * @memberof SettingsComponents.SettingsView
+     * @memberof SettingsView
      * @param {string} type the name of the settings that is changed
      * @param {string} value the value to update the storage key to
      * @param {function} setValue the state set function associated with this value

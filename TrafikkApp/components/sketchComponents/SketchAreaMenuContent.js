@@ -14,11 +14,13 @@ import AppContext from '../../AppContext';
  * This menu allows the user to change the background image according to
  * which screen they are on
  * @namespace SketchAreaMenuContent
- * @memberof SketchComponents
+ * @category SketchComponents
+ * @prop {object} navigation Used for navigation between the different screens
  * @prop {string} roadType Name of roadtype
  * @prop {function} setImage Changes the state currentImage
  * @prop {function} setRoadDesignChange Changes the state roadDesignChange and sets
- * @prop {string} extensionType Stien til bakgrunnsbildet
+ * @prop {string} extensionType Name of the extension type to be set (vanlig, gangfelt, sykkelfelt)
+ * @prop {function} setBottomSheetHidden Changes the state bottomSheetHidden to hide or show the bottomMenu
  */
 const SketchAreaMenuContent = React.memo(
     ({
@@ -98,18 +100,19 @@ const SketchAreaMenuContent = React.memo(
         }, [extensionType]);
 
         /**
-         * Button event that changes the background image of the screen
-         * Depending on if it is a intersection or not, the handling is different
+         * Button event that changes the background image of the screen.
+         * Opens an alert if the drawing is set to be deleted.
+         * Depending on if it is a intersection or not, the handling is different.
          * Also sets the roadDesign state.
-         * Also sets the roadDesignChange to true so that the canvas is cleared
+         * Also sets the roadDesignChange to true so that the canvas is cleared.
          * @memberof SketchAreaMenuContent
-         * @function
          * @param {String} designName
          */
         const onPressButton = (designName) => {
             if (
                 appContext.deleteOnChange == 'Ja' &&
-                appContext.showDeleteAlert == 'true'
+                appContext.showDeleteAlert == 'true' &&
+                designName != roadDesign
             ) {
                 setModalVisible(!modalVisible);
 
@@ -147,41 +150,42 @@ const SketchAreaMenuContent = React.memo(
         };
 
         /**
-         * Triggered when the radiobuttons are clicked
-         * Changes the type of intersection design that is chosen (x, y, t)
-         * Also sets the roadDesignChange to true so that the canvas is cleared
+         * Triggered when one of the buttons in the buttonGroup are pressed.
+         * Opens an alert if the drawing is set to be deleted.
+         * Changes the type of intersection design that is chosen (x, y, t).
+         * Also sets the roadDesignChange to true so that the canvas is cleared.
          * @memberof SketchAreaMenuContent
-         * @function
-         * @param {String} radioValue
+         * @param {String} intersectionName
          */
-        const intersectionTypeChange = (intersectionType) => {
+        const intersectionTypeChange = (intersectionName) => {
             if (
                 appContext.deleteOnChange == 'Ja' &&
-                appContext.showDeleteAlert == 'true'
+                appContext.showDeleteAlert == 'true' &&
+                intersectionName != intersectionType
             ) {
                 setModalVisible(!modalVisible);
 
-                setTempIntersectionType(intersectionType);
+                setTempIntersectionType(intersectionName);
 
                 const imgSource =
-                    thisRoadType[roadDesign][intersectionType][extensionType];
+                    thisRoadType[roadDesign][intersectionName][extensionType];
                 setTempImage(imgSource);
 
                 setIsIntersectionBtn(true);
                 setIsDesignBtn(false);
             } else {
                 setRoadDesignChange(true);
-                setIntersectionType(intersectionType);
+                setIntersectionType(intersectionName);
 
                 const imgSource =
-                    thisRoadType[roadDesign][intersectionType][extensionType];
+                    thisRoadType[roadDesign][intersectionName][extensionType];
                 setImage(imgSource);
             }
         };
 
         /**
          * Button event that changes the background image of the screen.
-         * Is triggered when pressing the 'OK' button on the alert.
+         * Is triggered when pressing the 'OK' button in the Alert.
          * Depending on if it is a intersection or not, the handling is different.
          * Also sets the roadDesign state.
          * Also sets the roadDesignChange to true so that the canvas is cleared

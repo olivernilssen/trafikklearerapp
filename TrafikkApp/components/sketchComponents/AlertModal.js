@@ -11,6 +11,17 @@ import { Colors, Typography, Icons } from '../../styles';
 import { Divider } from '../reusableComponents';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
+/**
+ * Alert is a component that pops up to alert the user that the drawing is set to be deleted.
+ * @namespace AlertModal
+ * @category SketchComponents
+ * @prop {object} navigation Used for navigation between the different screens
+ * @prop {boolean} modalVisible If the modal is visible or not
+ * @prop {function} setModalVisible Changes the state modalVisible
+ * @prop {boolean} hideAlert If the checkbox to never show alert again, is checked
+ * @prop {function} setHideAlert Changes the state hideAlert
+ * @prop {function} onOK What to do when the 'OK' button in the Alert is triggered
+ */
 const AlertModal = React.memo(
     ({
         navigation,
