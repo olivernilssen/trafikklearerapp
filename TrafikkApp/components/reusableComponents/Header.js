@@ -37,8 +37,9 @@ const styles = StyleSheet.create({
     headerText: {
         flex: 1,
         color: Colors.icons,
-        paddingRight: 30,
-        textAlign: 'center',
+        // paddingRight: 30,
+        paddingLeft: 20,
+        textAlign: 'left',
         ...Typography.heading,
     },
 });

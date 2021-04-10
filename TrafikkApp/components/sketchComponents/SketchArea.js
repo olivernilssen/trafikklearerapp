@@ -11,7 +11,7 @@ import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 import { MainView, BottomMenuAnimated, Overlay } from '../reusableComponents/';
 import { SketchHeader } from '../sketchHeaderComponents/';
 import { DraggableWithEverything } from '../draggable/';
-import { SketchAreaMenuContent } from '.';
+import SketchAreaMenuContent from './SketchAreaMenuContent';
 import { Colors } from '../../styles';
 import AppContext from '../../AppContext';
 

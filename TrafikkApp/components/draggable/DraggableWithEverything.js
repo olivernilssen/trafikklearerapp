@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { DraggableComponentsMenu } from '../draggableComponentsMenu/';
-// import DraggableDropZone from '../unusedComponents/DraggableDropzone';
-import { MappingDraggables } from '.';
+import MappingDraggables from './MappingDraggables';
 
 /**
  * Collects all the draggable components into one

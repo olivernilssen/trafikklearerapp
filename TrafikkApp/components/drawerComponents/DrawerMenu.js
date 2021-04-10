@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 
-import { DrawerToggleItem, DrawerItem } from '.';
+import DrawerToggleItem from './DrawerToggleItem';
+import DrawerItem from './DrawerItem';
 import { Divider } from '../reusableComponents/';
 import { Colors } from '../../styles';
 

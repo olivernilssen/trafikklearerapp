@@ -64,7 +64,7 @@ const StartScreen = React.memo(({ navigation }) => {
                         />
                         <StartScreenLink
                             name="arrow-right"
-                            text={'Fartsøknings- og reduksjonsfelt'}
+                            text="Fartsøknings- og reduksjonsfelt"
                             onPress={() => navigation.navigate('HighwayScreen')}
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
@@ -94,7 +94,10 @@ const StartScreen = React.memo(({ navigation }) => {
                         />
                         <StartScreenLink
                             name="arrow-right"
-                            text="tba"
+                            text="Myndighets- pyramiden"
+                            onPress={() =>
+                                navigation.navigate('AuthorityPyramidScreen')
+                            }
                             backgroundColor={Colors.startScreenLinkTheory}
                         />
                     </View>

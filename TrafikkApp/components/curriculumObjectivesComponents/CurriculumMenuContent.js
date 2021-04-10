@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { ButtonGroup } from '../reusableComponents/';
-import { curriculumData } from '.';
+import curriculumData from './curriculumData';
 import { Colors, Typography } from '../../styles';
 
 /**

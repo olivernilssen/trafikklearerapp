@@ -4,7 +4,7 @@ import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
 import { Colors, Typography } from '../../styles/index';
 import { ButtonGroup, Divider } from '../reusableComponents/';
-import { OptionPicker } from '.';
+import OptionPicker from './OptionPicker';
 
 /**
  * The view for the settings screen. It takes in data from

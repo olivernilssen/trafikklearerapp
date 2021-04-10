@@ -3,7 +3,8 @@ import { StyleSheet, View, TouchableOpacity, Text, Image } from 'react-native';
 
 import { Colors, Typography, Buttons } from '../../styles';
 import { Divider, ButtonGroup } from '../reusableComponents/';
-import { backgroundImagePath, AlertModal } from '.';
+import backgroundImagePath from './backgroundImagePath';
+import AlertModal from './AlertModal';
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
 

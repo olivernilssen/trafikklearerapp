@@ -8,7 +8,8 @@ import {
     MenuTrigger,
     renderers,
 } from 'react-native-popup-menu';
-import { PencilSizeButton, ColorButton } from '.';
+import PencilSizeButton from './PencilSizeButton';
+import ColorButton from './ColorButton';
 import { Colors, Buttons, Icons } from '../../styles';
 import AppContext from '../../AppContext';
 
