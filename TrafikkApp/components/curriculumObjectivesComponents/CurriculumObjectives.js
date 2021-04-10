@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { curriculumData } from '.';
+import curriculumData from './curriculumData';
 import { Colors, Typography } from '../../styles';
 
 /**
@@ -78,12 +78,7 @@ const CurriculumObjectives = React.memo(
             }
         });
 
-        return (
-            <View style={styles.main}>
-                {/* <Text style={styles.subHeading}>{subHeading}</Text> */}
-                {contents}
-            </View>
-        );
+        return <View style={styles.main}>{contents}</View>;
     }
 );
 

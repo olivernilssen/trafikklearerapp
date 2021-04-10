@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Draggable } from '.';
+import Draggable from './Draggable';
 import AppContext from '../../AppContext';
 
 /**

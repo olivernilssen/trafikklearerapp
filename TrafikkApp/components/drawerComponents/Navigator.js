@@ -1,7 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import { DrawerMenu } from '.';
+import DrawerMenu from './DrawerMenu';
 import {
     StartScreen,
     SettingsScreen,
@@ -11,6 +11,7 @@ import {
     HighwayScreen,
     RoadSignScreen,
     CurriculumObjectivesScreen,
+    AuthorityPyramidScreen,
 } from '../../screens/';
 
 const Drawer = createDrawerNavigator();
@@ -105,13 +106,23 @@ const Navigator = () => {
                 }}
             />
             <Drawer.Screen
+                name="AuthorityPyramidScreen"
+                component={AuthorityPyramidScreen}
+                initialParams={{
+                    title: 'Myndighetspyramiden',
+                    icon: 'hand-paper',
+                    screenName: 'AuthorityPyramidScreen',
+                    value: 7,
+                }}
+            />
+            <Drawer.Screen
                 name="SettingsScreen"
                 component={SettingsScreen}
                 initialParams={{
                     title: 'Innstillinger',
                     icon: 'cog',
                     screenName: 'SettingsScreen',
-                    value: 7,
+                    value: 8,
                 }}
             />
         </Drawer.Navigator>

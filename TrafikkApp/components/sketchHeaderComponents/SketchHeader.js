@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Header } from '../reusableComponents/';
-import {
-    SketchColorMenu,
-    HeaderButton,
-    DraggableComponentsButton,
-    DeleteButtonPopover,
-} from '.';
+
+import SketchColorMenu from './SketchColorMenu';
+import HeaderButton from './HeaderButton';
+import DraggableComponentsButton from './DraggableComponentsButton';
+import DeleteButtonPopover from './DeleteButtonPopover';
+
 import { Colors, Typography, Buttons } from '../../styles';
 
 /**The SketchHeader, contains all the buttons and menu's related to the drawing and placement of draggable components

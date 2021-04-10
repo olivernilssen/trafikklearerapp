@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-    Modal,
-    StyleSheet,
-    Text,
-    View,
-    TouchableOpacity,
-    CheckBox,
-} from 'react-native';
+import { Modal, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Typography, Icons } from '../../styles';
 import { Divider } from '../reusableComponents';
