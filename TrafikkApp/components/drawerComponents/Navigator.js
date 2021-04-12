@@ -90,7 +90,7 @@ const Navigator = () => {
                 component={RoadSignScreen}
                 initialParams={{
                     title: 'Trafikkskilt',
-                    icon: 'map-signs',
+                    icon: 'ban',
                     screenName: 'RoadSignScreen',
                     value: 5,
                 }}
@@ -110,7 +110,7 @@ const Navigator = () => {
                 component={AuthorityPyramidScreen}
                 initialParams={{
                     title: 'Myndighetspyramiden',
-                    icon: 'hand-paper',
+                    icon: 'exclamation-triangle',
                     screenName: 'AuthorityPyramidScreen',
                     value: 7,
                 }}

@@ -4,7 +4,7 @@ import { Carousel } from '../reusableComponents/';
 import AppContext from '../../AppContext';
 
 /**
- * Component for the items that are in the draggable top menu
+ * Component for the draggable items that are in the top menu of the screens using the SketchArea component.
  * @namespace DraggableComponents
  * @category DraggableComponentsMenu
  * @prop {function} onNewDraggable function from parent to add new draggable
@@ -15,8 +15,8 @@ const DraggableComponents = React.memo(({ onNewDraggable }) => {
     const objectKeys = Object.keys(objects);
 
     /**
-     * Get's the image source of the draggable
-     * and creates a new draggable item
+     * Gets the image source of the draggable
+     * and creates a new draggable item.
      * @memberof DraggableComponents
      * @param {int} source image source of new draggable
      */
@@ -25,7 +25,7 @@ const DraggableComponents = React.memo(({ onNewDraggable }) => {
     };
 
     /**
-     * Displayes the available draggable images that can be used
+     * Displays the available draggable images that can be used.
      * @return all the images that are in the "objects" array
      */
     const images = objectKeys.map((source, i) => {

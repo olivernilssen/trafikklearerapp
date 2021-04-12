@@ -5,7 +5,7 @@ import curriculumData from './curriculumData';
 import { Colors, Typography } from '../../styles';
 
 /**
- * Component to display the content of the BottomMenu on the screen
+ * Component to display the content of the BottomMenu, on the screen
  * for the CurriculumObjectives.
  * @namespace CurriculumMenuContent
  * @category curriculumObjectivesComponents
@@ -39,9 +39,9 @@ const CurriculumMenuContent = React.memo(
         });
 
         /**
-         * Button event that is triggered when the tab bars is clicked.
+         * Button event that is triggered when the tab bars in the bottom menu is clicked.
          * Sets the state trafficClass according to the tab that is pressed.
-         * Also sets the state curriculumObjective to "main goals".
+         * Also sets the state curriculumObjective to 'Hovedmål' (main goals).
          * @memberof CurriculumMenuContent
          * @param {String} trafficClassName
          */
@@ -51,9 +51,10 @@ const CurriculumMenuContent = React.memo(
         };
 
         /**
-         * Triggered when the radiobuttons are clicked.
+         * Button event that is triggered when the buttons in the button group are clicked.
          * Sets the state curriculumObjective according to the button that is pressed.
          * Also scrolls to the top of the screen.
+         * Also hides the bottom menu.
          * @memberof CurriculumMenuContent
          * @param {String} curriculumObjective
          */
@@ -152,7 +153,6 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         overflow: 'hidden',
-        // elevation: 1,
     },
     buttonContainer: {
         padding: 25,

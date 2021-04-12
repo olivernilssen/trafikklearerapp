@@ -8,14 +8,15 @@ import { Colors, Typography } from '../../styles';
 const extensionTypes = ['Gangfelt', 'O', 'Sykkelfelt'];
 
 /**
- * Component for the draggable top menu, which displayes objects
- * that can be turned into draggables.
+ * Component that shows a top menu on the screens using the SketchArea component.
+ * Displayes objects that can be turned into draggables, and extension types
+ * (pedestrian crossing, bicycle lanes) for the traffic designs.
  * @namespace DraggableComponentsMenu
  * @category DraggableComponentsMenu
- * @prop {boolean} topMenuHidden bool to represent if top menu is hidden or not
- * @prop {function} onNewDraggable function to add new draggable
- * @prop {string} name Name of the view site
- * @prop {function} setExtensionType function to set the extension type for this view
+ * @prop {boolean} topMenuHidden Bool to represent if the top menu is hidden or not
+ * @prop {function} onNewDraggable Function to add new draggable
+ * @prop {string} name Name of the screen
+ * @prop {function} setExtensionType Function to set the extension type for this view
  */
 const DraggableComponentsMenu = React.memo(
     ({ topMenuHidden, onNewDraggable, name, setExtensionType }) => {
@@ -28,14 +29,14 @@ const DraggableComponentsMenu = React.memo(
         /**
          * useEffect that is triggered when topMenuHidden
          * is changed. Will toggle the view of the top menu
-         * @memberof DraggableComponentsMenu
          */
         useEffect(() => {
             toggleView();
         }, [topMenuHidden]);
 
         /**
-         * Animates the topmenu in and out of view
+         * Function that is triggered when the state topMenuHidden is changed.
+         * Will animate the top menu in and out of view.
          * @memberof DraggableComponentsMenu
          */
         const toggleView = useCallback(() => {
@@ -62,7 +63,7 @@ const DraggableComponentsMenu = React.memo(
         });
 
         /**
-         * Get's the layout of the topmenu view
+         * Gets the layout of the topmenu view.
          * This is so we know how far down the object needs to
          * "slide" to be fully in view for the user
          * @memberof DraggableComponentsMenu
@@ -74,8 +75,8 @@ const DraggableComponentsMenu = React.memo(
         };
 
         /**
-         * Triggered when the radiobuttons on the topmenu is
-         * changed or clicked. Will set the value of the radiobutton
+         * Triggered when the buttons in the button group on the topmenu is
+         * changed or clicked. Will set the selected button of the button group
          * aswell as the extensiontype and to change backgroundImage
          * @memberof DraggableComponentsMenu
          * @param {String} value extenstiontype value
@@ -185,11 +186,9 @@ const styles = StyleSheet.create({
     },
     divider: {
         height: '100%',
-        // padding: 10,
         paddingLeft: 5,
         paddingBottom: 5,
         marginBottom: 10,
-        // marginLeft: 10,
     },
 });
 
