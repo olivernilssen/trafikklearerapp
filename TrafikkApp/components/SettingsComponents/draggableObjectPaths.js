@@ -63,6 +63,38 @@ const draggables = {
         source: require('../../assets/Elements/tree-silhouette.png'),
         hasTint: false,
     },
+    bush: {
+        source: require('../../assets/Elements/bush.png'),
+        hasTint: true,
+    },
+    'car-yellow': {
+        source: require('../../assets/Elements/car-yellow.png'),
+        hasTint: true,
+    },
+    'cargo-truck': {
+        source: require('../../assets/Elements/cargo-truck.png'),
+        hasTint: false,
+    },
+    forskjors: {
+        source: require('../../assets/Elements/forkjors.png'),
+        hasTint: true,
+    },
+    ninja: {
+        source: require('../../assets/Elements/ninja.png'),
+        hasTint: true,
+    },
+    'no-entry': {
+        source: require('../../assets/Elements/no-entry.png'),
+        hasTint: true,
+    },
+    truck: {
+        source: require('../../assets/Elements/truck.png'),
+        hasTint: true,
+    },
+    vikeplikt: {
+        source: require('../../assets/Elements/vikeplikt.png'),
+        hasTint: true,
+    },
 };
 
 export default draggables;
