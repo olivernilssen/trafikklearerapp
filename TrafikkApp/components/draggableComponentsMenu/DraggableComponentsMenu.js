@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { StyleSheet, View, Animated, Text } from 'react-native';
 
-import { Divider, ButtonGroup } from '../reusableComponents/';
-import DraggableComponents from './DraggableComponents';
+import { Divider, ButtonGroup, Carousel } from '../reusableComponents/';
 import { Colors, Typography } from '../../styles';
+import AppContext from '../../AppContext';
 
 const extensionTypes = ['Gangfelt', 'O', 'Sykkelfelt'];
 
@@ -24,6 +24,10 @@ const DraggableComponentsMenu = React.memo(
             new Animated.Value(yPosHidden)
         );
         const [buttonValue, setButtonValue] = useState('O');
+
+        const appContext = useContext(AppContext);
+        const objects = JSON.parse(appContext.draggableObjects);
+        const objectKeys = Object.keys(objects);
 
         /**
          * useEffect that is triggered when topMenuHidden
@@ -139,7 +143,11 @@ const DraggableComponentsMenu = React.memo(
                         </View>
                     )}
 
-                    <DraggableComponents onNewDraggable={onNewDraggable} />
+                    <Carousel
+                        onNewDraggable={onNewDraggable}
+                        objects={objects}
+                        objectKeys={objectKeys}
+                    />
                 </View>
             </Animated.View>
         );

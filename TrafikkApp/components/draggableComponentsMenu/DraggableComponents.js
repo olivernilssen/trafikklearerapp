@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
-import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { Carousel } from '../reusableComponents/';
-import AppContext from '../../AppContext';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import Carousel from '../reusableComponents/Carousel';
 
 /**
  * Component for the items that are in the draggable top menu
@@ -9,50 +8,15 @@ import AppContext from '../../AppContext';
  * @category DraggableComponentsMenu
  * @prop {function} onNewDraggable function from parent to add new draggable
  */
-const DraggableComponents = React.memo(({ onNewDraggable }) => {
-    const appContext = useContext(AppContext);
-    const objects = JSON.parse(appContext.draggableObjects);
-    const objectKeys = Object.keys(objects);
-
-    /**
-     * Get's the image source of the draggable
-     * and creates a new draggable item
-     * @memberof DraggableComponents
-     * @param {int} source image source of new draggable
-     */
-    const onElementPress = (source) => {
-        onNewDraggable(objects[source]);
-    };
-
-    /**
-     * Displayes the available draggable images that can be used
-     * @return all the images that are in the "objects" array
-     */
-    const images = objectKeys.map((source, i) => {
-        return (
-            <View key={i} style={styles.imageContainer}>
-                <TouchableOpacity
-                    activeOpacity={0.4}
-                    style={styles.imageButton}
-                    onPress={() => onElementPress(source)}>
-                    <Image
-                        source={objects[source]}
-                        style={styles.image}
-                        resizeMode={'contain'}
-                    />
-                </TouchableOpacity>
-            </View>
-        );
-    });
-
-    return <Carousel objectArray={images} itemsPerSlide={7} />;
+const DraggableComponents = React.memo((props) => {
+    return <Carousel {...props} itemsPerSlide={5} />;
 });
 
 const styles = StyleSheet.create({
     imageContainer: {
         justifyContent: 'center',
-        marginTop: 15,
-        marginHorizontal: 10,
+        marginBottom: 20,
+        marginHorizontal: 11,
     },
     imageButton: {
         paddingHorizontal: 5,
