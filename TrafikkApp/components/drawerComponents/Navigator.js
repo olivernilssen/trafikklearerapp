@@ -1,16 +1,18 @@
 import React from 'react';
-
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import DrawerMenu from './DrawerMenu';
 
-import StartScreen from '../../screens/StartScreen';
-import SettingsScreen from '../../screens/SettingsScreen';
-import IntersectionScreen from '../../screens/IntersectionScreen';
-import RoundaboutScreen from '../../screens/RoundaboutScreen';
-import CountryRoadScreen from '../../screens/CountryRoadScreen';
-import HighwayScreen from '../../screens/HighwayScreen';
-import RoadSignScreen from '../../screens/RoadSignScreen';
-import CurriculumObjectivesScreen from '../../screens/CurriculumObjectivesScreen';
+import DrawerMenu from './DrawerMenu';
+import {
+    StartScreen,
+    SettingsScreen,
+    IntersectionScreen,
+    RoundaboutScreen,
+    CountryRoadScreen,
+    HighwayScreen,
+    RoadSignScreen,
+    CurriculumObjectivesScreen,
+    AuthorityPyramidScreen,
+} from '../../screens/';
 
 const Drawer = createDrawerNavigator();
 
@@ -22,8 +24,8 @@ const Drawer = createDrawerNavigator();
  * This is the Navigator for our side drawer
  * Holds all the information about the screens and
  * the screen parameters
- * @namespace drawerComponents
- * @memberof Navigator
+ * @namespace Navigator
+ * @category DrawerComponents
  */
 const Navigator = () => {
     return (
@@ -77,7 +79,7 @@ const Navigator = () => {
                 name="HighwayScreen"
                 component={HighwayScreen}
                 initialParams={{
-                    title: 'Fartsøkning- og reduksjon',
+                    title: 'Fartsøkning- og reduksjonsfelt',
                     icon: 'road',
                     screenName: 'HighwayScreen',
                     value: 4,
@@ -104,13 +106,23 @@ const Navigator = () => {
                 }}
             />
             <Drawer.Screen
+                name="AuthorityPyramidScreen"
+                component={AuthorityPyramidScreen}
+                initialParams={{
+                    title: 'Myndighetspyramiden',
+                    icon: 'hand-paper',
+                    screenName: 'AuthorityPyramidScreen',
+                    value: 7,
+                }}
+            />
+            <Drawer.Screen
                 name="SettingsScreen"
                 component={SettingsScreen}
                 initialParams={{
                     title: 'Innstillinger',
                     icon: 'cog',
                     screenName: 'SettingsScreen',
-                    value: 7,
+                    value: 8,
                 }}
             />
         </Drawer.Navigator>

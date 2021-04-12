@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import Gestures from 'react-native-easy-gestures';
 import {
     StyleSheet,
     Animated,
@@ -7,7 +8,7 @@ import {
     TouchableWithoutFeedback,
 } from 'react-native';
 
-import Popout from './Popout/Popout';
+import { Popout } from './Popout/';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -22,9 +23,6 @@ const colors = [
     'delete',
 ];
 
-import Gestures from 'react-native-easy-gestures';
-import { useCallback } from 'react';
-
 const ITEM_SIZE = 100;
 const radius = (ITEM_SIZE * 2) / 2;
 const buttonSize = 25;
@@ -32,7 +30,7 @@ const buttonSize = 25;
 /**
  * Component that holds the actual draggable component
  * @namespace Draggable
- * @memberof draggable
+ * @category Draggable
  * @prop {string} source image source of the draggable object
  */
 const Draggable = React.memo((props) => {
@@ -45,7 +43,7 @@ const Draggable = React.memo((props) => {
     /**
      * useEffect that is triggered when tintColor is changed
      * Will make the popout inactive
-     * @memberof draggable.draggable
+     * @memberof Draggable
      */
     useEffect(() => {
         setPopoutActive(!popoutActive);
@@ -56,7 +54,7 @@ const Draggable = React.memo((props) => {
      * will remove the popout if it is active
      * and make the item hover as a feedback that the dragging has
      * started
-     * @memberof draggable.draggable
+     * @memberof Draggable
      * @param {array[]} gesture
      */
     const onDragStart = (gesture) => {
@@ -74,7 +72,7 @@ const Draggable = React.memo((props) => {
      * When dragging event has ended, the
      * hoved animation will end and pop back to it's
      * original size
-     * @memberof draggable.draggable
+     * @memberof Draggable
      * @param {array[]} gesture
      */
     const onDragEnd = (gesture) => {
@@ -89,7 +87,7 @@ const Draggable = React.memo((props) => {
      * Helper function so useEffects are triggered
      * when the user stops dragging the element on top of
      * the trashcan. This will initate the removal of the item
-     * @memberof draggable.draggable
+     * @memberof Draggable
      */
     const removeItem = useCallback(() => {
         props.onRemoveItem(props.id);

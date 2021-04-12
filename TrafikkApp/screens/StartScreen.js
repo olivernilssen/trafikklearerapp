@@ -1,23 +1,39 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import MainView from '../components/reusableComponents/MainView';
-import Header from '../components/reusableComponents/Header';
-import StartScreenLink from '../components/startScreenComponents/StartScreenLink';
-
-import { Colors, Typography } from '../styles';
+import { MainView, Header } from '../components/reusableComponents/';
+import {
+    StartScreenLink,
+    HeaderName,
+} from '../components/startScreenComponents/';
+import { Colors, Typography, Icons } from '../styles';
 
 /**
  * Screen component for the start screen
  * contains a list of all the clickable screens in the navigator
  * @namespace StartScreen
- * @memberof Screens
+ * @category Screens
  * @prop {object} navigation Used for navigation between the different screens
  */
 const StartScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
-            <Header name="Hjem" navigation={navigation} />
+            <Header navigation={navigation}>
+                <View style={styles.headerItems}>
+                    <HeaderName />
+                    <TouchableOpacity
+                        style={styles.iconContainer}
+                        activeOpacity={0.6}
+                        onPress={() => navigation.navigate('SettingsScreen')}>
+                        <Icon
+                            name={'cog'}
+                            size={Icons.medium}
+                            color={Colors.icons}
+                        />
+                    </TouchableOpacity>
+                </View>
+            </Header>
             <View style={styles.main}>
                 <View style={styles.container}>
                     <Text style={styles.text}>Illustrer trafikksituasjon</Text>
@@ -48,7 +64,7 @@ const StartScreen = React.memo(({ navigation }) => {
                         />
                         <StartScreenLink
                             name="arrow-right"
-                            text={'Fartsøknings- og reduksjonsfelt'}
+                            text="Fartsøknings- og reduksjonsfelt"
                             onPress={() => navigation.navigate('HighwayScreen')}
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
@@ -78,7 +94,10 @@ const StartScreen = React.memo(({ navigation }) => {
                         />
                         <StartScreenLink
                             name="arrow-right"
-                            text="tba"
+                            text="Myndighets- pyramiden"
+                            onPress={() =>
+                                navigation.navigate('AuthorityPyramidScreen')
+                            }
                             backgroundColor={Colors.startScreenLinkTheory}
                         />
                     </View>
@@ -118,9 +137,19 @@ const styles = StyleSheet.create({
         height: '100%',
         // justifyContent: 'flex-start',
         justifyContent: 'center',
-        paddingTop: '1%',
+        paddingTop: '2%',
         paddingBottom: '5%',
         backgroundColor: Colors.startScreenBg,
+    },
+    headerItems: {
+        alignSelf: 'center',
+        width: '93%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    iconContainer: {
+        marginRight: 15,
+        justifyContent: 'center',
     },
     container: {
         // paddingVertical: '3%',
@@ -135,7 +164,7 @@ const styles = StyleSheet.create({
     },
     text: {
         width: '85%',
-        borderBottomWidth: 1,
+        borderBottomWidth: 2,
         borderColor: Colors.dividerPrimary,
         color: Colors.icons,
         paddingVertical: 5,

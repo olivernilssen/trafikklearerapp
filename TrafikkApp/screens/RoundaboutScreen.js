@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import MainView from '../components/reusableComponents/MainView';
-import SketchArea from '../components/sketchComponents/SketchArea';
+import { MainView } from '../components/reusableComponents/';
+import { SketchArea } from '../components/sketchComponents/';
 
 /**
  * Screen component for roundbaout screen / rundkjøring
  * @namespace RoundaboutScreen
- * @memberof Screens
+ * @category Screens
  * @prop {object} navigation Used for navigation between the different screens
  */
 const RoundaboutScreen = React.memo(({ navigation }) => {

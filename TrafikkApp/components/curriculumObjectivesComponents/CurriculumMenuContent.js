@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
-import { Colors, Typography } from '../../styles';
-import ButtonGroup from '../reusableComponents/ButtonGroup';
+import { ButtonGroup } from '../reusableComponents/';
 import curriculumData from './curriculumData';
+import { Colors, Typography } from '../../styles';
 
 /**
  * Component to display the content of the BottomMenu on the screen
  * for the CurriculumObjectives.
  * @namespace CurriculumMenuContent
- * @memberof curriculumObjectivesComponents
+ * @category curriculumObjectivesComponents
  * @prop {string} curriculumObjective The name of the chosen curriculum objective
  * @prop {function} setCurriculumObjective Sets the state curriculumObjective
  * @prop {string} trafficClass The name of the chosen traffic class
@@ -42,7 +42,7 @@ const CurriculumMenuContent = React.memo(
          * Button event that is triggered when the tab bars is clicked.
          * Sets the state trafficClass according to the tab that is pressed.
          * Also sets the state curriculumObjective to "main goals".
-         * @memberof curriculumObjectivesComponents.CurriculumMenuContent
+         * @memberof CurriculumMenuContent
          * @param {String} trafficClassName
          */
         const onTrafficClassChange = (trafficClassName) => {
@@ -54,7 +54,7 @@ const CurriculumMenuContent = React.memo(
          * Triggered when the radiobuttons are clicked.
          * Sets the state curriculumObjective according to the button that is pressed.
          * Also scrolls to the top of the screen.
-         * @memberof curriculumObjectivesComponents.CurriculumMenuContent
+         * @memberof CurriculumMenuContent
          * @param {String} curriculumObjective
          */
         const onCurriculumObjectiveChange = (curriculumObjective) => {

@@ -5,24 +5,14 @@ import React, {
     useCallback,
     useContext,
 } from 'react';
-import {
-    View,
-    StyleSheet,
-    Image,
-    Dimensions,
-    ImageBackground,
-} from 'react-native';
-
-import MainView from '../reusableComponents/MainView';
-import SketchHeader from '../sketchHeaderComponents/SketchHeader';
+import { View, StyleSheet, Image, Dimensions } from 'react-native';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
-import { Colors } from '../../styles';
 
-import DraggableWithEverything from '../draggable/DraggableWithEverything';
-import BottomMenuAnimated from '../reusableComponents/BottomMenuAnimated';
+import { MainView, BottomMenuAnimated, Overlay } from '../reusableComponents/';
+import { SketchHeader } from '../sketchHeaderComponents/';
+import { DraggableWithEverything } from '../draggable/';
 import SketchAreaMenuContent from './SketchAreaMenuContent';
-import Overlay from '../reusableComponents/Overlay';
-
+import { Colors } from '../../styles';
 import AppContext from '../../AppContext';
 
 const { width, height } = Dimensions.get('window');
@@ -30,9 +20,9 @@ const { width, height } = Dimensions.get('window');
 /**This is a big component that contains all the components that are visible
  * on the SketchArea screens.
  * @namespace SketchArea
- * @memberof SketchComponents
- * @prop {number} navigation
- * @prop {string} name
+ * @category SketchComponents
+ * @prop {object} navigation Used for navigation between the different screens
+ * @prop {string} name Name of the screen (IntersectionScreen, RoundaboutScreen etc)
  */
 const SketchArea = React.memo((props) => {
     const appContext = useContext(AppContext);
@@ -75,9 +65,8 @@ const SketchArea = React.memo((props) => {
         setPencilColor(color);
     };
 
-    /**Changes the pencil color and size when switching between eraser and pencil
+    /**Changes the pencil color and size when switching between eraser and pencil.
      * @memberof SketchArea
-     * @function
      */
     const onEraserPencilSwitch = useCallback(() => {
         if (pencilColor === eraserColor) {
@@ -89,9 +78,8 @@ const SketchArea = React.memo((props) => {
         }
     }, [pencilColor]);
 
-    /**Function to change the pencil brush size
+    /**Function to change the pencil brush size.
      * @memberof SketchArea
-     * @function
      * @param {int} newPencilSize The thickness of the pencil
      */
     const onChangePencilSize = (newPencilSize) => {
@@ -234,6 +222,7 @@ const SketchArea = React.memo((props) => {
                     setRoadDesignChange={setRoadDesignChange}
                     extensionType={extensionType}
                     setBottomSheetHidden={setBottomSheetHidden}
+                    navigation={navigation}
                 />
             </BottomMenuAnimated>
         </MainView>

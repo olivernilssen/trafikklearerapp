@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Carousel } from '../reusableComponents/';
 import AppContext from '../../AppContext';
-import Carousel from '../reusableComponents/Carousel';
 
 /**
  * Component for the items that are in the draggable top menu
- * @namespace draggableComponentsMenu
- * @memberof DraggableComponents
+ * @namespace DraggableComponents
+ * @category DraggableComponentsMenu
  * @prop {function} onNewDraggable function from parent to add new draggable
  */
 const DraggableComponents = React.memo(({ onNewDraggable }) => {
@@ -17,7 +17,7 @@ const DraggableComponents = React.memo(({ onNewDraggable }) => {
     /**
      * Get's the image source of the draggable
      * and creates a new draggable item
-     * @memberof draggableComponentsMenu.DraggableComponents
+     * @memberof DraggableComponents
      * @param {int} source image source of new draggable
      */
     const onElementPress = (source) => {

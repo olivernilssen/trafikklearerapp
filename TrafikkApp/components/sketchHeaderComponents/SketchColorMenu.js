@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useState, useEffect, useContext } from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {
     Menu,
@@ -12,13 +12,12 @@ import PencilSizeButton from './PencilSizeButton';
 import ColorButton from './ColorButton';
 import { Colors, Buttons, Icons } from '../../styles';
 import AppContext from '../../AppContext';
-import { useEffect } from 'react';
 
 const { Popover } = renderers;
 
 /** A button with a menu for the drawing component of the sketchheader
  * @namespace SketchColorMenu
- * @memberof sketchHeaderComponents
+ * @category sketchHeaderComponents
  * @prop {function} onPaletteColorChange Changes the color
  * @prop {function} onChangePencilSize Changes pencil size
  * @prop {object} propsStyle StyleSheet
@@ -88,7 +87,7 @@ const SketchColorMenu = React.memo((props) => {
     }, []);
 
     /**Used to handle the state of the color menu, if it is open or not
-     * @memberof sketchHeaderComponents.SketchColorMenu
+     * @memberof SketchColorMenu
      * @param {boolean} value The state of isOpened
      */
     const onSecondClickOpen = (value) => {
@@ -96,7 +95,7 @@ const SketchColorMenu = React.memo((props) => {
     };
 
     /** Used to assign an id to the color buttons
-     * @memberof sketchHeaderComponents.SketchColorMenu
+     * @memberof SketchColorMenu
      * @param {number} value The id for the color buttons
      */
     const chosenColorButton = (value) => {
@@ -105,7 +104,7 @@ const SketchColorMenu = React.memo((props) => {
     };
 
     /** Used to assign an id to the pencil thickness buttons
-     * @memberof sketchHeaderComponents.SketchColorMenu
+     * @memberof SketchColorMenu
      * @param {number} value The id for the pencil thickness button
      */
     const chosenThicknessButton = (value) => {
@@ -114,7 +113,7 @@ const SketchColorMenu = React.memo((props) => {
     };
 
     /** Handles what happens to the pencil button when you press it or when you press another button after the pencil button
-     * @memberof sketchHeaderComponents.SketchColorMenu
+     * @memberof SketchColorMenu
      */
     const onPressMenuTrigger = () => {
         if (activeId != 0) {
@@ -128,7 +127,7 @@ const SketchColorMenu = React.memo((props) => {
 
     /**Maps through an array of color codes and returns a button for each color
      * the button is used for changing the color of the pencil
-     * @memberof sketchHeaderComponents.SketchColorMenu
+     * @memberof SketchColorMenu
      * @param {object} value Contains the color code and the unique key
      * @param {number} index The index of the objects in the array
      */
@@ -147,7 +146,7 @@ const SketchColorMenu = React.memo((props) => {
 
     /**Maps through an array of objects containing numbers and returns a button for for each object
      * The button is used for changing the thickness of the pencil
-     * @memberof sketchHeaderComponents.SketchColorMenu
+     * @memberof SketchColorMenu
      * @param {object} value Contains the thickness of the pencil, thickness of the view and the unique key
      * @param {number} index The index of the objects in the array
      */
@@ -180,20 +179,21 @@ const SketchColorMenu = React.memo((props) => {
                 onBackdropPress={() => {
                     onSecondClickOpen(false);
                 }}>
-                <MenuTrigger
-                    onPress={() => {
-                        onPressMenuTrigger();
-                    }}>
-                    <View
+                <MenuTrigger>
+                    <TouchableOpacity
                         style={[
                             styles.buttonSize,
                             activeId === buttonActiveId
-                                ? [
-                                      styles.buttonActive,
-                                      { backgroundColor: pencilColor },
-                                  ]
-                                : [styles.buttonInactive],
-                        ]}>
+                                ? {
+                                      backgroundColor: pencilColor,
+                                  }
+                                : {
+                                      backgroundColor: Colors.headerBg,
+                                  },
+                        ]}
+                        onPress={() => {
+                            onPressMenuTrigger();
+                        }}>
                         <Icon
                             name={'pen'}
                             size={Icons.medium}
@@ -215,7 +215,7 @@ const SketchColorMenu = React.memo((props) => {
                             }
                             style={styles.downIconMenu}
                         />
-                    </View>
+                    </TouchableOpacity>
                 </MenuTrigger>
                 <MenuOptions optionsContainerStyle={styles.menuOptions}>
                     <View style={styles.colorButtonsContainer}>
@@ -238,15 +238,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         ...Buttons.sketchHeaderButton,
     },
-    buttonActive: {
-        backgroundColor: Colors.iconActive,
-        overflow: 'hidden',
-        ...Buttons.round,
-    },
-    buttonInactive: {
-        color: Colors.icons,
-        ...Buttons.round,
-    },
     downIconMenu: {
         position: 'absolute',
         alignSelf: 'center',
@@ -254,24 +245,6 @@ const styles = StyleSheet.create({
         left: 35,
         transform: [{ rotate: '-45deg' }],
     },
-    // upIconMenu: {
-    //     position: 'absolute',
-    //     alignSelf: 'center',
-    //     top: 31,
-    //     left: 35,
-    //     transform: [{ rotate: '-45deg' }],
-    // },
-
-    // iconColorActive: {
-    //     color: Colors.iconActive,
-    // },
-    // iconColorInactive: {
-    //     color: '#00000000',
-    // },
-    // iconPlacement: {
-    //     flexDirection: 'row',
-    //     backgroundColor: 'yellow',
-    // },
     menuOptions: {
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,

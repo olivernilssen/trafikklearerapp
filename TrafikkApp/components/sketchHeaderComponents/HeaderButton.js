@@ -1,12 +1,12 @@
-import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import React from 'react';
+import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import { Colors, Buttons, Icons } from '../../styles';
 
 /**Component that returns a button, used for burger-menu-, eraser- and undo-button in the sketchHeader
  * @namespace HeaderButton
- * @memberof sketchHeaderComponents
+ * @category sketchHeaderComponents
  * @prop {String} iconName the name of the Icon
  * @prop {Function} buttonOnPress The function you want to use when the button is pressed
  * @prop {number} focusedActiveButton Handles the states of the active buttons
@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     },
     buttonInactive: {
         backgroundColor: Colors.headerBg,
+        ...Buttons.sketchHeaderButton,
     },
     spacedRight: {
         flex: 1,

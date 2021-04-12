@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     View,
     Text,
@@ -7,12 +6,12 @@ import {
     TouchableOpacity,
     Animated,
 } from 'react-native';
-import { button } from '../../styles/typography';
+import ThemeVariables from '../../styles/themeVariables';
 
 /**
  * Component that displays a button group
  * @namespace ButtonGroup
- * @memberof reusableComponents
+ * @category ReusableComponents
  * @prop {array} values The buttons of the button group
  * @prop {int} selectedValue Selected button
  * @prop {number} [groupWidth] The width of the button group
@@ -45,7 +44,8 @@ const ButtonGroup = (props) => {
 
     const buttonSize = width / values.length;
 
-    const fontSize = textSize != null ? textSize : width / 15;
+    // const fontSize = textSize != null ? textSize : width / 15;
+    const fontSize = ThemeVariables.FONT_SIZE_BODY;
     const isColorOption = isColorOptions != null ? isColorOptions : false;
 
     const [chosenIndex, setChosenIndex] = useState(
@@ -79,7 +79,7 @@ const ButtonGroup = (props) => {
     /**
      * Handler that is called when the user taps a button.
      * Sets the state of the chosenIndex
-     * @memberof reusableComponents.ButtonGroup
+     * @memberof ButtonGroup
      * @param {string} value The name of the button
      * @param {int} i The index of the button
      */

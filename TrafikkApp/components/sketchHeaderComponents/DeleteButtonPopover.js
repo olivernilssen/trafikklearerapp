@@ -14,7 +14,7 @@ const { Popover } = renderers;
 
 /** A button for clearing the sketch screen, drops down a button for confirmation
  * @namespace DeleteButtonPopover
- * @memberof sketchHeaderComponents
+ * @category sketchHeaderComponents
  * @prop {object} propsStyle StyleSheet
  * @prop {function} clearCanvas Clears the canvas
  */
@@ -25,7 +25,7 @@ const DeleteButtonPopover = React.memo((props) => {
     const { propsStyle, clearCanvas } = props;
 
     /** Clear canvas and close the "popover" modal
-     * @memberof sketchHeaderComponents.DeleteButtonPopover
+     * @memberof DeleteButtonPopover
      */
     const clearButtonPressed = () => {
         clearCanvas();
@@ -46,24 +46,24 @@ const DeleteButtonPopover = React.memo((props) => {
                 onBackdropPress={() => {
                     setOpened(false);
                 }}>
-                <MenuTrigger
-                    onPress={() => {
-                        setOpened(true);
-                    }}>
-                    <View
+                <MenuTrigger>
+                    <TouchableOpacity
                         style={[
                             styles.buttonSize,
                             isOpened
                                 ? styles.buttonActive
                                 : styles.buttonInactive,
-                        ]}>
+                        ]}
+                        onPress={() => {
+                            setOpened(true);
+                        }}>
                         <Icon
                             name={'trash'}
                             size={Icons.medium}
                             solid
                             color={Colors.icons}
                         />
-                    </View>
+                    </TouchableOpacity>
                 </MenuTrigger>
 
                 <MenuOptions optionsContainerStyle={styles.menuOptions}>
@@ -103,7 +103,6 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
         backgroundColor: Colors.colorPaletteMenu,
-        // overflow: 'hidden',
     },
     menuOptionsContainer: {
         flexDirection: 'row',

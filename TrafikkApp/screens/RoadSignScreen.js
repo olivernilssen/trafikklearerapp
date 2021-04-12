@@ -11,14 +11,13 @@ import {
     Dimensions,
     Modal,
 } from 'react-native';
-import Header from '../components/reusableComponents/Header';
-import MainView from '../components/reusableComponents/MainView';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import { Header, MainView } from '../components/reusableComponents/';
 import { Colors } from '../styles';
 import RoadSignModal from '../components/roadSignComponents/RoadSignModal';
 // import signSource from '../components/roadSignComponents/signPath';
 // import dangerSignDescription from '../assets/fareskiltBeskrivelse.js';
-import { fareSkilt, forbudsSkilt } from '../assets/Sign descriptions/index';
+import { fareSkilt, forbudsSkilt } from '../assets/sign_descriptions/';
 
 const numColumns = 4;
 const signObjectKeys = Object.keys(fareSkilt);
@@ -26,7 +25,7 @@ const signObjectKeys = Object.keys(fareSkilt);
  * Screen component for sign screen
  * Langt fra ferdig!!!
  * @namespace RoadSignScreen
- * @memberof Screens
+ * @category Screens
  * @prop {object} navigation Used for navigation between the different screens
  */
 

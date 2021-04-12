@@ -1,17 +1,22 @@
 import React, { useState, useRef } from 'react';
 import { View, StyleSheet, Text, ScrollView } from 'react-native';
 
-import { MainView, Header } from '../components/reusableComponents';
-import CurriculumMenuContent from '../components/curriculumObjectivesComponents/CurriculumMenuContent';
-import CurriculumObjectives from '../components/curriculumObjectivesComponents/CurriculumObjectives';
+import {
+    MainView,
+    Header,
+    Overlay,
+    BottomMenuAnimated,
+} from '../components/reusableComponents';
+import {
+    CurriculumMenuContent,
+    CurriculumObjectives,
+} from '../components/curriculumObjectivesComponents/';
 import { Colors, Typography } from '../styles';
-import { Overlay } from '../components/reusableComponents';
-import BottomMenuAnimated from '../components/reusableComponents/BottomMenuAnimated';
 
 /**
  * The screen component for the curriculum objectives for traffic training
  * @namespace CurriculumObjectivesScreen
- * @memberof Screens
+ * @category Screens
  * @prop {object} navigation Used for navigation between the different screens
  */
 const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
@@ -29,17 +34,13 @@ const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
                 setBottomSheetHidden={setBottomSheetHidden}
             />
             <View style={styles.main}>
-                <Header navigation={navigation} style={styles.header}>
-                    <View style={styles.heading}>
-                        <View>
-                            <Text style={styles.screenName}>Læreplanmål</Text>
-                        </View>
-                        <View style={styles.subHeadingContainer}>
-                            <Text style={styles.mainHeading}>
-                                {mainHeading}
-                            </Text>
-                            <Text style={styles.subHeading}>{subHeading}</Text>
-                        </View>
+                <Header
+                    navigation={navigation}
+                    style={styles.header}
+                    name="Læreplanmål">
+                    <View style={styles.subHeadingContainer}>
+                        <Text style={styles.mainHeading}>{mainHeading}</Text>
+                        <Text style={styles.subHeading}>{subHeading}</Text>
                     </View>
                 </Header>
                 <ScrollView
@@ -89,22 +90,9 @@ const styles = StyleSheet.create({
         padding: '2%',
         backgroundColor: Colors.curriculumBg,
     },
-    heading: {
-        width: '95%',
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    screenName: {
-        flex: 1,
-        textAlign: 'left',
-        textAlignVertical: 'center',
-        color: Colors.icons,
-        ...Typography.heading,
-    },
     subHeadingContainer: {
         flex: 1,
         alignItems: 'flex-end',
-        marginRight: '2%',
     },
     mainHeading: {
         flex: 1,

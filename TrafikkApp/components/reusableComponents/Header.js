@@ -1,13 +1,13 @@
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Icons, Typography } from '../../styles';
 
 /**
  * Component that displays a Header.
  * Takes in other React Native components as children.
  * @namespace Header
- * @memberof reusableComponents
+ * @category ReusableComponents
  * @prop {object} navigation Navigation object
  * @prop {array} [name] The header text
  * @prop {styleSheet} [style] Optional styling of the Header
@@ -37,8 +37,9 @@ const styles = StyleSheet.create({
     headerText: {
         flex: 1,
         color: Colors.icons,
-        paddingRight: 30,
-        textAlign: 'center',
+        // paddingRight: 30,
+        paddingLeft: 20,
+        textAlign: 'left',
         ...Typography.heading,
     },
 });

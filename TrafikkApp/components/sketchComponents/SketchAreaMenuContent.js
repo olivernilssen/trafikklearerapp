@@ -1,24 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, Image } from 'react-native';
 
 import { Colors, Typography, Buttons } from '../../styles';
-import Divider from '../reusableComponents/Divider';
-import ButtonGroup from '../reusableComponents/ButtonGroup';
+import { Divider, ButtonGroup } from '../reusableComponents/';
 import backgroundImagePath from './backgroundImagePath';
+import AlertModal from './AlertModal';
+import USER_KEYS from '../helpers/storageKeys';
+import AppContext from '../../AppContext';
 
 /**
  * SketchAreaMenuContent is a menu that slides up from the bottom of the screen
  * This menu allows the user to change the background image according to
  * which screen they are on
  * @namespace SketchAreaMenuContent
- * @memberof SketchComponents
+ * @category SketchComponents
+ * @prop {object} navigation Used for navigation between the different screens
  * @prop {string} roadType Name of roadtype
  * @prop {function} setImage Changes the state currentImage
  * @prop {function} setRoadDesignChange Changes the state roadDesignChange and sets
- * @prop {string} extensionType Stien til bakgrunnsbildet
+ * @prop {string} extensionType Name of the extension type to be set (vanlig, gangfelt, sykkelfelt)
+ * @prop {function} setBottomSheetHidden Changes the state bottomSheetHidden to hide or show the bottomMenu
  */
 const SketchAreaMenuContent = React.memo(
     ({
+        navigation,
         roadType,
         setImage,
         setRoadDesignChange,
@@ -49,6 +54,17 @@ const SketchAreaMenuContent = React.memo(
                 IntersectionTypes.push(key);
             });
         }
+
+        // For handling showing/not showing of alert on imageChange
+        const [modalVisible, setModalVisible] = useState(false);
+        const [hideAlert, setHideAlert] = useState(false);
+        const [tempImage, setTempImage] = useState('');
+        const [tempRoadDesign, setTempRoadDesign] = useState('');
+        const [tempIntersectionType, setTempIntersectionType] = useState('');
+        const [isDesignBtn, setIsDesignBtn] = useState(false);
+        const [isIntersectionBtn, setIsIntersectionBtn] = useState(false);
+
+        const appContext = useContext(AppContext);
 
         /**
          * Is triggered on mount and unmount, will help set the background
@@ -83,43 +99,116 @@ const SketchAreaMenuContent = React.memo(
         }, [extensionType]);
 
         /**
-         * Button event that changes the background image of the screen
-         * Depending on if it is a intersection or not, the handling is different
+         * Button event that changes the background image of the screen.
+         * Opens an alert if the drawing is set to be deleted.
+         * Depending on if it is a intersection or not, the handling is different.
          * Also sets the roadDesign state.
-         * Also sets the roadDesignChange to true so that the canvas is cleared
+         * Also sets the roadDesignChange to true so that the canvas is cleared.
          * @memberof SketchAreaMenuContent
-         * @function
          * @param {String} designName
          */
         const onPressButton = (designName) => {
-            setRoadDesignChange(true);
-            if (roadType == 'Veikryss') {
-                const imgSource =
-                    thisRoadType[designName][intersectionType][extensionType];
-                setImage(imgSource);
-                // setIntersectionType('X');
+            if (
+                appContext.deleteOnChange == 'Ja' &&
+                appContext.showDeleteAlert == 'true' &&
+                designName != roadDesign
+            ) {
+                setModalVisible(!modalVisible);
+
+                if (roadType == 'Veikryss') {
+                    const imgSource =
+                        thisRoadType[designName][intersectionType][
+                            extensionType
+                        ];
+                    setTempImage(imgSource);
+                    // setIntersectionType('X');
+                } else {
+                    const imgSource = thisRoadType[designName][extensionType];
+                    setTempImage(imgSource);
+                }
+                setTempRoadDesign(designName);
+                setIsIntersectionBtn(false);
+                setIsDesignBtn(true);
             } else {
-                const imgSource = thisRoadType[designName][extensionType];
-                setImage(imgSource);
+                setRoadDesignChange(true);
+
+                if (roadType == 'Veikryss') {
+                    const imgSource =
+                        thisRoadType[designName][intersectionType][
+                            extensionType
+                        ];
+                    setImage(imgSource);
+                    // setIntersectionType('X');
+                } else {
+                    const imgSource = thisRoadType[designName][extensionType];
+                    setImage(imgSource);
+                }
+                setRoadDesign(designName);
+                setBottomSheetHidden(true);
             }
-            setRoadDesign(designName);
-            setBottomSheetHidden(true);
         };
 
         /**
-         * Triggered when the radiobuttons are clicked
-         * Changes the type of intersection design that is chosen (x, y, t)
+         * Triggered when one of the buttons in the buttonGroup are pressed.
+         * Opens an alert if the drawing is set to be deleted.
+         * Changes the type of intersection design that is chosen (x, y, t).
+         * Also sets the roadDesignChange to true so that the canvas is cleared.
+         * @memberof SketchAreaMenuContent
+         * @param {String} intersectionName
+         */
+        const intersectionTypeChange = (intersectionName) => {
+            if (
+                appContext.deleteOnChange == 'Ja' &&
+                appContext.showDeleteAlert == 'true' &&
+                intersectionName != intersectionType
+            ) {
+                setModalVisible(!modalVisible);
+
+                setTempIntersectionType(intersectionName);
+
+                const imgSource =
+                    thisRoadType[roadDesign][intersectionName][extensionType];
+                setTempImage(imgSource);
+
+                setIsIntersectionBtn(true);
+                setIsDesignBtn(false);
+            } else {
+                setRoadDesignChange(true);
+                setIntersectionType(intersectionName);
+
+                const imgSource =
+                    thisRoadType[roadDesign][intersectionName][extensionType];
+                setImage(imgSource);
+            }
+        };
+
+        /**
+         * Button event that changes the background image of the screen.
+         * Is triggered when pressing the 'OK' button in the Alert.
+         * Depending on if it is a intersection or not, the handling is different.
+         * Also sets the roadDesign state.
          * Also sets the roadDesignChange to true so that the canvas is cleared
          * @memberof SketchAreaMenuContent
-         * @function
-         * @param {String} radioValue
          */
-        const intersectionTypeChange = (intersectionType) => {
+        const onAlertOK = () => {
             setRoadDesignChange(true);
-            setIntersectionType(intersectionType);
-            const imgSource =
-                thisRoadType[roadDesign][intersectionType][extensionType];
-            setImage(imgSource);
+
+            if (isDesignBtn) {
+                setRoadDesign(tempRoadDesign);
+                setBottomSheetHidden(true);
+            } else if (isIntersectionBtn) {
+                setIntersectionType(tempIntersectionType);
+            }
+
+            if (hideAlert) {
+                appContext.saveNewSettings(
+                    'false',
+                    appContext.setShowDeleteAlert,
+                    USER_KEYS.SHOW_DELETE_ALERT_KEY
+                );
+            }
+            setImage(tempImage);
+            setModalVisible(!modalVisible);
         };
 
         /**
@@ -141,6 +230,14 @@ const SketchAreaMenuContent = React.memo(
 
         return (
             <View style={styles.main}>
+                <AlertModal
+                    modalVisible={modalVisible}
+                    setModalVisible={setModalVisible}
+                    hideAlert={hideAlert}
+                    setHideAlert={setHideAlert}
+                    navigation={navigation}
+                    onOK={() => onAlertOK()}
+                />
                 {/* START * The intersectionType buttons (X, T, Y) */}
                 {roadType == 'Veikryss' && (
                     <View style={styles.intersectionTypeSection}>

@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { Colors, Typography } from '../../styles';
 import curriculumData from './curriculumData';
+import { Colors, Typography } from '../../styles';
 
 /**
  * Component to actually display the curriculum objectives.
  * Which content to display is decided by which button(s) in the BottomMenu
  * that is pressed
  * @namespace CurriculumObjectives
- * @memberof curriculumObjectivesComponents
+ * @category curriculumObjectivesComponents
  * @prop {string} curriculumObjective The name of the chosen curriculum objective
  * @prop {function} setCurriculumObjective Sets the state curriculumObjective
  * @prop {string} trafficClass The name of the chosen traffic class
@@ -50,7 +50,7 @@ const CurriculumObjectives = React.memo(
          * or trafficClass changes.
          * Changes the main heading to the right trafficClass, and the subheading
          * to the right curriculum objective.
-         * @memberof curriculumObjectivesComponents.CurriculumObjectives
+         * @memberof CurriculumObjectives
          */
         const onContentChange = () => {
             setMainHeading(trafficClass);
@@ -78,12 +78,7 @@ const CurriculumObjectives = React.memo(
             }
         });
 
-        return (
-            <View style={styles.main}>
-                {/* <Text style={styles.subHeading}>{subHeading}</Text> */}
-                {contents}
-            </View>
-        );
+        return <View style={styles.main}>{contents}</View>;
     }
 );
 

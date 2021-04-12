@@ -14,6 +14,7 @@ const App = () => {
     const [draggableColor, setDraggableColor] = useState('');
     const [deleteOnChange, setDeleteOnChange] = useState('');
     const [eraserSize, setEraserSize] = useState('');
+    const [showDeleteAlert, setShowDeleteAlert] = useState('');
     const [draggableObjects, setDraggableObjects] = useState('');
 
     useEffect(() => {
@@ -23,6 +24,7 @@ const App = () => {
         readData(USER_KEYS.DRAGGABLE_COLOR_KEY, setDraggableColor, '#e09f3e');
         readData(USER_KEYS.DELETE_KEY, setDeleteOnChange, 'Ja');
         readData(USER_KEYS.ERASER_SIZE_KEY, setEraserSize, '80');
+        readData(USER_KEYS.SHOW_DELETE_ALERT_KEY, setShowDeleteAlert, 'true');
         readData(
             USER_KEYS.DRAGGABLE_OBJECTS,
             setDraggableObjects,
@@ -36,19 +38,21 @@ const App = () => {
     };
 
     const userSettings = {
+        saveNewSettings,
         theme: theme,
         penColor: penColor,
         draggableColor: draggableColor,
         deleteOnChange: deleteOnChange,
         eraserSize: eraserSize,
+        showDeleteAlert: showDeleteAlert,
         draggableObjects: draggableObjects,
-        setDraggableObjects,
-        saveNewSettings,
         setTheme,
         setPenColor,
         setDraggableColor,
         setDeleteOnChange,
         setEraserSize,
+        setShowDeleteAlert,
+        setDraggableObjects,
     };
 
     return (

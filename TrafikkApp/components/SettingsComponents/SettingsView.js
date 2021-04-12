@@ -1,15 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, StyleSheet, ToastAndroid, Button } from 'react-native';
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
-import { Colors } from '../../styles/index';
-import ButtonGroup from '../reusableComponents/ButtonGroup';
-import OptionPicker from './optionPicker';
+import { Colors, Typography } from '../../styles/index';
+import { ButtonGroup, Divider } from '../reusableComponents/';
+import OptionPicker from './OptionPicker';
+
 /**
  * The view for the settings screen. It takes in data from
  * AppContext and has arrays for possible values for the different settings
- * @namespace SettingsComponents
- * @memberof SettingsView
+ * @namespace SettingsView
+ * @category SettingsComponents
  */
 const SettingsView = () => {
     const myContext = useContext(AppContext);
@@ -40,7 +41,7 @@ const SettingsView = () => {
      * Function to handle changing a value in settings
      * it also launches a toast on the screen to let the user know
      * that the change has been saved
-     * @memberof SettingsComponents.SettingsView
+     * @memberof SettingsView
      * @param {string} type the name of the settings that is changed
      * @param {string} value the value to update the storage key to
      * @param {function} setValue the state set function associated with this value
@@ -63,7 +64,7 @@ const SettingsView = () => {
             />
             {/* CHANGE THEME COLORS */}
             <View style={styles.rowView}>
-                <Text style={styles.leftColumn}>Tema farger:</Text>
+                <Text style={styles.leftColumn}>Fargetema:</Text>
                 <View style={styles.rightColumn}>
                     <ButtonGroup
                         selectedValue={myContext.theme}
@@ -84,10 +85,10 @@ const SettingsView = () => {
                     />
                 </View>
             </View>
-
+            <Divider borderColor={Colors.headerBg} />
             {/* STANDARD SIZE OF ERASER */}
             <View style={styles.rowView}>
-                <Text style={styles.leftColumn}>Viskelær størrelse: </Text>
+                <Text style={styles.leftColumn}>Viskelærstørrelse: </Text>
                 <View style={styles.rightColumn}>
                     <ButtonGroup
                         selectedValue={myContext.eraserSize}
@@ -108,7 +109,7 @@ const SettingsView = () => {
                     />
                 </View>
             </View>
-
+            <Divider borderColor={Colors.headerBg} />
             {/* DELETE EVERYTHING ON ILLUSTRASTION CHANGE */}
             <View style={styles.rowView}>
                 <Text style={styles.leftColumn}>
@@ -134,10 +135,10 @@ const SettingsView = () => {
                     />
                 </View>
             </View>
-
+            <Divider borderColor={Colors.headerBg} />
             {/* PEN INITAL COLOR */}
             <View style={styles.rowView}>
-                <Text style={styles.leftColumn}>Innledende farge på pen:</Text>
+                <Text style={styles.leftColumn}>Innledende farge på penn:</Text>
                 <View style={styles.rightColumn}>
                     <ButtonGroup
                         selectedValue={myContext.penColor}
@@ -159,7 +160,7 @@ const SettingsView = () => {
                     />
                 </View>
             </View>
-
+            <Divider borderColor={Colors.headerBg} />
             {/* DRAGGABLE INITAL COLOR */}
             <View style={styles.rowView}>
                 <Text style={styles.leftColumn}>
@@ -186,7 +187,7 @@ const SettingsView = () => {
                     />
                 </View>
             </View>
-
+            <Divider borderColor={Colors.headerBg} />
             {/* DRAGGABLE INITAL COLOR */}
             <View style={styles.rowView}>
                 <Text style={styles.leftColumn}>
@@ -210,7 +211,7 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         padding: 30,
-        borderColor: 'black',
+        // borderColor: 'black',
         justifyContent: 'space-evenly',
     },
     rowView: {
@@ -218,18 +219,20 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         // justifyContent: 'space-between',
     },
-    textInput: {
-        backgroundColor: 'gray',
-        color: 'white',
-        fontSize: 15,
-        width: '100%',
-    },
+    // textInput: {
+    //     backgroundColor: 'gray',
+    //     color: 'white',
+    //     fontSize: 15,
+    //     width: '100%',
+    // },
     leftColumn: {
         color: Colors.textPrimary,
         justifyContent: 'flex-start',
         flex: 1,
-        fontSize: 20,
-        fontWeight: '300',
+        textAlignVertical: 'center',
+        // fontSize: 20,
+        // fontWeight: '300',
+        ...Typography.body,
     },
     rightColumn: {
         flex: 0,

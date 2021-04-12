@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import Header from '../reusableComponents/Header';
+import { Header } from '../reusableComponents/';
+
 import SketchColorMenu from './SketchColorMenu';
 import HeaderButton from './HeaderButton';
 import DraggableComponentsButton from './DraggableComponentsButton';
 import DeleteButtonPopover from './DeleteButtonPopover';
+
 import { Colors, Typography, Buttons } from '../../styles';
 
 /**The SketchHeader, contains all the buttons and menu's related to the drawing and placement of draggable components
  * @namespace SketchHeader
- * @memberof sketchHeaderComponents
+ * @category sketchHeaderComponents
  * @prop {function} onEraserPencilSwitch Changes the pencil color and size when switching between eraser and pencil
  * @prop {function} undoChange Function to undo the previous action of the user
  * @prop {function} clearCanvas Clears the canvas of all illustrations
@@ -41,7 +43,7 @@ const SketchHeader = React.memo((props) => {
     } = props;
 
     /**Handles the states for active buttons
-     * @memberof sketchHeaderComponents.SketchHeader
+     * @memberof SketchHeader
      * @function
      */
     const focusedActiveButton = (value) => {
