@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
     View,
     StyleSheet,
@@ -19,8 +19,9 @@ const Carousel = (props) => {
     const [numberOfSlides, setNumberOfSlides] = useState(1);
     const [slidesArray, setSlidesArray] = useState([]);
     const [activeSlide, setActiveSlide] = useState(1);
-    const [width, setWidth] = useState(0);
+    const [viewWidth, setViewWidth] = useState(0);
     const [itemsPerSlide, setItemsPerSlide] = useState(1);
+    const scrollNode = useRef();
     let bullets = [];
 
     /**
@@ -33,7 +34,9 @@ const Carousel = (props) => {
         onNewDraggable(objects[source]);
     };
 
-    useEffect(() => {}, [objectKeys]);
+    useEffect(() => {
+        updateScrollView();
+    }, [objectKeys]);
 
     /**
      * Displayes the available draggable images that can be used
@@ -47,7 +50,7 @@ const Carousel = (props) => {
                 style={[
                     styles.imageContainer,
                     {
-                        width: width / numberOfSlides,
+                        width: viewWidth / numberOfSlides,
                         padding: 5,
                     },
                 ]}>
@@ -58,7 +61,6 @@ const Carousel = (props) => {
                             <TouchableOpacity
                                 key={j}
                                 activeOpacity={0.4}
-                                style={styles.imageButton}
                                 onPress={() => onElementPress(source)}>
                                 <Image
                                     source={objects[source]}
@@ -80,7 +82,7 @@ const Carousel = (props) => {
      */
     const getActiveSlide = (offset) => {
         for (let i = 0; i < numberOfSlides; i++) {
-            if (offset <= width * i) {
+            if (offset <= viewWidth * i) {
                 return i + 1;
             }
             if (i == numberOfSlides) {
@@ -97,6 +99,7 @@ const Carousel = (props) => {
         bullets.push(
             <Text
                 key={i}
+                onPress={() => scrollClick(i)}
                 style={[
                     styles.bullet,
                     { opacity: activeSlide === i ? 0.6 : 0.2 },
@@ -106,35 +109,62 @@ const Carousel = (props) => {
         );
     }
 
+    const scrollClick = (pageIndex) => {
+        setActiveSlide(pageIndex);
+        scrollNode.current?.scrollTo({
+            x: viewWidth * (pageIndex - 1),
+        });
+    };
+
     const onLayout = (layout) => {
-        const { width, height } = layout;
+        const { x, y, width, height } = layout;
 
         // Initialise width of carousel
-        setWidth(width);
-        // Initialise total number of slides
-        const totalItems = objectKeys.length;
-        const itemsOnSlide = Math.ceil(width / 80);
-        setItemsPerSlide(itemsOnSlide);
+        setViewWidth(width);
 
-        const slides = Math.ceil(totalItems / itemsOnSlide);
-        setNumberOfSlides(slides);
+        if (width != 0) {
+            const totalItems = objectKeys.length;
+            const itemsOnSlide = Math.ceil(width / 90);
+            setItemsPerSlide(itemsOnSlide);
 
-        const numbArray = [];
+            const slides = Math.ceil(totalItems / itemsOnSlide);
+            setNumberOfSlides(slides);
 
-        var i = 0;
-        while (i < slides) {
-            numbArray.push(i);
-            i++;
+            const numbArray = [];
+
+            var i = 0;
+            while (i < slides) {
+                numbArray.push(i);
+                i++;
+            }
+            setSlidesArray(numbArray);
         }
-        setSlidesArray(numbArray);
+    };
+
+    const updateScrollView = () => {
+        if (viewWidth != 0) {
+            const totalItems = objectKeys.length;
+            const itemsOnSlide = Math.ceil(viewWidth / 90);
+            setItemsPerSlide(itemsOnSlide);
+
+            const slides = Math.ceil(totalItems / itemsOnSlide);
+            setNumberOfSlides(slides);
+
+            const numbArray = [];
+
+            var i = 0;
+            while (i < slides) {
+                numbArray.push(i);
+                i++;
+            }
+            setSlidesArray(numbArray);
+        }
     };
 
     return (
         <View
             style={styles.container}
             onLayout={(event) => onLayout(event.nativeEvent.layout)}>
-            <View style={styles.bulletContainer}>{bullets}</View>
-
             <ScrollView
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -143,15 +173,16 @@ const Carousel = (props) => {
                     width: `${100 * numberOfSlides}%`,
                 }}
                 pagingEnabled
-                style={styles.carousel}
                 onScroll={(data) => {
                     setActiveSlide(
                         getActiveSlide(data.nativeEvent.contentOffset.x)
                     );
                 }}
-                scrollEventThrottle={100}>
+                scrollEventThrottle={100}
+                ref={scrollNode}>
                 {images}
             </ScrollView>
+            <View style={styles.bulletContainer}>{bullets}</View>
         </View>
     );
 };
@@ -159,15 +190,12 @@ const Carousel = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginBottom: 10,
+        marginTop: 15,
         // width: '55%',
         // paddingTop: 15,
         alignItems: 'center',
     },
-    carousel: {
-        // paddingHorizontal: 10,
-        flexDirection: 'row',
-    },
+
     bulletContainer: {
         flexDirection: 'row',
     },
@@ -176,14 +204,11 @@ const styles = StyleSheet.create({
         fontSize: 30,
     },
     imageContainer: {
-        justifyContent: 'flex-start',
+        justifyContent: 'space-evenly',
         flex: 1,
         flexDirection: 'row',
-        marginHorizontal: 10,
     },
-    imageButton: {
-        paddingHorizontal: 10,
-    },
+
     image: {
         height: 50,
         width: 50,
