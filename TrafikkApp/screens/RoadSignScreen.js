@@ -9,11 +9,13 @@ import {
     TouchableOpacity,
     SectionList,
     Dimensions,
+    Modal,
 } from 'react-native';
 import Header from '../components/reusableComponents/Header';
 import MainView from '../components/reusableComponents/MainView';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from '../styles';
+import RoadSignModal from '../components/roadSignComponents/RoadSignModal';
 // import signSource from '../components/roadSignComponents/signPath';
 // import dangerSignDescription from '../assets/fareskiltBeskrivelse.js';
 import { fareSkilt, forbudsSkilt } from '../assets/Sign descriptions/index';
@@ -30,15 +32,42 @@ const signObjectKeys = Object.keys(fareSkilt);
 
 const RoadSignScreen = ({ navigation }) => {
     // const signObjectKeys = Object.keys(fareSkilt);
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const handleModal = () => {
+        setModalVisible(!modalVisible);
+        console.log('Clicked');
+    };
 
     const renderItem = ({ item }) => {
         return (
-            <TouchableOpacity style={styles.item}>
-                <Image
-                    style={{ width: '100%', height: '100%' }}
-                    source={fareSkilt[item].source}
-                    resizeMode={'contain'}></Image>
-            </TouchableOpacity>
+            <View>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        handleModal;
+                    }}>
+                    <View>
+                        <TouchableOpacity
+                            style={styles.modalItem}
+                            onPress={handleModal}>
+                            <Image
+                                style={{ width: '100%' }}
+                                source={fareSkilt[item].source}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                </Modal>
+                <TouchableOpacity style={styles.item}>
+                    <Image
+                        style={{ width: '100%', height: '100%' }}
+                        source={fareSkilt[item].source}
+                        resizeMode={'contain'}
+                        onPress={handleModal}></Image>
+                </TouchableOpacity>
+            </View>
         );
     };
 
@@ -70,6 +99,10 @@ const styles = StyleSheet.create({
         width: Dimensions.get('screen').width / numColumns - 3,
         margin: 1,
         height: Dimensions.get('screen').height / 7.5,
+    },
+    modalItem: {
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });
 
