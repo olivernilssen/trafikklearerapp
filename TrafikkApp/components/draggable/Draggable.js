@@ -23,9 +23,11 @@ const colors = [
     'delete',
 ];
 
+const noColors = ['delete'];
+
 const ITEM_SIZE = 100;
 const radius = (ITEM_SIZE * 2) / 2;
-const buttonSize = 25;
+const buttonSize = 30;
 
 /**
  * Component that holds the actual draggable component
@@ -35,7 +37,7 @@ const buttonSize = 25;
  */
 const Draggable = React.memo((props) => {
     //States
-    const { source } = props;
+    const { imgInfo } = props;
     const [imgScale, setimgScale] = useState(new Animated.Value(1));
     const [tintColor, setTintColor] = useState(props.tintColor);
     const [popoutActive, setPopoutActive] = useState(false);
@@ -107,13 +109,15 @@ const Draggable = React.memo((props) => {
                     accessibilityRole={'image'}>
                     <View>
                         <Animated.Image
-                            source={source}
+                            source={imgInfo.source}
                             resizeMode={'contain'}
                             style={[
                                 styles.item,
                                 tintColor === null
                                     ? null
-                                    : { tintColor: tintColor },
+                                    : imgInfo.hasTint === false
+                                    ? { tintColor: tintColor }
+                                    : null,
                                 {
                                     transform: [{ scale: imgScale }],
                                 },
@@ -121,7 +125,7 @@ const Draggable = React.memo((props) => {
                         />
                         <Popout
                             radius={radius}
-                            array={colors}
+                            array={imgInfo.hasTint ? noColors : colors}
                             setPopoutActive={setPopoutActive}
                             popoutActive={popoutActive}
                             setTintColor={setTintColor}

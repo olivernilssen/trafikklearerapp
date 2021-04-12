@@ -1,13 +1,28 @@
 const draggables = {
-    Bicycle: require('../../assets/Elements/bicycle.png'),
-    Bus: require('../../assets/Elements/bus.png'),
-    'Bicycle-man': require('../../assets/Elements/bicycle-man.png'),
-    Car: require('../../assets/Elements/car-top-view.png'),
-    Children: require('../../assets/Elements/children.png'),
-    Person: require('../../assets/Elements/standing-up-man.png'),
-    'Traffic-barrier': require('../../assets/Elements/traffic-barrier.png'),
-    'Traffic-cone': require('../../assets/Elements/traffic-cone.png'),
-    'Walking-person': require('../../assets/Elements/walk.png'),
+    Bicycle: {
+        source: require('../../assets/Elements/bicycle.png'),
+        hasTint: false,
+    },
+    Bus: {
+        source: require('../../assets/Elements/bus.png'),
+        hasTint: false,
+    },
+    'Bicycle-man': {
+        source: require('../../assets/Elements/bicycle-man.png'),
+        hasTint: false,
+    },
+    Car: {
+        source: require('../../assets/Elements/car-top-view.png'),
+        hasTint: false,
+    },
+    Children: {
+        source: require('../../assets/Elements/children.png'),
+        hasTint: false,
+    },
+    Person: {
+        source: require('../../assets/Elements/standing-up-man.png'),
+        hasTint: false,
+    },
 };
 
 export default draggables;

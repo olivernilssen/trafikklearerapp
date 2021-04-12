@@ -96,7 +96,7 @@ const OptionPicker = (props) => {
                     <View style={styles.modalView}>
                         <View style={styles.modalTopView}>
                             <Text style={styles.modalText}>
-                                Velg opp til 15 elementer som vises på
+                                Velg opp til 15 elementer som kan brukes på
                                 tegneskjermen!
                             </Text>
                             <TouchableOpacity
@@ -133,7 +133,7 @@ const OptionPicker = (props) => {
                                             updateSelectedImages(source)
                                         }>
                                         <Image
-                                            source={draggables[source]}
+                                            source={draggables[source].source}
                                             style={styles.image}
                                             resizeMode={'contain'}
                                         />

@@ -56,14 +56,14 @@ const Carousel = (props) => {
                 ]}>
                 {objectKeys
                     .slice(startFrom, startFrom + itemsPerSlide)
-                    .map((source, j) => {
+                    .map((key, j) => {
                         return (
                             <TouchableOpacity
                                 key={j}
                                 activeOpacity={0.4}
-                                onPress={() => onElementPress(source)}>
+                                onPress={() => onElementPress(key)}>
                                 <Image
-                                    source={objects[source]}
+                                    source={objects[key].source}
                                     style={styles.image}
                                     resizeMode={'contain'}
                                 />
@@ -144,10 +144,7 @@ const Carousel = (props) => {
     const updateScrollView = () => {
         if (viewWidth != 0) {
             const totalItems = objectKeys.length;
-            const itemsOnSlide = Math.ceil(viewWidth / 90);
-            setItemsPerSlide(itemsOnSlide);
-
-            const slides = Math.ceil(totalItems / itemsOnSlide);
+            const slides = Math.ceil(totalItems / itemsPerSlide);
             setNumberOfSlides(slides);
 
             const numbArray = [];
