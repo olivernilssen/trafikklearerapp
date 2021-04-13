@@ -2,6 +2,11 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Colors, Typography } from '../../styles';
 
+/**
+ * This component is used to display a name/logo on the header in the StartScreen.
+ * @namespace HeaderName
+ * @category StartScreenComponents
+ */
 const HeaderName = React.memo(() => {
     return (
         <View style={styles.main}>
