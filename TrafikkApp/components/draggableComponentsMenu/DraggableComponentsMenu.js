@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { StyleSheet, View, Animated, Text } from 'react-native';
 
-import { Divider, ButtonGroup, Carousel } from '../reusableComponents/';
+import { Divider, ButtonGroup } from '../reusableComponents/';
+import Carousel from './Carousel';
 import { Colors, Typography } from '../../styles';
 import AppContext from '../../AppContext';
 
