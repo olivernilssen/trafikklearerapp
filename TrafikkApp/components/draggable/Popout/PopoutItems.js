@@ -105,7 +105,7 @@ const PopoutItems = (props) => {
                         ]}>
                         {isRemoveButton && (
                             <Icon
-                                name={'times'}
+                                name={'trash-alt'}
                                 solid
                                 size={buttonSize - 10}
                                 color={Colors.textPrimary}

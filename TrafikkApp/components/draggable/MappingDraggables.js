@@ -22,9 +22,13 @@ const MappingDraggable = React.memo((props) => {
                     <Draggable
                         key={itemInfo.id}
                         id={itemInfo.id}
-                        source={itemInfo.source}
+                        imgInfo={itemInfo}
                         onRemoveItem={onRemoveItem}
-                        tintColor={appContext.draggableColor}
+                        tintColor={
+                            itemInfo.hasTint === false
+                                ? appContext.draggableColor
+                                : null
+                        }
                     />
                 );
             })}
