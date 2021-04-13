@@ -63,7 +63,7 @@ const OptionPicker = (props) => {
             delete copyArray[newValue]; //delete an item from our object of paths
             setSelectedImages(copyArray);
         } else {
-            if (Object.keys(selectedImages).length >= 15) {
+            if (Object.keys(selectedImages).length >= 20) {
                 setWarningShow(true); //Show warning because  max limit is 15
             } else {
                 const pair = {}; //make the keypair to put into a shallow copy array
@@ -96,7 +96,7 @@ const OptionPicker = (props) => {
                     <View style={styles.modalView}>
                         <View style={styles.modalTopView}>
                             <Text style={styles.modalText}>
-                                Velg opp til 15 elementer som kan brukes på
+                                Velg opp til 20 elementer som kan brukes på
                                 tegneskjermen!
                             </Text>
                             <TouchableOpacity
@@ -108,7 +108,7 @@ const OptionPicker = (props) => {
                         {warningShow && (
                             <View style={styles.warningContainer}>
                                 <Text style={styles.warningText}>
-                                    Du kan ikke velge mer enn 15 ikoner
+                                    Du kan ikke velge mer enn 20 ikoner
                                     samtidig. Du kan trykke på valgte ikoner for
                                     å fjerne de om du vil.
                                 </Text>
