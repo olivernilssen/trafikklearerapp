@@ -1,5 +1,12 @@
 import React, { useState, useContext } from 'react';
-import { View, Text, StyleSheet, ToastAndroid, Button } from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    ToastAndroid,
+    Button,
+    TouchableOpacity,
+} from 'react-native';
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
 import { Colors, Typography } from '../../styles/index';
@@ -194,11 +201,11 @@ const SettingsView = () => {
                     Drabare elementer velger (max 20):
                 </Text>
                 <View style={styles.rightColumn}>
-                    <Button
-                        title="openPicker"
-                        onPress={() =>
-                            setPickerVisible(!pickerVisible)
-                        }></Button>
+                    <TouchableOpacity
+                        style={styles.modalButton}
+                        onPress={() => setPickerVisible(!pickerVisible)}>
+                        <Text style={styles.buttonText}>Åpne velger</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>
@@ -211,33 +218,31 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         padding: 30,
-        // borderColor: 'black',
         justifyContent: 'space-evenly',
     },
     rowView: {
         width: '100%',
         flexDirection: 'row',
-        // justifyContent: 'space-between',
     },
-    // textInput: {
-    //     backgroundColor: 'gray',
-    //     color: 'white',
-    //     fontSize: 15,
-    //     width: '100%',
-    // },
     leftColumn: {
         color: Colors.textPrimary,
         justifyContent: 'flex-start',
         flex: 1,
         textAlignVertical: 'center',
-        // fontSize: 20,
-        // fontWeight: '300',
         ...Typography.body,
     },
     rightColumn: {
         flex: 0,
         justifyContent: 'flex-end',
         alignContent: 'flex-end',
+    },
+    modalButton: {
+        backgroundColor: Colors.modalButtonSave,
+        padding: 15,
+        borderRadius: 20,
+    },
+    buttonText: {
+        ...Typography.body,
     },
 });
 

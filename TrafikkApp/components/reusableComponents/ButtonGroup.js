@@ -7,6 +7,7 @@ import {
     Animated,
 } from 'react-native';
 import ThemeVariables from '../../styles/themeVariables';
+import { button } from '../../styles/typography';
 
 /**
  * Component that displays a button group
@@ -43,6 +44,7 @@ const ButtonGroup = (props) => {
     const isHeight = height != null ? height : width / 6;
 
     const buttonSize = width / values.length;
+    const [buttonSizes, setButtonSizes] = useState([]);
 
     // const fontSize = textSize != null ? textSize : width / 15;
     const fontSize = ThemeVariables.FONT_SIZE_BODY;
@@ -51,9 +53,7 @@ const ButtonGroup = (props) => {
     const [chosenIndex, setChosenIndex] = useState(
         values.indexOf(selectedValue)
     );
-    const [boxPos, setBoxPos] = useState(
-        new Animated.Value(chosenIndex * buttonSize)
-    );
+    const [boxPos, setBoxPos] = useState(new Animated.Value(0));
 
     /**
      * useEffect that is triggered when selectedValue is changed.
@@ -68,13 +68,39 @@ const ButtonGroup = (props) => {
      * Will animate the changing of the selected button
      */
     useEffect(() => {
+        // Getting sum of numbers
+        var sum = buttonSizes.slice(0, chosenIndex).reduce(function (a, b) {
+            return a + b;
+        }, 0);
+
         Animated.spring(boxPos, {
-            toValue: buttonSize * chosenIndex,
+            toValue: sum,
             bounciness: 0,
             speed: 2,
             useNativeDriver: true,
         }).start();
-    }, [chosenIndex]);
+    }, [chosenIndex, buttonSizes]);
+
+    useEffect(() => {
+        var newSizes = [];
+        const smallButton = width / values.length / 3;
+        let bigButton = 0;
+        if (values.indexOf('O') != -1 || values.indexOf('-') != -1) {
+            bigButton = (width - smallButton) / (values.length - 1);
+        } else {
+            bigButton = width / values.length;
+        }
+
+        for (var i = 0; i < values.length; i++) {
+            if (values[i] === 'O' || values[i] === '-' || values[i] === '0') {
+                newSizes.push(smallButton);
+            } else {
+                newSizes.push(bigButton);
+            }
+        }
+
+        setButtonSizes(newSizes);
+    }, []);
 
     /**
      * Handler that is called when the user taps a button.
@@ -104,7 +130,7 @@ const ButtonGroup = (props) => {
                         styles.slider,
                         {
                             height: isHeight,
-                            width: buttonSize,
+                            width: buttonSizes[chosenIndex],
                             backgroundColor: highlightBackgroundColor,
                             transform: [{ translateX: boxPos }],
                         },
@@ -134,7 +160,7 @@ const ButtonGroup = (props) => {
                             style={[
                                 styles.touchable,
                                 {
-                                    width: buttonSize,
+                                    width: buttonSizes[i],
                                 },
                             ]}
                             onPress={() => onValueChanged(value, i)}>
@@ -164,9 +190,7 @@ const ButtonGroup = (props) => {
                         styles.slider,
                         {
                             height: isHeight,
-                            width: buttonSize,
-                            // backgroundColor: 'transparent',
-                            // borderBottomColor: 'white',
+                            width: buttonSizes[chosenIndex],
                             borderBottomWidth: 5,
                             borderRadius: 0,
                             transform: [{ translateX: boxPos }],
