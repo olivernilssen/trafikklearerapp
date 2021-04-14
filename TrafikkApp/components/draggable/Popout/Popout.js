@@ -11,7 +11,7 @@ import PopoutItems from './PopoutItems';
  * @prop {boolean} popoutActive Bool to represent if popout is active or not
  * @prop {function} itemSize size of items shown in popout
  */
-const Popout = (props) => {
+const Popout = React.memo((props) => {
     const { popoutActive, itemSize } = props;
 
     const [scale, setScale] = useState(new Animated.Value(0));
@@ -54,7 +54,7 @@ const Popout = (props) => {
             <PopoutItems {...props} />
         </Animated.View>
     );
-};
+});
 
 const styles = StyleSheet.create({
     popoutMenu: {

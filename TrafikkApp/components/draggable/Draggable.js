@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, {
+    useState,
+    useEffect,
+    useCallback,
+    useLayoutEffect,
+} from 'react';
 import Gestures from 'react-native-easy-gestures';
 import {
     StyleSheet,
@@ -19,7 +24,7 @@ const colors = [
     '#9e2a2b',
     '#284b63',
     '#3a5a40',
-    'reset',
+    'exit',
     'delete',
 ];
 
@@ -37,7 +42,7 @@ const buttonSize = 30;
  */
 const Draggable = React.memo((props) => {
     //States
-    const { imgInfo } = props;
+    const { imgInfo, moving, setMoving } = props;
     const [imgScale, setimgScale] = useState(new Animated.Value(1));
     const [tintColor, setTintColor] = useState(props.tintColor);
     const [popoutActive, setPopoutActive] = useState(false);
@@ -47,9 +52,13 @@ const Draggable = React.memo((props) => {
      * Will make the popout inactive
      * @memberof Draggable
      */
-    useEffect(() => {
+    useLayoutEffect(() => {
         setPopoutActive(!popoutActive);
     }, [tintColor]);
+
+    // useLayoutEffect(() => {
+    //     setPopoutActive(false);
+    // }, [moving]);
 
     /**
      * When user starts dragging the object, this is triggered
@@ -61,7 +70,9 @@ const Draggable = React.memo((props) => {
      */
     const onDragStart = (gesture) => {
         //Start spring animation (user feedback)
+
         setPopoutActive(false);
+        // setMoving(!moving);
 
         Animated.spring(imgScale, {
             toValue: 1.2,
@@ -105,7 +116,7 @@ const Draggable = React.memo((props) => {
             onStart={(event) => onDragStart(event)}>
             <View>
                 <TouchableWithoutFeedback
-                    onLongPress={() => setPopoutActive(!popoutActive)}
+                    onLongPress={() => setPopoutActive(true)}
                     accessibilityRole={'image'}>
                     <View>
                         <Animated.Image
@@ -123,16 +134,19 @@ const Draggable = React.memo((props) => {
                                 },
                             ]}
                         />
-                        <Popout
-                            radius={radius}
-                            array={imgInfo.hasTint ? noColors : colors}
-                            setPopoutActive={setPopoutActive}
-                            popoutActive={popoutActive}
-                            setTintColor={setTintColor}
-                            buttonSize={buttonSize}
-                            itemSize={ITEM_SIZE}
-                            removeItem={removeItem}
-                        />
+                        {popoutActive && (
+                            <Popout
+                                radius={radius}
+                                moving={moving}
+                                array={imgInfo.hasTint ? noColors : colors}
+                                setPopoutActive={setPopoutActive}
+                                popoutActive={popoutActive}
+                                setTintColor={setTintColor}
+                                buttonSize={buttonSize}
+                                itemSize={ITEM_SIZE}
+                                removeItem={removeItem}
+                            />
+                        )}
                     </View>
                 </TouchableWithoutFeedback>
             </View>

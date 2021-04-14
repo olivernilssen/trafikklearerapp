@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
@@ -16,8 +16,15 @@ import { Colors } from '../../../styles';
  * @prop {int} buttonSize size of buttons in popout menu
  * @prop {function} removeItem function to delete draggable
  */
-const PopoutItems = (props) => {
-    const { radius, array, setTintColor, buttonSize, removeItem } = props;
+const PopoutItems = React.memo((props) => {
+    const {
+        radius,
+        array,
+        setTintColor,
+        buttonSize,
+        removeItem,
+        setPopoutActive,
+    } = props;
 
     /**
      * Function to calculate the x and y coordinates as a half circle
@@ -28,7 +35,7 @@ const PopoutItems = (props) => {
      * @returns {int} the x position of the circle
      * @returns {int} the y position of the circle
      */
-    const calculateXY = (index) => {
+    const calculateXY = useCallback((index) => {
         const so = 0; //start offset
         const rx = radius; //radius along x
         const ry = radius; //radius along y
@@ -43,7 +50,7 @@ const PopoutItems = (props) => {
             -rx * Math.cos((150 / n / maxCircle) * (index + 1 + so) * Math.PI);
 
         return { x, y };
-    };
+    });
 
     /**
      * Check what button is pressed
@@ -51,14 +58,14 @@ const PopoutItems = (props) => {
      * @memberof PopoutItems
      * @param {hex} color color of selected tint
      * @param {boolean} isRemoveButton if button is the remove button
-     * @param {boolean} isResetButton if the button is the reset button (not working)
+     * @param {boolean} isExitButton if the button is the reset button (not working)
      */
-    const onPressOption = (color, isRemoveButton, isResetButton) => {
+    const onPressOption = (color, isRemoveButton, isExitButton) => {
         isRemoveButton
             ? removeItem()
-            : !isResetButton
+            : !isExitButton
             ? setTintColor(color)
-            : setTintColor(null); //ERROR THIS ONE DOES NOT WORK, makes the image invisible
+            : setPopoutActive(false); //ERROR THIS ONE DOES NOT WORK, makes the image invisible
     };
 
     /**
@@ -66,9 +73,9 @@ const PopoutItems = (props) => {
      * as a small circle placed according to the function calculateXY
      */
     return array.map((color, i) => {
-        const isResetButton = color == 'reset';
+        const isExitButton = color == 'exit';
         const isRemoveButton = color == 'delete';
-        color = isResetButton
+        color = isExitButton
             ? '#DDDDDD'
             : isRemoveButton
             ? Colors.deleteButtonActive
@@ -91,7 +98,7 @@ const PopoutItems = (props) => {
                 <TouchableOpacity
                     color={color}
                     onPressOut={() =>
-                        onPressOption(color, isRemoveButton, isResetButton)
+                        onPressOption(color, isRemoveButton, isExitButton)
                     }>
                     <Animated.View
                         style={[
@@ -111,9 +118,9 @@ const PopoutItems = (props) => {
                                 color={Colors.textPrimary}
                             />
                         )}
-                        {isResetButton && (
+                        {isExitButton && (
                             <Icon
-                                name={'undo'}
+                                name={'times'}
                                 solid
                                 size={buttonSize - 10}
                                 color={'black'}
@@ -124,7 +131,7 @@ const PopoutItems = (props) => {
             </View>
         );
     });
-};
+});
 
 const styles = StyleSheet.create({
     button: {

@@ -32,6 +32,7 @@ const DraggableWithEverything = React.memo((props) => {
         setExtensionType,
     } = props;
 
+    const [moving, setMoving] = useState(false);
     /**
      * useEffect that is triggered when deletingItemId is changed
      * Will delete according to this state's value
@@ -95,6 +96,8 @@ const DraggableWithEverything = React.memo((props) => {
                 draggables={draggables}
                 setDraggables={setDraggables}
                 onRemoveItem={onRemoveItem}
+                moving={moving}
+                setMoving={setMoving}
             />
         </>
     );
