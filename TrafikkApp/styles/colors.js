@@ -83,12 +83,12 @@ export default {
     curriculumCards: darkGray, //'#171717',
 
     //imagePicker
-    selectedBorder: darkerBlue,
+    selectedBorder: blue,
     modalBg: lightGray,
     modalButtonSave: blueGreen,
     modalButtonClose: red,
     modalButtonDeselect: blue,
-    modalText: charcoal,
+    modalText: darkGray,
 
     //misc
     warning: red,

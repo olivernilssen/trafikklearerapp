@@ -163,8 +163,8 @@ const SketchArea = React.memo((props) => {
     return (
         <MainView>
             <Overlay
-                bottomSheetHidden={bottomSheetHidden}
-                setBottomSheetHidden={setBottomSheetHidden}
+                showOverlay={bottomSheetHidden}
+                setShowOverlay={setBottomSheetHidden}
             />
             <View style={styles.main}>
                 <SketchHeader

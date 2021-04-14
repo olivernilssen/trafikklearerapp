@@ -1,15 +1,14 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
     View,
     Text,
     StyleSheet,
     ToastAndroid,
-    Button,
     TouchableOpacity,
 } from 'react-native';
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
-import { Colors, Typography } from '../../styles/index';
+import { Buttons, Colors, Typography } from '../../styles/index';
 import { ButtonGroup, Divider } from '../reusableComponents/';
 import OptionPicker from './OptionPicker';
 
@@ -19,9 +18,11 @@ import OptionPicker from './OptionPicker';
  * @namespace SettingsView
  * @category SettingsComponents
  */
-const SettingsView = () => {
+const SettingsView = (props) => {
+    const { pickerVisible, setPickerVisible } = props;
+
     const myContext = useContext(AppContext);
-    const [pickerVisible, setPickerVisible] = useState(false);
+    // const [pickerVisible, setPickerVisible] = useState(false);
 
     const onDelChangeValues = ['Ja', 'Nei'];
     const penColorValues = [
@@ -239,10 +240,11 @@ const styles = StyleSheet.create({
     modalButton: {
         backgroundColor: Colors.modalButtonSave,
         padding: 15,
-        borderRadius: 20,
+        ...Buttons.rounded,
     },
     buttonText: {
-        ...Typography.body,
+        color: Colors.textSecondary,
+        ...Typography.button,
     },
 });
 

@@ -1,14 +1,10 @@
 const draggables = {
     Bicycle: {
-        source: require('../../assets/Elements/bicycle.png'),
+        source: require('../../assets/Elements/bicycle-man.png'),
         hasTint: false,
     },
     Bus: {
         source: require('../../assets/Elements/bus.png'),
-        hasTint: false,
-    },
-    'Bicycle-man': {
-        source: require('../../assets/Elements/bicycle-man.png'),
         hasTint: false,
     },
     Car: {
@@ -59,13 +55,9 @@ const draggables = {
         source: require('../../assets/Elements/traffic-light.png'),
         hasTint: true,
     },
-    tree: {
+    'tree-silhouette': {
         source: require('../../assets/Elements/tree-silhouette.png'),
         hasTint: false,
-    },
-    bush: {
-        source: require('../../assets/Elements/bush.png'),
-        hasTint: true,
     },
     'car-yellow': {
         source: require('../../assets/Elements/car-yellow.png'),
@@ -75,8 +67,8 @@ const draggables = {
         source: require('../../assets/Elements/cargo-truck.png'),
         hasTint: false,
     },
-    forskjors: {
-        source: require('../../assets/Elements/forkjors.png'),
+    priority: {
+        source: require('../../assets/Elements/priority.png'),
         hasTint: true,
     },
     ninja: {
@@ -91,8 +83,40 @@ const draggables = {
         source: require('../../assets/Elements/truck.png'),
         hasTint: true,
     },
-    vikeplikt: {
-        source: require('../../assets/Elements/vikeplikt.png'),
+    yield: {
+        source: require('../../assets/Elements/yield.png'),
+        hasTint: true,
+    },
+    20: {
+        source: require('../../assets/Elements/20.png'),
+        hasTint: true,
+    },
+    40: {
+        source: require('../../assets/Elements/40.png'),
+        hasTint: true,
+    },
+    50: {
+        source: require('../../assets/Elements/50.png'),
+        hasTint: true,
+    },
+    fence: {
+        source: require('../../assets/Elements/fence.png'),
+        hasTint: true,
+    },
+    'gray-car-top': {
+        source: require('../../assets/Elements/gray-car-top.png'),
+        hasTint: true,
+    },
+    'no-parking': {
+        source: require('../../assets/Elements/no-parking.png'),
+        hasTint: true,
+    },
+    'no-turn-right': {
+        source: require('../../assets/Elements/no-turn-right.png'),
+        hasTint: true,
+    },
+    tree: {
+        source: require('../../assets/Elements/tree.png'),
         hasTint: true,
     },
 };

@@ -20,7 +20,7 @@ export const largeWidt = {
 };
 
 export const rounded = {
-    borderRadius: 15,
+    borderRadius: 10,
 };
 
 export const round = {

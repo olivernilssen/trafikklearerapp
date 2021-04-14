@@ -6,8 +6,7 @@ import {
     TouchableOpacity,
     Animated,
 } from 'react-native';
-import ThemeVariables from '../../styles/themeVariables';
-import { button } from '../../styles/typography';
+import { Typography, Buttons } from '../../styles';
 
 /**
  * Component that displays a button group
@@ -30,7 +29,6 @@ const ButtonGroup = (props) => {
         values,
         selectedValue,
         groupWidth,
-        textSize,
         onSelect,
         highlightBackgroundColor,
         highlightTextColor,
@@ -47,7 +45,6 @@ const ButtonGroup = (props) => {
     const [buttonSizes, setButtonSizes] = useState([]);
 
     // const fontSize = textSize != null ? textSize : width / 15;
-    const fontSize = ThemeVariables.FONT_SIZE_BODY;
     const isColorOption = isColorOptions != null ? isColorOptions : false;
 
     const [chosenIndex, setChosenIndex] = useState(
@@ -169,7 +166,6 @@ const ButtonGroup = (props) => {
                                     style={[
                                         styles.text,
                                         {
-                                            fontSize: fontSize,
                                             color:
                                                 i == chosenIndex
                                                     ? highlightTextColor
@@ -204,12 +200,11 @@ const ButtonGroup = (props) => {
 const styles = StyleSheet.create({
     mainView: {
         flexDirection: 'row',
-        borderRadius: 10,
+        ...Buttons.rounded,
     },
     text: {
-        fontSize: 20,
         textAlign: 'center',
-        fontWeight: 'bold',
+        ...Typography.button,
     },
     touchable: {
         justifyContent: 'center',
@@ -221,7 +216,7 @@ const styles = StyleSheet.create({
     },
     slider: {
         position: 'absolute',
-        borderRadius: 10,
+        ...Buttons.rounded,
     },
 });
 

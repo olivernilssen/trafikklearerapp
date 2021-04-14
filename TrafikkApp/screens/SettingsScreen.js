@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import { MainView, Header } from '../components/reusableComponents/';
+import { MainView, Header, Overlay } from '../components/reusableComponents/';
 import { Colors } from '../styles';
 import { SettingsView } from '../components/settingsComponents/';
 
@@ -12,11 +12,20 @@ import { SettingsView } from '../components/settingsComponents/';
  * @prop {object} navigation Used for navigation between the different screens
  */
 const SettingsScreen = React.memo(({ navigation }) => {
+    const [pickerVisible, setPickerVisible] = useState(false);
+
     return (
         <MainView>
+            <Overlay
+                showOverlay={!pickerVisible}
+                setShowOverlay={setPickerVisible}
+            />
             <Header name="Innstillinger" navigation={navigation} />
             <View style={styles.main}>
-                <SettingsView />
+                <SettingsView
+                    pickerVisible={pickerVisible}
+                    setPickerVisible={setPickerVisible}
+                />
             </View>
         </MainView>
     );
