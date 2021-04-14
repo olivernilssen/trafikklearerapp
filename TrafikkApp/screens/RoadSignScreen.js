@@ -100,7 +100,7 @@ const RoadSignScreen = ({ navigation }) => {
     // };
 
     const renderItem = ({ item, index }) => {
-        console.log({ item });
+        // console.log({ item });
         return (
             <View>
                 <TouchableOpacity
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     imageContainer: {
         flex: 1,
         marginVertical: 1,
-        backgroundColor: 'grey',
+        backgroundColor: Colors.sketchBackground,
     },
     item: {
         alignItems: 'center',
