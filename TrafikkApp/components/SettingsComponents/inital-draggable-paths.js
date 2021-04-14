@@ -1,13 +1,9 @@
 const draggables = {
-    Bicycle: {
-        source: require('../../assets/Elements/bicycle.png'),
-        hasTint: false,
-    },
     Bus: {
         source: require('../../assets/Elements/bus.png'),
         hasTint: false,
     },
-    'Bicycle-man': {
+    Bicycle: {
         source: require('../../assets/Elements/bicycle-man.png'),
         hasTint: false,
     },

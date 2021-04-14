@@ -7,11 +7,12 @@ import {
     Pressable,
     TouchableOpacity,
     Image,
+    TouchableWithoutFeedback,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
-import { Colors } from '../../styles/index';
+import { Buttons, Colors, Icons, Typography } from '../../styles/index';
 import draggables from './draggableObjectPaths';
 
 /**
@@ -92,17 +93,22 @@ const OptionPicker = (props) => {
                 onRequestClose={() => {
                     setModalVisible(!modalVisible);
                 }}>
+                {/* <TouchableWithoutFeedback
+                    onPress={() => setModalVisible(!modalVisible)}> */}
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <View style={styles.modalTopView}>
                             <Text style={styles.modalText}>
                                 Velg opp til 20 elementer som kan brukes på
-                                tegneskjermen!
+                                tegneskjermen
                             </Text>
                             <TouchableOpacity
-                                style={[styles.buttonClose]}
                                 onPress={() => closeModalWithoutSave()}>
-                                <Icon name={'times-circle'} size={30} />
+                                <Icon
+                                    name={'times'}
+                                    size={Icons.medium}
+                                    color={Colors.textSecondary}
+                                />
                             </TouchableOpacity>
                         </View>
                         {warningShow && (
@@ -145,18 +151,19 @@ const OptionPicker = (props) => {
                             <Pressable
                                 style={[styles.button, styles.buttonDeselect]}
                                 onPress={() => setSelectedImages({})}>
-                                <Text style={styles.textStyle}>
+                                <Text style={styles.buttonText}>
                                     Avmarker alt
                                 </Text>
                             </Pressable>
                             <Pressable
                                 style={[styles.button, styles.buttonSave]}
                                 onPress={() => saveSelectedtDraggables()}>
-                                <Text style={styles.textStyle}>Lagre</Text>
+                                <Text style={styles.buttonText}>Lagre</Text>
                             </Pressable>
                         </View>
                     </View>
                 </View>
+                {/* </TouchableWithoutFeedback> */}
             </Modal>
         </>
     );
@@ -164,25 +171,47 @@ const OptionPicker = (props) => {
 
 const styles = StyleSheet.create({
     centeredView: {
+        flex: 1,
         flexDirection: 'column',
-        height: '100%',
-        width: '100%',
+        // height: '100%',
+        // width: '100%',
         padding: 30,
         justifyContent: 'space-evenly',
     },
     modalView: {
-        // flex: 1,
-        margin: 20,
         backgroundColor: Colors.modalBg,
         borderRadius: 20,
-        padding: 35,
+        padding: 25,
         alignItems: 'center',
-        elevation: 5,
+        elevation: 10,
+        borderRadius: 20,
     },
     modalTopView: {
         flexDirection: 'row',
         width: '100%',
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-between',
+    },
+    modalText: {
+        flex: 1,
+        marginBottom: 15,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        flexWrap: 'wrap',
+        color: Colors.modalText,
+        ...Typography.section,
+    },
+    warningContainer: {
+        width: '90%',
+        padding: 20,
+        backgroundColor: Colors.warning,
+        textAlign: 'center',
+        marginBottom: 15,
+        ...Buttons.rounded,
+    },
+    warningText: {
+        color: Colors.textPrimary,
+        textAlign: 'center',
+        ...Typography.body,
     },
     containerView: {
         // flex: 1,
@@ -191,40 +220,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         alignItems: 'flex-start',
         marginBottom: 25,
-    },
-    warningContainer: {
-        width: '90%',
-        padding: 20,
         borderRadius: 20,
-        backgroundColor: Colors.warning,
-        textAlign: 'center',
-        marginBottom: 15,
-    },
-    warningText: {
-        fontSize: 20,
-        color: Colors.textPrimary,
-        textAlign: 'center',
-        fontWeight: 'bold',
-    },
-    button: {
-        borderRadius: 20,
-        padding: 10,
-        elevation: 2,
-        width: '30%',
-    },
-    buttonClose: {
-        height: '45%',
-    },
-    buttonSave: {
-        backgroundColor: Colors.modalButtonSave,
-    },
-    buttonDeselect: {
-        backgroundColor: Colors.modalButtonDeselect,
-    },
-    buttonGroup: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: '100%',
     },
     imageButton: {
         height: 75,
@@ -238,29 +234,35 @@ const styles = StyleSheet.create({
         margin: 5,
         padding: 10,
         borderColor: Colors.selectedBorder,
-        borderWidth: 4,
+        borderWidth: 5,
         borderRadius: 5,
+        // backgroundColor: Colors.selectedBorder,
     },
     image: {
         height: '100%',
         width: '100%',
     },
-    selectedImage: {
-        height: '100%',
+    buttonGroup: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         width: '100%',
     },
-    textStyle: {
-        color: Colors.textPrimary,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        fontSize: 20,
+    button: {
+        padding: 10,
+        elevation: 2,
+        width: '30%',
+        ...Buttons.rounded,
     },
-    modalText: {
-        marginBottom: 15,
-        fontSize: 25,
-        fontWeight: 'bold',
+    buttonText: {
+        color: Colors.textSecondary,
         textAlign: 'center',
-        color: Colors.modalText,
+        ...Typography.button,
+    },
+    buttonSave: {
+        backgroundColor: Colors.modalButtonSave,
+    },
+    buttonDeselect: {
+        backgroundColor: Colors.modalButtonDeselect,
     },
 });
 

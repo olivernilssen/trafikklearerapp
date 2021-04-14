@@ -30,17 +30,19 @@ const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
             <Overlay
-                bottomSheetHidden={bottomSheetHidden}
-                setBottomSheetHidden={setBottomSheetHidden}
+                showOverlay={bottomSheetHidden}
+                setShowOverlay={setBottomSheetHidden}
             />
             <View style={styles.main}>
-                <Header
-                    navigation={navigation}
-                    style={styles.header}
-                    name="Læreplanmål">
-                    <View style={styles.subHeadingContainer}>
-                        <Text style={styles.mainHeading}>{mainHeading}</Text>
-                        <Text style={styles.subHeading}>{subHeading}</Text>
+                <Header navigation={navigation} style={styles.header}>
+                    <View style={styles.headerContent}>
+                        <Text style={styles.siteHeading}>Læreplanmål</Text>
+                        <View style={styles.subHeadingContainer}>
+                            <Text style={styles.mainHeading}>
+                                {mainHeading}
+                            </Text>
+                            <Text style={styles.subHeading}>{subHeading}</Text>
+                        </View>
                     </View>
                 </Header>
                 <ScrollView
@@ -89,6 +91,15 @@ const styles = StyleSheet.create({
         width: '100%',
         padding: '2%',
         backgroundColor: Colors.curriculumBg,
+    },
+    headerContent: {
+        width: '93%',
+        flexDirection: 'row',
+    },
+    siteHeading: {
+        color: Colors.icons,
+        textAlignVertical: 'center',
+        ...Typography.heading,
     },
     subHeadingContainer: {
         flex: 1,

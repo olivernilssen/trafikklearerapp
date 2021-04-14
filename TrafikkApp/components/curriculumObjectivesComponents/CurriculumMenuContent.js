@@ -122,7 +122,7 @@ const CurriculumMenuContent = React.memo(
                         onSelect={(newValue) =>
                             onCurriculumObjectiveChange(newValue)
                         }
-                        groupWidth={700}
+                        groupWidth={trafficClass == 'Klasse B' ? 700 : 550}
                         height={50}
                         textSize={20}
                         highlightBackgroundColor={Colors.startScreenLinkTheory}
