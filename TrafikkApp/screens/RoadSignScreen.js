@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     FlatList,
     StyleSheet,
@@ -29,7 +29,7 @@ const signObjectKeys = Object.keys(fareSkilt);
  * @prop {object} navigation Used for navigation between the different screens
  */
 
-const RoadSignScreen = ({ navigation }) => {
+const RoadSignScreen = React.memo(({ navigation }) => {
     // const signObjectKeys = Object.keys(fareSkilt);
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedItem, setSelectedItem] = useState('100_1');
@@ -53,54 +53,8 @@ const RoadSignScreen = ({ navigation }) => {
     //     console.log('description');
     // };
 
-    // const imagePopup = () => {
-    //     if (selectedItem !== null) {
-    //         return (
-    //             <Image
-    //                 key={index}
-    //                 style={{
-    //                     width: '100%',
-    //                     height: '100%',
-    //                     resizeMode: 'contain',
-    //                 }}
-    //                 source={fareSkilt[selectedItem].source}
-    //             />
-    //         );
-    //     }
-    // };
-
-    // const signModal = ({ item, index }) => {
-    //     console.log(index);
-    //     return (
-    //         <Modal
-    //             animationType="slide"
-    //             transparent={true}
-    //             visible={modalVisible}
-    //             onRequestClose={() => {
-    //                 closeModal();
-    //             }}>
-    //             <View style={styles.modal}>
-    //                 <TouchableOpacity
-    //                     // style={styles.modalItem}
-    //                     onPress={() => closeModal()}>
-    //                     <Image
-    //                         key={index}
-    //                         style={{
-    //                             width: '100%',
-    //                             height: '100%',
-    //                             resizeMode: 'contain',
-    //                         }}
-    //                         source={fareSkilt[selectedItem].source}
-    //                     />
-    //                     {imagePopup({ index })}
-    //                 </TouchableOpacity>
-    //             </View>
-    //         </Modal>
-    //     );
-    // };
-
     const renderItem = ({ item, index }) => {
-        console.log({ item });
+        console.log(item);
         return (
             <View>
                 <TouchableOpacity
@@ -118,7 +72,7 @@ const RoadSignScreen = ({ navigation }) => {
     return (
         <MainView>
             <Modal
-                animationType="fade"
+                animationType="none"
                 transparent={true}
                 visible={modalVisible}
                 onRequestClose={() => {
@@ -151,7 +105,7 @@ const RoadSignScreen = ({ navigation }) => {
                 numColumns={4}></FlatList>
         </MainView>
     );
-};
+});
 
 const styles = StyleSheet.create({
     // container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
