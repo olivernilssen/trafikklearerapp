@@ -1,93 +1,78 @@
 import React, { useState } from 'react';
 import {
-    Alert,
-    Modal,
+    FlatList,
     StyleSheet,
-    Text,
-    Pressable,
     View,
-    TouchableOpacity,
+    Text,
     Image,
+    ScrollView,
+    TouchableOpacity,
+    SectionList,
+    Dimensions,
+    Modal,
 } from 'react-native';
+import ImagePopup from './ImagePopup';
+// import Icon from 'react-native-vector-icons/FontAwesome5';
 
-const RoadSignModal = (props) => {
-    const [modalVisible, setModalVisible] = useState(false);
+// import RoadSignModal from '../components/roadSignComponents/RoadSignModal';
+// // import signSource from '../components/roadSignComponents/signPath';
+// // import dangerSignDescription from '../assets/fareskiltBeskrivelse.js';
+const numColumns = 4;
 
-    const handleModal = () => {
-        setModalVisible(!modalVisible);
-    };
-
+const RoadSignModal = ({ props }) => {
+    const { closeModal, modalVisible, selectedItem } = props;
+    console.log(closeModal);
     return (
-        <View style={styles.centeredView}>
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    Alert.alert('Modal has been closed.');
-                    handleModal;
-                }}>
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <Text style={styles.modalText}>Hello World!</Text>
-                        <TouchableOpacity
-                            style={[styles.button, styles.buttonClose]}
-                            onPress={handleModal}>
-                            <Image style={{ width: '75%' }} />
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            </Modal>
-            {/* <Pressable
-                style={[styles.button, styles.buttonOpen]}
-                onPress={() => setModalVisible(true)}>
-                <Text style={styles.textStyle}>Show Modal</Text>
-            </Pressable> */}
-        </View>
+        <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+                closeModal();
+            }}>
+            <View style={styles.modal}>
+                <TouchableOpacity
+                    // style={styles.modalItem}
+                    onPress={() => closeModal()}>
+                    {/* <Image
+                        key={index}
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            resizeMode: 'contain',
+                        }}
+                        source={fareSkilt[selectedItem].source}
+                    /> */}
+                    <ImagePopup selectedItem={selectedItem} />
+                </TouchableOpacity>
+            </View>
+        </Modal>
     );
 };
 
 const styles = StyleSheet.create({
-    centeredView: {
+    // container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+    imageContainer: {
         flex: 1,
+        marginVertical: 1,
+        backgroundColor: 'grey',
+    },
+    item: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: Dimensions.get('screen').width / numColumns - 3,
+        margin: 1,
+        height: Dimensions.get('screen').height / 7.5,
+    },
+    modal: {
+        width: '90%',
+        height: '90%',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    modalItem: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 22,
-    },
-    modalView: {
-        margin: 20,
-        backgroundColor: 'white',
-        borderRadius: 20,
-        padding: 35,
-        alignItems: 'center',
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5,
-    },
-    button: {
-        borderRadius: 20,
-        padding: 10,
-        elevation: 2,
-    },
-    buttonOpen: {
-        backgroundColor: '#F194FF',
-    },
-    buttonClose: {
-        backgroundColor: '#2196F3',
-    },
-    textStyle: {
-        color: 'white',
-        fontWeight: 'bold',
-        textAlign: 'center',
-    },
-    modalText: {
-        marginBottom: 15,
-        textAlign: 'center',
     },
 });
 
