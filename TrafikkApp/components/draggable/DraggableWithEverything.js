@@ -54,12 +54,12 @@ const DraggableWithEverything = React.memo((props) => {
     const onNewDraggable = useCallback((itemSrc) => {
         const newDraggable = {
             id: counter,
-            source: itemSrc,
+            ...itemSrc,
         };
 
         setCounter(counter + 1);
         setDraggables([...draggables, newDraggable]);
-        setActionList([...actionList, { ...newDraggable, type: 'draggable' }]);
+        setActionList([...actionList, { id: counter, type: 'draggable' }]);
     });
 
     /**

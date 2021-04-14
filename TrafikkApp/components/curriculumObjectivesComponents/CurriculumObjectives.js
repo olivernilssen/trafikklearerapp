@@ -4,7 +4,7 @@ import curriculumData from './curriculumData';
 import { Colors, Typography } from '../../styles';
 
 /**
- * Component to actually display the curriculum objectives.
+ * Component to actually display the curriculum objectives as text on the screen.
  * Which content to display is decided by which button(s) in the BottomMenu
  * that is pressed
  * @namespace CurriculumObjectives
@@ -48,8 +48,8 @@ const CurriculumObjectives = React.memo(
         /**
          * Function that is triggered when the states curriculumObjective
          * or trafficClass changes.
-         * Changes the main heading to the right trafficClass, and the subheading
-         * to the right curriculum objective.
+         * Changes the main heading to the chosen trafficClass, and the subheading
+         * to the chosen curriculum objective.
          * @memberof CurriculumObjectives
          */
         const onContentChange = () => {
@@ -61,7 +61,7 @@ const CurriculumObjectives = React.memo(
 
         /**
          * Maps through all the curriculum objectives from the data file.
-         * Displays the content of the objective on the screen.
+         * @returns The contents of the objectives to be displayed on the screen.
          */
         const contents = curriculumContents.map((source, i) => {
             if (source !== 'overskrift') {
@@ -90,7 +90,6 @@ const styles = StyleSheet.create({
         paddingTop: '2%',
         paddingBottom: '2%',
         paddingLeft: '2%',
-        // fontWeight: 'bold',
         color: Colors.icons,
         ...Typography.section,
     },
