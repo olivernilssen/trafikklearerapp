@@ -54,7 +54,11 @@ const RoadSignScreen = React.memo(({ navigation }) => {
     // };
 
     const renderItem = ({ item, index }) => {
+<<<<<<< HEAD
         console.log(item);
+=======
+        // console.log({ item });
+>>>>>>> 297e8ef31071abf6bf2ad75696fb554594a46e14
         return (
             <View>
                 <TouchableOpacity
@@ -112,7 +116,7 @@ const styles = StyleSheet.create({
     imageContainer: {
         flex: 1,
         marginVertical: 1,
-        backgroundColor: 'grey',
+        backgroundColor: Colors.sketchBackground,
     },
     item: {
         alignItems: 'center',
