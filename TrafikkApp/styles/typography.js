@@ -13,6 +13,7 @@ export const button = {
 
 export const heading = {
     fontSize: ThemeVariables.FONT_SIZE_HEADING,
+    fontFamily: 'Ubuntu-Regular',
     // fontWeight: 'bold',
     // fontFamily: 'monospace',
 };

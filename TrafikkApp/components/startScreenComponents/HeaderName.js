@@ -34,8 +34,7 @@ const styles = StyleSheet.create({
     },
     text: {
         textAlignVertical: 'center',
-        fontWeight: 'bold',
-        color: Colors.startScreenLinkDrawing,
+        color: Colors.logo,
         ...Typography.heading,
     },
 });

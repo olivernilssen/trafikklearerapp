@@ -38,6 +38,7 @@ export default {
     // Text and icons
     textPrimary: white,
     textSecondary: darkGray,
+    logo: accentColor,
     icons: lightGray,
     iconActive: charcoal, // or mustard?
     drawerIconActive: blueGreen,
