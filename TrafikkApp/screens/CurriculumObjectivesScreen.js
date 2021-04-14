@@ -93,16 +93,19 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.curriculumBg,
     },
     headerContent: {
+        // flex: 1,
+        height: '100%',
         width: '93%',
         flexDirection: 'row',
     },
     siteHeading: {
+        flex: 1,
         color: Colors.icons,
         textAlignVertical: 'center',
         ...Typography.heading,
     },
     subHeadingContainer: {
-        flex: 1,
+        // flex: 1,
         alignItems: 'flex-end',
     },
     mainHeading: {
