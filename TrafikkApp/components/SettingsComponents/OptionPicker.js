@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useCallback } from 'react';
 import {
     View,
     Text,
@@ -25,7 +25,7 @@ import draggables from './draggableObjectPaths';
  * @prop {function} setModalVisible function to set the value of the modal boolean
  *
  */
-const OptionPicker = (props) => {
+const OptionPicker = React.memo((props) => {
     const { modalVisible, setModalVisible } = props;
     const appContext = useContext(AppContext);
     const allKeys = Object.keys(draggables);
@@ -40,7 +40,7 @@ const OptionPicker = (props) => {
      * and make modal go away/invisible
      * @memberof OptionPicker
      */
-    const saveSelectedtDraggables = () => {
+    const saveSelectedtDraggables = useCallback(() => {
         appContext.saveNewSettings(
             JSON.stringify(selectedImages),
             appContext.setDraggableObjects,
@@ -48,7 +48,7 @@ const OptionPicker = (props) => {
         );
 
         setModalVisible(!modalVisible);
-    };
+    });
 
     /**
      * Update which images that are selected in the modal view
@@ -79,10 +79,10 @@ const OptionPicker = (props) => {
      * Close the modal and don't save the state of selected values
      * @memberof OptionPicker
      */
-    const closeModalWithoutSave = () => {
+    const closeModalWithoutSave = useCallback(() => {
         setModalVisible(!modalVisible);
         setSelectedImages(JSON.parse(appContext.draggableObjects));
-    };
+    });
 
     return (
         <>
@@ -167,7 +167,7 @@ const OptionPicker = (props) => {
             </Modal>
         </>
     );
-};
+});
 
 const styles = StyleSheet.create({
     centeredView: {

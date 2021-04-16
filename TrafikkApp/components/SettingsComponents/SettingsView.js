@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import {
     View,
     Text,
@@ -18,7 +18,7 @@ import OptionPicker from './OptionPicker';
  * @namespace SettingsView
  * @category SettingsComponents
  */
-const SettingsView = (props) => {
+const SettingsView = React.memo((props) => {
     const { pickerVisible, setPickerVisible } = props;
 
     const myContext = useContext(AppContext);
@@ -55,14 +55,14 @@ const SettingsView = (props) => {
      * @param {function} setValue the state set function associated with this value
      * @param {string} key the asyncStorage key for this value to update it
      */
-    const onChangeValue = (type, value, setValue, key) => {
+    const onChangeValue = useCallback((type, value, setValue, key) => {
         myContext.saveNewSettings(value, setValue, key);
         ToastAndroid.show(
             type + 'har blitt endret til ' + value,
             ToastAndroid.SHORT,
             ToastAndroid.BOTTOM
         );
-    };
+    });
 
     return (
         <View style={styles.view}>
@@ -211,7 +211,7 @@ const SettingsView = (props) => {
             </View>
         </View>
     );
-};
+});
 
 const styles = StyleSheet.create({
     view: {

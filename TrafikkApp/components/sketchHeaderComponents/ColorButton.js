@@ -19,7 +19,7 @@ import { MenuOption } from 'react-native-popup-menu';
  * @prop {function} onPaletteColorChange Updates the state by passing the colorName in it
  * @prop {function} chosenColorButton Updates the state by passing the buttonID in it
  */
-const ColorButton = (props) => {
+const ColorButton = React.memo((props) => {
     const {
         colorName,
         buttonID,
@@ -64,7 +64,7 @@ const ColorButton = (props) => {
             </View>
         </MenuOption>
     );
-};
+});
 
 const styles = StyleSheet.create({
     buttonSpacing: {
