@@ -39,7 +39,7 @@ const Navigator = () => {
                 name="StartScreen"
                 component={StartScreen}
                 initialParams={{
-                    section: '.',
+                    section: '',
                     title: 'Hjem',
                     icon: 'home',
                     screenName: 'StartScreen',
@@ -50,7 +50,7 @@ const Navigator = () => {
                 name="IntersectionScreen"
                 component={IntersectionScreen}
                 initialParams={{
-                    section: 'illustreringer',
+                    section: 'Illustreringer',
                     title: 'Veikryss',
                     icon: 'edit-road',
                     screenName: 'IntersectionScreen',
@@ -61,7 +61,7 @@ const Navigator = () => {
                 name="RoundaboutScreen"
                 component={RoundaboutScreen}
                 initialParams={{
-                    section: 'illustreringer',
+                    section: 'Illustreringer',
                     title: 'Rundkjøring',
                     icon: 'edit-road',
                     screenName: 'RoundaboutScreen',
@@ -72,7 +72,7 @@ const Navigator = () => {
                 name="CountryRoadScreen"
                 component={CountryRoadScreen}
                 initialParams={{
-                    section: 'illustreringer',
+                    section: 'Illustreringer',
                     title: 'Landevei',
                     icon: 'edit-road',
                     screenName: 'CountryRoadScreen',
@@ -83,7 +83,7 @@ const Navigator = () => {
                 name="HighwayScreen"
                 component={HighwayScreen}
                 initialParams={{
-                    section: 'illustreringer',
+                    section: 'Illustreringer',
                     title: 'Fartsøkning- og reduksjonsfelt',
                     icon: 'edit-road',
                     screenName: 'HighwayScreen',
