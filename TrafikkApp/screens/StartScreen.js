@@ -1,10 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    View,
+    TouchableOpacity,
+    Linking,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import { MainView, Header } from '../components/reusableComponents/';
 import {
     StartScreenLink,
+    ExternalLink,
     HeaderName,
 } from '../components/startScreenComponents/';
 import { Colors, Typography, Icons } from '../styles';
@@ -23,7 +30,7 @@ const StartScreen = React.memo(({ navigation }) => {
                 <View style={styles.headerItems}>
                     <HeaderName />
                     <TouchableOpacity
-                        style={styles.iconContainer}
+                        style={styles.headerIcon}
                         activeOpacity={0.6}
                         onPress={() => navigation.navigate('SettingsScreen')}>
                         <Icon
@@ -72,7 +79,7 @@ const StartScreen = React.memo(({ navigation }) => {
                 </View>
 
                 <View style={styles.container}>
-                    <Text style={styles.text}>Trafikkskilt og teori</Text>
+                    <Text style={styles.text}>Andre funksjoner</Text>
                     <View style={styles.linksContainer}>
                         <StartScreenLink
                             name="arrow-right"
@@ -104,26 +111,44 @@ const StartScreen = React.memo(({ navigation }) => {
                 </View>
 
                 <View style={styles.container}>
-                    <Text style={styles.text}>Nyttige lenker</Text>
-                    <View style={styles.linksContainer}>
-                        <StartScreenLink
-                            name="external-link-alt"
-                            text="Link til nettside"
-                            backgroundColor={Colors.startScreenLinkLink}
-                            isLink={true}
-                        />
-                        <StartScreenLink
-                            name="external-link-alt"
-                            text="Link til nettside"
-                            backgroundColor={Colors.startScreenLinkLink}
-                            isLink={true}
-                        />
-                        <StartScreenLink
-                            name="external-link-alt"
-                            text="Link til nettside"
-                            backgroundColor={Colors.startScreenLinkLink}
-                            isLink={true}
-                        />
+                    <Text style={styles.text}>Lenker til forskrifter</Text>
+                    <View style={styles.externalLinks}>
+                        <View style={styles.externalLinksContainer}>
+                            <ExternalLink
+                                text="Trafikkopplæringsforskriften"
+                                onPress={() => {
+                                    Linking.openURL(
+                                        'https://lovdata.no/dokument/SF/forskrift/2004-10-01-1339'
+                                    );
+                                }}
+                            />
+                            <ExternalLink
+                                text="Skiltforskriften"
+                                onPress={() => {
+                                    Linking.openURL(
+                                        'https://lovdata.no/dokument/SF/forskrift/2005-10-07-1219'
+                                    );
+                                }}
+                            />
+                        </View>
+                        <View style={styles.externalLinksContainer}>
+                            <ExternalLink
+                                text="Trafikkregler"
+                                onPress={() => {
+                                    Linking.openURL(
+                                        'https://lovdata.no/dokument/SF/forskrift/1986-03-21-747'
+                                    );
+                                }}
+                            />
+                            <ExternalLink
+                                text="Veitrafikkloven"
+                                onPress={() => {
+                                    Linking.openURL(
+                                        'https://lovdata.no/dokument/NL/lov/1965-06-18-4'
+                                    );
+                                }}
+                            />
+                        </View>
                     </View>
                 </View>
             </View>
@@ -132,43 +157,52 @@ const StartScreen = React.memo(({ navigation }) => {
 });
 
 const styles = StyleSheet.create({
-    main: {
-        flex: 1,
-        height: '100%',
-        // justifyContent: 'flex-start',
-        justifyContent: 'center',
-        paddingTop: '2%',
-        paddingBottom: '5%',
-        backgroundColor: Colors.startScreenBg,
-    },
     headerItems: {
         alignSelf: 'center',
         width: '93%',
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
-    iconContainer: {
+    headerIcon: {
         marginRight: 15,
         justifyContent: 'center',
     },
+    main: {
+        flex: 1,
+        height: '100%',
+        justifyContent: 'center',
+        paddingVertical: '4%',
+        backgroundColor: Colors.startScreenBg,
+    },
     container: {
-        // paddingVertical: '3%',
+        paddingVertical: '2%',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingBottom: '2%',
-    },
-    linksContainer: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
     },
     text: {
         width: '85%',
         borderBottomWidth: 2,
         borderColor: Colors.dividerPrimary,
         color: Colors.icons,
+        paddingTop: 10,
         paddingVertical: 5,
         ...Typography.section,
+    },
+    linksContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+    },
+    externalLinks: {
+        width: '70%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        borderRadius: 10,
+    },
+    externalLinksContainer: {
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+        margin: 5,
     },
 });
 

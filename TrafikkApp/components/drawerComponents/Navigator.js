@@ -50,7 +50,7 @@ const Navigator = () => {
                 component={IntersectionScreen}
                 initialParams={{
                     title: 'Veikryss',
-                    icon: 'plus',
+                    icon: 'edit-road',
                     screenName: 'IntersectionScreen',
                     value: 1,
                 }}
@@ -60,7 +60,7 @@ const Navigator = () => {
                 component={RoundaboutScreen}
                 initialParams={{
                     title: 'Rundkjøring',
-                    icon: 'dot-circle',
+                    icon: 'edit-road',
                     screenName: 'RoundaboutScreen',
                     value: 2,
                 }}
@@ -70,7 +70,7 @@ const Navigator = () => {
                 component={CountryRoadScreen}
                 initialParams={{
                     title: 'Landevei',
-                    icon: 'road',
+                    icon: 'edit-road',
                     screenName: 'CountryRoadScreen',
                     value: 3,
                 }}
@@ -80,7 +80,7 @@ const Navigator = () => {
                 component={HighwayScreen}
                 initialParams={{
                     title: 'Fartsøkning- og reduksjonsfelt',
-                    icon: 'road',
+                    icon: 'edit-road',
                     screenName: 'HighwayScreen',
                     value: 4,
                 }}
@@ -90,7 +90,7 @@ const Navigator = () => {
                 component={RoadSignScreen}
                 initialParams={{
                     title: 'Trafikkskilt',
-                    icon: 'ban',
+                    icon: 'block',
                     screenName: 'RoadSignScreen',
                     value: 5,
                 }}
@@ -100,7 +100,7 @@ const Navigator = () => {
                 component={CurriculumObjectivesScreen}
                 initialParams={{
                     title: 'Læreplanmål',
-                    icon: 'graduation-cap',
+                    icon: 'assignment',
                     screenName: 'CurriculumObjectivesScreen',
                     value: 6,
                 }}
@@ -110,7 +110,7 @@ const Navigator = () => {
                 component={AuthorityPyramidScreen}
                 initialParams={{
                     title: 'Myndighetspyramiden',
-                    icon: 'exclamation-triangle',
+                    icon: 'gavel',
                     screenName: 'AuthorityPyramidScreen',
                     value: 7,
                 }}
@@ -120,7 +120,7 @@ const Navigator = () => {
                 component={SettingsScreen}
                 initialParams={{
                     title: 'Innstillinger',
-                    icon: 'cog',
+                    icon: 'settings',
                     screenName: 'SettingsScreen',
                     value: 8,
                 }}
