@@ -19,12 +19,12 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const colors = [
+    'exit',
     '#000000',
     '#e09f3e',
     '#9e2a2b',
     '#284b63',
     '#3a5a40',
-    'exit',
     'delete',
 ];
 
@@ -129,18 +129,16 @@ const Draggable = React.memo((props) => {
                                 },
                             ]}
                         />
-                        {popoutActive && (
-                            <Popout
-                                radius={radius}
-                                array={imgInfo.hasTint ? noColors : colors}
-                                setPopoutActive={setPopoutActive}
-                                popoutActive={popoutActive}
-                                setTintColor={setTintColor}
-                                buttonSize={buttonSize}
-                                itemSize={ITEM_SIZE}
-                                removeItem={removeItem}
-                            />
-                        )}
+                        <Popout
+                            radius={radius}
+                            array={imgInfo.hasTint ? noColors : colors}
+                            setPopoutActive={setPopoutActive}
+                            popoutActive={popoutActive}
+                            setTintColor={setTintColor}
+                            buttonSize={buttonSize}
+                            itemSize={ITEM_SIZE}
+                            removeItem={removeItem}
+                        />
                     </View>
                 </TouchableWithoutFeedback>
             </View>
