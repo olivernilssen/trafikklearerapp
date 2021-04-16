@@ -52,7 +52,7 @@ const Navigator = () => {
                 initialParams={{
                     section: 'illustreringer',
                     title: 'Veikryss',
-                    icon: 'plus',
+                    icon: 'edit-road',
                     screenName: 'IntersectionScreen',
                     value: 1,
                 }}
@@ -63,7 +63,7 @@ const Navigator = () => {
                 initialParams={{
                     section: 'illustreringer',
                     title: 'Rundkjøring',
-                    icon: 'dot-circle',
+                    icon: 'edit-road',
                     screenName: 'RoundaboutScreen',
                     value: 2,
                 }}
@@ -74,7 +74,7 @@ const Navigator = () => {
                 initialParams={{
                     section: 'illustreringer',
                     title: 'Landevei',
-                    icon: 'road',
+                    icon: 'edit-road',
                     screenName: 'CountryRoadScreen',
                     value: 3,
                 }}
@@ -85,7 +85,7 @@ const Navigator = () => {
                 initialParams={{
                     section: 'illustreringer',
                     title: 'Fartsøkning- og reduksjonsfelt',
-                    icon: 'road',
+                    icon: 'edit-road',
                     screenName: 'HighwayScreen',
                     value: 4,
                 }}
@@ -96,7 +96,7 @@ const Navigator = () => {
                 initialParams={{
                     section: 'Teori',
                     title: 'Trafikkskilt',
-                    icon: 'ban',
+                    icon: 'block',
                     screenName: 'RoadSignScreen',
                     value: 5,
                 }}
@@ -107,7 +107,7 @@ const Navigator = () => {
                 initialParams={{
                     section: 'Teori',
                     title: 'Læreplanmål',
-                    icon: 'graduation-cap',
+                    icon: 'assignment',
                     screenName: 'CurriculumObjectivesScreen',
                     value: 6,
                 }}
@@ -118,7 +118,7 @@ const Navigator = () => {
                 initialParams={{
                     section: 'Teori',
                     title: 'Myndighetspyramiden',
-                    icon: 'exclamation-triangle',
+                    icon: 'gavel',
                     screenName: 'AuthorityPyramidScreen',
                     value: 7,
                 }}
@@ -129,7 +129,7 @@ const Navigator = () => {
                 initialParams={{
                     section: 'Andre',
                     title: 'Innstillinger',
-                    icon: 'cog',
+                    icon: 'settings',
                     screenName: 'SettingsScreen',
                     value: 8,
                 }}

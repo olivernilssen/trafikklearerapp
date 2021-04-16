@@ -10,11 +10,9 @@ import { Buttons, Icons, Colors, Typography } from '../../styles';
  * @prop {string} name The icon name
  * @prop {string} text The text of the link
  * @prop {function} onPress Function to be triggered when pressing the link
- * @prop {string} backgroundColor The background color of the link
- * @prop {boolean} isLink If it is a external link (opens a web site) or an internal link (opens another screen)
  */
 const StartScreenLink = React.memo((props) => {
-    const { name, text, onPress, backgroundColor, isLink } = props;
+    const { name, text, onPress, backgroundColor } = props;
 
     return (
         <View>
@@ -25,14 +23,12 @@ const StartScreenLink = React.memo((props) => {
                 ]}
                 activeOpacity={0.6}
                 onPress={onPress}>
-                <Text style={[isLink ? styles.linkText : styles.buttonText]}>
-                    {text}
-                </Text>
+                <Text style={styles.buttonText}>{text}</Text>
                 <Icon
                     name={name}
                     size={Icons.medium}
-                    color={isLink ? Colors.links : Colors.iconActive}
-                    style={isLink ? styles.linkIcon : styles.icon}
+                    color={Colors.iconActive}
+                    style={styles.icon}
                 />
             </TouchableOpacity>
         </View>
@@ -46,6 +42,12 @@ const styles = StyleSheet.create({
         elevation: 10,
         ...Buttons.largeRounded,
     },
+    buttonText: {
+        color: Colors.textSecondary,
+        textAlign: 'center',
+        flexWrap: 'wrap',
+        ...Typography.section,
+    },
     icon: {
         position: 'absolute',
         opacity: 0.6,
@@ -53,27 +55,6 @@ const styles = StyleSheet.create({
         right: 0,
         paddingVertical: 20,
         paddingHorizontal: 20,
-    },
-    linkIcon: {
-        position: 'absolute',
-        opacity: 0.6,
-        top: 0,
-        right: 0,
-        paddingVertical: 20,
-        paddingHorizontal: 20,
-    },
-    buttonText: {
-        color: Colors.textSecondary,
-        textAlign: 'center',
-        flexWrap: 'wrap',
-        ...Typography.section,
-    },
-    linkText: {
-        textAlign: 'center',
-        color: Colors.icons,
-        flexWrap: 'wrap',
-        textDecorationLine: 'underline',
-        ...Typography.section,
     },
 });
 

@@ -42,7 +42,7 @@ export default {
     icons: lightGray,
     iconActive: charcoal, // or mustard?
     drawerIconActive: blueGreen,
-    links: lightGray,
+    links: blue,
 
     // Buttongroup
     slideActiveBg: blueGreen,

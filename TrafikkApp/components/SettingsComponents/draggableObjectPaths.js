@@ -51,10 +51,6 @@ const draggables = {
         source: require('../../assets/Elements/person-walking.png'),
         hasTint: false,
     },
-    'traffic-light': {
-        source: require('../../assets/Elements/traffic-light.png'),
-        hasTint: true,
-    },
     'tree-silhouette': {
         source: require('../../assets/Elements/tree-silhouette.png'),
         hasTint: false,
@@ -66,10 +62,6 @@ const draggables = {
     'cargo-truck': {
         source: require('../../assets/Elements/cargo-truck.png'),
         hasTint: false,
-    },
-    priority: {
-        source: require('../../assets/Elements/priority.png'),
-        hasTint: true,
     },
     ninja: {
         source: require('../../assets/Elements/ninja.png'),
@@ -83,12 +75,12 @@ const draggables = {
         source: require('../../assets/Elements/truck.png'),
         hasTint: true,
     },
-    yield: {
-        source: require('../../assets/Elements/yield.png'),
-        hasTint: true,
-    },
     20: {
         source: require('../../assets/Elements/20.png'),
+        hasTint: true,
+    },
+    30: {
+        source: require('../../assets/Elements/30.png'),
         hasTint: true,
     },
     40: {
@@ -113,6 +105,18 @@ const draggables = {
     },
     'no-turn-right': {
         source: require('../../assets/Elements/no-turn-right.png'),
+        hasTint: true,
+    },
+    'no-turn-left': {
+        source: require('../../assets/Elements/no-turn-left.png'),
+        hasTint: true,
+    },
+    'turn-right': {
+        source: require('../../assets/Elements/turn-right.png'),
+        hasTint: true,
+    },
+    'turn-left': {
+        source: require('../../assets/Elements/turn-left.png'),
         hasTint: true,
     },
     tree: {
