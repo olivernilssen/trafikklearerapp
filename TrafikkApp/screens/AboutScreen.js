@@ -5,6 +5,7 @@ import {
     Text,
     Linking,
     TouchableHighlight,
+    Image,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { MainView, Header, Divider } from '../components/reusableComponents/';
@@ -19,6 +20,7 @@ import { Buttons, Colors, Icons, Typography } from '../styles';
 const AboutScreen = React.memo(({ navigation }) => {
     const pkg = require('../package.json');
     const appVersion = pkg.version;
+    imgSource = require('../assets/images/ic_launcher_round.png');
 
     /**
      * Button event that opens the Google Play Store site for the app
@@ -50,6 +52,11 @@ const AboutScreen = React.memo(({ navigation }) => {
             />
             <View style={styles.main}>
                 <View style={styles.section}>
+                    <Image
+                        source={imgSource}
+                        style={styles.image}
+                        resizeMode={'contain'}
+                    />
                     <Text style={styles.headingText}>
                         illusTrafikk - App for trafikklærere
                     </Text>
@@ -77,7 +84,7 @@ const AboutScreen = React.memo(({ navigation }) => {
                     borderColor={Colors.dividerPrimary}
                 />
                 <View style={styles.section}>
-                    <Text style={styles.sectionText}>Utviklet av:</Text>
+                    <Text style={styles.sectionText}>UTVIKLERE</Text>
                     <Text style={styles.text}>
                         Oliver Elias Nilssen, Joakim Heitmann Tronseth og Silje
                         Tanemsmo
@@ -141,6 +148,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         margin: 20,
         padding: 20,
+    },
+    image: {
+        height: 120,
+        // width: '85%',
     },
     headingText: {
         color: Colors.logo,
