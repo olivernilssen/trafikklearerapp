@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Colors, Typography } from '../../styles';
+import { Colors, Typography, Buttons } from '../../styles';
 
 /**
  * This component is used to display a clickable external link on the StartScreen.
@@ -26,10 +26,19 @@ const ExternalLink = React.memo((props) => {
 
 const styles = StyleSheet.create({
     linkContainer: {
+        justifyContent: 'space-evenly',
         margin: 12,
+        height: 75,
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 15,
+        justifyContent: 'center',
+        backgroundColor: Colors.startScreenLinkLink,
+        ...Buttons.rounded,
+        ...Buttons.extraLargeWidth,
     },
     linkText: {
-        textAlign: 'left',
+        textAlign: 'center',
         color: Colors.links,
         flexWrap: 'wrap',
         textDecorationLine: 'underline',

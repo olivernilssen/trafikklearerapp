@@ -19,6 +19,10 @@ export const largeWidt = {
     width: ThemeVariables.BUTTON_WIDTH_LARGE,
 };
 
+export const extraLargeWidth = {
+    width: ThemeVariables.BUTTON_WIDTH_EXTRA_LARGE,
+};
+
 export const rounded = {
     borderRadius: 10,
 };
