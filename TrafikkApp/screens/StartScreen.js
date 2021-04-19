@@ -112,43 +112,39 @@ const StartScreen = React.memo(({ navigation }) => {
 
                 <View style={styles.container}>
                     <Text style={styles.text}>Lenker til forskrifter</Text>
-                    <View style={styles.externalLinks}>
-                        <View style={styles.externalLinksContainer}>
-                            <ExternalLink
-                                text="Trafikkopplæringsforskriften"
-                                onPress={() => {
-                                    Linking.openURL(
-                                        'https://lovdata.no/dokument/SF/forskrift/2004-10-01-1339'
-                                    );
-                                }}
-                            />
-                            <ExternalLink
-                                text="Skiltforskriften"
-                                onPress={() => {
-                                    Linking.openURL(
-                                        'https://lovdata.no/dokument/SF/forskrift/2005-10-07-1219'
-                                    );
-                                }}
-                            />
-                        </View>
-                        <View style={styles.externalLinksContainer}>
-                            <ExternalLink
-                                text="Trafikkregler"
-                                onPress={() => {
-                                    Linking.openURL(
-                                        'https://lovdata.no/dokument/SF/forskrift/1986-03-21-747'
-                                    );
-                                }}
-                            />
-                            <ExternalLink
-                                text="Veitrafikkloven"
-                                onPress={() => {
-                                    Linking.openURL(
-                                        'https://lovdata.no/dokument/NL/lov/1965-06-18-4'
-                                    );
-                                }}
-                            />
-                        </View>
+                    <View style={styles.linksContainer}>
+                        <ExternalLink
+                            text="Trafikkopplærings- forskriften"
+                            onPress={() => {
+                                Linking.openURL(
+                                    'https://lovdata.no/dokument/SF/forskrift/2004-10-01-1339'
+                                );
+                            }}
+                        />
+                        <ExternalLink
+                            text="Skiltforskriften"
+                            onPress={() => {
+                                Linking.openURL(
+                                    'https://lovdata.no/dokument/SF/forskrift/2005-10-07-1219'
+                                );
+                            }}
+                        />
+                        <ExternalLink
+                            text="Trafikkregler"
+                            onPress={() => {
+                                Linking.openURL(
+                                    'https://lovdata.no/dokument/SF/forskrift/1986-03-21-747'
+                                );
+                            }}
+                        />
+                        <ExternalLink
+                            text="Veitrafikkloven"
+                            onPress={() => {
+                                Linking.openURL(
+                                    'https://lovdata.no/dokument/NL/lov/1965-06-18-4'
+                                );
+                            }}
+                        />
                     </View>
                 </View>
             </View>
@@ -170,6 +166,7 @@ const styles = StyleSheet.create({
     main: {
         flex: 1,
         height: '100%',
+        width: '100%',
         justifyContent: 'center',
         paddingVertical: '4%',
         backgroundColor: Colors.startScreenBg,
@@ -189,20 +186,10 @@ const styles = StyleSheet.create({
         ...Typography.section,
     },
     linksContainer: {
+        width: '90%',
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         flexWrap: 'wrap',
-    },
-    externalLinks: {
-        width: '70%',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        borderRadius: 10,
-    },
-    externalLinksContainer: {
-        flexWrap: 'wrap',
-        alignItems: 'flex-start',
-        margin: 5,
     },
 });
 
