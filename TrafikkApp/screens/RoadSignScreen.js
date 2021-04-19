@@ -12,15 +12,25 @@ import {
     Modal,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { Header, MainView } from '../components/reusableComponents/';
+import {
+    BottomMenuAnimated,
+    Header,
+    MainView,
+} from '../components/reusableComponents/';
 import { Colors } from '../styles';
 import RoadSignModal from '../components/roadSignComponents/RoadSignModal';
+import RoadSignMenuContent from '../components/roadSignComponents/RoadSignMenuContent';
 // import signSource from '../components/roadSignComponents/signPath';
 // import dangerSignDescription from '../assets/fareskiltBeskrivelse.js';
-import { fareSkilt, forbudsSkilt } from '../assets/sign_descriptions/';
+import {
+    fareSkilt,
+    // forbudsSkilt,
+    // markeringsSkilt,
+} from '../assets/sign_descriptions/';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const numColumns = 4;
-const signObjectKeys = Object.keys(fareSkilt);
+
 /**
  * Screen component for sign screen
  * Langt fra ferdig!!!
@@ -32,42 +42,62 @@ const signObjectKeys = Object.keys(fareSkilt);
 const RoadSignScreen = React.memo(({ navigation }) => {
     // const signObjectKeys = Object.keys(fareSkilt);
     const [modalVisible, setModalVisible] = useState(false);
-    const [selectedItem, setSelectedItem] = useState('100_1');
+
+    const [descriptionVisible, setDescriptionVisible] = useState(false);
+    const [signDescription, setSignDescription] = useState('');
+    const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
+    const [signType, setSignType] = useState(fareSkilt);
+    const [signObjectKeys, setSignObjectKeys] = useState(Object.keys(signType));
+    const [selectedItem, setSelectedItem] = useState(signObjectKeys[0]);
 
     const handleModal = (item) => {
         setModalVisible(!modalVisible);
         setSelectedItem(item);
-        console.log(item);
+        // console.log(item);
     };
 
     const closeModal = () => {
         setModalVisible(false);
     };
 
-    // const onPressItem = (item) => {
-    //     showModal(item);
-    // };
+    // useEffect(() => {
+    //     setSignObjectKeys(Object.keys(signType));
+    // }, [signType]);
 
-    // const handleDescription = () => {
-    //     setDescriptionVisible(!descriptionVisible);
-    //     console.log('description');
-    // };
+    // useEffect(() => {
+    //     setSelectedItem(signObjectKeys[0]);
+    // }, [signObjectKeys]);
+
+    const handleSignType = (signTypeName) => {
+        setSignType(signTypeName);
+        setSelectedItem(Object.keys(signTypeName)[0]);
+    };
+
+    const handleDescription = (item) => {
+        setSignDescription(item);
+        setDescriptionVisible(!descriptionVisible);
+    };
 
     const renderItem = ({ item, index }) => {
-<<<<<<< HEAD
-        console.log(item);
-=======
         // console.log({ item });
->>>>>>> 297e8ef31071abf6bf2ad75696fb554594a46e14
         return (
             <View>
                 <TouchableOpacity
                     style={styles.item}
-                    onPress={() => handleModal(item)}>
-                    <Image
-                        style={{ width: '100%', height: '100%' }}
-                        source={fareSkilt[item].source}
-                        resizeMode={'contain'}></Image>
+                    onPress={() => {
+                        handleModal(item);
+                    }}>
+                    <View
+                        style={{
+                            backgroundColor: 'white',
+                            width: '100%',
+                            height: '100%',
+                        }}>
+                        <Image
+                            style={{ width: '100%', height: '100%' }}
+                            source={signType[item].source}
+                            resizeMode={'contain'}></Image>
+                    </View>
                 </TouchableOpacity>
             </View>
         );
@@ -75,38 +105,34 @@ const RoadSignScreen = React.memo(({ navigation }) => {
 
     return (
         <MainView>
-            <Modal
-                animationType="none"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    closeModal();
-                }}>
-                <View style={styles.modal}>
-                    <TouchableOpacity
-                        // style={styles.modalItem}
-                        onPress={() => closeModal()}>
-                        <Image
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                                resizeMode: 'contain',
-                            }}
-                            source={fareSkilt[selectedItem].source}
-                        />
-                    </TouchableOpacity>
+            <TouchableWithoutFeedback onPress={() => closeModal()}>
+                <View>
+                    <RoadSignModal
+                        closeModal={closeModal}
+                        modalVisible={modalVisible}
+                        handleDescription={handleDescription}
+                        selectedSign={signType[selectedItem]}
+                        signDescription={signDescription}
+                        descriptionVisible={descriptionVisible}
+                    />
                 </View>
-            </Modal>
+            </TouchableWithoutFeedback>
             <View>
                 <Header name={'Skilt'} navigation={navigation} />
             </View>
             {/* <ScrollView>{imageMapper}</ScrollView> */}
             <FlatList
-                data={signObjectKeys}
+                data={Object.keys(signType)}
+                extraData={signType}
                 style={styles.imageContainer}
-                keyExtractor={(item, index) => index.toString()}
+                keyExtractor={(item, index) => item + index.toString()}
                 renderItem={renderItem}
                 numColumns={4}></FlatList>
+            <BottomMenuAnimated
+                bottomSheetHidden={bottomSheetHidden}
+                setBottomSheetHidden={setBottomSheetHidden}>
+                <RoadSignMenuContent handleSignType={handleSignType} />
+            </BottomMenuAnimated>
         </MainView>
     );
 });
@@ -124,12 +150,6 @@ const styles = StyleSheet.create({
         width: Dimensions.get('screen').width / numColumns - 3,
         margin: 1,
         height: Dimensions.get('screen').height / 7.5,
-    },
-    modal: {
-        width: '90%',
-        height: '90%',
-        alignSelf: 'center',
-        justifyContent: 'center',
     },
     modalItem: {
         justifyContent: 'center',

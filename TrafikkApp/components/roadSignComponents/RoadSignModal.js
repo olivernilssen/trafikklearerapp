@@ -7,46 +7,119 @@ import {
     Image,
     ScrollView,
     TouchableOpacity,
+    TouchableWithoutFeedback,
     SectionList,
     Dimensions,
     Modal,
 } from 'react-native';
 import ImagePopup from './ImagePopup';
-// import Icon from 'react-native-vector-icons/FontAwesome5';
-
-// import RoadSignModal from '../components/roadSignComponents/RoadSignModal';
-// // import signSource from '../components/roadSignComponents/signPath';
-// // import dangerSignDescription from '../assets/fareskiltBeskrivelse.js';
+import BottomMenuAnimated from '../reusableComponents/BottomMenuAnimated';
 const numColumns = 4;
 
-const RoadSignModal = ({ props }) => {
-    const { closeModal, modalVisible, selectedItem } = props;
-    console.log(closeModal);
+const RoadSignModal = (props) => {
+    const {
+        closeModal,
+        modalVisible,
+        selectedSign,
+        handleDescription,
+        signDescription,
+        descriptionVisible,
+    } = props;
+    console.log(selectedSign.beskrivelse);
+
+    const textDescription = () => {
+        if (descriptionVisible) {
+            if (selectedSign.beskrivelse === '') {
+                return (
+                    <>
+                        <Text style={styles.textStyle}>
+                            {selectedSign.navn}
+                        </Text>
+                        <Text style={styles.textStyle}>Ingen beskrivelse</Text>
+                    </>
+                );
+            } else {
+                return (
+                    <View>
+                        <Text style={styles.textStyle}>
+                            {selectedSign.navn}
+                        </Text>
+                        <Text style={styles.textStyle}>
+                            {selectedSign.beskrivelse}
+                        </Text>
+                    </View>
+                );
+            }
+        }
+    };
+
+    const imageHandler = () => {
+        return (
+            <>
+                <Image
+                    style={{
+                        width: '100%',
+                        height: '100%',
+                        justifyContent: 'center',
+                        alignSelf: 'center',
+                        resizeMode: 'contain',
+                        top: '0%',
+                    }}
+                    source={selectedSign.source}
+                />
+            </>
+        );
+    };
+
     return (
-        <Modal
-            animationType="slide"
-            transparent={true}
-            visible={modalVisible}
-            onRequestClose={() => {
-                closeModal();
-            }}>
-            <View style={styles.modal}>
-                <TouchableOpacity
-                    // style={styles.modalItem}
-                    onPress={() => closeModal()}>
-                    {/* <Image
-                        key={index}
-                        style={{
-                            width: '100%',
-                            height: '100%',
-                            resizeMode: 'contain',
-                        }}
-                        source={fareSkilt[selectedItem].source}
-                    /> */}
-                    <ImagePopup selectedItem={selectedItem} />
-                </TouchableOpacity>
-            </View>
-        </Modal>
+        <View>
+            <Modal
+                style={{
+                    backgroundColor: 'white',
+                    justifyContent: 'center',
+                    alignContent: 'center',
+                }}
+                animationType="none"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                    closeModal();
+                }}>
+                <TouchableWithoutFeedback onPress={() => closeModal()}>
+                    <View style={styles.modal}>
+                        <View
+                            style={{
+                                width: '80%',
+                                height: '46%',
+                                // justifyContent: 'center',
+                                alignSelf: 'center',
+                            }}>
+                            <TouchableWithoutFeedback
+                                style={{ backgroundColor: 'white' }}
+                                // style={styles.modalItem}
+                                onPress={() =>
+                                    handleDescription(
+                                        selectedSign.textDescription
+                                    )
+                                }>
+                                <View style={{ backgroundColor: 'white' }}>
+                                    {imageHandler()}
+                                </View>
+                            </TouchableWithoutFeedback>
+                        </View>
+                        <View
+                            style={{
+                                backgroundColor: 'white',
+                                width: '80%',
+                                alignSelf: 'center',
+                                justifyContent: 'flex-start',
+                            }}>
+                            {textDescription()}
+                        </View>
+                    </View>
+                </TouchableWithoutFeedback>
+            </Modal>
+        </View>
     );
 };
 
@@ -65,14 +138,22 @@ const styles = StyleSheet.create({
         height: Dimensions.get('screen').height / 7.5,
     },
     modal: {
-        width: '90%',
-        height: '90%',
+        top: '7%',
+        width: '100%',
+        height: '100%',
+        justifyContent: 'flex-start',
         alignSelf: 'center',
-        justifyContent: 'center',
+        // backgroundColor: 'yellow',
     },
     modalItem: {
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    textStyle: {
+        color: 'black',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: 30,
     },
 });
 
