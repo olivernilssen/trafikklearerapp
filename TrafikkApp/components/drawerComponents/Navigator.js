@@ -12,6 +12,7 @@ import {
     RoadSignScreen,
     CurriculumObjectivesScreen,
     AuthorityPyramidScreen,
+    AboutScreen,
 } from '../../screens/';
 
 const Drawer = createDrawerNavigator();
@@ -124,14 +125,25 @@ const Navigator = () => {
                 }}
             />
             <Drawer.Screen
+                name="AboutScreen"
+                component={AboutScreen}
+                initialParams={{
+                    section: 'Appen',
+                    title: 'Om appen',
+                    icon: 'info',
+                    screenName: 'AboutScreen',
+                    value: 8,
+                }}
+            />
+            <Drawer.Screen
                 name="SettingsScreen"
                 component={SettingsScreen}
                 initialParams={{
-                    section: 'Andre',
+                    section: 'Appen',
                     title: 'Innstillinger',
                     icon: 'settings',
                     screenName: 'SettingsScreen',
-                    value: 8,
+                    value: 9,
                 }}
             />
         </Drawer.Navigator>
