@@ -10,7 +10,7 @@ import { Colors } from '../../styles';
  * @prop {number} buttonID assigned uniq number for the button
  * @prop {number} pencilThicknessID The state pencilThicknessID
  */
-const PencilSizeButton = (props) => {
+const PencilSizeButton = React.memo((props) => {
     const { pencilThickness, buttonID, pencilThicknessID } = props;
 
     return (
@@ -27,7 +27,7 @@ const PencilSizeButton = (props) => {
                 style={[styles.sizeIcons, { height: pencilThickness }]}></View>
         </View>
     );
-};
+});
 
 const styles = StyleSheet.create({
     iconPlacement: {

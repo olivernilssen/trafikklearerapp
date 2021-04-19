@@ -10,7 +10,7 @@ import { Buttons, Colors, Icons } from '../../styles';
  * @prop {function} topMenuHidden handler to be called when user presses button
  * @prop {boolean} toggleRightMenuState the state toggleRightMenuState
  */
-const DraggableComponentsButton = (props) => {
+const DraggableComponentsButton = React.memo((props) => {
     const { topMenuHidden, toggleRightMenuState } = props;
     return (
         <View
@@ -33,7 +33,7 @@ const DraggableComponentsButton = (props) => {
             </TouchableOpacity>
         </View>
     );
-};
+});
 
 const styles = StyleSheet.create({
     buttonSize: {

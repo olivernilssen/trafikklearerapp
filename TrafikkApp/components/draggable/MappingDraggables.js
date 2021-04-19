@@ -12,7 +12,7 @@ import AppContext from '../../AppContext';
  */
 const MappingDraggable = React.memo((props) => {
     //Get props
-    const { draggables, onRemoveItem } = props;
+    const { draggables, onRemoveItem, moving, setMoving } = props;
     const appContext = useContext(AppContext);
 
     return (
@@ -24,6 +24,8 @@ const MappingDraggable = React.memo((props) => {
                         id={itemInfo.id}
                         imgInfo={itemInfo}
                         onRemoveItem={onRemoveItem}
+                        moving={moving}
+                        setMoving={setMoving}
                         tintColor={
                             itemInfo.hasTint === false
                                 ? appContext.draggableColor

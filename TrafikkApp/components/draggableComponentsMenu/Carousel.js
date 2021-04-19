@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
     View,
     StyleSheet,
@@ -15,7 +15,7 @@ import { Colors } from '../../styles';
  * @category DraggableComponentsMenu
  * @prop {int} itemsPerSlide Number of items to be displayed per slide in the Carousel
  */
-const Carousel = (props) => {
+const Carousel = React.memo((props) => {
     const { onNewDraggable, objectKeys, objects } = props;
     const [numberOfSlides, setNumberOfSlides] = useState(1);
     const [slidesArray, setSlidesArray] = useState([]);
@@ -46,7 +46,7 @@ const Carousel = (props) => {
      * @param {number} offset The content offset of the carousel
      * @returns {int} The active slide
      */
-    const getActiveSlide = (offset) => {
+    const getActiveSlide = useCallback((offset) => {
         for (let i = 0; i < numberOfSlides; i++) {
             if (offset <= viewWidth * i) {
                 return i + 1;
@@ -55,7 +55,7 @@ const Carousel = (props) => {
                 return i + 1;
             }
         }
-    };
+    });
 
     /**
      * Function to scroll to a slide.
@@ -212,7 +212,7 @@ const Carousel = (props) => {
             <View style={styles.bulletContainer}>{bullets}</View>
         </View>
     );
-};
+});
 
 const styles = StyleSheet.create({
     container: {

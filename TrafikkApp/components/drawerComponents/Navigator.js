@@ -39,6 +39,7 @@ const Navigator = () => {
                 name="StartScreen"
                 component={StartScreen}
                 initialParams={{
+                    section: '',
                     title: 'Hjem',
                     icon: 'home',
                     screenName: 'StartScreen',
@@ -49,8 +50,9 @@ const Navigator = () => {
                 name="IntersectionScreen"
                 component={IntersectionScreen}
                 initialParams={{
+                    section: 'Illustreringer',
                     title: 'Veikryss',
-                    icon: 'plus',
+                    icon: 'edit-road',
                     screenName: 'IntersectionScreen',
                     value: 1,
                 }}
@@ -59,8 +61,9 @@ const Navigator = () => {
                 name="RoundaboutScreen"
                 component={RoundaboutScreen}
                 initialParams={{
+                    section: 'Illustreringer',
                     title: 'Rundkjøring',
-                    icon: 'dot-circle',
+                    icon: 'edit-road',
                     screenName: 'RoundaboutScreen',
                     value: 2,
                 }}
@@ -69,8 +72,9 @@ const Navigator = () => {
                 name="CountryRoadScreen"
                 component={CountryRoadScreen}
                 initialParams={{
+                    section: 'Illustreringer',
                     title: 'Landevei',
-                    icon: 'road',
+                    icon: 'edit-road',
                     screenName: 'CountryRoadScreen',
                     value: 3,
                 }}
@@ -79,8 +83,9 @@ const Navigator = () => {
                 name="HighwayScreen"
                 component={HighwayScreen}
                 initialParams={{
+                    section: 'Illustreringer',
                     title: 'Fartsøkning- og reduksjonsfelt',
-                    icon: 'road',
+                    icon: 'edit-road',
                     screenName: 'HighwayScreen',
                     value: 4,
                 }}
@@ -89,8 +94,9 @@ const Navigator = () => {
                 name="RoadSignScreen"
                 component={RoadSignScreen}
                 initialParams={{
+                    section: 'Teori',
                     title: 'Trafikkskilt',
-                    icon: 'ban',
+                    icon: 'block',
                     screenName: 'RoadSignScreen',
                     value: 5,
                 }}
@@ -99,8 +105,9 @@ const Navigator = () => {
                 name="CurriculumObjectivesScreen"
                 component={CurriculumObjectivesScreen}
                 initialParams={{
+                    section: 'Teori',
                     title: 'Læreplanmål',
-                    icon: 'graduation-cap',
+                    icon: 'assignment',
                     screenName: 'CurriculumObjectivesScreen',
                     value: 6,
                 }}
@@ -109,8 +116,9 @@ const Navigator = () => {
                 name="AuthorityPyramidScreen"
                 component={AuthorityPyramidScreen}
                 initialParams={{
+                    section: 'Teori',
                     title: 'Myndighetspyramiden',
-                    icon: 'exclamation-triangle',
+                    icon: 'gavel',
                     screenName: 'AuthorityPyramidScreen',
                     value: 7,
                 }}
@@ -119,8 +127,9 @@ const Navigator = () => {
                 name="SettingsScreen"
                 component={SettingsScreen}
                 initialParams={{
+                    section: 'Andre',
                     title: 'Innstillinger',
-                    icon: 'cog',
+                    icon: 'settings',
                     screenName: 'SettingsScreen',
                     value: 8,
                 }}
