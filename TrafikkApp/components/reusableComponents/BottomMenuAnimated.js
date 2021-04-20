@@ -13,7 +13,7 @@ import { Colors, Icons } from '../../styles';
  * @prop {function} setBottomSheetHidden Set the state bottomSheetHidden
  */
 const BottomMenuAnimated = React.memo((props) => {
-    const { bottomSheetHidden, setBottomSheetHidden } = props;
+    const { bottomSheetHidden, setBottomSheetHidden, chevronColor } = props;
 
     const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
     const [hiddenViewButton, setHiddenViewButton] = useState('chevron-down');
@@ -84,7 +84,7 @@ const BottomMenuAnimated = React.memo((props) => {
                 <Icon
                     name={hiddenViewButton}
                     size={Icons.medium}
-                    color={Colors.icons}
+                    color={chevronColor ? chevronColor : Colors.icons}
                 />
             </TouchableOpacity>
 

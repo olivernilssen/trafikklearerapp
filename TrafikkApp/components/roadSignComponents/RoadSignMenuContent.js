@@ -31,6 +31,7 @@ const RoadSignMenuContent = (props) => {
         setActiveTypeID,
         activeTypeID,
         handleActiveButton,
+        handleHeaderName,
     } = props;
 
     const signTypeArray = [
@@ -80,6 +81,7 @@ const RoadSignMenuContent = (props) => {
                     onPress={() => {
                         handleBottomMenuPress(value.typeObject);
                         handleActiveButton(value.buttonID);
+                        handleHeaderName(value.typeName);
                     }}
                     style={[
                         styles.button,

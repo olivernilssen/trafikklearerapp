@@ -1,19 +1,14 @@
 import React, { useState } from 'react';
 import {
-    FlatList,
     StyleSheet,
     View,
     Text,
     Image,
     ScrollView,
-    TouchableOpacity,
     TouchableWithoutFeedback,
-    SectionList,
     Dimensions,
     Modal,
 } from 'react-native';
-import ImagePopup from './ImagePopup';
-import BottomMenuAnimated from '../reusableComponents/BottomMenuAnimated';
 const numColumns = 4;
 
 const RoadSignModal = (props) => {
@@ -22,9 +17,7 @@ const RoadSignModal = (props) => {
         modalVisible,
         selectedSign,
         handleDescription,
-        signDescription,
         descriptionVisible,
-        closeDescription,
     } = props;
     console.log(selectedSign.beskrivelse);
 
@@ -41,13 +34,15 @@ const RoadSignModal = (props) => {
                 );
             } else {
                 return (
-                    <View>
-                        <Text style={styles.textStyle}>
-                            {selectedSign.navn}
-                        </Text>
-                        <Text style={styles.textStyle}>
-                            {selectedSign.beskrivelse}
-                        </Text>
+                    <View onStartShouldSetResponder={() => true}>
+                        <ScrollView>
+                            <Text style={styles.textStyle}>
+                                {selectedSign.navn}
+                            </Text>
+                            <Text style={styles.textStyle}>
+                                {selectedSign.beskrivelse}
+                            </Text>
+                        </ScrollView>
                     </View>
                 );
             }
@@ -90,15 +85,13 @@ const RoadSignModal = (props) => {
                     <View style={styles.modal}>
                         <View
                             style={{
-                                top: '6%',
+                                top: '15%',
                                 width: '80%',
                                 height: '46%',
-                                // justifyContent: 'center',
                                 alignSelf: 'center',
                             }}>
                             <TouchableWithoutFeedback
                                 style={{ backgroundColor: 'white' }}
-                                // style={styles.modalItem}
                                 onPress={() =>
                                     handleDescription(
                                         selectedSign.textDescription
@@ -109,16 +102,18 @@ const RoadSignModal = (props) => {
                                 </View>
                             </TouchableWithoutFeedback>
                         </View>
-                        <View
-                            style={{
-                                top: '7%',
-                                backgroundColor: 'white',
-                                width: '80%',
-                                alignSelf: 'center',
-                                justifyContent: 'flex-start',
-                            }}>
-                            {textDescription()}
-                        </View>
+                        <TouchableWithoutFeedback onPress={() => {}}>
+                            <View
+                                style={{
+                                    top: '16%',
+                                    width: '80%',
+                                    alignSelf: 'center',
+                                    maxHeight: '30%',
+                                    backgroundColor: 'white',
+                                }}>
+                                {textDescription()}
+                            </View>
+                        </TouchableWithoutFeedback>
                     </View>
                 </TouchableWithoutFeedback>
             </Modal>
@@ -127,11 +122,9 @@ const RoadSignModal = (props) => {
 };
 
 const styles = StyleSheet.create({
-    // container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
     imageContainer: {
         flex: 1,
         marginVertical: 1,
-        backgroundColor: 'grey',
     },
     item: {
         alignItems: 'center',
@@ -141,13 +134,11 @@ const styles = StyleSheet.create({
         height: Dimensions.get('screen').height / 7.5,
     },
     modal: {
-        // top: '6%',
         width: '100%',
         height: '100%',
         justifyContent: 'flex-start',
         alignSelf: 'center',
         backgroundColor: 'rgba(0,0,0,0.8)',
-        // backgroundColor: 'yellow',
     },
     modalItem: {
         justifyContent: 'center',

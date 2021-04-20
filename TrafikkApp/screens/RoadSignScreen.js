@@ -3,30 +3,20 @@ import {
     FlatList,
     StyleSheet,
     View,
-    Text,
     Image,
-    ScrollView,
     TouchableOpacity,
-    SectionList,
     Dimensions,
-    Modal,
+    Text,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import {
     BottomMenuAnimated,
     Header,
     MainView,
 } from '../components/reusableComponents/';
-import { Colors } from '../styles';
+import { Colors, Typography } from '../styles';
 import RoadSignModal from '../components/roadSignComponents/RoadSignModal';
 import RoadSignMenuContent from '../components/roadSignComponents/RoadSignMenuContent';
-// import signSource from '../components/roadSignComponents/signPath';
-// import dangerSignDescription from '../assets/fareskiltBeskrivelse.js';
-import {
-    fareSkilt,
-    // forbudsSkilt,
-    // markeringsSkilt,
-} from '../assets/sign_descriptions/';
+import { fareSkilt } from '../assets/sign_descriptions/';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const numColumns = 4;
@@ -40,7 +30,6 @@ const numColumns = 4;
  */
 
 const RoadSignScreen = React.memo(({ navigation }) => {
-    // const signObjectKeys = Object.keys(fareSkilt);
     const [modalVisible, setModalVisible] = useState(false);
     const [descriptionVisible, setDescriptionVisible] = useState(false);
     const [signDescription, setSignDescription] = useState('');
@@ -49,11 +38,11 @@ const RoadSignScreen = React.memo(({ navigation }) => {
     const [signObjectKeys, setSignObjectKeys] = useState(Object.keys(signType));
     const [selectedItem, setSelectedItem] = useState(signObjectKeys[0]);
     const [activeTypeID, setActiveTypeID] = useState(0);
+    const [activeSignTypeName, setActiveSignTypeName] = useState('Fareskilt');
 
     const handleModal = (item) => {
         setModalVisible(!modalVisible);
         setSelectedItem(item);
-        // console.log(item);
     };
 
     const closeModal = () => {
@@ -91,8 +80,11 @@ const RoadSignScreen = React.memo(({ navigation }) => {
         setBottomSheetHidden(value);
     };
 
+    const handleHeaderName = (value) => {
+        setActiveSignTypeName(value);
+    };
+
     const renderItem = ({ item, index }) => {
-        // console.log({ item });
         return (
             <View>
                 <TouchableOpacity
@@ -134,9 +126,17 @@ const RoadSignScreen = React.memo(({ navigation }) => {
                 </View>
             </TouchableWithoutFeedback>
             <View>
-                <Header name={'Skilt'} navigation={navigation} />
+                <Header navigation={navigation} style={styles.header}>
+                    <View style={styles.headerContent}>
+                        <Text style={styles.siteHeading}>Trafikkskilt</Text>
+                        <View style={styles.subHeadingContainer}>
+                            <Text style={styles.subHeading}>
+                                {activeSignTypeName}
+                            </Text>
+                        </View>
+                    </View>
+                </Header>
             </View>
-            {/* <ScrollView>{imageMapper}</ScrollView> */}
             <FlatList
                 data={Object.keys(signType)}
                 extraData={signType}
@@ -146,13 +146,15 @@ const RoadSignScreen = React.memo(({ navigation }) => {
                 numColumns={4}></FlatList>
             <BottomMenuAnimated
                 bottomSheetHidden={bottomSheetHidden}
-                setBottomSheetHidden={setBottomSheetHidden}>
+                setBottomSheetHidden={setBottomSheetHidden}
+                chevronColor={Colors.slideInactiveBg}>
                 <RoadSignMenuContent
                     handleSignType={handleSignType}
                     setBottomSheetHidden={setBottomSheetHidden}
                     setActiveTypeID={setActiveTypeID}
                     activeTypeID={activeTypeID}
                     handleActiveButton={handleActiveButton}
+                    handleHeaderName={handleHeaderName}
                 />
             </BottomMenuAnimated>
         </MainView>
@@ -160,7 +162,17 @@ const RoadSignScreen = React.memo(({ navigation }) => {
 });
 
 const styles = StyleSheet.create({
-    // container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+    header: {
+        borderBottomWidth: 1,
+        borderBottomColor: Colors.dividerPrimary,
+        elevation: 10,
+    },
+    headerContent: {
+        // flex: 1,
+        height: '100%',
+        width: '93%',
+        flexDirection: 'row',
+    },
     imageContainer: {
         width: '100%',
         flex: 1,
@@ -173,9 +185,32 @@ const styles = StyleSheet.create({
         width: Dimensions.get('screen').width / numColumns - 3,
         height: Dimensions.get('screen').height / 7.5,
     },
+    mainHeading: {
+        flex: 1,
+        textAlignVertical: 'bottom',
+        color: Colors.icons,
+        ...Typography.heading,
+    },
     modalItem: {
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    siteHeading: {
+        flex: 1,
+        color: Colors.icons,
+        textAlignVertical: 'center',
+        ...Typography.heading,
+    },
+    subHeading: {
+        flex: 1,
+        textAlignVertical: 'center',
+        color: Colors.icons,
+        opacity: 0.7,
+        ...Typography.heading,
+    },
+    subHeadingContainer: {
+        // flex: 1,
+        alignItems: 'flex-end',
     },
 });
 
