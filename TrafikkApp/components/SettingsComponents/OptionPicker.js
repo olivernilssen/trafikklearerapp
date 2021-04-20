@@ -93,77 +93,92 @@ const OptionPicker = React.memo((props) => {
                 onRequestClose={() => {
                     setModalVisible(!modalVisible);
                 }}>
-                {/* <TouchableWithoutFeedback
-                    onPress={() => setModalVisible(!modalVisible)}> */}
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <View style={styles.modalTopView}>
-                            <Text style={styles.modalText}>
-                                Velg opp til 20 elementer som kan brukes på
-                                tegneskjermen
-                            </Text>
-                            <TouchableOpacity
-                                onPress={() => closeModalWithoutSave()}>
-                                <Icon
-                                    name={'times'}
-                                    size={Icons.medium}
-                                    color={Colors.textSecondary}
-                                />
-                            </TouchableOpacity>
-                        </View>
-                        {warningShow && (
-                            <View style={styles.warningContainer}>
-                                <Text style={styles.warningText}>
-                                    Du kan ikke velge mer enn 20 ikoner
-                                    samtidig. Du kan trykke på valgte ikoner for
-                                    å fjerne de om du vil.
-                                </Text>
-                            </View>
-                        )}
-                        <View style={styles.containerView}>
-                            {allKeys.map((source, i) => {
-                                const selected =
-                                    selectedImages[source] != null
-                                        ? true
-                                        : false;
-                                return (
+                <TouchableWithoutFeedback
+                    onPress={() => closeModalWithoutSave()}>
+                    <View style={styles.centeredView}>
+                        <TouchableWithoutFeedback>
+                            <View style={styles.modalView}>
+                                <View style={styles.modalTopView}>
+                                    <Text style={styles.modalText}>
+                                        Velg opp til 20 elementer som kan brukes
+                                        på tegneskjermen
+                                    </Text>
                                     <TouchableOpacity
-                                        key={i}
-                                        activeOpacity={0.4}
-                                        style={
-                                            selected
-                                                ? styles.selectedImageButton
-                                                : styles.imageButton
-                                        }
-                                        onPress={() =>
-                                            updateSelectedImages(source)
-                                        }>
-                                        <Image
-                                            source={draggables[source].source}
-                                            style={styles.image}
-                                            resizeMode={'contain'}
+                                        onPress={() => closeModalWithoutSave()}>
+                                        <Icon
+                                            name={'times'}
+                                            size={Icons.medium}
+                                            color={Colors.icons}
                                         />
                                     </TouchableOpacity>
-                                );
-                            })}
-                        </View>
-                        <View style={styles.buttonGroup}>
-                            <Pressable
-                                style={[styles.button, styles.buttonDeselect]}
-                                onPress={() => setSelectedImages({})}>
-                                <Text style={styles.buttonText}>
-                                    Avmarker alt
-                                </Text>
-                            </Pressable>
-                            <Pressable
-                                style={[styles.button, styles.buttonSave]}
-                                onPress={() => saveSelectedtDraggables()}>
-                                <Text style={styles.buttonText}>Lagre</Text>
-                            </Pressable>
-                        </View>
+                                </View>
+                                {warningShow && (
+                                    <View style={styles.warningContainer}>
+                                        <Text style={styles.warningText}>
+                                            Du kan ikke velge mer enn 20 ikoner
+                                            samtidig. Du kan trykke på valgte
+                                            ikoner for å fjerne de om du vil.
+                                        </Text>
+                                    </View>
+                                )}
+                                <View style={styles.containerView}>
+                                    {allKeys.map((source, i) => {
+                                        const selected =
+                                            selectedImages[source] != null
+                                                ? true
+                                                : false;
+                                        return (
+                                            <TouchableOpacity
+                                                key={i}
+                                                activeOpacity={0.4}
+                                                style={
+                                                    selected
+                                                        ? styles.selectedImageButton
+                                                        : styles.imageButton
+                                                }
+                                                onPress={() =>
+                                                    updateSelectedImages(source)
+                                                }>
+                                                <Image
+                                                    source={
+                                                        draggables[source]
+                                                            .source
+                                                    }
+                                                    style={styles.image}
+                                                    resizeMode={'contain'}
+                                                />
+                                            </TouchableOpacity>
+                                        );
+                                    })}
+                                </View>
+                                <View style={styles.buttonGroup}>
+                                    <Pressable
+                                        style={[
+                                            styles.button,
+                                            styles.buttonDeselect,
+                                        ]}
+                                        onPress={() => setSelectedImages({})}>
+                                        <Text style={styles.buttonText}>
+                                            Avmarker alt
+                                        </Text>
+                                    </Pressable>
+                                    <Pressable
+                                        style={[
+                                            styles.button,
+                                            styles.buttonSave,
+                                        ]}
+                                        onPress={() =>
+                                            saveSelectedtDraggables()
+                                        }>
+                                        <Text style={styles.buttonText}>
+                                            Lagre
+                                        </Text>
+                                    </Pressable>
+                                </View>
+                            </View>
+                        </TouchableWithoutFeedback>
                     </View>
-                </View>
-                {/* </TouchableWithoutFeedback> */}
+                </TouchableWithoutFeedback>
             </Modal>
         </>
     );
@@ -172,10 +187,11 @@ const OptionPicker = React.memo((props) => {
 const styles = StyleSheet.create({
     centeredView: {
         flex: 1,
-        flexDirection: 'column',
+        // flexDirection: 'column',
         // height: '100%',
         // width: '100%',
         padding: 30,
+        // backgroundColor: 'red',
         justifyContent: 'space-evenly',
     },
     modalView: {
@@ -236,7 +252,7 @@ const styles = StyleSheet.create({
         borderColor: Colors.selectedBorder,
         borderWidth: 5,
         borderRadius: 5,
-        // backgroundColor: Colors.selectedBorder,
+        backgroundColor: Colors.selectedBorder,
     },
     image: {
         height: '100%',
