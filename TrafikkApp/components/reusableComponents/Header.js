@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Icons, Typography } from '../../styles';
 
 /**
- * Component that displays a Header.
+ * Component that displays a Header at the top of the screen.
  * Takes in other React Native components as children.
  * @namespace Header
  * @category ReusableComponents

@@ -17,7 +17,8 @@ import AppContext from '../../AppContext';
 
 const { width, height } = Dimensions.get('window');
 
-/**This is a big component that contains all the components that are visible
+/**
+ * This is a big component that contains all the components that are visible
  * on the SketchArea screens.
  * @namespace SketchArea
  * @category SketchComponents
@@ -47,7 +48,8 @@ const SketchArea = React.memo((props) => {
 
     const [extensionType, setExtensionType] = useState('Vanlig');
 
-    /**useEffect that is triggered when currentImg is changed
+    /**
+     * useEffect that is triggered when currentImg is changed
      * Will clear the canvas and delete all objects on the screen
      */
     useEffect(() => {
@@ -57,7 +59,8 @@ const SketchArea = React.memo((props) => {
         }
     }, [currentImg]);
 
-    /**Changes the pencil color according to user input
+    /**
+     * Changes the pencil color according to user input.
      * @memberof SketchArea
      * @param {String} color The color thats been chosen
      */
@@ -65,7 +68,8 @@ const SketchArea = React.memo((props) => {
         setPencilColor(color);
     };
 
-    /**Changes the pencil color and size when switching between eraser and pencil.
+    /**
+     * Changes the pencil color and size when switching between eraser and pencil.
      * @memberof SketchArea
      */
     const onEraserPencilSwitch = useCallback(() => {
@@ -78,7 +82,8 @@ const SketchArea = React.memo((props) => {
         }
     }, [pencilColor]);
 
-    /**Function to change the pencil brush size.
+    /**
+     * Function to change the pencil brush size.
      * @memberof SketchArea
      * @param {int} newPencilSize The thickness of the pencil
      */
@@ -87,11 +92,11 @@ const SketchArea = React.memo((props) => {
         setChosenPencilSize(newPencilSize);
     };
 
-    /**Function to undo the previous action of the user
+    /**
+     * Function to undo the previous action of the user
      * will remove strokes or draggables
      * Does not unto draggable movements
      * @memberof SketchArea
-     * @function
      */
     const undoChange = useCallback(() => {
         if (actionList.length == 0) return;
@@ -110,28 +115,28 @@ const SketchArea = React.memo((props) => {
         setActionList(copyList);
     }, [actionList]);
 
-    /**When strokeEnded the added path/stroke
-     * is added to actionList to keep track of undo actions
+    /**
+     * When strokeEnded the added path/stroke
+     * is added to actionList to keep track of undo actions.
      * @memberof SketchArea
-     * @function
      */
     const onStrokeEnd = useCallback(() => {
         setActionList([...actionList, { type: 'stroke' }]);
     });
 
-    /**Function to clear the canvas and set draggables to empty list
-     * Only clear canvas if roadDesignChange is true
+    /**
+     * Function to clear the canvas and set draggables to empty list.
+     * Only clear canvas if roadDesignChange is true.
      * @memberof SketchArea
-     * @function
      */
     const clearCanvas = useCallback(() => {
         sketchRef.current.clear();
         setDraggables([]);
     });
 
-    /**Function to set the pencil to an eraser
+    /**
+     * Function to set the pencil to an eraser.
      * @memberof SketchArea
-     * @function
      */
     const eraser = () => {
         if (pencilColor != eraserColor) {
@@ -142,19 +147,19 @@ const SketchArea = React.memo((props) => {
         }
     };
 
-    /**Function to hide the bottomsheet when user starts
-     * drawing on the canvas
+    /**
+     * Function to hide the bottomsheet when user starts
+     * drawing on the canvas.
      * @memberof SketchArea
-     * @function
      */
     const onStrokeStart = useCallback(() => {
         if (bottomSheetHidden == false)
             setBottomSheetHidden(!bottomSheetHidden);
     }, [bottomSheetHidden]);
 
-    /**Function to toggle the topmenu to hidden or not hidden
+    /**
+     * Function to toggle the top menu to hidden or not hidden.
      * @memberof SketchArea
-     * @function
      */
     const toggleMenu = () => {
         setTopMenuHidden(!topMenuHidden);
@@ -175,8 +180,8 @@ const SketchArea = React.memo((props) => {
                     onPaletteColorChange={onPaletteColorChange}
                     navigation={navigation}
                     name={name}
-                    topMenuHidden={toggleMenu}
-                    toggleRightMenuState={topMenuHidden}
+                    topMenuHidden={topMenuHidden}
+                    toggleTopMenu={toggleMenu}
                     onChangePencilSize={onChangePencilSize}
                     pencilColor={pencilColor}
                     pencilSize={pencilSize}

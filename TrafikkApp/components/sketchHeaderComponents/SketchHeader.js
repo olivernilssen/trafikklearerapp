@@ -7,18 +7,20 @@ import HeaderButton from './HeaderButton';
 import DraggableComponentsButton from './DraggableComponentsButton';
 import DeleteButtonPopover from './DeleteButtonPopover';
 
-import { Colors, Typography, Buttons } from '../../styles';
+import { Colors } from '../../styles';
 
-/**The SketchHeader, contains all the buttons and menu's related to the drawing and placement of draggable components
+/**
+ * The SketchHeader contains all the buttons and menus related to the drawing.
+ * It also contains a button to toggle the draggable components menu in and out of view.
  * @namespace SketchHeader
- * @category sketchHeaderComponents
+ * @category SketchHeaderComponents
  * @prop {function} onEraserPencilSwitch Changes the pencil color and size when switching between eraser and pencil
  * @prop {function} undoChange Function to undo the previous action of the user
  * @prop {function} clearCanvas Clears the canvas of all illustrations
  * @prop {function} eraser Sets the pencil to an eraser, erases lines instead of drawing
  * @prop {function} onPaletteColorChange changes the pencil color according to user input
- * @prop {boolean} topMenuHidden The state topMenuHidden
- * @prop {function} toggleRightMenuState Toggles the state of topMenuHidden
+ * @prop {boolean} topMenuHidden Whether the draggable components menu is hidden or not.
+ * @prop {function} toggleTopMenu Toggles the top menu (draggable components menu) in and out of view
  * @prop {function} onChangePencilSize Changes the pencil thickness
  * @prop {string} pencilColor The state pencilColor
  * @prop {number} pencilSize The state pencilSize
@@ -35,16 +37,17 @@ const SketchHeader = React.memo((props) => {
         eraser,
         onPaletteColorChange,
         topMenuHidden,
-        toggleRightMenuState,
+        toggleTopMenu,
         onChangePencilSize,
         pencilColor,
         pencilSize,
         chosenColor,
     } = props;
 
-    /**Handles the states for active buttons
+    /**
+     * Handles the states for active buttons
      * @memberof SketchHeader
-     * @function
+     * @param {int} value The value of the button
      */
     const focusedActiveButton = (value) => {
         if (value === null) {
@@ -56,11 +59,8 @@ const SketchHeader = React.memo((props) => {
     };
 
     return (
-        <View style={styles.toolBar}>
-            <Header
-                name={''}
-                navigation={props.navigation}
-                style={styles.header}>
+        <View style={styles.main}>
+            <Header navigation={props.navigation} style={styles.header}>
                 <DeleteButtonPopover
                     clearCanvas={clearCanvas}
                     propsStyle={styles.spacedLeft}
@@ -77,7 +77,7 @@ const SketchHeader = React.memo((props) => {
                     pencilSize={pencilSize}
                     chosenColor={chosenColor}
                 />
-                <View style={{ paddingHorizontal: 5 }} />
+                <View style={styles.container} />
                 <HeaderButton
                     iconName={'eraser'}
                     buttonOnPress={eraser}
@@ -85,7 +85,7 @@ const SketchHeader = React.memo((props) => {
                     activeId={activeId}
                     focusedActiveButton={focusedActiveButton}
                 />
-                <View style={{ paddingHorizontal: 5 }} />
+                <View style={styles.container} />
                 <HeaderButton
                     iconName={'undo-alt'}
                     buttonOnPress={undoChange}
@@ -93,11 +93,11 @@ const SketchHeader = React.memo((props) => {
                     activeId={activeId}
                     focusedActiveButton={focusedActiveButton}
                 />
-                <View style={{ paddingHorizontal: 5 }} />
+                <View style={styles.container} />
                 <DraggableComponentsButton
                     activeIconName={'box-open'}
                     inactiveIconName={'box'}
-                    toggleRightMenuState={toggleRightMenuState}
+                    toggleTopMenu={toggleTopMenu}
                     topMenuHidden={topMenuHidden}
                 />
             </Header>
@@ -106,21 +106,15 @@ const SketchHeader = React.memo((props) => {
 });
 
 const styles = StyleSheet.create({
-    buttonSize: {
-        // flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        ...Buttons.sketchHeaderButton,
+    main: {
+        width: '100%',
+        elevation: 10,
+        zIndex: 2,
     },
     header: {
         borderBottomWidth: 1,
         borderBottomColor: Colors.dividerPrimary,
         elevation: 10,
-    },
-    toolBar: {
-        width: '100%',
-        elevation: 10,
-        zIndex: 2,
     },
     spacedLeft: {
         flex: 1,
@@ -140,6 +134,15 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         padding: 10,
     },
+    container: {
+        paddingHorizontal: 5,
+    },
+    // buttonSize: {
+    //     // flex: 1,
+    //     justifyContent: 'center',
+    //     alignItems: 'center',
+    //     ...Buttons.sketchHeaderButton,
+    // },
 });
 
 export default SketchHeader;

@@ -12,9 +12,10 @@ import { Colors, Typography, Buttons, Icons } from '../../styles';
 
 const { Popover } = renderers;
 
-/** A button for clearing the sketch screen, drops down a button for confirmation
+/**
+ * A button for clearing the sketch screen, drops down a button for confirmation.
  * @namespace DeleteButtonPopover
- * @category sketchHeaderComponents
+ * @category SketchHeaderComponents
  * @prop {object} propsStyle StyleSheet
  * @prop {function} clearCanvas Clears the canvas
  */
@@ -24,7 +25,8 @@ const DeleteButtonPopover = React.memo((props) => {
 
     const { propsStyle, clearCanvas } = props;
 
-    /** Clear canvas and close the "popover" modal
+    /**
+     * Clear canvas and close the "popover" modal.
      * @memberof DeleteButtonPopover
      */
     const clearButtonPressed = () => {

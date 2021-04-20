@@ -8,7 +8,7 @@ import { Colors, Typography } from '../../styles';
  * Component to display the content of the BottomMenu, on the screen
  * for the CurriculumObjectives.
  * @namespace CurriculumMenuContent
- * @category curriculumObjectivesComponents
+ * @category CurriculumObjectivesComponents
  * @prop {string} curriculumObjective The name of the chosen curriculum objective
  * @prop {function} setCurriculumObjective Sets the state curriculumObjective
  * @prop {string} trafficClass The name of the chosen traffic class

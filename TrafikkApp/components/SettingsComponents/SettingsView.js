@@ -14,7 +14,7 @@ import OptionPicker from './OptionPicker';
 
 /**
  * The view for the settings screen. It takes in data from
- * AppContext and has arrays for possible values for the different settings
+ * AppContext and has arrays for possible values for the different settings.
  * @namespace SettingsView
  * @category SettingsComponents
  */
@@ -46,9 +46,9 @@ const SettingsView = React.memo((props) => {
     const themeValues = ['Mørk', 'Lys'];
 
     /**
-     * Function to handle changing a value in settings
-     * it also launches a toast on the screen to let the user know
-     * that the change has been saved
+     * Function to handle changing a value in settings.
+     * It also launches a toast on the screen to let the user know
+     * that the change has been saved.
      * @memberof SettingsView
      * @param {string} type the name of the settings that is changed
      * @param {string} value the value to update the storage key to
