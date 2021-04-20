@@ -11,7 +11,7 @@ import {
 import DrawerToggleItem from './DrawerToggleItem';
 import DrawerItem from './DrawerItem';
 import { Divider } from '../reusableComponents/';
-import { Colors } from '../../styles';
+import { Colors, Typography } from '../../styles';
 
 /**
  * Component to display the menu as a flatlist in
@@ -125,13 +125,15 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         paddingHorizontal: 15,
+        paddingVertical: 2,
         alignItems: 'center',
         alignContent: 'center',
     },
     sectionText: {
         // flex: 1,
         color: Colors.eraserIconActive,
-        fontSize: 20,
+        // fontSize: 20,
+        ...Typography.section,
     },
     divider: {
         alignContent: 'center',

@@ -66,7 +66,7 @@ const DrawerItem = React.memo(
 const styles = StyleSheet.create({
     menuItem: {
         flexDirection: 'row',
-        marginBottom: 15,
+        marginBottom: 10,
         alignItems: 'center',
         color: Colors.icons,
         borderBottomRightRadius: 10,
