@@ -12,7 +12,9 @@ import { MainView, Header, Divider } from '../components/reusableComponents/';
 import { Buttons, Colors, Icons, Typography } from '../styles';
 
 /**
- * The screen component for the About App screen
+ * The screen component for the About App screen.
+ * The screen displays some info about the app and contact information for the developers.
+ * It also displays a button that sends the user to Google Play Store to review the app.
  * @namespace AboutScreen
  * @category Screens
  * @prop {object} navigation Used for navigation between the different screens
@@ -23,7 +25,7 @@ const AboutScreen = React.memo(({ navigation }) => {
     imgSource = require('../assets/images/ic_launcher_round.png');
 
     /**
-     * Button event that opens the Google Play Store site for the app
+     * Button event that opens the Google Play Store site for the app.
      * @memberof AboutScreen
      */
     const openPlayStore = () => {
@@ -35,7 +37,7 @@ const AboutScreen = React.memo(({ navigation }) => {
     };
 
     /**
-     * Button event that opens the default email app to send an email
+     * Button event that opens the default email app to send an email to the developers.
      * @memberof AboutScreen
      */
     const sendMail = () => {

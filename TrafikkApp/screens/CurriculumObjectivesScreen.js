@@ -14,7 +14,9 @@ import {
 import { Colors, Typography } from '../styles';
 
 /**
- * The screen component for the curriculum objectives for traffic training
+ * The screen component for the curriculum objectives for traffic training.
+ * This screen contains a menu to chose between the different curriculum objectives,
+ * and displays the text on the screen.
  * @namespace CurriculumObjectivesScreen
  * @category Screens
  * @prop {object} navigation Used for navigation between the different screens

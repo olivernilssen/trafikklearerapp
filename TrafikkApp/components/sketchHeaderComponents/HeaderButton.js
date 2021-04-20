@@ -4,9 +4,10 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import { Colors, Buttons, Icons } from '../../styles';
 
-/**Component that returns a button, used for burger-menu-, eraser- and undo-button in the sketchHeader
+/**
+ * Component that returns a button, used for eraser- and undo-button in the sketchHeader.
  * @namespace HeaderButton
- * @category sketchHeaderComponents
+ * @category SketchHeaderComponents
  * @prop {String} iconName the name of the Icon
  * @prop {Function} buttonOnPress The function you want to use when the button is pressed
  * @prop {number} focusedActiveButton Handles the states of the active buttons

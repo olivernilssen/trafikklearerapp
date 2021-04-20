@@ -8,7 +8,7 @@ import { Colors, Typography } from '../../styles';
  * Which content to display is decided by which button(s) in the BottomMenu
  * that is pressed
  * @namespace CurriculumObjectives
- * @category curriculumObjectivesComponents
+ * @category CurriculumObjectivesComponents
  * @prop {string} curriculumObjective The name of the chosen curriculum objective
  * @prop {function} setCurriculumObjective Sets the state curriculumObjective
  * @prop {string} trafficClass The name of the chosen traffic class
@@ -61,7 +61,8 @@ const CurriculumObjectives = React.memo(
 
         /**
          * Maps through all the curriculum objectives from the data file.
-         * @returns The contents of the objectives to be displayed on the screen.
+         * @memberof CurriculumObjectives
+         * @returns The contents of the objectives to be displayed on the screen
          */
         const contents = curriculumContents.map((source, i) => {
             if (source !== 'overskrift') {

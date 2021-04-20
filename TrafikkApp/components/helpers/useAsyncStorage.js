@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
- * Use of async storage.
+ * Use of async storage to store the app settings the user changes.
  * @namespace AsyncStorage
  * @category Helpers
  */

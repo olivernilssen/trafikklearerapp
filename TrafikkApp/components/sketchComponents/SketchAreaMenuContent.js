@@ -11,13 +11,13 @@ import AppContext from '../../AppContext';
 /**
  * SketchAreaMenuContent is a menu that slides up from the bottom of the screen
  * This menu allows the user to change the background image according to
- * which screen they are on
+ * which screen they are on.
  * @namespace SketchAreaMenuContent
  * @category SketchComponents
  * @prop {object} navigation Used for navigation between the different screens
  * @prop {string} roadType Name of roadtype
  * @prop {function} setImage Changes the state currentImage
- * @prop {function} setRoadDesignChange Changes the state roadDesignChange and sets
+ * @prop {function} setRoadDesignChange Changes the state roadDesignChange to true or false
  * @prop {string} extensionType Name of the extension type to be set (vanlig, gangfelt, sykkelfelt)
  * @prop {function} setBottomSheetHidden Changes the state bottomSheetHidden to hide or show the bottomMenu
  */
@@ -57,7 +57,8 @@ const SketchAreaMenuContent = React.memo(
 
         // For handling showing/not showing of alert on imageChange
         const [modalVisible, setModalVisible] = useState(false);
-        const [hideAlert, setHideAlert] = useState(false);
+        const [alwaysHideAlert, setAlwaysHideAlert] = useState(false);
+
         const [tempImage, setTempImage] = useState('');
         const [tempRoadDesign, setTempRoadDesign] = useState('');
         const [tempIntersectionType, setTempIntersectionType] = useState('');
@@ -200,7 +201,7 @@ const SketchAreaMenuContent = React.memo(
                 setIntersectionType(tempIntersectionType);
             }
 
-            if (hideAlert) {
+            if (alwaysHideAlert) {
                 appContext.saveNewSettings(
                     'false',
                     appContext.setShowDeleteAlert,
@@ -215,7 +216,6 @@ const SketchAreaMenuContent = React.memo(
          * Returns the source of the image to be displayed as a background image
          * of the buttons in the BottomMenu.
          * @memberof SketchAreaMenuContent
-         * @function
          * @param {String} designName
          */
         const getImage = (designName) => {
@@ -233,8 +233,8 @@ const SketchAreaMenuContent = React.memo(
                 <AlertModal
                     modalVisible={modalVisible}
                     setModalVisible={setModalVisible}
-                    hideAlert={hideAlert}
-                    setHideAlert={setHideAlert}
+                    alwaysHideAlert={alwaysHideAlert}
+                    setAlwaysHideAlert={setAlwaysHideAlert}
                     navigation={navigation}
                     onOK={() => onAlertOK()}
                 />

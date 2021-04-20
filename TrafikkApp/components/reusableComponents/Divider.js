@@ -6,7 +6,7 @@ import { View, StyleSheet } from 'react-native';
  * @namespace Divider
  * @category ReusableComponents
  * @prop {stylesheetObject} [style] Style of the divider
- * @prop {color} borderColor Color of the divider
+ * @prop {color} [borderColor] Color of the divider. Default color is black.
  */
 const Divider = React.memo((props) => {
     const { style, borderColor } = props;

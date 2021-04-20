@@ -15,9 +15,10 @@ import AppContext from '../../AppContext';
 
 const { Popover } = renderers;
 
-/** A button with a menu for the drawing component of the sketchheader
+/**
+ * A button with a menu for the drawing component of the SketchHeader.
  * @namespace SketchColorMenu
- * @category sketchHeaderComponents
+ * @category SketchHeaderComponents
  * @prop {function} onPaletteColorChange Changes the color
  * @prop {function} onChangePencilSize Changes pencil size
  * @prop {object} propsStyle StyleSheet
@@ -33,6 +34,7 @@ const SketchColorMenu = React.memo((props) => {
     const [colorButtonID, setColorButtonID] = useState(0);
     const [pencilThicknessID, setPencilThicknessID] = useState(0);
     // const [menuArrow, setMenuArrow] = useState(false);
+    const appContext = useContext(AppContext);
 
     const {
         onPaletteColorChange,
@@ -47,10 +49,9 @@ const SketchColorMenu = React.memo((props) => {
     } = props;
 
     /**
-     * An array that holds the colors that are used for the color buttons
-     * These are also the colors used to draw with
+     * An array that holds the colors that are used for the color buttons.
+     * These are also the colors used to draw with.
      */
-
     const colorArray = [
         { colorCode: '#20303C', key: '20403C' },
         { colorCode: '#3182C8', key: '3182C8' },
@@ -64,15 +65,13 @@ const SketchColorMenu = React.memo((props) => {
 
     /**
      * An array that holds the thickness of the "icons" (view) for the pencil thickness buttons
-     * and the pencil thickness used for changing the thickness of the pencil
+     * and the pencil thickness used for changing the thickness of the pencil.
      */
     const pencilThicknessArray = [
         { viewThickness: 8, pencilThickness: 5, key: 85 },
         { viewThickness: 11, pencilThickness: 8, key: 118 },
         { viewThickness: 14, pencilThickness: 11, key: 1411 },
     ];
-
-    const appContext = useContext(AppContext);
 
     /**
      * useEffect to get out the colorId of the correct color
@@ -86,7 +85,8 @@ const SketchColorMenu = React.memo((props) => {
         }
     }, []);
 
-    /**Used to handle the state of the color menu, if it is open or not
+    /**
+     * Used to handle the state of the color menu, if it is open or not.
      * @memberof SketchColorMenu
      * @param {boolean} value The state of isOpened
      */
@@ -94,7 +94,8 @@ const SketchColorMenu = React.memo((props) => {
         setOpened(value);
     };
 
-    /** Used to assign an id to the color buttons
+    /**
+     * Used to assign an ID to the color buttons.
      * @memberof SketchColorMenu
      * @param {number} value The id for the color buttons
      */
@@ -103,7 +104,8 @@ const SketchColorMenu = React.memo((props) => {
         setOpened(false);
     };
 
-    /** Used to assign an id to the pencil thickness buttons
+    /**
+     * Used to assign an ID to the pencil thickness buttons
      * @memberof SketchColorMenu
      * @param {number} value The id for the pencil thickness button
      */
@@ -112,7 +114,8 @@ const SketchColorMenu = React.memo((props) => {
         setOpened(false);
     };
 
-    /** Handles what happens to the pencil button when you press it or when you press another button after the pencil button
+    /**
+     * Handles what happens to the pencil button when you press it or when you press another button after the pencil button.
      * @memberof SketchColorMenu
      */
     const onPressMenuTrigger = () => {
@@ -125,8 +128,9 @@ const SketchColorMenu = React.memo((props) => {
         }
     };
 
-    /**Maps through an array of color codes and returns a button for each color
-     * the button is used for changing the color of the pencil
+    /**
+     * Maps through an array of color codes and returns a button for each color.
+     * The button is used for changing the color of the pencil.
      * @memberof SketchColorMenu
      * @param {object} value Contains the color code and the unique key
      * @param {number} index The index of the objects in the array
@@ -144,8 +148,9 @@ const SketchColorMenu = React.memo((props) => {
         );
     });
 
-    /**Maps through an array of objects containing numbers and returns a button for for each object
-     * The button is used for changing the thickness of the pencil
+    /**
+     * Maps through an array of objects containing numbers and returns a button for for each object.
+     * The button is used for changing the thickness of the pencil.
      * @memberof SketchColorMenu
      * @param {object} value Contains the thickness of the pencil, thickness of the view and the unique key
      * @param {number} index The index of the objects in the array

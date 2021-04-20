@@ -5,8 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from '../../styles';
 
 /**
- * Component to display the menu as a flatlist in
- * the navigation drawer (will add all items that are in props.state.routes)
+ * Component to display the hamburger icon to toggle the drawer menu.
  * @namespace DrawerToggleItem
  * @category DrawerComponents
  * @prop {function} navigation functions for the drawer navigation

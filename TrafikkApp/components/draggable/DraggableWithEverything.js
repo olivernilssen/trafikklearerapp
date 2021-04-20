@@ -7,9 +7,9 @@ import { Colors, Typography, Icons } from '../../styles';
 import { Divider } from '../reusableComponents';
 
 /**
- * Collects all the draggable components into one
- * the list of draggables, the draggables object, draggable menu
- * and the dropzone area
+ * Collects all the draggable components into one.
+ * Contains the list of draggables, the draggables object, the draggable menu
+ * and the dropzone area.
  * @namespace DraggableWithEverything
  * @category Draggable
  * @prop {boolean} topMenuHidden If the topMenu is hidden or in view

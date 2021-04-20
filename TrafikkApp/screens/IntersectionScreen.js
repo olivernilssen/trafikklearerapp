@@ -5,7 +5,8 @@ import { MainView } from '../components/reusableComponents/';
 import { SketchArea } from '../components/sketchComponents/';
 
 /**
- * The scren component to show the sketcharea of Veikryss
+ * The scren component to show the sketcharea of Veikryss.
+ * This screen is a sketch screen, and is using the big SketchArea component.
  * @namespace IntersectionScreen
  * @category Screens
  * @prop {object} navigation Used for navigation between the different screens
