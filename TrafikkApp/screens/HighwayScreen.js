@@ -5,7 +5,8 @@ import { MainView } from '../components/reusableComponents/';
 import { SketchArea } from '../components/sketchComponents/';
 
 /**
- * The screen component for roadScreen "Landevei"
+ * The screen component for the HighWay screen.
+ * This screen is a sketch screen, and is using the big SketchArea component.
  * @namespace HighwayScreen
  * @category Screens
  * @prop {object} navigation Used for navigation between the different screens

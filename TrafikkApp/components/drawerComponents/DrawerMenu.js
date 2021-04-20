@@ -14,8 +14,8 @@ import { Divider } from '../reusableComponents/';
 import { Colors, Typography } from '../../styles';
 
 /**
- * Component to display the menu as a flatlist in
- * the navigation drawer (will add all items that are in props.state.routes)
+ * Component to display the menu as a section list in
+ * the navigation drawer (will add all items that are in props.state.routes).
  * @namespace DrawerMenu
  * @category DrawerComponents
  * @prop {function} navigation functions for the drawer navigation

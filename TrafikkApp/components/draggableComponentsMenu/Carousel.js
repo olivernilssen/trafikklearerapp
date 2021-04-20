@@ -10,10 +10,12 @@ import {
 import { Colors } from '../../styles';
 
 /**
- * Component that displays a carousel with items.
+ * Component that displays a carousel with the draggable items.
  * @namespace Carousel
  * @category DraggableComponentsMenu
- * @prop {int} itemsPerSlide Number of items to be displayed per slide in the Carousel
+ * @prop {function} onNewDraggable Function to add new draggable
+ * @prop {dictionary} objects Dictionary with the image path to the draggable objects
+ * @prop {array} objectKeys Array with the keys to the different draggable objects
  */
 const Carousel = React.memo((props) => {
     const { onNewDraggable, objectKeys, objects } = props;
@@ -131,6 +133,7 @@ const Carousel = React.memo((props) => {
     /**
      * Generate bulletpoints to show number of slides
      * Bulletpoint for active slide is highlighted
+     * @memberof Carousel
      */
     for (let i = 1; i <= numberOfSlides; i++) {
         bullets.push(
@@ -149,6 +152,7 @@ const Carousel = React.memo((props) => {
     /**
      * Displayes the available draggable images that can be used.
      * @return all the images that are in the "objects" array
+     * @memberof Carousel
      */
     const images = slidesArray.map((i) => {
         const startFrom = i * itemsPerSlide;

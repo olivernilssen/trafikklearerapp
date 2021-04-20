@@ -9,33 +9,31 @@ import {
 import { Typography, Buttons } from '../../styles';
 
 /**
- * Component that displays a button group
+ * Component that displays a button group.
  * @namespace ButtonGroup
  * @category ReusableComponents
  * @prop {array} values The buttons of the button group
- * @prop {int} selectedValue Selected button
+ * @prop {int} selectedValue The selected button
  * @prop {number} [groupWidth] The width of the button group
- * @prop {number} [textSize] Font size of the buttons
+ * @prop {number} [height] The height of the button group
  * @prop {function} onSelect Handler to be called when the user taps a button
  * @prop {color} highlightBackgroundColor BachgroundColor of the selected button
  * @prop {color} highlightTextColor Text color of the selected button
  * @prop {color} inactiveBackgroundColor BackgroundColor of the inactive button(s)
  * @prop {color} inactiveTextColor Text color of the inactive button(s)
- * @prop {number} [height] The height of the button group
- * @prop {int} middleButtonSize if the middle button should be small in a 3 length group
  */
 const ButtonGroup = (props) => {
     const {
         values,
         selectedValue,
         groupWidth,
+        height,
         onSelect,
         highlightBackgroundColor,
         highlightTextColor,
         inactiveBackgroundColor,
         inactiveTextColor,
         isColorOptions,
-        height,
     } = props;
 
     const width = groupWidth != null ? groupWidth : 300;

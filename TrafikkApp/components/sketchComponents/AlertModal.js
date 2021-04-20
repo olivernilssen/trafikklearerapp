@@ -6,14 +6,14 @@ import { Colors, Typography, Icons } from '../../styles';
 import { Divider } from '../reusableComponents';
 
 /**
- * Alert is a component that pops up to alert the user that the drawing is set to be deleted.
+ * This is a component that pops up to alert the user that the drawing is set to be deleted.
  * @namespace AlertModal
  * @category SketchComponents
  * @prop {object} navigation Used for navigation between the different screens
  * @prop {boolean} modalVisible If the modal is visible or not
  * @prop {function} setModalVisible Changes the state modalVisible
- * @prop {boolean} hideAlert If the checkbox to never show alert again, is checked
- * @prop {function} setHideAlert Changes the state hideAlert
+ * @prop {boolean} alwaysHideAlert If the checkbox to never show alert again, is checked
+ * @prop {function} setAlwaysHideAlert Changes the state alwaysHideAlert
  * @prop {function} onOK What to do when the 'OK' button in the Alert is triggered
  */
 const AlertModal = React.memo(
@@ -21,8 +21,8 @@ const AlertModal = React.memo(
         navigation,
         modalVisible,
         setModalVisible,
-        hideAlert,
-        setHideAlert,
+        alwaysHideAlert,
+        setAlwaysHideAlert,
         onOK,
     }) => {
         return (
@@ -56,13 +56,15 @@ const AlertModal = React.memo(
                             <TouchableOpacity
                                 style={styles.checkboxContainer}
                                 activeOpacity={0.4}
-                                onPress={() => setHideAlert(!hideAlert)}>
+                                onPress={() =>
+                                    setAlwaysHideAlert(!alwaysHideAlert)
+                                }>
                                 <CheckBox
-                                    value={hideAlert}
-                                    onValueChange={setHideAlert}
+                                    value={alwaysHideAlert}
+                                    onValueChange={setAlwaysHideAlert}
                                     style={styles.checkbox}
                                     tintColors={
-                                        hideAlert
+                                        alwaysHideAlert
                                             ? Colors.alertButton
                                             : Colors.alertButton
                                     }
@@ -70,7 +72,7 @@ const AlertModal = React.memo(
                                 <Text
                                     style={[
                                         styles.label,
-                                        hideAlert
+                                        alwaysHideAlert
                                             ? { color: Colors.alertButton }
                                             : {
                                                   color:

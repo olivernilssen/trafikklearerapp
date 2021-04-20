@@ -7,8 +7,7 @@ import {
 } from 'react-native';
 
 /**
- * Component that displays a transparent overlay on the SketchArea-screens,
- * when the BottomMenu is open
+ * Component that displays a transparent overlay over the screen.
  * @namespace Overlay
  * @category ReusableComponents
  * @prop {boolean} showOverlay Bool to decide whether overlay is hidden or not
@@ -21,7 +20,7 @@ const Overlay = React.memo((props) => {
     const [zIndex, setZIndex] = useState(10);
 
     /**
-     * useEffect that is triggered when bottomSheetHidden is changed.
+     * useEffect that is triggered when the state showOverlay is changed.
      * Will animate the overlay into view and out of view
      */
     useEffect(() => {

@@ -47,7 +47,6 @@
         },
         "better-docs": {
             "name": "IllusTrafikk Documentation",
-            "logo": "./assets/images/bitmap.png",
             "title": "IllusTrafikk | Doc",
             "css": "style.css",
 	    "hideGenerator": false,

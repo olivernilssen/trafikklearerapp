@@ -4,11 +4,11 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Buttons, Icons, Colors, Typography } from '../../styles';
 
 /**
- * This component is used to display a link on the StartScreen.
+ * This component is used to display a link on the StartScreen, to navigate to other screens in the app.
  * @namespace StartScreenLink
  * @category StartScreenComponents
  * @prop {string} name The icon name
- * @prop {string} text The text of the link
+ * @prop {string} text The text to be displayed on the link
  * @prop {function} onPress Function to be triggered when pressing the link
  */
 const StartScreenLink = React.memo((props) => {
