@@ -5,7 +5,8 @@ import { MainView, Header } from '../components/reusableComponents/';
 import { Colors } from '../styles';
 
 /**
- * The screen component for the authority pyramid
+ * The screen component for the authority pyramid.
+ * This screen contains only an image of the pyramid.
  * @namespace AuthorityPyramidScreen
  * @category Screens
  * @prop {object} navigation Used for navigation between the different screens

@@ -5,7 +5,8 @@ import { MainView } from '../components/reusableComponents/';
 import { SketchArea } from '../components/sketchComponents/';
 
 /**
- * Screen component for roundbaout screen / rundkjøring
+ * Screen component for roundbaout screen / rundkjøring.
+ * This screen is a sketch screen, and is using the big SketchArea component.
  * @namespace RoundaboutScreen
  * @category Screens
  * @prop {object} navigation Used for navigation between the different screens

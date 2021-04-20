@@ -30,7 +30,7 @@ const BottomMenuAnimated = React.memo((props) => {
 
     /**
      * This function will change the little icon at the top of the bottom menu
-     * to either show a chevorn of elipsis.
+     * to either show a chevron-up or chevron-down.
      * It also animates the menu to either be hidden or shown
      * @memberof BottomMenuAnimated
      */
@@ -52,8 +52,8 @@ const BottomMenuAnimated = React.memo((props) => {
     }, [bottomSheetHidden]);
 
     /**
-     * Changes the state of the bottomSheetHidden state
-     * This will also trigger a useEffect to run afterwards
+     * Changes the state of the bottomSheetHidden state.
+     * This will also trigger a useEffect to run afterwards.
      * @memberof BottomMenuAnimated
      */
     const onHiddenViewChange = () => {
@@ -63,7 +63,7 @@ const BottomMenuAnimated = React.memo((props) => {
     /**
      * Is triggered to get the layout (height, width) of the
      * bottomsheet view. This is to accuractly decide how far up
-     * on the screen the menu needs to slide
+     * on the screen the menu needs to slide.
      * @memberof BottomMenuAnimated
      * @param {dictionary} layout
      */

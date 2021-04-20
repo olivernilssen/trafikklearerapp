@@ -5,7 +5,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { Colors, Typography, Icons } from '../../styles';
 
 /**
- * Components item that are shown in the navigation drawer
+ * Component for the items that are shown in the navigation drawer.
  * @namespace DrawerItem
  * @category DrawerComponents
  * @prop {function} navigation functions for the drawer navigation

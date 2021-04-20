@@ -17,8 +17,8 @@ import {
 import { Colors, Typography, Icons } from '../styles';
 
 /**
- * Screen component for the start screen
- * contains a list of all the clickable screens in the navigator
+ * Screen component for the start screen.
+ * Contains links to the most important screens in the app, and some clickable external links.
  * @namespace StartScreen
  * @category Screens
  * @prop {object} navigation Used for navigation between the different screens

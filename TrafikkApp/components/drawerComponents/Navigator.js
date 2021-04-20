@@ -18,13 +18,9 @@ import {
 const Drawer = createDrawerNavigator();
 
 /**
-
- * @returns Navigator component
- */
-/**
- * This is the Navigator for our side drawer
- * Holds all the information about the screens and
- * the screen parameters
+ * This is the Navigator for our drawer menu.
+ * This component holds all the information about the different screens and
+ * the screen parameters.
  * @namespace Navigator
  * @category DrawerComponents
  */

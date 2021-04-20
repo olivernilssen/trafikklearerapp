@@ -37,7 +37,7 @@ const OptionPicker = React.memo((props) => {
 
     /**
      * Save the settings to asyncStorage
-     * and make modal go away/invisible
+     * and make modal go away/invisible.
      * @memberof OptionPicker
      */
     const saveSelectedtDraggables = useCallback(() => {
@@ -51,8 +51,8 @@ const OptionPicker = React.memo((props) => {
     });
 
     /**
-     * Update which images that are selected in the modal view
-     * can be selected or unselected
+     * Update which images that are selected in the modal view.
+     * Can be selected or unselected.
      * @memberof OptionPicker
      * @param {string} newValue the source key of selected image
      */
@@ -76,7 +76,7 @@ const OptionPicker = React.memo((props) => {
     };
 
     /**
-     * Close the modal and don't save the state of selected values
+     * Close the modal and don't save the state of selected values.
      * @memberof OptionPicker
      */
     const closeModalWithoutSave = useCallback(() => {
