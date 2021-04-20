@@ -42,13 +42,13 @@ const numColumns = 4;
 const RoadSignScreen = React.memo(({ navigation }) => {
     // const signObjectKeys = Object.keys(fareSkilt);
     const [modalVisible, setModalVisible] = useState(false);
-
     const [descriptionVisible, setDescriptionVisible] = useState(false);
     const [signDescription, setSignDescription] = useState('');
     const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
     const [signType, setSignType] = useState(fareSkilt);
     const [signObjectKeys, setSignObjectKeys] = useState(Object.keys(signType));
     const [selectedItem, setSelectedItem] = useState(signObjectKeys[0]);
+    const [activeTypeID, setActiveTypeID] = useState(0);
 
     const handleModal = (item) => {
         setModalVisible(!modalVisible);
@@ -58,6 +58,7 @@ const RoadSignScreen = React.memo(({ navigation }) => {
 
     const closeModal = () => {
         setModalVisible(false);
+        setDescriptionVisible(false);
     };
 
     // useEffect(() => {
@@ -78,6 +79,18 @@ const RoadSignScreen = React.memo(({ navigation }) => {
         setDescriptionVisible(!descriptionVisible);
     };
 
+    const closeDescription = () => {
+        setDescriptionVisible(false);
+    };
+
+    const handleActiveButton = (value) => {
+        setActiveTypeID(value);
+    };
+
+    const handleBottomSheet = (value) => {
+        setBottomSheetHidden(value);
+    };
+
     const renderItem = ({ item, index }) => {
         // console.log({ item });
         return (
@@ -86,6 +99,7 @@ const RoadSignScreen = React.memo(({ navigation }) => {
                     style={styles.item}
                     onPress={() => {
                         handleModal(item);
+                        handleBottomSheet(true);
                     }}>
                     <View
                         style={{
@@ -114,6 +128,8 @@ const RoadSignScreen = React.memo(({ navigation }) => {
                         selectedSign={signType[selectedItem]}
                         signDescription={signDescription}
                         descriptionVisible={descriptionVisible}
+                        closeDescription={closeDescription}
+                        handleBottomSheet={handleBottomSheet}
                     />
                 </View>
             </TouchableWithoutFeedback>
@@ -131,7 +147,13 @@ const RoadSignScreen = React.memo(({ navigation }) => {
             <BottomMenuAnimated
                 bottomSheetHidden={bottomSheetHidden}
                 setBottomSheetHidden={setBottomSheetHidden}>
-                <RoadSignMenuContent handleSignType={handleSignType} />
+                <RoadSignMenuContent
+                    handleSignType={handleSignType}
+                    setBottomSheetHidden={setBottomSheetHidden}
+                    setActiveTypeID={setActiveTypeID}
+                    activeTypeID={activeTypeID}
+                    handleActiveButton={handleActiveButton}
+                />
             </BottomMenuAnimated>
         </MainView>
     );
@@ -140,15 +162,15 @@ const RoadSignScreen = React.memo(({ navigation }) => {
 const styles = StyleSheet.create({
     // container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
     imageContainer: {
+        width: '100%',
         flex: 1,
-        marginVertical: 1,
         backgroundColor: Colors.sketchBackground,
     },
     item: {
         alignItems: 'center',
         justifyContent: 'center',
-        width: Dimensions.get('screen').width / numColumns - 3,
         margin: 1,
+        width: Dimensions.get('screen').width / numColumns - 3,
         height: Dimensions.get('screen').height / 7.5,
     },
     modalItem: {

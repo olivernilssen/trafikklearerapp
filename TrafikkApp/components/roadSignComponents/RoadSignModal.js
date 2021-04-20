@@ -24,6 +24,7 @@ const RoadSignModal = (props) => {
         handleDescription,
         signDescription,
         descriptionVisible,
+        closeDescription,
     } = props;
     console.log(selectedSign.beskrivelse);
 
@@ -89,6 +90,7 @@ const RoadSignModal = (props) => {
                     <View style={styles.modal}>
                         <View
                             style={{
+                                top: '6%',
                                 width: '80%',
                                 height: '46%',
                                 // justifyContent: 'center',
@@ -109,6 +111,7 @@ const RoadSignModal = (props) => {
                         </View>
                         <View
                             style={{
+                                top: '7%',
                                 backgroundColor: 'white',
                                 width: '80%',
                                 alignSelf: 'center',
@@ -138,11 +141,12 @@ const styles = StyleSheet.create({
         height: Dimensions.get('screen').height / 7.5,
     },
     modal: {
-        top: '7%',
+        // top: '6%',
         width: '100%',
         height: '100%',
         justifyContent: 'flex-start',
         alignSelf: 'center',
+        backgroundColor: 'rgba(0,0,0,0.8)',
         // backgroundColor: 'yellow',
     },
     modalItem: {
