@@ -21,7 +21,7 @@ const RoadSignModal = (props) => {
         handleDescription,
         descriptionVisible,
     } = props;
-    console.log(selectedSign.beskrivelse);
+    // console.log(selectedSign.beskrivelse);
 
     const textDescription = () => {
         if (descriptionVisible) {
@@ -68,23 +68,13 @@ const RoadSignModal = (props) => {
     const imageHandler = () => {
         return (
             <>
-                <Image
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        justifyContent: 'center',
-                        alignSelf: 'center',
-                        resizeMode: 'contain',
-                        top: '0%',
-                    }}
-                    source={selectedSign.source}
-                />
+                <Image style={styles.image} source={selectedSign.source} />
             </>
         );
     };
 
     return (
-        <View>
+        <>
             <Modal
                 style={{
                     backgroundColor: 'white',
@@ -102,9 +92,10 @@ const RoadSignModal = (props) => {
                         <View style={styles.modalView}>
                             <View
                                 style={{
-                                    top: '15%',
-                                    width: '80%',
-                                    height: '46%',
+                                    // top: '5%',
+                                    width: '90%',
+                                    height: '70%',
+                                    // flex: 1,
                                     alignSelf: 'center',
                                 }}>
                                 <TouchableWithoutFeedback
@@ -139,22 +130,11 @@ const RoadSignModal = (props) => {
                     </View>
                 </TouchableWithoutFeedback>
             </Modal>
-        </View>
+        </>
     );
 };
 
 const styles = StyleSheet.create({
-    imageContainer: {
-        flex: 1,
-        marginVertical: 1,
-    },
-    item: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: Dimensions.get('screen').width / numColumns - 3,
-        margin: 1,
-        height: Dimensions.get('screen').height / 7.5,
-    },
     modal: {
         width: '100%',
         height: '100%',
@@ -164,7 +144,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0,0,0,0.8)',
     },
     modalView: {
-        height: '80%',
+        top: '10%',
+        height: '70%',
         width: '80%',
         borderWidth: 5,
         borderColor: 'black',
@@ -172,9 +153,13 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.sketchBackground,
         borderRadius: 10,
     },
-    modalItem: {
+    image: {
+        width: '100%',
+        height: '100%',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignSelf: 'center',
+        resizeMode: 'contain',
+        top: '0%',
     },
     textStyle: {
         color: Colors.textPrimary,
