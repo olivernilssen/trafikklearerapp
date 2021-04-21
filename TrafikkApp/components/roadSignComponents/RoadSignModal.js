@@ -9,6 +9,8 @@ import {
     Dimensions,
     Modal,
 } from 'react-native';
+import { Colors } from '../../styles';
+import { Divider } from '../reusableComponents';
 const numColumns = 4;
 
 const RoadSignModal = (props) => {
@@ -29,6 +31,13 @@ const RoadSignModal = (props) => {
                         <Text style={styles.textStyle}>
                             {selectedSign.navn}
                         </Text>
+                        <Divider
+                            style={{
+                                width: '95%',
+                                alignSelf: 'center',
+                                padding: 10,
+                            }}
+                            borderColor={Colors.dividerSecondary}></Divider>
                         <Text style={styles.textStyle}>Ingen beskrivelse</Text>
                     </>
                 );
@@ -39,6 +48,13 @@ const RoadSignModal = (props) => {
                             <Text style={styles.textStyle}>
                                 {selectedSign.navn}
                             </Text>
+                            <Divider
+                                style={{
+                                    width: '95%',
+                                    alignSelf: 'center',
+                                    padding: 10,
+                                }}
+                                borderColor={Colors.dividerSecondary}></Divider>
                             <Text style={styles.textStyle}>
                                 {selectedSign.beskrivelse}
                             </Text>
@@ -83,37 +99,43 @@ const RoadSignModal = (props) => {
                 }}>
                 <TouchableWithoutFeedback onPress={() => closeModal()}>
                     <View style={styles.modal}>
-                        <View
-                            style={{
-                                top: '15%',
-                                width: '80%',
-                                height: '46%',
-                                alignSelf: 'center',
-                            }}>
-                            <TouchableWithoutFeedback
-                                style={{ backgroundColor: 'white' }}
-                                onPress={() =>
-                                    handleDescription(
-                                        selectedSign.textDescription
-                                    )
-                                }>
-                                <View style={{ backgroundColor: 'white' }}>
-                                    {imageHandler()}
+                        <View style={styles.modalView}>
+                            <View
+                                style={{
+                                    top: '15%',
+                                    width: '80%',
+                                    height: '46%',
+                                    alignSelf: 'center',
+                                }}>
+                                <TouchableWithoutFeedback
+                                    style={{ backgroundColor: 'white' }}
+                                    onPress={() =>
+                                        handleDescription(
+                                            selectedSign.textDescription
+                                        )
+                                    }>
+                                    <View
+                                        style={{
+                                            backgroundColor: 'transparent',
+                                        }}>
+                                        {imageHandler()}
+                                    </View>
+                                </TouchableWithoutFeedback>
+                            </View>
+                            <TouchableWithoutFeedback onPress={() => {}}>
+                                <View
+                                    style={{
+                                        top: '16%',
+                                        width: '80%',
+                                        alignSelf: 'center',
+                                        maxHeight: '30%',
+                                        backgroundColor:
+                                            Colors.sketchBackground,
+                                    }}>
+                                    {textDescription()}
                                 </View>
                             </TouchableWithoutFeedback>
                         </View>
-                        <TouchableWithoutFeedback onPress={() => {}}>
-                            <View
-                                style={{
-                                    top: '16%',
-                                    width: '80%',
-                                    alignSelf: 'center',
-                                    maxHeight: '30%',
-                                    backgroundColor: 'white',
-                                }}>
-                                {textDescription()}
-                            </View>
-                        </TouchableWithoutFeedback>
                     </View>
                 </TouchableWithoutFeedback>
             </Modal>
@@ -136,17 +158,27 @@ const styles = StyleSheet.create({
     modal: {
         width: '100%',
         height: '100%',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
+        alignItems: 'center',
         alignSelf: 'center',
         backgroundColor: 'rgba(0,0,0,0.8)',
+    },
+    modalView: {
+        height: '80%',
+        width: '80%',
+        borderWidth: 5,
+        borderColor: 'black',
+        justifyContent: 'flex-start',
+        backgroundColor: Colors.sketchBackground,
+        borderRadius: 10,
     },
     modalItem: {
         justifyContent: 'center',
         alignItems: 'center',
     },
     textStyle: {
-        color: 'black',
-        fontWeight: 'bold',
+        color: Colors.textPrimary,
+        // fontWeight: 'bold',
         textAlign: 'center',
         fontSize: 30,
     },

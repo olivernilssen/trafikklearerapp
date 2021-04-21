@@ -165,10 +165,10 @@ const styles = StyleSheet.create({
     },
     main: {
         flex: 1,
-        height: '100%',
+        // height: '100%',
         width: '100%',
         justifyContent: 'center',
-        paddingVertical: '4%',
+        paddingVertical: '10%',
         backgroundColor: Colors.startScreenBg,
     },
     container: {

@@ -57,7 +57,7 @@ const DraggableWithEverything = React.memo((props) => {
      * @param {string} itemSrc image source of draggable to add
      */
     const onNewDraggable = useCallback((itemSrc) => {
-        if (Object.keys(draggables).length >= 15) {
+        if (Object.keys(draggables).length >= 5) {
             setModalVisible(true);
         } else {
             const newDraggable = {
