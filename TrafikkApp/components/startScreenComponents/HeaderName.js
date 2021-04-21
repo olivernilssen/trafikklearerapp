@@ -8,15 +8,11 @@ import { Colors, Typography } from '../../styles';
  * @category StartScreenComponents
  */
 const HeaderName = React.memo(() => {
-    imgSource = require('../../assets/images/ic_launcher_round.png');
     return (
         <View style={styles.main}>
-            <Image
-                source={imgSource}
-                style={styles.image}
-                resizeMode={'contain'}
-            />
-            <Text style={styles.text}>illusTrafikk</Text>
+            <Text style={styles.text}>
+                illus<Text style={{ color: Colors.icons }}>Trafikk</Text>
+            </Text>
         </View>
     );
 });
@@ -26,11 +22,6 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'flex-start',
-    },
-    image: {
-        height: undefined,
-        width: 50,
-        aspectRatio: 1329 / 1697,
     },
     text: {
         textAlignVertical: 'center',

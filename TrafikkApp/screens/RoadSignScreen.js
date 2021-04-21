@@ -95,9 +95,11 @@ const RoadSignScreen = React.memo(({ navigation }) => {
                     }}>
                     <View
                         style={{
-                            backgroundColor: 'white',
+                            backgroundColor: Colors.sketchBackground,
                             width: '100%',
                             height: '100%',
+                            borderWidth: 1,
+                            borderColor: Colors.dividerPrimary,
                         }}>
                         <Image
                             style={{ width: '100%', height: '100%' }}
