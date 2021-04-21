@@ -31,8 +31,6 @@ const numColumns = 4;
 
 const RoadSignScreen = React.memo(({ navigation }) => {
     const [modalVisible, setModalVisible] = useState(false);
-    const [descriptionVisible, setDescriptionVisible] = useState(false);
-    const [signDescription, setSignDescription] = useState('');
     const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
     const [signType, setSignType] = useState(fareSkilt);
     const [signObjectKeys, setSignObjectKeys] = useState(Object.keys(signType));
@@ -47,7 +45,6 @@ const RoadSignScreen = React.memo(({ navigation }) => {
 
     const closeModal = () => {
         setModalVisible(false);
-        setDescriptionVisible(false);
     };
 
     // useEffect(() => {
@@ -61,15 +58,6 @@ const RoadSignScreen = React.memo(({ navigation }) => {
     const handleSignType = (signTypeName) => {
         setSignType(signTypeName);
         setSelectedItem(Object.keys(signTypeName)[0]);
-    };
-
-    const handleDescription = (item) => {
-        setSignDescription(item);
-        setDescriptionVisible(!descriptionVisible);
-    };
-
-    const closeDescription = () => {
-        setDescriptionVisible(false);
     };
 
     const handleActiveButton = (value) => {
@@ -118,11 +106,8 @@ const RoadSignScreen = React.memo(({ navigation }) => {
                     <RoadSignModal
                         closeModal={closeModal}
                         modalVisible={modalVisible}
-                        handleDescription={handleDescription}
                         selectedSign={signType[selectedItem]}
-                        signDescription={signDescription}
-                        descriptionVisible={descriptionVisible}
-                        closeDescription={closeDescription}
+                        selectedSignCode={selectedItem}
                         handleBottomSheet={handleBottomSheet}
                     />
                 </View>

@@ -24,6 +24,34 @@ import {
     vikepliktsSkilt,
 } from '../../assets/sign_descriptions/index';
 
+const signTypeArray = [
+    { typeName: 'Fareskilt', typeObject: fareSkilt, buttonID: 0 },
+    { typeName: 'Forbudsskilt', typeObject: forbudsSkilt, buttonID: 1 },
+    {
+        typeName: 'Markeringsskilt',
+        typeObject: markeringsSkilt,
+        buttonID: 2,
+    },
+    {
+        typeName: 'Opplysningsskilt',
+        typeObject: opplysningsSkilt,
+        buttonID: 3,
+    },
+    { typeName: 'Påbudsskilt', typeObject: påbudsSkilt, buttonID: 4 },
+    { typeName: 'Serviceskilt', typeObject: serviceSkilt, buttonID: 5 },
+    { typeName: 'Underskilt', typeObject: underSkilt, buttonID: 6 },
+    {
+        typeName: 'Veivisningsskilt',
+        typeObject: veivisningsSkilt,
+        buttonID: 7,
+    },
+    {
+        typeName: 'Vikeplikt- og forkjørsskilt',
+        typeObject: vikepliktsSkilt,
+        buttonID: 8,
+    },
+];
+
 const RoadSignMenuContent = (props) => {
     const {
         handleSignType,
@@ -33,34 +61,6 @@ const RoadSignMenuContent = (props) => {
         handleActiveButton,
         handleHeaderName,
     } = props;
-
-    const signTypeArray = [
-        { typeName: 'Fareskilt', typeObject: fareSkilt, buttonID: 0 },
-        { typeName: 'Forbudsskilt', typeObject: forbudsSkilt, buttonID: 1 },
-        {
-            typeName: 'Markeringsskilt',
-            typeObject: markeringsSkilt,
-            buttonID: 2,
-        },
-        {
-            typeName: 'Opplysningsskilt',
-            typeObject: opplysningsSkilt,
-            buttonID: 3,
-        },
-        { typeName: 'Påbudsskilt', typeObject: påbudsSkilt, buttonID: 4 },
-        { typeName: 'Serviceskilt', typeObject: serviceSkilt, buttonID: 5 },
-        { typeName: 'Underskilt', typeObject: underSkilt, buttonID: 6 },
-        {
-            typeName: 'Veivisningsskilt',
-            typeObject: veivisningsSkilt,
-            buttonID: 7,
-        },
-        {
-            typeName: 'Vikeplikt- og forkjørsskilt',
-            typeObject: vikepliktsSkilt,
-            buttonID: 8,
-        },
-    ];
 
     const handleBottomMenuPress = (value) => {
         handleSignType(value);
