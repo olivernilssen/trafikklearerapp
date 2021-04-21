@@ -1,10 +1,17 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import MainView from '../components/MainView';
-import SketchArea from '../components/sketchComponents/SketchArea';
+import { MainView } from '../components/reusableComponents/';
+import { SketchArea } from '../components/sketchComponents/';
 
-const IntersectionScreen = ({ navigation }) => {
+/**
+ * The scren component to show the sketcharea of Veikryss.
+ * This screen is a sketch screen, and is using the big SketchArea component.
+ * @namespace IntersectionScreen
+ * @category Screens
+ * @prop {object} navigation Used for navigation between the different screens
+ */
+const IntersectionScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
             <View style={styles.sketchArea}>
@@ -14,7 +21,7 @@ const IntersectionScreen = ({ navigation }) => {
             </View>
         </MainView>
     );
-};
+});
 
 const styles = StyleSheet.create({
     sketchArea: {

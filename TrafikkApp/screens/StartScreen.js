@@ -1,85 +1,195 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { RView } from 'react-native-responsive-component';
+import {
+    StyleSheet,
+    Text,
+    View,
+    TouchableOpacity,
+    Linking,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import MainView from '../components/MainView';
-import Header from '../components/Header.js';
-import StartScreenLink from '../components/StartScreenLink.js';
-import Color from '../styles/Colors';
+import { MainView, Header } from '../components/reusableComponents/';
+import {
+    StartScreenLink,
+    ExternalLink,
+    HeaderName,
+} from '../components/startScreenComponents/';
+import { Colors, Typography, Icons } from '../styles';
 
-const StartScreen = ({ navigation }) => {
+/**
+ * Screen component for the start screen.
+ * Contains links to the most important screens in the app, and some clickable external links.
+ * @namespace StartScreen
+ * @category Screens
+ * @prop {object} navigation Used for navigation between the different screens
+ */
+const StartScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
-            <Header name="Hjem" navigation={navigation} />
-            <RView
-                style$ptr={screenStyles.mainPtr}
-                style$lnd={screenStyles.mainLnd}>
-                <RView
-                    style$ptr={screenStyles.containerPtr}
-                    style$lnd={screenStyles.containerLnd}>
-                    <StartScreenLink
-                        name="times"
-                        text="Veikryss"
-                        onPress={() =>
-                            navigation.navigate('IntersectionScreen')
-                        }
-                    />
-                    <StartScreenLink
-                        name="crosshairs"
-                        text="Rundkjøring"
-                        onPress={() => navigation.navigate('RoundaboutScreen')}
-                    />
-                    <StartScreenLink
-                        name="road"
-                        text="Vei"
-                        onPress={() => navigation.navigate('RoadScreen')}
-                    />
-                </RView>
+            <Header navigation={navigation}>
+                <View style={styles.headerItems}>
+                    <HeaderName />
+                    <TouchableOpacity
+                        style={styles.headerIcon}
+                        activeOpacity={0.6}
+                        onPress={() => navigation.navigate('SettingsScreen')}>
+                        <Icon
+                            name={'cog'}
+                            size={Icons.medium}
+                            color={Colors.icons}
+                        />
+                    </TouchableOpacity>
+                </View>
+            </Header>
+            <View style={styles.main}>
+                <View style={styles.container}>
+                    <Text style={styles.text}>Illustrer trafikksituasjon</Text>
+                    <View style={styles.linksContainer}>
+                        <StartScreenLink
+                            name="arrow-right"
+                            text="Veikryss"
+                            onPress={() =>
+                                navigation.navigate('IntersectionScreen')
+                            }
+                            backgroundColor={Colors.startScreenLinkDrawing}
+                        />
+                        <StartScreenLink
+                            name="arrow-right"
+                            text="Rundkjøring"
+                            onPress={() =>
+                                navigation.navigate('RoundaboutScreen')
+                            }
+                            backgroundColor={Colors.startScreenLinkDrawing}
+                        />
+                        <StartScreenLink
+                            name="arrow-right"
+                            text="Landevei"
+                            onPress={() =>
+                                navigation.navigate('CountryRoadScreen')
+                            }
+                            backgroundColor={Colors.startScreenLinkDrawing}
+                        />
+                        <StartScreenLink
+                            name="arrow-right"
+                            text="Fartsøknings- og reduksjonsfelt"
+                            onPress={() => navigation.navigate('HighwayScreen')}
+                            backgroundColor={Colors.startScreenLinkDrawing}
+                        />
+                    </View>
+                </View>
 
-                <RView
-                    style$ptr={screenStyles.containerPtr}
-                    style$lnd={screenStyles.containerLnd}>
-                    <StartScreenLink name="question" text="tba" />
-                    <StartScreenLink name="question" text="tba" />
-                    <StartScreenLink name="question" text="tba" />
-                </RView>
-            </RView>
+                <View style={styles.container}>
+                    <Text style={styles.text}>Andre funksjoner</Text>
+                    <View style={styles.linksContainer}>
+                        <StartScreenLink
+                            name="arrow-right"
+                            text="Trafikkskilt"
+                            onPress={() =>
+                                navigation.navigate('RoadSignScreen')
+                            }
+                            backgroundColor={Colors.startScreenLinkTheory}
+                        />
+                        <StartScreenLink
+                            name="arrow-right"
+                            text="Læreplanmål"
+                            onPress={() =>
+                                navigation.navigate(
+                                    'CurriculumObjectivesScreen'
+                                )
+                            }
+                            backgroundColor={Colors.startScreenLinkTheory}
+                        />
+                        <StartScreenLink
+                            name="arrow-right"
+                            text="Myndighets- pyramiden"
+                            onPress={() =>
+                                navigation.navigate('AuthorityPyramidScreen')
+                            }
+                            backgroundColor={Colors.startScreenLinkTheory}
+                        />
+                    </View>
+                </View>
+
+                <View style={styles.container}>
+                    <Text style={styles.text}>Lenker til forskrifter</Text>
+                    <View style={styles.linksContainer}>
+                        <ExternalLink
+                            text="Trafikkopplærings- forskriften"
+                            onPress={() => {
+                                Linking.openURL(
+                                    'https://lovdata.no/dokument/SF/forskrift/2004-10-01-1339'
+                                );
+                            }}
+                        />
+                        <ExternalLink
+                            text="Skiltforskriften"
+                            onPress={() => {
+                                Linking.openURL(
+                                    'https://lovdata.no/dokument/SF/forskrift/2005-10-07-1219'
+                                );
+                            }}
+                        />
+                        <ExternalLink
+                            text="Trafikkregler"
+                            onPress={() => {
+                                Linking.openURL(
+                                    'https://lovdata.no/dokument/SF/forskrift/1986-03-21-747'
+                                );
+                            }}
+                        />
+                        <ExternalLink
+                            text="Veitrafikkloven"
+                            onPress={() => {
+                                Linking.openURL(
+                                    'https://lovdata.no/dokument/NL/lov/1965-06-18-4'
+                                );
+                            }}
+                        />
+                    </View>
+                </View>
+            </View>
         </MainView>
     );
-};
+});
 
-const screenStyles = StyleSheet.create({
-    mainPtr: {
-        flex: 1,
+const styles = StyleSheet.create({
+    headerItems: {
+        alignSelf: 'center',
+        width: '93%',
         flexDirection: 'row',
-        width: '100%',
-        height: '100%',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        paddingLeft: 15,
-        paddingRight: 15,
-        backgroundColor: Color.background,
+        justifyContent: 'space-between',
     },
-    mainLnd: {
+    headerIcon: {
+        marginRight: 15,
+        justifyContent: 'center',
+    },
+    main: {
         flex: 1,
-        flexDirection: 'column',
+        // height: '100%',
         width: '100%',
-        height: '100%',
-        justifyContent: 'space-evenly',
+        justifyContent: 'center',
+        paddingVertical: '10%',
+        backgroundColor: Colors.startScreenBg,
+    },
+    container: {
+        paddingVertical: '2%',
+        justifyContent: 'center',
         alignItems: 'center',
-        paddingLeft: 15,
-        paddingRight: 15,
-        backgroundColor: Color.background,
     },
-    containerPtr: {
-        height: '100%',
-        flexDirection: 'column',
-        justifyContent: 'space-evenly',
+    text: {
+        width: '85%',
+        borderBottomWidth: 2,
+        borderColor: Colors.dividerPrimary,
+        color: Colors.icons,
+        paddingTop: 10,
+        paddingVertical: 5,
+        ...Typography.section,
     },
-    containerLnd: {
-        width: '100%',
+    linksContainer: {
+        width: '90%',
         flexDirection: 'row',
         justifyContent: 'space-evenly',
+        flexWrap: 'wrap',
     },
 });
 

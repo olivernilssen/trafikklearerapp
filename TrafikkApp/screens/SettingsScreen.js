@@ -1,29 +1,43 @@
-/* eslint-disable prettier/prettier */
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import MainView from '../components/MainView';
-import Header from '../components/Header.js';
-import Color from '../styles/Colors';
+import { MainView, Header, Overlay } from '../components/reusableComponents/';
+import { Colors } from '../styles';
+import { SettingsView } from '../components/settingsComponents/';
 
-const SettingsScreen = ({ navigation }) => {
+/**
+ * Screen component for the settings screen (TODO)
+ * @namespace SettingsScreen
+ * @category Screens
+ * @prop {object} navigation Used for navigation between the different screens
+ */
+const SettingsScreen = React.memo(({ navigation }) => {
+    const [pickerVisible, setPickerVisible] = useState(false);
+
     return (
         <MainView>
+            <Overlay
+                showOverlay={!pickerVisible}
+                setShowOverlay={setPickerVisible}
+            />
             <Header name="Innstillinger" navigation={navigation} />
             <View style={styles.main}>
-                <Text>Innstillinger</Text>
+                <SettingsView
+                    pickerVisible={pickerVisible}
+                    setPickerVisible={setPickerVisible}
+                />
             </View>
         </MainView>
     );
-};
+});
 
 const styles = StyleSheet.create({
     main: {
         flex: 1,
         width: '100%',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: Color.background,
+        backgroundColor: Colors.sketchBackground,
     },
 });
 

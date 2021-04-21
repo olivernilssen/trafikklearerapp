@@ -1,10 +1,17 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Color from '../../styles/Colors';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import { Colors } from '../../styles';
 
-const DrawerToggleMenuItem = ({ navigation, icon }) => (
+/**
+ * Component to display the hamburger icon to toggle the drawer menu.
+ * @namespace DrawerToggleItem
+ * @category DrawerComponents
+ * @prop {function} navigation functions for the drawer navigation
+ * @prop {string} icon the icon name for this screen item
+ */
+const DrawerToggleItem = React.memo(({ navigation, icon }) => (
     <TouchableOpacity
         style={styles.menuItem}
         activeOpacity={0.8}
@@ -12,19 +19,18 @@ const DrawerToggleMenuItem = ({ navigation, icon }) => (
         <Icon
             name={icon}
             size={35}
-            color={Color.drawerInactiveText}
+            color={Colors.icons}
             style={styles.menuIcon}
         />
     </TouchableOpacity>
-);
+));
 
 const styles = StyleSheet.create({
     menuItem: {
         flexDirection: 'row',
-        marginBottom: 15,
-        paddingBottom: 20,
-        borderBottomWidth: 1,
-        borderBottomColor: Color.linkDivider,
+        marginBottom: 6,
+        paddingBottom: 10,
+        paddingLeft: 15,
     },
     menuIcon: {
         marginTop: 10,
@@ -32,4 +38,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default DrawerToggleMenuItem;
+export default DrawerToggleItem;

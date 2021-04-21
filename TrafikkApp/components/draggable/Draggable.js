@@ -1,4 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+    useState,
+    useEffect,
+    useCallback,
+    useLayoutEffect,
+} from 'react';
+import Gestures from 'react-native-easy-gestures';
 import {
     StyleSheet,
     Animated,
@@ -7,42 +13,60 @@ import {
     TouchableWithoutFeedback,
 } from 'react-native';
 
-import Popout from './Popout/Popout';
+import { Popout } from './Popout/';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const colors = [
+    'exit',
     '#000000',
     '#e09f3e',
     '#9e2a2b',
     '#284b63',
     '#3a5a40',
-    'reset',
-    '#DDDDDD',
+    'delete',
 ];
 
-import Gestures from 'react-native-easy-gestures';
+const noColors = ['delete'];
 
 const ITEM_SIZE = 100;
 const radius = (ITEM_SIZE * 2) / 2;
-const buttonSize = 25;
+const buttonSize = 30;
 
-const Draggable = (props) => {
+/**
+ * Component that holds the actual draggable component
+ * @namespace Draggable
+ * @category Draggable
+ * @prop {string} source image source of the draggable object
+ */
+const Draggable = React.memo((props) => {
     //States
-    const { source, dropZoneValues } = props;
+    const { imgInfo } = props;
     const [imgScale, setimgScale] = useState(new Animated.Value(1));
-    const [isScaling, setIsScaling] = useState(false);
     const [tintColor, setTintColor] = useState(props.tintColor);
     const [popoutActive, setPopoutActive] = useState(false);
-    // const [popoutScaling, setPopoutScaling] = useState(new Animated.Value(1));
 
-    useEffect(() => {
+    /**
+     * useEffect that is triggered when tintColor is changed
+     * Will make the popout inactive
+     * @memberof Draggable
+     */
+    useLayoutEffect(() => {
         setPopoutActive(!popoutActive);
     }, [tintColor]);
 
+    /**
+     * When user starts dragging the object, this is triggered
+     * will remove the popout if it is active
+     * and make the item hover as a feedback that the dragging has
+     * started
+     * @memberof Draggable
+     * @param {array[]} gesture
+     */
     const onDragStart = (gesture) => {
         //Start spring animation (user feedback)
+
         setPopoutActive(false);
 
         Animated.spring(imgScale, {
@@ -52,54 +76,30 @@ const Draggable = (props) => {
         }).start();
     };
 
-    const onDragMove = (gesture) => {
-        if (isDropArea(gesture) && !isScaling) {
-            props.onTrashHover(true);
-        } else {
-            props.onTrashHover(false);
-        }
-    };
-
+    /**
+     * When dragging event has ended, the
+     * hoved animation will end and pop back to it's
+     * original size
+     * @memberof Draggable
+     * @param {array[]} gesture
+     */
     const onDragEnd = (gesture) => {
-        //If in dropzone, delete element
-        if (isDropArea(gesture) && !isScaling) {
-            //End spring animation to trashcan
-            Animated.spring(imgScale, {
-                toValue: 0.1,
-                velocity: 1,
-                bounciness: 0,
-                useNativeDriver: true,
-            }).start(() => removeItem());
-        } else {
-            //End spring animation
-            Animated.spring(imgScale, {
-                toValue: 1,
-                friction: 3,
-                useNativeDriver: true,
-            }).start();
-        }
-
-        setIsScaling(false);
+        Animated.spring(imgScale, {
+            toValue: 1,
+            friction: 3,
+            useNativeDriver: true,
+        }).start();
     };
 
-    //Helper function so we can run to functions
-    //after animation over trashcan has ended
-    const removeItem = () => {
-        props.removeItem(props.id);
-        props.onTrashHover(false);
-    };
-
-    const isDropArea = (gesture) => {
-        var dz = dropZoneValues;
-
-        var isInZone =
-            gesture.nativeEvent.pageX > dz.x &&
-            gesture.nativeEvent.pageX < dz.x + dz.height &&
-            gesture.nativeEvent.pageY > dz.y &&
-            gesture.nativeEvent.pageY < dz.y + dz.height;
-
-        return isInZone;
-    };
+    /**
+     * Helper function so useEffects are triggered
+     * when the user stops dragging the element on top of
+     * the trashcan. This will initate the removal of the item
+     * @memberof Draggable
+     */
+    const removeItem = useCallback(() => {
+        props.onRemoveItem(props.id);
+    });
 
     return (
         <Gestures
@@ -108,42 +108,43 @@ const Draggable = (props) => {
             rotatable={true}
             style={styles.container}
             onEnd={(event) => onDragEnd(event)}
-            onChange={(event) => onDragMove(event)}
-            onStart={(event) => onDragStart(event)}
-            onScaleStart={() => setIsScaling(true)}>
+            onStart={(event) => onDragStart(event)}>
             <View>
                 <TouchableWithoutFeedback
-                    onLongPress={() => setPopoutActive(!popoutActive)}
+                    onLongPress={() => setPopoutActive(true)}
                     accessibilityRole={'image'}>
-                    <Animated.Image
-                        source={source}
-                        resizeMode={'contain'}
-                        style={[
-                            styles.item,
-                            tintColor === null
-                                ? null
-                                : { tintColor: tintColor },
-                            {
-                                transform: [{ scale: imgScale }],
-                            },
-                        ]}
-                    />
+                    <View>
+                        <Animated.Image
+                            source={imgInfo.source}
+                            resizeMode={'contain'}
+                            style={[
+                                styles.item,
+                                tintColor === null
+                                    ? null
+                                    : imgInfo.hasTint === false
+                                    ? { tintColor: tintColor }
+                                    : null,
+                                {
+                                    transform: [{ scale: imgScale }],
+                                },
+                            ]}
+                        />
+                        <Popout
+                            radius={radius}
+                            array={imgInfo.hasTint ? noColors : colors}
+                            setPopoutActive={setPopoutActive}
+                            popoutActive={popoutActive}
+                            setTintColor={setTintColor}
+                            buttonSize={buttonSize}
+                            itemSize={ITEM_SIZE}
+                            removeItem={removeItem}
+                        />
+                    </View>
                 </TouchableWithoutFeedback>
-
-                <Popout
-                    radius={radius}
-                    array={colors}
-                    setPopoutActive={setPopoutActive}
-                    popoutActive={popoutActive}
-                    exitButtonPos={colors.length - 1}
-                    setTintColor={setTintColor}
-                    buttonSize={buttonSize}
-                    itemSize={ITEM_SIZE}
-                />
             </View>
         </Gestures>
     );
-};
+});
 
 const styles = StyleSheet.create({
     item: {

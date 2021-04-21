@@ -1,0 +1,61 @@
+{
+    "tags": {
+        "allowUnknownTags": true
+    },
+    "source": {
+        "includePattern": ".+\\.js",
+        "include": ["."],
+        "exclude": [
+            "node_modules",
+            "android",
+            "ios",
+            ".vscode",
+            "assets",
+            ".buckconfig",
+            ".prettierrc",
+            "app.json",
+            "jsdoc-config.json",
+            "metro.config.js",
+            "package.json",
+            "package-lock.json",
+            "docs",
+            "./components/unusedComponents"
+        ]
+    },
+    "plugins": [
+        "./node_modules/better-docs/category",
+        "plugins/markdown"
+    ],
+    "recurseDepth": 5,
+    "opts": {
+        "destination": "./docs/",
+        "encoding": "utf8",
+        "recurse": true,
+        "template": "node_modules/better-docs",
+        "search": true
+    },
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false,
+        "search": true,
+        "default": {
+            "staticFiles": {
+              "include": [
+                  
+              ]
+            }
+        },
+        "better-docs": {
+            "name": "IllusTrafikk Documentation",
+            "title": "IllusTrafikk | Doc",
+            "css": "style.css",
+	    "hideGenerator": false,
+            "navLinks": [
+                {
+                    "label": "Github",
+                    "href": "https://github.com/olivernilssen/trafikklearerapp"
+                }
+            ]
+        }
+    }
+}

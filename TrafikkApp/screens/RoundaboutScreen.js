@@ -1,10 +1,17 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import MainView from '../components/MainView';
-import SketchArea from '../components/sketchComponents/SketchArea';
+import { MainView } from '../components/reusableComponents/';
+import { SketchArea } from '../components/sketchComponents/';
 
-const RoundaboutScreen = ({ navigation }) => {
+/**
+ * Screen component for roundbaout screen / rundkjøring.
+ * This screen is a sketch screen, and is using the big SketchArea component.
+ * @namespace RoundaboutScreen
+ * @category Screens
+ * @prop {object} navigation Used for navigation between the different screens
+ */
+const RoundaboutScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
             <View style={styles.sketchArea}>
@@ -12,7 +19,7 @@ const RoundaboutScreen = ({ navigation }) => {
             </View>
         </MainView>
     );
-};
+});
 
 const styles = StyleSheet.create({
     sketchArea: {
