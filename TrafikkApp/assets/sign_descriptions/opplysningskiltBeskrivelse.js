@@ -190,21 +190,32 @@ const opplysningsSkilt = {
             'Eksempel  - Skiltet angir at felt for fartsøkning føres inn på annet kjørefelt med gjensidig tilpassing i samsvar med trafikkreglenes bestemmelser (fletting). ',
         source: require('../roadSigns/Opplysningsskilt/531_202.png'),
     },
-    '532_H02': {
+    '532_h02': {
         navn: 'Kjørefelt slutter  ',
         beskrivelse:
             'Eksempel- Kjørende i felt som slutter, skal skifte felt og har vikeplikt i samsvar med trafikkreglenes bestemmelser. ',
-        source: require('../roadSigns/Opplysningsskilt/532_H02.png'),
+        source: require('../roadSigns/Opplysningsskilt/532_h02.png'),
     },
-    '534_H02': {
+    '532_h11': {
+        navn: 'Kjørefelt slutter  ',
+        beskrivelse:
+            'Eksempel- Kjørende i felt som slutter, skal skifte felt og har vikeplikt i samsvar med trafikkreglenes bestemmelser. ',
+        source: require('../roadSigns/Opplysningsskilt/532_h11.png'),
+    },
+    '534_h02': {
         navn: 'Kjørefelt begynner ',
         beskrivelse: 'Eksempel',
-        source: require('../roadSigns/Opplysningsskilt/534_H02.png'),
+        source: require('../roadSigns/Opplysningsskilt/534_h02.png'),
     },
-    '534_V11': {
+    '534_v01': {
         navn: 'Kjørefelt begynner ',
         beskrivelse: 'Eksempel',
-        source: require('../roadSigns/Opplysningsskilt/534_V11.png'),
+        source: require('../roadSigns/Opplysningsskilt/534_v01.png'),
+    },
+    '534_v11': {
+        navn: 'Kjørefelt begynner ',
+        beskrivelse: 'Eksempel',
+        source: require('../roadSigns/Opplysningsskilt/534_v11.png'),
     },
     '536_101': {
         navn: 'Påkjøring fortsetter i eget kjørefelt',
@@ -298,7 +309,7 @@ const opplysningsSkilt = {
         beskrivelse: '',
         source: require('../roadSigns/Opplysningsskilt/558_0.png'),
     },
-    '560_0': {
+    '560_2': {
         navn: ' Opplysningstavle ',
         beskrivelse:
             'Skiltet kan gi opplysning om veg- og trafikkforhold som ikke kan formidles ved andre trafikkskilt. Ved opplysning av særlig interesse for turisttrafikk kan skiltet ha brun bunnfarge. Ved midlertidig opplysning kan skiltet ha gul bunn, sort bord og sort symbol eller tekst. Ved opplysning om omkjøring kan skiltet ha oransje bunn, sort bord og sort symbol eller tekst. ',
