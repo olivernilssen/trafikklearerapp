@@ -1,32 +1,32 @@
 const markeringsSkilt = {
     '902H_0': {
-        navn: ' Bakgrunnsmarkering',
+        navn: 'Bakgrunnsmarkering',
         beskrivelse: '902H',
         source: require('../roadSigns/Markeringsskilt/902_0H.png'),
     },
     '902V_0': {
-        navn: ' Bakgrunnsmarkering',
+        navn: 'Bakgrunnsmarkering',
         beskrivelse: '902V',
         source: require('../roadSigns/Markeringsskilt/902_0V.png'),
     },
     '904H_0': {
-        navn: ' Retningsmarkering ',
+        navn: 'Retningsmarkering',
         beskrivelse: '904H',
         source: require('../roadSigns/Markeringsskilt/904_0H.png'),
     },
     '904V_0': {
-        navn: ' Retningsmarkering ',
+        navn: 'Retningsmarkering',
         beskrivelse: '904V',
         source: require('../roadSigns/Markeringsskilt/904_0V.png'),
     },
     '906H_0': {
-        navn: ' Hindermarkering',
+        navn: 'Hindermarkering',
         beskrivelse:
             'Skråstripene peker ned mot den side markeringen kan passeres på',
         source: require('../roadSigns/Markeringsskilt/906_0H.png'),
     },
     '906V_0': {
-        navn: ' Hindermarkering',
+        navn: 'Hindermarkering',
         beskrivelse:
             'Skråstripene peker ned mot den side markeringen kan passeres på',
         source: require('../roadSigns/Markeringsskilt/906_0V.png'),
@@ -39,7 +39,7 @@ const markeringsSkilt = {
     '912_0': {
         navn: 'Avkjøringsmarkering',
         beskrivelse:
-            'Skiltet markerer avkjøringsvei fra motorvei eller annen vei med høy standard. ',
+            'Skiltet markerer avkjøringsvei fra motorvei eller annen vei med høy standard.',
         source: require('../roadSigns/Markeringsskilt/912_0.png'),
     },
     '914V_0': {
@@ -53,7 +53,7 @@ const markeringsSkilt = {
         source: require('../roadSigns/Markeringsskilt/914_H.png'),
     },
     '916_0': {
-        navn: ' Avstandsmerking i tunnel',
+        navn: 'Avstandsmerking i tunnel',
         beskrivelse: 'Skiltet markerer avstand til tunnelåpninger.',
         source: require('../roadSigns/Markeringsskilt/916_0.png'),
     },
@@ -78,7 +78,7 @@ const markeringsSkilt = {
         source: require('../roadSigns/Markeringsskilt/940.png'),
     },
     '942_0': {
-        navn: 'Trafikksylinder ',
+        navn: 'Trafikksylinder',
         beskrivelse: '',
         source: require('../roadSigns/Markeringsskilt/942.png'),
     },
