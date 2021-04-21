@@ -22,7 +22,7 @@ import { Buttons, Colors, Icons, Typography } from '../styles';
 const AboutScreen = React.memo(({ navigation }) => {
     const pkg = require('../package.json');
     const appVersion = pkg.version;
-    imgSource = require('../assets/images/ic_launcher_round.png');
+    imgSource = require('../assets/images/logo_round.png');
 
     /**
      * Button event that opens the Google Play Store site for the app.
