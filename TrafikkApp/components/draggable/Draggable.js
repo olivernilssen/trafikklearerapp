@@ -19,12 +19,12 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const colors = [
+    'exit',
     '#000000',
     '#e09f3e',
     '#9e2a2b',
     '#284b63',
     '#3a5a40',
-    'exit',
     'delete',
 ];
 
@@ -42,7 +42,7 @@ const buttonSize = 30;
  */
 const Draggable = React.memo((props) => {
     //States
-    const { imgInfo, moving, setMoving } = props;
+    const { imgInfo } = props;
     const [imgScale, setimgScale] = useState(new Animated.Value(1));
     const [tintColor, setTintColor] = useState(props.tintColor);
     const [popoutActive, setPopoutActive] = useState(false);
@@ -56,10 +56,6 @@ const Draggable = React.memo((props) => {
         setPopoutActive(!popoutActive);
     }, [tintColor]);
 
-    // useLayoutEffect(() => {
-    //     setPopoutActive(false);
-    // }, [moving]);
-
     /**
      * When user starts dragging the object, this is triggered
      * will remove the popout if it is active
@@ -72,7 +68,6 @@ const Draggable = React.memo((props) => {
         //Start spring animation (user feedback)
 
         setPopoutActive(false);
-        // setMoving(!moving);
 
         Animated.spring(imgScale, {
             toValue: 1.2,
@@ -134,19 +129,16 @@ const Draggable = React.memo((props) => {
                                 },
                             ]}
                         />
-                        {popoutActive && (
-                            <Popout
-                                radius={radius}
-                                moving={moving}
-                                array={imgInfo.hasTint ? noColors : colors}
-                                setPopoutActive={setPopoutActive}
-                                popoutActive={popoutActive}
-                                setTintColor={setTintColor}
-                                buttonSize={buttonSize}
-                                itemSize={ITEM_SIZE}
-                                removeItem={removeItem}
-                            />
-                        )}
+                        <Popout
+                            radius={radius}
+                            array={imgInfo.hasTint ? noColors : colors}
+                            setPopoutActive={setPopoutActive}
+                            popoutActive={popoutActive}
+                            setTintColor={setTintColor}
+                            buttonSize={buttonSize}
+                            itemSize={ITEM_SIZE}
+                            removeItem={removeItem}
+                        />
                     </View>
                 </TouchableWithoutFeedback>
             </View>
