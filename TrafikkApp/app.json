@@ -1,7 +1,0 @@
-{
-    "name": "illusTrafikk",
-    "displayName": "illusTrafikk",
-    "platforms": ["android", "web"],
-    "version": "1.5.0",
-    "orientation": "portrait"
-}
