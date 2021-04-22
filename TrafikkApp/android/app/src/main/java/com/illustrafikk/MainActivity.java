@@ -1,4 +1,4 @@
-package com.trafikkapp;
+package com.illustrafikk;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;

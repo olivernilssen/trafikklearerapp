@@ -160,7 +160,6 @@ const DraggableComponentsMenu = React.memo(
 const styles = StyleSheet.create({
     animatedView: {
         position: 'absolute',
-        alignItems: 'center',
         top: 0,
         left: 0,
         right: 0,

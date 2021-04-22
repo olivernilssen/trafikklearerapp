@@ -1,4 +1,4 @@
-package com.trafikkapp;
+package com.illustrafikk;
 
 import android.content.Intent;
 import android.os.Bundle;
