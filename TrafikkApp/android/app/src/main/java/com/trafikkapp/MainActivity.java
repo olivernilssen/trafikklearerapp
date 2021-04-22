@@ -34,4 +34,12 @@ public class MainActivity extends ReactActivity {
       }
     };
   }
+
+  /**
+   * For fixing "gestureHandler already initialized for root view" bug 
+   */
+  @Override
+  public void invokeDefaultOnBackPressed() {
+    moveTaskToBack(true);
+  }
 }
