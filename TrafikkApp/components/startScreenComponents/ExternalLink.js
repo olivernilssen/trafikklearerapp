@@ -26,7 +26,6 @@ const ExternalLink = React.memo((props) => {
 
 const styles = StyleSheet.create({
     linkContainer: {
-        justifyContent: 'space-evenly',
         margin: 5,
         flexDirection: 'row',
         alignItems: 'center',
