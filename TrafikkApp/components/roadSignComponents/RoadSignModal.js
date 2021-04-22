@@ -8,8 +8,10 @@ import {
     TouchableWithoutFeedback,
     Dimensions,
     Modal,
+    TouchableOpacity,
 } from 'react-native';
-import { Colors } from '../../styles';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import { Colors, Icons } from '../../styles';
 import { Divider } from '../reusableComponents';
 const numColumns = 4;
 
@@ -21,7 +23,6 @@ const RoadSignModal = (props) => {
         handleDescription,
         descriptionVisible,
     } = props;
-    console.log(selectedSign.beskrivelse);
 
     const textDescription = () => {
         if (descriptionVisible) {
@@ -44,17 +45,17 @@ const RoadSignModal = (props) => {
             } else {
                 return (
                     <View onStartShouldSetResponder={() => true}>
+                        <Text style={styles.textStyle}>
+                            {selectedSign.navn}
+                        </Text>
+                        <Divider
+                            style={{
+                                width: '95%',
+                                alignSelf: 'center',
+                                padding: 10,
+                            }}
+                            borderColor={Colors.dividerSecondary}></Divider>
                         <ScrollView>
-                            <Text style={styles.textStyle}>
-                                {selectedSign.navn}
-                            </Text>
-                            <Divider
-                                style={{
-                                    width: '95%',
-                                    alignSelf: 'center',
-                                    padding: 10,
-                                }}
-                                borderColor={Colors.dividerSecondary}></Divider>
                             <Text style={styles.textStyle}>
                                 {selectedSign.beskrivelse}
                             </Text>
@@ -99,43 +100,51 @@ const RoadSignModal = (props) => {
                 }}>
                 <TouchableWithoutFeedback onPress={() => closeModal()}>
                     <View style={styles.modal}>
-                        <View style={styles.modalView}>
-                            <View
-                                style={{
-                                    top: '15%',
-                                    width: '80%',
-                                    height: '46%',
-                                    alignSelf: 'center',
-                                }}>
-                                <TouchableWithoutFeedback
-                                    style={{ backgroundColor: 'white' }}
+                        <TouchableWithoutFeedback>
+                            <View style={styles.modalView}>
+                                <TouchableOpacity
                                     onPress={() =>
                                         handleDescription(
                                             selectedSign.textDescription
                                         )
                                     }>
+                                    <Icon
+                                        name={'caret-down'}
+                                        size={Icons.medium}
+                                        color={'white'}
+                                    />
+                                </TouchableOpacity>
+                                <View
+                                    style={{
+                                        top: '5%',
+                                        width: '80%',
+                                        height: '46%',
+                                        alignSelf: 'center',
+                                    }}>
+                                    <TouchableWithoutFeedback>
+                                        <View
+                                            style={{
+                                                backgroundColor: 'transparent',
+                                            }}>
+                                            {imageHandler()}
+                                        </View>
+                                    </TouchableWithoutFeedback>
+                                </View>
+                                <TouchableWithoutFeedback onPress={() => {}}>
                                     <View
                                         style={{
-                                            backgroundColor: 'transparent',
+                                            top: '6%',
+                                            width: '80%',
+                                            alignSelf: 'center',
+                                            maxHeight: '30%',
+                                            backgroundColor:
+                                                Colors.sketchBackground,
                                         }}>
-                                        {imageHandler()}
+                                        {textDescription()}
                                     </View>
                                 </TouchableWithoutFeedback>
                             </View>
-                            <TouchableWithoutFeedback onPress={() => {}}>
-                                <View
-                                    style={{
-                                        top: '16%',
-                                        width: '80%',
-                                        alignSelf: 'center',
-                                        maxHeight: '30%',
-                                        backgroundColor:
-                                            Colors.sketchBackground,
-                                    }}>
-                                    {textDescription()}
-                                </View>
-                            </TouchableWithoutFeedback>
-                        </View>
+                        </TouchableWithoutFeedback>
                     </View>
                 </TouchableWithoutFeedback>
             </Modal>
@@ -164,6 +173,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0,0,0,0.8)',
     },
     modalView: {
+        top: '8%',
         height: '80%',
         width: '80%',
         borderWidth: 5,
