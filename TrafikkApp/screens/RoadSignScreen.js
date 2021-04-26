@@ -7,6 +7,7 @@ import {
     TouchableOpacity,
     Dimensions,
     Text,
+    TouchableWithoutFeedback,
 } from 'react-native';
 import {
     BottomMenuAnimated,
@@ -17,13 +18,14 @@ import { Colors, Typography } from '../styles';
 import RoadSignModal from '../components/roadSignComponents/RoadSignModal';
 import RoadSignMenuContent from '../components/roadSignComponents/RoadSignMenuContent';
 import { fareSkilt } from '../assets/sign_descriptions/';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const numColumns = 4;
 
 /**
  * Screen component for sign screen
- * Langt fra ferdig!!!
+ * Displays a list of roadsigns as images, when pressed these images will open up a
+ * modal with a bigger versjon of the pressed image and the possibility of showing a description of said sign.
+ * There are multiple signtypes, and it is possible to switch between these using the bottomSheetMenu
  * @namespace RoadSignScreen
  * @category Screens
  * @prop {object} navigation Used for navigation between the different screens
@@ -31,59 +33,64 @@ const numColumns = 4;
 
 const RoadSignScreen = React.memo(({ navigation }) => {
     const [modalVisible, setModalVisible] = useState(false);
-    const [descriptionVisible, setDescriptionVisible] = useState(false);
-    const [signDescription, setSignDescription] = useState('');
     const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
     const [signType, setSignType] = useState(fareSkilt);
     const [signObjectKeys, setSignObjectKeys] = useState(Object.keys(signType));
-    const [selectedItem, setSelectedItem] = useState(signObjectKeys[0]);
-    const [activeTypeID, setActiveTypeID] = useState(0);
+    const [selectedSign, setSelectedSign] = useState(signObjectKeys[0]);
     const [activeSignTypeName, setActiveSignTypeName] = useState('Fareskilt');
 
+    /**
+     * Handles the state of the modal, and sets the selectedSign state to the sign that has been presse.
+     *@memberof RoadSignScreen
+     * @param {string} item signcode used for identifying the sign
+     */
     const handleModal = (item) => {
         setModalVisible(!modalVisible);
-        setSelectedItem(item);
+        setSelectedSign(item);
     };
 
+    /**
+     * Used for closing the RoadSignModal
+     * @memberof RoadSignScreen
+     */
     const closeModal = () => {
         setModalVisible(false);
-        setDescriptionVisible(false);
     };
 
-    // useEffect(() => {
-    //     setSignObjectKeys(Object.keys(signType));
-    // }, [signType]);
-
-    // useEffect(() => {
-    //     setSelectedItem(signObjectKeys[0]);
-    // }, [signObjectKeys]);
-
+    /**
+     * Handles the change from one signtype to another
+     * @memberof RoadSignScreen
+     * @param {object} signTypeName Object that contains sign- name, description and image source
+     */
     const handleSignType = (signTypeName) => {
         setSignType(signTypeName);
-        setSelectedItem(Object.keys(signTypeName)[0]);
+        setSelectedSign(Object.keys(signTypeName)[0]);
     };
 
-    const handleDescription = (item) => {
-        setSignDescription(item);
-        setDescriptionVisible(!descriptionVisible);
-    };
-
-    const closeDescription = () => {
-        setDescriptionVisible(false);
-    };
-
-    const handleActiveButton = (value) => {
-        setActiveTypeID(value);
-    };
-
+    /**
+     * Shows or hides the bottom menu
+     * @memberof RoadSignScreen
+     * @param {boolean} value if true the menu will be hidden
+     */
     const handleBottomSheet = (value) => {
+        console.log(value);
         setBottomSheetHidden(value);
     };
 
-    const handleHeaderName = (value) => {
-        setActiveSignTypeName(value);
+    /**
+     * Handles the state of activeSignTypeName, is used for displaying the name of the chosen sign type
+     * @memberof RoadSignScreen
+     * @param {string} headerName The name of the chosen signtype
+     */
+    const handleHeaderName = (headerName) => {
+        setActiveSignTypeName(headerName);
     };
 
+    /**
+     * Used as a template for Flattlist, every item in the data it receives is passed on to this method
+     * @param {string} param0 the sign code (example: 100_1)
+     * @returns an image that will open a modal when pressed
+     */
     const renderItem = ({ item, index }) => {
         return (
             <View>
@@ -118,11 +125,8 @@ const RoadSignScreen = React.memo(({ navigation }) => {
                     <RoadSignModal
                         closeModal={closeModal}
                         modalVisible={modalVisible}
-                        handleDescription={handleDescription}
-                        selectedSign={signType[selectedItem]}
-                        signDescription={signDescription}
-                        descriptionVisible={descriptionVisible}
-                        closeDescription={closeDescription}
+                        selectedSign={signType[selectedSign]}
+                        selectedSignCode={selectedSign}
                         handleBottomSheet={handleBottomSheet}
                     />
                 </View>
@@ -153,9 +157,6 @@ const RoadSignScreen = React.memo(({ navigation }) => {
                 <RoadSignMenuContent
                     handleSignType={handleSignType}
                     setBottomSheetHidden={setBottomSheetHidden}
-                    setActiveTypeID={setActiveTypeID}
-                    activeTypeID={activeTypeID}
-                    handleActiveButton={handleActiveButton}
                     handleHeaderName={handleHeaderName}
                 />
             </BottomMenuAnimated>

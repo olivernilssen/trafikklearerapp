@@ -1,60 +1,60 @@
 const veivisningsSkilt = {
     '701_0': {
-        navn: '(720.4) Tabellorienteringstavle ',
+        navn: '(720.4) Tabellorienteringstavle',
         beskrivelse: 'Eksempler: tabellorienteringstavle',
         source: require('../roadSigns/Vegvisningsskilt/701.png'),
     },
     '703_0': {
-        navn: '(720.3) Diagramorienteringstavle ',
+        navn: '(720.3) Diagramorienteringstavle',
         beskrivelse: '(Eksempler)',
         source: require('../roadSigns/Vegvisningsskilt/703.png'),
     },
     '705_0': {
-        navn: '(720.1-2) Avkjøringstavle ',
+        navn: '(720.1-2) Avkjøringstavle',
         beskrivelse: '(Eksempler)',
         source: require('../roadSigns/Vegvisningsskilt/705.png'),
     },
     '707_0': {
-        navn: '(706) Kjørefeltorienteringstavle ',
+        navn: '(706) Kjørefeltorienteringstavle',
         beskrivelse:
-            '(Eksempler) \r Skiltet viser antall kjørefelt fram mot kryss eller avkjøringsvei, og hvilke kjøreretninger eller reisemål de enkelte kjørefelt er beregnet for. ',
+            '(Eksempler) \r Skiltet viser antall kjørefelt fram mot kryss eller avkjøringsvei, og hvilke kjøreretninger eller reisemål de enkelte kjørefelt er beregnet for.',
         source: require('../roadSigns/Vegvisningsskilt/707.png'),
     },
     '709_0': {
-        navn: '(724.2-4) Portalorienteringstavle ',
+        navn: '(724.2-4) Portalorienteringstavle',
         beskrivelse:
-            '(Eksempler)Skiltet viser hvilke kjøreretninger eller reisemål kjørefelt er beregnet for. ',
+            '(Eksempler)Skiltet viser hvilke kjøreretninger eller reisemål kjørefelt er beregnet for.',
         source: require('../roadSigns/Vegvisningsskilt/709.png'),
     },
     '711_0': {
-        navn: '(721.2) Tabellvegviser ',
+        navn: '(721.2) Tabellvegviser',
         beskrivelse: '(Eksempel)',
         source: require('../roadSigns/Vegvisningsskilt/711.png'),
     },
     '713_0': {
-        navn: '(722.2-3) Vanlig vegviser ',
+        navn: '(722.2-3) Vanlig vegviser',
         beskrivelse: '(Eksempel)',
         source: require('../roadSigns/Vegvisningsskilt/713.png'),
     },
     '715_0': {
-        navn: '(721.1) Avkjøringsvegviser ',
+        navn: '(721.1) Avkjøringsvegviser',
         beskrivelse: '(Eksempel)',
         source: require('../roadSigns/Vegvisningsskilt/715.png'),
     },
     '717_0': {
-        navn: 'Kjørefeltvegviser ',
+        navn: 'Kjørefeltvegviser',
         beskrivelse:
             'Skiltet viser hvilke reisemål kjørefelt er beregnet for.(Eksempel)',
         source: require('../roadSigns/Vegvisningsskilt/717.png'),
     },
     '719_0': {
-        navn: '(724.2-4) Portalvegviser  ',
+        navn: '(724.2-4) Portalvegviser ',
         beskrivelse:
             'Skiltet viser hvilke reisemål kjørefelt er beregnet for. (Eksempel)',
         source: require('../roadSigns/Vegvisningsskilt/719.png'),
     },
     '723_11': {
-        navn: 'Vegnummer for europaveg ',
+        navn: 'Vegnummer for europaveg',
         beskrivelse: '(Eksempel)',
         source: require('../roadSigns/Vegvisningsskilt/723_11.png'),
     },
@@ -64,7 +64,7 @@ const veivisningsSkilt = {
         source: require('../roadSigns/Vegvisningsskilt/723_12.png'),
     },
     '723_13': {
-        navn: 'Vegnummer for riksveg som ikke er europaveg ',
+        navn: 'Vegnummer for riksveg som ikke er europaveg',
         beskrivelse: '',
         source: require('../roadSigns/Vegvisningsskilt/723_13.png'),
     },
@@ -94,7 +94,7 @@ const veivisningsSkilt = {
         source: require('../roadSigns/Vegvisningsskilt/723_22.png'),
     },
     '723_31': {
-        navn: 'Nasjonal turistveg  ',
+        navn: 'Nasjonal turistveg ',
         beskrivelse: 'Symbolet kan vises på serviceskilt',
         source: require('../roadSigns/Vegvisningsskilt/723_31.png'),
     },
@@ -124,7 +124,7 @@ const veivisningsSkilt = {
         source: require('../roadSigns/Vegvisningsskilt/723_63.png'),
     },
     '723_64': {
-        navn: 'Andre omkjøringsruter ',
+        navn: 'Andre omkjøringsruter',
         beskrivelse: '',
         source: require('../roadSigns/Vegvisningsskilt/723_64.png'),
     },
@@ -160,7 +160,7 @@ const veivisningsSkilt = {
         source: require('../roadSigns/Vegvisningsskilt/725.png'),
     },
     '727_0': {
-        navn: '(712) Stedsnavnskilt ',
+        navn: '(712) Stedsnavnskilt',
         beskrivelse:
             'Skiltet viser by, tettsted, administrativ grense eller annet sted av betydning for orienteringen.',
         source: require('../roadSigns/Vegvisningsskilt/727_0.png'),
@@ -171,25 +171,25 @@ const veivisningsSkilt = {
         source: require('../roadSigns/Vegvisningsskilt/729_0.png'),
     },
     '731_0': {
-        navn: 'Samleskilt for vegvisning  ',
+        navn: 'Samleskilt for vegvisning ',
         beskrivelse:
-            'Skiltet viser steder eller virksomheter som kan nås via et felles veivalg i etterfølgende veikryss eller avkjøring. ',
+            'Skiltet viser steder eller virksomheter som kan nås via et felles veivalg i etterfølgende veikryss eller avkjøring.',
         source: require('../roadSigns/Vegvisningsskilt/731_0.png'),
     },
     '741_0': {
-        navn: 'Omkjøring for bestemte kjøretøygrupper  ',
+        navn: 'Omkjøring for bestemte kjøretøygrupper ',
         beskrivelse:
-            'Skiltet varsler om at veien er stengt for bestemte kjøretøygrupper, og at slike kjøretøy må følge omkjøring. ',
+            'Skiltet varsler om at veien er stengt for bestemte kjøretøygrupper, og at slike kjøretøy må følge omkjøring.',
         source: require('../roadSigns/Vegvisningsskilt/741_0.png'),
     },
     '743_1': {
-        navn: '(742) Midlertidig omkjøring ',
+        navn: '(742) Midlertidig omkjøring',
         beskrivelse:
-            'Skiltet varsler om at veien er midlertidig stengt, og at gjennomgående trafikk må følge omkjøring. ',
+            'Skiltet varsler om at veien er midlertidig stengt, og at gjennomgående trafikk må følge omkjøring.',
         source: require('../roadSigns/Vegvisningsskilt/743_1.png'),
     },
     '743_2': {
-        navn: 'Midlertidig omkjøring ',
+        navn: 'Midlertidig omkjøring',
         beskrivelse: '',
         source: require('../roadSigns/Vegvisningsskilt/743_2.png'),
     },
@@ -200,16 +200,16 @@ const veivisningsSkilt = {
     },
     '749_0': {
         navn: '(722.4) Vegviser for gangtrafikk',
-        beskrivelse: 'Skiltet kan vise symbol for forflytningshemmet. ',
+        beskrivelse: 'Skiltet kan vise symbol for forflytningshemmet.',
         source: require('../roadSigns/Vegvisningsskilt/749_0.png'),
     },
     '751_0': {
-        navn: 'Vegviser for sykkelrute ',
+        navn: 'Vegviser for sykkelrute',
         beskrivelse: '',
         source: require('../roadSigns/Vegvisningsskilt/751_0.png'),
     },
     '753_0': {
-        navn: 'Tabellvegviser for sykkelrute ',
+        navn: 'Tabellvegviser for sykkelrute',
         beskrivelse: '',
         source: require('../roadSigns/Vegvisningsskilt/753.png'),
     },
@@ -224,7 +224,7 @@ const veivisningsSkilt = {
         source: require('../roadSigns/Vegvisningsskilt/757.png'),
     },
     '761_0': {
-        navn: 'Motorveg ',
+        navn: 'Motorveg',
         beskrivelse: '',
         source: require('../roadSigns/Vegvisningsskilt/761.png'),
     },
@@ -244,7 +244,7 @@ const veivisningsSkilt = {
         source: require('../roadSigns/Vegvisningsskilt/767_0.png'),
     },
     '769_0': {
-        navn: 'Parkeringshus ',
+        navn: 'Parkeringshus',
         beskrivelse: '',
         source: require('../roadSigns/Vegvisningsskilt/769_0.png'),
     },
@@ -259,7 +259,7 @@ const veivisningsSkilt = {
         source: require('../roadSigns/Vegvisningsskilt/772_0.png'),
     },
     '773_0': {
-        navn: 'Busstasjon/ bussterminal ',
+        navn: 'Busstasjon/ bussterminal',
         beskrivelse: '',
         source: require('../roadSigns/Vegvisningsskilt/773_0.png'),
     },
@@ -279,7 +279,7 @@ const veivisningsSkilt = {
         source: require('../roadSigns/Vegvisningsskilt/776.png'),
     },
     '780_0': {
-        navn: 'Kjetting ',
+        navn: 'Kjetting',
         beskrivelse: '',
         source: require('../roadSigns/Vegvisningsskilt/780.png'),
     },
@@ -305,7 +305,7 @@ const veivisningsSkilt = {
     },
     '790_30': {
         navn: 'Andre reisemål',
-        beskrivelse: 'Alpinanlegg ',
+        beskrivelse: 'Alpinanlegg',
         source: require('../roadSigns/Vegvisningsskilt/790_30.png'),
     },
     '790_31': {
@@ -325,7 +325,7 @@ const veivisningsSkilt = {
     },
     '792_11': {
         navn: 'Betalingsmåte i bomstasjon/ betalingssystem på veg',
-        beskrivelse: 'Betaling med elektronisk brikke ',
+        beskrivelse: 'Betaling med elektronisk brikke',
         source: require('../roadSigns/Vegvisningsskilt/792_11.png'),
     },
     '792_12': {
@@ -359,7 +359,7 @@ const veivisningsSkilt = {
         source: require('../roadSigns/Vegvisningsskilt/792_17.png'),
     },
     '792_30': {
-        navn: 'Helautomatisk bomstasjon som passeres uten å stanse ',
+        navn: 'Helautomatisk bomstasjon som passeres uten å stanse',
         beskrivelse: '',
         source: require('../roadSigns/Vegvisningsskilt/792_30.png'),
     },

@@ -7,11 +7,7 @@ import {
     Dimensions,
 } from 'react-native';
 import { Colors, Typography } from '../../styles';
-import RoadSignMenuContentButton from './RoadSignMenuContentButton';
-import ButtonGroup from '../reusableComponents/ButtonGroup';
-// import { ButtonGroup } from '../reusableComponents';
-// import curriculumData from './curriculumData';
-// import { Colors, Typography } from '../../styles';
+
 import {
     fareSkilt,
     forbudsSkilt,
@@ -24,44 +20,61 @@ import {
     vikepliktsSkilt,
 } from '../../assets/sign_descriptions/index';
 
+// may very well be the ugliest array in existence...
+const signTypeArray = [
+    { typeName: 'Fareskilt', typeObject: fareSkilt, buttonID: 0 },
+    { typeName: 'Forbudsskilt', typeObject: forbudsSkilt, buttonID: 1 },
+    {
+        typeName: 'Markeringsskilt',
+        typeObject: markeringsSkilt,
+        buttonID: 2,
+    },
+    {
+        typeName: 'Opplysningsskilt',
+        typeObject: opplysningsSkilt,
+        buttonID: 3,
+    },
+    { typeName: 'Påbudsskilt', typeObject: påbudsSkilt, buttonID: 4 },
+    { typeName: 'Serviceskilt', typeObject: serviceSkilt, buttonID: 5 },
+    { typeName: 'Underskilt', typeObject: underSkilt, buttonID: 6 },
+    {
+        typeName: 'Veivisningsskilt',
+        typeObject: veivisningsSkilt,
+        buttonID: 7,
+    },
+    {
+        typeName: 'Vikeplikt- og forkjørsskilt',
+        typeObject: vikepliktsSkilt,
+        buttonID: 8,
+    },
+];
+
+/**
+ * @namespace RoadSignMenuContent
+ * @category RoadSignComponents
+ * @prop {function} handleSignType Handles the change from one signType to another
+ * @prop {function} setBottomSheetHidden Sets the state of bottomSheetHidden
+ * @prop {function} handleHeaderName Handles the headername when signType changes
+ * @returns Buttons for each signType
+ */
 const RoadSignMenuContent = (props) => {
-    const {
-        handleSignType,
-        setBottomSheetHidden,
-        setActiveTypeID,
-        activeTypeID,
-        handleActiveButton,
-        handleHeaderName,
-    } = props;
+    const [activeTypeID, setActiveTypeID] = useState(0);
 
-    const signTypeArray = [
-        { typeName: 'Fareskilt', typeObject: fareSkilt, buttonID: 0 },
-        { typeName: 'Forbudsskilt', typeObject: forbudsSkilt, buttonID: 1 },
-        {
-            typeName: 'Markeringsskilt',
-            typeObject: markeringsSkilt,
-            buttonID: 2,
-        },
-        {
-            typeName: 'Opplysningsskilt',
-            typeObject: opplysningsSkilt,
-            buttonID: 3,
-        },
-        { typeName: 'Påbudsskilt', typeObject: påbudsSkilt, buttonID: 4 },
-        { typeName: 'Serviceskilt', typeObject: serviceSkilt, buttonID: 5 },
-        { typeName: 'Underskilt', typeObject: underSkilt, buttonID: 6 },
-        {
-            typeName: 'Veivisningsskilt',
-            typeObject: veivisningsSkilt,
-            buttonID: 7,
-        },
-        {
-            typeName: 'Vikeplikt- og forkjørsskilt',
-            typeObject: vikepliktsSkilt,
-            buttonID: 8,
-        },
-    ];
+    const { handleSignType, setBottomSheetHidden, handleHeaderName } = props;
 
+    /**
+     * Handles the state for the active button
+     * @memberof RoadSignMenuContent
+     * @param {number} value
+     */
+    const handleActiveButton = (value) => {
+        setActiveTypeID(value);
+    };
+
+    /**
+     * @memberof RoadSignMenuContent
+     * @param {object} value The object of the chosen signType, contains name, description and image source
+     */
     const handleBottomMenuPress = (value) => {
         handleSignType(value);
         setBottomSheetHidden(true);

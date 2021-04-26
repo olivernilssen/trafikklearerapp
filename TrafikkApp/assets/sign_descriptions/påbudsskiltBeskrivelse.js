@@ -49,7 +49,7 @@ const påbudsSkilt = {
     '404_2': {
         navn: 'Påbudt kjørefelt venstre',
         beskrivelse:
-            'Skiltet angir at kjørende skal passere skiltet på venstre side. ',
+            'Skiltet angir at kjørende skal passere skiltet på venstre side.',
         source: require('../roadSigns/Påbudsskilt/404_2.png'),
     },
     '406_0': {

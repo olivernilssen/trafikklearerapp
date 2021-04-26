@@ -49,7 +49,7 @@ const opplysningsSkilt = {
     },
     '510_1': {
         navn: 'Slutt på kollektivfelt',
-        beskrivelse: ' ',
+        beskrivelse: '',
         source: require('../roadSigns/Opplysningsskilt/510_1.png'),
     },
     '510_2': {
@@ -83,13 +83,13 @@ const opplysningsSkilt = {
     '516_H': {
         navn: 'Gangfelt høyre',
         beskrivelse:
-            '- Skiltet angir kryssingssted for gående hvor trafikkreglenes bestemmelser om gangfelt gjelder.',
+            'Skiltet angir kryssingssted for gående hvor trafikkreglenes bestemmelser om gangfelt gjelder.',
         source: require('../roadSigns/Opplysningsskilt/516_H.png'),
     },
     '516_0': {
         navn: 'Gangfelt venstre',
         beskrivelse:
-            '- Skiltet angir kryssingssted for gående hvor trafikkreglenes bestemmelser om gangfelt gjelder.',
+            'Skiltet angir kryssingssted for gående hvor trafikkreglenes bestemmelser om gangfelt gjelder.',
         source: require('../roadSigns/Opplysningsskilt/516_V.png'),
     },
     '518_0': {
@@ -123,19 +123,19 @@ const opplysningsSkilt = {
         source: require('../roadSigns/Opplysningsskilt/522_0.png'),
     },
     '524_0': {
-        navn: ' Møteplass ',
+        navn: 'Møteplass ',
         beskrivelse:
             'Skiltet angir sted hvor trafikkreglenes bestemmelser om møteplass gjelder.',
         source: require('../roadSigns/Opplysningsskilt/524_0.png'),
     },
     '526_1': {
-        navn: ' Envegskjøring',
+        navn: 'Envegskjøring',
         beskrivelse:
             'Skiltet angir at kjøring bare er tillatt i pilens retning fram til første vegkryss.',
         source: require('../roadSigns/Opplysningsskilt/526_1.png'),
     },
-    '526_': {
-        navn: ' Envegskjøring',
+    '526_2': {
+        navn: 'Envegskjøring',
         beskrivelse:
             'Skiltet angir at kjøring bare er tillatt i pilens retning fram til første vegkryss.',
         source: require('../roadSigns/Opplysningsskilt/526_2.png'),
@@ -238,19 +238,19 @@ const opplysningsSkilt = {
         source: require('../roadSigns/Opplysningsskilt/536_202.png'),
     },
     '538_03': {
-        navn: ' Kjørefeltinndeling',
+        navn: 'Kjørefeltinndeling',
         beskrivelse:
             'Skiltet angir antall kjørefelt på kjørebanen, og kjøreretningen for de enkelte felt. Spesielle reguleringer som gjelder for enkelte felt, kan være vist på skiltet. 538.21 Eksempel ',
         source: require('../roadSigns/Opplysningsskilt/538_03.png'),
     },
     '538_12': {
-        navn: ' Kjørefeltinndeling',
+        navn: 'Kjørefeltinndeling',
         beskrivelse:
             'Skiltet angir antall kjørefelt på kjørebanen, og kjøreretningen for de enkelte felt. Spesielle reguleringer som gjelder for enkelte felt, kan være vist på skiltet. 538.21 Eksempel ',
         source: require('../roadSigns/Opplysningsskilt/538_12.png'),
     },
     '538_21': {
-        navn: ' Kjørefeltinndeling',
+        navn: 'Kjørefeltinndeling',
         beskrivelse:
             'Skiltet angir antall kjørefelt på kjørebanen, og kjøreretningen for de enkelte felt. Spesielle reguleringer som gjelder for enkelte felt, kan være vist på skiltet. 538.21 Eksempel ',
         source: require('../roadSigns/Opplysningsskilt/538_21.png'),
@@ -310,7 +310,7 @@ const opplysningsSkilt = {
         source: require('../roadSigns/Opplysningsskilt/558_0.png'),
     },
     '560_2': {
-        navn: ' Opplysningstavle ',
+        navn: 'Opplysningstavle ',
         beskrivelse:
             'Skiltet kan gi opplysning om veg- og trafikkforhold som ikke kan formidles ved andre trafikkskilt. Ved opplysning av særlig interesse for turisttrafikk kan skiltet ha brun bunnfarge. Ved midlertidig opplysning kan skiltet ha gul bunn, sort bord og sort symbol eller tekst. Ved opplysning om omkjøring kan skiltet ha oransje bunn, sort bord og sort symbol eller tekst. ',
         source: require('../roadSigns/Opplysningsskilt/560_2.png'),
