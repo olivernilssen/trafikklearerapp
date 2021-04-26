@@ -1,4 +1,4 @@
-package com.trafikkapp;
+package com.illustrafikk;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
@@ -33,5 +33,13 @@ public class MainActivity extends ReactActivity {
         return new RNGestureHandlerEnabledRootView(MainActivity.this);
       }
     };
+  }
+
+  /**
+   * For fixing "gestureHandler already initialized for root view" bug 
+   */
+  @Override
+  public void invokeDefaultOnBackPressed() {
+    moveTaskToBack(true);
   }
 }

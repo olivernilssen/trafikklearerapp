@@ -5,7 +5,7 @@ const serviceSkilt = {
         source: require('../roadSigns/Serviceskilt/601.png'),
     },
     '602_0': {
-        navn: 'Førstehjelp ',
+        navn: 'Førstehjelp',
         beskrivelse: '',
         source: require('../roadSigns/Serviceskilt/602.png'),
     },
@@ -20,7 +20,7 @@ const serviceSkilt = {
         source: require('../roadSigns/Serviceskilt/606.png'),
     },
     '608_0': {
-        navn: 'Kjøretøyverksted ',
+        navn: 'Kjøretøyverksted',
         beskrivelse: '',
         source: require('../roadSigns/Serviceskilt/608.png'),
     },
@@ -41,18 +41,18 @@ const serviceSkilt = {
     },
     '610_2': {
         navn: 'Eksempel',
-        beskrivelse: 'Eksempel ',
+        beskrivelse: 'Eksempel',
         source: require('../roadSigns/Serviceskilt/610_2.png'),
     },
     '611_0': {
-        navn: 'Toalettømmeanlegg ',
+        navn: 'Toalettømmeanlegg',
         beskrivelse:
-            'Skiltet angir mottaksanlegg for toalettavfall fra campingvogner, bobiler og busser. ',
+            'Skiltet angir mottaksanlegg for toalettavfall fra campingvogner, bobiler og busser.',
         source: require('../roadSigns/Serviceskilt/611.png'),
     },
     '612_0': {
-        navn: 'Toalett ',
-        beskrivelse: ' ',
+        navn: 'Toalett',
+        beskrivelse: '',
         source: require('../roadSigns/Serviceskilt/612.png'),
     },
     '613_1': {
@@ -71,7 +71,7 @@ const serviceSkilt = {
         source: require('../roadSigns/Serviceskilt/614.png'),
     },
     '616_0': {
-        navn: 'Spisested ',
+        navn: 'Spisested',
         beskrivelse: '',
         source: require('../roadSigns/Serviceskilt/616.png'),
     },
@@ -91,17 +91,17 @@ const serviceSkilt = {
         source: require('../roadSigns/Serviceskilt/622.png'),
     },
     '624_0': {
-        navn: 'Vandrerhjem ',
+        navn: 'Vandrerhjem',
         beskrivelse: '',
         source: require('../roadSigns/Serviceskilt/624.png'),
     },
     '625_0': {
-        navn: 'Rom og frokost ',
-        beskrivelse: 'Rom og frokost ',
+        navn: 'Rom og frokost',
+        beskrivelse: 'Rom og frokost',
         source: require('../roadSigns/Serviceskilt/625.png'),
     },
     '626_0': {
-        navn: 'Overnattingssted ',
+        navn: 'Overnattingssted',
         beskrivelse: '',
         source: require('../roadSigns/Serviceskilt/626.png'),
     },
@@ -111,7 +111,7 @@ const serviceSkilt = {
         source: require('../roadSigns/Serviceskilt/635.png'),
     },
     '637_0': {
-        navn: 'Turistkontor ',
+        navn: 'Turistkontor',
         beskrivelse: '',
         source: require('../roadSigns/Serviceskilt/637.png'),
     },

@@ -24,6 +24,7 @@ const StartScreenLink = React.memo((props) => {
                 activeOpacity={0.6}
                 onPress={onPress}>
                 <Text style={styles.buttonText}>{text}</Text>
+
                 <Icon
                     name={name}
                     size={Icons.medium}
@@ -37,15 +38,17 @@ const StartScreenLink = React.memo((props) => {
 
 const styles = StyleSheet.create({
     buttonContainer: {
-        justifyContent: 'space-evenly',
         margin: 12,
         elevation: 10,
         ...Buttons.largeRounded,
     },
     buttonText: {
+        flex: 1,
         color: Colors.textSecondary,
         textAlign: 'center',
         flexWrap: 'wrap',
+        padding: 10,
+        textAlignVertical: 'center',
         ...Typography.section,
     },
     icon: {
@@ -53,8 +56,9 @@ const styles = StyleSheet.create({
         opacity: 0.6,
         bottom: 0,
         right: 0,
-        paddingVertical: 20,
-        paddingHorizontal: 20,
+        alignSelf: 'flex-end',
+        paddingHorizontal: 15,
+        paddingVertical: 15,
     },
 });
 

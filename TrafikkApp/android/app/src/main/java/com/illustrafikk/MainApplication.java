@@ -1,4 +1,4 @@
-package com.trafikkapp;
+package com.illustrafikk;
 
 import android.app.Application;
 import android.content.Context;
