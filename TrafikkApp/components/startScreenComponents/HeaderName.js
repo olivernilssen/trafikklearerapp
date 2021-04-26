@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     main: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
     },
     text: {
         textAlignVertical: 'center',

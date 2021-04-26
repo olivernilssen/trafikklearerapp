@@ -36,11 +36,7 @@ const veivisningsSkilt = {
         beskrivelse: '(Eksempel)',
         source: require('../roadSigns/Vegvisningsskilt/713.png'),
     },
-    '715_0': {
-        navn: '(721.1) Avkjøringsvegviser',
-        beskrivelse: '(Eksempel)',
-        source: require('../roadSigns/Vegvisningsskilt/715.png'),
-    },
+
     '717_0': {
         navn: 'Kjørefeltvegviser',
         beskrivelse:
@@ -152,12 +148,6 @@ const veivisningsSkilt = {
         navn: 'Kryssnummer på tofeltsveg',
         beskrivelse: '',
         source: require('../roadSigns/Vegvisningsskilt/723_73.png'),
-    },
-    '725_0': {
-        navn: '(710) Avstandsskilt',
-        beskrivelse:
-            'Skiltet viser avstanden i kilometer til angitte mål eller til nærmeste kryss eller avkjøringsmulighet.',
-        source: require('../roadSigns/Vegvisningsskilt/725.png'),
     },
     '727_0': {
         navn: '(712) Stedsnavnskilt',

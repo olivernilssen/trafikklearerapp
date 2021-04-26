@@ -153,7 +153,7 @@ const RoadSignScreen = React.memo(({ navigation }) => {
             <BottomMenuAnimated
                 bottomSheetHidden={bottomSheetHidden}
                 setBottomSheetHidden={setBottomSheetHidden}
-                chevronColor={Colors.slideInactiveBg}>
+                chevronColor={Colors.icons}>
                 <RoadSignMenuContent
                     handleSignType={handleSignType}
                     setBottomSheetHidden={setBottomSheetHidden}

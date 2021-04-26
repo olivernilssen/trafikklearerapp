@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import { MainView, Header } from '../components/reusableComponents/';
+import { MainView, Header, Divider } from '../components/reusableComponents/';
 import {
     StartScreenLink,
     ExternalLink,
@@ -26,7 +26,7 @@ import { Colors, Typography, Icons } from '../styles';
 const StartScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
-            <Header navigation={navigation}>
+            <Header navigation={navigation} style={styles.header}>
                 <View style={styles.headerItems}>
                     <HeaderName />
                     <TouchableOpacity
@@ -109,17 +109,24 @@ const StartScreen = React.memo(({ navigation }) => {
                         />
                     </View>
                 </View>
-
-                <View style={styles.container}>
-                    <Text style={styles.text}>Lenker til forskrifter</Text>
+            </View>
+            <View style={styles.footer}>
+                <View style={styles.footerContent}>
+                    <Text style={styles.footerText}>
+                        Lenker til forskrifter:
+                    </Text>
                     <View style={styles.linksContainer}>
                         <ExternalLink
-                            text="Trafikkopplærings- forskriften"
+                            text="Trafikkopplæringsforskriften"
                             onPress={() => {
                                 Linking.openURL(
                                     'https://lovdata.no/dokument/SF/forskrift/2004-10-01-1339'
                                 );
                             }}
+                        />
+                        <Divider
+                            borderColor={Colors.dividerPrimary}
+                            style={styles.divider}
                         />
                         <ExternalLink
                             text="Skiltforskriften"
@@ -129,6 +136,10 @@ const StartScreen = React.memo(({ navigation }) => {
                                 );
                             }}
                         />
+                        <Divider
+                            borderColor={Colors.dividerPrimary}
+                            style={styles.divider}
+                        />
                         <ExternalLink
                             text="Trafikkregler"
                             onPress={() => {
@@ -136,6 +147,10 @@ const StartScreen = React.memo(({ navigation }) => {
                                     'https://lovdata.no/dokument/SF/forskrift/1986-03-21-747'
                                 );
                             }}
+                        />
+                        <Divider
+                            borderColor={Colors.dividerPrimary}
+                            style={styles.divider}
                         />
                         <ExternalLink
                             text="Veitrafikkloven"
@@ -153,6 +168,11 @@ const StartScreen = React.memo(({ navigation }) => {
 });
 
 const styles = StyleSheet.create({
+    header: {
+        borderBottomWidth: 1,
+        borderBottomColor: Colors.dividerPrimary,
+        elevation: 10,
+    },
     headerItems: {
         alignSelf: 'center',
         width: '93%',
@@ -165,23 +185,22 @@ const styles = StyleSheet.create({
     },
     main: {
         flex: 1,
-        // height: '100%',
         width: '100%',
         justifyContent: 'center',
         paddingVertical: '10%',
         backgroundColor: Colors.startScreenBg,
     },
     container: {
-        paddingVertical: '2%',
+        paddingVertical: 15,
         justifyContent: 'center',
         alignItems: 'center',
+        marginVertical: 10,
     },
     text: {
         width: '85%',
         borderBottomWidth: 2,
         borderColor: Colors.dividerPrimary,
         color: Colors.icons,
-        paddingTop: 10,
         paddingVertical: 5,
         ...Typography.section,
     },
@@ -190,6 +209,34 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         flexWrap: 'wrap',
+    },
+    footer: {
+        width: '100%',
+        backgroundColor: Colors.startScreenBg,
+    },
+    footerContent: {
+        borderTopWidth: 1,
+        borderTopColor: Colors.dividerPrimary,
+        width: '100%',
+        paddingVertical: 20,
+        backgroundColor: Colors.sketchBackground,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderTopRightRadius: 20,
+        borderTopLeftRadius: 20,
+    },
+    footerText: {
+        width: '85%',
+        paddingVertical: 5,
+        borderColor: Colors.dividerPrimary,
+        color: Colors.icons,
+        ...Typography.body,
+    },
+    divider: {
+        width: 1,
+        height: 50,
+        paddingVertical: 5,
+        alignSelf: 'center',
     },
 });
 
