@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     View,
-    FlatList,
     SectionList,
     Text,
     SafeAreaView,
@@ -75,10 +74,6 @@ const DrawerMenu = React.memo((props) => {
                 style={styles.firstDivider}
                 borderColor={Colors.dividerPrimary}
             />
-            {/* <Divider
-                style={styles.divider}
-                borderColor={Colors.dividerPrimary}
-            /> */}
             {arrayFinished && (
                 <SectionList
                     sections={drawerInfo}
@@ -97,19 +92,6 @@ const DrawerMenu = React.memo((props) => {
                     )}
                 />
             )}
-
-            {/* <FlatList
-                data={props.state.routes}
-                renderItem={({ item }) => (
-                    <DrawerItem
-                        navigation={props.navigation}
-                        screenIndex={props.state.index}
-                        screenName={item.name}
-                        params={item.params}
-                        key={item.key}
-                    />
-                )}
-            /> */}
         </SafeAreaView>
     );
 });
@@ -118,7 +100,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.drawerBg,
-        paddingTop: 15,
+        paddingTop: 5,
         // paddingHorizontal: 15,
     },
     sectionView: {

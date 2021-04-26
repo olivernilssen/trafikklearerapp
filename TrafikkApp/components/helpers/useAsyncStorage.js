@@ -15,7 +15,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const saveData = async (key, value) => {
     try {
         await AsyncStorage.setItem(key, value);
-        console.log('Data successfully saved to ', key, value);
+        // console.log('Data successfully saved to ', key, value);
     } catch (e) {
         console.warn('Failed to save the data to the storage to ', key);
     }

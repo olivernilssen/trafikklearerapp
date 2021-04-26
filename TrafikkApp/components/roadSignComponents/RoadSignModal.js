@@ -1,157 +1,192 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
-    FlatList,
     StyleSheet,
     View,
     Text,
     Image,
     ScrollView,
-    TouchableOpacity,
     TouchableWithoutFeedback,
-    SectionList,
-    Dimensions,
+    Animated,
     Modal,
 } from 'react-native';
-import ImagePopup from './ImagePopup';
-import BottomMenuAnimated from '../reusableComponents/BottomMenuAnimated';
-const numColumns = 4;
+import { Colors } from '../../styles';
+import { Divider } from '../reusableComponents';
 
-const RoadSignModal = (props) => {
-    const {
-        closeModal,
-        modalVisible,
-        selectedSign,
-        handleDescription,
-        signDescription,
-        descriptionVisible,
-    } = props;
-    console.log(selectedSign.beskrivelse);
+const RoadSignModal = React.memo((props) => {
+    const { closeModal, modalVisible, selectedSign, selectedSignCode } = props;
+
+    const [viewHeight, setViewHeight] = useState(new Animated.Value(300));
+    const [showDescript, setShowDescript] = useState(false);
+    const [imgHeight, setImgHeight] = useState(400);
+    const [descriptionHeight, setDescriptionHeight] = useState(0);
+    const [animationDone, setAnimationDone] = useState(false);
+    const [maxHeightScroll, setMaxHeightScroll] = useState(300);
+
+    useEffect(() => {
+        Animated.spring(viewHeight, {
+            toValue: imgHeight + 100,
+            useNativeDriver: false,
+        }).start();
+
+        setShowDescript(false);
+    }, [modalVisible]);
+
+    useEffect(() => {
+        const heightModal = imgHeight + 100;
+
+        Animated.spring(viewHeight, {
+            toValue: showDescript
+                ? descriptionHeight + heightModal
+                : heightModal,
+            useNativeDriver: false,
+        }).start();
+
+        setAnimationDone(!animationDone);
+    }, [imgHeight, descriptionHeight, showDescript]);
+
+    const setLayout = useCallback((layout, type) => {
+        const { height } = layout;
+        if (type == 'image') {
+            if (Math.floor(height) !== imgHeight) {
+                if (height < 150) {
+                    setMaxHeightScroll(400);
+                } else {
+                    setMaxHeightScroll(250);
+                }
+                setImgHeight(Math.floor(height));
+            }
+        } else if (type == 'description') {
+            if (Math.floor(height) !== descriptionHeight)
+                setDescriptionHeight(Math.floor(height));
+        }
+    });
 
     const textDescription = () => {
-        if (descriptionVisible) {
-            if (selectedSign.beskrivelse === '') {
-                return (
-                    <>
-                        <Text style={styles.textStyle}>
-                            {selectedSign.navn}
-                        </Text>
+        if (showDescript) {
+            return (
+                <View
+                    onLayout={(event) => {
+                        setLayout(event.nativeEvent.layout, 'description');
+                    }}>
+                    <Text style={styles.textStyle}>
+                        {selectedSignCode.replace('_', '.')} {selectedSign.navn}
+                    </Text>
+                    <Divider
+                        style={{
+                            width: '95%',
+                            alignSelf: 'center',
+                            padding: 10,
+                        }}
+                        borderColor={Colors.dividerSecondary}></Divider>
+                    {selectedSign.beskrivelse === '' ? (
                         <Text style={styles.textStyle}>Ingen beskrivelse</Text>
-                    </>
-                );
-            } else {
-                return (
-                    <View>
-                        <Text style={styles.textStyle}>
-                            {selectedSign.navn}
-                        </Text>
-                        <Text style={styles.textStyle}>
-                            {selectedSign.beskrivelse}
-                        </Text>
-                    </View>
-                );
-            }
+                    ) : (
+                        <ScrollView>
+                            <Text style={styles.textStyle}>
+                                {selectedSign.beskrivelse}
+                            </Text>
+                        </ScrollView>
+                    )}
+                </View>
+            );
         }
     };
 
-    const imageHandler = () => {
-        return (
-            <>
-                <Image
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        justifyContent: 'center',
-                        alignSelf: 'center',
-                        resizeMode: 'contain',
-                        top: '0%',
-                    }}
-                    source={selectedSign.source}
-                />
-            </>
-        );
+    const animatedStyle = {
+        height: viewHeight,
     };
 
     return (
-        <View>
+        <>
             <Modal
-                style={{
-                    backgroundColor: 'white',
-                    justifyContent: 'center',
-                    alignContent: 'center',
-                }}
-                animationType="none"
+                style={styles.modal}
+                animationType="slide"
                 transparent={true}
                 visible={modalVisible}
-                onRequestClose={() => {
-                    closeModal();
-                }}>
+                onRequestClose={() => closeModal()}>
                 <TouchableWithoutFeedback onPress={() => closeModal()}>
-                    <View style={styles.modal}>
-                        <View
-                            style={{
-                                width: '80%',
-                                height: '46%',
-                                // justifyContent: 'center',
-                                alignSelf: 'center',
-                            }}>
-                            <TouchableWithoutFeedback
-                                style={{ backgroundColor: 'white' }}
-                                // style={styles.modalItem}
-                                onPress={() =>
-                                    handleDescription(
-                                        selectedSign.textDescription
-                                    )
-                                }>
-                                <View style={{ backgroundColor: 'white' }}>
-                                    {imageHandler()}
-                                </View>
-                            </TouchableWithoutFeedback>
-                        </View>
-                        <View
-                            style={{
-                                backgroundColor: 'white',
-                                width: '80%',
-                                alignSelf: 'center',
-                                justifyContent: 'flex-start',
-                            }}>
-                            {textDescription()}
-                        </View>
+                    <View style={styles.transparentBackground}>
+                        <TouchableWithoutFeedback>
+                            <Animated.View
+                                style={[styles.textAndImage, animatedStyle]}>
+                                <TouchableWithoutFeedback
+                                    onPress={() => {
+                                        setShowDescript(!showDescript);
+                                    }}>
+                                    <View
+                                        onLayout={(event) => {
+                                            setLayout(
+                                                event.nativeEvent.layout,
+                                                'image'
+                                            );
+                                        }}
+                                        style={styles.imageContainer}>
+                                        <Image
+                                            style={styles.image}
+                                            source={selectedSign.source}
+                                        />
+                                    </View>
+                                </TouchableWithoutFeedback>
+                                {showDescript && (
+                                    <View
+                                        onStartShouldSetResponder={() => true}
+                                        style={[
+                                            styles.textDescription,
+                                            { maxHeight: maxHeightScroll },
+                                        ]}>
+                                        {textDescription()}
+                                    </View>
+                                )}
+                            </Animated.View>
+                        </TouchableWithoutFeedback>
                     </View>
                 </TouchableWithoutFeedback>
             </Modal>
-        </View>
+        </>
     );
-};
+});
 
 const styles = StyleSheet.create({
-    // container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-    imageContainer: {
-        flex: 1,
-        marginVertical: 1,
-        backgroundColor: 'grey',
-    },
-    item: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: Dimensions.get('screen').width / numColumns - 3,
-        margin: 1,
-        height: Dimensions.get('screen').height / 7.5,
-    },
     modal: {
-        top: '7%',
+        justifyContent: 'center',
+        alignContent: 'center',
+        flex: 1,
+    },
+    transparentBackground: {
+        flex: 1,
         width: '100%',
         height: '100%',
-        justifyContent: 'flex-start',
-        alignSelf: 'center',
-        // backgroundColor: 'yellow',
-    },
-    modalItem: {
         justifyContent: 'center',
         alignItems: 'center',
+        alignSelf: 'center',
+        backgroundColor: 'rgba(0,0,0,0.8)',
+    },
+    textAndImage: {
+        padding: '4%',
+        width: 600,
+        borderWidth: 5,
+        borderColor: 'black',
+        justifyContent: 'flex-start',
+        backgroundColor: Colors.sketchBackground,
+    },
+    imageContainer: {
+        width: '100%',
+        maxHeight: 500,
+        resizeMode: 'contain',
+    },
+    image: {
+        width: '100%',
+        maxHeight: 500,
+        resizeMode: 'contain',
+    },
+    textDescription: {
+        marginTop: '5%',
+        width: '90%',
+        alignSelf: 'center',
     },
     textStyle: {
-        color: 'black',
-        fontWeight: 'bold',
+        width: '100%',
+        color: Colors.textPrimary,
         textAlign: 'center',
         fontSize: 30,
     },

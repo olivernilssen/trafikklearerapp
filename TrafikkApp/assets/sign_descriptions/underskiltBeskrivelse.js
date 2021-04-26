@@ -2,44 +2,44 @@ const underSkilt = {
     '802_0': {
         navn: 'Avstand',
         beskrivelse:
-            'Underskiltet angir avstanden til det sted hvor hovedskiltet begynner å gjelde, eller til sted hvor tilsvarende hovedskilt er satt opp (forvarsling). ',
+            'Underskiltet angir avstanden til det sted hvor hovedskiltet begynner å gjelde, eller til sted hvor tilsvarende hovedskilt er satt opp (forvarsling).',
         source: require('../roadSigns/Underskilt/802_0.png'),
     },
     '804_0': {
-        navn: 'Utstrekning ',
+        navn: 'Utstrekning',
         beskrivelse:
-            'Underskiltet angir at hovedskiltet gjelder for bestemt vegstrekning. Tallene angir avstanden til vegstrekningens begynnelse og slutt. ',
+            'Underskiltet angir at hovedskiltet gjelder for bestemt vegstrekning. Tallene angir avstanden til vegstrekningens begynnelse og slutt.',
         source: require('../roadSigns/Underskilt/804_0.png'),
     },
     '806_0': {
-        navn: 'Tid ',
+        navn: 'Tid',
         beskrivelse:
-            'Underskiltet angir at hovedskiltet bare gjelder i det eller de tidsrom som er angitt med klokkeslett. Sorte tall gjelder hverdag unntatt lørdag, sorte tall i parentes gjelder lørdag, røde tall gjelder søndag, helligdag og offentlig høytidsdag. ',
+            'Underskiltet angir at hovedskiltet bare gjelder i det eller de tidsrom som er angitt med klokkeslett. Sorte tall gjelder hverdag unntatt lørdag, sorte tall i parentes gjelder lørdag, røde tall gjelder søndag, helligdag og offentlig høytidsdag.',
         source: require('../roadSigns/Underskilt/806_0.png'),
     },
     '807_1': {
-        navn: 'Personbil ',
+        navn: 'Personbil',
         beskrivelse: '',
         source: require('../roadSigns/Underskilt/807_1.png'),
     },
     '807_2': {
-        navn: 'Varebil, lastebil og trekkbil ',
+        navn: 'Varebil, lastebil og trekkbil',
         beskrivelse: '',
         source: require('../roadSigns/Underskilt/807_2.png'),
     },
     '807_3': {
-        navn: 'Buss ',
+        navn: 'Buss',
         beskrivelse: '',
         source: require('../roadSigns/Underskilt/807_3.png'),
     },
     '807_4': {
-        navn: 'Vogntog ',
+        navn: 'Vogntog',
         beskrivelse: '',
         source: require('../roadSigns/Underskilt/807_4.png'),
     },
     '807_5': {
         navn:
-            'Tilhenger særskilt innredet til campingbruk, samt eventuell trekkvogn ',
+            'Tilhenger særskilt innredet til campingbruk, samt eventuell trekkvogn',
         beskrivelse: '',
         source: require('../roadSigns/Underskilt/807_5.png'),
     },
@@ -54,7 +54,7 @@ const underSkilt = {
         source: require('../roadSigns/Underskilt/807_7.png'),
     },
     '807_8': {
-        navn: 'Forflytningshemmede med parkeringstillatelse ',
+        navn: 'Forflytningshemmede med parkeringstillatelse',
         beskrivelse: '',
         source: require('../roadSigns/Underskilt/807_8.png'),
     },
@@ -64,77 +64,77 @@ const underSkilt = {
         source: require('../roadSigns/Underskilt/807_9.png'),
     },
     '808_0': {
-        navn: ' Tekst',
+        navn: 'Tekst',
         beskrivelse:
-            'Underskiltet brukes når det ikke er hensiktsmessig å gi vedkommende regulering eller informasjon med underskilt med symbol, tall eller annet. ',
+            'Underskiltet brukes når det ikke er hensiktsmessig å gi vedkommende regulering eller informasjon med underskilt med symbol, tall eller annet.',
         source: require('../roadSigns/Underskilt/808_42b.png'),
     },
     '810_H45-': {
-        navn: ' Svingpil',
+        navn: 'Svingpil',
         beskrivelse:
-            'Underskiltet angir at hovedskiltet gjelder etter sving i veikryss. ',
+            'Underskiltet angir at hovedskiltet gjelder etter sving i veikryss.',
         source: require('../roadSigns/Underskilt/810_H45.png'),
     },
     '810_H90': {
-        navn: ' Svingpil',
+        navn: 'Svingpil',
         beskrivelse:
-            '- Underskiltet angir at hovedskiltet gjelder etter sving i veikryss. ',
+            'Underskiltet angir at hovedskiltet gjelder etter sving i veikryss.',
         source: require('../roadSigns/Underskilt/810_H90.png'),
     },
     '810_H135-': {
-        navn: ' Svingpil',
+        navn: 'Svingpil',
         beskrivelse:
-            'Underskiltet angir at hovedskiltet gjelder etter sving i veikryss. ',
+            'Underskiltet angir at hovedskiltet gjelder etter sving i veikryss.',
         source: require('../roadSigns/Underskilt/810_H135.png'),
     },
     '810_R-': {
-        navn: ' Svingpil',
+        navn: 'Svingpil',
         beskrivelse:
-            'Underskiltet angir at hovedskiltet gjelder etter sving i veikryss. ',
+            'Underskiltet angir at hovedskiltet gjelder etter sving i veikryss.',
         source: require('../roadSigns/Underskilt/810_R.png'),
     },
     '810_V45': {
-        navn: ' Svingpil',
+        navn: 'Svingpil',
         beskrivelse:
-            'Underskiltet angir at hovedskiltet gjelder etter sving i veikryss. ',
+            'Underskiltet angir at hovedskiltet gjelder etter sving i veikryss.',
         source: require('../roadSigns/Underskilt/810_V45.png'),
     },
     '810_V90-': {
-        navn: ' Svingpil',
+        navn: 'Svingpil',
         beskrivelse:
-            'Underskiltet angir at hovedskiltet gjelder etter sving i veikryss. ',
+            'Underskiltet angir at hovedskiltet gjelder etter sving i veikryss.',
         source: require('../roadSigns/Underskilt/810_V90.png'),
     },
     '810_V135-': {
-        navn: ' Svingpil',
+        navn: 'Svingpil',
         beskrivelse:
-            'Underskiltet angir at hovedskiltet gjelder etter sving i veikryss. ',
+            'Underskiltet angir at hovedskiltet gjelder etter sving i veikryss.',
         source: require('../roadSigns/Underskilt/810_V135.png'),
     },
     '812_0': {
-        navn: 'Anbefalt fart ',
+        navn: 'Anbefalt fart',
         beskrivelse:
             'Underskiltet angir den høyeste fart som den varslede fare tilsier under normale vær-, føre-, sikt- og lysforhold.',
         source: require('../roadSigns/Underskilt/812_0.png'),
     },
     '813_1': {
-        navn: 'Stigningsgrad ',
+        navn: 'Stigningsgrad',
         beskrivelse: '813.1',
         source: require('../roadSigns/Underskilt/813_1.png'),
     },
     '813_2': {
-        navn: 'Stigningsgrad ',
+        navn: 'Stigningsgrad',
         beskrivelse: '813.2',
         source: require('../roadSigns/Underskilt/813_2.png'),
     },
     '814_0': {
         navn: 'Virkelig fri vegbredde',
-        beskrivelse: ' ',
+        beskrivelse: '',
         source: require('../roadSigns/Underskilt/814_0.png'),
     },
     '816_0': {
-        navn: 'Kryssende tømmertransport ',
-        beskrivelse: ' ',
+        navn: 'Kryssende tømmertransport',
+        beskrivelse: '',
         source: require('../roadSigns/Underskilt/816_0.png'),
     },
     '817_1': {
@@ -165,73 +165,73 @@ const underSkilt = {
     '822_1': {
         navn: 'Forløp av forkjørsveg',
         beskrivelse:
-            'Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp. ',
+            'Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp.',
         source: require('../roadSigns/Underskilt/822_1.png'),
     },
     '822_2': {
         navn: 'Forløp av forkjørsveg',
         beskrivelse:
-            'Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp. ',
+            'Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp.',
         source: require('../roadSigns/Underskilt/822_2.png'),
     },
     '822_3': {
         navn: 'Forløp av forkjørsveg',
         beskrivelse:
-            'Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp. ',
+            'Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp.',
         source: require('../roadSigns/Underskilt/822_3.png'),
     },
     '822_4': {
         navn: 'Forløp av forkjørsveg',
         beskrivelse:
-            'Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp. ',
+            'Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp.',
         source: require('../roadSigns/Underskilt/822_4.png'),
     },
     '822_5': {
         navn: 'Forløp av forkjørsveg',
         beskrivelse:
-            'Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp. ',
+            'Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp.',
         source: require('../roadSigns/Underskilt/822_5.png'),
     },
     '822_6': {
         navn: 'Forløp av forkjørsveg',
         beskrivelse:
-            'Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp. ',
+            'Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp.',
         source: require('../roadSigns/Underskilt/822_6.png'),
     },
     '822_7': {
         navn: 'Forløp av forkjørsveg',
         beskrivelse:
-            'Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp. ',
+            'Underskiltet viser et skjematisk bilde av krysset, hvor tykk strek angir forkjørsvei og tynn strek angir vei hvor skiltene 202 «Vikeplikt» eller 204 «Stopp» er satt opp.',
         source: require('../roadSigns/Underskilt/822_7.png'),
     },
     '824_0': {
         navn: 'Forvarsling av stopp',
         beskrivelse:
-            'Underskiltet brukes sammen med skilt 202 «Vikeplikt» for å varsle om at skilt 204 «Stopp» er satt opp i angitt avstand. ',
+            'Underskiltet brukes sammen med skilt 202 «Vikeplikt» for å varsle om at skilt 204 «Stopp» er satt opp i angitt avstand.',
         source: require('../roadSigns/Underskilt/824_0.png'),
     },
     '826_0': {
         navn: 'Sykkeltrafikk i begge kjøreretninger',
         beskrivelse:
-            'Underskiltet viser at det er sykkeltrafikk i begge kjøreretninger på kryssende sykkelvei eller gang- og sykkelvei. ',
+            'Underskiltet viser at det er sykkeltrafikk i begge kjøreretninger på kryssende sykkelvei eller gang- og sykkelvei.',
         source: require('../roadSigns/Underskilt/826_0.png'),
     },
     '828_1': {
         navn: 'Utstrekning av stans og parkeringsregulering',
         beskrivelse:
-            'Underskiltet angir at reguleringen gjelder i pilens retning, eventuelt i den avstand som er angitt. Skiltet kan være plassert vannrett. Pilsymbolene kan også plasseres på andre underskilt som regulerer stans eller parkering. ',
+            'Underskiltet angir at reguleringen gjelder i pilens retning, eventuelt i den avstand som er angitt. Skiltet kan være plassert vannrett. Pilsymbolene kan også plasseres på andre underskilt som regulerer stans eller parkering.',
         source: require('../roadSigns/Underskilt/828_1.png'),
     },
     '828_2': {
         navn: 'Utstrekning av stans og parkeringsregulering',
         beskrivelse:
-            'Underskiltet angir at reguleringen gjelder i pilens retning, eventuelt i den avstand som er angitt. Skiltet kan være plassert vannrett. Pilsymbolene kan også plasseres på andre underskilt som regulerer stans eller parkering. ',
+            'Underskiltet angir at reguleringen gjelder i pilens retning, eventuelt i den avstand som er angitt. Skiltet kan være plassert vannrett. Pilsymbolene kan også plasseres på andre underskilt som regulerer stans eller parkering.',
         source: require('../roadSigns/Underskilt/828_2.png'),
     },
     '828_3': {
         navn: 'Utstrekning av stans og parkeringsregulering',
         beskrivelse:
-            'Underskiltet angir at reguleringen gjelder i pilens retning, eventuelt i den avstand som er angitt. Skiltet kan være plassert vannrett. Pilsymbolene kan også plasseres på andre underskilt som regulerer stans eller parkering. ',
+            'Underskiltet angir at reguleringen gjelder i pilens retning, eventuelt i den avstand som er angitt. Skiltet kan være plassert vannrett. Pilsymbolene kan også plasseres på andre underskilt som regulerer stans eller parkering.',
         source: require('../roadSigns/Underskilt/828_3.png'),
     },
     '829_0': {
@@ -240,15 +240,15 @@ const underSkilt = {
         source: require('../roadSigns/Underskilt/829_0.png'),
     },
     '831_0': {
-        navn: 'Parkeringsskive  ',
+        navn: 'Parkeringsskive ',
         beskrivelse:
-            'Underskiltet angir at parkering bare er tillatt på stedet når anordning som angir tidspunktet for når kjøretøyet er parkert, er plassert godt synlig bak frontruten i kjøretøyet. ',
+            'Underskiltet angir at parkering bare er tillatt på stedet når anordning som angir tidspunktet for når kjøretøyet er parkert, er plassert godt synlig bak frontruten i kjøretøyet.',
         source: require('../roadSigns/Underskilt/831_0.png'),
     },
     '834_0': {
-        navn: 'Kombinert regulering ',
+        navn: 'Kombinert regulering',
         beskrivelse:
-            'Underskiltet angir parkeringsregulering ved kombinasjon av tekst, tall, symbol mv. som nyttes på andre underskilt. ',
+            'Underskiltet angir parkeringsregulering ved kombinasjon av tekst, tall, symbol mv. som nyttes på andre underskilt.',
         source: require('../roadSigns/Underskilt/834_0.png'),
     },
 };

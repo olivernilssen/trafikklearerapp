@@ -28,13 +28,14 @@ const DrawerToggleItem = React.memo(({ navigation, icon }) => (
 const styles = StyleSheet.create({
     menuItem: {
         flexDirection: 'row',
-        marginBottom: 6,
-        paddingBottom: 10,
-        paddingLeft: 15,
+        padding: 10,
+        width: 50,
+        marginLeft: 12,
+        alignContent: 'center',
+        justifyContent: 'center',
     },
     menuIcon: {
-        marginTop: 10,
-        marginLeft: 10,
+        alignSelf: 'center',
     },
 });
 
