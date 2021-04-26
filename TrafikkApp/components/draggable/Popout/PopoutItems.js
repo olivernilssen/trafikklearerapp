@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Animated } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import Animated from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from '../../../styles';
 
