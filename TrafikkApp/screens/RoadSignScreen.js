@@ -12,6 +12,7 @@ import {
     BottomMenuAnimated,
     Header,
     MainView,
+    Overlay,
 } from '../components/reusableComponents/';
 import { Colors, Typography } from '../styles';
 import RoadSignModal from '../components/roadSignComponents/RoadSignModal';
@@ -101,18 +102,22 @@ const RoadSignScreen = React.memo(({ navigation }) => {
 
     return (
         <MainView>
+            <Overlay
+                showOverlay={bottomSheetHidden}
+                setShowOverlay={setBottomSheetHidden}
+            />
             <TouchableWithoutFeedback onPress={() => closeModal()}>
-                <View>
-                    <RoadSignModal
-                        closeModal={closeModal}
-                        modalVisible={modalVisible}
-                        selectedSign={signType[selectedItem]}
-                        selectedSignCode={selectedItem}
-                        handleBottomSheet={handleBottomSheet}
-                    />
-                </View>
+                {/* <View> */}
+                <RoadSignModal
+                    closeModal={closeModal}
+                    modalVisible={modalVisible}
+                    selectedSign={signType[selectedItem]}
+                    selectedSignCode={selectedItem}
+                    handleBottomSheet={handleBottomSheet}
+                />
+                {/* </View> */}
             </TouchableWithoutFeedback>
-            <View>
+            <View style={{ zIndex: 5 }}>
                 <Header navigation={navigation} style={styles.header}>
                     <View style={styles.headerContent}>
                         <Text style={styles.siteHeading}>Trafikkskilt</Text>
@@ -123,14 +128,15 @@ const RoadSignScreen = React.memo(({ navigation }) => {
                         </View>
                     </View>
                 </Header>
+
+                <FlatList
+                    data={Object.keys(signType)}
+                    extraData={signType}
+                    style={styles.imageContainer}
+                    keyExtractor={(item, index) => item + index.toString()}
+                    renderItem={renderItem}
+                    numColumns={4}></FlatList>
             </View>
-            <FlatList
-                data={Object.keys(signType)}
-                extraData={signType}
-                style={styles.imageContainer}
-                keyExtractor={(item, index) => item + index.toString()}
-                renderItem={renderItem}
-                numColumns={4}></FlatList>
             <BottomMenuAnimated
                 bottomSheetHidden={bottomSheetHidden}
                 setBottomSheetHidden={setBottomSheetHidden}

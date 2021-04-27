@@ -199,6 +199,7 @@ const styles = StyleSheet.create({
     modalView: {
         backgroundColor: Colors.modalBg,
         padding: '2.5%',
+        paddingVertical: '3%',
         alignItems: 'center',
         elevation: 10,
         borderRadius: 15,
