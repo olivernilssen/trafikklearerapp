@@ -149,12 +149,6 @@ const veivisningsSkilt = {
         beskrivelse: '',
         source: require('../roadSigns/Vegvisningsskilt/723_73.png'),
     },
-    '727_0': {
-        navn: '(712) Stedsnavnskilt',
-        beskrivelse:
-            'Skiltet viser by, tettsted, administrativ grense eller annet sted av betydning for orienteringen.',
-        source: require('../roadSigns/Vegvisningsskilt/727_0.png'),
-    },
     '729_0': {
         navn: 'Gate-/vegnavnskilt',
         beskrivelse: '',

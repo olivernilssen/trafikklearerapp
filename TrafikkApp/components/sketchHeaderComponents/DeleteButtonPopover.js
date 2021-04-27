@@ -88,8 +88,9 @@ const styles = StyleSheet.create({
     buttonSize: {
         justifyContent: 'center',
         alignItems: 'center',
-        paddingVertical: 16,
-        paddingHorizontal: 16,
+        // paddingVertical: 16,
+        // paddingHorizontal: 16,
+        marginHorizontal: '2%',
         ...Buttons.sketchHeaderButton,
     },
     buttonActive: {
