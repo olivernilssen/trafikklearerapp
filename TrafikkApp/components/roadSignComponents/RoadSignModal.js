@@ -77,7 +77,7 @@ const RoadSignModal = React.memo((props) => {
                             alignSelf: 'center',
                             padding: 10,
                         }}
-                        borderColor={Colors.dividerSecondary}></Divider>
+                        borderColor={Colors.dividerPrimary}></Divider>
                     {selectedSign.beskrivelse === '' ? (
                         <Text style={styles.textStyle}>Ingen beskrivelse</Text>
                     ) : (

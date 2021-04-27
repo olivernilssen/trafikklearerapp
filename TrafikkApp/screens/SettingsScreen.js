@@ -20,17 +20,18 @@ const SettingsScreen = React.memo(({ navigation }) => {
                 showOverlay={!pickerVisible}
                 setShowOverlay={setPickerVisible}
             />
-            <Header
-                name="Innstillinger"
-                navigation={navigation}
-                style={styles.header}
-            />
-
             <View style={styles.main}>
-                <SettingsView
-                    pickerVisible={pickerVisible}
-                    setPickerVisible={setPickerVisible}
+                <Header
+                    name="Innstillinger"
+                    navigation={navigation}
+                    style={styles.header}
                 />
+                <View style={styles.content}>
+                    <SettingsView
+                        pickerVisible={pickerVisible}
+                        setPickerVisible={setPickerVisible}
+                    />
+                </View>
             </View>
         </MainView>
     );
@@ -40,9 +41,14 @@ const styles = StyleSheet.create({
     header: {
         borderBottomWidth: 1,
         borderBottomColor: Colors.dividerPrimary,
-        // elevation: 10,
+        elevation: 10,
     },
     main: {
+        height: '100%',
+        width: '100%',
+        zIndex: 2,
+    },
+    content: {
         flex: 1,
         width: '100%',
         justifyContent: 'flex-start',
