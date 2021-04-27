@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
     FlatList,
     StyleSheet,
@@ -39,6 +39,9 @@ const RoadSignScreen = React.memo(({ navigation }) => {
     const [selectedSign, setSelectedSign] = useState(signObjectKeys[0]);
     const [activeSignTypeName, setActiveSignTypeName] = useState('Fareskilt');
 
+    const ITEM_HEIGHT = 200;
+    const flatListRef = useRef();
+
     /**
      * Handles the state of the modal, and sets the selectedSign state to the sign that has been presse.
      *@memberof RoadSignScreen
@@ -73,7 +76,6 @@ const RoadSignScreen = React.memo(({ navigation }) => {
      * @param {boolean} value if true the menu will be hidden
      */
     const handleBottomSheet = (value) => {
-        console.log(value);
         setBottomSheetHidden(value);
     };
 
@@ -85,6 +87,12 @@ const RoadSignScreen = React.memo(({ navigation }) => {
     const handleHeaderName = (headerName) => {
         setActiveSignTypeName(headerName);
     };
+
+    const scrollToTop = () => {
+        flatListRef.current.scrollToOffset({ animated: false, offset: 0 });
+    };
+
+    const keyExtractor = (item, index) => item + index.toString();
 
     /**
      * Used as a template for Flattlist, every item in the data it receives is passed on to this method
@@ -110,13 +118,19 @@ const RoadSignScreen = React.memo(({ navigation }) => {
                         }}>
                         <Image
                             style={{ width: '100%', height: '100%' }}
-                            source={signType[item].source}
+                            source={signType[item].thumbnail}
                             resizeMode={'contain'}></Image>
                     </View>
                 </TouchableOpacity>
             </View>
         );
     };
+
+    const getItemLayout = (data, index) => ({
+        length: Dimensions.get('screen').height / 7.5,
+        offset: (Dimensions.get('screen').height / 7.5) * index,
+        index,
+    });
 
     return (
         <MainView>
@@ -144,11 +158,15 @@ const RoadSignScreen = React.memo(({ navigation }) => {
                 </Header>
             </View>
             <FlatList
+                ref={flatListRef}
                 data={Object.keys(signType)}
                 extraData={signType}
                 style={styles.imageContainer}
-                keyExtractor={(item, index) => item + index.toString()}
+                keyExtractor={keyExtractor}
+                // maxToRenderPerBatch={10}
+                initialNumToRender={24}
                 renderItem={renderItem}
+                getItemLayout={getItemLayout}
                 numColumns={4}></FlatList>
             <BottomMenuAnimated
                 bottomSheetHidden={bottomSheetHidden}
@@ -158,6 +176,7 @@ const RoadSignScreen = React.memo(({ navigation }) => {
                     handleSignType={handleSignType}
                     setBottomSheetHidden={setBottomSheetHidden}
                     handleHeaderName={handleHeaderName}
+                    scrollToTop={scrollToTop}
                 />
             </BottomMenuAnimated>
         </MainView>

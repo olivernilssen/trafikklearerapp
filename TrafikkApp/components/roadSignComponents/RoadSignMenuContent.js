@@ -60,7 +60,12 @@ const signTypeArray = [
 const RoadSignMenuContent = (props) => {
     const [activeTypeID, setActiveTypeID] = useState(0);
 
-    const { handleSignType, setBottomSheetHidden, handleHeaderName } = props;
+    const {
+        handleSignType,
+        setBottomSheetHidden,
+        handleHeaderName,
+        scrollToTop,
+    } = props;
 
     /**
      * Handles the state for the active button
@@ -92,6 +97,7 @@ const RoadSignMenuContent = (props) => {
                 }}>
                 <TouchableOpacity
                     onPress={() => {
+                        scrollToTop();
                         handleBottomMenuPress(value.typeObject);
                         handleActiveButton(value.buttonID);
                         handleHeaderName(value.typeName);
