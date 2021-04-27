@@ -64,6 +64,7 @@ export default {
     startScreenLinkDrawing: blueGreen,
     startScreenLinkTheory: blue,
     startScreenLinkLink: charcoal,
+    footer: darkerGray,
 
     // Sketch screens
     sketchBackground: evenDarkerGray,
@@ -85,7 +86,7 @@ export default {
 
     //imagePicker
     selectedBorder: blue,
-    modalBg: darkGray,
+    modalBg: evenDarkerGray,
     modalButtonSave: blueGreen,
     modalButtonClose: red,
     modalButtonDeselect: blue,

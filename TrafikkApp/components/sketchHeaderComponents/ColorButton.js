@@ -69,10 +69,10 @@ const ColorButton = React.memo((props) => {
 
 const styles = StyleSheet.create({
     buttonSpacing: {
-        padding: 8,
+        padding: '1.4%',
     },
     iconActiveCircle: {
-        padding: 8,
+        padding: '1.4%',
         opacity: 0.8,
         ...Buttons.round,
     },
@@ -83,11 +83,12 @@ const styles = StyleSheet.create({
     },
     iconColorActive: {
         color: Colors.textPrimary,
-        fontSize: 20,
+        // fontSize: 20,
+        ...Typography.body,
     },
     iconColorInactive: {
         color: '#00000000',
-        padding: 8,
+        padding: '1.4%',
         ...Buttons.round,
         ...Typography.body,
     },

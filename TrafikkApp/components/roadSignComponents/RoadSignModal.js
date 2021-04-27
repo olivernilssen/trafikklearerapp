@@ -9,7 +9,7 @@ import {
     Animated,
     Modal,
 } from 'react-native';
-import { Colors } from '../../styles';
+import { Colors, Typography } from '../../styles';
 import { Divider } from '../reusableComponents';
 
 const RoadSignModal = React.memo((props) => {
@@ -150,10 +150,10 @@ const styles = StyleSheet.create({
     modal: {
         justifyContent: 'center',
         alignContent: 'center',
-        flex: 1,
+        // flex: 1,
     },
     transparentBackground: {
-        flex: 1,
+        // flex: 1,
         width: '100%',
         height: '100%',
         justifyContent: 'center',
@@ -163,16 +163,17 @@ const styles = StyleSheet.create({
     },
     textAndImage: {
         padding: '4%',
-        width: 600,
-        borderWidth: 5,
-        borderColor: 'black',
+        width: '85%',
+        borderWidth: 1,
+        borderRadius: 15,
+        borderColor: Colors.dividerPrimary,
         justifyContent: 'flex-start',
         backgroundColor: Colors.sketchBackground,
     },
     imageContainer: {
         width: '100%',
         maxHeight: 500,
-        resizeMode: 'contain',
+        // resizeMode: 'contain',
     },
     image: {
         width: '100%',
@@ -188,7 +189,7 @@ const styles = StyleSheet.create({
         width: '100%',
         color: Colors.textPrimary,
         textAlign: 'center',
-        fontSize: 30,
+        ...Typography.section,
     },
 });
 
