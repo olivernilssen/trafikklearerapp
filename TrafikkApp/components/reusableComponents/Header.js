@@ -29,8 +29,9 @@ const styles = StyleSheet.create({
         height: RUtils.isSmallScreen() ? 60 : 80,
         flexDirection: 'row',
         alignItems: 'center',
-        paddingHorizontal: 20,
+        paddingHorizontal: '3%',
         backgroundColor: Colors.headerBg,
+        // elevation: 10,
     },
     headerText: {
         flex: 1,

@@ -106,8 +106,9 @@ const RoadSignMenuContent = (props) => {
     return (
         <View
             style={{
-                width: '100%',
-                height: 200,
+                flex: 1,
+                // width: '100%',
+                // height: 200,
                 flexDirection: 'row',
                 flexWrap: 'wrap',
                 justifyContent: 'space-around',
@@ -125,15 +126,17 @@ const styles = StyleSheet.create({
     },
     inActiveText: {
         color: Colors.secSlideTextInactive,
+        opacity: 0.7,
     },
     textStyle: {
         textAlign: 'center',
-        fontSize: 20,
+        // fontSize: 20,
+        padding: 10,
         ...Typography.button,
     },
     button: {
         borderRadius: 10,
-        height: '120%',
+        height: '100%',
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
@@ -143,9 +146,9 @@ const styles = StyleSheet.create({
         elevation: 8,
     },
     buttonInActive: {
-        backgroundColor: Colors.slideInactiveBg,
+        backgroundColor: Colors.bottomMenyButtons,
         borderColor: Colors.bottomMenyButtons,
-        borderWidth: 3,
+        borderWidth: 2,
     },
 });
 

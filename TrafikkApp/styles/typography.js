@@ -12,11 +12,14 @@ export const button = {
     fontFamily: '',
 };
 
+export const logoHeading = {
+    fontSize: ThemeVariables.FONT_SIZE_HEADING + 3,
+    fontFamily: 'Ubuntu-Regular',
+};
+
 export const heading = {
     fontSize: ThemeVariables.FONT_SIZE_HEADING,
     fontFamily: 'Ubuntu-Regular',
-    // fontWeight: 'bold',
-    // fontFamily: 'monospace',
 };
 
 export const section = {

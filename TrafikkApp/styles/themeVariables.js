@@ -5,9 +5,9 @@ const { height, width } = Dimensions.get('window');
 
 export default {
     // FONTS
-    FONT_SIZE_BODY: RUtils.isSmallScreen() ? 16 : 18,
+    FONT_SIZE_BODY: RUtils.isSmallScreen() ? 15 : 18,
     FONT_SIZE_SECONDARY: 16,
-    FONT_SIZE_HEADING: RUtils.isSmallScreen() ? 25 : 30, // RUtils.isSmallScreen() ? 26 : 30,
+    FONT_SIZE_HEADING: RUtils.isSmallScreen() ? 23 : 30, // RUtils.isSmallScreen() ? 26 : 30,
     FONT_SIZE_SECTION: RUtils.isSmallScreen() ? 18 : 22, // RUtils.isSmallScreen() ? 18 : 22,
 
     // ICONS

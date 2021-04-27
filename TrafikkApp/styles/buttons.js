@@ -49,13 +49,13 @@ export const largeWidthRounded = {
 };
 
 export const sketchHeaderButton = {
-    height: 62,
-    width: 62,
+    height: RUtils.isSmallScreen() ? 45 : 62,
+    width: RUtils.isSmallScreen() ? 45 : 62,
     ...round,
 };
 
 export const sketchHeaderButtonSmall = {
-    height: 32,
-    width: 32,
+    height: RUtils.isSmallScreen() ? 26 : 32,
+    width: RUtils.isSmallScreen() ? 26 : 32,
     ...round,
 };

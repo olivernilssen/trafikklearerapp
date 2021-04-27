@@ -14,6 +14,7 @@ import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
 import { Buttons, Colors, Icons, Typography } from '../../styles/index';
 import draggables from './draggableObjectPaths';
+import { RUtils } from 'react-native-responsive-component';
 
 /**
  * The view modal picker. This shows so the user can select
@@ -100,10 +101,11 @@ const OptionPicker = React.memo((props) => {
                             <View style={styles.modalView}>
                                 <View style={styles.modalTopView}>
                                     <Text style={styles.modalText}>
-                                        Velg opp til 20 elementer som kan brukes
+                                        Velg opptil 20 elementer som kan brukes
                                         på tegneskjermen
                                     </Text>
                                     <TouchableOpacity
+                                        style={styles.closeIcon}
                                         onPress={() => closeModalWithoutSave()}>
                                         <Icon
                                             name={'times'}
@@ -117,7 +119,7 @@ const OptionPicker = React.memo((props) => {
                                         <Text style={styles.warningText}>
                                             Du kan ikke velge mer enn 20 ikoner
                                             samtidig. Du kan trykke på valgte
-                                            ikoner for å fjerne de om du vil.
+                                            ikoner for å fjerne de.
                                         </Text>
                                     </View>
                                 )}
@@ -190,16 +192,16 @@ const styles = StyleSheet.create({
         // flexDirection: 'column',
         // height: '100%',
         // width: '100%',
-        padding: 30,
+        padding: '4%',
         // backgroundColor: 'red',
         justifyContent: 'space-evenly',
     },
     modalView: {
         backgroundColor: Colors.modalBg,
-        padding: 25,
+        padding: '2.5%',
         alignItems: 'center',
         elevation: 10,
-        borderRadius: 20,
+        borderRadius: 15,
     },
     modalTopView: {
         flexDirection: 'row',
@@ -208,16 +210,19 @@ const styles = StyleSheet.create({
     },
     modalText: {
         flex: 1,
-        marginBottom: 15,
-        fontWeight: 'bold',
+        marginBottom: '3%',
+        // fontWeight: 'bold',
         textAlign: 'center',
         flexWrap: 'wrap',
         color: Colors.modalText,
         ...Typography.section,
     },
+    closeIcon: {
+        paddingHorizontal: '1%',
+    },
     warningContainer: {
         width: '90%',
-        padding: 20,
+        padding: '2%',
         backgroundColor: Colors.warning,
         textAlign: 'center',
         marginBottom: 15,
@@ -234,20 +239,20 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: 'flex-start',
-        marginBottom: 25,
+        marginBottom: '2%',
         borderRadius: 20,
     },
     imageButton: {
-        height: 75,
-        width: 75,
+        height: RUtils.isSmallScreen() ? 50 : 75,
+        width: RUtils.isSmallScreen() ? 50 : 75,
         margin: 5,
-        padding: 10,
+        padding: '1.5%',
     },
     selectedImageButton: {
-        height: 75,
-        width: 75,
+        height: RUtils.isSmallScreen() ? 50 : 75,
+        width: RUtils.isSmallScreen() ? 50 : 75,
         margin: 5,
-        padding: 10,
+        padding: '1.5%',
         borderColor: Colors.selectedBorder,
         borderWidth: 5,
         borderRadius: 5,
@@ -265,7 +270,7 @@ const styles = StyleSheet.create({
     button: {
         padding: 10,
         elevation: 2,
-        width: '30%',
+        width: RUtils.isSmallScreen() ? '35%' : '30%',
         ...Buttons.rounded,
     },
     buttonText: {

@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     buttonSize: {
         justifyContent: 'center',
         alignItems: 'center',
+        marginHorizontal: '0.5%',
         ...Buttons.sketchHeaderButton,
     },
     buttonActive: {

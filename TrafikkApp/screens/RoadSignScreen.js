@@ -193,12 +193,12 @@ const styles = StyleSheet.create({
         textAlignVertical: 'center',
         color: Colors.icons,
         opacity: 0.7,
-        ...Typography.heading,
+        ...Typography.section,
     },
-    subHeadingContainer: {
-        // flex: 1,
-        alignItems: 'flex-end',
-    },
+    // subHeadingContainer: {
+    //     // flex: 1,
+    //     alignItems: 'flex-end',
+    // },
 });
 
 export default RoadSignScreen;

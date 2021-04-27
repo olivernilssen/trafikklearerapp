@@ -11,6 +11,7 @@ import AppContext from '../../AppContext';
 import { Buttons, Colors, Typography } from '../../styles/index';
 import { ButtonGroup, Divider } from '../reusableComponents/';
 import OptionPicker from './OptionPicker';
+import { RUtils } from 'react-native-responsive-component';
 
 /**
  * The view for the settings screen. It takes in data from
@@ -20,6 +21,10 @@ import OptionPicker from './OptionPicker';
  */
 const SettingsView = React.memo((props) => {
     const { pickerVisible, setPickerVisible } = props;
+
+    // Width of buttonGroups
+    const buttonGroupWidth = RUtils.isSmallScreen() ? 170 : 300;
+    const buttonGroupHeight = RUtils.isSmallScreen() ? 40 : 45;
 
     const myContext = useContext(AppContext);
     // const [pickerVisible, setPickerVisible] = useState(false);
@@ -85,7 +90,8 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.THEME_KEY
                             )
                         }
-                        groupWidth={300}
+                        groupWidth={buttonGroupWidth}
+                        height={buttonGroupHeight}
                         highlightBackgroundColor={Colors.slideActiveBg}
                         highlightTextColor={Colors.slideTextActive}
                         inactiveBackgroundColor={Colors.slideInactiveBg}
@@ -109,7 +115,8 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.ERASER_SIZE_KEY
                             )
                         }
-                        groupWidth={300}
+                        groupWidth={buttonGroupWidth}
+                        height={buttonGroupHeight}
                         highlightBackgroundColor={Colors.slideActiveBg}
                         highlightTextColor={Colors.slideTextActive}
                         inactiveBackgroundColor={Colors.slideInactiveBg}
@@ -135,7 +142,8 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.DELETE_KEY
                             )
                         }
-                        groupWidth={300}
+                        groupWidth={buttonGroupWidth}
+                        height={buttonGroupHeight}
                         highlightBackgroundColor={Colors.slideActiveBg}
                         highlightTextColor={Colors.slideTextActive}
                         inactiveBackgroundColor={Colors.slideInactiveBg}
@@ -159,7 +167,8 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.PEN_COLOR_KEY
                             )
                         }
-                        groupWidth={300}
+                        groupWidth={buttonGroupWidth}
+                        height={buttonGroupHeight}
                         highlightBackgroundColor={Colors.slideActiveBg}
                         highlightTextColor={Colors.slideTextActive}
                         inactiveBackgroundColor={Colors.slideInactiveBg}
@@ -186,7 +195,7 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.DRAGGABLE_COLOR_KEY
                             )
                         }
-                        groupWidth={300}
+                        groupWidth={buttonGroupWidth}
                         highlightBackgroundColor={Colors.slideActiveBg}
                         highlightTextColor={Colors.slideTextActive}
                         inactiveBackgroundColor={Colors.slideInactiveBg}
@@ -204,6 +213,7 @@ const SettingsView = React.memo((props) => {
                 <View style={styles.rightColumn}>
                     <TouchableOpacity
                         style={styles.modalButton}
+                        activeOpacity={0.6}
                         onPress={() => setPickerVisible(!pickerVisible)}>
                         <Text style={styles.buttonText}>Åpne velger</Text>
                     </TouchableOpacity>
@@ -230,6 +240,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         flex: 1,
         textAlignVertical: 'center',
+        paddingRight: 10,
         ...Typography.body,
     },
     rightColumn: {
@@ -239,11 +250,12 @@ const styles = StyleSheet.create({
     },
     modalButton: {
         backgroundColor: Colors.modalButtonSave,
-        padding: 15,
+        padding: '6%',
         ...Buttons.rounded,
     },
     buttonText: {
         color: Colors.textSecondary,
+        textAlign: 'center',
         ...Typography.button,
     },
 });
