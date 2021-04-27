@@ -100,33 +100,30 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.drawerBg,
-        paddingTop: 5,
-        // paddingHorizontal: 15,
+        paddingBottom: 10,
+    },
+    firstDivider: {
+        paddingBottom: 20,
     },
     sectionView: {
         flex: 1,
         flexDirection: 'row',
         paddingHorizontal: 15,
-        paddingVertical: 2,
+        paddingTop: 5,
+        paddingBottom: 2,
         alignItems: 'center',
         alignContent: 'center',
     },
     sectionText: {
-        // flex: 1,
         color: Colors.eraserIconActive,
-        // fontSize: 20,
         ...Typography.section,
     },
     divider: {
         alignContent: 'center',
         marginLeft: 10,
-        width: '100%',
         flex: 1,
         height: 1,
-        marginBottom: 10,
-    },
-    firstDivider: {
-        marginBottom: 20,
+        alignSelf: 'center',
     },
 });
 

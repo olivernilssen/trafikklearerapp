@@ -1,4 +1,5 @@
 import ThemeVariables from './themeVariables';
+import { RUtils } from 'react-native-responsive-component';
 
 export const small = {
     width: ThemeVariables.BUTTON_WIDTH_SMALL,
@@ -9,18 +10,9 @@ export const medium = {
     width: ThemeVariables.BUTTON_WIDTH_MEDIUM,
 };
 
-export const large = {
-    width: ThemeVariables.BUTTON_WIDTH_LARGE,
-    height: ThemeVariables.BUTTON_HEIGHT_LARGE,
-};
-
 export const largeWidt = {
     height: ThemeVariables.BUTTON_HEIGHT_EXTRA_LARGE,
     width: ThemeVariables.BUTTON_WIDTH_LARGE,
-};
-
-export const extraLargeWidth = {
-    width: ThemeVariables.BUTTON_WIDTH_EXTRA_LARGE,
 };
 
 export const rounded = {
@@ -31,6 +23,16 @@ export const round = {
     borderRadius: 50,
 };
 
+export const startScreen = {
+    width: RUtils.isSmallScreen()
+        ? ThemeVariables.BUTTON_WIDTH_EXTRA_LARGE
+        : ThemeVariables.BUTTON_WIDTH_LARGE,
+    height: RUtils.isSmallScreen()
+        ? ThemeVariables.BUTTON_HEIGHT_MEDIUM
+        : ThemeVariables.BUTTON_HEIGHT_LARGE,
+    ...rounded,
+};
+
 export const smallRounded = {
     ...small,
     ...rounded,
@@ -38,11 +40,6 @@ export const smallRounded = {
 
 export const mediumRounded = {
     ...medium,
-    ...rounded,
-};
-
-export const largeRounded = {
-    ...large,
     ...rounded,
 };
 

@@ -64,6 +64,7 @@ export default {
     startScreenLinkDrawing: blueGreen,
     startScreenLinkTheory: blue,
     startScreenLinkLink: charcoal,
+    footer: darkerGray,
 
     // Sketch screens
     sketchBackground: evenDarkerGray,

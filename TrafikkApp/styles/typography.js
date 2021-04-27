@@ -1,4 +1,5 @@
 import ThemeVariables from './themeVariables';
+import { RUtils } from 'react-native-responsive-component';
 
 export const body = {
     fontSize: ThemeVariables.FONT_SIZE_BODY,
@@ -26,4 +27,10 @@ export const section = {
 export const label = {
     fontSize: ThemeVariables.FONT_SIZE_BODY,
     fontFamily: '',
+};
+
+export const startScreenLink = {
+    fontSize: RUtils.isSmallScreen()
+        ? ThemeVariables.FONT_SIZE_BODY
+        : ThemeVariables.FONT_SIZE_SECTION,
 };

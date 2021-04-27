@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
         textAlignVertical: 'center',
         color: Colors.logo,
         ...Typography.heading,
-        fontSize: 34,
     },
 });
 
