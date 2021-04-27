@@ -41,6 +41,7 @@ const markeringsSkilt = {
         navn: 'Hindermarkering',
         beskrivelse:
             'Skråstripene peker ned mot den side markeringen kan passeres på',
+        thumbnail: require('../roadSigns/Markeringsskilt/thumbnails/906_0VH.png'),
         source: require('../roadSigns/Markeringsskilt/906_0VH.png'),
     },
     '908_0': {
