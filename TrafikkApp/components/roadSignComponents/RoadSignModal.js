@@ -8,10 +8,19 @@ import {
     TouchableWithoutFeedback,
     Animated,
     Modal,
+    TouchableOpacity,
 } from 'react-native';
 import { Colors, Typography } from '../../styles';
 import { Divider } from '../reusableComponents';
 
+/**
+ * @namespace RoadSignModal
+ * @category RoadSignComponents
+ * @prop {method} closeModal Method used for closing the modal
+ * @prop {boolean} modalVisible State used for toggeling modal visability
+ * @prop {object} selectedSign Contains name, description and image source of the chosen sign
+ * @prop {string} selectedSignCode The sign code of the selected sign (example: 100_1)
+ */
 const RoadSignModal = React.memo((props) => {
     const { closeModal, modalVisible, selectedSign, selectedSignCode } = props;
 
@@ -61,6 +70,10 @@ const RoadSignModal = React.memo((props) => {
         }
     });
 
+    /**
+     * @memberof RoadSignModal
+     * @returns the title and description of the sign
+     */
     const textDescription = () => {
         if (showDescript) {
             return (
@@ -79,7 +92,7 @@ const RoadSignModal = React.memo((props) => {
                         }}
                         borderColor={Colors.dividerPrimary}></Divider>
                     {selectedSign.beskrivelse === '' ? (
-                        <Text style={styles.textStyle}>Ingen beskrivelse</Text>
+                        <Text style={styles.textStyle}></Text>
                     ) : (
                         <ScrollView>
                             <Text style={styles.textStyle}>

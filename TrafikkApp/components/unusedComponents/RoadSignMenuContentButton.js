@@ -1,16 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-    FlatList,
-    StyleSheet,
-    View,
-    Text,
-    Image,
-    ScrollView,
-    TouchableOpacity,
-    SectionList,
-    Dimensions,
-    Modal,
-} from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { Colors } from '../../styles';
 
 const RoadSignMenuContentButton = (props) => {

@@ -7,11 +7,7 @@ import {
     Dimensions,
 } from 'react-native';
 import { Colors, Typography } from '../../styles';
-import RoadSignMenuContentButton from './RoadSignMenuContentButton';
-import ButtonGroup from '../reusableComponents/ButtonGroup';
-// import { ButtonGroup } from '../reusableComponents';
-// import curriculumData from './curriculumData';
-// import { Colors, Typography } from '../../styles';
+
 import {
     fareSkilt,
     forbudsSkilt,
@@ -24,6 +20,7 @@ import {
     vikepliktsSkilt,
 } from '../../assets/sign_descriptions/index';
 
+// may very well be the ugliest array in existence...
 const signTypeArray = [
     { typeName: 'Fareskilt', typeObject: fareSkilt, buttonID: 0 },
     { typeName: 'Forbudsskilt', typeObject: forbudsSkilt, buttonID: 1 },
@@ -52,16 +49,37 @@ const signTypeArray = [
     },
 ];
 
+/**
+ * @namespace RoadSignMenuContent
+ * @category RoadSignComponents
+ * @prop {function} handleSignType Handles the change from one signType to another
+ * @prop {function} setBottomSheetHidden Sets the state of bottomSheetHidden
+ * @prop {function} handleHeaderName Handles the headername when signType changes
+ * @returns Buttons for each signType
+ */
 const RoadSignMenuContent = (props) => {
+    const [activeTypeID, setActiveTypeID] = useState(0);
+
     const {
         handleSignType,
         setBottomSheetHidden,
-        setActiveTypeID,
-        activeTypeID,
-        handleActiveButton,
         handleHeaderName,
+        scrollToTop,
     } = props;
 
+    /**
+     * Handles the state for the active button
+     * @memberof RoadSignMenuContent
+     * @param {number} value
+     */
+    const handleActiveButton = (value) => {
+        setActiveTypeID(value);
+    };
+
+    /**
+     * @memberof RoadSignMenuContent
+     * @param {object} value The object of the chosen signType, contains name, description and image source
+     */
     const handleBottomMenuPress = (value) => {
         handleSignType(value);
         setBottomSheetHidden(true);
@@ -79,6 +97,7 @@ const RoadSignMenuContent = (props) => {
                 }}>
                 <TouchableOpacity
                     onPress={() => {
+                        scrollToTop();
                         handleBottomMenuPress(value.typeObject);
                         handleActiveButton(value.buttonID);
                         handleHeaderName(value.typeName);
