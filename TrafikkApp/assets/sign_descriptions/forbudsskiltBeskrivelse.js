@@ -233,6 +233,12 @@ const forbudsSkilt = {
         thumbnail: require('../roadSigns/Forbudsskilt/thumbnails/362_90.png'),
         source: require('../roadSigns/Forbudsskilt/362_90.png'),
     },
+    '362_100': {
+        navn: 'Fartsgrense',
+        beskrivelse: '',
+        thumbnail: require('../roadSigns/Forbudsskilt/thumbnails/362_100.png'),
+        source: require('../roadSigns/Forbudsskilt/362_100.png'),
+    },
     '364_40': {
         navn: 'Slutt på særskilt fartsgrense',
         beskrivelse: '',

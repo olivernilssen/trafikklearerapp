@@ -57,6 +57,7 @@ const RoadSignModal = React.memo((props) => {
     }, [imgHeight, descriptionHeight, showDescript]);
 
     const setLayout = useCallback((layout, type) => {
+        console.log(layout);
         const { height } = layout;
         if (type == 'image') {
             if (Math.floor(height) !== imgHeight) {

@@ -86,7 +86,7 @@ export default {
 
     //imagePicker
     selectedBorder: blue,
-    modalBg: evenDarkerGray,
+    modalBg: darkGray,
     modalButtonSave: blueGreen,
     modalButtonClose: red,
     modalButtonDeselect: blue,
