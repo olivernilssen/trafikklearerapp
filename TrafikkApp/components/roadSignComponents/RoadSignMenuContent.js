@@ -22,16 +22,8 @@ import {
 
 // may very well be the ugliest array in existence...
 const signTypeArray = [
-    {
-        typeName: 'Fareskilt',
-        typeObject: fareSkilt,
-        buttonID: 0,
-    },
-    {
-        typeName: 'Forbudsskilt',
-        typeObject: forbudsSkilt,
-        buttonID: 1,
-    },
+    { typeName: 'Fareskilt', typeObject: fareSkilt, buttonID: 0 },
+    { typeName: 'Forbudsskilt', typeObject: forbudsSkilt, buttonID: 1 },
     {
         typeName: 'Markeringsskilt',
         typeObject: markeringsSkilt,
@@ -42,21 +34,9 @@ const signTypeArray = [
         typeObject: opplysningsSkilt,
         buttonID: 3,
     },
-    {
-        typeName: 'Påbudsskilt',
-        typeObject: påbudsSkilt,
-        buttonID: 4,
-    },
-    {
-        typeName: 'Serviceskilt',
-        typeObject: serviceSkilt,
-        buttonID: 5,
-    },
-    {
-        typeName: 'Underskilt',
-        typeObject: underSkilt,
-        buttonID: 6,
-    },
+    { typeName: 'Påbudsskilt', typeObject: påbudsSkilt, buttonID: 4 },
+    { typeName: 'Serviceskilt', typeObject: serviceSkilt, buttonID: 5 },
+    { typeName: 'Underskilt', typeObject: underSkilt, buttonID: 6 },
     {
         typeName: 'Veivisningsskilt',
         typeObject: veivisningsSkilt,
@@ -80,12 +60,7 @@ const signTypeArray = [
 const RoadSignMenuContent = (props) => {
     const [activeTypeID, setActiveTypeID] = useState(0);
 
-    const {
-        handleSignType,
-        setBottomSheetHidden,
-        handleHeaderName,
-        scrollToTop,
-    } = props;
+    const { handleSignType, setBottomSheetHidden, handleHeaderName } = props;
 
     /**
      * Handles the state for the active button
@@ -110,15 +85,13 @@ const RoadSignMenuContent = (props) => {
             <View
                 key={index}
                 style={{
-                    width: '32%',
+                    width: '30%',
                     height: '30%',
                     alignItems: 'center',
-                    // paddingVertical: 10,
-                    paddingTop: '1%',
+                    paddingVertical: 10,
                 }}>
                 <TouchableOpacity
                     onPress={() => {
-                        scrollToTop();
                         handleBottomMenuPress(value.typeObject);
                         handleActiveButton(value.buttonID);
                         handleHeaderName(value.typeName);
@@ -146,13 +119,12 @@ const RoadSignMenuContent = (props) => {
     return (
         <View
             style={{
-                flex: 1,
-                // width: '100%',
-                // height: 200,
+                width: '100%',
+                height: 200,
                 flexDirection: 'row',
                 flexWrap: 'wrap',
                 justifyContent: 'space-around',
-                // paddingTop: '2%',
+                padding: 10,
             }}>
             {SignTypeButton}
         </View>
@@ -166,17 +138,15 @@ const styles = StyleSheet.create({
     },
     inActiveText: {
         color: Colors.secSlideTextInactive,
-        opacity: 0.7,
     },
     textStyle: {
         textAlign: 'center',
-        // fontSize: 20,
-        padding: '7%',
+        fontSize: 20,
         ...Typography.button,
     },
     button: {
         borderRadius: 10,
-        height: '100%',
+        height: '120%',
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
@@ -186,9 +156,9 @@ const styles = StyleSheet.create({
         elevation: 8,
     },
     buttonInActive: {
-        backgroundColor: Colors.bottomMenyButtons,
+        backgroundColor: Colors.slideInactiveBg,
         borderColor: Colors.bottomMenyButtons,
-        borderWidth: 2,
+        borderWidth: 3,
     },
 });
 

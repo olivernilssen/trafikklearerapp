@@ -1,5 +1,4 @@
 import ThemeVariables from './themeVariables';
-import { RUtils } from 'react-native-responsive-component';
 
 export const small = {
     width: ThemeVariables.BUTTON_WIDTH_SMALL,
@@ -10,9 +9,18 @@ export const medium = {
     width: ThemeVariables.BUTTON_WIDTH_MEDIUM,
 };
 
+export const large = {
+    width: ThemeVariables.BUTTON_WIDTH_LARGE,
+    height: ThemeVariables.BUTTON_HEIGHT_LARGE,
+};
+
 export const largeWidt = {
     height: ThemeVariables.BUTTON_HEIGHT_EXTRA_LARGE,
     width: ThemeVariables.BUTTON_WIDTH_LARGE,
+};
+
+export const extraLargeWidth = {
+    width: ThemeVariables.BUTTON_WIDTH_EXTRA_LARGE,
 };
 
 export const rounded = {
@@ -21,16 +29,6 @@ export const rounded = {
 
 export const round = {
     borderRadius: 50,
-};
-
-export const startScreen = {
-    width: RUtils.isSmallScreen()
-        ? ThemeVariables.BUTTON_WIDTH_EXTRA_LARGE
-        : ThemeVariables.BUTTON_WIDTH_LARGE,
-    height: RUtils.isSmallScreen()
-        ? ThemeVariables.BUTTON_HEIGHT_MEDIUM
-        : ThemeVariables.BUTTON_HEIGHT_LARGE,
-    ...rounded,
 };
 
 export const smallRounded = {
@@ -43,19 +41,24 @@ export const mediumRounded = {
     ...rounded,
 };
 
+export const largeRounded = {
+    ...large,
+    ...rounded,
+};
+
 export const largeWidthRounded = {
     ...largeWidt,
     ...rounded,
 };
 
 export const sketchHeaderButton = {
-    height: RUtils.isSmallScreen() ? 45 : 62,
-    width: RUtils.isSmallScreen() ? 45 : 62,
+    height: 62,
+    width: 62,
     ...round,
 };
 
 export const sketchHeaderButtonSmall = {
-    height: RUtils.isSmallScreen() ? 26 : 32,
-    width: RUtils.isSmallScreen() ? 26 : 32,
+    height: 32,
+    width: 32,
     ...round,
 };

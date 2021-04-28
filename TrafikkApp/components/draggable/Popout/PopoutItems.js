@@ -1,9 +1,7 @@
 import React, { useCallback } from 'react';
-import { View, StyleSheet, Animated } from 'react-native';
-import {
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-} from 'react-native-gesture-handler';
+import { View, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import Animated from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from '../../../styles';
 
@@ -78,14 +76,14 @@ const PopoutItems = React.memo((props) => {
         const isExitButton = color == 'exit';
         const isRemoveButton = color == 'delete';
         color = isExitButton
-            ? '#DDDDDD' || '#dddddd'
+            ? '#DDDDDD'
             : isRemoveButton
             ? Colors.deleteButtonActive
             : color;
 
         const coords = calculateXY(i);
         return (
-            <Animated.View
+            <View
                 key={color + i}
                 style={[
                     styles.button,
@@ -94,9 +92,10 @@ const PopoutItems = React.memo((props) => {
                         right: coords.x - buttonSize / 2,
                         height: buttonSize,
                         width: buttonSize,
+                        padding: 5,
                     },
                 ]}>
-                <TouchableWithoutFeedback
+                <TouchableOpacity
                     color={color}
                     onPressOut={() =>
                         onPressOption(color, isRemoveButton, isExitButton)
@@ -128,8 +127,8 @@ const PopoutItems = React.memo((props) => {
                             />
                         )}
                     </Animated.View>
-                </TouchableWithoutFeedback>
-            </Animated.View>
+                </TouchableOpacity>
+            </View>
         );
     });
 });
@@ -140,8 +139,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         elevation: 10,
         alignItems: 'center',
-        padding: 5,
-        zIndex: 999,
     },
     circleInTouchable: {
         justifyContent: 'center',

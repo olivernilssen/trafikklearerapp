@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Buttons, Icons, Colors, Typography } from '../../styles';
-import { RUtils } from 'react-native-responsive-component';
 
 /**
  * This component is used to display a link on the StartScreen, to navigate to other screens in the app.
@@ -25,14 +24,13 @@ const StartScreenLink = React.memo((props) => {
                 activeOpacity={0.6}
                 onPress={onPress}>
                 <Text style={styles.buttonText}>{text}</Text>
-                {!RUtils.isSmallScreen() && (
-                    <Icon
-                        name={name}
-                        size={Icons.medium}
-                        color={Colors.iconActive}
-                        style={styles.icon}
-                    />
-                )}
+
+                <Icon
+                    name={name}
+                    size={Icons.medium}
+                    color={Colors.iconActive}
+                    style={styles.icon}
+                />
             </TouchableOpacity>
         </View>
     );
@@ -42,7 +40,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         margin: 12,
         elevation: 10,
-        ...Buttons.startScreen,
+        ...Buttons.largeRounded,
     },
     buttonText: {
         flex: 1,
@@ -51,7 +49,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         padding: 10,
         textAlignVertical: 'center',
-        ...Typography.startScreenLink,
+        ...Typography.section,
     },
     icon: {
         position: 'absolute',

@@ -6,12 +6,10 @@ import {
     Linking,
     TouchableHighlight,
     Image,
-    ScrollView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { MainView, Header, Divider } from '../components/reusableComponents/';
 import { Buttons, Colors, Icons, Typography } from '../styles';
-import { RUtils } from 'react-native-responsive-component';
 
 /**
  * The screen component for the About App screen.
@@ -31,10 +29,11 @@ const AboutScreen = React.memo(({ navigation }) => {
      * @memberof AboutScreen
      */
     const openPlayStore = () => {
-        const GOOGLE_PACKAGE_NAME = 'com.illustrafikk';
-        Linking.openURL(`market://details?id=${GOOGLE_PACKAGE_NAME}`);
+        // it's a good idea to add this in .env file and use it from there
+        const GOOGLE_PACKAGE_NAME = 'com.trafikkapp';
+        // Linking.openURL(`market://details?id=${GOOGLE_PACKAGE_NAME}`);
 
-        // Linking.openURL('https://github.com/olivernilssen/trafikklearerapp/');
+        Linking.openURL('https://github.com/olivernilssen/trafikklearerapp/');
     };
 
     /**
@@ -50,10 +49,10 @@ const AboutScreen = React.memo(({ navigation }) => {
         <MainView>
             <Header
                 name="Om appen"
-                toggleDrawer={navigation.toggleDrawer}
+                navigation={navigation}
                 style={styles.header}
             />
-            <ScrollView contentContainerStyle={styles.main}>
+            <View style={styles.main}>
                 <View style={styles.section}>
                     <Image
                         source={imgSource}
@@ -125,7 +124,7 @@ const AboutScreen = React.memo(({ navigation }) => {
                         </View>
                     </TouchableHighlight>
                 </View>
-            </ScrollView>
+            </View>
         </MainView>
     );
 });
@@ -137,8 +136,9 @@ const styles = StyleSheet.create({
         elevation: 10,
     },
     main: {
-        height: '100%',
-        paddingVertical: 20,
+        flex: 1,
+        width: '100%',
+        padding: 20,
         justifyContent: 'center',
         backgroundColor: Colors.sketchBackground,
     },
@@ -148,48 +148,45 @@ const styles = StyleSheet.create({
     },
     section: {
         alignItems: 'center',
-        margin: '1%',
-        padding: '3%',
+        margin: 20,
+        padding: 20,
     },
     image: {
-        height: RUtils.isSmallScreen() ? 70 : 120,
-        marginBottom: 10,
+        height: 120,
+        // width: '85%',
     },
     headingText: {
         color: Colors.logo,
-        paddingBottom: '1%',
-        flexWrap: 'wrap',
-        textAlign: 'center',
+        paddingBottom: 10,
         ...Typography.heading,
     },
     sectionText: {
         color: Colors.logo,
-        paddingBottom: '2%',
-        flexWrap: 'wrap',
+        paddingBottom: 10,
         ...Typography.section,
     },
     text: {
         color: Colors.textPrimary,
         textAlign: 'center',
         lineHeight: 25,
-        paddingBottom: '2%',
+        paddingBottom: 10,
         ...Typography.body,
     },
     sendMailButton: {
-        width: RUtils.isSmallScreen() ? 250 : 300,
+        width: 270,
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#22a6dd',
-        padding: 12,
+        padding: 15,
         justifyContent: 'center',
         ...Buttons.rounded,
     },
     rateUsButton: {
-        width: RUtils.isSmallScreen() ? 250 : 300,
+        width: 300,
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#00875F',
-        padding: 12,
+        padding: 15,
         justifyContent: 'center',
         ...Buttons.rounded,
     },

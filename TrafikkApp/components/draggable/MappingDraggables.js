@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { View } from 'react-native';
 import Draggable from './Draggable';
 import AppContext from '../../AppContext';
 

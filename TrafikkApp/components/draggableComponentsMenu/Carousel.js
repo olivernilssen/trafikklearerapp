@@ -8,7 +8,6 @@ import {
     Image,
 } from 'react-native';
 import { Colors } from '../../styles';
-import { RUtils } from 'react-native-responsive-component';
 
 /**
  * Component that displays a carousel with the draggable items.
@@ -25,9 +24,7 @@ const Carousel = React.memo((props) => {
     const [activeSlide, setActiveSlide] = useState(1);
     const [viewWidth, setViewWidth] = useState(0);
     const [itemsPerSlide, setItemsPerSlide] = useState(1);
-    const [imageWidth, setImageWidth] = useState(
-        RUtils.isSmallScreen() ? 70 : 90
-    );
+    const [imageWidth, setImageWidth] = useState(90);
     const scrollNode = useRef();
     let bullets = [];
 
@@ -91,9 +88,7 @@ const Carousel = React.memo((props) => {
 
         if (width != 0) {
             const totalItems = objectKeys.length;
-            const itemsOnSlide = Math.floor(
-                width / (RUtils.isSmallScreen() ? 55 : 90)
-            );
+            const itemsOnSlide = Math.floor(width / 90);
             setItemsPerSlide(itemsOnSlide);
 
             const slides = Math.ceil(totalItems / itemsOnSlide);
@@ -226,7 +221,7 @@ const Carousel = React.memo((props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: '2%',
+        marginTop: 15,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -235,8 +230,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     bullet: {
-        paddingHorizontal: '3%',
-        marginBottom: '-0.7%',
+        paddingHorizontal: 10,
         fontSize: 30,
     },
     slideContainer: {
@@ -250,8 +244,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     image: {
-        height: RUtils.isSmallScreen() ? 35 : 50,
-        width: RUtils.isSmallScreen() ? 35 : 50,
+        height: 50,
+        width: 50,
     },
 });
 

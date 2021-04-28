@@ -3,7 +3,6 @@ import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { ButtonGroup } from '../reusableComponents/';
 import curriculumData from './curriculumData';
 import { Colors, Typography } from '../../styles';
-import { RUtils } from 'react-native-responsive-component';
 
 /**
  * Component to display the content of the BottomMenu, on the screen
@@ -25,10 +24,6 @@ const CurriculumMenuContent = React.memo(
         scrollRef,
         setBottomSheetHidden,
     }) => {
-        // Width of the button group in the bottom menu
-        const buttonGroupWidth = RUtils.isSmallScreen() ? 370 : 700;
-        const buttonGroupWidthSmaller = RUtils.isSmallScreen() ? 300 : 550;
-
         // The traffic classes (klasse B, klasse B kode 96 og BE)
         const trafficClasses = [];
         const keys = Object.keys(curriculumData);
@@ -127,12 +122,9 @@ const CurriculumMenuContent = React.memo(
                         onSelect={(newValue) =>
                             onCurriculumObjectiveChange(newValue)
                         }
-                        groupWidth={
-                            trafficClass == 'Klasse B'
-                                ? buttonGroupWidth
-                                : buttonGroupWidthSmaller
-                        }
+                        groupWidth={trafficClass == 'Klasse B' ? 700 : 550}
                         height={50}
+                        textSize={20}
                         highlightBackgroundColor={Colors.startScreenLinkTheory}
                         highlightTextColor={Colors.secSlideTextActive}
                         inactiveBackgroundColor={Colors.secSlideInactiveBg}
@@ -149,7 +141,7 @@ const CurriculumMenuContent = React.memo(
 const styles = StyleSheet.create({
     main: {
         flexDirection: 'column',
-        paddingBottom: '2%',
+        paddingBottom: 20,
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
@@ -163,26 +155,24 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
     },
     buttonContainer: {
-        flex: 1,
-        padding: '5%',
+        padding: 25,
+        width: '100%',
         backgroundColor: Colors.bottomMeny,
     },
     buttonText: {
-        flex: 1,
-        padding: 5,
+        paddingTop: 5,
         textAlign: 'center',
-        textAlignVertical: 'center',
         ...Typography.section,
     },
     curriculumObjectivesSection: {
         flexDirection: 'column',
         width: '100%',
-        marginVertical: '3%',
+        marginVertical: 20,
         alignItems: 'center',
     },
     curriculumObjectivesInfoText: {
         textAlign: 'center',
-        paddingVertical: '2%',
+        paddingBottom: 15,
         color: Colors.icons,
         opacity: 0.5,
         ...Typography.label,

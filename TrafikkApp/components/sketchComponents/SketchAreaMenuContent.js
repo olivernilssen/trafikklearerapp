@@ -7,7 +7,6 @@ import backgroundImagePath from './backgroundImagePath';
 import AlertModal from './AlertModal';
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
-import { RUtils } from 'react-native-responsive-component';
 
 /**
  * SketchAreaMenuContent is a menu that slides up from the bottom of the screen
@@ -24,16 +23,13 @@ import { RUtils } from 'react-native-responsive-component';
  */
 const SketchAreaMenuContent = React.memo(
     ({
-        navigate,
+        navigation,
         roadType,
         setImage,
         setRoadDesignChange,
         extensionType,
         setBottomSheetHidden,
     }) => {
-        // Width of button group in bottom menu
-        const buttonGroupWidth = RUtils.isSmallScreen() ? 200 : 300;
-
         //Get the roadtype json this component applies too based on roadType prop
         const thisRoadType = backgroundImagePath[roadType];
 
@@ -239,7 +235,7 @@ const SketchAreaMenuContent = React.memo(
                     setModalVisible={setModalVisible}
                     alwaysHideAlert={alwaysHideAlert}
                     setAlwaysHideAlert={setAlwaysHideAlert}
-                    navigate={navigate}
+                    navigation={navigation}
                     onOK={() => onAlertOK()}
                 />
                 {/* START * The intersectionType buttons (X, T, Y) */}
@@ -255,7 +251,7 @@ const SketchAreaMenuContent = React.memo(
                             onSelect={(newValue) =>
                                 intersectionTypeChange(newValue)
                             }
-                            groupWidth={buttonGroupWidth}
+                            groupWidth={300}
                             highlightBackgroundColor={Colors.bottomMenyButtons}
                             highlightTextColor={Colors.icons}
                             inactiveBackgroundColor={Colors.secSlideInactiveBg}

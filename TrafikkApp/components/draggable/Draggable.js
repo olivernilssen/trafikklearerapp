@@ -12,7 +12,6 @@ import {
     Dimensions,
     TouchableWithoutFeedback,
 } from 'react-native';
-import { RUtils } from 'react-native-responsive-component';
 
 import { Popout } from './Popout/';
 
@@ -31,9 +30,9 @@ const colors = [
 
 const noColors = ['delete'];
 
-const ITEM_SIZE = RUtils.isSmallScreen() ? 70 : 100;
+const ITEM_SIZE = 100;
 const radius = (ITEM_SIZE * 2) / 2;
-const buttonSize = RUtils.isSmallScreen() ? 20 : 30;
+const buttonSize = 30;
 
 /**
  * Component that holds the actual draggable component
