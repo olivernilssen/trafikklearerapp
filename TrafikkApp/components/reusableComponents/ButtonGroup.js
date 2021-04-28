@@ -57,31 +57,6 @@ const ButtonGroup = (props) => {
     }, [selectedValue]);
 
     /**
-     * useEffect that is triggered when chosenValue is changed.
-     * Will animate the changing of the selected button
-     */
-    useEffect(() => {
-        // Getting sum of numbers
-        var sum = buttonSizes.slice(0, chosenIndex).reduce(function (a, b) {
-            return a + b;
-        }, 0);
-
-        if (!hasMounted) {
-            Animated.timing(boxPos, {
-                toValue: sum,
-                useNativeDriver: true,
-            }).start();
-        } else {
-            Animated.timing(boxPos, {
-                toValue: sum,
-                useNativeDriver: true,
-            }).start();
-        }
-
-        setHasMounted(true);
-    }, [chosenIndex, buttonSizes]);
-
-    /**
      * Use effect triggered on mount to set the inital buttonSizes depending on
      * what type of slider it is
      */
@@ -106,6 +81,31 @@ const ButtonGroup = (props) => {
 
         setButtonSizes(newSizes);
     }, []);
+
+    /**
+     * useEffect that is triggered when chosenValue is changed.
+     * Will animate the changing of the selected button
+     */
+    useEffect(() => {
+        // Getting sum of numbers
+        var sum = buttonSizes.slice(0, chosenIndex).reduce(function (a, b) {
+            return a + b;
+        }, 0);
+
+        if (!hasMounted) {
+            Animated.timing(boxPos, {
+                toValue: sum,
+                useNativeDriver: true,
+            }).start();
+        } else {
+            Animated.timing(boxPos, {
+                toValue: sum,
+                useNativeDriver: true,
+            }).start();
+        }
+
+        setHasMounted(true);
+    }, [chosenIndex, buttonSizes]);
 
     /**
      * Handler that is called when the user taps a button.

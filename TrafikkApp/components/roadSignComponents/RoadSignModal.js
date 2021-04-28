@@ -9,8 +9,10 @@ import {
     Animated,
     Modal,
     TouchableOpacity,
+    Touchable,
 } from 'react-native';
-import { Colors, Typography } from '../../styles';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import { Colors, Typography, Icons, Buttons } from '../../styles';
 import { Divider } from '../reusableComponents';
 import { RUtils } from 'react-native-responsive-component';
 
@@ -32,6 +34,11 @@ const RoadSignModal = React.memo((props) => {
     const [animationDone, setAnimationDone] = useState(false);
     const [maxHeightScroll, setMaxHeightScroll] = useState(250);
 
+    /**
+     * UseEffect that runs when modal pops up or goes away
+     * sets the height of the modal to the image heigh
+     * @memberof RoadSignModal
+     */
     useEffect(() => {
         Animated.spring(viewHeight, {
             toValue: imgHeight + 100,
@@ -41,6 +48,11 @@ const RoadSignModal = React.memo((props) => {
         setShowDescript(false);
     }, [modalVisible]);
 
+    /**
+     * UseEffect that runs when either image height, description height or show description changes
+     * Changes the height of the modal
+     * @memberof RoadSignModal
+     */
     useEffect(() => {
         const heightModal = RUtils.isSmallScreen()
             ? imgHeight + 50
@@ -56,8 +68,12 @@ const RoadSignModal = React.memo((props) => {
         setAnimationDone(!animationDone);
     }, [imgHeight, descriptionHeight, showDescript]);
 
+    /**
+     * SetLayout will run when the view of the modal is mounted
+     * to get the correct size of the modal on the screen
+     * @memberof RoadSignModal
+     */
     const setLayout = useCallback((layout, type) => {
-        console.log(layout);
         const { height } = layout;
         if (type == 'image') {
             if (Math.floor(height) !== imgHeight) {
@@ -92,12 +108,10 @@ const RoadSignModal = React.memo((props) => {
                         style={{
                             width: '95%',
                             alignSelf: 'center',
-                            padding: '5%',
+                            padding: '4%',
                         }}
                         borderColor={Colors.dividerPrimary}></Divider>
-                    {selectedSign.beskrivelse === '' ? (
-                        <Text style={styles.textStyle}></Text>
-                    ) : (
+                    {selectedSign.beskrivelse != '' && (
                         <ScrollView>
                             <Text style={styles.textStyle}>
                                 {selectedSign.beskrivelse}
@@ -109,6 +123,10 @@ const RoadSignModal = React.memo((props) => {
         }
     };
 
+    /**
+     * An animated style constant that takes the height of the modal
+     * @memberof RoadSignModal
+     */
     const animatedStyle = {
         height: viewHeight,
     };
@@ -123,39 +141,60 @@ const RoadSignModal = React.memo((props) => {
                 onRequestClose={() => closeModal()}>
                 <TouchableWithoutFeedback onPress={() => closeModal()}>
                     <View style={styles.transparentBackground}>
-                        <TouchableWithoutFeedback>
-                            <Animated.View
-                                style={[styles.textAndImage, animatedStyle]}>
-                                <TouchableWithoutFeedback
-                                    onPress={() => {
-                                        setShowDescript(!showDescript);
-                                    }}>
-                                    <View
-                                        onLayout={(event) => {
-                                            setLayout(
-                                                event.nativeEvent.layout,
-                                                'image'
-                                            );
-                                        }}
-                                        style={styles.imageContainer}>
-                                        <Image
-                                            style={styles.image}
-                                            source={selectedSign.source}
-                                        />
-                                    </View>
-                                </TouchableWithoutFeedback>
-                                {showDescript && (
-                                    <View
-                                        onStartShouldSetResponder={() => true}
-                                        style={[
-                                            styles.textDescription,
-                                            { maxHeight: maxHeightScroll },
-                                        ]}>
-                                        {textDescription()}
-                                    </View>
-                                )}
-                            </Animated.View>
-                        </TouchableWithoutFeedback>
+                        {/* <TouchableWithoutFeedback> */}
+                        <Animated.View
+                            style={[styles.textAndImage, animatedStyle]}>
+                            <TouchableOpacity
+                                activeOpacity={0.7}
+                                style={styles.closeIcon}
+                                onPress={() => closeModal()}>
+                                <Icon
+                                    name={'times'}
+                                    size={Icons.medium}
+                                    color={Colors.icons}
+                                />
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                activeOpacity={0.7}
+                                style={styles.infoIcon}
+                                onPress={() => setShowDescript(!showDescript)}>
+                                <Icon
+                                    name={'info'}
+                                    size={Icons.medium}
+                                    color={Colors.icons}
+                                />
+                            </TouchableOpacity>
+                            <TouchableWithoutFeedback
+                                activeOpacity={1}
+                                onPress={() => {
+                                    setShowDescript(!showDescript);
+                                }}>
+                                <View
+                                    onLayout={(event) => {
+                                        setLayout(
+                                            event.nativeEvent.layout,
+                                            'image'
+                                        );
+                                    }}
+                                    style={styles.imageContainer}>
+                                    <Image
+                                        style={styles.image}
+                                        source={selectedSign.source}
+                                    />
+                                </View>
+                            </TouchableWithoutFeedback>
+                            {showDescript && (
+                                <View
+                                    onStartShouldSetResponder={() => true}
+                                    style={[
+                                        styles.textDescription,
+                                        { maxHeight: maxHeightScroll },
+                                    ]}>
+                                    {textDescription()}
+                                </View>
+                            )}
+                        </Animated.View>
+                        {/* </TouchableWithoutFeedback> */}
                     </View>
                 </TouchableWithoutFeedback>
             </Modal>
@@ -177,6 +216,26 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'center',
         backgroundColor: 'rgba(0,0,0,0.8)',
+    },
+    closeIcon: {
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        zIndex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: RUtils.isSmallScreen() ? 12 : 20,
+    },
+    infoIcon: {
+        position: 'absolute',
+        top: 5,
+        left: 5,
+        backgroundColor: Colors.modalButton,
+        zIndex: 1,
+        margin: '2%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        ...Buttons.sketchHeaderButtonSmall,
     },
     textAndImage: {
         padding: '4%',
