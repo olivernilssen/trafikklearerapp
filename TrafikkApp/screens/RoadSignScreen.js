@@ -163,14 +163,6 @@ const RoadSignScreen = React.memo(({ navigation }) => {
                         </View>
                     </View>
                 </Header>
-
-                <FlatList
-                    data={Object.keys(signType)}
-                    extraData={signType}
-                    style={styles.imageContainer}
-                    keyExtractor={(item, index) => item + index.toString()}
-                    renderItem={renderItem}
-                    numColumns={4}></FlatList>
             </View>
             <FlatList
                 ref={flatListRef}
