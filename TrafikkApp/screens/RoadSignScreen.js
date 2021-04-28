@@ -151,7 +151,9 @@ const RoadSignScreen = React.memo(({ navigation }) => {
                 {/* </View> */}
             </TouchableWithoutFeedback>
             <View style={{ zIndex: 5 }}>
-                <Header navigation={navigation} style={styles.header}>
+                <Header
+                    toggleDrawer={navigation.toggleDrawer}
+                    style={styles.header}>
                     <View style={styles.headerContent}>
                         <Text style={styles.siteHeading}>Trafikkskilt</Text>
                         <View style={styles.subHeadingContainer}>
@@ -161,14 +163,6 @@ const RoadSignScreen = React.memo(({ navigation }) => {
                         </View>
                     </View>
                 </Header>
-
-                <FlatList
-                    data={Object.keys(signType)}
-                    extraData={signType}
-                    style={styles.imageContainer}
-                    keyExtractor={(item, index) => item + index.toString()}
-                    renderItem={renderItem}
-                    numColumns={4}></FlatList>
             </View>
             <FlatList
                 ref={flatListRef}

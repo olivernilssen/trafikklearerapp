@@ -15,7 +15,11 @@ const RoundaboutScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
             <View style={styles.sketchArea}>
-                <SketchArea navigation={navigation} name={'Rundkjoring'} />
+                <SketchArea
+                    navigate={navigation.navigate}
+                    toggleDrawer={navigation.toggleDrawer}
+                    name={'Rundkjoring'}
+                />
             </View>
         </MainView>
     );

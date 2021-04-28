@@ -38,7 +38,7 @@ const DrawerMenu = React.memo((props) => {
                     if (section['title'] === title) {
                         section['data'].push({
                             name: screen.name,
-                            nav: props.navigation,
+                            nav: props.navigation.navigate,
                             params: screen.params,
                             key: screen.key,
                         });
@@ -69,7 +69,10 @@ const DrawerMenu = React.memo((props) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <DrawerToggleItem navigation={props.navigation} icon={'times'} />
+            <DrawerToggleItem
+                toggleDrawer={props.navigation.toggleDrawer}
+                icon={'times'}
+            />
             <Divider
                 style={styles.firstDivider}
                 borderColor={Colors.dividerPrimary}
@@ -80,7 +83,7 @@ const DrawerMenu = React.memo((props) => {
                     keyExtractor={(item, index) => item + index}
                     renderItem={({ item }) => (
                         <DrawerItem
-                            navigation={item['nav']}
+                            navigate={item['nav']}
                             screenIndex={props.state.index}
                             screenName={item['name']}
                             params={item['params']}

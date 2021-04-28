@@ -23,7 +23,7 @@ const SettingsScreen = React.memo(({ navigation }) => {
             <View style={styles.main}>
                 <Header
                     name="Innstillinger"
-                    navigation={navigation}
+                    toggleDrawer={navigation.toggleDrawer}
                     style={styles.header}
                 />
                 <View style={styles.content}>

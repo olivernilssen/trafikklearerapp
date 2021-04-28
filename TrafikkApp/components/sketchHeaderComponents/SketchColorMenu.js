@@ -45,7 +45,6 @@ const SketchColorMenu = React.memo((props) => {
         buttonActiveId,
         activeId,
         focusedActiveButton,
-        // chosenColor,
         pencilColor,
     } = props;
 
@@ -79,12 +78,15 @@ const SketchColorMenu = React.memo((props) => {
      * depending on what the settings has stored
      */
     useEffect(() => {
+        let index = 0;
         for (let i = 0; i < colorArray.length; i++) {
             if (colorArray[i].colorCode == appContext.penColor) {
                 setColorButtonID(i);
+                index = i;
             }
         }
-    }, []);
+        onPaletteColorChange(colorArray[index].colorCode);
+    }, [appContext.penColor]);
 
     /**
      * Used to handle the state of the color menu, if it is open or not.

@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { Colors, Typography } from '../../styles';
 import { Divider } from '../reusableComponents';
+import { RUtils } from 'react-native-responsive-component';
 
 /**
  * @namespace RoadSignModal
@@ -29,7 +30,7 @@ const RoadSignModal = React.memo((props) => {
     const [imgHeight, setImgHeight] = useState(400);
     const [descriptionHeight, setDescriptionHeight] = useState(0);
     const [animationDone, setAnimationDone] = useState(false);
-    const [maxHeightScroll, setMaxHeightScroll] = useState(300);
+    const [maxHeightScroll, setMaxHeightScroll] = useState(250);
 
     useEffect(() => {
         Animated.spring(viewHeight, {
@@ -41,7 +42,9 @@ const RoadSignModal = React.memo((props) => {
     }, [modalVisible]);
 
     useEffect(() => {
-        const heightModal = imgHeight + 100;
+        const heightModal = RUtils.isSmallScreen()
+            ? imgHeight + 50
+            : imgHeight + 100;
 
         Animated.spring(viewHeight, {
             toValue: showDescript
@@ -54,6 +57,7 @@ const RoadSignModal = React.memo((props) => {
     }, [imgHeight, descriptionHeight, showDescript]);
 
     const setLayout = useCallback((layout, type) => {
+        console.log(layout);
         const { height } = layout;
         if (type == 'image') {
             if (Math.floor(height) !== imgHeight) {
@@ -88,7 +92,7 @@ const RoadSignModal = React.memo((props) => {
                         style={{
                             width: '95%',
                             alignSelf: 'center',
-                            padding: 10,
+                            padding: '5%',
                         }}
                         borderColor={Colors.dividerPrimary}></Divider>
                     {selectedSign.beskrivelse === '' ? (
@@ -185,23 +189,26 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         width: '100%',
-        maxHeight: 500,
+        maxHeight: RUtils.isSmallScreen() ? 200 : 500,
         // resizeMode: 'contain',
     },
     image: {
         width: '100%',
-        maxHeight: 500,
+        maxHeight: RUtils.isSmallScreen() ? 200 : 500,
         resizeMode: 'contain',
+        // backgroundColor: 'red',
     },
     textDescription: {
         marginTop: '5%',
         width: '90%',
         alignSelf: 'center',
+        // backgroundColor: 'red',
     },
     textStyle: {
         width: '100%',
         color: Colors.textPrimary,
         textAlign: 'center',
+        // backgroundColor: 'blue',
         ...Typography.section,
     },
 });

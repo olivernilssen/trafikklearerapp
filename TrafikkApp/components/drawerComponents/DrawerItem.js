@@ -5,16 +5,16 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { Colors, Typography, Icons } from '../../styles';
 
 /**
- * Component for the items that are shown in the navigation drawer.
+ * Component for the items that are shown in the drawer.
  * @namespace DrawerItem
  * @category DrawerComponents
- * @prop {function} navigation functions for the drawer navigation
+ * @prop {function} navigate functions for the drawer to navigate screens
  * @prop {int} screenIndex the index number of the screenIndex
  * @prop {string} screenName screen name of the view
  * @prop {array[]} params parameters for this view
  */
 const DrawerItem = React.memo(
-    ({ navigation, screenIndex, screenName, params }) => {
+    ({ navigate, screenIndex, screenName, params }) => {
         const { icon, value, title } = params;
         return (
             <TouchableOpacity
@@ -29,7 +29,7 @@ const DrawerItem = React.memo(
                 ]}
                 activeOpacity={0.2}
                 onPress={() =>
-                    navigation.navigate(`${screenName}`, {
+                    navigate(`${screenName}`, {
                         isStatusBarHidden: false,
                     })
                 }>
