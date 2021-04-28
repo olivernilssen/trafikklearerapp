@@ -60,7 +60,7 @@ const SketchHeader = React.memo((props) => {
 
     return (
         <View style={styles.main}>
-            <Header navigation={props.navigation} style={styles.header}>
+            <Header toggleDrawer={props.toggleDrawer} style={styles.header}>
                 <DeleteButtonPopover
                     clearCanvas={clearCanvas}
                     propsStyle={styles.spacedLeft}
@@ -77,7 +77,7 @@ const SketchHeader = React.memo((props) => {
                     pencilSize={pencilSize}
                     chosenColor={chosenColor}
                 />
-                <View style={styles.container} />
+                {/* <View style={styles.container} /> */}
                 <HeaderButton
                     iconName={'eraser'}
                     buttonOnPress={eraser}
@@ -85,7 +85,7 @@ const SketchHeader = React.memo((props) => {
                     activeId={activeId}
                     focusedActiveButton={focusedActiveButton}
                 />
-                <View style={styles.container} />
+                {/* <View style={styles.container} /> */}
                 <HeaderButton
                     iconName={'undo-alt'}
                     buttonOnPress={undoChange}
@@ -93,7 +93,7 @@ const SketchHeader = React.memo((props) => {
                     activeId={activeId}
                     focusedActiveButton={focusedActiveButton}
                 />
-                <View style={styles.container} />
+                {/* <View style={styles.container} /> */}
                 <DraggableComponentsButton
                     activeIconName={'box-open'}
                     inactiveIconName={'box'}

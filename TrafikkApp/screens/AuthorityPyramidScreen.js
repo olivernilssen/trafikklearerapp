@@ -16,7 +16,7 @@ const AuthorityPyramidScreen = React.memo(({ navigation }) => {
         <MainView>
             <Header
                 name="Myndighetspyramiden"
-                navigation={navigation}
+                toggleDrawer={navigation.toggleDrawer}
                 style={styles.header}></Header>
             <View style={styles.main}>
                 <Image
