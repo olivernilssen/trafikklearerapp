@@ -40,7 +40,6 @@ const RoadSignScreen = React.memo(({ navigation }) => {
     const [selectedItem, setSelectedItem] = useState(signObjectKeys[0]);
     const [activeSignTypeName, setActiveSignTypeName] = useState('Fareskilt');
 
-    const ITEM_HEIGHT = 200;
     const flatListRef = useRef();
 
     /**
@@ -89,11 +88,26 @@ const RoadSignScreen = React.memo(({ navigation }) => {
         setActiveSignTypeName(headerName);
     };
 
+    /**
+     * Uses the flatlist reference to scrol to top when chaning sign
+     */
     const scrollToTop = () => {
         flatListRef.current.scrollToOffset({ animated: false, offset: 0 });
     };
 
+    /** Key extractor for flastlist */
     const keyExtractor = (item, index) => item + index.toString();
+
+    /**
+     * Function to set the lenghth and offset of an item in the flatlist
+     * @param {*} index index in the flatlist
+     * @returns
+     */
+    const getItemLayout = (data, index) => ({
+        length: Dimensions.get('screen').height / 7.5,
+        offset: (Dimensions.get('screen').height / 7.5) * index,
+        index,
+    });
 
     /**
      * Used as a template for Flattlist, every item in the data it receives is passed on to this method
@@ -126,12 +140,6 @@ const RoadSignScreen = React.memo(({ navigation }) => {
             </View>
         );
     };
-
-    const getItemLayout = (data, index) => ({
-        length: Dimensions.get('screen').height / 7.5,
-        offset: (Dimensions.get('screen').height / 7.5) * index,
-        index,
-    });
 
     return (
         <MainView>

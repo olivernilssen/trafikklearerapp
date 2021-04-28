@@ -126,18 +126,18 @@ const DraggableWithEverything = React.memo((props) => {
                 </View>
             </Modal>
 
+            <MappingDraggables
+                draggables={draggables}
+                setDraggables={setDraggables}
+                onRemoveItem={onRemoveItem}
+            />
+
             <DraggableComponentsMenu
                 topMenuHidden={topMenuHidden}
                 onNewDraggable={onNewDraggable}
                 extensionType={extensionType}
                 setExtensionType={setExtensionType}
                 name={name}
-            />
-
-            <MappingDraggables
-                draggables={draggables}
-                setDraggables={setDraggables}
-                onRemoveItem={onRemoveItem}
             />
         </>
     );

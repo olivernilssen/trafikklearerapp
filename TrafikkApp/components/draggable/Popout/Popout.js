@@ -62,6 +62,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         alignContent: 'center',
         justifyContent: 'center',
+        zIndex: 999,
+        // backgroundColor: 'green',
     },
 });
 
