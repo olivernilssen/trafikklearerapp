@@ -13,55 +13,49 @@ import { Colors, Typography, Icons } from '../../styles';
  * @prop {string} screenName screen name of the view
  * @prop {array[]} params parameters for this view
  */
-const DrawerItem = React.memo(
-    ({ navigate, screenIndex, screenName, params }) => {
-        const { icon, value, title } = params;
-        return (
-            <TouchableOpacity
-                style={[
-                    styles.menuItem,
-                    {
-                        backgroundColor:
-                            screenIndex == value
-                                ? Colors.drawerIconActive
-                                : Colors.drawerBg,
-                    },
-                ]}
-                activeOpacity={0.2}
-                onPress={() =>
-                    navigate(`${screenName}`, {
-                        isStatusBarHidden: false,
-                    })
-                }>
-                <View style={styles.iconContainer}>
-                    <MaterialIcon
-                        name={icon}
-                        size={Icons.medium}
-                        color={
-                            screenIndex == value
-                                ? Colors.textSecondary
-                                : Colors.slideTextInactive
-                        }
-                        style={styles.icon}
-                    />
-                </View>
+const DrawerItem = React.memo(({ navigate, isActive, params }) => {
+    const { icon, title } = params;
+    return (
+        <TouchableOpacity
+            style={[
+                styles.menuItem,
+                {
+                    backgroundColor:
+                        isActive == true
+                            ? Colors.drawerIconActive
+                            : Colors.drawerBg,
+                },
+            ]}
+            activeOpacity={0.2}
+            onPress={() => navigate()}>
+            <View style={styles.iconContainer}>
+                <MaterialIcon
+                    name={icon}
+                    size={Icons.medium}
+                    color={
+                        isActive == true
+                            ? Colors.textSecondary
+                            : Colors.slideTextInactive
+                    }
+                    style={styles.icon}
+                />
+            </View>
 
-                <Text
-                    style={[
-                        styles.menuItemText,
-                        {
-                            color:
-                                screenIndex == value
-                                    ? Colors.textSecondary
-                                    : Colors.slideTextInactive,
-                        },
-                    ]}>
-                    {title}
-                </Text>
-            </TouchableOpacity>
-        );
-    }
-);
+            <Text
+                style={[
+                    styles.menuItemText,
+                    {
+                        color:
+                            isActive == true
+                                ? Colors.textSecondary
+                                : Colors.slideTextInactive,
+                    },
+                ]}>
+                {title}
+            </Text>
+        </TouchableOpacity>
+    );
+});
 
 const styles = StyleSheet.create({
     menuItem: {

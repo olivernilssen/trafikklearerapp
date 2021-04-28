@@ -34,6 +34,11 @@ const RoadSignModal = React.memo((props) => {
     const [animationDone, setAnimationDone] = useState(false);
     const [maxHeightScroll, setMaxHeightScroll] = useState(250);
 
+    /**
+     * UseEffect that runs when modal pops up or goes away
+     * sets the height of the modal to the image heigh
+     * @memberof RoadSignModal
+     */
     useEffect(() => {
         Animated.spring(viewHeight, {
             toValue: imgHeight + 100,
@@ -43,6 +48,11 @@ const RoadSignModal = React.memo((props) => {
         setShowDescript(false);
     }, [modalVisible]);
 
+    /**
+     * UseEffect that runs when either image height, description height or show description changes
+     * Changes the height of the modal
+     * @memberof RoadSignModal
+     */
     useEffect(() => {
         const heightModal = RUtils.isSmallScreen()
             ? imgHeight + 50
@@ -58,6 +68,11 @@ const RoadSignModal = React.memo((props) => {
         setAnimationDone(!animationDone);
     }, [imgHeight, descriptionHeight, showDescript]);
 
+    /**
+     * SetLayout will run when the view of the modal is mounted
+     * to get the correct size of the modal on the screen
+     * @memberof RoadSignModal
+     */
     const setLayout = useCallback((layout, type) => {
         const { height } = layout;
         if (type == 'image') {
@@ -108,6 +123,10 @@ const RoadSignModal = React.memo((props) => {
         }
     };
 
+    /**
+     * An animated style constant that takes the height of the modal
+     * @memberof RoadSignModal
+     */
     const animatedStyle = {
         height: viewHeight,
     };
