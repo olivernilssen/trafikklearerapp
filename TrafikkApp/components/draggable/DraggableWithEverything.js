@@ -104,10 +104,10 @@ const DraggableWithEverything = React.memo((props) => {
                         </View>
 
                         <Text style={styles.modalText}>
-                            Du kan ikke legge til flere enn 15 elementer på
+                            Du kan ikke legge til flere enn 5 elementer på
                             skjermen samtidig. Hold inne på et element for å
                             slette det eller slett alt gjennom søppelkasse
-                            ikonet på menyen.
+                            ikonet i menyen.
                         </Text>
 
                         <Divider
