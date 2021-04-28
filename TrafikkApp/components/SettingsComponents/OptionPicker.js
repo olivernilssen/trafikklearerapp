@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     modalText: {
         flex: 1,
         marginBottom: '3%',
-        // fontWeight: 'bold',
+        fontWeight: 'bold',
         textAlign: 'center',
         flexWrap: 'wrap',
         color: Colors.modalText,
