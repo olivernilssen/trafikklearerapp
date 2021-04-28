@@ -3,8 +3,8 @@
     <item android:drawable="@color/background" />
     <item
         android:drawable="@drawable/splash_screen"
-        android:height="682dp"
-        android:width="536dp"
+        android:height="1024dp"
+        android:width="804dp"
         android:gravity="center"
     />
 </layer-list>

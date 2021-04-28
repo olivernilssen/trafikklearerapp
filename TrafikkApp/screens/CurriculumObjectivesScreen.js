@@ -12,7 +12,6 @@ import {
     CurriculumObjectives,
 } from '../components/curriculumObjectivesComponents/';
 import { Colors, Typography } from '../styles';
-import { RUtils } from 'react-native-responsive-component';
 
 /**
  * The screen component for the curriculum objectives for traffic training.
@@ -37,22 +36,15 @@ const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
                 setShowOverlay={setBottomSheetHidden}
             />
             <View style={styles.main}>
-                <Header
-                    toggleDrawer={navigation.toggleDrawer}
-                    style={styles.header}>
+                <Header navigation={navigation} style={styles.header}>
                     <View style={styles.headerContent}>
                         <Text style={styles.siteHeading}>Læreplanmål</Text>
-                        <ScrollView
-                            contentContainerStyle={styles.subHeadingContainer}>
+                        <View style={styles.subHeadingContainer}>
                             <Text style={styles.mainHeading}>
                                 {mainHeading}
                             </Text>
-                            {!RUtils.isSmallScreen() && (
-                                <Text style={styles.subHeading}>
-                                    {subHeading}
-                                </Text>
-                            )}
-                        </ScrollView>
+                            <Text style={styles.subHeading}>{subHeading}</Text>
+                        </View>
                     </View>
                 </Header>
                 <ScrollView
@@ -60,15 +52,10 @@ const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
                     persistentScrollbar={true}
                     showsVerticalScrollIndicator={true}
                     style={styles.scrollView}>
-                    {RUtils.isSmallScreen() && (
-                        <Text style={styles.subHeadingSmallScreens}>
-                            {subHeading}
-                        </Text>
-                    )}
                     <CurriculumObjectives
                         curriculumObjective={curriculumObjective}
                         trafficClass={trafficClass}
-                        // subHeading={subHeading}
+                        subHeading={subHeading}
                         setSubHeading={setSubHeading}
                         setMainHeading={setMainHeading}
                     />
@@ -108,40 +95,33 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.curriculumBg,
     },
     headerContent: {
+        // flex: 1,
         height: '100%',
         width: '93%',
         flexDirection: 'row',
-        alignItems: 'center',
     },
     siteHeading: {
-        paddingLeft: '1%',
+        flex: 1,
         color: Colors.icons,
         textAlignVertical: 'center',
         ...Typography.heading,
     },
     subHeadingContainer: {
-        width: '100%',
+        // flex: 1,
         alignItems: 'flex-end',
-        alignSelf: 'center',
     },
     mainHeading: {
+        flex: 1,
         textAlignVertical: 'bottom',
         color: Colors.icons,
-        opacity: 0.7,
         ...Typography.body,
     },
     subHeading: {
+        flex: 1,
         textAlignVertical: 'top',
-        textAlign: 'right',
         color: Colors.icons,
         opacity: 0.7,
         ...Typography.label,
-    },
-    subHeadingSmallScreens: {
-        textAlign: 'left',
-        color: Colors.textPrimary,
-        paddingLeft: 5,
-        ...Typography.section,
     },
 });
 

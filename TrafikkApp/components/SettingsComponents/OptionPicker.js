@@ -8,15 +8,12 @@ import {
     TouchableOpacity,
     Image,
     TouchableWithoutFeedback,
-    ToastAndroid,
-    FlatList,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
 import { Buttons, Colors, Icons, Typography } from '../../styles/index';
 import draggables from './draggableObjectPaths';
-import { RUtils } from 'react-native-responsive-component';
 
 /**
  * The view modal picker. This shows so the user can select
@@ -50,12 +47,6 @@ const OptionPicker = React.memo((props) => {
             USER_KEYS.DRAGGABLE_OBJECTS
         );
 
-        ToastAndroid.show(
-            'Valgte drabare elementer har blitt oppdatert',
-            ToastAndroid.SHORT,
-            ToastAndroid.BOTTOM
-        );
-
         setModalVisible(!modalVisible);
     });
 
@@ -73,7 +64,7 @@ const OptionPicker = React.memo((props) => {
             delete copyArray[newValue]; //delete an item from our object of paths
             setSelectedImages(copyArray);
         } else {
-            if (Object.keys(selectedImages).length >= 15) {
+            if (Object.keys(selectedImages).length >= 20) {
                 setWarningShow(true); //Show warning because  max limit is 15
             } else {
                 const pair = {}; //make the keypair to put into a shallow copy array
@@ -93,26 +84,6 @@ const OptionPicker = React.memo((props) => {
         setSelectedImages(JSON.parse(appContext.draggableObjects));
     });
 
-    const renderItem = ({ item, index }) => {
-        const selected = selectedImages[item] != null ? true : false;
-        return (
-            <TouchableOpacity
-                activeOpacity={0.4}
-                style={
-                    selected ? styles.selectedImageButton : styles.imageButton
-                }
-                onPress={() => updateSelectedImages(item)}>
-                <Image
-                    source={draggables[item].source}
-                    style={styles.image}
-                    resizeMode={'contain'}
-                />
-            </TouchableOpacity>
-        );
-    };
-
-    const keyExtractor = (item, index) => item + index.toString();
-
     return (
         <>
             <Modal
@@ -129,11 +100,10 @@ const OptionPicker = React.memo((props) => {
                             <View style={styles.modalView}>
                                 <View style={styles.modalTopView}>
                                     <Text style={styles.modalText}>
-                                        Velg opptil 15 elementer som kan brukes
+                                        Velg opp til 20 elementer som kan brukes
                                         på tegneskjermen
                                     </Text>
                                     <TouchableOpacity
-                                        style={styles.closeIcon}
                                         onPress={() => closeModalWithoutSave()}>
                                         <Icon
                                             name={'times'}
@@ -145,24 +115,42 @@ const OptionPicker = React.memo((props) => {
                                 {warningShow && (
                                     <View style={styles.warningContainer}>
                                         <Text style={styles.warningText}>
-                                            Du kan ikke velge mer enn 15 ikoner
+                                            Du kan ikke velge mer enn 20 ikoner
                                             samtidig. Du kan trykke på valgte
-                                            ikoner for å fjerne de.
+                                            ikoner for å fjerne de om du vil.
                                         </Text>
                                     </View>
                                 )}
-
-                                <FlatList
-                                    data={allKeys}
-                                    style={styles.flatList}
-                                    keyExtractor={keyExtractor}
-                                    // maxToRenderPerBatch={10}
-                                    initialNumToRender={10}
-                                    renderItem={renderItem}
-                                    initialNumToRender={6}
-                                    numColumns={RUtils.isSmallScreen() ? 6 : 7}
-                                />
-
+                                <View style={styles.containerView}>
+                                    {allKeys.map((source, i) => {
+                                        const selected =
+                                            selectedImages[source] != null
+                                                ? true
+                                                : false;
+                                        return (
+                                            <TouchableOpacity
+                                                key={i}
+                                                activeOpacity={0.4}
+                                                style={
+                                                    selected
+                                                        ? styles.selectedImageButton
+                                                        : styles.imageButton
+                                                }
+                                                onPress={() =>
+                                                    updateSelectedImages(source)
+                                                }>
+                                                <Image
+                                                    source={
+                                                        draggables[source]
+                                                            .source
+                                                    }
+                                                    style={styles.image}
+                                                    resizeMode={'contain'}
+                                                />
+                                            </TouchableOpacity>
+                                        );
+                                    })}
+                                </View>
                                 <View style={styles.buttonGroup}>
                                     <Pressable
                                         style={[
@@ -202,17 +190,16 @@ const styles = StyleSheet.create({
         // flexDirection: 'column',
         // height: '100%',
         // width: '100%',
-        padding: '4%',
+        padding: 30,
         // backgroundColor: 'red',
         justifyContent: 'space-evenly',
     },
     modalView: {
         backgroundColor: Colors.modalBg,
-        padding: '2.5%',
-        paddingVertical: '3%',
+        padding: 25,
         alignItems: 'center',
         elevation: 10,
-        borderRadius: 15,
+        borderRadius: 20,
     },
     modalTopView: {
         flexDirection: 'row',
@@ -221,19 +208,16 @@ const styles = StyleSheet.create({
     },
     modalText: {
         flex: 1,
-        marginBottom: '3%',
-        // fontWeight: 'bold',
+        marginBottom: 15,
+        fontWeight: 'bold',
         textAlign: 'center',
         flexWrap: 'wrap',
         color: Colors.modalText,
         ...Typography.section,
     },
-    closeIcon: {
-        paddingHorizontal: '1%',
-    },
     warningContainer: {
         width: '90%',
-        padding: '2%',
+        padding: 20,
         backgroundColor: Colors.warning,
         textAlign: 'center',
         marginBottom: 15,
@@ -244,20 +228,26 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         ...Typography.body,
     },
-    flatList: {
-        marginVertical: '4%',
+    containerView: {
+        // flex: 1,
+        justifyContent: 'center',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+        marginBottom: 25,
+        borderRadius: 20,
     },
     imageButton: {
-        height: RUtils.isSmallScreen() ? 45 : 90,
-        width: RUtils.isSmallScreen() ? 45 : 90,
+        height: 75,
+        width: 75,
         margin: 5,
-        padding: '1.5%',
+        padding: 10,
     },
     selectedImageButton: {
-        height: RUtils.isSmallScreen() ? 45 : 90,
-        width: RUtils.isSmallScreen() ? 45 : 90,
+        height: 75,
+        width: 75,
         margin: 5,
-        padding: '1.5%',
+        padding: 10,
         borderColor: Colors.selectedBorder,
         borderWidth: 5,
         borderRadius: 5,
@@ -275,7 +265,7 @@ const styles = StyleSheet.create({
     button: {
         padding: 10,
         elevation: 2,
-        width: RUtils.isSmallScreen() ? '35%' : '30%',
+        width: '30%',
         ...Buttons.rounded,
     },
     buttonText: {

@@ -26,21 +26,16 @@ const ExternalLink = React.memo((props) => {
 
 const styles = StyleSheet.create({
     linkContainer: {
-        // margin: '2%',
+        margin: 5,
         flexDirection: 'row',
         alignItems: 'center',
-        padding: '2%',
+        padding: 9,
         justifyContent: 'center',
-        // backgroundColor: 'blue',
-        // borderLeftWidth: 2,
-        // borderRightWidth: 2,
-        borderColor: Colors.dividerPrimary,
     },
     linkText: {
         textAlign: 'center',
-        textAlignVertical: 'center',
         color: Colors.links,
-        // flexWrap: 'wrap',
+        flexWrap: 'wrap',
         textDecorationLine: 'underline',
         ...Typography.body,
     },

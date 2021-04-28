@@ -20,7 +20,7 @@ const CurriculumObjectives = React.memo(
     ({
         curriculumObjective,
         trafficClass,
-        // subHeading,
+        subHeading,
         setSubHeading,
         setMainHeading,
     }) => {
@@ -85,7 +85,14 @@ const CurriculumObjectives = React.memo(
 
 const styles = StyleSheet.create({
     main: {
-        marginBottom: '10%',
+        marginBottom: '12%',
+    },
+    subHeading: {
+        paddingTop: '2%',
+        paddingBottom: '2%',
+        paddingLeft: '2%',
+        color: Colors.icons,
+        ...Typography.section,
     },
     content: {
         paddingHorizontal: '2%',
@@ -103,6 +110,7 @@ const styles = StyleSheet.create({
         ...Typography.section,
     },
     curriculumObjectiveContent: {
+        marginTop: 10,
         paddingVertical: 5,
         lineHeight: 30,
         color: Colors.icons,

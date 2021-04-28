@@ -5,7 +5,6 @@ import { Divider, ButtonGroup } from '../reusableComponents/';
 import Carousel from './Carousel';
 import { Colors, Typography } from '../../styles';
 import AppContext from '../../AppContext';
-import { RUtils } from 'react-native-responsive-component';
 
 const extensionTypes = ['Gangfelt', 'O', 'Sykkelfelt'];
 
@@ -27,8 +26,6 @@ const DraggableComponentsMenu = React.memo(
             new Animated.Value(yPosHidden)
         );
         const [buttonValue, setButtonValue] = useState('O');
-        const buttonGroupWidth = RUtils.isSmallScreen() ? 200 : 230;
-        const buttonGroupHeight = RUtils.isSmallScreen() ? 40 : 45;
 
         const appContext = useContext(AppContext);
         const objects = JSON.parse(appContext.draggableObjects);
@@ -125,8 +122,8 @@ const DraggableComponentsMenu = React.memo(
                                         onSelect={(newValue) =>
                                             extensionTypeChange(newValue)
                                         }
-                                        groupWidth={buttonGroupWidth}
-                                        height={buttonGroupHeight}
+                                        groupWidth={240}
+                                        height={45}
                                         highlightBackgroundColor={
                                             Colors.componentMenuButtons
                                         }
@@ -186,8 +183,8 @@ const styles = StyleSheet.create({
     extensionButtonGroup: {
         flexDirection: 'row',
         alignSelf: 'flex-end',
-        padding: '2%',
-        marginLeft: '1%',
+        padding: 5,
+        marginLeft: 5,
     },
     extensionText: {
         color: Colors.icons,
@@ -197,9 +194,10 @@ const styles = StyleSheet.create({
         ...Typography.label,
     },
     divider: {
-        height: '95%',
+        height: '100%',
         paddingLeft: 5,
         paddingBottom: 5,
+        marginBottom: 10,
     },
 });
 
