@@ -60,7 +60,7 @@ const SketchHeader = React.memo((props) => {
 
     return (
         <View style={styles.main}>
-            <Header navigation={props.navigation} style={styles.header}>
+            <Header toggleDrawer={props.toggleDrawer} style={styles.header}>
                 <DeleteButtonPopover
                     clearCanvas={clearCanvas}
                     propsStyle={styles.spacedLeft}

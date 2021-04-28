@@ -37,7 +37,9 @@ const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
                 setShowOverlay={setBottomSheetHidden}
             />
             <View style={styles.main}>
-                <Header navigation={navigation} style={styles.header}>
+                <Header
+                    toggleDrawer={navigation.toggleDrawer}
+                    style={styles.header}>
                     <View style={styles.headerContent}>
                         <Text style={styles.siteHeading}>Læreplanmål</Text>
                         <ScrollView

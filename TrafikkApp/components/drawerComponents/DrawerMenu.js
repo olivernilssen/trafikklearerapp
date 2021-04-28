@@ -38,7 +38,6 @@ const DrawerMenu = React.memo((props) => {
                     if (section['title'] === title) {
                         section['data'].push({
                             name: screen.name,
-                            nav: props.navigation,
                             params: screen.params,
                             key: screen.key,
                         });
@@ -69,7 +68,10 @@ const DrawerMenu = React.memo((props) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <DrawerToggleItem navigation={props.navigation} icon={'times'} />
+            <DrawerToggleItem
+                toggleDrawer={props.navigation.toggleDrawer}
+                icon={'times'}
+            />
             <Divider
                 style={styles.firstDivider}
                 borderColor={Colors.dividerPrimary}
@@ -77,11 +79,17 @@ const DrawerMenu = React.memo((props) => {
             {arrayFinished && (
                 <SectionList
                     sections={drawerInfo}
-                    keyExtractor={(item, index) => item + index}
+                    initialNumToRender={5}
                     renderItem={({ item }) => (
                         <DrawerItem
-                            navigation={item['nav']}
-                            screenIndex={props.state.index}
+                            navigate={() =>
+                                props.navigation.navigate(`${item['name']}`, {
+                                    isStatusBarHidden: false,
+                                })
+                            }
+                            isActive={
+                                props.state.index === item['params'].value
+                            }
                             screenName={item['name']}
                             params={item['params']}
                             key={item['key']}
@@ -110,7 +118,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         paddingHorizontal: 15,
         paddingTop: 5,
-        paddingBottom: 2,
+        paddingBottom: 4,
         alignItems: 'center',
         alignContent: 'center',
     },

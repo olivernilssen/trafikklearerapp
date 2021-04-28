@@ -24,7 +24,7 @@ import { RUtils } from 'react-native-responsive-component';
  */
 const SketchAreaMenuContent = React.memo(
     ({
-        navigation,
+        navigate,
         roadType,
         setImage,
         setRoadDesignChange,
@@ -239,7 +239,7 @@ const SketchAreaMenuContent = React.memo(
                     setModalVisible={setModalVisible}
                     alwaysHideAlert={alwaysHideAlert}
                     setAlwaysHideAlert={setAlwaysHideAlert}
-                    navigation={navigation}
+                    navigate={navigate}
                     onOK={() => onAlertOK()}
                 />
                 {/* START * The intersectionType buttons (X, T, Y) */}

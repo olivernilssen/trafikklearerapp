@@ -22,8 +22,16 @@ import {
 
 // may very well be the ugliest array in existence...
 const signTypeArray = [
-    { typeName: 'Fareskilt', typeObject: fareSkilt, buttonID: 0 },
-    { typeName: 'Forbudsskilt', typeObject: forbudsSkilt, buttonID: 1 },
+    {
+        typeName: 'Fareskilt',
+        typeObject: fareSkilt,
+        buttonID: 0,
+    },
+    {
+        typeName: 'Forbudsskilt',
+        typeObject: forbudsSkilt,
+        buttonID: 1,
+    },
     {
         typeName: 'Markeringsskilt',
         typeObject: markeringsSkilt,
@@ -34,9 +42,21 @@ const signTypeArray = [
         typeObject: opplysningsSkilt,
         buttonID: 3,
     },
-    { typeName: 'Påbudsskilt', typeObject: påbudsSkilt, buttonID: 4 },
-    { typeName: 'Serviceskilt', typeObject: serviceSkilt, buttonID: 5 },
-    { typeName: 'Underskilt', typeObject: underSkilt, buttonID: 6 },
+    {
+        typeName: 'Påbudsskilt',
+        typeObject: påbudsSkilt,
+        buttonID: 4,
+    },
+    {
+        typeName: 'Serviceskilt',
+        typeObject: serviceSkilt,
+        buttonID: 5,
+    },
+    {
+        typeName: 'Underskilt',
+        typeObject: underSkilt,
+        buttonID: 6,
+    },
     {
         typeName: 'Veivisningsskilt',
         typeObject: veivisningsSkilt,

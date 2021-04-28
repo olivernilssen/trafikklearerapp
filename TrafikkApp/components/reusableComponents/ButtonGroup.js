@@ -38,16 +38,14 @@ const ButtonGroup = (props) => {
 
     const width = groupWidth != null ? groupWidth : 300;
     const isHeight = height != null ? height : width / 6;
-
-    const buttonSize = width / values.length;
-    const [buttonSizes, setButtonSizes] = useState([]);
-
     // const fontSize = textSize != null ? textSize : width / 15;
     const isColorOption = isColorOptions != null ? isColorOptions : false;
 
+    const [buttonSizes, setButtonSizes] = useState([]);
     const [chosenIndex, setChosenIndex] = useState(
         values.indexOf(selectedValue)
     );
+    const [hasMounted, setHasMounted] = useState(false);
     const [boxPos, setBoxPos] = useState(new Animated.Value(0));
 
     /**
@@ -59,27 +57,14 @@ const ButtonGroup = (props) => {
     }, [selectedValue]);
 
     /**
-     * useEffect that is triggered when chosenValue is changed.
-     * Will animate the changing of the selected button
+     * Use effect triggered on mount to set the inital buttonSizes depending on
+     * what type of slider it is
      */
-    useEffect(() => {
-        // Getting sum of numbers
-        var sum = buttonSizes.slice(0, chosenIndex).reduce(function (a, b) {
-            return a + b;
-        }, 0);
-
-        Animated.spring(boxPos, {
-            toValue: sum,
-            bounciness: 0,
-            speed: 2,
-            useNativeDriver: true,
-        }).start();
-    }, [chosenIndex, buttonSizes]);
-
     useEffect(() => {
         var newSizes = [];
         const smallButton = width / values.length / 3;
         let bigButton = 0;
+
         if (values.indexOf('O') != -1 || values.indexOf('-') != -1) {
             bigButton = (width - smallButton) / (values.length - 1);
         } else {
@@ -96,6 +81,31 @@ const ButtonGroup = (props) => {
 
         setButtonSizes(newSizes);
     }, []);
+
+    /**
+     * useEffect that is triggered when chosenValue is changed.
+     * Will animate the changing of the selected button
+     */
+    useEffect(() => {
+        // Getting sum of numbers
+        var sum = buttonSizes.slice(0, chosenIndex).reduce(function (a, b) {
+            return a + b;
+        }, 0);
+
+        if (!hasMounted) {
+            Animated.timing(boxPos, {
+                toValue: sum,
+                useNativeDriver: true,
+            }).start();
+        } else {
+            Animated.timing(boxPos, {
+                toValue: sum,
+                useNativeDriver: true,
+            }).start();
+        }
+
+        setHasMounted(true);
+    }, [chosenIndex, buttonSizes]);
 
     /**
      * Handler that is called when the user taps a button.
@@ -188,6 +198,7 @@ const ButtonGroup = (props) => {
                             borderBottomWidth: 5,
                             borderRadius: 0,
                             transform: [{ translateX: boxPos }],
+                            borderColor: 'white',
                         },
                     ]}
                 />
