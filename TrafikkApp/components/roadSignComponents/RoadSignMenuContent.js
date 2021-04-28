@@ -110,10 +110,11 @@ const RoadSignMenuContent = (props) => {
             <View
                 key={index}
                 style={{
-                    width: '30%',
+                    width: '32%',
                     height: '30%',
                     alignItems: 'center',
-                    paddingVertical: 10,
+                    // paddingVertical: 10,
+                    paddingTop: '1%',
                 }}>
                 <TouchableOpacity
                     onPress={() => {
@@ -151,7 +152,7 @@ const RoadSignMenuContent = (props) => {
                 flexDirection: 'row',
                 flexWrap: 'wrap',
                 justifyContent: 'space-around',
-                padding: 10,
+                // paddingTop: '2%',
             }}>
             {SignTypeButton}
         </View>
@@ -170,7 +171,7 @@ const styles = StyleSheet.create({
     textStyle: {
         textAlign: 'center',
         // fontSize: 20,
-        padding: 10,
+        padding: '7%',
         ...Typography.button,
     },
     button: {
