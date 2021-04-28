@@ -8,6 +8,7 @@ import {
     TouchableOpacity,
     Image,
     TouchableWithoutFeedback,
+    ToastAndroid,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import USER_KEYS from '../helpers/storageKeys';
@@ -46,6 +47,12 @@ const OptionPicker = React.memo((props) => {
             JSON.stringify(selectedImages),
             appContext.setDraggableObjects,
             USER_KEYS.DRAGGABLE_OBJECTS
+        );
+
+        ToastAndroid.show(
+            'Valgte drabare elementer har blitt oppdatert',
+            ToastAndroid.SHORT,
+            ToastAndroid.BOTTOM
         );
 
         setModalVisible(!modalVisible);

@@ -29,7 +29,9 @@ const { width, height } = Dimensions.get('window');
 const SketchArea = React.memo((props) => {
     const appContext = useContext(AppContext);
     const sketchRef = useRef();
-    const eraserSize = parseInt(appContext.eraserSize);
+    const [eraserSize, setEraserSize] = useState(
+        parseInt(appContext.eraserSize)
+    );
     const eraserColor = 'transparent';
     const defaultPencilSize = 5;
 
@@ -59,6 +61,13 @@ const SketchArea = React.memo((props) => {
             setDraggables([]);
         }
     }, [currentImg]);
+
+    useEffect(() => {
+        setEraserSize(parseInt(appContext.eraserSize));
+        if (pencilColor === eraserColor) {
+            setPencilSize(parseInt(appContext.eraserSize));
+        }
+    }, [appContext.eraserSize]);
 
     /**
      * Changes the pencil color according to user input.
