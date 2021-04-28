@@ -22,7 +22,8 @@ const { width, height } = Dimensions.get('window');
  * on the SketchArea screens.
  * @namespace SketchArea
  * @category SketchComponents
- * @prop {object} navigation Used for navigation between the different screens
+ * @prop {function} toggleDrawer Used for to toggle the drawer between the different screens
+ * @prop {function} navigate Used to navigate between screens
  * @prop {string} name Name of the screen (IntersectionScreen, RoundaboutScreen etc)
  */
 const SketchArea = React.memo((props) => {
@@ -32,7 +33,7 @@ const SketchArea = React.memo((props) => {
     const eraserColor = 'transparent';
     const defaultPencilSize = 5;
 
-    const { name, navigation } = props;
+    const { name, toggleDrawer, navigate } = props;
 
     const [pencilColor, setPencilColor] = useState(appContext.penColor);
     const [chosenColor, setChosenColor] = useState('');
@@ -178,7 +179,7 @@ const SketchArea = React.memo((props) => {
                     clearCanvas={clearCanvas}
                     eraser={eraser}
                     onPaletteColorChange={onPaletteColorChange}
-                    navigation={navigation}
+                    toggleDrawer={toggleDrawer}
                     name={name}
                     topMenuHidden={topMenuHidden}
                     toggleTopMenu={toggleMenu}
@@ -227,7 +228,7 @@ const SketchArea = React.memo((props) => {
                     setRoadDesignChange={setRoadDesignChange}
                     extensionType={extensionType}
                     setBottomSheetHidden={setBottomSheetHidden}
-                    navigation={navigation}
+                    navigate={navigate}
                 />
             </BottomMenuAnimated>
         </MainView>

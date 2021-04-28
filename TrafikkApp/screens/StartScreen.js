@@ -26,7 +26,9 @@ import { Colors, Typography, Icons } from '../styles';
 const StartScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
-            <Header navigation={navigation} style={styles.header}>
+            <Header
+                toggleDrawer={navigation.toggleDrawer}
+                style={styles.header}>
                 <View style={styles.headerItems}>
                     <HeaderName />
                     <TouchableOpacity

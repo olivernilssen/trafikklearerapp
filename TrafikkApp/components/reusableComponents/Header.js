@@ -9,13 +9,13 @@ import { RUtils } from 'react-native-responsive-component';
  * Takes in other React Native components as children.
  * @namespace Header
  * @category ReusableComponents
- * @prop {object} navigation Navigation object
+ * @prop {object} toggleDrawer toggle the drawer on the left
  * @prop {array} [name] The header text
  * @prop {styleSheet} [style] Optional styling of the Header
  */
 const Header = React.memo((props) => (
     <View style={{ ...styles.header, ...props.style }}>
-        <TouchableOpacity onPress={props.navigation.toggleDrawer}>
+        <TouchableOpacity onPress={props.toggleDrawer}>
             <Icon name={'bars'} size={Icons.medium} color={Colors.icons} />
         </TouchableOpacity>
         <Text style={styles.headerText}>{props.name}</Text>

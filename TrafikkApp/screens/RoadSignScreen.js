@@ -151,7 +151,9 @@ const RoadSignScreen = React.memo(({ navigation }) => {
                 {/* </View> */}
             </TouchableWithoutFeedback>
             <View style={{ zIndex: 5 }}>
-                <Header navigation={navigation} style={styles.header}>
+                <Header
+                    toggleDrawer={navigation.toggleDrawer}
+                    style={styles.header}>
                     <View style={styles.headerContent}>
                         <Text style={styles.siteHeading}>Trafikkskilt</Text>
                         <View style={styles.subHeadingContainer}>

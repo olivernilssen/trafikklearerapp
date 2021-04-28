@@ -50,7 +50,7 @@ const AboutScreen = React.memo(({ navigation }) => {
         <MainView>
             <Header
                 name="Om appen"
-                navigation={navigation}
+                toggleDrawer={navigation.toggleDrawer}
                 style={styles.header}
             />
             <ScrollView contentContainerStyle={styles.main}>
