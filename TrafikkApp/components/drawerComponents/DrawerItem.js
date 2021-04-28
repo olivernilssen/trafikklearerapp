@@ -5,63 +5,57 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { Colors, Typography, Icons } from '../../styles';
 
 /**
- * Component for the items that are shown in the navigation drawer.
+ * Component for the items that are shown in the drawer.
  * @namespace DrawerItem
  * @category DrawerComponents
- * @prop {function} navigation functions for the drawer navigation
+ * @prop {function} navigate functions for the drawer to navigate screens
  * @prop {int} screenIndex the index number of the screenIndex
  * @prop {string} screenName screen name of the view
  * @prop {array[]} params parameters for this view
  */
-const DrawerItem = React.memo(
-    ({ navigation, screenIndex, screenName, params }) => {
-        const { icon, value, title } = params;
-        return (
-            <TouchableOpacity
-                style={[
-                    styles.menuItem,
-                    {
-                        backgroundColor:
-                            screenIndex == value
-                                ? Colors.drawerIconActive
-                                : Colors.drawerBg,
-                    },
-                ]}
-                activeOpacity={0.2}
-                onPress={() =>
-                    navigation.navigate(`${screenName}`, {
-                        isStatusBarHidden: false,
-                    })
-                }>
-                <View style={styles.iconContainer}>
-                    <MaterialIcon
-                        name={icon}
-                        size={Icons.medium}
-                        color={
-                            screenIndex == value
-                                ? Colors.textSecondary
-                                : Colors.slideTextInactive
-                        }
-                        style={styles.icon}
-                    />
-                </View>
+const DrawerItem = React.memo(({ navigate, isActive, params }) => {
+    const { icon, title } = params;
+    return (
+        <TouchableOpacity
+            style={[
+                styles.menuItem,
+                {
+                    backgroundColor:
+                        isActive == true
+                            ? Colors.drawerIconActive
+                            : Colors.drawerBg,
+                },
+            ]}
+            activeOpacity={0.2}
+            onPress={() => navigate()}>
+            <View style={styles.iconContainer}>
+                <MaterialIcon
+                    name={icon}
+                    size={Icons.medium}
+                    color={
+                        isActive == true
+                            ? Colors.textSecondary
+                            : Colors.slideTextInactive
+                    }
+                    style={styles.icon}
+                />
+            </View>
 
-                <Text
-                    style={[
-                        styles.menuItemText,
-                        {
-                            color:
-                                screenIndex == value
-                                    ? Colors.textSecondary
-                                    : Colors.slideTextInactive,
-                        },
-                    ]}>
-                    {title}
-                </Text>
-            </TouchableOpacity>
-        );
-    }
-);
+            <Text
+                style={[
+                    styles.menuItemText,
+                    {
+                        color:
+                            isActive == true
+                                ? Colors.textSecondary
+                                : Colors.slideTextInactive,
+                    },
+                ]}>
+                {title}
+            </Text>
+        </TouchableOpacity>
+    );
+});
 
 const styles = StyleSheet.create({
     menuItem: {
@@ -71,19 +65,17 @@ const styles = StyleSheet.create({
         color: Colors.icons,
         borderBottomRightRadius: 10,
         borderTopRightRadius: 10,
-        paddingLeft: 10,
+        paddingLeft: 15,
     },
-    iconContainer: {
-        width: 65,
-    },
+    iconContainer: {},
     icon: {
-        margin: 15,
+        margin: '5%',
     },
     menuItemText: {
         flex: 1,
         flexWrap: 'wrap',
-        fontWeight: '300',
-        margin: 12,
+        paddingRight: 5,
+        marginVertical: '5%',
         textAlign: 'left',
         ...Typography.body,
     },

@@ -38,7 +38,6 @@ const DrawerMenu = React.memo((props) => {
                     if (section['title'] === title) {
                         section['data'].push({
                             name: screen.name,
-                            nav: props.navigation,
                             params: screen.params,
                             key: screen.key,
                         });
@@ -69,7 +68,10 @@ const DrawerMenu = React.memo((props) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <DrawerToggleItem navigation={props.navigation} icon={'times'} />
+            <DrawerToggleItem
+                toggleDrawer={props.navigation.toggleDrawer}
+                icon={'times'}
+            />
             <Divider
                 style={styles.firstDivider}
                 borderColor={Colors.dividerPrimary}
@@ -77,11 +79,17 @@ const DrawerMenu = React.memo((props) => {
             {arrayFinished && (
                 <SectionList
                     sections={drawerInfo}
-                    keyExtractor={(item, index) => item + index}
+                    initialNumToRender={5}
                     renderItem={({ item }) => (
                         <DrawerItem
-                            navigation={item['nav']}
-                            screenIndex={props.state.index}
+                            navigate={() =>
+                                props.navigation.navigate(`${item['name']}`, {
+                                    isStatusBarHidden: false,
+                                })
+                            }
+                            isActive={
+                                props.state.index === item['params'].value
+                            }
                             screenName={item['name']}
                             params={item['params']}
                             key={item['key']}
@@ -100,33 +108,30 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.drawerBg,
-        paddingTop: 5,
-        // paddingHorizontal: 15,
+        paddingBottom: 10,
+    },
+    firstDivider: {
+        paddingBottom: 20,
     },
     sectionView: {
         flex: 1,
         flexDirection: 'row',
         paddingHorizontal: 15,
-        paddingVertical: 2,
+        paddingTop: 5,
+        paddingBottom: 4,
         alignItems: 'center',
         alignContent: 'center',
     },
     sectionText: {
-        // flex: 1,
         color: Colors.eraserIconActive,
-        // fontSize: 20,
         ...Typography.section,
     },
     divider: {
         alignContent: 'center',
         marginLeft: 10,
-        width: '100%',
         flex: 1,
         height: 1,
-        marginBottom: 10,
-    },
-    firstDivider: {
-        marginBottom: 20,
+        alignSelf: 'center',
     },
 });
 

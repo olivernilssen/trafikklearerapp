@@ -16,7 +16,8 @@ const IntersectionScreen = React.memo(({ navigation }) => {
         <MainView>
             <View style={styles.sketchArea}>
                 <SketchArea
-                    navigation={navigation}
+                    navigate={navigation.navigate}
+                    toggleDrawer={navigation.toggleDrawer}
                     name={'Veikryss'}></SketchArea>
             </View>
         </MainView>

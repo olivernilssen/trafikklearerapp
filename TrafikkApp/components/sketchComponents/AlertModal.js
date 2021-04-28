@@ -9,7 +9,7 @@ import { Divider } from '../reusableComponents';
  * This is a component that pops up to alert the user that the drawing is set to be deleted.
  * @namespace AlertModal
  * @category SketchComponents
- * @prop {object} navigation Used for navigation between the different screens
+ * @prop {object} navigate Used navigate to a different screens
  * @prop {boolean} modalVisible If the modal is visible or not
  * @prop {function} setModalVisible Changes the state modalVisible
  * @prop {boolean} alwaysHideAlert If the checkbox to never show alert again, is checked
@@ -18,7 +18,7 @@ import { Divider } from '../reusableComponents';
  */
 const AlertModal = React.memo(
     ({
-        navigation,
+        navigate,
         modalVisible,
         setModalVisible,
         alwaysHideAlert,
@@ -91,7 +91,7 @@ const AlertModal = React.memo(
                                     style={[styles.button, styles.buttonClose]}
                                     onPress={() => {
                                         setModalVisible(!modalVisible);
-                                        navigation.navigate('SettingsScreen');
+                                        navigate('SettingsScreen');
                                     }}
                                     activeOpacity={0.4}>
                                     <Text style={styles.textStyle}>

@@ -26,7 +26,9 @@ import { Colors, Typography, Icons } from '../styles';
 const StartScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
-            <Header navigation={navigation} style={styles.header}>
+            <Header
+                toggleDrawer={navigation.toggleDrawer}
+                style={styles.header}>
                 <View style={styles.headerItems}>
                     <HeaderName />
                     <TouchableOpacity
@@ -111,56 +113,52 @@ const StartScreen = React.memo(({ navigation }) => {
                 </View>
             </View>
             <View style={styles.footer}>
-                <View style={styles.footerContent}>
-                    <Text style={styles.footerText}>
-                        Lenker til forskrifter:
-                    </Text>
-                    <View style={styles.linksContainer}>
-                        <ExternalLink
-                            text="Trafikkopplæringsforskriften"
-                            onPress={() => {
-                                Linking.openURL(
-                                    'https://lovdata.no/dokument/SF/forskrift/2004-10-01-1339'
-                                );
-                            }}
-                        />
-                        <Divider
-                            borderColor={Colors.dividerPrimary}
-                            style={styles.divider}
-                        />
-                        <ExternalLink
-                            text="Skiltforskriften"
-                            onPress={() => {
-                                Linking.openURL(
-                                    'https://lovdata.no/dokument/SF/forskrift/2005-10-07-1219'
-                                );
-                            }}
-                        />
-                        <Divider
-                            borderColor={Colors.dividerPrimary}
-                            style={styles.divider}
-                        />
-                        <ExternalLink
-                            text="Trafikkregler"
-                            onPress={() => {
-                                Linking.openURL(
-                                    'https://lovdata.no/dokument/SF/forskrift/1986-03-21-747'
-                                );
-                            }}
-                        />
-                        <Divider
-                            borderColor={Colors.dividerPrimary}
-                            style={styles.divider}
-                        />
-                        <ExternalLink
-                            text="Veitrafikkloven"
-                            onPress={() => {
-                                Linking.openURL(
-                                    'https://lovdata.no/dokument/NL/lov/1965-06-18-4'
-                                );
-                            }}
-                        />
-                    </View>
+                <Text style={styles.footerText}>Lenker til forskrifter:</Text>
+                <View style={styles.externalLinksContainer}>
+                    <ExternalLink
+                        text="Trafikkopplæringsforskriften"
+                        onPress={() => {
+                            Linking.openURL(
+                                'https://lovdata.no/dokument/SF/forskrift/2004-10-01-1339'
+                            );
+                        }}
+                    />
+                    <Divider
+                        borderColor={Colors.dividerPrimary}
+                        style={styles.divider}
+                    />
+                    <ExternalLink
+                        text="Skiltforskriften"
+                        onPress={() => {
+                            Linking.openURL(
+                                'https://lovdata.no/dokument/SF/forskrift/2005-10-07-1219'
+                            );
+                        }}
+                    />
+                    <Divider
+                        borderColor={Colors.dividerPrimary}
+                        style={styles.divider}
+                    />
+                    <ExternalLink
+                        text="Trafikkregler"
+                        onPress={() => {
+                            Linking.openURL(
+                                'https://lovdata.no/dokument/SF/forskrift/1986-03-21-747'
+                            );
+                        }}
+                    />
+                    <Divider
+                        borderColor={Colors.dividerPrimary}
+                        style={styles.divider}
+                    />
+                    <ExternalLink
+                        text="Veitrafikkloven"
+                        onPress={() => {
+                            Linking.openURL(
+                                'https://lovdata.no/dokument/NL/lov/1965-06-18-4'
+                            );
+                        }}
+                    />
                 </View>
             </View>
         </MainView>
@@ -191,7 +189,6 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.startScreenBg,
     },
     container: {
-        paddingVertical: 15,
         justifyContent: 'center',
         alignItems: 'center',
         marginVertical: 10,
@@ -211,31 +208,31 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
     },
     footer: {
-        width: '100%',
-        backgroundColor: Colors.startScreenBg,
-    },
-    footerContent: {
         borderTopWidth: 1,
         borderTopColor: Colors.dividerPrimary,
         width: '100%',
-        paddingVertical: 20,
-        backgroundColor: Colors.sketchBackground,
+        paddingVertical: '2%',
+        backgroundColor: Colors.footer,
         justifyContent: 'center',
         alignItems: 'center',
-        borderTopRightRadius: 20,
-        borderTopLeftRadius: 20,
     },
     footerText: {
         width: '85%',
-        paddingVertical: 5,
+        paddingVertical: '1%',
         borderColor: Colors.dividerPrimary,
         color: Colors.icons,
         ...Typography.body,
     },
+    externalLinksContainer: {
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        paddingBottom: 5,
+    },
     divider: {
         width: 1,
-        height: 50,
-        paddingVertical: 5,
+        height: 20,
         alignSelf: 'center',
     },
 });

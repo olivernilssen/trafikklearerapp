@@ -2,23 +2,23 @@ import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { Colors } from '../../styles';
+import { Colors, Icons } from '../../styles';
 
 /**
  * Component to display the hamburger icon to toggle the drawer menu.
  * @namespace DrawerToggleItem
  * @category DrawerComponents
- * @prop {function} navigation functions for the drawer navigation
+ * @prop {function} toggleDrawer functions for the drawer toggleDrawer
  * @prop {string} icon the icon name for this screen item
  */
-const DrawerToggleItem = React.memo(({ navigation, icon }) => (
+const DrawerToggleItem = React.memo(({ toggleDrawer, icon }) => (
     <TouchableOpacity
         style={styles.menuItem}
         activeOpacity={0.8}
-        onPress={() => navigation.toggleDrawer()}>
+        onPress={() => toggleDrawer()}>
         <Icon
             name={icon}
-            size={35}
+            size={Icons.medium}
             color={Colors.icons}
             style={styles.menuIcon}
         />
@@ -27,16 +27,10 @@ const DrawerToggleItem = React.memo(({ navigation, icon }) => (
 
 const styles = StyleSheet.create({
     menuItem: {
-        flexDirection: 'row',
-        padding: 10,
-        width: 50,
-        marginLeft: 12,
-        alignContent: 'center',
-        justifyContent: 'center',
+        width: '8%',
+        margin: 20,
     },
-    menuIcon: {
-        alignSelf: 'center',
-    },
+    menuIcon: {},
 });
 
 export default DrawerToggleItem;

@@ -12,6 +12,7 @@ import PencilSizeButton from './PencilSizeButton';
 import ColorButton from './ColorButton';
 import { Colors, Buttons, Icons } from '../../styles';
 import AppContext from '../../AppContext';
+import { RUtils } from 'react-native-responsive-component';
 
 const { Popover } = renderers;
 
@@ -44,7 +45,6 @@ const SketchColorMenu = React.memo((props) => {
         buttonActiveId,
         activeId,
         focusedActiveButton,
-        // chosenColor,
         pencilColor,
     } = props;
 
@@ -78,12 +78,15 @@ const SketchColorMenu = React.memo((props) => {
      * depending on what the settings has stored
      */
     useEffect(() => {
+        let index = 0;
         for (let i = 0; i < colorArray.length; i++) {
             if (colorArray[i].colorCode == appContext.penColor) {
                 setColorButtonID(i);
+                index = i;
             }
         }
-    }, []);
+        onPaletteColorChange(colorArray[index].colorCode);
+    }, [appContext.penColor]);
 
     /**
      * Used to handle the state of the color menu, if it is open or not.
@@ -241,22 +244,25 @@ const styles = StyleSheet.create({
     buttonSize: {
         justifyContent: 'center',
         alignItems: 'center',
+        marginHorizontal: '2%',
         ...Buttons.sketchHeaderButton,
     },
     downIconMenu: {
         position: 'absolute',
         alignSelf: 'center',
-        top: 26,
-        left: 35,
+        top: RUtils.isSmallScreen() ? 22 : 26,
+        left: RUtils.isSmallScreen() ? 25 : 35,
         transform: [{ rotate: '-45deg' }],
     },
     menuOptions: {
+        // flex: 1,
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,
         backgroundColor: Colors.colorPaletteMenu,
         overflow: 'hidden',
     },
     colorButtonsContainer: {
+        flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',

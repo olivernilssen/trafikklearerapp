@@ -11,6 +11,7 @@ import AppContext from '../../AppContext';
 import { Buttons, Colors, Typography } from '../../styles/index';
 import { ButtonGroup, Divider } from '../reusableComponents/';
 import OptionPicker from './OptionPicker';
+import { RUtils } from 'react-native-responsive-component';
 
 /**
  * The view for the settings screen. It takes in data from
@@ -21,19 +22,23 @@ import OptionPicker from './OptionPicker';
 const SettingsView = React.memo((props) => {
     const { pickerVisible, setPickerVisible } = props;
 
+    // Width of buttonGroups
+    const buttonGroupWidth = RUtils.isSmallScreen() ? 170 : 300;
+    const buttonGroupHeight = RUtils.isSmallScreen() ? 40 : 45;
+
     const myContext = useContext(AppContext);
     // const [pickerVisible, setPickerVisible] = useState(false);
 
     const onDelChangeValues = ['Ja', 'Nei'];
     const penColorValues = [
-        '#20303C',
-        '#3182C8',
-        '#00AAAF',
-        '#00A65F',
-        '#E2902B',
-        '#D9644A',
-        '#CF262F',
-        '#8B1079',
+        '#20303c',
+        '#3182c8',
+        '#00aaaf',
+        '#00a65f',
+        '#e2902b',
+        '#d9644a',
+        '#cf262f',
+        '#8c1079',
     ];
     const eraserSizeValues = ['50', '60', '70', '80', '90', '100'];
     const draggableColorValues = [
@@ -85,7 +90,8 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.THEME_KEY
                             )
                         }
-                        groupWidth={300}
+                        groupWidth={buttonGroupWidth}
+                        height={buttonGroupHeight}
                         highlightBackgroundColor={Colors.slideActiveBg}
                         highlightTextColor={Colors.slideTextActive}
                         inactiveBackgroundColor={Colors.slideInactiveBg}
@@ -94,6 +100,7 @@ const SettingsView = React.memo((props) => {
                 </View>
             </View>
             <Divider borderColor={Colors.headerBg} />
+
             {/* STANDARD SIZE OF ERASER */}
             <View style={styles.rowView}>
                 <Text style={styles.leftColumn}>Viskelærstørrelse: </Text>
@@ -109,7 +116,8 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.ERASER_SIZE_KEY
                             )
                         }
-                        groupWidth={300}
+                        groupWidth={buttonGroupWidth}
+                        height={buttonGroupHeight}
                         highlightBackgroundColor={Colors.slideActiveBg}
                         highlightTextColor={Colors.slideTextActive}
                         inactiveBackgroundColor={Colors.slideInactiveBg}
@@ -118,6 +126,7 @@ const SettingsView = React.memo((props) => {
                 </View>
             </View>
             <Divider borderColor={Colors.headerBg} />
+
             {/* DELETE EVERYTHING ON ILLUSTRASTION CHANGE */}
             <View style={styles.rowView}>
                 <Text style={styles.leftColumn}>
@@ -135,7 +144,8 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.DELETE_KEY
                             )
                         }
-                        groupWidth={300}
+                        groupWidth={buttonGroupWidth}
+                        height={buttonGroupHeight}
                         highlightBackgroundColor={Colors.slideActiveBg}
                         highlightTextColor={Colors.slideTextActive}
                         inactiveBackgroundColor={Colors.slideInactiveBg}
@@ -144,6 +154,7 @@ const SettingsView = React.memo((props) => {
                 </View>
             </View>
             <Divider borderColor={Colors.headerBg} />
+
             {/* PEN INITAL COLOR */}
             <View style={styles.rowView}>
                 <Text style={styles.leftColumn}>Innledende farge på penn:</Text>
@@ -159,7 +170,8 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.PEN_COLOR_KEY
                             )
                         }
-                        groupWidth={300}
+                        groupWidth={buttonGroupWidth}
+                        height={buttonGroupHeight}
                         highlightBackgroundColor={Colors.slideActiveBg}
                         highlightTextColor={Colors.slideTextActive}
                         inactiveBackgroundColor={Colors.slideInactiveBg}
@@ -169,6 +181,7 @@ const SettingsView = React.memo((props) => {
                 </View>
             </View>
             <Divider borderColor={Colors.headerBg} />
+
             {/* DRAGGABLE INITAL COLOR */}
             <View style={styles.rowView}>
                 <Text style={styles.leftColumn}>
@@ -186,7 +199,7 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.DRAGGABLE_COLOR_KEY
                             )
                         }
-                        groupWidth={300}
+                        groupWidth={buttonGroupWidth}
                         highlightBackgroundColor={Colors.slideActiveBg}
                         highlightTextColor={Colors.slideTextActive}
                         inactiveBackgroundColor={Colors.slideInactiveBg}
@@ -196,15 +209,19 @@ const SettingsView = React.memo((props) => {
                 </View>
             </View>
             <Divider borderColor={Colors.headerBg} />
-            {/* DRAGGABLE INITAL COLOR */}
+
+            {/* DRAGGABLES ELEMENTS SELECTION */}
             <View style={styles.rowView}>
                 <Text style={styles.leftColumn}>
-                    Drabare elementer velger (max 20):
+                    Drabare elementer velger (max 15):
                 </Text>
                 <View style={styles.rightColumn}>
                     <TouchableOpacity
                         style={styles.modalButton}
-                        onPress={() => setPickerVisible(!pickerVisible)}>
+                        activeOpacity={0.6}
+                        onPress={() => {
+                            setPickerVisible(!pickerVisible);
+                        }}>
                         <Text style={styles.buttonText}>Åpne velger</Text>
                     </TouchableOpacity>
                 </View>
@@ -230,6 +247,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         flex: 1,
         textAlignVertical: 'center',
+        paddingRight: 10,
         ...Typography.body,
     },
     rightColumn: {
@@ -238,12 +256,13 @@ const styles = StyleSheet.create({
         alignContent: 'flex-end',
     },
     modalButton: {
-        backgroundColor: Colors.modalButtonSave,
-        padding: 15,
+        backgroundColor: Colors.modalButton,
+        padding: '6%',
         ...Buttons.rounded,
     },
     buttonText: {
         color: Colors.textSecondary,
+        textAlign: 'center',
         ...Typography.button,
     },
 });
