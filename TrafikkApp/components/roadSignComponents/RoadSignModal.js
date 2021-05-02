@@ -9,7 +9,6 @@ import {
     Animated,
     Modal,
     TouchableOpacity,
-    Touchable,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Typography, Icons, Buttons } from '../../styles';
