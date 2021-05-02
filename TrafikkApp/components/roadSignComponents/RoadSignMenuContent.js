@@ -18,7 +18,7 @@ import {
     underSkilt,
     veivisningsSkilt,
     vikepliktsSkilt,
-} from '../../assets/sign_descriptions/index';
+} from '../../assets/sign_descriptions/';
 
 // may very well be the ugliest array in existence...
 const signTypeArray = [
