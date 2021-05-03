@@ -134,7 +134,7 @@ const RoadSignArea = React.memo((props) => {
     };
 
     return (
-        <View>
+        <>
             <Overlay
                 showOverlay={bottomSheetHidden}
                 setShowOverlay={setBottomSheetHidden}
@@ -184,7 +184,7 @@ const RoadSignArea = React.memo((props) => {
                     scrollToTop={scrollToTop}
                 />
             </BottomMenuAnimated>
-        </View>
+        </>
     );
 });
 
