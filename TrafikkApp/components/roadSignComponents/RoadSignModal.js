@@ -112,7 +112,7 @@ const RoadSignModal = React.memo((props) => {
                         borderColor={Colors.dividerPrimary}></Divider>
                     {selectedSign.beskrivelse != '' && (
                         <ScrollView>
-                            <Text style={styles.textStyle}>
+                            <Text style={styles.textStyleDescription}>
                                 {selectedSign.beskrivelse}
                             </Text>
                         </ScrollView>
@@ -263,6 +263,14 @@ const styles = StyleSheet.create({
         // backgroundColor: 'red',
     },
     textStyle: {
+        width: '100%',
+        color: Colors.textPrimary,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        // backgroundColor: 'blue',
+        ...Typography.section,
+    },
+    textStyleDescription: {
         width: '100%',
         color: Colors.textPrimary,
         textAlign: 'center',
