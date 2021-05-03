@@ -80,7 +80,7 @@ const Overlay = React.memo((props) => {
             }}>
             <TouchableWithoutFeedback
                 onPress={() => {
-                    setShowOverlay(!showOverlay);
+                    setShowOverlay(true);
                 }}>
                 <View style={styles.touchableArea}></View>
             </TouchableWithoutFeedback>

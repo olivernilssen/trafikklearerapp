@@ -15,7 +15,7 @@ import { RUtils } from 'react-native-responsive-component';
  */
 const Header = React.memo((props) => (
     <View style={{ ...styles.header, ...props.style }}>
-        <TouchableOpacity onPress={props.toggleDrawer}>
+        <TouchableOpacity onPress={props.toggleDrawer} style={styles.icon}>
             <Icon name={'bars'} size={Icons.medium} color={Colors.icons} />
         </TouchableOpacity>
         <Text style={styles.headerText}>{props.name}</Text>
@@ -33,8 +33,18 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.headerBg,
         // elevation: 10,
     },
+    icon: {
+        marginRight: '2%',
+    },
     headerText: {
-        flex: 1,
+        // flex: 1,
+        zIndex: -1,
+        position: 'absolute',
+        top: 0,
+        left: '3.2%',
+        width: '100%',
+        height: '100%',
+        textAlignVertical: 'center',
         color: Colors.icons,
         textAlign: 'center',
         ...Typography.heading,

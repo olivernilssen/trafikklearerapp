@@ -122,8 +122,8 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'flex-start',
-        borderRadius: 20,
+        justifyContent: 'flex-end',
+        // borderRadius: 20,
     },
     spacedRight: {
         flex: 1,
