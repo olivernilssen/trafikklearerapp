@@ -51,6 +51,7 @@ const ButtonGroup = (props) => {
     /**
      * useEffect that is triggered when selectedValue is changed.
      * Will set the state chosenIndex to the index of the selected value
+     * @memberof ButtonGroup
      */
     useEffect(() => {
         setChosenIndex(values.indexOf(selectedValue));
@@ -59,6 +60,7 @@ const ButtonGroup = (props) => {
     /**
      * Use effect triggered on mount to set the inital buttonSizes depending on
      * what type of slider it is
+     * @memberof ButtonGroup
      */
     useEffect(() => {
         var newSizes = [];
@@ -85,6 +87,7 @@ const ButtonGroup = (props) => {
     /**
      * useEffect that is triggered when chosenValue is changed.
      * Will animate the changing of the selected button
+     * @memberof ButtonGroup
      */
     useEffect(() => {
         // Getting sum of numbers

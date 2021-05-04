@@ -11,10 +11,11 @@ import { Colors, Typography, Icons } from '../../styles';
  * @prop {function} navigate functions for the drawer to navigate screens
  * @prop {int} screenIndex the index number of the screenIndex
  * @prop {string} screenName screen name of the view
- * @prop {array[]} params parameters for this view
+ * @prop {array} params parameters for this view
  */
 const DrawerItem = React.memo(({ navigate, isActive, params }) => {
     const { icon, title } = params;
+
     return (
         <TouchableOpacity
             style={[

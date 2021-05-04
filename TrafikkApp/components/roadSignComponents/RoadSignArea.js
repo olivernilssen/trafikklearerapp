@@ -82,6 +82,7 @@ const RoadSignArea = React.memo((props) => {
 
     /**
      * Uses the flatlist reference to scrol to top when chaning sign
+     * @memberof RoadSignArea
      */
     const scrollToTop = () => {
         flatListRef.current.scrollToOffset({ animated: false, offset: 0 });
@@ -93,6 +94,7 @@ const RoadSignArea = React.memo((props) => {
     /**
      * Function to set the lenghth and offset of an item in the flatlist
      * @param {*} index index in the flatlist
+     * @memberof RoadSignArea
      * @returns
      */
     const getItemLayout = (data, index) => ({
@@ -103,6 +105,7 @@ const RoadSignArea = React.memo((props) => {
 
     /**
      * Used as a template for Flattlist, every item in the data it receives is passed on to this method
+     * @memberof RoadSignArea
      * @param {string} param0 the sign code (example: 100_1)
      * @returns an image that will open a modal when pressed
      */
@@ -139,8 +142,8 @@ const RoadSignArea = React.memo((props) => {
                 showOverlay={bottomSheetHidden}
                 setShowOverlay={setBottomSheetHidden}
             />
+
             <TouchableWithoutFeedback onPress={() => closeModal()}>
-                {/* <View> */}
                 <RoadSignModal
                     closeModal={closeModal}
                     modalVisible={modalVisible}
@@ -148,7 +151,6 @@ const RoadSignArea = React.memo((props) => {
                     selectedSignCode={selectedItem}
                     handleBottomSheet={handleBottomSheet}
                 />
-                {/* </View> */}
             </TouchableWithoutFeedback>
             <View style={{ zIndex: 5 }}>
                 <Header toggleDrawer={toggleDrawer} style={styles.header}>
@@ -162,6 +164,7 @@ const RoadSignArea = React.memo((props) => {
                     </View>
                 </Header>
             </View>
+
             <FlatList
                 ref={flatListRef}
                 data={Object.keys(signType)}
