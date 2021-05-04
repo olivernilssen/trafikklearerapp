@@ -1,4 +1,4 @@
-const markeringsSkilt = {
+const markeringsskiltData = {
     '902H_0': {
         navn: 'Bakgrunnsmarkering',
         beskrivelse: '902H',
@@ -107,4 +107,4 @@ const markeringsSkilt = {
     },
 };
 
-export default markeringsSkilt;
+export default markeringsskiltData;

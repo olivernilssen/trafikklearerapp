@@ -1,4 +1,4 @@
-const opplysningsSkilt = {
+const opplysningsskiltData = {
     '502_0': {
         navn: 'Motorveg ',
         beskrivelse:
@@ -404,4 +404,4 @@ const opplysningsSkilt = {
     },
 };
 
-export default opplysningsSkilt;
+export default opplysningsskiltData;

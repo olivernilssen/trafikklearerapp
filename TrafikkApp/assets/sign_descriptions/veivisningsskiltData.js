@@ -1,4 +1,4 @@
-const veivisningsSkilt = {
+const veivisningsskiltData = {
     '701_0': {
         navn: '(720.4) Tabellorienteringstavle',
         beskrivelse: 'Eksempler: tabellorienteringstavle',
@@ -417,4 +417,4 @@ const veivisningsSkilt = {
     },
 };
 
-export default veivisningsSkilt;
+export default veivisningsskiltData;

@@ -1,4 +1,4 @@
-const forbudsSkilt = {
+const forbudsskiltData = {
     '302_0': {
         navn: 'Innkjøring forbudt',
         beskrivelse:
@@ -323,4 +323,4 @@ const forbudsSkilt = {
     },
 };
 
-export default forbudsSkilt;
+export default forbudsskiltData;

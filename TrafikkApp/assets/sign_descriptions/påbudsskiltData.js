@@ -1,4 +1,4 @@
-const påbudsSkilt = {
+const påbudsskiltData = {
     '402_1': {
         navn: 'Påbudt kjøreretning',
         beskrivelse:
@@ -76,4 +76,4 @@ const påbudsSkilt = {
     },
 };
 
-export default påbudsSkilt;
+export default påbudsskiltData;

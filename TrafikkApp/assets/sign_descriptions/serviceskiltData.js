@@ -1,4 +1,4 @@
-const serviceSkilt = {
+const serviceskiltData = {
     '601_0': {
         navn: 'Lytt til radio',
         beskrivelse: '',
@@ -219,4 +219,4 @@ const serviceSkilt = {
     },
 };
 
-export default serviceSkilt;
+export default serviceskiltData;

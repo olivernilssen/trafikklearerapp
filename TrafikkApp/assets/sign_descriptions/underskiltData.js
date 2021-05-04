@@ -1,4 +1,4 @@
-const underSkilt = {
+const underskiltData = {
     '802_0': {
         navn: 'Avstand',
         beskrivelse:
@@ -298,4 +298,4 @@ const underSkilt = {
     },
 };
 
-export default underSkilt;
+export default underskiltData;

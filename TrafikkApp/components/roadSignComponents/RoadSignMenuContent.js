@@ -9,62 +9,62 @@ import {
 import { Colors, Typography } from '../../styles';
 
 import {
-    fareSkilt,
-    forbudsSkilt,
-    markeringsSkilt,
-    opplysningsSkilt,
-    påbudsSkilt,
-    serviceSkilt,
-    underSkilt,
-    veivisningsSkilt,
-    vikepliktsSkilt,
+    fareskiltData,
+    forbudsskiltData,
+    markeringsskiltData,
+    opplysningsskiltData,
+    påbudsskiltData,
+    serviceskiltData,
+    underskiltData,
+    veivisningsskiltData,
+    vikepliktsskiltData,
 } from '../../assets/sign_descriptions/';
 
 // may very well be the ugliest array in existence...
 const signTypeArray = [
     {
         typeName: 'Fareskilt',
-        typeObject: fareSkilt,
+        typeObject: fareskiltData,
         buttonID: 0,
     },
     {
         typeName: 'Forbudsskilt',
-        typeObject: forbudsSkilt,
+        typeObject: forbudsskiltData,
         buttonID: 1,
     },
     {
         typeName: 'Markeringsskilt',
-        typeObject: markeringsSkilt,
+        typeObject: markeringsskiltData,
         buttonID: 2,
     },
     {
         typeName: 'Opplysningsskilt',
-        typeObject: opplysningsSkilt,
+        typeObject: opplysningsskiltData,
         buttonID: 3,
     },
     {
         typeName: 'Påbudsskilt',
-        typeObject: påbudsSkilt,
+        typeObject: påbudsskiltData,
         buttonID: 4,
     },
     {
         typeName: 'Serviceskilt',
-        typeObject: serviceSkilt,
+        typeObject: serviceskiltData,
         buttonID: 5,
     },
     {
         typeName: 'Underskilt',
-        typeObject: underSkilt,
+        typeObject: underskiltData,
         buttonID: 6,
     },
     {
         typeName: 'Veivisningsskilt',
-        typeObject: veivisningsSkilt,
+        typeObject: veivisningsskiltData,
         buttonID: 7,
     },
     {
         typeName: 'Vikeplikt- og forkjørsskilt',
-        typeObject: vikepliktsSkilt,
+        typeObject: vikepliktsskiltData,
         buttonID: 8,
     },
 ];
