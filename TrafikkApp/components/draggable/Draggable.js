@@ -67,7 +67,6 @@ const Draggable = React.memo((props) => {
      */
     const onDragStart = (gesture) => {
         //Start spring animation (user feedback)
-
         setPopoutActive(false);
 
         Animated.spring(imgScale, {
@@ -130,16 +129,18 @@ const Draggable = React.memo((props) => {
                                 },
                             ]}
                         />
-                        <Popout
-                            radius={radius}
-                            array={imgInfo.hasTint ? noColors : colors}
-                            setPopoutActive={setPopoutActive}
-                            popoutActive={popoutActive}
-                            setTintColor={setTintColor}
-                            buttonSize={buttonSize}
-                            itemSize={ITEM_SIZE}
-                            removeItem={removeItem}
-                        />
+                        {popoutActive && (
+                            <Popout
+                                radius={radius}
+                                array={imgInfo.hasTint ? noColors : colors}
+                                setPopoutActive={setPopoutActive}
+                                popoutActive={popoutActive}
+                                setTintColor={setTintColor}
+                                buttonSize={buttonSize}
+                                itemSize={ITEM_SIZE}
+                                removeItem={removeItem}
+                            />
+                        )}
                     </View>
                 </TouchableWithoutFeedback>
             </View>

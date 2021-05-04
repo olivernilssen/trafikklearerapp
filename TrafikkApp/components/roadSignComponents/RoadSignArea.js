@@ -106,7 +106,7 @@ const RoadSignArea = React.memo((props) => {
     /**
      * Used as a template for Flattlist, every item in the data it receives is passed on to this method
      * @memberof RoadSignArea
-     * @param {string} param0 the sign code (example: 100_1)
+     * @param {string} item the sign code (example: 100_1)
      * @returns an image that will open a modal when pressed
      */
     const renderItem = ({ item, index }) => {
@@ -118,14 +118,7 @@ const RoadSignArea = React.memo((props) => {
                         handleModal(item);
                         handleBottomSheet(true);
                     }}>
-                    <View
-                        style={{
-                            backgroundColor: Colors.sketchBackground,
-                            width: '100%',
-                            height: '100%',
-                            borderWidth: 1,
-                            borderColor: Colors.dividerPrimary,
-                        }}>
+                    <View style={styles.modalImage}>
                         <Image
                             style={{ width: '100%', height: '100%' }}
                             source={signType[item].thumbnail}
@@ -152,6 +145,7 @@ const RoadSignArea = React.memo((props) => {
                     handleBottomSheet={handleBottomSheet}
                 />
             </TouchableWithoutFeedback>
+
             <View style={{ zIndex: 5 }}>
                 <Header toggleDrawer={toggleDrawer} style={styles.header}>
                     <View style={styles.headerContent}>
@@ -165,6 +159,7 @@ const RoadSignArea = React.memo((props) => {
                 </Header>
             </View>
 
+            {/* LIST WITH ALL THE SIGNS */}
             <FlatList
                 ref={flatListRef}
                 data={Object.keys(signType)}
@@ -175,7 +170,10 @@ const RoadSignArea = React.memo((props) => {
                 initialNumToRender={24}
                 renderItem={renderItem}
                 getItemLayout={getItemLayout}
-                numColumns={4}></FlatList>
+                numColumns={4}
+            />
+
+            {/* BOTTOM MENU */}
             <BottomMenuAnimated
                 bottomSheetHidden={bottomSheetHidden}
                 setBottomSheetHidden={setBottomSheetHidden}
@@ -237,6 +235,13 @@ const styles = StyleSheet.create({
         color: Colors.icons,
         opacity: 0.7,
         ...Typography.section,
+    },
+    modalImage: {
+        backgroundColor: Colors.sketchBackground,
+        width: '100%',
+        height: '100%',
+        borderWidth: 1,
+        borderColor: Colors.dividerPrimary,
     },
     // subHeadingContainer: {
     //     // flex: 1,

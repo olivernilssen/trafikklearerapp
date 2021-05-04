@@ -199,11 +199,7 @@ const OptionPicker = React.memo((props) => {
 const styles = StyleSheet.create({
     centeredView: {
         flex: 1,
-        // flexDirection: 'column',
-        // height: '100%',
-        // width: '100%',
         padding: '4%',
-        // backgroundColor: 'red',
         justifyContent: 'space-evenly',
     },
     modalView: {
@@ -232,7 +228,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: '1%',
     },
     warningContainer: {
-        width: '90%',
+        width: '85%',
         padding: '2%',
         backgroundColor: Colors.warning,
         textAlign: 'center',

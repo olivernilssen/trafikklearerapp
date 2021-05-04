@@ -71,10 +71,12 @@ const SettingsView = React.memo((props) => {
 
     return (
         <View style={styles.view}>
+            {/* MODAL */}
             <OptionPicker
                 modalVisible={pickerVisible}
                 setModalVisible={setPickerVisible}
             />
+
             {/* CHANGE THEME COLORS */}
             <View style={styles.rowView}>
                 <Text style={styles.leftColumn}>Fargetema:</Text>
