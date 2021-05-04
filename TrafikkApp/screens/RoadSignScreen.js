@@ -16,12 +16,10 @@ import { RoadSignArea } from '../components/roadSignComponents/';
 const RoadSignScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
-            <View>
-                <RoadSignArea
-                    navigate={navigation.navigate}
-                    toggleDrawer={navigation.toggleDrawer}
-                />
-            </View>
+            <RoadSignArea
+                navigate={navigation.navigate}
+                toggleDrawer={navigation.toggleDrawer}
+            />
         </MainView>
     );
 });
