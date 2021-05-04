@@ -1,4 +1,4 @@
-const fareSkilt = {
+const fareskiltData = {
     '100_1': {
         navn: 'Farlig sving',
         beskrivelse: 'til høyre',
@@ -302,4 +302,4 @@ const fareSkilt = {
     },
 };
 
-export default fareSkilt;
+export default fareskiltData;

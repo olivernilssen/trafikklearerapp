@@ -1,4 +1,4 @@
-const vikepliktsSkilt = {
+const vikepliktsskiltData = {
     '202_0': {
         navn: 'Vikeplikt',
         beskrivelse:
@@ -49,4 +49,4 @@ const vikepliktsSkilt = {
     },
 };
 
-export default vikepliktsSkilt;
+export default vikepliktsskiltData;

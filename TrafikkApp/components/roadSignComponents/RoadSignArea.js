@@ -13,7 +13,7 @@ import { BottomMenuAnimated, Header, Overlay } from '../reusableComponents';
 import { Colors, Typography } from '../../styles';
 import RoadSignModal from './RoadSignModal';
 import RoadSignMenuContent from './RoadSignMenuContent';
-import { fareSkilt } from '../../assets/sign_descriptions';
+import { fareskiltData } from '../../assets/sign_descriptions';
 
 const numColumns = 4;
 
@@ -27,7 +27,7 @@ const numColumns = 4;
 const RoadSignArea = React.memo((props) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
-    const [signType, setSignType] = useState(fareSkilt);
+    const [signType, setSignType] = useState(fareskiltData);
     const [signObjectKeys, setSignObjectKeys] = useState(Object.keys(signType));
     const [selectedItem, setSelectedItem] = useState(signObjectKeys[0]);
     const [activeSignTypeName, setActiveSignTypeName] = useState('Fareskilt');
@@ -150,7 +150,7 @@ const RoadSignArea = React.memo((props) => {
                 />
                 {/* </View> */}
             </TouchableWithoutFeedback>
-            <View style={{ zIndex: 5 }}>
+            <View style={{ zIndex: 5, width: '100%' }}>
                 <Header toggleDrawer={toggleDrawer} style={styles.header}>
                     <View style={styles.headerContent}>
                         <Text style={styles.siteHeading}>Trafikkskilt</Text>
