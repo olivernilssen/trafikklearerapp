@@ -23,6 +23,8 @@ const BottomMenuAnimated = React.memo((props) => {
      * Is triggered when the state bottomSheetHidden is changed
      * Will trigger the toggleSubview function to animate the
      * bottomsheet into view
+     * @memberof BottomMenuAnimated
+
      */
     useEffect(() => {
         toggleSubview();
@@ -106,7 +108,7 @@ var styles = StyleSheet.create({
         bottom: 0,
         left: 0,
         right: 0,
-        backgroundColor: 'transparent',
+        backgroundColor: Colors.bottomMenuTransparent,
         zIndex: 10,
     },
     button: {

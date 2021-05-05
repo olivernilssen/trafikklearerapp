@@ -82,6 +82,7 @@ const RoadSignArea = React.memo((props) => {
 
     /**
      * Uses the flatlist reference to scrol to top when chaning sign
+     * @memberof RoadSignArea
      */
     const scrollToTop = () => {
         flatListRef.current.scrollToOffset({ animated: false, offset: 0 });
@@ -93,6 +94,7 @@ const RoadSignArea = React.memo((props) => {
     /**
      * Function to set the lenghth and offset of an item in the flatlist
      * @param {*} index index in the flatlist
+     * @memberof RoadSignArea
      * @returns
      */
     const getItemLayout = (data, index) => ({
@@ -103,7 +105,8 @@ const RoadSignArea = React.memo((props) => {
 
     /**
      * Used as a template for Flattlist, every item in the data it receives is passed on to this method
-     * @param {string} param0 the sign code (example: 100_1)
+     * @memberof RoadSignArea
+     * @param {string} item the sign code (example: 100_1)
      * @returns an image that will open a modal when pressed
      */
     const renderItem = ({ item, index }) => {
@@ -115,14 +118,7 @@ const RoadSignArea = React.memo((props) => {
                         handleModal(item);
                         handleBottomSheet(true);
                     }}>
-                    <View
-                        style={{
-                            backgroundColor: Colors.sketchBackground,
-                            width: '100%',
-                            height: '100%',
-                            borderWidth: 1,
-                            borderColor: Colors.dividerPrimary,
-                        }}>
+                    <View style={styles.modalImage}>
                         <Image
                             style={{ width: '100%', height: '100%' }}
                             source={signType[item].thumbnail}
@@ -139,40 +135,45 @@ const RoadSignArea = React.memo((props) => {
                 showOverlay={bottomSheetHidden}
                 setShowOverlay={setBottomSheetHidden}
             />
-            <TouchableWithoutFeedback onPress={() => closeModal()}>
-                {/* <View> */}
-                <RoadSignModal
-                    closeModal={closeModal}
-                    modalVisible={modalVisible}
-                    selectedSign={signType[selectedItem]}
-                    selectedSignCode={selectedItem}
-                    handleBottomSheet={handleBottomSheet}
-                />
-                {/* </View> */}
-            </TouchableWithoutFeedback>
-            <View style={{ zIndex: 5, width: '100%' }}>
-                <Header toggleDrawer={toggleDrawer} style={styles.header}>
-                    <View style={styles.headerContent}>
-                        <Text style={styles.siteHeading}>Trafikkskilt</Text>
-                        <View style={styles.subHeadingContainer}>
-                            <Text style={styles.subHeading}>
-                                {activeSignTypeName}
-                            </Text>
+            <View style={styles.mainView}>
+                <TouchableWithoutFeedback onPress={() => closeModal()}>
+                    <RoadSignModal
+                        closeModal={closeModal}
+                        modalVisible={modalVisible}
+                        selectedSign={signType[selectedItem]}
+                        selectedSignCode={selectedItem}
+                        handleBottomSheet={handleBottomSheet}
+                    />
+                </TouchableWithoutFeedback>
+                <View style={{ zIndex: 5, width: '100%' }}>
+                    <Header toggleDrawer={toggleDrawer} style={styles.header}>
+                        <View style={styles.headerContent}>
+                            <Text style={styles.siteHeading}>Trafikkskilt</Text>
+                            <View style={styles.subHeadingContainer}>
+                                <Text style={styles.subHeading}>
+                                    {activeSignTypeName}
+                                </Text>
+                            </View>
                         </View>
-                    </View>
-                </Header>
+                    </Header>
+                </View>
+
+                {/* LIST WITH ALL THE SIGNS */}
+                <FlatList
+                    ref={flatListRef}
+                    data={Object.keys(signType)}
+                    extraData={signType}
+                    style={styles.imageContainer}
+                    keyExtractor={keyExtractor}
+                    // maxToRenderPerBatch={10}
+                    initialNumToRender={20}
+                    renderItem={renderItem}
+                    getItemLayout={getItemLayout}
+                    numColumns={4}
+                />
             </View>
-            <FlatList
-                ref={flatListRef}
-                data={Object.keys(signType)}
-                extraData={signType}
-                style={styles.imageContainer}
-                keyExtractor={keyExtractor}
-                // maxToRenderPerBatch={10}
-                initialNumToRender={24}
-                renderItem={renderItem}
-                getItemLayout={getItemLayout}
-                numColumns={4}></FlatList>
+
+            {/* BOTTOM MENU */}
             <BottomMenuAnimated
                 bottomSheetHidden={bottomSheetHidden}
                 setBottomSheetHidden={setBottomSheetHidden}
@@ -195,14 +196,18 @@ const styles = StyleSheet.create({
         elevation: 10,
     },
     headerContent: {
-        // flex: 1,
         height: '100%',
         width: '93%',
         flexDirection: 'row',
     },
+    mainView: {
+        height: '96%',
+        width: '100%',
+    },
     imageContainer: {
         width: '100%',
-        flex: 1,
+        // height: '90%',
+        // flex: 1,
         backgroundColor: Colors.sketchBackground,
     },
     item: {
@@ -234,6 +239,13 @@ const styles = StyleSheet.create({
         color: Colors.icons,
         opacity: 0.7,
         ...Typography.section,
+    },
+    modalImage: {
+        backgroundColor: Colors.sketchBackground,
+        width: '100%',
+        height: '100%',
+        borderWidth: 1,
+        borderColor: Colors.dividerPrimary,
     },
     // subHeadingContainer: {
     //     // flex: 1,

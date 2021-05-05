@@ -7,7 +7,7 @@ import { Colors, Typography } from '../../styles';
 import AppContext from '../../AppContext';
 import { RUtils } from 'react-native-responsive-component';
 
-const extensionTypes = ['Gangfelt', 'O', 'Sykkelfelt'];
+const extensionTypes = ['Gangfelt', '-', 'Sykkelfelt'];
 
 /**
  * Component that shows a top menu on the screens using the SketchArea component.
@@ -26,7 +26,7 @@ const DraggableComponentsMenu = React.memo(
         const [bounceValue, setBounceValue] = useState(
             new Animated.Value(yPosHidden)
         );
-        const [buttonValue, setButtonValue] = useState('O');
+        const [buttonValue, setButtonValue] = useState('-');
         const buttonGroupWidth = RUtils.isSmallScreen() ? 200 : 230;
         const buttonGroupHeight = RUtils.isSmallScreen() ? 40 : 45;
 
@@ -54,17 +54,13 @@ const DraggableComponentsMenu = React.memo(
                 toValue = yPosHidden;
             }
             if (!topMenuHidden) {
-                Animated.spring(bounceValue, {
+                Animated.timing(bounceValue, {
                     toValue: toValue,
-                    bounciness: 1,
-                    speed: 6,
                     useNativeDriver: true,
                 }).start();
             } else {
-                Animated.spring(bounceValue, {
+                Animated.timing(bounceValue, {
                     toValue: toValue,
-                    bounciness: 1,
-                    speed: 6,
                     useNativeDriver: true,
                 }).start();
             }
@@ -137,7 +133,7 @@ const DraggableComponentsMenu = React.memo(
                                         inactiveTextColor={
                                             Colors.slideTextInactive
                                         }
-                                        textSize={17}
+                                        groupWidth={200}
                                         hasEmpty={true}
                                     />
                                 </View>

@@ -27,8 +27,9 @@ const DrawerToggleItem = React.memo(({ toggleDrawer, icon }) => (
 
 const styles = StyleSheet.create({
     menuItem: {
-        width: '8%',
+        width: '15%',
         margin: 20,
+        // backgroundColor: 'red',
     },
     menuIcon: {},
 });

@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
         marginRight: '2%',
     },
     headerText: {
-        // flex: 1,
         zIndex: -1,
         position: 'absolute',
         top: 0,

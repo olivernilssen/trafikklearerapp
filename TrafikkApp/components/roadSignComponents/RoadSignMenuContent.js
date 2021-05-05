@@ -97,6 +97,8 @@ const RoadSignMenuContent = (props) => {
     };
 
     /**
+     * Function to change which sign type the
+     * user is browsing
      * @memberof RoadSignMenuContent
      * @param {object} value The object of the chosen signType, contains name, description and image source
      */
@@ -105,73 +107,65 @@ const RoadSignMenuContent = (props) => {
         setBottomSheetHidden(true);
     };
 
-    const SignTypeButton = signTypeArray.map((value, index) => {
-        return (
-            <View
-                key={index}
-                style={{
-                    width: '32%',
-                    height: '30%',
-                    alignItems: 'center',
-                    // paddingVertical: 10,
-                    paddingTop: '1%',
-                }}>
-                <TouchableOpacity
-                    onPress={() => {
-                        scrollToTop();
-                        handleBottomMenuPress(value.typeObject);
-                        handleActiveButton(value.buttonID);
-                        handleHeaderName(value.typeName);
-                    }}
-                    style={[
-                        styles.button,
-                        activeTypeID === value.buttonID
-                            ? styles.buttonActive
-                            : styles.buttonInActive,
-                    ]}>
-                    <Text
-                        style={[
-                            styles.textStyle,
-                            activeTypeID === value.buttonID
-                                ? styles.activeText
-                                : styles.inActiveText,
-                        ]}>
-                        {value.typeName}
-                    </Text>
-                </TouchableOpacity>
-            </View>
-        );
-    });
-
     return (
-        <View
-            style={{
-                flex: 1,
-                // width: '100%',
-                // height: 200,
-                flexDirection: 'row',
-                flexWrap: 'wrap',
-                justifyContent: 'space-around',
-                // paddingTop: '2%',
-            }}>
-            {SignTypeButton}
+        <View style={styles.container}>
+            {signTypeArray.map((value, index) => {
+                return (
+                    <View key={index} style={styles.buttonView}>
+                        <TouchableOpacity
+                            onPress={() => {
+                                scrollToTop();
+                                handleBottomMenuPress(value.typeObject);
+                                handleActiveButton(value.buttonID);
+                                handleHeaderName(value.typeName);
+                            }}
+                            style={[
+                                styles.button,
+                                activeTypeID === value.buttonID
+                                    ? styles.buttonActive
+                                    : styles.buttonInActive,
+                            ]}>
+                            <Text
+                                style={[
+                                    styles.textStyle,
+                                    activeTypeID === value.buttonID
+                                        ? styles.activeText
+                                        : styles.inActiveText,
+                                ]}>
+                                {value.typeName}
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                );
+            })}
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    // container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+    container: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+        padding: '2%',
+    },
+    buttonView: {
+        width: '32%',
+        height: '30%',
+        alignItems: 'center',
+        padding: '1%',
+    },
     activeText: {
         color: Colors.secSlideTextActive,
     },
     inActiveText: {
         color: Colors.secSlideTextInactive,
-        opacity: 0.7,
+        opacity: 0.9,
     },
     textStyle: {
         textAlign: 'center',
-        // fontSize: 20,
-        padding: '7%',
+        padding: '6%',
         ...Typography.button,
     },
     button: {

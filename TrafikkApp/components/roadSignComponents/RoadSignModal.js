@@ -30,8 +30,8 @@ const RoadSignModal = React.memo((props) => {
     const [showDescript, setShowDescript] = useState(false);
     const [imgHeight, setImgHeight] = useState(400);
     const [descriptionHeight, setDescriptionHeight] = useState(0);
-    const [animationDone, setAnimationDone] = useState(false);
     const [maxHeightScroll, setMaxHeightScroll] = useState(250);
+    const [showText, setShowText] = useState(false);
 
     /**
      * UseEffect that runs when modal pops up or goes away
@@ -39,8 +39,12 @@ const RoadSignModal = React.memo((props) => {
      * @memberof RoadSignModal
      */
     useEffect(() => {
-        Animated.spring(viewHeight, {
-            toValue: imgHeight + 100,
+        const heightModal = RUtils.isSmallScreen()
+            ? imgHeight + 50
+            : imgHeight + 100;
+
+        Animated.timing(viewHeight, {
+            toValue: heightModal,
             useNativeDriver: false,
         }).start();
 
@@ -57,14 +61,16 @@ const RoadSignModal = React.memo((props) => {
             ? imgHeight + 50
             : imgHeight + 100;
 
-        Animated.spring(viewHeight, {
+        Animated.timing(viewHeight, {
             toValue: showDescript
                 ? descriptionHeight + heightModal
                 : heightModal,
+            duration: 300,
             useNativeDriver: false,
-        }).start();
-
-        setAnimationDone(!animationDone);
+        }).start(() => {
+            if (showDescript === true) setShowText(true);
+            else setShowText(false);
+        });
     }, [imgHeight, descriptionHeight, showDescript]);
 
     /**
@@ -100,7 +106,13 @@ const RoadSignModal = React.memo((props) => {
                     onLayout={(event) => {
                         setLayout(event.nativeEvent.layout, 'description');
                     }}>
-                    <Text style={styles.textStyle}>
+                    <Text
+                        style={[
+                            styles.textStyle,
+                            {
+                                color: showText ? 'white' : 'transparent',
+                            },
+                        ]}>
                         {selectedSignCode.replace('_', '.')} {selectedSign.navn}
                     </Text>
                     <Divider
@@ -109,10 +121,20 @@ const RoadSignModal = React.memo((props) => {
                             alignSelf: 'center',
                             padding: '4%',
                         }}
-                        borderColor={Colors.dividerPrimary}></Divider>
+                        borderColor={
+                            showText ? Colors.dividerPrimary : 'transparent'
+                        }></Divider>
                     {selectedSign.beskrivelse != '' && (
                         <ScrollView>
-                            <Text style={styles.textStyleDescription}>
+                            <Text
+                                style={[
+                                    styles.textStyleDescription,
+                                    {
+                                        color: showText
+                                            ? 'white'
+                                            : 'transparent',
+                                    },
+                                ]}>
                                 {selectedSign.beskrivelse}
                             </Text>
                         </ScrollView>
@@ -143,16 +165,19 @@ const RoadSignModal = React.memo((props) => {
                         {/* <TouchableWithoutFeedback> */}
                         <Animated.View
                             style={[styles.textAndImage, animatedStyle]}>
+                            {/* BUTTON TO GET THE EXIT MODAL */}
                             <TouchableOpacity
                                 activeOpacity={0.7}
                                 style={styles.closeIcon}
                                 onPress={() => closeModal()}>
                                 <Icon
                                     name={'times'}
-                                    size={Icons.medium}
+                                    size={Icons.large}
                                     color={Colors.icons}
                                 />
                             </TouchableOpacity>
+
+                            {/* BUTTON TO GET THE INFO ON OF SCREEN UP */}
                             <TouchableOpacity
                                 activeOpacity={0.7}
                                 style={styles.infoIcon}
@@ -163,6 +188,7 @@ const RoadSignModal = React.memo((props) => {
                                     color={Colors.icons}
                                 />
                             </TouchableOpacity>
+
                             <TouchableWithoutFeedback
                                 activeOpacity={1}
                                 onPress={() => {
@@ -205,10 +231,8 @@ const styles = StyleSheet.create({
     modal: {
         justifyContent: 'center',
         alignContent: 'center',
-        // flex: 1,
     },
     transparentBackground: {
-        // flex: 1,
         width: '100%',
         height: '100%',
         justifyContent: 'center',
@@ -246,13 +270,13 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.sketchBackground,
     },
     imageContainer: {
+        alignItems: 'center',
         width: '100%',
-        maxHeight: RUtils.isSmallScreen() ? 200 : 500,
-        // resizeMode: 'contain',
+        maxHeight: RUtils.isSmallScreen() ? 200 : 450,
     },
     image: {
-        width: '100%',
-        maxHeight: RUtils.isSmallScreen() ? 200 : 500,
+        width: RUtils.isSmallScreen() ? '70%' : '85%',
+        maxHeight: RUtils.isSmallScreen() ? 200 : 450,
         resizeMode: 'contain',
         // backgroundColor: 'red',
     },
@@ -260,7 +284,7 @@ const styles = StyleSheet.create({
         marginTop: '5%',
         width: '90%',
         alignSelf: 'center',
-        // backgroundColor: 'red',
+        backgroundColor: 'red',
     },
     textStyle: {
         width: '100%',

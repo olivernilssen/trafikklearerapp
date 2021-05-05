@@ -64,23 +64,18 @@ const styles = StyleSheet.create({
     buttonSize: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginHorizontal: '0.5%',
         ...Buttons.sketchHeaderButton,
     },
     buttonActive: {
         backgroundColor: Colors.iconActive,
         ...Buttons.sketchHeaderButton,
+        elevation: 5,
+        padding: 10,
     },
     buttonInactive: {
         backgroundColor: Colors.headerBg,
         ...Buttons.sketchHeaderButton,
-    },
-    spacedRight: {
-        flex: 1,
-        flexDirection: 'row',
-        height: '100%',
-        width: '100%',
-        alignItems: 'center',
+        padding: 10,
     },
 });
 

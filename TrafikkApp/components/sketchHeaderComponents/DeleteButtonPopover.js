@@ -88,13 +88,11 @@ const styles = StyleSheet.create({
     buttonSize: {
         justifyContent: 'center',
         alignItems: 'center',
-        // paddingVertical: 16,
-        // paddingHorizontal: 16,
-        marginHorizontal: '2%',
         ...Buttons.sketchHeaderButton,
     },
     buttonActive: {
         backgroundColor: Colors.deleteButtonActive,
+        elevation: 2,
     },
     buttonInactive: {
         color: Colors.icons,

@@ -23,6 +23,11 @@ const DrawerMenu = React.memo((props) => {
     const [drawerInfo, setDrawerInfo] = useState({});
     const [arrayFinished, setArrayFinished] = useState(false);
 
+    /**
+     * useEffect that runs on mount. Checks if it has already been run or not
+     * if it has not, then it creates an array with the info for the drawers
+     * to create sections
+     */
     useEffect(() => {
         if (!arrayFinished) {
             var newArray = [];
@@ -50,6 +55,11 @@ const DrawerMenu = React.memo((props) => {
         }
     }, []);
 
+    /**
+     * Section header Component for the SectionList
+     * @param {string} title
+     * @returns
+     */
     const SectionHeader = ({ title }) => {
         if (title == '') {
             return null;

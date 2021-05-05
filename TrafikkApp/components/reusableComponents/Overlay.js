@@ -22,6 +22,7 @@ const Overlay = React.memo((props) => {
     /**
      * useEffect that is triggered when the state showOverlay is changed.
      * Will animate the overlay into view and out of view
+     * @memberof Overlay
      */
     useEffect(() => {
         handleAnimation();
@@ -55,7 +56,6 @@ const Overlay = React.memo((props) => {
     /**
      * Defines which colors to animate between
      * @memberof Overlay
-     * @function
      * @param {Array} inputRange The ranges to interpolate between
      * @param {Array} outputRange The colors to interpolate between
      */
@@ -66,6 +66,7 @@ const Overlay = React.memo((props) => {
 
     /**
      * Declares the animated backgroundColor to pass to the animated view
+     * @memberof Overlay
      */
     const animatedStyle = {
         backgroundColor: boxInterpolation,

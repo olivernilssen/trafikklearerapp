@@ -45,12 +45,19 @@ const ButtonGroup = (props) => {
     const [chosenIndex, setChosenIndex] = useState(
         values.indexOf(selectedValue)
     );
+    //This state is to help the text to change color only once the animation is done
+    //So we don't get weird color flickering
+    const [indexAnimDone, setIndexAnimDone] = useState(
+        values.indexOf(selectedValue)
+    );
     const [hasMounted, setHasMounted] = useState(false);
+    const [newValue, setNewValue] = useState(selectedValue);
     const [boxPos, setBoxPos] = useState(new Animated.Value(0));
 
     /**
      * useEffect that is triggered when selectedValue is changed.
      * Will set the state chosenIndex to the index of the selected value
+     * @memberof ButtonGroup
      */
     useEffect(() => {
         setChosenIndex(values.indexOf(selectedValue));
@@ -59,20 +66,30 @@ const ButtonGroup = (props) => {
     /**
      * Use effect triggered on mount to set the inital buttonSizes depending on
      * what type of slider it is
+     * @memberof ButtonGroup
      */
     useEffect(() => {
         var newSizes = [];
         const smallButton = width / values.length / 3;
         let bigButton = 0;
 
-        if (values.indexOf('O') != -1 || values.indexOf('-') != -1) {
+        if (
+            values.indexOf('O') != -1 ||
+            values.indexOf('-') != -1 ||
+            values.indexOf('x') != -1
+        ) {
             bigButton = (width - smallButton) / (values.length - 1);
         } else {
             bigButton = width / values.length;
         }
 
         for (var i = 0; i < values.length; i++) {
-            if (values[i] === 'O' || values[i] === '-' || values[i] === '0') {
+            if (
+                values[i] === 'O' ||
+                values[i] === '-' ||
+                values[i] === '0' ||
+                values[i] === 'x'
+            ) {
                 newSizes.push(smallButton);
             } else {
                 newSizes.push(bigButton);
@@ -85,6 +102,7 @@ const ButtonGroup = (props) => {
     /**
      * useEffect that is triggered when chosenValue is changed.
      * Will animate the changing of the selected button
+     * @memberof ButtonGroup
      */
     useEffect(() => {
         // Getting sum of numbers
@@ -95,16 +113,19 @@ const ButtonGroup = (props) => {
         if (!hasMounted) {
             Animated.timing(boxPos, {
                 toValue: sum,
+                duration: 250,
                 useNativeDriver: true,
             }).start();
         } else {
             Animated.timing(boxPos, {
                 toValue: sum,
+                duration: 250,
                 useNativeDriver: true,
             }).start();
         }
 
         setHasMounted(true);
+        setIndexAnimDone(chosenIndex);
     }, [chosenIndex, buttonSizes]);
 
     /**
@@ -115,9 +136,13 @@ const ButtonGroup = (props) => {
      * @param {int} i The index of the button
      */
     const onValueChanged = (value, i) => {
-        onSelect(value);
         setChosenIndex(i);
+        setNewValue(value);
     };
+
+    useEffect(() => {
+        if (newValue != selectedValue) onSelect(newValue);
+    }, [newValue]);
 
     return (
         <View
@@ -151,7 +176,7 @@ const ButtonGroup = (props) => {
                             styles.buttonView,
                             isColorOption
                                 ? {
-                                      borderTopLeftRadius: i == 0 ? 10 : 0,
+                                      borderTopLeftRadius: i === 0 ? 10 : 0,
                                       borderTopRightRadius:
                                           i === values.length - 1 ? 10 : 0,
                                       borderBottomLeftRadius: i === 0 ? 10 : 0,
@@ -168,14 +193,15 @@ const ButtonGroup = (props) => {
                                     width: buttonSizes[i],
                                 },
                             ]}
-                            onPress={() => onValueChanged(value, i)}>
+                            onPress={() => onValueChanged(value, i)}
+                            activeOpacity={0.7}>
                             {!isColorOption && (
                                 <Text
                                     style={[
                                         styles.text,
                                         {
                                             color:
-                                                i == chosenIndex
+                                                i == indexAnimDone
                                                     ? highlightTextColor
                                                     : inactiveTextColor,
                                         },
@@ -196,7 +222,9 @@ const ButtonGroup = (props) => {
                             height: isHeight,
                             width: buttonSizes[chosenIndex],
                             borderBottomWidth: 5,
-                            borderRadius: 0,
+                            borderBottomLeftRadius: chosenIndex === 0 ? 10 : 0,
+                            borderBottomRightRadius:
+                                chosenIndex === values.length - 1 ? 10 : 0,
                             transform: [{ translateX: boxPos }],
                             borderColor: 'white',
                         },
