@@ -108,7 +108,7 @@ var styles = StyleSheet.create({
         bottom: 0,
         left: 0,
         right: 0,
-        backgroundColor: Colors.bottomMeny,
+        backgroundColor: Colors.bottomMenuTransparent,
         zIndex: 10,
     },
     button: {
