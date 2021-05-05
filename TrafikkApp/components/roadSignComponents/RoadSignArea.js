@@ -13,7 +13,7 @@ import { BottomMenuAnimated, Header, Overlay } from '../reusableComponents';
 import { Colors, Typography } from '../../styles';
 import RoadSignModal from './RoadSignModal';
 import RoadSignMenuContent from './RoadSignMenuContent';
-import { fareSkilt } from '../../assets/sign_descriptions';
+import { fareskiltData } from '../../assets/sign_descriptions';
 
 const numColumns = 4;
 
@@ -27,7 +27,7 @@ const numColumns = 4;
 const RoadSignArea = React.memo((props) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
-    const [signType, setSignType] = useState(fareSkilt);
+    const [signType, setSignType] = useState(fareskiltData);
     const [signObjectKeys, setSignObjectKeys] = useState(Object.keys(signType));
     const [selectedItem, setSelectedItem] = useState(signObjectKeys[0]);
     const [activeSignTypeName, setActiveSignTypeName] = useState('Fareskilt');
@@ -135,43 +135,43 @@ const RoadSignArea = React.memo((props) => {
                 showOverlay={bottomSheetHidden}
                 setShowOverlay={setBottomSheetHidden}
             />
-
-            <TouchableWithoutFeedback onPress={() => closeModal()}>
-                <RoadSignModal
-                    closeModal={closeModal}
-                    modalVisible={modalVisible}
-                    selectedSign={signType[selectedItem]}
-                    selectedSignCode={selectedItem}
-                    handleBottomSheet={handleBottomSheet}
-                />
-            </TouchableWithoutFeedback>
-
-            <View style={{ zIndex: 5 }}>
-                <Header toggleDrawer={toggleDrawer} style={styles.header}>
-                    <View style={styles.headerContent}>
-                        <Text style={styles.siteHeading}>Trafikkskilt</Text>
-                        <View style={styles.subHeadingContainer}>
-                            <Text style={styles.subHeading}>
-                                {activeSignTypeName}
-                            </Text>
+            <View style={styles.mainView}>
+                <TouchableWithoutFeedback onPress={() => closeModal()}>
+                    <RoadSignModal
+                        closeModal={closeModal}
+                        modalVisible={modalVisible}
+                        selectedSign={signType[selectedItem]}
+                        selectedSignCode={selectedItem}
+                        handleBottomSheet={handleBottomSheet}
+                    />
+                </TouchableWithoutFeedback>
+                <View style={{ zIndex: 5, width: '100%' }}>
+                    <Header toggleDrawer={toggleDrawer} style={styles.header}>
+                        <View style={styles.headerContent}>
+                            <Text style={styles.siteHeading}>Trafikkskilt</Text>
+                            <View style={styles.subHeadingContainer}>
+                                <Text style={styles.subHeading}>
+                                    {activeSignTypeName}
+                                </Text>
+                            </View>
                         </View>
-                    </View>
-                </Header>
-            </View>
+                    </Header>
+                </View>
 
-            {/* LIST WITH ALL THE SIGNS */}
-            <FlatList
-                ref={flatListRef}
-                data={Object.keys(signType)}
-                extraData={signType}
-                style={styles.imageContainer}
-                keyExtractor={keyExtractor}
-                // maxToRenderPerBatch={10}
-                initialNumToRender={24}
-                renderItem={renderItem}
-                getItemLayout={getItemLayout}
-                numColumns={4}
-            />
+                {/* LIST WITH ALL THE SIGNS */}
+                <FlatList
+                    ref={flatListRef}
+                    data={Object.keys(signType)}
+                    extraData={signType}
+                    style={styles.imageContainer}
+                    keyExtractor={keyExtractor}
+                    // maxToRenderPerBatch={10}
+                    initialNumToRender={20}
+                    renderItem={renderItem}
+                    getItemLayout={getItemLayout}
+                    numColumns={4}
+                />
+            </View>
 
             {/* BOTTOM MENU */}
             <BottomMenuAnimated
@@ -196,14 +196,18 @@ const styles = StyleSheet.create({
         elevation: 10,
     },
     headerContent: {
-        // flex: 1,
         height: '100%',
         width: '93%',
         flexDirection: 'row',
     },
+    mainView: {
+        height: '96%',
+        width: '100%',
+    },
     imageContainer: {
         width: '100%',
-        flex: 1,
+        // height: '90%',
+        // flex: 1,
         backgroundColor: Colors.sketchBackground,
     },
     item: {
