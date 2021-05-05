@@ -17,6 +17,31 @@ import { RUtils } from 'react-native-responsive-component';
 const { Popover } = renderers;
 
 /**
+ * An array that holds the colors that are used for the color buttons.
+ * These are also the colors used to draw with.
+ */
+const colorArray = [
+    { colorCode: '#20303C', key: '20403C' },
+    { colorCode: '#3182C8', key: '3182C8' },
+    { colorCode: '#00AAAF', key: '00AAAF' },
+    { colorCode: '#00A65F', key: '00A65F' },
+    { colorCode: '#E2902B', key: 'E2902B' },
+    { colorCode: '#D9644A', key: 'D9644A' },
+    { colorCode: '#CF262F', key: 'CF262F' },
+    { colorCode: '#8B1079', key: '8B1079' },
+];
+
+/**
+ * An array that holds the thickness of the "icons" (view) for the pencil thickness buttons
+ * and the pencil thickness used for changing the thickness of the pencil.
+ */
+const pencilThicknessArray = [
+    { viewThickness: 8, pencilThickness: 5, key: 85 },
+    { viewThickness: 11, pencilThickness: 8, key: 118 },
+    { viewThickness: 14, pencilThickness: 11, key: 1411 },
+];
+
+/**
  * A button with a menu for the drawing component of the SketchHeader.
  * @namespace SketchColorMenu
  * @category SketchHeaderComponents
@@ -34,13 +59,11 @@ const SketchColorMenu = React.memo((props) => {
     const [isOpened, setOpened] = useState(false);
     const [colorButtonID, setColorButtonID] = useState(0);
     const [pencilThicknessID, setPencilThicknessID] = useState(0);
-    // const [menuArrow, setMenuArrow] = useState(false);
     const appContext = useContext(AppContext);
 
     const {
         onPaletteColorChange,
         onChangePencilSize,
-        propsStyle,
         onEraserPencilSwitch,
         buttonActiveId,
         activeId,
@@ -49,33 +72,9 @@ const SketchColorMenu = React.memo((props) => {
     } = props;
 
     /**
-     * An array that holds the colors that are used for the color buttons.
-     * These are also the colors used to draw with.
-     */
-    const colorArray = [
-        { colorCode: '#20303C', key: '20403C' },
-        { colorCode: '#3182C8', key: '3182C8' },
-        { colorCode: '#00AAAF', key: '00AAAF' },
-        { colorCode: '#00A65F', key: '00A65F' },
-        { colorCode: '#E2902B', key: 'E2902B' },
-        { colorCode: '#D9644A', key: 'D9644A' },
-        { colorCode: '#CF262F', key: 'CF262F' },
-        { colorCode: '#8B1079', key: '8B1079' },
-    ];
-
-    /**
-     * An array that holds the thickness of the "icons" (view) for the pencil thickness buttons
-     * and the pencil thickness used for changing the thickness of the pencil.
-     */
-    const pencilThicknessArray = [
-        { viewThickness: 8, pencilThickness: 5, key: 85 },
-        { viewThickness: 11, pencilThickness: 8, key: 118 },
-        { viewThickness: 14, pencilThickness: 11, key: 1411 },
-    ];
-
-    /**
      * useEffect to get out the colorId of the correct color
      * depending on what the settings has stored
+     * @memberof SketchColorMenu
      */
     useEffect(() => {
         let index = 0;
@@ -176,7 +175,7 @@ const SketchColorMenu = React.memo((props) => {
     });
 
     return (
-        <View style={propsStyle}>
+        <View>
             <Menu
                 renderer={Popover}
                 rendererProps={{
@@ -244,7 +243,6 @@ const styles = StyleSheet.create({
     buttonSize: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginHorizontal: '2%',
         ...Buttons.sketchHeaderButton,
     },
     downIconMenu: {

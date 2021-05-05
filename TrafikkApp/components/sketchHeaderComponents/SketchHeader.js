@@ -65,41 +65,42 @@ const SketchHeader = React.memo((props) => {
                     clearCanvas={clearCanvas}
                     propsStyle={styles.spacedLeft}
                 />
-                <SketchColorMenu
-                    onPaletteColorChange={onPaletteColorChange}
-                    onChangePencilSize={onChangePencilSize}
-                    propsStyle={styles.spacedRight}
-                    onEraserPencilSwitch={onEraserPencilSwitch}
-                    buttonActiveId={0}
-                    activeId={activeId}
-                    focusedActiveButton={focusedActiveButton}
-                    pencilColor={pencilColor}
-                    pencilSize={pencilSize}
-                    chosenColor={chosenColor}
-                />
-                {/* <View style={styles.container} /> */}
-                <HeaderButton
-                    iconName={'eraser'}
-                    buttonOnPress={eraser}
-                    buttonActiveId={1}
-                    activeId={activeId}
-                    focusedActiveButton={focusedActiveButton}
-                />
-                {/* <View style={styles.container} /> */}
-                <HeaderButton
-                    iconName={'undo-alt'}
-                    buttonOnPress={undoChange}
-                    buttonActiveId={null}
-                    activeId={activeId}
-                    focusedActiveButton={focusedActiveButton}
-                />
-                {/* <View style={styles.container} /> */}
-                <DraggableComponentsButton
-                    activeIconName={'box-open'}
-                    inactiveIconName={'box'}
-                    toggleTopMenu={toggleTopMenu}
-                    topMenuHidden={topMenuHidden}
-                />
+                <View style={styles.buttonsRight}>
+                    <SketchColorMenu
+                        onPaletteColorChange={onPaletteColorChange}
+                        onChangePencilSize={onChangePencilSize}
+                        onEraserPencilSwitch={onEraserPencilSwitch}
+                        buttonActiveId={0}
+                        activeId={activeId}
+                        focusedActiveButton={focusedActiveButton}
+                        pencilColor={pencilColor}
+                        pencilSize={pencilSize}
+                        chosenColor={chosenColor}
+                    />
+                    {/* <View style={styles.container} /> */}
+                    <HeaderButton
+                        iconName={'eraser'}
+                        buttonOnPress={eraser}
+                        buttonActiveId={1}
+                        activeId={activeId}
+                        focusedActiveButton={focusedActiveButton}
+                    />
+                    {/* <View style={styles.container} /> */}
+                    <HeaderButton
+                        iconName={'undo-alt'}
+                        buttonOnPress={undoChange}
+                        buttonActiveId={null}
+                        activeId={activeId}
+                        focusedActiveButton={focusedActiveButton}
+                    />
+                    {/* <View style={styles.container} /> */}
+                    <DraggableComponentsButton
+                        activeIconName={'box-open'}
+                        inactiveIconName={'box'}
+                        toggleTopMenu={toggleTopMenu}
+                        topMenuHidden={topMenuHidden}
+                    />
+                </View>
             </Header>
         </View>
     );
@@ -122,27 +123,18 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'flex-end',
-        // borderRadius: 20,
+        justifyContent: 'center',
     },
-    spacedRight: {
-        flex: 1,
-        flexDirection: 'row',
-        height: '100%',
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        padding: 10,
-    },
+
     container: {
         paddingHorizontal: 5,
     },
-    // buttonSize: {
-    //     // flex: 1,
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    //     ...Buttons.sketchHeaderButton,
-    // },
+    buttonsRight: {
+        flex: 1,
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
 });
 
 export default SketchHeader;

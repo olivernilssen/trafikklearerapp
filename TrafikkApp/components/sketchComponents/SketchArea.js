@@ -14,6 +14,7 @@ import { DraggableWithEverything } from '../draggable/';
 import SketchAreaMenuContent from './SketchAreaMenuContent';
 import { Colors } from '../../styles';
 import AppContext from '../../AppContext';
+import { RUtils } from 'react-native-responsive-component';
 
 const { width, height } = Dimensions.get('window');
 
@@ -197,6 +198,7 @@ const SketchArea = React.memo((props) => {
                     pencilSize={pencilSize}
                     chosenColor={chosenColor}
                 />
+
                 <View style={styles.backgroundImageContainer}>
                     <Image
                         resizeMode={'cover'}
@@ -267,7 +269,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 0,
         left: 0,
-        paddingTop: 80,
+        paddingTop: RUtils.isSmallScreen() ? 60 : 80,
         height: '100%',
         width: '100%',
         justifyContent: 'center',
