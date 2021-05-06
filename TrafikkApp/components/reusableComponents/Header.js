@@ -2,7 +2,8 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Icons, Typography } from '../../styles';
-import { RUtils } from 'react-native-responsive-component';
+// import { RUtils } from 'react-native-responsive-component';
+import { isSmallScreen } from '../reusableComponents/globalFunctions';
 
 /**
  * Component that displays a Header at the top of the screen.
@@ -13,20 +14,22 @@ import { RUtils } from 'react-native-responsive-component';
  * @prop {array} [name] The header text
  * @prop {styleSheet} [style] Optional styling of the Header
  */
-const Header = React.memo((props) => (
-    <View style={{ ...styles.header, ...props.style }}>
-        <TouchableOpacity onPress={props.toggleDrawer} style={styles.icon}>
-            <Icon name={'bars'} size={Icons.medium} color={Colors.icons} />
-        </TouchableOpacity>
-        <Text style={styles.headerText}>{props.name}</Text>
-        {props.children}
-    </View>
-));
+const Header = React.memo((props) => {
+    return (
+        <View style={{ ...styles.header, ...props.style }}>
+            <TouchableOpacity onPress={props.toggleDrawer} style={styles.icon}>
+                <Icon name={'bars'} size={Icons.medium} color={Colors.icons} />
+            </TouchableOpacity>
+            <Text style={styles.headerText}>{props.name}</Text>
+            {props.children}
+        </View>
+    );
+});
 
 const styles = StyleSheet.create({
     header: {
         width: '100%',
-        height: RUtils.isSmallScreen() ? 60 : 80,
+        height: isSmallScreen() ? 60 : 80,
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: '3%',

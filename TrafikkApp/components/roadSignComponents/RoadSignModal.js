@@ -14,6 +14,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Typography, Icons, Buttons } from '../../styles';
 import { Divider } from '../reusableComponents';
 import { RUtils } from 'react-native-responsive-component';
+import { isSmallScreen } from '../reusableComponents/globalFunctions';
 
 /**
  * @namespace RoadSignModal
@@ -39,9 +40,7 @@ const RoadSignModal = React.memo((props) => {
      * @memberof RoadSignModal
      */
     useEffect(() => {
-        const heightModal = RUtils.isSmallScreen()
-            ? imgHeight + 50
-            : imgHeight + 100;
+        const heightModal = isSmallScreen() ? imgHeight + 50 : imgHeight + 100;
 
         Animated.timing(viewHeight, {
             toValue: heightModal,
@@ -57,9 +56,7 @@ const RoadSignModal = React.memo((props) => {
      * @memberof RoadSignModal
      */
     useEffect(() => {
-        const heightModal = RUtils.isSmallScreen()
-            ? imgHeight + 50
-            : imgHeight + 100;
+        const heightModal = isSmallScreen() ? imgHeight + 50 : imgHeight + 100;
 
         Animated.timing(viewHeight, {
             toValue: showDescript
@@ -247,7 +244,7 @@ const styles = StyleSheet.create({
         zIndex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: RUtils.isSmallScreen() ? 12 : 20,
+        padding: isSmallScreen() ? 12 : 20,
     },
     infoIcon: {
         position: 'absolute',
@@ -272,11 +269,11 @@ const styles = StyleSheet.create({
     imageContainer: {
         alignItems: 'center',
         width: '100%',
-        maxHeight: RUtils.isSmallScreen() ? 200 : 450,
+        maxHeight: isSmallScreen() ? 200 : 450,
     },
     image: {
-        width: RUtils.isSmallScreen() ? '70%' : '85%',
-        maxHeight: RUtils.isSmallScreen() ? 200 : 450,
+        width: isSmallScreen() ? '70%' : '85%',
+        maxHeight: isSmallScreen() ? 200 : 450,
         resizeMode: 'contain',
         // backgroundColor: 'red',
     },
@@ -284,7 +281,6 @@ const styles = StyleSheet.create({
         marginTop: '5%',
         width: '90%',
         alignSelf: 'center',
-        backgroundColor: 'red',
     },
     textStyle: {
         width: '100%',
