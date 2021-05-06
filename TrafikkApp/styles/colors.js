@@ -6,7 +6,7 @@ const charcoal = '#4A4A4A';
 const darkCharcoal = '#434343';
 const darkerCharchoal = '#404040';
 
-const transparentDark = '#3B3B3BF3';
+const transparentDark = '#3B3B3BDC';
 
 const lightGray = '#DAD8D8';
 const mediumGray = '#C3C2C2';

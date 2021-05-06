@@ -1,6 +1,18 @@
 import ThemeVariables from './themeVariables';
 import { RUtils } from 'react-native-responsive-component';
 
+import { Dimensions } from 'react-native';
+
+const { height, width } = Dimensions.get('window');
+
+const isSmallScreen = () => {
+    if (height < 900 && width < 600) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
 export const small = {
     width: ThemeVariables.BUTTON_WIDTH_SMALL,
 };
@@ -24,10 +36,10 @@ export const round = {
 };
 
 export const startScreen = {
-    width: RUtils.isSmallScreen()
+    width: isSmallScreen()
         ? ThemeVariables.BUTTON_WIDTH_EXTRA_LARGE
         : ThemeVariables.BUTTON_WIDTH_LARGE,
-    height: RUtils.isSmallScreen()
+    height: isSmallScreen()
         ? ThemeVariables.BUTTON_HEIGHT_MEDIUM
         : ThemeVariables.BUTTON_HEIGHT_LARGE,
     ...rounded,
@@ -49,13 +61,13 @@ export const largeWidthRounded = {
 };
 
 export const sketchHeaderButton = {
-    height: RUtils.isSmallScreen() ? 45 : 62,
-    width: RUtils.isSmallScreen() ? 45 : 62,
+    height: isSmallScreen() ? 45 : 62,
+    width: isSmallScreen() ? 45 : 62,
     ...round,
 };
 
 export const sketchHeaderButtonSmall = {
-    height: RUtils.isSmallScreen() ? 26 : 32,
-    width: RUtils.isSmallScreen() ? 26 : 32,
+    height: isSmallScreen() ? 26 : 32,
+    width: isSmallScreen() ? 26 : 32,
     ...round,
 };

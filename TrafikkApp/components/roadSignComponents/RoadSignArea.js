@@ -135,43 +135,46 @@ const RoadSignArea = React.memo((props) => {
                 showOverlay={bottomSheetHidden}
                 setShowOverlay={setBottomSheetHidden}
             />
-            <View style={styles.mainView}>
-                <TouchableWithoutFeedback onPress={() => closeModal()}>
-                    <RoadSignModal
-                        closeModal={closeModal}
-                        modalVisible={modalVisible}
-                        selectedSign={signType[selectedItem]}
-                        selectedSignCode={selectedItem}
-                        handleBottomSheet={handleBottomSheet}
-                    />
-                </TouchableWithoutFeedback>
-                <View style={{ zIndex: 5, width: '100%' }}>
-                    <Header toggleDrawer={toggleDrawer} style={styles.header}>
-                        <View style={styles.headerContent}>
-                            <Text style={styles.siteHeading}>Trafikkskilt</Text>
-                            <View style={styles.subHeadingContainer}>
-                                <Text style={styles.subHeading}>
-                                    {activeSignTypeName}
-                                </Text>
-                            </View>
+            {/* <View style={styles.mainView}> */}
+            <TouchableWithoutFeedback onPress={() => closeModal()}>
+                <RoadSignModal
+                    closeModal={closeModal}
+                    modalVisible={modalVisible}
+                    selectedSign={signType[selectedItem]}
+                    selectedSignCode={selectedItem}
+                    handleBottomSheet={handleBottomSheet}
+                />
+            </TouchableWithoutFeedback>
+            <View style={{ zIndex: 5, width: '100%' }}>
+                <Header toggleDrawer={toggleDrawer} style={styles.header}>
+                    <View style={styles.headerContent}>
+                        <Text style={styles.siteHeading}>Trafikkskilt</Text>
+                        <View style={styles.subHeadingContainer}>
+                            <Text style={styles.subHeading}>
+                                {activeSignTypeName}
+                            </Text>
                         </View>
-                    </Header>
-                </View>
-
+                    </View>
+                </Header>
+            </View>
+            <View style={styles.flatlistContainer}>
                 {/* LIST WITH ALL THE SIGNS */}
                 <FlatList
                     ref={flatListRef}
                     data={Object.keys(signType)}
                     extraData={signType}
-                    style={styles.imageContainer}
+                    // style={styles.imageContainer}
+                    contentContainerStyle={styles.flatlist}
                     keyExtractor={keyExtractor}
                     // maxToRenderPerBatch={10}
                     initialNumToRender={20}
                     renderItem={renderItem}
                     getItemLayout={getItemLayout}
                     numColumns={4}
+                    persistentScrollbar={true}
                 />
             </View>
+            {/* </View> */}
 
             {/* BOTTOM MENU */}
             <BottomMenuAnimated
@@ -200,16 +203,29 @@ const styles = StyleSheet.create({
         width: '93%',
         flexDirection: 'row',
     },
-    mainView: {
-        height: '96%',
+    // mainView: {
+    //     height: '100%',
+    //     width: '100%',
+    //     // paddingBottom: 30,
+    //     // backgroundColor: Colors.sketchBackground,
+    // },
+    flatlistContainer: {
+        flex: 1,
+        height: '100%',
         width: '100%',
-    },
-    imageContainer: {
-        width: '100%',
-        // height: '90%',
-        // flex: 1,
+        // paddingBottom: '9%',
         backgroundColor: Colors.sketchBackground,
     },
+    flatlist: {
+        paddingBottom: '9%',
+    },
+    // imageContainer: {
+    // width: '100%',
+    // height: '90%',
+    // flex: 1
+    // marginBottom: '9%',
+    // backgroundColor: Colors.sketchBackground,
+    // },
     item: {
         alignItems: 'center',
         justifyContent: 'center',

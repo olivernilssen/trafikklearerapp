@@ -12,6 +12,8 @@ import { Header, Divider } from '../reusableComponents/';
 import { StartScreenLink, ExternalLink, HeaderName } from './';
 import { Colors, Typography, Icons } from '../../styles';
 
+import { Dimensions } from 'react-native';
+const { height, width } = Dimensions.get('screen');
 /**
  * Screen component for the start screen.
  * Contains links to the most important screens in the app, and some clickable external links.
@@ -22,8 +24,12 @@ import { Colors, Typography, Icons } from '../../styles';
 const StartArea = React.memo((props) => {
     const { toggleDrawer, navigate } = props;
 
+    const testFunc = () => {
+        console.log('Height: ' + height + '--- width: ' + width);
+    };
+
     return (
-        <>
+        <View style={styles.startArea}>
             <Header toggleDrawer={toggleDrawer} style={styles.header}>
                 <View style={styles.headerItems}>
                     <HeaderName />
@@ -101,11 +107,12 @@ const StartArea = React.memo((props) => {
                 <View style={styles.externalLinksContainer}>
                     <ExternalLink
                         text="Trafikkopplæringsforskriften"
-                        onPress={() => {
-                            Linking.openURL(
-                                'https://lovdata.no/dokument/SF/forskrift/2004-10-01-1339'
-                            );
-                        }}
+                        // onPress={() => {
+                        //     Linking.openURL(
+                        //         'https://lovdata.no/dokument/SF/forskrift/2004-10-01-1339'
+                        //     );
+                        // }}
+                        onPress={() => testFunc()}
                     />
                     <Divider
                         borderColor={Colors.dividerPrimary}
@@ -145,11 +152,16 @@ const StartArea = React.memo((props) => {
                     />
                 </View>
             </View>
-        </>
+        </View>
     );
 });
 
 const styles = StyleSheet.create({
+    startArea: {
+        flex: 1,
+        width: '100%',
+        height: '100%',
+    },
     header: {
         borderBottomWidth: 1,
         borderBottomColor: Colors.dividerPrimary,
@@ -167,7 +179,8 @@ const styles = StyleSheet.create({
     },
     main: {
         flex: 1,
-        width: '100%',
+        // width: '100%',
+        // height: '100%',
         justifyContent: 'center',
         paddingVertical: '10%',
         backgroundColor: Colors.startScreenBg,

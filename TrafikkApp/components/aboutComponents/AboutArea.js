@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { MainView, Header, Divider } from '../reusableComponents/';
 import { Buttons, Colors, Icons, Typography } from '../../styles';
 import { RUtils } from 'react-native-responsive-component';
+import { isSmallScreen } from '../reusableComponents/globalFunctions';
 
 /**
  * The screen component for the About App screen.
@@ -50,13 +51,13 @@ const AboutArea = React.memo((props) => {
     };
 
     return (
-        <View>
+        <>
             <Header
                 name="Om appen"
                 toggleDrawer={toggleDrawer}
                 style={styles.header}
             />
-            <ScrollView contentContainerStyle={styles.main}>
+            <View style={styles.main}>
                 <View style={styles.section}>
                     <Image
                         source={imgSource}
@@ -72,7 +73,9 @@ const AboutArea = React.memo((props) => {
                     style={styles.divider}
                     borderColor={Colors.dividerPrimary}
                 />
-                <View style={styles.section}>
+                <ScrollView
+                    contentContainerStyle={styles.infoSection}
+                    persistentScrollbar={true}>
                     <Text style={styles.text}>
                         Applikasjonen er laget for trafikklærere og er ment å
                         brukes på nettbrett med Android operativsystem. Tanken
@@ -84,7 +87,7 @@ const AboutArea = React.memo((props) => {
                         Gjerne ta kontakt med oss hvis du har forslag til
                         forbedringer eller oppdager feil i applikasjonen.
                     </Text>
-                </View>
+                </ScrollView>
                 <Divider
                     style={styles.divider}
                     borderColor={Colors.dividerPrimary}
@@ -128,8 +131,8 @@ const AboutArea = React.memo((props) => {
                         </View>
                     </TouchableHighlight>
                 </View>
-            </ScrollView>
-        </View>
+            </View>
+        </>
     );
 });
 
@@ -140,7 +143,9 @@ const styles = StyleSheet.create({
         elevation: 10,
     },
     main: {
-        height: '100%',
+        flex: 1,
+        // height: '100%',
+        width: '100%',
         paddingVertical: 20,
         justifyContent: 'center',
         backgroundColor: Colors.sketchBackground,
@@ -154,8 +159,20 @@ const styles = StyleSheet.create({
         margin: '1%',
         padding: '3%',
     },
+    infoSection: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '90%',
+        // height: '100%',
+        margin: '1%',
+        padding: '3%',
+        paddingVertical: '5%',
+        alignSelf: 'center',
+        borderRadius: 5,
+        backgroundColor: Colors.footer,
+    },
     image: {
-        height: RUtils.isSmallScreen() ? 70 : 120,
+        height: isSmallScreen() ? 70 : 120,
         marginBottom: 10,
     },
     headingText: {
@@ -179,7 +196,7 @@ const styles = StyleSheet.create({
         ...Typography.body,
     },
     sendMailButton: {
-        width: RUtils.isSmallScreen() ? 250 : 300,
+        width: isSmallScreen() ? 250 : 300,
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#22a6dd',
@@ -188,7 +205,7 @@ const styles = StyleSheet.create({
         ...Buttons.rounded,
     },
     rateUsButton: {
-        width: RUtils.isSmallScreen() ? 250 : 300,
+        width: isSmallScreen() ? 250 : 300,
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#00875F',

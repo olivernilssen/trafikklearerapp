@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { RUtils } from 'react-native-responsive-component';
-
+// import { RUtils } from 'react-native-responsive-component';
+import { isSmallScreen } from '../reusableComponents/globalFunctions';
 import { Colors } from '../../styles';
 
 /**
@@ -34,13 +34,13 @@ const PencilSizeButton = React.memo((props) => {
 const styles = StyleSheet.create({
     iconPlacement: {
         height: 60,
-        width: RUtils.isSmallScreen() ? 120 : 160,
+        width: isSmallScreen() ? 120 : 160,
         justifyContent: 'center',
         alignItems: 'center',
         margin: -5,
     },
     sizeIcons: {
-        width: RUtils.isSmallScreen() ? 60 : 60,
+        width: 60,
         backgroundColor: Colors.pencilThicknessBox,
     },
 });

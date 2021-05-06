@@ -12,7 +12,8 @@ import PencilSizeButton from './PencilSizeButton';
 import ColorButton from './ColorButton';
 import { Colors, Buttons, Icons } from '../../styles';
 import AppContext from '../../AppContext';
-import { RUtils } from 'react-native-responsive-component';
+// import { RUtils } from 'react-native-responsive-component';
+import { isSmallScreen } from '../reusableComponents/globalFunctions';
 
 const { Popover } = renderers;
 
@@ -248,8 +249,8 @@ const styles = StyleSheet.create({
     downIconMenu: {
         position: 'absolute',
         alignSelf: 'center',
-        top: RUtils.isSmallScreen() ? 22 : 26,
-        left: RUtils.isSmallScreen() ? 25 : 35,
+        top: isSmallScreen() ? 20 : 26,
+        left: isSmallScreen() ? 24 : 33,
         transform: [{ rotate: '-45deg' }],
     },
     menuOptions: {

@@ -90,6 +90,7 @@ const DrawerMenu = React.memo((props) => {
                 <SectionList
                     sections={drawerInfo}
                     initialNumToRender={5}
+                    persistentScrollbar={true}
                     renderItem={({ item }) => (
                         <DrawerItem
                             navigate={() =>

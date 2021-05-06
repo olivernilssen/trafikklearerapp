@@ -17,6 +17,7 @@ import AppContext from '../../AppContext';
 import { Buttons, Colors, Icons, Typography } from '../../styles/index';
 import draggables from './draggableObjectPaths';
 import { RUtils } from 'react-native-responsive-component';
+import { isSmallScreen } from '../reusableComponents/globalFunctions';
 
 /**
  * The view modal picker. This shows so the user can select
@@ -160,7 +161,7 @@ const OptionPicker = React.memo((props) => {
                                     initialNumToRender={10}
                                     renderItem={renderItem}
                                     initialNumToRender={6}
-                                    numColumns={RUtils.isSmallScreen() ? 6 : 7}
+                                    numColumns={isSmallScreen() ? 6 : 7}
                                 />
 
                                 <View style={styles.buttonGroup}>
@@ -214,6 +215,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'space-between',
+        borderBottomWidth: 2,
+        borderBottomColor: Colors.dividerPrimary,
     },
     modalText: {
         flex: 1,
@@ -221,7 +224,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         flexWrap: 'wrap',
+        paddingHorizontal: '1%',
         color: Colors.modalText,
+        // borderBottomWidth: 2,
+        // borderBottomColor: Colors.dividerPrimary,
         ...Typography.section,
     },
     closeIcon: {
@@ -244,14 +250,14 @@ const styles = StyleSheet.create({
         marginVertical: '4%',
     },
     imageButton: {
-        height: RUtils.isSmallScreen() ? 45 : 90,
-        width: RUtils.isSmallScreen() ? 45 : 90,
+        height: isSmallScreen() ? 45 : 78,
+        width: isSmallScreen() ? 45 : 78,
         margin: 5,
         padding: '1.5%',
     },
     selectedImageButton: {
-        height: RUtils.isSmallScreen() ? 45 : 90,
-        width: RUtils.isSmallScreen() ? 45 : 90,
+        height: isSmallScreen() ? 45 : 78,
+        width: isSmallScreen() ? 45 : 78,
         margin: 5,
         padding: '1.5%',
         borderColor: Colors.selectedBorder,
