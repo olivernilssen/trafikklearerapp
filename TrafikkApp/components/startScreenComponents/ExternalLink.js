@@ -10,14 +10,14 @@ import { Colors, Typography, Buttons } from '../../styles';
  * @prop {function} onPress Function to be triggered when clicking the link
  */
 const ExternalLink = React.memo((props) => {
-    const { text, onPress } = props;
+    const { text, onPressLink } = props;
 
     return (
         <View>
             <TouchableOpacity
                 style={styles.linkContainer}
                 activeOpacity={0.6}
-                onPress={onPress}>
+                onPressLink={onPress}>
                 <Text style={styles.linkText}>{text}</Text>
             </TouchableOpacity>
         </View>
@@ -26,21 +26,16 @@ const ExternalLink = React.memo((props) => {
 
 const styles = StyleSheet.create({
     linkContainer: {
-        // margin: '2%',
         flexDirection: 'row',
         alignItems: 'center',
         padding: '2%',
         justifyContent: 'center',
-        // backgroundColor: 'blue',
-        // borderLeftWidth: 2,
-        // borderRightWidth: 2,
         borderColor: Colors.dividerPrimary,
     },
     linkText: {
         textAlign: 'center',
         textAlignVertical: 'center',
         color: Colors.links,
-        // flexWrap: 'wrap',
         textDecorationLine: 'underline',
         ...Typography.body,
     },

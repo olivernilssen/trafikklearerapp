@@ -89,15 +89,6 @@ const SketchColorMenu = React.memo((props) => {
     }, [appContext.penColor]);
 
     /**
-     * Used to handle the state of the color menu, if it is open or not.
-     * @memberof SketchColorMenu
-     * @param {boolean} value The state of isOpened
-     */
-    const onSecondClickOpen = (value) => {
-        setOpened(value);
-    };
-
-    /**
      * Used to assign an ID to the color buttons.
      * @memberof SketchColorMenu
      * @param {number} value The id for the color buttons
@@ -125,9 +116,9 @@ const SketchColorMenu = React.memo((props) => {
         if (activeId != 0) {
             onEraserPencilSwitch();
             focusedActiveButton(buttonActiveId);
-            onSecondClickOpen(false);
+            setOpened(false);
         } else {
-            onSecondClickOpen(true);
+            setOpened(true);
         }
     };
 
@@ -185,7 +176,7 @@ const SketchColorMenu = React.memo((props) => {
                 }}
                 opened={isOpened}
                 onBackdropPress={() => {
-                    onSecondClickOpen(false);
+                    setOpened(false);
                 }}>
                 <MenuTrigger>
                     <TouchableOpacity

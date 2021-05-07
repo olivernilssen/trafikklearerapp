@@ -26,9 +26,7 @@ const SettingsView = React.memo((props) => {
     // Width of buttonGroups
     const buttonGroupWidth = isSmallScreen() ? 170 : 300;
     const buttonGroupHeight = isSmallScreen() ? 40 : 45;
-
     const myContext = useContext(AppContext);
-    // const [pickerVisible, setPickerVisible] = useState(false);
 
     const onDelChangeValues = ['Ja', 'Nei'];
     const penColorValues = [

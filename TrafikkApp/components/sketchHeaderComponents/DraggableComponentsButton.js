@@ -7,18 +7,12 @@ import { Buttons, Colors, Icons } from '../../styles';
  * box that is either open or closed on the sketchheader
  * @namespace DraggableComponentsButton
  * @category SketchHeaderComponents
- * @prop {function} topMenuHidden Whether the draggable components menu is hidden or not
- * @prop {boolean} toggleTopMenu Handler to be called when the user presses the button
+ * @prop {object} topMenuHidden hook to get bool and functions of the menu
  */
 const DraggableComponentsButton = React.memo((props) => {
     const { topMenuHidden } = props;
     return (
-        <View
-        // style={[
-        //     styles.buttonSize,
-        //     !topMenuHidden ? styles.buttonActive : styles.buttonInactive,
-        // ]}
-        >
+        <View>
             <TouchableOpacity
                 onPress={() => topMenuHidden.onToggle()}
                 style={[

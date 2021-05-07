@@ -88,15 +88,6 @@ const RoadSignMenuContent = (props) => {
     } = props;
 
     /**
-     * Handles the state for the active button
-     * @memberof RoadSignMenuContent
-     * @param {number} value
-     */
-    const handleActiveButton = (value) => {
-        setActiveTypeID(value);
-    };
-
-    /**
      * Function to change which sign type the
      * user is browsing
      * @memberof RoadSignMenuContent
@@ -116,7 +107,7 @@ const RoadSignMenuContent = (props) => {
                             onPress={() => {
                                 scrollToTop();
                                 handleBottomMenuPress(value.typeObject);
-                                handleActiveButton(value.buttonID);
+                                setActiveTypeID(value.buttonID);
                                 handleHeaderName(value.typeName);
                             }}
                             style={[

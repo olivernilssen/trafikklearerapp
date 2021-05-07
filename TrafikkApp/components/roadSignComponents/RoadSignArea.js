@@ -57,15 +57,6 @@ const RoadSignArea = React.memo((props) => {
     };
 
     /**
-     * Handles the state of activeSignTypeName, is used for displaying the name of the chosen sign type
-     * @memberof RoadSignArea
-     * @param {string} headerName The name of the chosen signtype
-     */
-    const handleHeaderName = (headerName) => {
-        setActiveSignTypeName(headerName);
-    };
-
-    /**
      * Uses the flatlist reference to scrol to top when chaning sign
      * @memberof RoadSignArea
      */
@@ -163,7 +154,7 @@ const RoadSignArea = React.memo((props) => {
                 <RoadSignMenuContent
                     handleSignType={handleSignType}
                     openBottomSheet={() => bottomSheetHidden.onOpen()}
-                    handleHeaderName={handleHeaderName}
+                    handleHeaderName={(name) => setActiveSignTypeName(name)}
                     scrollToTop={scrollToTop}
                 />
             </BottomMenuAnimated>
