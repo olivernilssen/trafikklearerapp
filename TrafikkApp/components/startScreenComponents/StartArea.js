@@ -108,7 +108,14 @@ const StartArea = React.memo((props) => {
             <View style={styles.footer}>
                 <Text style={styles.footerText}>Lenker til forskrifter:</Text>
                 <View style={styles.externalLinksContainer}>
-                    <ExternalLink text="Trafikkopplæringsforskriften" />
+                    <ExternalLink
+                        text="Trafikkopplæringsforskriften"
+                        onPressLink={() => {
+                            Linking.openURL(
+                                'https://lovdata.no/dokument/SF/forskrift/2004-10-01-1339'
+                            );
+                        }}
+                    />
                     <Divider
                         borderColor={Colors.dividerPrimary}
                         style={styles.divider}
