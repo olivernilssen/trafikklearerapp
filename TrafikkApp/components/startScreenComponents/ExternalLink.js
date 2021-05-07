@@ -17,7 +17,7 @@ const ExternalLink = React.memo((props) => {
             <TouchableOpacity
                 style={styles.linkContainer}
                 activeOpacity={0.6}
-                onPressLink={onPress}>
+                onPress={onPressLink}>
                 <Text style={styles.linkText}>{text}</Text>
             </TouchableOpacity>
         </View>
