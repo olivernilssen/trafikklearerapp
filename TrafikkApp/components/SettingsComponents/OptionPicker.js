@@ -27,12 +27,11 @@ const numberOfColumns = isSmallScreen() ? 6 : 7;
  * board.
  * @namespace OptionPicker
  * @category SettingsComponents
- * @prop {boolean} modalVisible bool to determine if the modal is showing or not
- * @prop {function} setModalVisible function to set the value of the modal boolean
+ * @prop {object} modalVisible hook with boolean and functions for it
  *
  */
 const OptionPicker = React.memo((props) => {
-    const { modalVisible, setModalVisible } = props;
+    const { modalVisible } = props;
     const appContext = useContext(AppContext);
     const allKeys = Object.keys(draggables);
 
@@ -60,7 +59,7 @@ const OptionPicker = React.memo((props) => {
             ToastAndroid.BOTTOM
         );
 
-        setModalVisible(!modalVisible);
+        modalVisible.onToggle();
     });
 
     /**
@@ -109,7 +108,7 @@ const OptionPicker = React.memo((props) => {
      * @memberof OptionPicker
      */
     const closeModalWithoutSave = useCallback(() => {
-        setModalVisible(!modalVisible);
+        modalVisible.onToggle();
         setSelectedImages(JSON.parse(appContext.draggableObjects));
     });
 
@@ -142,9 +141,9 @@ const OptionPicker = React.memo((props) => {
             <Modal
                 animationType="slide"
                 transparent={true}
-                visible={modalVisible}
+                visible={modalVisible.isOpen}
                 onRequestClose={() => {
-                    setModalVisible(!modalVisible);
+                    modalVisible.onToggle();
                 }}>
                 <TouchableWithoutFeedback
                     onPress={() => closeModalWithoutSave()}>

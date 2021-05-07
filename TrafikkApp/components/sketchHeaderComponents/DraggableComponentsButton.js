@@ -11,7 +11,7 @@ import { Buttons, Colors, Icons } from '../../styles';
  * @prop {boolean} toggleTopMenu Handler to be called when the user presses the button
  */
 const DraggableComponentsButton = React.memo((props) => {
-    const { topMenuHidden, toggleTopMenu } = props;
+    const { topMenuHidden } = props;
     return (
         <View
         // style={[
@@ -20,17 +20,21 @@ const DraggableComponentsButton = React.memo((props) => {
         // ]}
         >
             <TouchableOpacity
-                onPress={() => toggleTopMenu()}
+                onPress={() => topMenuHidden.onToggle()}
                 style={[
                     styles.buttonSize,
-                    !topMenuHidden
+                    !topMenuHidden.isOpen
                         ? styles.buttonActive
                         : styles.buttonInactive,
                 ]}>
                 <Icon
-                    name={topMenuHidden ? 'car' : 'car-crash'}
+                    name={topMenuHidden.isOpen ? 'car' : 'car-crash'}
                     size={Icons.medium}
-                    color={!topMenuHidden ? Colors.textPrimary : Colors.icons}
+                    color={
+                        !topMenuHidden.isOpen
+                            ? Colors.textPrimary
+                            : Colors.icons
+                    }
                 />
             </TouchableOpacity>
         </View>

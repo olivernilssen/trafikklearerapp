@@ -73,10 +73,7 @@ const SettingsView = React.memo((props) => {
     return (
         <View style={styles.view}>
             {/* MODAL */}
-            <OptionPicker
-                modalVisible={pickerVisible}
-                setModalVisible={setPickerVisible}
-            />
+            <OptionPicker modalVisible={pickerVisible} />
 
             {/* CHANGE THEME COLORS */}
             <View style={styles.rowView}>
@@ -222,9 +219,7 @@ const SettingsView = React.memo((props) => {
                     <TouchableOpacity
                         style={styles.modalButton}
                         activeOpacity={0.6}
-                        onPress={() => {
-                            setPickerVisible(!pickerVisible);
-                        }}>
+                        onPress={() => pickerVisible.onToggle()}>
                         <Text style={styles.buttonText}>Åpne velger</Text>
                     </TouchableOpacity>
                 </View>

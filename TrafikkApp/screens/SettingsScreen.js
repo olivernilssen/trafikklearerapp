@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import { MainView, Header, Overlay } from '../components/reusableComponents/';
 import { Colors } from '../styles';
 import { SettingsView } from '../components/settingsComponents/';
+import { useOpen } from '../components/helpers/useOpen';
 
 /**
  * Screen component for the settings screen (TODO)
@@ -12,14 +13,17 @@ import { SettingsView } from '../components/settingsComponents/';
  * @prop {object} navigation Used for navigation between the different screens
  */
 const SettingsScreen = React.memo(({ navigation }) => {
-    const [pickerVisible, setPickerVisible] = useState(false);
+    const pickerVisible = useOpen(false);
+    const overlayVisiable = useOpen(!pickerVisible.isOpen);
+
+    useEffect(() => {
+        if (pickerVisible.isOpen) overlayVisiable.onClose();
+        else if (!pickerVisible.isOpen) overlayVisiable.onOpen();
+    }, [pickerVisible.isOpen]);
 
     return (
         <MainView>
-            <Overlay
-                showOverlay={!pickerVisible}
-                setShowOverlay={setPickerVisible}
-            />
+            <Overlay showOverlay={overlayVisiable} />
             <View style={styles.main}>
                 <Header
                     name="Innstillinger"
@@ -27,10 +31,7 @@ const SettingsScreen = React.memo(({ navigation }) => {
                     style={styles.header}
                 />
                 <View style={styles.content}>
-                    <SettingsView
-                        pickerVisible={pickerVisible}
-                        setPickerVisible={setPickerVisible}
-                    />
+                    <SettingsView pickerVisible={pickerVisible} />
                 </View>
             </View>
         </MainView>

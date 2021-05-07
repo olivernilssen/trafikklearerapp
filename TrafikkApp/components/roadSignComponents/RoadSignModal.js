@@ -25,7 +25,7 @@ import { isSmallScreen } from '../reusableComponents/globalFunctions';
  * @prop {string} selectedSignCode The sign code of the selected sign (example: 100_1)
  */
 const RoadSignModal = React.memo((props) => {
-    const { closeModal, modalVisible, selectedSign, selectedSignCode } = props;
+    const { modalVisible, selectedSign, selectedSignCode } = props;
 
     const [viewHeight, setViewHeight] = useState(new Animated.Value(300));
     const [showDescript, setShowDescript] = useState(false);
@@ -48,7 +48,7 @@ const RoadSignModal = React.memo((props) => {
         }).start();
 
         setShowDescript(false);
-    }, [modalVisible]);
+    }, [modalVisible.isOpen]);
 
     /**
      * UseEffect that runs when either image height, description height or show description changes
@@ -155,9 +155,10 @@ const RoadSignModal = React.memo((props) => {
                 style={styles.modal}
                 animationType="slide"
                 transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => closeModal()}>
-                <TouchableWithoutFeedback onPress={() => closeModal()}>
+                visible={modalVisible.isOpen}
+                onRequestClose={() => modalVisible.onClose()}>
+                <TouchableWithoutFeedback
+                    onPress={() => modalVisible.onClose()}>
                     <View style={styles.transparentBackground}>
                         {/* <TouchableWithoutFeedback> */}
                         <Animated.View
@@ -166,7 +167,7 @@ const RoadSignModal = React.memo((props) => {
                             <TouchableOpacity
                                 activeOpacity={0.7}
                                 style={styles.closeIcon}
-                                onPress={() => closeModal()}>
+                                onPress={() => modalVisible.onClose()}>
                                 <Icon
                                     name={'times'}
                                     size={Icons.large}

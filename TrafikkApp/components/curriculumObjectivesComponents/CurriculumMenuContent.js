@@ -1,18 +1,9 @@
 import React from 'react';
-import {
-    StyleSheet,
-    View,
-    TouchableOpacity,
-    Text,
-    Dimensions,
-} from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { ButtonGroup } from '../reusableComponents/';
 import curriculumData from './curriculumData';
 import { Colors, Typography } from '../../styles';
-import { RUtils } from 'react-native-responsive-component';
 import { isSmallScreen } from '../reusableComponents/globalFunctions';
-
-const { height, width } = Dimensions.get('window');
 
 /**
  * Component to display the content of the BottomMenu, on the screen
@@ -32,7 +23,7 @@ const CurriculumMenuContent = React.memo(
         trafficClass,
         setTrafficClass,
         scrollRef,
-        setBottomSheetHidden,
+        openBottomSheet,
     }) => {
         // Width of the button group in the bottom menu
         const buttonGroupWidth = isSmallScreen() ? 360 : 550;
@@ -76,7 +67,7 @@ const CurriculumMenuContent = React.memo(
             setCurriculumObjective(curriculumObjective);
             scrollRef.current.scrollTo({ y: 0, animated: true });
             scrollRef.current.scrollTo({ y: 0, animated: true });
-            setBottomSheetHidden(true);
+            openBottomSheet();
         };
 
         return (

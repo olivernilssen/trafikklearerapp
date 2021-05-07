@@ -73,7 +73,7 @@ const signTypeArray = [
  * @namespace RoadSignMenuContent
  * @category RoadSignComponents
  * @prop {function} handleSignType Handles the change from one signType to another
- * @prop {function} setBottomSheetHidden Sets the state of bottomSheetHidden
+ * @prop {function} openBottomSheet Sets the state of bottomSheetHidden
  * @prop {function} handleHeaderName Handles the headername when signType changes
  * @returns Buttons for each signType
  */
@@ -82,7 +82,7 @@ const RoadSignMenuContent = (props) => {
 
     const {
         handleSignType,
-        setBottomSheetHidden,
+        openBottomSheet,
         handleHeaderName,
         scrollToTop,
     } = props;
@@ -104,7 +104,7 @@ const RoadSignMenuContent = (props) => {
      */
     const handleBottomMenuPress = (value) => {
         handleSignType(value);
-        setBottomSheetHidden(true);
+        openBottomSheet();
     };
 
     return (
