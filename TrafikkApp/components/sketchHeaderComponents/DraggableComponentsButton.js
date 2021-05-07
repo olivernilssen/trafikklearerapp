@@ -14,13 +14,21 @@ const DraggableComponentsButton = React.memo((props) => {
     const { topMenuHidden, toggleTopMenu } = props;
     return (
         <View
-            style={[
-                styles.buttonSize,
-                !topMenuHidden ? styles.buttonActive : styles.buttonInactive,
-            ]}>
-            <TouchableOpacity onPress={() => toggleTopMenu()}>
+        // style={[
+        //     styles.buttonSize,
+        //     !topMenuHidden ? styles.buttonActive : styles.buttonInactive,
+        // ]}
+        >
+            <TouchableOpacity
+                onPress={() => toggleTopMenu()}
+                style={[
+                    styles.buttonSize,
+                    !topMenuHidden
+                        ? styles.buttonActive
+                        : styles.buttonInactive,
+                ]}>
                 <Icon
-                    name={!topMenuHidden ? 'car-crash' : 'car'}
+                    name={topMenuHidden ? 'car' : 'car-crash'}
                     size={Icons.medium}
                     color={!topMenuHidden ? Colors.textPrimary : Colors.icons}
                 />
@@ -37,7 +45,7 @@ const styles = StyleSheet.create({
     },
     buttonActive: {
         backgroundColor: Colors.boxIconActive,
-        ...Buttons.sketchHeaderButton,
+        // ...Buttons.sketchHeaderButton,
     },
     buttonInactive: {
         backgroundColor: Colors.headerBg,

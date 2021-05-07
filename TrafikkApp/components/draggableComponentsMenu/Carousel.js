@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { Colors } from '../../styles';
 import { RUtils } from 'react-native-responsive-component';
+import { isSmallScreen } from '../reusableComponents/globalFunctions';
 
 /**
  * Component that displays a carousel with the draggable items.
@@ -25,9 +26,7 @@ const Carousel = React.memo((props) => {
     const [activeSlide, setActiveSlide] = useState(1);
     const [viewWidth, setViewWidth] = useState(0);
     const [itemsPerSlide, setItemsPerSlide] = useState(1);
-    const [imageWidth, setImageWidth] = useState(
-        RUtils.isSmallScreen() ? 70 : 90
-    );
+    const [imageWidth, setImageWidth] = useState(isSmallScreen() ? 55 : 80);
     const scrollNode = useRef();
     let bullets = [];
 
@@ -81,7 +80,7 @@ const Carousel = React.memo((props) => {
      * be displayed on each slide.
      * Also sets the width of the image container (holding each item).
      * @memberof Carousel
-     * @param {object} pageIndex X-position, Y-position, width and height of the view
+     * @param {object} layout X-position, Y-position, width and height of the view
      */
     const onLayout = (layout) => {
         const { x, y, width, height } = layout;
@@ -92,7 +91,7 @@ const Carousel = React.memo((props) => {
         if (width != 0) {
             const totalItems = objectKeys.length;
             const itemsOnSlide = Math.floor(
-                width / (RUtils.isSmallScreen() ? 55 : 90)
+                width / (isSmallScreen() ? 55 : 80)
             );
             setItemsPerSlide(itemsOnSlide);
 
@@ -250,8 +249,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     image: {
-        height: RUtils.isSmallScreen() ? 35 : 50,
-        width: RUtils.isSmallScreen() ? 35 : 50,
+        height: isSmallScreen() ? 35 : 50,
+        width: isSmallScreen() ? 35 : 50,
     },
 });
 

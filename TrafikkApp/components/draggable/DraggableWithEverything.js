@@ -105,9 +105,11 @@ const DraggableWithEverything = React.memo((props) => {
 
                         <Text style={styles.modalText}>
                             Du kan ikke legge til flere enn 5 elementer på
-                            skjermen samtidig. Hold inne på et element for å
-                            slette det eller slett alt gjennom søppelkasse
-                            ikonet i menyen.
+                            skjermen samtidig.
+                        </Text>
+                        <Text style={styles.modalText}>
+                            Hold inne på et element for å slette det eller slett
+                            alt gjennom søppelkasse-ikonet i menyen.
                         </Text>
 
                         <Divider
@@ -148,13 +150,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        padding: '8%',
         backgroundColor: 'rgba(0,0,0,0.6)',
     },
     modalView: {
-        maxWidth: 500,
         backgroundColor: Colors.sketchBackground,
         borderRadius: 10,
-        padding: 20,
+        padding: '2%',
         justifyContent: 'space-between',
         elevation: 5,
     },
