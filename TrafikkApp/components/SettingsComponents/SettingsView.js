@@ -12,6 +12,7 @@ import { Buttons, Colors, Typography } from '../../styles/index';
 import { ButtonGroup, Divider } from '../reusableComponents/';
 import OptionPicker from './OptionPicker';
 import { RUtils } from 'react-native-responsive-component';
+import { isSmallScreen } from '../reusableComponents/globalFunctions';
 
 /**
  * The view for the settings screen. It takes in data from
@@ -23,8 +24,8 @@ const SettingsView = React.memo((props) => {
     const { pickerVisible, setPickerVisible } = props;
 
     // Width of buttonGroups
-    const buttonGroupWidth = RUtils.isSmallScreen() ? 170 : 300;
-    const buttonGroupHeight = RUtils.isSmallScreen() ? 40 : 45;
+    const buttonGroupWidth = isSmallScreen() ? 170 : 300;
+    const buttonGroupHeight = isSmallScreen() ? 40 : 45;
 
     const myContext = useContext(AppContext);
     // const [pickerVisible, setPickerVisible] = useState(false);

@@ -24,8 +24,27 @@ const HeaderButton = React.memo((props) => {
     } = props;
 
     return (
-        <View>
-            <View
+        <View
+        // style={
+        //     activeId === buttonActiveId
+        //         ? [
+        //               styles.buttonSize,
+        //               styles.buttonActive,
+        //               {
+        //                   backgroundColor:
+        //                       iconName === 'eraser'
+        //                           ? Colors.eraserIconActive
+        //                           : Colors.iconActive,
+        //               },
+        //           ]
+        //         : [styles.buttonSize, styles.buttonInactive]
+        // }
+        >
+            <TouchableOpacity
+                onPress={() => {
+                    buttonOnPress();
+                    focusedActiveButton(buttonActiveId);
+                }}
                 style={
                     activeId === buttonActiveId
                         ? [
@@ -40,22 +59,16 @@ const HeaderButton = React.memo((props) => {
                           ]
                         : [styles.buttonSize, styles.buttonInactive]
                 }>
-                <TouchableOpacity
-                    onPress={() => {
-                        buttonOnPress();
-                        focusedActiveButton(buttonActiveId);
-                    }}>
-                    <Icon
-                        name={iconName}
-                        size={Icons.medium}
-                        color={
-                            activeId === buttonActiveId
-                                ? Colors.textPrimary
-                                : Colors.icons
-                        }
-                    />
-                </TouchableOpacity>
-            </View>
+                <Icon
+                    name={iconName}
+                    size={Icons.medium}
+                    color={
+                        activeId === buttonActiveId
+                            ? Colors.textPrimary
+                            : Colors.icons
+                    }
+                />
+            </TouchableOpacity>
         </View>
     );
 });

@@ -8,6 +8,7 @@ import AlertModal from './AlertModal';
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
 import { RUtils } from 'react-native-responsive-component';
+import { isSmallScreen } from '../reusableComponents/globalFunctions';
 
 /**
  * SketchAreaMenuContent is a menu that slides up from the bottom of the screen
@@ -32,7 +33,7 @@ const SketchAreaMenuContent = React.memo(
         openBottomSheet,
     }) => {
         // Width of button group in bottom menu
-        const buttonGroupWidth = RUtils.isSmallScreen() ? 200 : 300;
+        const buttonGroupWidth = isSmallScreen() ? 200 : 300;
 
         //Get the roadtype json this component applies too based on roadType prop
         const thisRoadType = backgroundImagePath[roadType];
