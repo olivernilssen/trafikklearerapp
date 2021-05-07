@@ -37,7 +37,7 @@ const StartArea = React.memo((props) => {
                     <TouchableOpacity
                         style={styles.headerIcon}
                         activeOpacity={0.6}
-                        navigateTo={() => navigate('SettingsScreen')}>
+                        onPress={() => navigate('SettingsScreen')}>
                         <Icon
                             name={'cog'}
                             size={Icons.medium}
