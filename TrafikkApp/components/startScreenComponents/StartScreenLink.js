@@ -13,7 +13,7 @@ import { RUtils } from 'react-native-responsive-component';
  * @prop {function} onPress Function to be triggered when pressing the link
  */
 const StartScreenLink = React.memo((props) => {
-    const { name, text, onPress, backgroundColor } = props;
+    const { name, text, navigateTo, backgroundColor } = props;
 
     return (
         <View>
@@ -23,7 +23,7 @@ const StartScreenLink = React.memo((props) => {
                     { backgroundColor: backgroundColor },
                 ]}
                 activeOpacity={0.6}
-                onPress={onPress}>
+                onPress={navigateTo}>
                 <Text style={styles.buttonText}>{text}</Text>
                 {!RUtils.isSmallScreen() && (
                     <Icon

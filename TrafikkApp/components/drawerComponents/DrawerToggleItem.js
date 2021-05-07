@@ -29,9 +29,7 @@ const styles = StyleSheet.create({
     menuItem: {
         width: '15%',
         margin: 20,
-        // backgroundColor: 'red',
     },
-    menuIcon: {},
 });
 
 export default DrawerToggleItem;

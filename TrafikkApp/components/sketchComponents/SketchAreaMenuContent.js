@@ -9,6 +9,7 @@ import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
 import { RUtils } from 'react-native-responsive-component';
 import { isSmallScreen } from '../reusableComponents/globalFunctions';
+import { useOpen } from '../helpers/useOpen';
 
 /**
  * SketchAreaMenuContent is a menu that slides up from the bottom of the screen
@@ -61,7 +62,7 @@ const SketchAreaMenuContent = React.memo(
         }
 
         // For handling showing/not showing of alert on imageChange
-        const [modalVisible, setModalVisible] = useState(false);
+        const modalVisible = useOpen(false);
         const [alwaysHideAlert, setAlwaysHideAlert] = useState(false);
 
         const [tempImage, setTempImage] = useState('');
@@ -119,7 +120,7 @@ const SketchAreaMenuContent = React.memo(
                 appContext.showDeleteAlert == 'true' &&
                 designName != roadDesign
             ) {
-                setModalVisible(!modalVisible);
+                modalVisible.onToggle();
 
                 if (roadType == 'Veikryss') {
                     const imgSource =
@@ -168,7 +169,7 @@ const SketchAreaMenuContent = React.memo(
                 appContext.showDeleteAlert == 'true' &&
                 intersectionName != intersectionType
             ) {
-                setModalVisible(!modalVisible);
+                modalVisible.onToggle();
 
                 setTempIntersectionType(intersectionName);
 
@@ -214,7 +215,7 @@ const SketchAreaMenuContent = React.memo(
                 );
             }
             setImage(tempImage);
-            setModalVisible(!modalVisible);
+            modalVisible.onToggle();
         };
 
         /**
@@ -237,7 +238,6 @@ const SketchAreaMenuContent = React.memo(
             <View style={styles.main}>
                 <AlertModal
                     modalVisible={modalVisible}
-                    setModalVisible={setModalVisible}
                     alwaysHideAlert={alwaysHideAlert}
                     setAlwaysHideAlert={setAlwaysHideAlert}
                     navigate={navigate}

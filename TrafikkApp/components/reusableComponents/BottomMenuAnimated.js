@@ -55,15 +55,6 @@ const BottomMenuAnimated = React.memo((props) => {
     });
 
     /**
-     * Changes the state of the bottomSheetHidden state.
-     * This will also trigger a useEffect to run afterwards.
-     * @memberof BottomMenuAnimated
-     */
-    const onHiddenViewChange = () => {
-        bottomSheetHidden.onToggle();
-    };
-
-    /**
      * Is triggered to get the layout (height, width) of the
      * bottomsheet view. This is to accuractly decide how far up
      * on the screen the menu needs to slide.
@@ -83,7 +74,7 @@ const BottomMenuAnimated = React.memo((props) => {
             ]}>
             <TouchableOpacity
                 style={styles.button}
-                onPress={onHiddenViewChange}>
+                onPress={() => bottomSheetHidden.onToggle()}>
                 <Icon
                     name={hiddenViewButton}
                     size={Icons.medium}

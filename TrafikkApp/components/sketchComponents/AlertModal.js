@@ -10,36 +10,26 @@ import { Divider } from '../reusableComponents';
  * @namespace AlertModal
  * @category SketchComponents
  * @prop {object} navigate Used navigate to a different screens
- * @prop {boolean} modalVisible If the modal is visible or not
- * @prop {function} setModalVisible Changes the state modalVisible
+ * @prop {object} modalVisible If the modal is visible or not, plus functions to open, close it
  * @prop {boolean} alwaysHideAlert If the checkbox to never show alert again, is checked
  * @prop {function} setAlwaysHideAlert Changes the state alwaysHideAlert
  * @prop {function} onOK What to do when the 'OK' button in the Alert is triggered
  */
 const AlertModal = React.memo(
-    ({
-        navigate,
-        modalVisible,
-        setModalVisible,
-        alwaysHideAlert,
-        setAlwaysHideAlert,
-        onOK,
-    }) => {
+    ({ navigate, modalVisible, alwaysHideAlert, setAlwaysHideAlert, onOK }) => {
         return (
             <View style={styles.centeredView}>
                 <Modal
                     animationType="fade"
                     transparent={true}
-                    visible={modalVisible}
-                    onRequestClose={() => setModalVisible(!modalVisible)}>
+                    visible={modalVisible.isOpen}
+                    onRequestClose={() => modalVisible.onToggle()}>
                     <View style={styles.centeredView}>
                         <View style={styles.modalView}>
                             <View style={styles.alertHeader}>
                                 <Text style={styles.modalTitle}>Advarsel</Text>
                                 <TouchableOpacity
-                                    onPress={() =>
-                                        setModalVisible(!modalVisible)
-                                    }
+                                    onPress={() => modalVisible.onToggle()}
                                     activeOpacity={0.4}>
                                     <Icon
                                         name="times"
@@ -90,7 +80,7 @@ const AlertModal = React.memo(
                                 <TouchableOpacity
                                     style={[styles.button, styles.buttonClose]}
                                     onPress={() => {
-                                        setModalVisible(!modalVisible);
+                                        modalVisible.onToggle();
                                         navigate('SettingsScreen');
                                     }}
                                     activeOpacity={0.4}>

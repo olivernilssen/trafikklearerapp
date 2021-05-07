@@ -24,22 +24,7 @@ const HeaderButton = React.memo((props) => {
     } = props;
 
     return (
-        <View
-        // style={
-        //     activeId === buttonActiveId
-        //         ? [
-        //               styles.buttonSize,
-        //               styles.buttonActive,
-        //               {
-        //                   backgroundColor:
-        //                       iconName === 'eraser'
-        //                           ? Colors.eraserIconActive
-        //                           : Colors.iconActive,
-        //               },
-        //           ]
-        //         : [styles.buttonSize, styles.buttonInactive]
-        // }
-        >
+        <View>
             <TouchableOpacity
                 onPress={() => {
                     buttonOnPress();

@@ -20,13 +20,14 @@ const { height, width } = Dimensions.get('screen');
  * @namespace StartArea
  * @category StartScreenComponents
  * @prop {object} navigate Used to navigate to SettingsScreen
+ * @prop {function} toggleDrawer function to toggle the drawer
  */
 const StartArea = React.memo((props) => {
     const { toggleDrawer, navigate } = props;
 
-    const testFunc = () => {
-        console.log('Height: ' + height + '--- width: ' + width);
-    };
+    // const testFunc = () => {
+    //     console.log('Height: ' + height + '--- width: ' + width);
+    // };
 
     return (
         <View style={styles.startArea}>
@@ -36,7 +37,7 @@ const StartArea = React.memo((props) => {
                     <TouchableOpacity
                         style={styles.headerIcon}
                         activeOpacity={0.6}
-                        onPress={() => navigate('SettingsScreen')}>
+                        navigateTo={() => navigate('SettingsScreen')}>
                         <Icon
                             name={'cog'}
                             size={Icons.medium}
@@ -52,25 +53,25 @@ const StartArea = React.memo((props) => {
                         <StartScreenLink
                             name="arrow-right"
                             text="Veikryss"
-                            onPress={() => navigate('IntersectionScreen')}
+                            navigateTo={() => navigate('IntersectionScreen')}
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
                         <StartScreenLink
                             name="arrow-right"
                             text="Rundkjøring"
-                            onPress={() => navigate('RoundaboutScreen')}
+                            navigateTo={() => navigate('RoundaboutScreen')}
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
                         <StartScreenLink
                             name="arrow-right"
                             text="Landevei"
-                            onPress={() => navigate('CountryRoadScreen')}
+                            navigateTo={() => navigate('CountryRoadScreen')}
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
                         <StartScreenLink
                             name="arrow-right"
                             text="Fartsøknings- og reduksjonsfelt"
-                            onPress={() => navigate('HighwayScreen')}
+                            navigateTo={() => navigate('HighwayScreen')}
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
                     </View>
@@ -82,13 +83,13 @@ const StartArea = React.memo((props) => {
                         <StartScreenLink
                             name="arrow-right"
                             text="Trafikkskilt"
-                            onPress={() => navigate('RoadSignScreen')}
+                            navigateTo={() => navigate('RoadSignScreen')}
                             backgroundColor={Colors.startScreenLinkTheory}
                         />
                         <StartScreenLink
                             name="arrow-right"
                             text="Læreplanmål"
-                            onPress={() =>
+                            navigateTo={() =>
                                 navigate('CurriculumObjectivesScreen')
                             }
                             backgroundColor={Colors.startScreenLinkTheory}
@@ -96,7 +97,9 @@ const StartArea = React.memo((props) => {
                         <StartScreenLink
                             name="arrow-right"
                             text="Myndighets- pyramiden"
-                            onPress={() => navigate('AuthorityPyramidScreen')}
+                            navigateTo={() =>
+                                navigate('AuthorityPyramidScreen')
+                            }
                             backgroundColor={Colors.startScreenLinkTheory}
                         />
                     </View>
@@ -105,22 +108,14 @@ const StartArea = React.memo((props) => {
             <View style={styles.footer}>
                 <Text style={styles.footerText}>Lenker til forskrifter:</Text>
                 <View style={styles.externalLinksContainer}>
-                    <ExternalLink
-                        text="Trafikkopplæringsforskriften"
-                        // onPress={() => {
-                        //     Linking.openURL(
-                        //         'https://lovdata.no/dokument/SF/forskrift/2004-10-01-1339'
-                        //     );
-                        // }}
-                        onPress={() => testFunc()}
-                    />
+                    <ExternalLink text="Trafikkopplæringsforskriften" />
                     <Divider
                         borderColor={Colors.dividerPrimary}
                         style={styles.divider}
                     />
                     <ExternalLink
                         text="Skiltforskriften"
-                        onPress={() => {
+                        onPressLink={() => {
                             Linking.openURL(
                                 'https://lovdata.no/dokument/SF/forskrift/2005-10-07-1219'
                             );
@@ -132,7 +127,7 @@ const StartArea = React.memo((props) => {
                     />
                     <ExternalLink
                         text="Trafikkregler"
-                        onPress={() => {
+                        onPressLink={() => {
                             Linking.openURL(
                                 'https://lovdata.no/dokument/SF/forskrift/1986-03-21-747'
                             );
@@ -144,7 +139,7 @@ const StartArea = React.memo((props) => {
                     />
                     <ExternalLink
                         text="Veitrafikkloven"
-                        onPress={() => {
+                        onPressLink={() => {
                             Linking.openURL(
                                 'https://lovdata.no/dokument/NL/lov/1965-06-18-4'
                             );
