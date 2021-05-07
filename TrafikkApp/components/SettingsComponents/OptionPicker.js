@@ -27,7 +27,7 @@ const numberOfColumns = isSmallScreen() ? 6 : 7;
  * board.
  * @namespace OptionPicker
  * @category SettingsComponents
- * @prop {boolean} modalVisible bool to determine if the modal is showing or not
+ * @prop {object} modalVisible hook with boolean and functions for it
  *
  */
 const OptionPicker = React.memo((props) => {
