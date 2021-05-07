@@ -15,6 +15,7 @@ import SketchAreaMenuContent from './SketchAreaMenuContent';
 import { Colors } from '../../styles';
 import AppContext from '../../AppContext';
 import { RUtils } from 'react-native-responsive-component';
+import { useOpen } from '../helpers/useOpen';
 
 const { width, height } = Dimensions.get('window');
 
@@ -44,8 +45,8 @@ const SketchArea = React.memo((props) => {
     const [chosenPencilSize, setChosenPencilSize] = useState(null);
     const [roadDesignChange, setRoadDesignChange] = useState(true);
     const [currentImg, setImage] = useState();
-    const [topMenuHidden, setTopMenuHidden] = useState(true);
-    const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
+    const topMenuHidden = useOpen(true);
+    const bottomSheetHidden = useOpen(false);
     const [draggables, setDraggables] = useState([]);
     const [actionList, setActionList] = useState([]);
     const [deletingItemId, setDeletingItemId] = useState(null);
@@ -69,15 +70,6 @@ const SketchArea = React.memo((props) => {
             setPencilSize(parseInt(appContext.eraserSize));
         }
     }, [appContext.eraserSize]);
-
-    /**
-     * Changes the pencil color according to user input.
-     * @memberof SketchArea
-     * @param {String} color The color thats been chosen
-     */
-    const onPaletteColorChange = (color) => {
-        setPencilColor(color);
-    };
 
     /**
      * Changes the pencil color and size when switching between eraser and pencil.
@@ -164,35 +156,22 @@ const SketchArea = React.memo((props) => {
      * @memberof SketchArea
      */
     const onStrokeStart = useCallback(() => {
-        if (bottomSheetHidden == false)
-            setBottomSheetHidden(!bottomSheetHidden);
-    }, [bottomSheetHidden]);
-
-    /**
-     * Function to toggle the top menu to hidden or not hidden.
-     * @memberof SketchArea
-     */
-    const toggleMenu = () => {
-        setTopMenuHidden(!topMenuHidden);
-    };
+        if (bottomSheetHidden.isOpen === false) bottomSheetHidden.onToggle();
+    }, [bottomSheetHidden.isOpen]);
 
     return (
         <MainView>
-            <Overlay
-                showOverlay={bottomSheetHidden}
-                setShowOverlay={setBottomSheetHidden}
-            />
+            <Overlay showOverlay={bottomSheetHidden} />
             <View style={styles.main}>
                 <SketchHeader
                     onEraserPencilSwitch={onEraserPencilSwitch}
                     undoChange={undoChange}
                     clearCanvas={clearCanvas}
                     eraser={eraser}
-                    onPaletteColorChange={onPaletteColorChange}
+                    onPaletteColorChange={(color) => setPencilColor(color)}
                     toggleDrawer={toggleDrawer}
                     name={name}
                     topMenuHidden={topMenuHidden}
-                    toggleTopMenu={toggleMenu}
                     onChangePencilSize={onChangePencilSize}
                     pencilColor={pencilColor}
                     pencilSize={pencilSize}
@@ -219,7 +198,7 @@ const SketchArea = React.memo((props) => {
                     <DraggableWithEverything
                         draggables={draggables}
                         setDraggables={setDraggables}
-                        topMenuHidden={topMenuHidden}
+                        topMenuHidden={topMenuHidden.isOpen}
                         deletingItemId={deletingItemId}
                         name={name}
                         setActionList={setActionList}
@@ -230,15 +209,13 @@ const SketchArea = React.memo((props) => {
                 </View>
             </View>
 
-            <BottomMenuAnimated
-                bottomSheetHidden={bottomSheetHidden}
-                setBottomSheetHidden={setBottomSheetHidden}>
+            <BottomMenuAnimated bottomSheetHidden={bottomSheetHidden}>
                 <SketchAreaMenuContent
                     roadType={name}
                     setImage={setImage}
                     setRoadDesignChange={setRoadDesignChange}
                     extensionType={extensionType}
-                    setBottomSheetHidden={setBottomSheetHidden}
+                    openBottomSheet={() => bottomSheetHidden.onOpen()}
                     navigate={navigate}
                 />
             </BottomMenuAnimated>

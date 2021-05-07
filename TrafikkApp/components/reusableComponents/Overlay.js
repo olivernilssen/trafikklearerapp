@@ -10,11 +10,10 @@ import {
  * Component that displays a transparent overlay over the screen.
  * @namespace Overlay
  * @category ReusableComponents
- * @prop {boolean} showOverlay Bool to decide whether overlay is hidden or not
- * @prop {function} setShowOverlay Set the state showOverlay
+ * @prop {boolean} showOverlay hook to set, get and toggle overlay
  */
 const Overlay = React.memo((props) => {
-    const { setShowOverlay, showOverlay } = props;
+    const { showOverlay } = props;
 
     const [animation, setAnimation] = useState(new Animated.Value(0));
     const [zIndex, setZIndex] = useState(10);
@@ -26,7 +25,7 @@ const Overlay = React.memo((props) => {
      */
     useEffect(() => {
         handleAnimation();
-    }, [showOverlay]);
+    }, [showOverlay.isOpen]);
 
     /**
      * Function to animate the showing and hiding of the overlay.
@@ -35,7 +34,7 @@ const Overlay = React.memo((props) => {
      * @memberof Overlay
      */
     const handleAnimation = () => {
-        if (showOverlay) {
+        if (showOverlay.isOpen) {
             Animated.timing(animation, {
                 toValue: 0,
                 duration: 400,
@@ -79,10 +78,7 @@ const Overlay = React.memo((props) => {
                 ...animatedStyle,
                 zIndex: zIndex,
             }}>
-            <TouchableWithoutFeedback
-                onPress={() => {
-                    setShowOverlay(true);
-                }}>
+            <TouchableWithoutFeedback onPress={() => showOverlay.onOpen()}>
                 <View style={styles.touchableArea}></View>
             </TouchableWithoutFeedback>
         </Animated.View>

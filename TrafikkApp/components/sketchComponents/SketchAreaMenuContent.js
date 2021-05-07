@@ -20,7 +20,7 @@ import { RUtils } from 'react-native-responsive-component';
  * @prop {function} setImage Changes the state currentImage
  * @prop {function} setRoadDesignChange Changes the state roadDesignChange to true or false
  * @prop {string} extensionType Name of the extension type to be set (vanlig, gangfelt, sykkelfelt)
- * @prop {function} setBottomSheetHidden Changes the state bottomSheetHidden to hide or show the bottomMenu
+ * @prop {function} openBottomSheet Changes the state bottomSheetHidden to hide or show the bottomMenu
  */
 const SketchAreaMenuContent = React.memo(
     ({
@@ -29,7 +29,7 @@ const SketchAreaMenuContent = React.memo(
         setImage,
         setRoadDesignChange,
         extensionType,
-        setBottomSheetHidden,
+        openBottomSheet,
     }) => {
         // Width of button group in bottom menu
         const buttonGroupWidth = RUtils.isSmallScreen() ? 200 : 300;
@@ -149,7 +149,7 @@ const SketchAreaMenuContent = React.memo(
                     setImage(imgSource);
                 }
                 setRoadDesign(designName);
-                setBottomSheetHidden(true);
+                openBottomSheet();
             }
         };
 
@@ -200,7 +200,7 @@ const SketchAreaMenuContent = React.memo(
 
             if (isDesignBtn) {
                 setRoadDesign(tempRoadDesign);
-                setBottomSheetHidden(true);
+                openBottomSheet();
             } else if (isIntersectionBtn) {
                 setIntersectionType(tempIntersectionType);
             }

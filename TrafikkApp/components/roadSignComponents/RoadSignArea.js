@@ -9,6 +9,7 @@ import {
     Text,
     TouchableWithoutFeedback,
 } from 'react-native';
+import { useOpen } from '../helpers/useOpen';
 import { BottomMenuAnimated, Header, Overlay } from '../reusableComponents';
 import { Colors, Typography } from '../../styles';
 import RoadSignModal from './RoadSignModal';
@@ -25,31 +26,24 @@ const numColumns = 4;
  */
 
 const RoadSignArea = React.memo((props) => {
-    const [modalVisible, setModalVisible] = useState(false);
-    const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
+    const { toggleDrawer } = props;
+    const modalVisible = useOpen(false);
+
+    const bottomSheetHidden = useOpen(false);
     const [signType, setSignType] = useState(fareskiltData);
     const [signObjectKeys, setSignObjectKeys] = useState(Object.keys(signType));
     const [selectedItem, setSelectedItem] = useState(signObjectKeys[0]);
     const [activeSignTypeName, setActiveSignTypeName] = useState('Fareskilt');
 
     const flatListRef = useRef();
-    const { toggleDrawer } = props;
     /**
      * Handles the state of the modal, and sets the selectedSign state to the sign that has been presse.
      *@memberof RoadSignArea
      * @param {string} item signcode used for identifying the sign
      */
     const handleModal = (item) => {
-        setModalVisible(!modalVisible);
+        modalVisible.onOpen();
         setSelectedItem(item);
-    };
-
-    /**
-     * Used for closing the RoadSignModal
-     * @memberof RoadSignArea
-     */
-    const closeModal = () => {
-        setModalVisible(false);
     };
 
     /**
@@ -60,15 +54,6 @@ const RoadSignArea = React.memo((props) => {
     const handleSignType = (signTypeName) => {
         setSignType(signTypeName);
         setSelectedItem(Object.keys(signTypeName)[0]);
-    };
-
-    /**
-     * Shows or hides the bottom menu
-     * @memberof RoadSignArea
-     * @param {boolean} value if true the menu will be hidden
-     */
-    const handleBottomSheet = (value) => {
-        setBottomSheetHidden(value);
     };
 
     /**
@@ -116,7 +101,7 @@ const RoadSignArea = React.memo((props) => {
                     style={styles.item}
                     onPress={() => {
                         handleModal(item);
-                        handleBottomSheet(true);
+                        bottomSheetHidden.onOpen();
                     }}>
                     <View style={styles.modalImage}>
                         <Image
@@ -131,18 +116,13 @@ const RoadSignArea = React.memo((props) => {
 
     return (
         <>
-            <Overlay
-                showOverlay={bottomSheetHidden}
-                setShowOverlay={setBottomSheetHidden}
-            />
+            <Overlay showOverlay={bottomSheetHidden} />
             {/* <View style={styles.mainView}> */}
-            <TouchableWithoutFeedback onPress={() => closeModal()}>
+            <TouchableWithoutFeedback onPress={() => modalVisible.onClose()}>
                 <RoadSignModal
-                    closeModal={closeModal}
                     modalVisible={modalVisible}
                     selectedSign={signType[selectedItem]}
                     selectedSignCode={selectedItem}
-                    handleBottomSheet={handleBottomSheet}
                 />
             </TouchableWithoutFeedback>
             <View style={{ zIndex: 5, width: '100%' }}>
@@ -179,11 +159,10 @@ const RoadSignArea = React.memo((props) => {
             {/* BOTTOM MENU */}
             <BottomMenuAnimated
                 bottomSheetHidden={bottomSheetHidden}
-                setBottomSheetHidden={setBottomSheetHidden}
                 chevronColor={Colors.icons}>
                 <RoadSignMenuContent
                     handleSignType={handleSignType}
-                    setBottomSheetHidden={setBottomSheetHidden}
+                    openBottomSheet={() => bottomSheetHidden.onOpen()}
                     handleHeaderName={handleHeaderName}
                     scrollToTop={scrollToTop}
                 />
@@ -203,29 +182,15 @@ const styles = StyleSheet.create({
         width: '93%',
         flexDirection: 'row',
     },
-    // mainView: {
-    //     height: '100%',
-    //     width: '100%',
-    //     // paddingBottom: 30,
-    //     // backgroundColor: Colors.sketchBackground,
-    // },
     flatlistContainer: {
         flex: 1,
         height: '100%',
         width: '100%',
-        // paddingBottom: '9%',
         backgroundColor: Colors.sketchBackground,
     },
     flatlist: {
         paddingBottom: '9%',
     },
-    // imageContainer: {
-    // width: '100%',
-    // height: '90%',
-    // flex: 1
-    // marginBottom: '9%',
-    // backgroundColor: Colors.sketchBackground,
-    // },
     item: {
         alignItems: 'center',
         justifyContent: 'center',
@@ -263,10 +228,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: Colors.dividerPrimary,
     },
-    // subHeadingContainer: {
-    //     // flex: 1,
-    //     alignItems: 'flex-end',
-    // },
 });
 
 export default RoadSignArea;

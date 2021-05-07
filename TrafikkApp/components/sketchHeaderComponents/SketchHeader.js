@@ -37,7 +37,6 @@ const SketchHeader = React.memo((props) => {
         eraser,
         onPaletteColorChange,
         topMenuHidden,
-        toggleTopMenu,
         onChangePencilSize,
         pencilColor,
         pencilSize,
@@ -97,7 +96,6 @@ const SketchHeader = React.memo((props) => {
                     <DraggableComponentsButton
                         activeIconName={'box-open'}
                         inactiveIconName={'box'}
-                        toggleTopMenu={toggleTopMenu}
                         topMenuHidden={topMenuHidden}
                     />
                 </View>

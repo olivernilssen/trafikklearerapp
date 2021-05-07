@@ -9,11 +9,10 @@ import { Colors, Icons } from '../../styles';
  * Takes in other React Native components as children.
  * @namespace BottomMenuAnimated
  * @category ReusableComponents
- * @prop {boolean} bottomSheetHidden If the bottomMenu is hidden or in view
- * @prop {function} setBottomSheetHidden Set the state bottomSheetHidden
+ * @prop {object} bottomSheetHidden a hook which stores the state state and function to handle if its open or closed
  */
 const BottomMenuAnimated = React.memo((props) => {
-    const { bottomSheetHidden, setBottomSheetHidden, chevronColor } = props;
+    const { bottomSheetHidden, chevronColor } = props;
 
     const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
     const [hiddenViewButton, setHiddenViewButton] = useState('chevron-down');
@@ -28,7 +27,7 @@ const BottomMenuAnimated = React.memo((props) => {
      */
     useEffect(() => {
         toggleSubview();
-    }, [bottomSheetHidden]);
+    }, [bottomSheetHidden.isOpen]);
 
     /**
      * This function will change the little icon at the top of the bottom menu
@@ -37,10 +36,12 @@ const BottomMenuAnimated = React.memo((props) => {
      * @memberof BottomMenuAnimated
      */
     const toggleSubview = useCallback(() => {
-        setHiddenViewButton(bottomSheetHidden ? 'chevron-up' : 'chevron-down');
+        setHiddenViewButton(
+            bottomSheetHidden.isOpen ? 'chevron-up' : 'chevron-down'
+        );
         var toValue = bottomSheetHeight;
 
-        if (!bottomSheetHidden) {
+        if (!bottomSheetHidden.isOpen) {
             toValue = 0;
         }
 
@@ -51,7 +52,7 @@ const BottomMenuAnimated = React.memo((props) => {
             tension: 20,
             friction: 8,
         }).start();
-    }, [bottomSheetHidden]);
+    });
 
     /**
      * Changes the state of the bottomSheetHidden state.
@@ -59,7 +60,7 @@ const BottomMenuAnimated = React.memo((props) => {
      * @memberof BottomMenuAnimated
      */
     const onHiddenViewChange = () => {
-        setBottomSheetHidden(!bottomSheetHidden);
+        bottomSheetHidden.onToggle();
     };
 
     /**

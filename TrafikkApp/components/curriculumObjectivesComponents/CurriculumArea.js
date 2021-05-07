@@ -7,6 +7,7 @@ import {
     Overlay,
     BottomMenuAnimated,
 } from '../reusableComponents';
+import { useOpen } from '../helpers/useOpen';
 import CurriculumObjectives from './CurriculumObjectives';
 import CurriculumMenuContent from './CurriculumMenuContent';
 
@@ -23,7 +24,7 @@ import { RUtils } from 'react-native-responsive-component';
  * @prop {object} navigate
  */
 const CurriculumArea = React.memo((props) => {
-    const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
+    const bottomSheetHidden = useOpen(false);
     const [mainHeading, setMainHeading] = useState('Klasse B');
     const [subHeading, setSubHeading] = useState();
     const [curriculumObjective, setCurriculumObjective] = useState('Hovedmål');
@@ -34,10 +35,7 @@ const CurriculumArea = React.memo((props) => {
 
     return (
         <>
-            <Overlay
-                showOverlay={bottomSheetHidden}
-                setShowOverlay={setBottomSheetHidden}
-            />
+            <Overlay showOverlay={bottomSheetHidden} />
             <View style={styles.main}>
                 <Header toggleDrawer={toggleDrawer} style={styles.header}>
                     <View style={styles.headerContent}>
@@ -74,16 +72,14 @@ const CurriculumArea = React.memo((props) => {
                     />
                 </ScrollView>
             </View>
-            <BottomMenuAnimated
-                bottomSheetHidden={bottomSheetHidden}
-                setBottomSheetHidden={setBottomSheetHidden}>
+            <BottomMenuAnimated bottomSheetHidden={bottomSheetHidden}>
                 <CurriculumMenuContent
                     curriculumObjective={curriculumObjective}
                     setCurriculumObjective={setCurriculumObjective}
                     trafficClass={trafficClass}
                     setTrafficClass={setTrafficClass}
                     scrollRef={scrollRef}
-                    setBottomSheetHidden={setBottomSheetHidden}
+                    openBottomSheet={() => bottomSheetHidden.onOpen()}
                 />
             </BottomMenuAnimated>
         </>

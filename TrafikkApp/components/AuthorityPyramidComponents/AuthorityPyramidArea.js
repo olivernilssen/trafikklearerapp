@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 
-import { MainView, Header } from '../reusableComponents';
+import { Header } from '../reusableComponents';
 import { Colors } from '../../styles';
 
 /**
