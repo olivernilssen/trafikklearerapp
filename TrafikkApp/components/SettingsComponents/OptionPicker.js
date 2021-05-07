@@ -19,6 +19,8 @@ import draggables from './draggableObjectPaths';
 import { RUtils } from 'react-native-responsive-component';
 import { isSmallScreen } from '../reusableComponents/globalFunctions';
 
+const numberOfColumns = isSmallScreen() ? 6 : 7;
+
 /**
  * The view modal picker. This shows so the user can select
  * which traggable images they want visible in the drawing
@@ -38,6 +40,7 @@ const OptionPicker = React.memo((props) => {
         JSON.parse(appContext.draggableObjects)
     );
     const [warningShow, setWarningShow] = useState(false);
+    const [imageButtonSize, setImageButtonSize] = useState(50);
 
     /**
      * Save the settings to asyncStorage
@@ -86,6 +89,22 @@ const OptionPicker = React.memo((props) => {
     };
 
     /**
+     * Function to get the width and height of the modal.
+     * Sets the width and height of the imageButtons in the modal so that they fit in the modal.
+     * @memberof OptionPicker
+     * @param {object} layout X-position, Y-position, width and height of the view
+     */
+    const onLayout = (layout) => {
+        const { x, y, width, height } = layout;
+
+        // Calculate the padding around the imageButtons
+        const padding = width * 0.05;
+
+        const imgSize = (width - padding) / numberOfColumns - 10;
+        setImageButtonSize(imgSize);
+    };
+
+    /**
      * Close the modal and don't save the state of selected values.
      * @memberof OptionPicker
      */
@@ -99,9 +118,13 @@ const OptionPicker = React.memo((props) => {
         return (
             <TouchableOpacity
                 activeOpacity={0.4}
-                style={
-                    selected ? styles.selectedImageButton : styles.imageButton
-                }
+                style={[
+                    selected ? styles.selectedImageButton : styles.imageButton,
+                    {
+                        height: imageButtonSize,
+                        width: imageButtonSize,
+                    },
+                ]}
                 onPress={() => updateSelectedImages(item)}>
                 <Image
                     source={draggables[item].source}
@@ -127,7 +150,11 @@ const OptionPicker = React.memo((props) => {
                     onPress={() => closeModalWithoutSave()}>
                     <View style={styles.centeredView}>
                         <TouchableWithoutFeedback>
-                            <View style={styles.modalView}>
+                            <View
+                                style={styles.modalView}
+                                onLayout={(event) =>
+                                    onLayout(event.nativeEvent.layout)
+                                }>
                                 <View style={styles.modalTopView}>
                                     <Text style={styles.modalText}>
                                         Velg opptil 15 elementer som kan brukes
@@ -161,7 +188,7 @@ const OptionPicker = React.memo((props) => {
                                     initialNumToRender={10}
                                     renderItem={renderItem}
                                     initialNumToRender={6}
-                                    numColumns={isSmallScreen() ? 6 : 7}
+                                    numColumns={numberOfColumns}
                                 />
 
                                 <View style={styles.buttonGroup}>
@@ -209,7 +236,7 @@ const styles = StyleSheet.create({
         paddingVertical: '3%',
         alignItems: 'center',
         elevation: 10,
-        borderRadius: 15,
+        borderRadius: 10,
     },
     modalTopView: {
         flexDirection: 'row',
@@ -226,8 +253,6 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         paddingHorizontal: '1%',
         color: Colors.modalText,
-        // borderBottomWidth: 2,
-        // borderBottomColor: Colors.dividerPrimary,
         ...Typography.section,
     },
     closeIcon: {
@@ -250,14 +275,10 @@ const styles = StyleSheet.create({
         marginVertical: '4%',
     },
     imageButton: {
-        height: isSmallScreen() ? 45 : 78,
-        width: isSmallScreen() ? 45 : 78,
         margin: 5,
         padding: '1.5%',
     },
     selectedImageButton: {
-        height: isSmallScreen() ? 45 : 78,
-        width: isSmallScreen() ? 45 : 78,
         margin: 5,
         padding: '1.5%',
         borderColor: Colors.selectedBorder,
