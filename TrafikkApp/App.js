@@ -16,6 +16,8 @@ const App = () => {
     const [eraserSize, setEraserSize] = useState('');
     const [showDeleteAlert, setShowDeleteAlert] = useState('');
     const [draggableObjects, setDraggableObjects] = useState('');
+    const [latestSnapshot, setLatestSnapshot] = useState('');
+    const [savedLocation, setSavedLocation] = useState('');
 
     useEffect(() => {
         SplashScreen.hide();
@@ -30,6 +32,8 @@ const App = () => {
             setDraggableObjects,
             JSON.stringify(objectPaths)
         );
+        readData(USER_KEYS.SNAPSHOT_KEY, setLatestSnapshot, '');
+        readData(USER_KEYS.SAVEDLOC_KEY, setSavedLocation, '');
     }, []);
 
     const saveNewSettings = (value, setValue, key) => {
@@ -39,13 +43,15 @@ const App = () => {
 
     const userSettings = {
         saveNewSettings,
-        theme: theme,
-        penColor: penColor,
-        draggableColor: draggableColor,
-        deleteOnChange: deleteOnChange,
-        eraserSize: eraserSize,
-        showDeleteAlert: showDeleteAlert,
-        draggableObjects: draggableObjects,
+        theme,
+        penColor,
+        draggableColor,
+        deleteOnChange,
+        eraserSize,
+        showDeleteAlert,
+        draggableObjects,
+        latestSnapshot,
+        savedLocation,
         setTheme,
         setPenColor,
         setDraggableColor,
@@ -53,6 +59,8 @@ const App = () => {
         setEraserSize,
         setShowDeleteAlert,
         setDraggableObjects,
+        setLatestSnapshot,
+        setSavedLocation,
     };
 
     return (

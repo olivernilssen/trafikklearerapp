@@ -13,6 +13,7 @@ import {
     CurriculumObjectivesScreen,
     AuthorityPyramidScreen,
     AboutScreen,
+    MapScreen,
 } from '../../screens/';
 
 const Drawer = createDrawerNavigator();
@@ -140,6 +141,17 @@ const Navigator = () => {
                     icon: 'settings',
                     screenName: 'SettingsScreen',
                     value: 9,
+                }}
+            />
+            <Drawer.Screen
+                name="MapScreen"
+                component={MapScreen}
+                initialParams={{
+                    section: 'Illustreringer',
+                    title: 'Kart',
+                    icon: 'map',
+                    screenName: 'MapScreen',
+                    value: 10,
                 }}
             />
         </Drawer.Navigator>

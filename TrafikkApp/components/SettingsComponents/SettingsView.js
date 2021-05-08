@@ -21,7 +21,7 @@ import { isSmallScreen } from '../reusableComponents/globalFunctions';
  * @category SettingsComponents
  */
 const SettingsView = React.memo((props) => {
-    const { pickerVisible, setPickerVisible } = props;
+    const { pickerVisible } = props;
 
     // Width of buttonGroups
     const buttonGroupWidth = isSmallScreen() ? 170 : 300;
