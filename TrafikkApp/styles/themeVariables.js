@@ -15,6 +15,8 @@ export default {
     ICON_SIZE_SMALL: isSmallScreen() ? 15 : 25,
     ICON_SIZE_MEDIUM: isSmallScreen() ? 20 : 30,
     ICON_SIZE_LARGE: isSmallScreen() ? 30 : 40,
+    ICON_SIZE_LARGER: isSmallScreen() ? 40 : 50,
+    ICON_SIZE_XLARGE: isSmallScreen() ? 50 : 60,
 
     // BUTTONS
     BUTTON_WIDTH_SMALL: 80,

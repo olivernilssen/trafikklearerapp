@@ -15,7 +15,9 @@ const BottomMenuAnimated = React.memo((props) => {
     const { bottomSheetHidden, chevronColor } = props;
 
     const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
-    const [hiddenViewButton, setHiddenViewButton] = useState('chevron-down');
+    const [hiddenViewButton, setHiddenViewButton] = useState(
+        bottomSheetHidden.isOpen ? 'chevron-up' : 'chevron-down'
+    );
     const [bottomSheetHeight, setBottomSheetHeight] = useState(0);
 
     /**

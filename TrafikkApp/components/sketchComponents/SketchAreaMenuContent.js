@@ -256,7 +256,8 @@ const SketchAreaMenuContent = React.memo(
                             onSelect={(newValue) =>
                                 intersectionTypeChange(newValue)
                             }
-                            groupWidth={buttonGroupWidth}
+                            width={buttonGroupWidth}
+                            height={button}
                             highlightBackgroundColor={Colors.bottomMenyButtons}
                             highlightTextColor={Colors.icons}
                             inactiveBackgroundColor={Colors.secSlideInactiveBg}

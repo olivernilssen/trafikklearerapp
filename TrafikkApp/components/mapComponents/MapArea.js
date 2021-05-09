@@ -7,7 +7,9 @@ import {
     View,
     Dimensions,
     TouchableOpacity,
+    PermissionsAndroid,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import AppContext from '../../AppContext';
 import {
     mapPinkRoad,
@@ -15,10 +17,12 @@ import {
     mapWhiteRoad,
     mapOrangeRoad,
 } from './mapStyles';
-import Colors from '../../styles/colors';
+import { Colors, Icons } from '../../styles';
 import MapMenu from './MapMenu';
 import { useToggle } from '../helpers/useToggle';
 import { useCoords } from '../helpers/useCoords';
+import requestLocationPermission from '../helpers/locationPermission';
+import MapCallout from './MapCallout';
 
 const randomRegion = {
     latitude: 69.660084,
@@ -32,8 +36,9 @@ const randomRegion = {
 const MapArea = (props) => {
     const appContext = useContext(AppContext);
 
-    const [snapshot, setSnapshot] = useState('');
+    const [snapshot, setSnapshot] = useState(appContext.latestSnapshot);
     const [mapType, setMapType] = useState('standard');
+    const [locationPermission, setLocationPermission] = useState(false);
     const userFollow = useToggle(false);
     const markerToggle = useToggle(true);
     const pin = useCoords(
@@ -54,15 +59,16 @@ const MapArea = (props) => {
             (position) => {
                 const { latitude, longitude } = position.coords;
                 userLoc.onUpdate({ latitude, longitude });
+                setLocationPermission(true);
             },
             (error) => {
-                console.log(error);
+                console.error(error);
             },
             {
                 enableHighAccuracy: true,
                 distanceFilter: 0,
-                interval: 4000,
-                fastestInterval: 1500,
+                interval: 5000,
+                fastestInterval: 2000,
             }
         );
 
@@ -71,7 +77,50 @@ const MapArea = (props) => {
                 Geolocation.clearWatch(_watchId);
             }
         };
-    }, []);
+    }, [locationPermission]);
+
+    const requestLocationPermission = async () => {
+        try {
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+                {
+                    title: 'Illustrafikk',
+                    message:
+                        'Illustrafikk spør om tillatelse til å bruke lokasjonen din',
+                    buttonNeutral: 'Spør meg senere',
+                    buttonNegative: 'Ikke tillat',
+                    buttonPositive: 'Tillat',
+                }
+            );
+            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                console.info('You can use the location services');
+                return true;
+            } else {
+                console.info('location permission denied');
+                return false;
+            }
+        } catch (err) {
+            console.warn(err);
+            return false;
+        }
+    };
+
+    useEffect(() => {
+        if (!locationPermission) {
+            PermissionsAndroid.check(
+                PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+            ).then((response) => {
+                console.log(response.valueOf());
+                if (!response) {
+                    requestLocationPermission().then((permission) => {
+                        setLocationPermission(permission.valueOf());
+                    });
+                } else {
+                    setLocationPermission(response.valueOf());
+                }
+            });
+        }
+    }, [userFollow.isToggled]);
 
     useEffect(() => {
         if (userFollow.isToggled) {
@@ -120,35 +169,12 @@ const MapArea = (props) => {
         }
     }, []);
 
-    /** Zoom in by a little bit on the current currRegion.coords */
-    const zoomInLocation = () => {
-        mapRef.current.animateToRegion(
-            {
-                ...currRegion.coords,
-                latitudeDelta: currRegion.coords.latitudeDelta / 2,
-                longitudeDelta: currRegion.coords.latitudeDelta / 2,
-            },
-            1000
-        );
-    };
-
-    /** Zoom out by a little bit on the current currRegion.coords */
-    const zoomOutLocation = () => {
-        mapRef.current.animateToRegion(
-            {
-                ...currRegion.coords,
-                latitudeDelta: currRegion.coords.latitudeDelta * 2,
-                longitudeDelta: currRegion.coords.latitudeDelta * 2,
-            },
-            2000
-        );
-    };
-
     return (
         <View style={styles.container}>
             {/*  THE MAIN MAP VIEW */}
             <MapView
                 style={styles.map}
+                loadingBackgroundColor={Colors.modalBg}
                 customMapStyle={mapOrangeRoad}
                 initalregion={randomRegion}
                 ref={mapRef}
@@ -174,21 +200,17 @@ const MapArea = (props) => {
                 )}
             </MapView>
 
-            <Callout style={styles.zoomCallout}>
-                {/* ZOOM IN BUTTON */}
-                <TouchableOpacity
-                    style={styles.zoomButtons}
-                    onPress={() => zoomInLocation()}>
-                    <Text style={styles.zoomButtonText}>+</Text>
-                </TouchableOpacity>
-
-                {/* ZOOM OUT BUTTON */}
-                <TouchableOpacity
-                    style={styles.zoomButtons}
-                    onPress={() => zoomOutLocation()}>
-                    <Text style={styles.zoomButtonText}>-</Text>
-                </TouchableOpacity>
-            </Callout>
+            <MapCallout
+                pin={pin}
+                userLoc={userLoc}
+                currRegion={currRegion}
+                snapshot={snapshot}
+                setSnapshot={setSnapshot}
+                mapRef={mapRef}
+                markerToggle={markerToggle}
+                userFollow={userFollow}
+                locationPermission={locationPermission}
+            />
 
             <MapMenu
                 pin={pin}
@@ -199,6 +221,7 @@ const MapArea = (props) => {
                 mapRef={mapRef}
                 markerToggle={markerToggle}
                 userFollow={userFollow}
+                mapType={mapType}
                 setMapType={setMapType}
             />
         </View>
@@ -218,25 +241,5 @@ const styles = StyleSheet.create({
         flex: 2,
         height: '100%',
         width: '100%',
-    },
-    zoomCallout: {
-        right: 0,
-        top: 15,
-        alignItems: 'center',
-    },
-    zoomButtons: {
-        padding: '2%',
-        margin: '3%',
-        width: 50,
-        height: 50,
-        backgroundColor: Colors.secSlideActiveBg,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 40,
-        elevation: 10,
-    },
-    zoomButtonText: {
-        fontSize: 25,
-        fontWeight: 'bold',
     },
 });

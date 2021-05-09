@@ -88,12 +88,8 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.THEME_KEY
                             )
                         }
-                        groupWidth={buttonGroupWidth}
+                        width={buttonGroupWidth}
                         height={buttonGroupHeight}
-                        highlightBackgroundColor={Colors.slideActiveBg}
-                        highlightTextColor={Colors.slideTextActive}
-                        inactiveBackgroundColor={Colors.slideInactiveBg}
-                        inactiveTextColor={Colors.slideTextInactive}
                     />
                 </View>
             </View>
@@ -114,12 +110,8 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.ERASER_SIZE_KEY
                             )
                         }
-                        groupWidth={buttonGroupWidth}
+                        width={buttonGroupWidth}
                         height={buttonGroupHeight}
-                        highlightBackgroundColor={Colors.slideActiveBg}
-                        highlightTextColor={Colors.slideTextActive}
-                        inactiveBackgroundColor={Colors.slideInactiveBg}
-                        inactiveTextColor={Colors.slideTextInactive}
                     />
                 </View>
             </View>
@@ -142,12 +134,8 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.DELETE_KEY
                             )
                         }
-                        groupWidth={buttonGroupWidth}
+                        width={buttonGroupWidth}
                         height={buttonGroupHeight}
-                        highlightBackgroundColor={Colors.slideActiveBg}
-                        highlightTextColor={Colors.slideTextActive}
-                        inactiveBackgroundColor={Colors.slideInactiveBg}
-                        inactiveTextColor={Colors.slideTextInactive}
                     />
                 </View>
             </View>
@@ -168,12 +156,8 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.PEN_COLOR_KEY
                             )
                         }
-                        groupWidth={buttonGroupWidth}
+                        width={buttonGroupWidth}
                         height={buttonGroupHeight}
-                        highlightBackgroundColor={Colors.slideActiveBg}
-                        highlightTextColor={Colors.slideTextActive}
-                        inactiveBackgroundColor={Colors.slideInactiveBg}
-                        inactiveTextColor={Colors.slideTextInactive}
                         isColorOptions={true}
                     />
                 </View>
@@ -197,11 +181,7 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.DRAGGABLE_COLOR_KEY
                             )
                         }
-                        groupWidth={buttonGroupWidth}
-                        highlightBackgroundColor={Colors.slideActiveBg}
-                        highlightTextColor={Colors.slideTextActive}
-                        inactiveBackgroundColor={Colors.slideInactiveBg}
-                        inactiveTextColor={Colors.slideTextInactive}
+                        width={buttonGroupWidth}
                         isColorOptions={true}
                     />
                 </View>

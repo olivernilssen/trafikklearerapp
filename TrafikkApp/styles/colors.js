@@ -100,4 +100,9 @@ export default {
     warning: red,
     alertButton: accentColor,
     alertButtonSecondary: lightCharcoal,
+
+    //map
+    locationArrowActive: darkerBlue,
+    locationArrowInactive: blueGray,
+    zoomButtons: lightGray,
 };

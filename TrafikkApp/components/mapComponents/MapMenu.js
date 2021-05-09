@@ -12,21 +12,12 @@ import {
 
 import AppContext from '../../AppContext';
 import USER_KEYS from '../helpers/storageKeys';
-import {
-    mapPinkRoad,
-    mapBeigeRoad,
-    mapWhiteRoad,
-    mapOrangeRoad,
-} from './mapStyles';
 import Colors from '../../styles/colors';
-import { useToggle } from '../helpers/useToggle';
+import { useOpen } from '../helpers/useOpen';
+import ButtonGroup from '../reusableComponents/ButtonGroup';
+import { Divider, BottomMenuAnimated } from '../reusableComponents/index';
 
-const randomRegion = {
-    latitude: 69.660084,
-    longitude: 18.94557,
-    latitudeDelta: 0.009,
-    longitudeDelta: 0.009,
-};
+import { Typography, Buttons } from '../../styles';
 
 const mapTypes = ['standard', 'terrain'];
 
@@ -39,17 +30,19 @@ const MapArea = ({
     currRegion,
     snapshot,
     setSnapshot,
+    mapType,
     setMapType,
 }) => {
     const appContext = useContext(AppContext);
+    const bottomMenuToggle = useOpen(true);
+    const [buttonLayout, setButtonLayout] = useState(undefined);
+    // console.log(snapshot);
 
     /**
      * Take a snapshot of the map view where the user is right now
      * It will be saved in cache and also saved to async storage for later use
      */
     const takeSnapshot = () => {
-        // 'takeSnapshot' takes a config object with the
-        // following options
         const snapshot = mapRef.current.takeSnapshot({
             format: 'png', // image formats: 'png', 'jpg' (default: 'png')
             quality: 0.8, // image quality: 0..1 (only relevant for jpg, default: 1)
@@ -71,13 +64,14 @@ const MapArea = ({
      * @param {object} coords Object with longitude and latitude
      */
     const goToCoords = (coords) => {
+        userFollow.onToggleFalse();
         mapRef.current.animateToRegion(
             {
                 ...coords,
                 longitudeDelta: currRegion.coords.longitudeDelta,
                 latitudeDelta: currRegion.coords.latitudeDelta,
             },
-            3000
+            500
         );
     };
 
@@ -91,86 +85,115 @@ const MapArea = ({
     };
 
     return (
-        <View style={styles.bottomSheet}>
-            {/* GROUP OF BUTTONS ON MAP */}
-            <View style={styles.buttonGroup}>
-                {/* SCREENSHOT BUTTON */}
-                <TouchableOpacity style={styles.button} onPress={takeSnapshot}>
-                    <Text style={styles.buttonText}>Ta skjermdump</Text>
-                </TouchableOpacity>
+        <BottomMenuAnimated
+            bottomSheetHidden={bottomMenuToggle}
+            chevronColor={Colors.chevronColor}>
+            <View style={styles.bottomSheet}>
+                {/* GROUP OF BUTTONS ON MAP */}
+                <View style={styles.buttonGroup}>
+                    <Text style={styles.sectionText}>Kart Innstillinger</Text>
+                    <Divider color={Colors.dividerSecondary} />
+                    {/* SAVE LOCATION BUTTON */}
+                    <View style={styles.innerGroup}>
+                        <TouchableOpacity
+                            onLayout={(e) =>
+                                setButtonLayout(e.nativeEvent.layout)
+                            }
+                            style={styles.button}
+                            onPress={savePinLocation}>
+                            <Text style={styles.buttonText}>Lagre pin</Text>
+                        </TouchableOpacity>
 
-                {/* USE PHOTO TO ILLUSTRATE BUTTON */}
-                <TouchableOpacity style={styles.button} onPress={() => {}}>
-                    <Text style={styles.buttonText}>Bruk bilde</Text>
-                </TouchableOpacity>
+                        {/* MAP TYPE BUTTON */}
+                        {buttonLayout != undefined && (
+                            <View
+                                style={[
+                                    styles.button,
+                                    {
+                                        backgroundColor: 'transparent',
+                                        elevation: 0,
+                                    },
+                                ]}>
+                                <ButtonGroup
+                                    selectedValue={mapType}
+                                    values={mapTypes}
+                                    width={
+                                        buttonLayout
+                                            ? buttonLayout.width
+                                            : undefined
+                                    }
+                                    height={
+                                        buttonLayout
+                                            ? buttonLayout.height
+                                            : undefined
+                                    }
+                                    onSelect={(newValue) =>
+                                        setMapType(newValue)
+                                    }
+                                    inactiveBackgroundColor={
+                                        Colors.bottomMenyButtons
+                                    }
+                                    // width={'100%'}
+                                />
+                            </View>
+                        )}
 
-                {/* MAKE MARKERS VISIBLE BUTTON */}
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => {
-                        markerToggle.onToggle();
-                    }}>
-                    <Text style={styles.buttonText}>
-                        {markerToggle.isToggled ? 'Gjem' : 'Vis'} pin(s)
-                    </Text>
-                </TouchableOpacity>
-
-                {/* GO TO PIN BUTTON */}
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => {
-                        goToCoords(pin.coords);
-                    }}>
-                    <Text style={styles.buttonText}>Gå til pin</Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style={styles.buttonGroup}>
-                {/* SAVE LOCATION BUTTON */}
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={savePinLocation}>
-                    <Text style={styles.buttonText}>Lagre pin</Text>
-                </TouchableOpacity>
-
-                {/* GO TO MY LOCATION BUTTON */}
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => goToCoords(userLoc.coords)}>
-                    <Text style={styles.buttonText}>Gå til min lokasjon</Text>
-                </TouchableOpacity>
-
-                {/* FOLLOW USER BUTTON */}
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => userFollow.onToggle()}>
-                    <Text style={styles.buttonText}>
-                        {userFollow.isToggled ? 'Slutt å følge' : 'Følg'} meg
-                    </Text>
-                </TouchableOpacity>
-
-                {/* MAP TYPE BUTTON */}
-                <View style={styles.innerGroup}>
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => setMapType('terrain')}>
-                        <Text style={styles.buttonText}>Terrain</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => setMapType('standard')}>
-                        <Text style={styles.buttonText}>Standard</Text>
-                    </TouchableOpacity>
+                        <TouchableOpacity
+                            onLayout={(e) =>
+                                setButtonLayout(e.nativeEvent.layout)
+                            }
+                            style={[
+                                styles.button,
+                                {
+                                    backgroundColor: 'transparent',
+                                    elevation: 0,
+                                },
+                            ]}>
+                            <Text style={styles.buttonText}></Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
+                <View style={styles.buttonGroup}>
+                    <Text style={styles.sectionText}>Skjermdump</Text>
+                    <Divider color={Colors.dividerSecondary} />
+                    <View style={styles.innerGroup}>
+                        {/* SCREENSHOT BUTTON */}
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={takeSnapshot}>
+                            <Text style={styles.buttonText}>Ta skjermdump</Text>
+                        </TouchableOpacity>
+
+                        {/* USE PHOTO TO ILLUSTRATE BUTTON */}
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={() => {}}>
+                            <Text style={styles.buttonText}>
+                                Bruk skjermdump
+                            </Text>
+                        </TouchableOpacity>
+
+                        {/* MAKE MARKERS VISIBLE BUTTON */}
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={() => {
+                                markerToggle.onToggle();
+                            }}>
+                            <Text style={styles.buttonText}>
+                                {markerToggle.isToggled ? 'Gjem' : 'Vis'} pin(s)
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                {/* SCREENSHOTTEN IMAGE */}
+                <Image
+                    style={styles.image}
+                    source={{
+                        uri: snapshot != '' ? snapshot : null,
+                    }}
+                />
             </View>
-            {/* SCREENSHOTTEN IMAGE */}
-            <Image
-                style={styles.image}
-                source={{
-                    uri: snapshot != '' ? snapshot : null,
-                }}
-            />
-        </View>
+        </BottomMenuAnimated>
     );
 };
 
@@ -178,33 +201,45 @@ export default MapArea;
 
 const styles = StyleSheet.create({
     bottomSheet: {
-        bottom: 0,
-        position: 'absolute',
-        backgroundColor: Colors.dividerPrimary, //+ '50',
+        // backgroundColor: Colors.dividerPrimary + '50',
         height: 300,
         width: '100%',
-        alignItems: 'center',
         padding: '2%',
         justifyContent: 'space-around',
         flexDirection: 'row',
-        // opacity: 0.7,
+        // opacity: 0.9,
     },
     buttonGroup: {
-        flex: 2,
+        flex: 4,
         flexDirection: 'column',
+        marginRight: '5%',
     },
     innerGroup: {
-        flexDirection: 'row',
+        flex: 1,
+        justifyContent: 'space-around',
+        flexDirection: 'column',
     },
+    sectionText: {
+        ...Typography.section,
+        color: Colors.textPrimary,
+        marginBottom: '5%',
+    },
+
     button: {
         padding: '3%',
-        margin: '3%',
-        backgroundColor: Colors.componentMenu,
+        // marginTop: '7%',
+        backgroundColor: Colors.bottomMenyButtons,
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 20,
+        ...Buttons.rounded,
         elevation: 10,
     },
+    buttonComp: {
+        width: '100%',
+        height: '100%',
+        paddingTop: '7%',
+    },
+
     buttonText: {
         color: 'white',
         fontSize: 22,
@@ -212,9 +247,11 @@ const styles = StyleSheet.create({
     image: {
         flex: 2,
         height: '100%',
-        width: '40%',
+        width: '50%',
         padding: '5%',
-        margin: '2%',
         resizeMode: 'contain',
+        borderColor: 'white',
+        borderWidth: 2,
+        borderColor: Colors.selectedBorder,
     },
 });

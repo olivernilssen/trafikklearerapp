@@ -7,16 +7,16 @@ export const requestLocationPermission = async () => {
             {
                 title: 'Illustrafikk',
                 message:
-                    'Illustrafikk spør om tillatelse til å bruke GPS koordinatene dine',
+                    'Illustrafikk spør om tillatelse til å bruke lokasjonen din',
                 buttonNeutral: 'Spør meg senere',
-                buttonNegative: 'Avbryt',
-                buttonPositive: 'OK',
+                buttonNegative: 'Ikke tillat',
+                buttonPositive: 'Tillat',
             }
         );
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-            console.log('You can use the location services');
+            console.info('You can use the location services');
         } else {
-            console.log('location permission denied');
+            console.info('location permission denied');
         }
     } catch (err) {
         console.warn(err);

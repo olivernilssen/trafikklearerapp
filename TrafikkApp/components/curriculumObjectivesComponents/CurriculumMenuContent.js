@@ -127,7 +127,7 @@ const CurriculumMenuContent = React.memo(
                         onSelect={(newValue) =>
                             onCurriculumObjectiveChange(newValue)
                         }
-                        groupWidth={
+                        width={
                             trafficClass == 'Klasse B'
                                 ? buttonGroupWidth
                                 : buttonGroupWidthSmaller

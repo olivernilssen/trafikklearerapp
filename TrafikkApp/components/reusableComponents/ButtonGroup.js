@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
     Animated,
 } from 'react-native';
-import { Typography, Buttons } from '../../styles';
+import { Typography, Buttons, Colors } from '../../styles';
 
 /**
  * Component that displays a button group.
@@ -26,20 +26,17 @@ const ButtonGroup = (props) => {
     const {
         values,
         selectedValue,
-        groupWidth,
+        width,
         height,
         onSelect,
         highlightBackgroundColor,
         highlightTextColor,
         inactiveBackgroundColor,
         inactiveTextColor,
-        isColorOptions,
+        isColorOption,
     } = props;
 
-    const width = groupWidth != null ? groupWidth : 300;
-    const isHeight = height != null ? height : width / 6;
-    // const fontSize = textSize != null ? textSize : width / 15;
-    const isColorOption = isColorOptions != null ? isColorOptions : false;
+    const adjHeight = height === 100 ? width / 6 : height;
 
     const [buttonSizes, setButtonSizes] = useState([]);
     const [chosenIndex, setChosenIndex] = useState(
@@ -150,7 +147,7 @@ const ButtonGroup = (props) => {
                 styles.mainView,
                 {
                     width: width,
-                    height: isHeight,
+                    height: adjHeight,
                     backgroundColor: inactiveBackgroundColor,
                 },
             ]}>
@@ -159,7 +156,7 @@ const ButtonGroup = (props) => {
                     style={[
                         styles.slider,
                         {
-                            height: isHeight,
+                            height: adjHeight,
                             width: buttonSizes[chosenIndex],
                             backgroundColor: highlightBackgroundColor,
                             transform: [{ translateX: boxPos }],
@@ -219,7 +216,7 @@ const ButtonGroup = (props) => {
                     style={[
                         styles.slider,
                         {
-                            height: isHeight,
+                            height: adjHeight,
                             width: buttonSizes[chosenIndex],
                             borderBottomWidth: 5,
                             borderBottomLeftRadius: chosenIndex === 0 ? 10 : 0,
@@ -234,6 +231,17 @@ const ButtonGroup = (props) => {
         </View>
     );
 };
+
+ButtonGroup.defaultProps = {
+    width: 300,
+    height: 300 / 3,
+    highlightBackgroundColor: Colors.slideActiveBg,
+    highlightTextColor: Colors.slideTextActive,
+    inactiveBackgroundColor: Colors.slideInactiveBg,
+    inactiveTextColor: Colors.slideTextInactive,
+    isColorOptions: false,
+};
+
 const styles = StyleSheet.create({
     mainView: {
         flexDirection: 'row',
