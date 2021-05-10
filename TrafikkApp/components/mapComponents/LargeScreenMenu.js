@@ -1,16 +1,10 @@
-import React, { useState, useRef, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 
-import {
-    StyleSheet,
-    Text,
-    View,
-    Dimensions,
-    TouchableOpacity,
-    Image,
-} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AppContext from '../../AppContext';
 import USER_KEYS from '../helpers/storageKeys';
+
 import Colors from '../../styles/colors';
 import { useOpen } from '../helpers/useOpen';
 import { isSmallScreen } from '../reusableComponents/globalFunctions';
@@ -21,25 +15,44 @@ import { Typography, Buttons, Icons } from '../../styles';
 
 const mapTypes = ['standard', 'terrain', 'satellite'];
 
-const MapArea = ({
+/**
+ * Component to render the bottom menu in maps for larger screens
+ * @namespace LargeScreenMenu
+ * @category mapComponents
+ * @prop {hook} markerToggle hook to mark or unmark the markers
+ * @prop {hook} pin hook to set the coords of the pin/marker
+ * @prop {string} snapshot the path for the snapshot
+ * @prop {function} takeSnapshot call to function to take snapshot and save img
+ * @prop {string} mapType the maptype being used
+ * @prop {function} setMapType setstate function to set maptype
+ * @prop {function} navigate function to navigate to a different site
+ */
+const LargeScreenMenu = ({
     markerToggle,
     pin,
     snapshot,
     takeSnapshot,
     mapType,
     setMapType,
+    navigate,
 }) => {
     const appContext = useContext(AppContext);
     const bottomMenuToggle = useOpen(true);
     const [buttonLayout, setButtonLayout] = useState(undefined);
-    // console.log(snapshot);
 
-    /** Save the pinned location to async storage */
+    /** Save the pinned location to async storage
+     * @memberof LargeScreenMenu
+     */
     const savePinLocation = () => {
         appContext.saveNewSettings(
             JSON.stringify(pin.coords),
             appContext.setSavedLocation,
             USER_KEYS.SAVEDLOC_KEY
+        );
+        ToastAndroid.show(
+            'Markør har blitt lagret på enheten',
+            ToastAndroid.SHORT,
+            ToastAndroid.TOP
         );
     };
 
@@ -127,7 +140,7 @@ const MapArea = ({
                         {/* USE PHOTO TO ILLUSTRATE BUTTON */}
                         <TouchableOpacity
                             style={[styles.button, { flexDirection: 'row' }]}
-                            onPress={() => {}}>
+                            onPress={() => navigate('MapSketchScreen')}>
                             <Text style={styles.buttonText}>
                                 Bruk skjermdump
                             </Text>
@@ -157,7 +170,7 @@ const MapArea = ({
     );
 };
 
-export default MapArea;
+export default LargeScreenMenu;
 
 const styles = StyleSheet.create({
     bottomSheet: {

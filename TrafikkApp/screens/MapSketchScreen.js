@@ -1,24 +1,24 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-
+import { StyleSheet, View } from 'react-native';
 import { MainView } from '../components/reusableComponents/';
-import { SketchArea } from '../components/sketchComponents/';
+import SketchArea from '../components/sketchComponents/SketchArea';
 
 /**
- * The scren component to show the sketcharea of Veikryss.
- * This screen is a sketch screen, and is using the big SketchArea component.
- * @namespace IntersectionScreen
+ * Screen component for map sketch screen
+ * Will show the sketch area but with the snapshot background if there i
+ * if any.
+ * @namespace MapSketchScreen
  * @category Screens
  * @prop {object} navigation Used for navigation between the different screens
  */
-const IntersectionScreen = React.memo(({ navigation }) => {
+const MapSketchScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
             <View style={styles.sketchArea}>
                 <SketchArea
                     navigate={navigation.navigate}
                     toggleDrawer={navigation.toggleDrawer}
-                    name={'Veikryss'}
+                    name={'Map'}
                 />
             </View>
         </MainView>
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default IntersectionScreen;
+export default MapSketchScreen;

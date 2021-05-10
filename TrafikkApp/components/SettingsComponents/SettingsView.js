@@ -158,7 +158,7 @@ const SettingsView = React.memo((props) => {
                         }
                         width={buttonGroupWidth}
                         height={buttonGroupHeight}
-                        isColorOptions={true}
+                        isColorOption={true}
                     />
                 </View>
             </View>
@@ -182,7 +182,8 @@ const SettingsView = React.memo((props) => {
                             )
                         }
                         width={buttonGroupWidth}
-                        isColorOptions={true}
+                        height={buttonGroupHeight}
+                        isColorOption={true}
                     />
                 </View>
             </View>

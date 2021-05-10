@@ -36,7 +36,7 @@ const ButtonGroup = (props) => {
         isColorOption,
     } = props;
 
-    const adjHeight = height === 100 ? width / 6 : height;
+    const adjHeight = height === 100 ? width / 7 : height;
 
     const [buttonSizes, setButtonSizes] = useState([]);
     const [chosenIndex, setChosenIndex] = useState(
@@ -94,7 +94,7 @@ const ButtonGroup = (props) => {
         }
 
         setButtonSizes(newSizes);
-    }, []);
+    }, [width]);
 
     /**
      * useEffect that is triggered when chosenValue is changed.
@@ -142,93 +142,106 @@ const ButtonGroup = (props) => {
     }, [newValue]);
 
     return (
-        <View
-            style={[
-                styles.mainView,
-                {
-                    width: width,
-                    height: adjHeight,
-                    backgroundColor: inactiveBackgroundColor,
-                },
-            ]}>
-            {!isColorOption && (
-                <Animated.View
+        <>
+            {buttonSizes.length !== 0 && (
+                <View
                     style={[
-                        styles.slider,
+                        styles.mainView,
                         {
+                            width: width,
                             height: adjHeight,
-                            width: buttonSizes[chosenIndex],
-                            backgroundColor: highlightBackgroundColor,
-                            transform: [{ translateX: boxPos }],
+                            backgroundColor: inactiveBackgroundColor,
                         },
-                    ]}
-                />
-            )}
-
-            {values.map((value, i) => {
-                return (
-                    <View
-                        key={i}
-                        style={[
-                            styles.buttonView,
-                            isColorOption
-                                ? {
-                                      borderTopLeftRadius: i === 0 ? 10 : 0,
-                                      borderTopRightRadius:
-                                          i === values.length - 1 ? 10 : 0,
-                                      borderBottomLeftRadius: i === 0 ? 10 : 0,
-                                      borderBottomRightRadius:
-                                          i === values.length - 1 ? 10 : 0,
-                                      backgroundColor: value,
-                                  }
-                                : null,
-                        ]}>
-                        <TouchableOpacity
+                    ]}>
+                    {!isColorOption && (
+                        <Animated.View
                             style={[
-                                styles.touchable,
+                                styles.slider,
                                 {
-                                    width: buttonSizes[i],
+                                    height: adjHeight,
+                                    width: buttonSizes[chosenIndex],
+                                    backgroundColor: highlightBackgroundColor,
+                                    transform: [{ translateX: boxPos }],
                                 },
                             ]}
-                            onPress={() => onValueChanged(value, i)}
-                            activeOpacity={0.7}>
-                            {!isColorOption && (
-                                <Text
-                                    style={[
-                                        styles.text,
-                                        {
-                                            color:
-                                                i == indexAnimDone
-                                                    ? highlightTextColor
-                                                    : inactiveTextColor,
-                                        },
-                                    ]}>
-                                    {value}
-                                </Text>
-                            )}
-                        </TouchableOpacity>
-                    </View>
-                );
-            })}
+                        />
+                    )}
 
-            {isColorOption && (
-                <Animated.View
-                    style={[
-                        styles.slider,
-                        {
-                            height: adjHeight,
-                            width: buttonSizes[chosenIndex],
-                            borderBottomWidth: 5,
-                            borderBottomLeftRadius: chosenIndex === 0 ? 10 : 0,
-                            borderBottomRightRadius:
-                                chosenIndex === values.length - 1 ? 10 : 0,
-                            transform: [{ translateX: boxPos }],
-                            borderColor: 'white',
-                        },
-                    ]}
-                />
+                    {values.map((value, i) => {
+                        return (
+                            <View
+                                key={i}
+                                style={[
+                                    styles.buttonView,
+                                    isColorOption
+                                        ? {
+                                              borderTopLeftRadius:
+                                                  i === 0 ? 10 : 0,
+                                              borderTopRightRadius:
+                                                  i === values.length - 1
+                                                      ? 10
+                                                      : 0,
+                                              borderBottomLeftRadius:
+                                                  i === 0 ? 10 : 0,
+                                              borderBottomRightRadius:
+                                                  i === values.length - 1
+                                                      ? 10
+                                                      : 0,
+                                              backgroundColor: value,
+                                          }
+                                        : null,
+                                ]}>
+                                <TouchableOpacity
+                                    style={[
+                                        styles.touchable,
+                                        {
+                                            width: buttonSizes[i],
+                                        },
+                                    ]}
+                                    onPress={() => onValueChanged(value, i)}
+                                    activeOpacity={0.7}>
+                                    {!isColorOption && (
+                                        <Text
+                                            style={[
+                                                styles.text,
+                                                {
+                                                    color:
+                                                        i == indexAnimDone
+                                                            ? highlightTextColor
+                                                            : inactiveTextColor,
+                                                },
+                                            ]}>
+                                            {value}
+                                        </Text>
+                                    )}
+                                </TouchableOpacity>
+                            </View>
+                        );
+                    })}
+
+                    {isColorOption && (
+                        <Animated.View
+                            style={[
+                                styles.slider,
+                                {
+                                    height: adjHeight,
+                                    width: buttonSizes[chosenIndex],
+                                    borderBottomWidth: 5,
+                                    borderBottomLeftRadius:
+                                        chosenIndex === 0 ? 10 : 0,
+                                    borderBottomRightRadius:
+                                        chosenIndex === values.length - 1
+                                            ? 10
+                                            : 0,
+                                    transform: [{ translateX: boxPos }],
+                                    borderColor: 'white',
+                                },
+                            ]}
+                        />
+                    )}
+                </View>
             )}
-        </View>
+        </>
     );
 };
 

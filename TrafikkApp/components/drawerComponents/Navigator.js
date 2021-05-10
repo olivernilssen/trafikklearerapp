@@ -14,6 +14,7 @@ import {
     AuthorityPyramidScreen,
     AboutScreen,
     MapScreen,
+    MapSketchScreen,
 } from '../../screens/';
 
 const Drawer = createDrawerNavigator();
@@ -152,6 +153,17 @@ const Navigator = () => {
                     icon: 'map',
                     screenName: 'MapScreen',
                     value: 10,
+                }}
+            />
+            <Drawer.Screen
+                name="MapSketchScreen"
+                component={MapSketchScreen}
+                initialParams={{
+                    section: 'ingen',
+                    title: 'Kart Illustrering',
+                    icon: 'map',
+                    screenName: 'MapSketchScreen',
+                    value: 11,
                 }}
             />
         </Drawer.Navigator>

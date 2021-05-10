@@ -22,7 +22,7 @@ import { useOpen } from '../helpers/useOpen';
  * @prop {function} setImage Changes the state currentImage
  * @prop {function} setRoadDesignChange Changes the state roadDesignChange to true or false
  * @prop {string} extensionType Name of the extension type to be set (vanlig, gangfelt, sykkelfelt)
- * @prop {function} openBottomSheet Changes the state bottomSheetHidden to hide or show the bottomMenu
+ * @prop {function} openBottomSheet Changes the state bottomSheetOpen to hide or show the bottomMenu
  */
 const SketchAreaMenuContent = React.memo(
     ({
@@ -257,7 +257,6 @@ const SketchAreaMenuContent = React.memo(
                                 intersectionTypeChange(newValue)
                             }
                             width={buttonGroupWidth}
-                            height={button}
                             highlightBackgroundColor={Colors.bottomMenyButtons}
                             highlightTextColor={Colors.icons}
                             inactiveBackgroundColor={Colors.secSlideInactiveBg}

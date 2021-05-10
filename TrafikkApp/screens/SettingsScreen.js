@@ -17,8 +17,8 @@ const SettingsScreen = React.memo(({ navigation }) => {
     const overlayVisiable = useOpen(!pickerVisible.isOpen);
 
     useEffect(() => {
-        if (pickerVisible.isOpen) overlayVisiable.onClose();
-        else if (!pickerVisible.isOpen) overlayVisiable.onOpen();
+        if (!pickerVisible.isOpen) overlayVisiable.onClose();
+        else if (pickerVisible.isOpen) overlayVisiable.onOpen();
     }, [pickerVisible.isOpen]);
 
     return (

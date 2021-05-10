@@ -38,15 +38,15 @@ const SketchArea = React.memo((props) => {
     const defaultPencilSize = 5;
 
     const { name, toggleDrawer, navigate } = props;
-
+    const isMap = name == 'Map';
     const [pencilColor, setPencilColor] = useState(appContext.penColor);
     const [chosenColor, setChosenColor] = useState('');
     const [pencilSize, setPencilSize] = useState(defaultPencilSize);
     const [chosenPencilSize, setChosenPencilSize] = useState(null);
     const [roadDesignChange, setRoadDesignChange] = useState(true);
     const [currentImg, setImage] = useState();
-    const topMenuHidden = useOpen(true);
-    const bottomSheetHidden = useOpen(false);
+    const topMenuOpen = useOpen(false);
+    const bottomSheetOpen = useOpen(true);
     const [draggables, setDraggables] = useState([]);
     const [actionList, setActionList] = useState([]);
     const [deletingItemId, setDeletingItemId] = useState(null);
@@ -58,11 +58,29 @@ const SketchArea = React.memo((props) => {
      * Will clear the canvas and delete all objects on the screen
      */
     useEffect(() => {
-        if (roadDesignChange && appContext.deleteOnChange == 'Ja') {
-            clearCanvas();
-            setDraggables([]);
+        if (isMap) {
+            if (appContext.deleteOnChange == 'Ja') {
+                clearCanvas();
+                setDraggables([]);
+            }
+        } else {
+            if (roadDesignChange && appContext.deleteOnChange == 'Ja') {
+                clearCanvas();
+                setDraggables([]);
+            }
         }
     }, [currentImg]);
+
+    useEffect(() => {
+        if (isMap) {
+            if (appContext.latestSnapshot != '') {
+                setImage(appContext.latestSnapshot);
+            } else {
+                console.warn('no image stored');
+                // navigate('MapScreen');
+            }
+        }
+    }, [appContext.latestSnapshot]);
 
     useEffect(() => {
         setEraserSize(parseInt(appContext.eraserSize));
@@ -156,12 +174,12 @@ const SketchArea = React.memo((props) => {
      * @memberof SketchArea
      */
     const onStrokeStart = useCallback(() => {
-        if (bottomSheetHidden.isOpen === false) bottomSheetHidden.onToggle();
-    }, [bottomSheetHidden.isOpen]);
+        if (bottomSheetOpen.isOpen === true) bottomSheetOpen.onToggle();
+    }, [bottomSheetOpen.isOpen]);
 
     return (
         <MainView>
-            <Overlay showOverlay={bottomSheetHidden} />
+            {name != 'Map' && <Overlay showOverlay={bottomSheetOpen} />}
             <View style={styles.main}>
                 <SketchHeader
                     onEraserPencilSwitch={onEraserPencilSwitch}
@@ -171,7 +189,7 @@ const SketchArea = React.memo((props) => {
                     onPaletteColorChange={(color) => setPencilColor(color)}
                     toggleDrawer={toggleDrawer}
                     name={name}
-                    topMenuHidden={topMenuHidden}
+                    topMenuOpen={topMenuOpen}
                     onChangePencilSize={onChangePencilSize}
                     pencilColor={pencilColor}
                     pencilSize={pencilSize}
@@ -181,8 +199,12 @@ const SketchArea = React.memo((props) => {
                 <View style={styles.backgroundImageContainer}>
                     <Image
                         resizeMode={'cover'}
-                        style={styles.backgroundImage}
-                        source={currentImg}
+                        style={
+                            isMap
+                                ? styles.mapBackgroundImage
+                                : styles.backgroundImage
+                        }
+                        source={isMap ? { uri: currentImg } : currentImg}
                     />
                 </View>
 
@@ -198,7 +220,7 @@ const SketchArea = React.memo((props) => {
                     <DraggableWithEverything
                         draggables={draggables}
                         setDraggables={setDraggables}
-                        topMenuHidden={topMenuHidden.isOpen}
+                        topMenuOpen={topMenuOpen}
                         deletingItemId={deletingItemId}
                         name={name}
                         setActionList={setActionList}
@@ -209,16 +231,18 @@ const SketchArea = React.memo((props) => {
                 </View>
             </View>
 
-            <BottomMenuAnimated bottomSheetHidden={bottomSheetHidden}>
-                <SketchAreaMenuContent
-                    roadType={name}
-                    setImage={setImage}
-                    setRoadDesignChange={setRoadDesignChange}
-                    extensionType={extensionType}
-                    openBottomSheet={() => bottomSheetHidden.onOpen()}
-                    navigate={navigate}
-                />
-            </BottomMenuAnimated>
+            {name !== 'Map' && (
+                <BottomMenuAnimated bottomSheetOpen={bottomSheetOpen}>
+                    <SketchAreaMenuContent
+                        roadType={name}
+                        setImage={setImage}
+                        setRoadDesignChange={setRoadDesignChange}
+                        extensionType={extensionType}
+                        openBottomSheet={() => bottomSheetOpen.onOpen()}
+                        navigate={navigate}
+                    />
+                </BottomMenuAnimated>
+            )}
         </MainView>
     );
 });
@@ -257,6 +281,15 @@ const styles = StyleSheet.create({
         width: '100%',
         maxWidth: width,
         aspectRatio: 1752 / 2263,
+        alignSelf: 'center',
+        backgroundColor: Colors.sketchBackground,
+        zIndex: 0,
+    },
+    mapBackgroundImage: {
+        height: '100%',
+        maxHeight: '100%',
+        width: '100%',
+        maxWidth: width,
         alignSelf: 'center',
         backgroundColor: Colors.sketchBackground,
         zIndex: 0,

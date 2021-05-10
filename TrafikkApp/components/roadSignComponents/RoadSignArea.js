@@ -29,7 +29,7 @@ const RoadSignArea = React.memo((props) => {
     const { toggleDrawer } = props;
     const modalVisible = useOpen(false);
 
-    const bottomSheetHidden = useOpen(false);
+    const bottomSheetOpen = useOpen(true);
     const [signType, setSignType] = useState(fareskiltData);
     const [signObjectKeys, setSignObjectKeys] = useState(Object.keys(signType));
     const [selectedItem, setSelectedItem] = useState(signObjectKeys[0]);
@@ -90,10 +90,7 @@ const RoadSignArea = React.memo((props) => {
             <View>
                 <TouchableOpacity
                     style={styles.item}
-                    onPress={() => {
-                        handleModal(item);
-                        bottomSheetHidden.onOpen();
-                    }}>
+                    onPress={() => handleModal(item)}>
                     <View style={styles.modalImage}>
                         <Image
                             style={{ width: '100%', height: '100%' }}
@@ -107,7 +104,7 @@ const RoadSignArea = React.memo((props) => {
 
     return (
         <>
-            <Overlay showOverlay={bottomSheetHidden} />
+            <Overlay showOverlay={bottomSheetOpen} />
             {/* <View style={styles.mainView}> */}
             <TouchableWithoutFeedback onPress={() => modalVisible.onClose()}>
                 <RoadSignModal
@@ -149,11 +146,11 @@ const RoadSignArea = React.memo((props) => {
 
             {/* BOTTOM MENU */}
             <BottomMenuAnimated
-                bottomSheetHidden={bottomSheetHidden}
+                bottomSheetOpen={bottomSheetOpen}
                 chevronColor={Colors.icons}>
                 <RoadSignMenuContent
                     handleSignType={handleSignType}
-                    openBottomSheet={() => bottomSheetHidden.onOpen()}
+                    openBottomSheet={() => bottomSheetOpen.onOpen()}
                     handleHeaderName={(name) => setActiveSignTypeName(name)}
                     scrollToTop={scrollToTop}
                 />

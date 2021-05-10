@@ -105,4 +105,5 @@ export default {
     locationArrowActive: darkerBlue,
     locationArrowInactive: blueGray,
     zoomButtons: lightGray,
+    darkZoomButton: charcoal,
 };

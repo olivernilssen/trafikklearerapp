@@ -35,8 +35,10 @@ const DrawerMenu = React.memo((props) => {
             props.state.routes.forEach((screen) => {
                 const title = screen.params.section;
                 if (titles.indexOf(title) === -1) {
-                    titles.push(title);
-                    newArray.push({ title: title, data: [] });
+                    if (title != 'ingen') {
+                        titles.push(title);
+                        newArray.push({ title: title, data: [] });
+                    }
                 }
 
                 newArray.forEach((section) => {

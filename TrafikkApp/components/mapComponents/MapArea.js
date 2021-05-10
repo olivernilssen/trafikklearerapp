@@ -1,44 +1,40 @@
 import React, { useState, useRef, useContext, useEffect } from 'react';
-import MapView, { Marker, PROVIDER_GOOGLE, Callout } from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import Geolocation from 'react-native-geolocation-service';
-import {
-    StyleSheet,
-    Text,
-    View,
-    Dimensions,
-    TouchableOpacity,
-    PermissionsAndroid,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import { StyleSheet, Text, View, PermissionsAndroid } from 'react-native';
 import AppContext from '../../AppContext';
-import {
-    mapPinkRoad,
-    mapBeigeRoad,
-    mapWhiteRoad,
-    mapOrangeRoad,
-} from './mapStyles';
+import USER_KEYS from '../helpers/storageKeys';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+
+import { mapBeigeRoad, mapBeigeRoadZoomed } from './mapStyles';
 import { Colors, Icons } from '../../styles';
-import MapMenu from './MapMenu';
+import { LargeScreenMenu, SmallScreenMenu, MapCallout } from './index';
 import { useToggle } from '../helpers/useToggle';
 import { useCoords } from '../helpers/useCoords';
-import requestLocationPermission from '../helpers/locationPermission';
-import MapCallout from './MapCallout';
+import { isSmallScreen } from '../reusableComponents/globalFunctions';
+import { bezier } from 'react-native/Libraries/Animated/src/Easing';
 
 const randomRegion = {
     latitude: 69.660084,
     longitude: 18.94557,
-    latitudeDelta: 0.009,
-    longitudeDelta: 0.009,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01,
 };
 
-// const mapTypes = ['standard', 'terrain'];
-
-const MapArea = (props) => {
+/**
+ * @namespace MapArea
+ * @category mapComponents
+ * MapArea contains the MapView, Callout and bottom menu assosiated with the map
+ * It will handle the permission to get user location aswell
+ */
+const MapArea = ({ navigate }) => {
     const appContext = useContext(AppContext);
+    const navigation = useNavigation();
 
     const [snapshot, setSnapshot] = useState(appContext.latestSnapshot);
     const [mapType, setMapType] = useState('standard');
     const [locationPermission, setLocationPermission] = useState(false);
+    const isMounted = useToggle(true);
     const userFollow = useToggle(false);
     const markerToggle = useToggle(true);
     const pin = useCoords(
@@ -47,19 +43,22 @@ const MapArea = (props) => {
             : undefined
     );
     const userLoc = useCoords(undefined);
-    const currRegion = useCoords(undefined);
+    const currRegion = useCoords({ latitudeDelta: 0.01 });
     const mapRef = useRef();
     let _watchId = undefined;
 
     /**
+     * @memberof MapArea
      * On mount checks if the user location is active an starts tracking user
      */
-    useEffect(() => {
-        const _watchId = Geolocation.watchPosition(
+    const trackUser = () => {
+        _watchId = Geolocation.watchPosition(
             (position) => {
                 const { latitude, longitude } = position.coords;
                 userLoc.onUpdate({ latitude, longitude });
-                setLocationPermission(true);
+                if (isMounted.isToggled) {
+                    setLocationPermission(true);
+                }
             },
             (error) => {
                 console.error(error);
@@ -71,14 +70,51 @@ const MapArea = (props) => {
                 fastestInterval: 2000,
             }
         );
+    };
 
-        return () => {
-            if (_watchId) {
-                Geolocation.clearWatch(_watchId);
-            }
-        };
-    }, [locationPermission]);
+    /**
+     * Use effect that runs when component is in focus and when it is out of focus
+     * Will start the geolocation watch to track user movement
+     * and remove it upon umount
+     * @memberof MapArea
+     */
+    useFocusEffect(
+        React.useCallback(() => {
+            _watchId = Geolocation.watchPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    userLoc.onUpdate({ latitude, longitude });
+                    setLocationPermission(true);
+                },
+                (error) => {
+                    console.error(error);
+                },
+                {
+                    enableHighAccuracy: true,
+                    distanceFilter: 0,
+                    interval: 5000,
+                    fastestInterval: 2000,
+                }
+            );
 
+            return () => {
+                console.log('*****unmounted*****', _watchId);
+
+                if (_watchId) {
+                    Geolocation.clearWatch(_watchId);
+                    console.log('*****UNWATCH*****', _watchId);
+                }
+            };
+        }, [])
+    );
+
+    /**
+     * Wil run when user accesses the map for the first time
+     * or if user clicks the locationbutton
+     * Will ask for user permission to view User location
+     * @memberof MapArea
+     * @returns boolean of user desicion
+     */
     const requestLocationPermission = async () => {
         try {
             const granted = await PermissionsAndroid.request(
@@ -105,23 +141,34 @@ const MapArea = (props) => {
         }
     };
 
+    /**
+     * UseEffect to handle triggering of the userPermission function
+     * if it has not already been approved
+     * @memberof MapArea
+     */
     useEffect(() => {
-        if (!locationPermission) {
+        if (!locationPermission && userFollow.isToggled) {
             PermissionsAndroid.check(
                 PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
             ).then((response) => {
-                console.log(response.valueOf());
                 if (!response) {
                     requestLocationPermission().then((permission) => {
                         setLocationPermission(permission.valueOf());
+                        if (permission) trackUser();
                     });
                 } else {
                     setLocationPermission(response.valueOf());
+                    trackUser();
                 }
             });
         }
     }, [userFollow.isToggled]);
 
+    /**
+     * UseEffect to get toggled if wants to track their own movement
+     * will updated cameraview to where user is moving
+     * @memberof MapArea
+     */
     useEffect(() => {
         if (userFollow.isToggled) {
             mapRef.current.animateToRegion(
@@ -135,7 +182,9 @@ const MapArea = (props) => {
         }
     }, [userLoc]);
 
-    /** When user opens map, go to user if available, else go to last pin, else go to init currRegion.coords */
+    /** When user opens map, go to user if available, else go to last pin, else go to init currRegion.coords
+     * @memberof MapArea
+     */
     useEffect(() => {
         if (mapRef.current) {
             if (userLoc.coords) {
@@ -169,13 +218,39 @@ const MapArea = (props) => {
         }
     }, []);
 
+    /**
+     * Take a snapshot of the map view where the user is right now
+     * It will be saved in cache and also saved to async storage for later use
+     * @memberof MapArea
+     */
+    const takeSnapshot = () => {
+        const snapshot = mapRef.current.takeSnapshot({
+            format: 'png', // image formats: 'png', 'jpg' (default: 'png')
+            quality: 0.8, // image quality: 0..1 (only relevant for jpg, default: 1)
+            result: 'file', // result types: 'file', 'base64' (default: 'file')
+        });
+
+        snapshot.then((uri) => {
+            setSnapshot(uri);
+            appContext.saveNewSettings(
+                uri,
+                appContext.setLatestSnapshot,
+                USER_KEYS.SNAPSHOT_KEY
+            );
+        });
+    };
+
     return (
         <View style={styles.container}>
             {/*  THE MAIN MAP VIEW */}
             <MapView
                 style={styles.map}
                 loadingBackgroundColor={Colors.modalBg}
-                customMapStyle={mapOrangeRoad}
+                customMapStyle={
+                    currRegion.coords.latitudeDelta <= 0.0045
+                        ? mapBeigeRoadZoomed
+                        : mapBeigeRoad
+                }
                 initalregion={randomRegion}
                 ref={mapRef}
                 showsIndoors={false}
@@ -205,25 +280,35 @@ const MapArea = (props) => {
                 userLoc={userLoc}
                 currRegion={currRegion}
                 snapshot={snapshot}
-                setSnapshot={setSnapshot}
+                takeSnapshot={takeSnapshot}
                 mapRef={mapRef}
                 markerToggle={markerToggle}
                 userFollow={userFollow}
                 locationPermission={locationPermission}
+                mapType={mapType}
             />
 
-            <MapMenu
-                pin={pin}
-                userLoc={userLoc}
-                currRegion={currRegion}
-                snapshot={snapshot}
-                setSnapshot={setSnapshot}
-                mapRef={mapRef}
-                markerToggle={markerToggle}
-                userFollow={userFollow}
-                mapType={mapType}
-                setMapType={setMapType}
-            />
+            {isSmallScreen ? (
+                <SmallScreenMenu
+                    pin={pin}
+                    snapshot={snapshot}
+                    takeSnapshot={takeSnapshot}
+                    markerToggle={markerToggle}
+                    mapType={mapType}
+                    setMapType={setMapType}
+                    navigate={navigation.navigate}
+                />
+            ) : (
+                <LargeScreenMenu
+                    pin={pin}
+                    snapshot={snapshot}
+                    takeSnapshot={takeSnapshot}
+                    markerToggle={markerToggle}
+                    mapType={mapType}
+                    setMapType={setMapType}
+                    navigate={navigation.navigate}
+                />
+            )}
         </View>
     );
 };
@@ -233,12 +318,10 @@ export default MapArea;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // height: '100%',
         width: '100%',
-        // justifyContent: 'center',
     },
     map: {
-        flex: 2,
+        flex: 1,
         height: '100%',
         width: '100%',
     },

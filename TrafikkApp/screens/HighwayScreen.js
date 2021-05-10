@@ -18,7 +18,8 @@ const HighwayScreen = React.memo(({ navigation }) => {
                 <SketchArea
                     navigate={navigation.navigate}
                     toggleDrawer={navigation.toggleDrawer}
-                    name={'Fartsøknings- og reduksjonsfelt'}></SketchArea>
+                    name={'Fartsøknings- og reduksjonsfelt'}
+                />
             </View>
         </MainView>
     );

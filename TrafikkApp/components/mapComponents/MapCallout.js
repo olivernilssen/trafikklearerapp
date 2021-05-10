@@ -1,27 +1,40 @@
-import React, { useState, useRef, useContext, useEffect } from 'react';
+import React from 'react';
 import { Callout } from 'react-native-maps';
 
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AppContext from '../../AppContext';
-
+import { isSmallScreen } from '../reusableComponents/globalFunctions';
 import { Colors, Icons } from '../../styles';
 
-// const mapTypes = ['standard', 'terrain'];
-
+/**
+ * This component is what the user sees on top of the map
+ * it's a transparent type of view
+ * @namespace MapCallout
+ * @category mapComponents
+ * @prop {ref} MapRef the reference to the MapView object
+ * @prop {hook} userFollow boolean hook to set, check and update if user is followed
+ * @prop {hook} pin the pin hook to set and update the pin
+ * @prop {dict} currRegion the current map region displayed on the screen
+ * @prop {boolean} locationPermission if the user has allowed to use the location or not
+ * @prop {function} takeSnapshot function to take snapshot of the map
+ * @prop {string} maptype the current mapType
+ * @returns
+ */
 const MapCallout = (props) => {
     const {
         mapRef,
         userFollow,
-        markerToggle,
         pin,
-        userLoc,
         currRegion,
         locationPermission,
+        takeSnapshot,
+        mapType,
     } = props;
-    const appContext = useContext(AppContext);
 
-    /** Zoom in by a little bit on the current currRegion.coords */
+    /** Zoom in by a little bit on the current currRegion.coords
+     * @memberof MapCallout
+     */
     const zoomInLocation = () => {
         userFollow.onToggleFalse();
         mapRef.current.animateToRegion(
@@ -32,9 +45,12 @@ const MapCallout = (props) => {
             },
             1000
         );
+        console.log(currRegion.coords.latitudeDelta);
     };
 
-    /** Zoom out by a little bit on the current currRegion.coords */
+    /** Zoom out by a little bit on the current currRegion.coords
+     * @memberof MapCallout
+     */
     const zoomOutLocation = () => {
         userFollow.onToggleFalse();
         mapRef.current.animateToRegion(
@@ -50,6 +66,7 @@ const MapCallout = (props) => {
     /**
      * Function that changes the camera position to zoom in to coords
      * @param {object} coords Object with longitude and latitude
+     * @memberof MapCallout
      */
     const goToCoords = (coords) => {
         userFollow.onToggleFalse();
@@ -73,8 +90,12 @@ const MapCallout = (props) => {
                     <Icon
                         name={'plus-square'}
                         solid
-                        color={Colors.zoomButtons}
-                        size={Icons.larger}
+                        color={
+                            mapType === 'terrain'
+                                ? Colors.darkZoomButton
+                                : Colors.zoomButtons
+                        }
+                        size={isSmallScreen ? Icons.larger : Icons.xlarge}
                     />
                 </TouchableOpacity>
 
@@ -85,8 +106,12 @@ const MapCallout = (props) => {
                     <Icon
                         name={'minus-square'}
                         solid
-                        color={Colors.zoomButtons}
-                        size={Icons.larger}
+                        color={
+                            mapType === 'terrain'
+                                ? Colors.darkZoomButton
+                                : Colors.zoomButtons
+                        }
+                        size={isSmallScreen ? Icons.larger : Icons.xlarge}
                     />
                 </TouchableOpacity>
 
@@ -103,7 +128,7 @@ const MapCallout = (props) => {
                                     : Colors.locationArrowInactive
                                 : Colors.deleteButtonActive
                         }
-                        size={Icons.large}
+                        size={isSmallScreen ? Icons.larger : Icons.xlarge}
                     />
                 </TouchableOpacity>
 
@@ -114,7 +139,18 @@ const MapCallout = (props) => {
                     <Icon
                         name={'map-pin'}
                         color={Colors.deleteButtonActive}
-                        size={Icons.large}
+                        size={isSmallScreen ? Icons.large : Icons.larger}
+                    />
+                </TouchableOpacity>
+
+                {/* TAKE SNAPSHOT BUTTON */}
+                <TouchableOpacity
+                    style={styles.pinButton}
+                    onPress={takeSnapshot}>
+                    <Icon
+                        name={'camera'}
+                        color={Colors.modalButton}
+                        size={isSmallScreen ? Icons.large : Icons.xlarge}
                     />
                 </TouchableOpacity>
             </Callout>
@@ -127,39 +163,39 @@ export default MapCallout;
 const styles = StyleSheet.create({
     mainCallout: {
         height: '100%',
-        right: 35,
-        top: 35,
+        right: isSmallScreen ? 25 : 35,
+        top: isSmallScreen ? 25 : 35,
         alignContent: 'center',
         // backgroundColor: 'red',
         // justifyContent: 'center',
     },
     zoomButtons: {
-        width: Icons.larger,
-        height: Icons.larger,
+        width: isSmallScreen ? Icons.larger : Icons.xlarge,
+        height: isSmallScreen ? Icons.larger : Icons.xlarger,
         elevation: 10,
     },
     pinButton: {
         backgroundColor: Colors.iconActive,
-        borderRadius: 10,
+        borderRadius: isSmallScreen ? 5 : 10,
         marginTop: '10%',
-        width: Icons.larger,
-        height: Icons.larger,
+        width: isSmallScreen ? Icons.larger : Icons.xlarge,
+        height: isSmallScreen ? Icons.larger : Icons.xlarger,
         justifyContent: 'center',
         alignItems: 'center',
         elevation: 10,
     },
     locationButton: {
         backgroundColor: Colors.iconActive,
-        borderRadius: 10,
-        marginTop: 50,
-        width: Icons.larger,
-        height: Icons.larger,
+        borderRadius: isSmallScreen ? 5 : 10,
+        marginTop: isSmallScreen ? 40 : 50,
+        width: isSmallScreen ? Icons.larger : Icons.xlarge,
+        height: isSmallScreen ? Icons.larger : Icons.xlarger,
         justifyContent: 'center',
         alignItems: 'center',
         elevation: 10,
     },
     zoomButtonText: {
-        fontSize: 25,
+        fontSize: isSmallScreen ? 25 : 20,
         fontWeight: 'bold',
     },
 });

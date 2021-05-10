@@ -32,10 +32,8 @@ const colors = [
 
 const noColors = ['delete'];
 
-// const ITEM_SIZE = isSmallScreen() ? 70 : 100;
 const ITEM_SIZE = windowWidth * 0.13;
 const radius = (ITEM_SIZE * 2) / 2;
-// const buttonSize = isSmallScreen() ? 20 : 30;
 const buttonSize = windowWidth * 0.04;
 
 /**

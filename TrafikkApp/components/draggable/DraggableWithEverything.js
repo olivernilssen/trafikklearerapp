@@ -12,7 +12,7 @@ import { Divider } from '../reusableComponents';
  * and the dropzone area.
  * @namespace DraggableWithEverything
  * @category Draggable
- * @prop {boolean} topMenuHidden If the topMenu is hidden or in view
+ * @prop {boolean} topMenuOpen If the topMenu is open or not in view
  * @prop {array[]} draggables list of all draggables in view
  * @prop {function} setDraggables function to update draggables array
  * @prop {array[]} actionList list of all actions taken (drawing or adding draggables)
@@ -25,7 +25,7 @@ import { Divider } from '../reusableComponents';
 const DraggableWithEverything = React.memo((props) => {
     //States from props
     const {
-        topMenuHidden,
+        topMenuOpen,
         draggables,
         setDraggables,
         actionList,
@@ -135,7 +135,7 @@ const DraggableWithEverything = React.memo((props) => {
             />
 
             <DraggableComponentsMenu
-                topMenuHidden={topMenuHidden}
+                topMenuOpen={topMenuOpen}
                 onNewDraggable={onNewDraggable}
                 extensionType={extensionType}
                 setExtensionType={setExtensionType}
