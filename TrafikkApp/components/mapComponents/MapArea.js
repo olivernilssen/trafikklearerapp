@@ -1,7 +1,7 @@
 import React, { useState, useRef, useContext, useEffect } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import Geolocation from 'react-native-geolocation-service';
-import { StyleSheet, Text, View, PermissionsAndroid } from 'react-native';
+import { StyleSheet, View, PermissionsAndroid } from 'react-native';
 import AppContext from '../../AppContext';
 import USER_KEYS from '../helpers/storageKeys';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
@@ -12,7 +12,6 @@ import { LargeScreenMenu, SmallScreenMenu, MapCallout } from './index';
 import { useToggle } from '../helpers/useToggle';
 import { useCoords } from '../helpers/useCoords';
 import { isSmallScreen } from '../reusableComponents/globalFunctions';
-import { bezier } from 'react-native/Libraries/Animated/src/Easing';
 
 const randomRegion = {
     latitude: 69.660084,
@@ -252,6 +251,7 @@ const MapArea = ({ navigate }) => {
                         : mapBeigeRoad
                 }
                 initalregion={randomRegion}
+                // showsUserLocation={true}
                 ref={mapRef}
                 showsIndoors={false}
                 showsBuildings={false}
@@ -288,7 +288,7 @@ const MapArea = ({ navigate }) => {
                 mapType={mapType}
             />
 
-            {isSmallScreen ? (
+            {isSmallScreen === true ? (
                 <SmallScreenMenu
                     pin={pin}
                     snapshot={snapshot}

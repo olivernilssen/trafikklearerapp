@@ -76,50 +76,28 @@ const LargeScreenMenu = ({
                             <Text style={styles.buttonText}>Lagre pin</Text>
                         </TouchableOpacity>
 
-                        {/* MAP TYPE BUTTON */}
-                        {buttonLayout != undefined && (
-                            <View
-                                style={[
-                                    styles.button,
-                                    {
-                                        backgroundColor: 'transparent',
-                                        elevation: 0,
-                                    },
-                                ]}>
-                                <ButtonGroup
-                                    selectedValue={mapType}
-                                    values={mapTypes}
-                                    width={
-                                        buttonLayout
-                                            ? buttonLayout.width
-                                            : undefined
-                                    }
-                                    height={
-                                        buttonLayout
-                                            ? buttonLayout.height
-                                            : undefined
-                                    }
-                                    onSelect={(newValue) =>
-                                        setMapType(newValue)
-                                    }
-                                    inactiveBackgroundColor={
-                                        Colors.bottomMenyButtons
-                                    }
-                                    // width={'100%'}
-                                />
-                            </View>
-                        )}
+                        {/* MAKE MARKERS VISIBLE BUTTON */}
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={() => {
+                                markerToggle.onToggle();
+                            }}>
+                            <Text style={styles.buttonText}>
+                                {markerToggle.isToggled ? 'Gjem' : 'Vis'}{' '}
+                                markør(er)
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={[
+                                styles.button,
+                                {
+                                    backgroundColor: 'transparent',
+                                    elevation: 0,
+                                },
+                            ]}>
+                            <Text style={styles.buttonText}></Text>
+                        </TouchableOpacity>
                     </View>
-                    {/* MAKE MARKERS VISIBLE BUTTON */}
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => {
-                            markerToggle.onToggle();
-                        }}>
-                        <Text style={styles.buttonText}>
-                            {markerToggle.isToggled ? 'Gjem' : 'Vis'} markør(er)
-                        </Text>
-                    </TouchableOpacity>
                 </View>
                 <View style={styles.buttonGroup}>
                     <Text style={styles.sectionText}>Skjermdump</Text>
@@ -127,14 +105,26 @@ const LargeScreenMenu = ({
                     <View style={styles.innerGroup}>
                         {/* SCREENSHOT BUTTON */}
                         <TouchableOpacity
-                            style={styles.button}
+                            style={[
+                                styles.button,
+                                ,
+                                {
+                                    flexDirection: 'row',
+                                },
+                            ]}
                             onPress={takeSnapshot}>
                             <Icon
                                 name={'camera'}
                                 size={Icons.medium}
                                 color={Colors.textPrimary}
                             />
-                            <Text style={styles.buttonText}>Ta skjermdump</Text>
+                            <Text
+                                style={[
+                                    styles.buttonText,
+                                    { marginLeft: '5%' },
+                                ]}>
+                                Ta skjermdump
+                            </Text>
                         </TouchableOpacity>
 
                         {/* USE PHOTO TO ILLUSTRATE BUTTON */}
@@ -145,7 +135,6 @@ const LargeScreenMenu = ({
                                 Bruk skjermdump
                             </Text>
                         </TouchableOpacity>
-
                         <TouchableOpacity
                             style={[
                                 styles.button,
@@ -166,6 +155,22 @@ const LargeScreenMenu = ({
                     }}
                 />
             </View>
+            <View
+                style={styles.buttonGroupComponent}
+                onLayout={(e) => setButtonLayout(e.nativeEvent.layout)}>
+                <Text style={styles.sectionText}>Karttype</Text>
+                {buttonLayout && (
+                    <ButtonGroup
+                        selectedValue={mapType}
+                        values={mapTypes}
+                        width={buttonLayout.width - 80}
+                        height={50}
+                        onSelect={(newValue) => setMapType(newValue)}
+                        inactiveBackgroundColor={Colors.bottomMenyButtons}
+                        // width={'100%'}
+                    />
+                )}
+            </View>
         </BottomMenuAnimated>
     );
 };
@@ -177,19 +182,20 @@ const styles = StyleSheet.create({
         // backgroundColor: Colors.dividerPrimary + '50',
         height: 300,
         width: '100%',
-        padding: '2%',
+        paddingHorizontal: '2%',
+        paddingTop: '2%',
         justifyContent: 'space-around',
         flexDirection: 'row',
-        // opacity: 0.9,
     },
     buttonGroup: {
         flex: isSmallScreen ? 2 : 4,
         flexDirection: 'column',
         marginRight: isSmallScreen ? '2%' : '5%',
+        height: '90%',
     },
     innerGroup: {
         flex: 1,
-        justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
         flexDirection: 'column',
     },
     sectionText: {
@@ -197,7 +203,15 @@ const styles = StyleSheet.create({
         color: Colors.textPrimary,
         marginBottom: isSmallScreen ? '2%' : '5%',
     },
-
+    buttonGroupComponent: {
+        flex: 1,
+        width: '90%',
+        height: '60%',
+        alignItems: 'center',
+        alignSelf: 'center',
+        marginBottom: '5%',
+        // backgroundColor: 'red',
+    },
     button: {
         padding: '3%',
         backgroundColor: Colors.bottomMenyButtons,
@@ -206,19 +220,13 @@ const styles = StyleSheet.create({
         ...Buttons.rounded,
         elevation: 10,
     },
-    buttonComp: {
-        width: '100%',
-        height: '100%',
-        paddingTop: '7%',
-    },
-
     buttonText: {
         color: 'white',
         fontSize: isSmallScreen ? 18 : 22,
     },
     image: {
         flex: isSmallScreen ? 1 : 2,
-        height: '100%',
+        height: '90%',
         width: '50%',
         padding: '5%',
         resizeMode: 'contain',

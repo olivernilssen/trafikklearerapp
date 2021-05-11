@@ -150,7 +150,7 @@ const RoadSignArea = React.memo((props) => {
                 chevronColor={Colors.icons}>
                 <RoadSignMenuContent
                     handleSignType={handleSignType}
-                    openBottomSheet={() => bottomSheetOpen.onOpen()}
+                    closeBottomMenu={() => bottomSheetOpen.onClose()}
                     handleHeaderName={(name) => setActiveSignTypeName(name)}
                     scrollToTop={scrollToTop}
                 />

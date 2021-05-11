@@ -82,7 +82,7 @@ const RoadSignMenuContent = (props) => {
 
     const {
         handleSignType,
-        openBottomSheet,
+        closeBottomMenu,
         handleHeaderName,
         scrollToTop,
     } = props;
@@ -95,7 +95,7 @@ const RoadSignMenuContent = (props) => {
      */
     const handleBottomMenuPress = (value) => {
         handleSignType(value);
-        openBottomSheet();
+        closeBottomMenu();
     };
 
     return (

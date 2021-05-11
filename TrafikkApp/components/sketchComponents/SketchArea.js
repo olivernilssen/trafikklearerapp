@@ -231,7 +231,7 @@ const SketchArea = React.memo((props) => {
                 </View>
             </View>
 
-            {name !== 'Map' && (
+            {!isMap && (
                 <BottomMenuAnimated bottomSheetOpen={bottomSheetOpen}>
                     <SketchAreaMenuContent
                         roadType={name}

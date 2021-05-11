@@ -247,7 +247,7 @@ const ButtonGroup = (props) => {
 
 ButtonGroup.defaultProps = {
     width: 300,
-    height: 300 / 3,
+    height: 100,
     highlightBackgroundColor: Colors.slideActiveBg,
     highlightTextColor: Colors.slideTextActive,
     inactiveBackgroundColor: Colors.slideInactiveBg,

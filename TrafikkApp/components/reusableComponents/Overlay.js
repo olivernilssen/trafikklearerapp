@@ -78,7 +78,7 @@ const Overlay = React.memo((props) => {
                 ...animatedStyle,
                 zIndex: zIndex,
             }}>
-            <TouchableWithoutFeedback onPress={() => showOverlay.onToggle()}>
+            <TouchableWithoutFeedback onPress={() => showOverlay.onClose()}>
                 <View style={styles.touchableArea}></View>
             </TouchableWithoutFeedback>
         </Animated.View>

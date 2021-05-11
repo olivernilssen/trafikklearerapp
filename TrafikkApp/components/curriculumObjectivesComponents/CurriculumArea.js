@@ -79,7 +79,7 @@ const CurriculumArea = React.memo((props) => {
                     trafficClass={trafficClass}
                     setTrafficClass={setTrafficClass}
                     scrollRef={scrollRef}
-                    openBottomSheet={() => bottomSheetOpen.onOpen()}
+                    closeBottomMenu={() => bottomSheetOpen.onClose()}
                 />
             </BottomMenuAnimated>
         </>

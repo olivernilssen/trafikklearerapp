@@ -23,7 +23,7 @@ const CurriculumMenuContent = React.memo(
         trafficClass,
         setTrafficClass,
         scrollRef,
-        openBottomSheet,
+        closeBottomMenu,
     }) => {
         // Width of the button group in the bottom menu
         const buttonGroupWidth = isSmallScreen() ? 360 : 550;
@@ -67,7 +67,7 @@ const CurriculumMenuContent = React.memo(
             setCurriculumObjective(curriculumObjective);
             scrollRef.current.scrollTo({ y: 0, animated: true });
             scrollRef.current.scrollTo({ y: 0, animated: true });
-            openBottomSheet();
+            closeBottomMenu();
         };
 
         return (
