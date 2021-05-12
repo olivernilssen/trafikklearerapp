@@ -46,7 +46,7 @@ const SettingsArea = React.memo((props) => {
         '#284b63',
         '#3a5a40',
     ];
-    const themeValues = ['Mørk', 'Lys'];
+    // const themeValues = ['Mørk', 'Lys'];
 
     /**
      * Function to handle changing a value in settings.
@@ -73,7 +73,7 @@ const SettingsArea = React.memo((props) => {
             <OptionPicker modalVisible={pickerVisible} />
 
             {/* CHANGE THEME COLORS */}
-            <View style={styles.rowView}>
+            {/* <View style={styles.rowView}>
                 <Text style={styles.leftColumn}>Fargetema:</Text>
                 <View style={styles.rightColumn}>
                     <ButtonGroup
@@ -91,30 +91,8 @@ const SettingsArea = React.memo((props) => {
                         height={buttonGroupHeight}
                     />
                 </View>
-            </View>
-            <Divider borderColor={Colors.headerBg} />
-
-            {/* STANDARD SIZE OF ERASER */}
-            <View style={styles.rowView}>
-                <Text style={styles.leftColumn}>Viskelærstørrelse: </Text>
-                <View style={styles.rightColumn}>
-                    <ButtonGroup
-                        selectedValue={myContext.eraserSize}
-                        values={eraserSizeValues}
-                        onSelect={(newValue) =>
-                            onChangeValue(
-                                'Viskelær størrelse',
-                                newValue,
-                                myContext.setEraserSize,
-                                USER_KEYS.ERASER_SIZE_KEY
-                            )
-                        }
-                        width={buttonGroupWidth}
-                        height={buttonGroupHeight}
-                    />
-                </View>
-            </View>
-            <Divider borderColor={Colors.headerBg} />
+            </View> */}
+            {/* <Divider borderColor={Colors.headerBg} /> */}
 
             {/* DELETE EVERYTHING ON ILLUSTRASTION CHANGE */}
             <View style={styles.rowView}>
@@ -183,6 +161,28 @@ const SettingsArea = React.memo((props) => {
                         width={buttonGroupWidth}
                         height={buttonGroupHeight}
                         isColorOption={true}
+                    />
+                </View>
+            </View>
+            <Divider borderColor={Colors.headerBg} />
+
+            {/* STANDARD SIZE OF ERASER */}
+            <View style={styles.rowView}>
+                <Text style={styles.leftColumn}>Viskelærstørrelse: </Text>
+                <View style={styles.rightColumn}>
+                    <ButtonGroup
+                        selectedValue={myContext.eraserSize}
+                        values={eraserSizeValues}
+                        onSelect={(newValue) =>
+                            onChangeValue(
+                                'Viskelær størrelse',
+                                newValue,
+                                myContext.setEraserSize,
+                                USER_KEYS.ERASER_SIZE_KEY
+                            )
+                        }
+                        width={buttonGroupWidth}
+                        height={buttonGroupHeight}
                     />
                 </View>
             </View>
