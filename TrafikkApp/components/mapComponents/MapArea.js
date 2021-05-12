@@ -17,8 +17,6 @@ import AlertPermissionModal from './AlertPermissionModal';
 const randomRegion = {
     latitude: 69.660084,
     longitude: 18.94557,
-    latitudeDelta: 0.01,
-    longitudeDelta: 0.01,
 };
 
 /**
@@ -143,7 +141,7 @@ const MapArea = () => {
     useEffect(() => {
         if (mapRef.current) {
             const newCamera = {
-                zoom: 15,
+                zoom: 18,
                 heading: 0,
                 pitch: 0,
                 altitude: 5,
@@ -195,7 +193,7 @@ const MapArea = () => {
                 style={styles.map}
                 loadingBackgroundColor={Colors.modalBg}
                 customMapStyle={
-                    latitudeDelta <= 0.0045 ? mapBeigeRoadZoomed : mapBeigeRoad
+                    latitudeDelta <= 0.0065 ? mapBeigeRoadZoomed : mapBeigeRoad
                 }
                 ref={mapRef}
                 paddingAdjustmentBehavior={'automatic'}

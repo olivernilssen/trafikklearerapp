@@ -38,7 +38,7 @@ const SketchArea = React.memo((props) => {
     const { name } = props;
     const isMap = name == 'Map';
     const [pencilColor, setPencilColor] = useState(appContext.penColor);
-    const [chosenColor, setChosenColor] = useState('');
+    const [chosenColor, setChosenColor] = useState(appContext.penColor);
     const [pencilSize, setPencilSize] = useState(defaultPencilSize);
     const [chosenPencilSize, setChosenPencilSize] = useState(null);
     const [roadDesignChange, setRoadDesignChange] = useState(true);
@@ -68,8 +68,6 @@ const SketchArea = React.memo((props) => {
             }
         }
     }, [currentImg]);
-
-    useEffect(() => {}, [appContext.penColor]);
 
     useEffect(() => {
         if (isMap) {

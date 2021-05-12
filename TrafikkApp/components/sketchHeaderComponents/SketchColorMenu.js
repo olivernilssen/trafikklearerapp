@@ -21,14 +21,14 @@ const { Popover } = renderers;
  * These are also the colors used to draw with.
  */
 const colorArray = [
-    { colorCode: '#20303C', key: '20403C' },
-    { colorCode: '#3182C8', key: '3182C8' },
-    { colorCode: '#00AAAF', key: '00AAAF' },
-    { colorCode: '#00A65F', key: '00A65F' },
-    { colorCode: '#E2902B', key: 'E2902B' },
-    { colorCode: '#D9644A', key: 'D9644A' },
-    { colorCode: '#CF262F', key: 'CF262F' },
-    { colorCode: '#8B1079', key: '8B1079' },
+    { colorCode: '#20303c', key: '20303c' },
+    { colorCode: '#3182c8', key: '3182c8' },
+    { colorCode: '#00aaaf', key: '00aaaf' },
+    { colorCode: '#00a65f', key: '00a65f' },
+    { colorCode: '#e2902b', key: 'e2902b' },
+    { colorCode: '#d9644a', key: 'd9644a' },
+    { colorCode: '#cf262f', key: 'cf262f' },
+    { colorCode: '#8b1079', key: '8b1079' },
 ];
 
 /**
