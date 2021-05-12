@@ -19,7 +19,7 @@ import { Colors } from '../../styles';
  * @prop {function} clearCanvas Clears the canvas of all illustrations
  * @prop {function} eraser Sets the pencil to an eraser, erases lines instead of drawing
  * @prop {function} onPaletteColorChange changes the pencil color according to user input
- * @prop {boolean} topMenuHidden Whether the draggable components menu is hidden or not.
+ * @prop {boolean} topMenuOpen Whether the draggable components menu is hidden or not.
  * @prop {function} toggleTopMenu Toggles the top menu (draggable components menu) in and out of view
  * @prop {function} onChangePencilSize Changes the pencil thickness
  * @prop {string} pencilColor The state pencilColor
@@ -36,7 +36,7 @@ const SketchHeader = React.memo((props) => {
         clearCanvas,
         eraser,
         onPaletteColorChange,
-        topMenuHidden,
+        topMenuOpen,
         onChangePencilSize,
         pencilColor,
         pencilSize,
@@ -59,7 +59,7 @@ const SketchHeader = React.memo((props) => {
 
     return (
         <View style={styles.main}>
-            <Header toggleDrawer={props.toggleDrawer} style={styles.header}>
+            <Header style={styles.header}>
                 <DeleteButtonPopover
                     clearCanvas={clearCanvas}
                     propsStyle={styles.spacedLeft}
@@ -96,7 +96,7 @@ const SketchHeader = React.memo((props) => {
                     <DraggableComponentsButton
                         activeIconName={'box-open'}
                         inactiveIconName={'box'}
-                        topMenuHidden={topMenuHidden}
+                        topMenuOpen={topMenuOpen}
                     />
                 </View>
             </Header>

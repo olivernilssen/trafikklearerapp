@@ -1,15 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, Image } from 'react-native';
-
 import { Colors, Typography, Buttons } from '../../styles';
 import { Divider, ButtonGroup } from '../reusableComponents/';
 import backgroundImagePath from './backgroundImagePath';
 import AlertModal from './AlertModal';
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
-import { RUtils } from 'react-native-responsive-component';
-import { isSmallScreen } from '../reusableComponents/globalFunctions';
-import { useOpen } from '../helpers/useOpen';
+import { isSmallScreen, useOpen } from '../helpers';
 
 /**
  * SketchAreaMenuContent is a menu that slides up from the bottom of the screen
@@ -17,16 +14,14 @@ import { useOpen } from '../helpers/useOpen';
  * which screen they are on.
  * @namespace SketchAreaMenuContent
  * @category SketchComponents
- * @prop {object} navigation Used for navigation between the different screens
  * @prop {string} roadType Name of roadtype
  * @prop {function} setImage Changes the state currentImage
  * @prop {function} setRoadDesignChange Changes the state roadDesignChange to true or false
  * @prop {string} extensionType Name of the extension type to be set (vanlig, gangfelt, sykkelfelt)
- * @prop {function} openBottomSheet Changes the state bottomSheetHidden to hide or show the bottomMenu
+ * @prop {function} openBottomSheet Changes the state bottomSheetOpen to hide or show the bottomMenu
  */
 const SketchAreaMenuContent = React.memo(
     ({
-        navigate,
         roadType,
         setImage,
         setRoadDesignChange,
@@ -240,7 +235,6 @@ const SketchAreaMenuContent = React.memo(
                     modalVisible={modalVisible}
                     alwaysHideAlert={alwaysHideAlert}
                     setAlwaysHideAlert={setAlwaysHideAlert}
-                    navigate={navigate}
                     onOK={() => onAlertOK()}
                 />
                 {/* START * The intersectionType buttons (X, T, Y) */}
@@ -256,7 +250,7 @@ const SketchAreaMenuContent = React.memo(
                             onSelect={(newValue) =>
                                 intersectionTypeChange(newValue)
                             }
-                            groupWidth={buttonGroupWidth}
+                            width={buttonGroupWidth}
                             highlightBackgroundColor={Colors.bottomMenyButtons}
                             highlightTextColor={Colors.icons}
                             inactiveBackgroundColor={Colors.secSlideInactiveBg}

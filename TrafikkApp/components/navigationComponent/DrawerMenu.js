@@ -7,16 +7,16 @@ import {
     SafeAreaView,
 } from 'react-native';
 
-import DrawerToggleItem from './DrawerToggleItem';
+import DrawerToggle from './DrawerToggle';
 import DrawerItem from './DrawerItem';
-import { Divider } from '../reusableComponents/';
+import { Divider } from '../reusableComponents';
 import { Colors, Typography } from '../../styles';
 
 /**
  * Component to display the menu as a section list in
  * the navigation drawer (will add all items that are in props.state.routes).
  * @namespace DrawerMenu
- * @category DrawerComponents
+ * @category NavigationComponent
  * @prop {function} navigation functions for the drawer navigation
  */
 const DrawerMenu = React.memo((props) => {
@@ -27,6 +27,7 @@ const DrawerMenu = React.memo((props) => {
      * useEffect that runs on mount. Checks if it has already been run or not
      * if it has not, then it creates an array with the info for the drawers
      * to create sections
+     * @memberof DrawerMenu
      */
     useEffect(() => {
         if (!arrayFinished) {
@@ -35,8 +36,10 @@ const DrawerMenu = React.memo((props) => {
             props.state.routes.forEach((screen) => {
                 const title = screen.params.section;
                 if (titles.indexOf(title) === -1) {
-                    titles.push(title);
-                    newArray.push({ title: title, data: [] });
+                    if (title != 'ingen') {
+                        titles.push(title);
+                        newArray.push({ title: title, data: [] });
+                    }
                 }
 
                 newArray.forEach((section) => {
@@ -78,9 +81,9 @@ const DrawerMenu = React.memo((props) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <DrawerToggleItem
-                toggleDrawer={props.navigation.toggleDrawer}
+            <DrawerToggle
                 icon={'times'}
+                toggleDrawer={() => props.navigation.toggleDrawer()}
             />
             <Divider
                 style={styles.firstDivider}
@@ -93,7 +96,7 @@ const DrawerMenu = React.memo((props) => {
                     persistentScrollbar={true}
                     renderItem={({ item }) => (
                         <DrawerItem
-                            navigate={() =>
+                            navigateTo={() =>
                                 props.navigation.navigate(`${item['name']}`, {
                                     isStatusBarHidden: false,
                                 })

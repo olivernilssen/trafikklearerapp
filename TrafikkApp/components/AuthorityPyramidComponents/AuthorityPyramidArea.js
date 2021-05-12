@@ -9,16 +9,11 @@ import { Colors } from '../../styles';
  * This screen contains only an image of the pyramid.
  * @namespace AuthorityPyramidArea
  * @category AthorityPyramidComponents
- * @prop {object} toggleDrawer Used for opening the DrawerMenu
  */
 const AuthorityPyramidArea = React.memo((props) => {
-    const { toggleDrawer } = props;
     return (
         <>
-            <Header
-                name="Myndighetspyramiden"
-                toggleDrawer={toggleDrawer}
-                style={styles.header}></Header>
+            <Header name="Myndighetspyramiden" style={styles.header}></Header>
             <View style={styles.main}>
                 <Image
                     resizeMode={'contain'}

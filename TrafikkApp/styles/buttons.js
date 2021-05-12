@@ -1,6 +1,5 @@
 import ThemeVariables from './themeVariables';
-import { RUtils } from 'react-native-responsive-component';
-import { isSmallScreen } from '../components/reusableComponents/globalFunctions';
+import { isSmallScreen } from '../components/helpers/';
 
 export const small = {
     width: ThemeVariables.BUTTON_WIDTH_SMALL,

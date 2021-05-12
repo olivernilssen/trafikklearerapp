@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import {
     FlatList,
     StyleSheet,
@@ -9,7 +9,7 @@ import {
     Text,
     TouchableWithoutFeedback,
 } from 'react-native';
-import { useOpen } from '../helpers/useOpen';
+import { useOpen } from '../helpers';
 import { BottomMenuAnimated, Header, Overlay } from '../reusableComponents';
 import { Colors, Typography } from '../../styles';
 import RoadSignModal from './RoadSignModal';
@@ -22,14 +22,12 @@ const numColumns = 4;
  * This is the component that contains all the components that are visible on the RoadSignScreen
  * @namespace RoadSignArea
  * @category RoadSignComponents
- * @prop {function} toggleDrawer Used for to toggle the drawer between the different screens
  */
 
 const RoadSignArea = React.memo((props) => {
-    const { toggleDrawer } = props;
     const modalVisible = useOpen(false);
 
-    const bottomSheetHidden = useOpen(false);
+    const bottomSheetOpen = useOpen(true);
     const [signType, setSignType] = useState(fareskiltData);
     const [signObjectKeys, setSignObjectKeys] = useState(Object.keys(signType));
     const [selectedItem, setSelectedItem] = useState(signObjectKeys[0]);
@@ -90,10 +88,7 @@ const RoadSignArea = React.memo((props) => {
             <View>
                 <TouchableOpacity
                     style={styles.item}
-                    onPress={() => {
-                        handleModal(item);
-                        bottomSheetHidden.onOpen();
-                    }}>
+                    onPress={() => handleModal(item)}>
                     <View style={styles.modalImage}>
                         <Image
                             style={{ width: '100%', height: '100%' }}
@@ -107,7 +102,7 @@ const RoadSignArea = React.memo((props) => {
 
     return (
         <>
-            <Overlay showOverlay={bottomSheetHidden} />
+            <Overlay showOverlay={bottomSheetOpen} />
             {/* <View style={styles.mainView}> */}
             <TouchableWithoutFeedback onPress={() => modalVisible.onClose()}>
                 <RoadSignModal
@@ -117,7 +112,7 @@ const RoadSignArea = React.memo((props) => {
                 />
             </TouchableWithoutFeedback>
             <View style={{ zIndex: 5, width: '100%' }}>
-                <Header toggleDrawer={toggleDrawer} style={styles.header}>
+                <Header style={styles.header}>
                     <View style={styles.headerContent}>
                         <Text style={styles.siteHeading}>Trafikkskilt</Text>
                         <View style={styles.subHeadingContainer}>
@@ -148,12 +143,10 @@ const RoadSignArea = React.memo((props) => {
             {/* </View> */}
 
             {/* BOTTOM MENU */}
-            <BottomMenuAnimated
-                bottomSheetHidden={bottomSheetHidden}
-                chevronColor={Colors.icons}>
+            <BottomMenuAnimated bottomSheetOpen={bottomSheetOpen}>
                 <RoadSignMenuContent
                     handleSignType={handleSignType}
-                    openBottomSheet={() => bottomSheetHidden.onOpen()}
+                    closeBottomMenu={() => bottomSheetOpen.onClose()}
                     handleHeaderName={(name) => setActiveSignTypeName(name)}
                     scrollToTop={scrollToTop}
                 />

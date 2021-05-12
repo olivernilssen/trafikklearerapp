@@ -1,5 +1,7 @@
 import React from 'react';
 import { Modal, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Typography, Icons } from '../../styles';
@@ -9,14 +11,14 @@ import { Divider } from '../reusableComponents';
  * This is a component that pops up to alert the user that the drawing is set to be deleted.
  * @namespace AlertModal
  * @category SketchComponents
- * @prop {object} navigate Used navigate to a different screens
  * @prop {object} modalVisible If the modal is visible or not, plus functions to open, close it
  * @prop {boolean} alwaysHideAlert If the checkbox to never show alert again, is checked
  * @prop {function} setAlwaysHideAlert Changes the state alwaysHideAlert
  * @prop {function} onOK What to do when the 'OK' button in the Alert is triggered
  */
 const AlertModal = React.memo(
-    ({ navigate, modalVisible, alwaysHideAlert, setAlwaysHideAlert, onOK }) => {
+    ({ modalVisible, alwaysHideAlert, setAlwaysHideAlert, onOK }) => {
+        const navigation = useNavigation();
         return (
             <View style={styles.centeredView}>
                 <Modal
@@ -81,7 +83,7 @@ const AlertModal = React.memo(
                                     style={[styles.button, styles.buttonClose]}
                                     onPress={() => {
                                         modalVisible.onToggle();
-                                        navigate('SettingsScreen');
+                                        navigation.navigate('SettingsScreen');
                                     }}
                                     activeOpacity={0.4}>
                                     <Text style={styles.textStyle}>

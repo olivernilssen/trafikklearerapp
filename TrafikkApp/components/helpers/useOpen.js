@@ -1,6 +1,13 @@
 import { useState, useCallback } from 'react';
 
-export const useOpen = (defaultOpen) => {
+/**
+ * This is to be used to determine if something is open or closed
+ * and also holds set functions to toggle off and on the state.
+ * @namespace useOpen
+ * @param {boolean} defaultOpen default/start boolean value of this hook
+ * @returns an object with the state and all functions available for it
+ */
+const useOpen = (defaultOpen) => {
     const [isOpen, setOpen] = useState(defaultOpen);
     return {
         isOpen,
@@ -9,3 +16,5 @@ export const useOpen = (defaultOpen) => {
         onToggle: useCallback(() => setOpen((prev) => !prev), []),
     };
 };
+
+export default useOpen;

@@ -1,6 +1,5 @@
 import { Dimensions } from 'react-native';
-import { RUtils } from 'react-native-responsive-component';
-import { isSmallScreen } from '../components/reusableComponents/globalFunctions';
+import { isSmallScreen } from '../components/helpers';
 
 const { height, width } = Dimensions.get('window');
 
@@ -15,6 +14,8 @@ export default {
     ICON_SIZE_SMALL: isSmallScreen() ? 15 : 25,
     ICON_SIZE_MEDIUM: isSmallScreen() ? 20 : 30,
     ICON_SIZE_LARGE: isSmallScreen() ? 30 : 40,
+    ICON_SIZE_LARGER: isSmallScreen() ? 40 : 50,
+    ICON_SIZE_XLARGE: isSmallScreen() ? 50 : 60,
 
     // BUTTONS
     BUTTON_WIDTH_SMALL: 80,

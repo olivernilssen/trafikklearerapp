@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 // import { RUtils } from 'react-native-responsive-component';
-import { isSmallScreen } from '../reusableComponents/globalFunctions';
+import { isSmallScreen } from '../helpers';
 import { Colors } from '../../styles';
 
 /**

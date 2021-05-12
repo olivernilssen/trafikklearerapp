@@ -12,8 +12,7 @@ import PencilSizeButton from './PencilSizeButton';
 import ColorButton from './ColorButton';
 import { Colors, Buttons, Icons } from '../../styles';
 import AppContext from '../../AppContext';
-// import { RUtils } from 'react-native-responsive-component';
-import { isSmallScreen } from '../reusableComponents/globalFunctions';
+import { isSmallScreen } from '../helpers';
 
 const { Popover } = renderers;
 

@@ -1,19 +1,17 @@
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { Colors, Typography, Icons } from '../../styles';
 
 /**
  * Component for the items that are shown in the drawer.
  * @namespace DrawerItem
- * @category DrawerComponents
- * @prop {function} navigate functions for the drawer to navigate screens
+ * @category NavigationComponent
  * @prop {int} screenIndex the index number of the screenIndex
  * @prop {string} screenName screen name of the view
  * @prop {array} params parameters for this view
  */
-const DrawerItem = React.memo(({ navigate, isActive, params }) => {
+const DrawerItem = React.memo(({ navigateTo, isActive, params }) => {
     const { icon, title } = params;
 
     return (
@@ -28,7 +26,7 @@ const DrawerItem = React.memo(({ navigate, isActive, params }) => {
                 },
             ]}
             activeOpacity={0.2}
-            onPress={() => navigate()}>
+            onPress={() => navigateTo()}>
             <View style={styles.iconContainer}>
                 <MaterialIcon
                     name={icon}

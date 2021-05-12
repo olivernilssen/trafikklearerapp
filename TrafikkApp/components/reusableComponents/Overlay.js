@@ -34,7 +34,7 @@ const Overlay = React.memo((props) => {
      * @memberof Overlay
      */
     const handleAnimation = () => {
-        if (showOverlay.isOpen) {
+        if (!showOverlay.isOpen) {
             Animated.timing(animation, {
                 toValue: 0,
                 duration: 400,
@@ -78,7 +78,7 @@ const Overlay = React.memo((props) => {
                 ...animatedStyle,
                 zIndex: zIndex,
             }}>
-            <TouchableWithoutFeedback onPress={() => showOverlay.onOpen()}>
+            <TouchableWithoutFeedback onPress={() => showOverlay.onClose()}>
                 <View style={styles.touchableArea}></View>
             </TouchableWithoutFeedback>
         </Animated.View>

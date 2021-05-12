@@ -1,13 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { View, StyleSheet, Text, ScrollView } from 'react-native';
 
-import {
-    MainView,
-    Header,
-    Overlay,
-    BottomMenuAnimated,
-} from '../reusableComponents';
-import { useOpen } from '../helpers/useOpen';
+import { Header, Overlay, BottomMenuAnimated } from '../reusableComponents';
+import { useOpen } from '../helpers';
 import CurriculumObjectives from './CurriculumObjectives';
 import CurriculumMenuContent from './CurriculumMenuContent';
 
@@ -20,24 +15,20 @@ import { RUtils } from 'react-native-responsive-component';
  * and displays the text on the screen.
  * @namespace CurriculumArea
  * @category CurriculumObjectivesComponents
- * @prop {object} toggleDrawer Used for navigation between the different screens
- * @prop {object} navigate
  */
 const CurriculumArea = React.memo((props) => {
-    const bottomSheetHidden = useOpen(false);
+    const bottomSheetOpen = useOpen(true);
     const [mainHeading, setMainHeading] = useState('Klasse B');
     const [subHeading, setSubHeading] = useState();
     const [curriculumObjective, setCurriculumObjective] = useState('Hovedmål');
     const [trafficClass, setTrafficClass] = useState('Klasse B');
     const scrollRef = useRef();
 
-    const { toggleDrawer } = props;
-
     return (
         <>
-            <Overlay showOverlay={bottomSheetHidden} />
+            <Overlay showOverlay={bottomSheetOpen} />
             <View style={styles.main}>
-                <Header toggleDrawer={toggleDrawer} style={styles.header}>
+                <Header style={styles.header}>
                     <View style={styles.headerContent}>
                         <Text style={styles.siteHeading}>Læreplanmål</Text>
                         <ScrollView
@@ -72,14 +63,14 @@ const CurriculumArea = React.memo((props) => {
                     />
                 </ScrollView>
             </View>
-            <BottomMenuAnimated bottomSheetHidden={bottomSheetHidden}>
+            <BottomMenuAnimated bottomSheetOpen={bottomSheetOpen}>
                 <CurriculumMenuContent
                     curriculumObjective={curriculumObjective}
                     setCurriculumObjective={setCurriculumObjective}
                     trafficClass={trafficClass}
                     setTrafficClass={setTrafficClass}
                     scrollRef={scrollRef}
-                    openBottomSheet={() => bottomSheetHidden.onOpen()}
+                    closeBottomMenu={() => bottomSheetOpen.onClose()}
                 />
             </BottomMenuAnimated>
         </>

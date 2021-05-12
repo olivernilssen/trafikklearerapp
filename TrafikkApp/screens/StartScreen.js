@@ -13,10 +13,7 @@ import StartArea from '../components/startScreenComponents/StartArea';
 const StartScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
-            <StartArea
-                toggleDrawer={navigation.toggleDrawer}
-                navigate={navigation.navigate}
-            />
+            <StartArea />
         </MainView>
     );
 });

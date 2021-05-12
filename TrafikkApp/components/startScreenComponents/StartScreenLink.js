@@ -11,6 +11,7 @@ import { RUtils } from 'react-native-responsive-component';
  * @prop {string} name The icon name
  * @prop {string} text The text to be displayed on the link
  * @prop {function} onPress Function to be triggered when pressing the link
+ * @prop {function} navigateTo navigate to the site this component is linked to
  */
 const StartScreenLink = React.memo((props) => {
     const { name, text, navigateTo, backgroundColor } = props;

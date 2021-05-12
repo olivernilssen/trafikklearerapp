@@ -16,10 +16,7 @@ import { RoadSignArea } from '../components/roadSignComponents/';
 const RoadSignScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
-            <RoadSignArea
-                navigate={navigation.navigate}
-                toggleDrawer={navigation.toggleDrawer}
-            />
+            <RoadSignArea />
         </MainView>
     );
 });

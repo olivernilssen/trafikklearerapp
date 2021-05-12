@@ -7,14 +7,14 @@ import {
     TouchableOpacity,
     Image,
 } from 'react-native';
-import { Colors } from '../../styles';
-import { RUtils } from 'react-native-responsive-component';
-import { isSmallScreen } from '../reusableComponents/globalFunctions';
+import { Colors } from '../../../styles';
+import { isSmallScreen } from '../../helpers';
 
 /**
  * Component that displays a carousel with the draggable items.
  * @namespace Carousel
- * @category DraggableComponentsMenu
+ * @category DraggableComponents
+ * @subcategory DraggableMenu
  * @prop {function} onNewDraggable Function to add new draggable
  * @prop {dictionary} objects Dictionary with the image path to the draggable objects
  * @prop {array} objectKeys Array with the keys to the different draggable objects
@@ -33,13 +33,17 @@ const Carousel = React.memo((props) => {
     /**
      * Get's the image source of the draggable
      * and creates a new draggable item
-     * @memberof DraggableComponents
+     * @memberof Carousel
      * @param {int} source image source of new draggable
      */
     const onElementPress = (source) => {
         onNewDraggable(objects[source]);
     };
 
+    /**
+     * Update scrollview is run everytime objectKeys change
+     * @memberof Carousel
+     */
     useEffect(() => {
         updateScrollView();
     }, [objectKeys]);

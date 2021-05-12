@@ -3,8 +3,8 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import { MainView, Header, Overlay } from '../components/reusableComponents/';
 import { Colors } from '../styles';
-import { SettingsView } from '../components/settingsComponents/';
-import { useOpen } from '../components/helpers/useOpen';
+import { SettingsArea } from '../components/settingsComponents/';
+import { useOpen } from '../components/helpers';
 
 /**
  * Screen component for the settings screen (TODO)
@@ -17,21 +17,17 @@ const SettingsScreen = React.memo(({ navigation }) => {
     const overlayVisiable = useOpen(!pickerVisible.isOpen);
 
     useEffect(() => {
-        if (pickerVisible.isOpen) overlayVisiable.onClose();
-        else if (!pickerVisible.isOpen) overlayVisiable.onOpen();
+        if (!pickerVisible.isOpen) overlayVisiable.onClose();
+        else if (pickerVisible.isOpen) overlayVisiable.onOpen();
     }, [pickerVisible.isOpen]);
 
     return (
         <MainView>
             <Overlay showOverlay={overlayVisiable} />
             <View style={styles.main}>
-                <Header
-                    name="Innstillinger"
-                    toggleDrawer={navigation.toggleDrawer}
-                    style={styles.header}
-                />
+                <Header name="Innstillinger" style={styles.header} />
                 <View style={styles.content}>
-                    <SettingsView pickerVisible={pickerVisible} />
+                    <SettingsArea pickerVisible={pickerVisible} />
                 </View>
             </View>
         </MainView>

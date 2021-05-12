@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { StyleSheet, View, Animated, Text } from 'react-native';
 
-import { Divider, ButtonGroup } from '../reusableComponents/';
+import { Divider, ButtonGroup } from '../../reusableComponents';
 import Carousel from './Carousel';
-import { Colors, Typography } from '../../styles';
-import AppContext from '../../AppContext';
+import { Colors, Typography } from '../../../styles';
+import AppContext from '../../../AppContext';
 import { RUtils } from 'react-native-responsive-component';
 
 const extensionTypes = ['Gangfelt', '-', 'Sykkelfelt'];
@@ -13,15 +13,16 @@ const extensionTypes = ['Gangfelt', '-', 'Sykkelfelt'];
  * Component that shows a top menu on the screens using the SketchArea component.
  * Displayes objects that can be turned into draggables, and extension types
  * (pedestrian crossing, bicycle lanes) for the traffic designs.
- * @namespace DraggableComponentsMenu
- * @category DraggableComponentsMenu
- * @prop {boolean} topMenuHidden Bool to represent if the top menu is hidden or not
+ * @namespace DraggableMenu
+ * @category DraggableComponents
+ * @subcategory DraggableMenu
+ * @prop {boolean} topMenuOpen Bool to represent if the top menu is hidden or not
  * @prop {function} onNewDraggable Function to add new draggable
  * @prop {string} name Name of the screen
  * @prop {function} setExtensionType Function to set the extension type for this view
  */
-const DraggableComponentsMenu = React.memo(
-    ({ topMenuHidden, onNewDraggable, name, setExtensionType }) => {
+const DraggableMenu = React.memo(
+    ({ topMenuOpen, onNewDraggable, name, setExtensionType }) => {
         const [yPosHidden, setYPosHidden] = useState(-200);
         const [bounceValue, setBounceValue] = useState(
             new Animated.Value(yPosHidden)
@@ -35,36 +36,22 @@ const DraggableComponentsMenu = React.memo(
         const objectKeys = Object.keys(objects);
 
         /**
-         * useEffect that is triggered when topMenuHidden
+         * useEffect that is triggered when topMenuOpen
+         * @memberof DraggableComponentsMenu
          * is changed. Will toggle the view of the top menu
          */
         useEffect(() => {
-            toggleView();
-        }, [topMenuHidden]);
-
-        /**
-         * Function that is triggered when the state topMenuHidden is changed.
-         * Will animate the top menu in and out of view.
-         * @memberof DraggableComponentsMenu
-         */
-        const toggleView = useCallback(() => {
             var toValue = 0;
 
-            if (topMenuHidden) {
+            if (!topMenuOpen.isOpen) {
                 toValue = yPosHidden;
             }
-            if (!topMenuHidden) {
-                Animated.timing(bounceValue, {
-                    toValue: toValue,
-                    useNativeDriver: true,
-                }).start();
-            } else {
-                Animated.timing(bounceValue, {
-                    toValue: toValue,
-                    useNativeDriver: true,
-                }).start();
-            }
-        });
+
+            Animated.timing(bounceValue, {
+                toValue: toValue,
+                useNativeDriver: true,
+            }).start();
+        }, [topMenuOpen.isOpen]);
 
         /**
          * Gets the layout of the topmenu view.
@@ -121,7 +108,7 @@ const DraggableComponentsMenu = React.memo(
                                         onSelect={(newValue) =>
                                             extensionTypeChange(newValue)
                                         }
-                                        groupWidth={buttonGroupWidth}
+                                        width={buttonGroupWidth}
                                         height={buttonGroupHeight}
                                         highlightBackgroundColor={
                                             Colors.componentMenuButtons
@@ -130,11 +117,6 @@ const DraggableComponentsMenu = React.memo(
                                         inactiveBackgroundColor={
                                             Colors.componentMenuSection
                                         }
-                                        inactiveTextColor={
-                                            Colors.slideTextInactive
-                                        }
-                                        groupWidth={200}
-                                        hasEmpty={true}
                                     />
                                 </View>
                             </View>
@@ -199,4 +181,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default DraggableComponentsMenu;
+export default DraggableMenu;

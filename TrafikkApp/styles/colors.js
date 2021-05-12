@@ -19,11 +19,13 @@ const black = '#242424';
 const white = '#FFFFFF';
 
 const mustard = '#E2BD38';
-const green = '#66DA8D';
+const green = '#ACEBC1';
+const darkGreen = '#038C73';
 const blue = '#79B7DA';
 const blueGray = '#CDD7DC';
 const blueGreen = '#56B897';
-const darkerBlue = '#22a6dd';
+const blue2 = '#439FD9';
+const blue3 = '#1B72BF';
 
 const red = '#FB5555';
 
@@ -67,6 +69,7 @@ export default {
     startScreenLinkDrawing: blueGreen,
     startScreenLinkTheory: blue,
     startScreenLinkLink: charcoal,
+    StartScreenLinkMap: green,
     footer: darkerGray,
 
     // Sketch screens
@@ -100,4 +103,13 @@ export default {
     warning: red,
     alertButton: accentColor,
     alertButtonSecondary: lightCharcoal,
+
+    //map
+    buttonBgLight: lightGray,
+    buttonBgDark: charcoal,
+    locationArrowActive: blue3,
+    locationArrowInactive: blue2,
+    locationNotAvailable: red,
+    cameraLight: green,
+    cameraDark: darkGreen,
 };
