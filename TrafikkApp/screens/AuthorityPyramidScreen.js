@@ -3,7 +3,7 @@ import { View, StyleSheet, Image } from 'react-native';
 
 import { MainView, Header } from '../components/reusableComponents/';
 import { Colors } from '../styles';
-import AuthorityPyramidArea from '../components/authorityPyramidComponents/AuthorityPyramidArea';
+import AuthorityPyramidArea from '../components/ENDREauthorityPyramidComponents/AuthorityPyramidArea';
 
 /**
  * The screen component for the authority pyramid.
