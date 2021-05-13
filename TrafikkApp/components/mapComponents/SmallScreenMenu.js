@@ -13,8 +13,6 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AppContext from '../../AppContext';
 import USER_KEYS from '../helpers/storageKeys';
-
-import Colors from '../../styles/colors';
 import { isSmallScreen } from '../helpers';
 import {
     Divider,
@@ -22,9 +20,13 @@ import {
     ButtonGroup,
 } from '../reusableComponents/index';
 
-import { Typography, Buttons, Icons } from '../../styles';
+import { Typography, Buttons, Icons, Colors } from '../../styles';
 
-const mapTypes = ['standard', 'terrain', 'satellite'];
+const mapTypes = {
+    Standard: 'standard',
+    Terreng: 'terrain',
+    Satellitt: 'satellite',
+};
 
 /**
  * Component to render the bottom menu in maps for smaller screens
@@ -50,7 +52,7 @@ const SmallScreenMenu = ({
     const navigation = useNavigation();
 
     const [buttonLayout, setButtonLayout] = useState(undefined);
-    // console.log(snapshot);
+    const mapKeys = Object.keys(mapTypes);
 
     /** Save the pinned location to async storage
      * @memberof SmallScreenMenu
@@ -76,7 +78,7 @@ const SmallScreenMenu = ({
                 {/* GROUP OF BUTTONS IN MENU */}
                 <View style={styles.buttonGroup}>
                     <Text style={styles.sectionText}>Innstillinger</Text>
-                    <Divider color={Colors.dividerSecondary} />
+                    <Divider borderColor={Colors.dividerPrimary} />
                     {/* INNER GROUP OF BUTTONS */}
                     <View style={styles.innerGroup}>
                         {/* SAVE LOCATION BUTTON */}
@@ -113,7 +115,7 @@ const SmallScreenMenu = ({
                             onPress={takeSnapshot}>
                             <Icon
                                 name={'camera'}
-                                size={Icons.medium}
+                                size={Icons.small}
                                 color={Colors.textPrimary}
                             />
                             <Text
@@ -131,7 +133,16 @@ const SmallScreenMenu = ({
                             onPress={() =>
                                 navigation.navigate('MapSketchScreen')
                             }>
-                            <Text style={styles.buttonText}>
+                            <Icon
+                                name={'pen'}
+                                size={Icons.small}
+                                color={Colors.textPrimary}
+                            />
+                            <Text
+                                style={[
+                                    styles.buttonText,
+                                    { marginLeft: '5%' },
+                                ]}>
                                 Bruk skjermdump
                             </Text>
                         </TouchableOpacity>
@@ -160,13 +171,15 @@ const SmallScreenMenu = ({
             <View
                 style={styles.buttonComp}
                 onLayout={(e) => setButtonLayout(e.nativeEvent.layout)}>
-                <Text style={styles.sectionText}>Karttype</Text>
+                <Text style={styles.sectionText}>Karttype:</Text>
                 {buttonLayout && (
                     <ButtonGroup
-                        selectedValue={mapType}
+                        selectedValue={mapKeys.find(
+                            (key) => mapTypes[key] === mapType
+                        )}
                         values={mapTypes}
                         width={buttonLayout.width - 50}
-                        onSelect={(newValue) => setMapType(newValue)}
+                        onSelect={(newValue) => setMapType(mapTypes[newValue])}
                         inactiveBackgroundColor={Colors.bottomMenyButtons}
                         // width={'100%'}
                     />
@@ -191,7 +204,7 @@ const styles = StyleSheet.create({
     buttonGroup: {
         flex: 2,
         flexDirection: 'column',
-        marginRight: isSmallScreen ? '4%' : '5%',
+        marginRight: isSmallScreen() ? '4%' : '5%',
     },
     innerGroup: {
         // flex: 1,
@@ -203,7 +216,7 @@ const styles = StyleSheet.create({
     sectionText: {
         ...Typography.section,
         color: Colors.textPrimary,
-        marginBottom: isSmallScreen ? '2%' : '5%',
+        marginBottom: isSmallScreen() ? '2%' : '5%',
     },
 
     button: {
@@ -213,7 +226,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         ...Buttons.rounded,
-        elevation: 10,
+        elevation: 5,
     },
     buttonComp: {
         flex: 1,
@@ -225,7 +238,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: Colors.textPrimary,
-        fontSize: isSmallScreen ? 15 : 22,
+        ...Typography.body,
     },
     image: {
         flex: 1,
