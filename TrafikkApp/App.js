@@ -24,7 +24,7 @@ const App = () => {
     const [showDeleteAlert, setShowDeleteAlert] = useState('');
     const [draggableObjects, setDraggableObjects] = useState('');
     const [latestSnapshot, setLatestSnapshot] = useState('');
-    const [savedLocations, setSavedLocations] = useState([]);
+    const [savedLocation, setSavedLocation] = useState([]);
     const [locationPermission, setLocationPermission] = useState(false);
 
     useEffect(() => {
@@ -41,7 +41,7 @@ const App = () => {
             JSON.stringify(objectPaths)
         );
         readData(USER_KEYS.SNAPSHOT_KEY, setLatestSnapshot, '');
-        readData(USER_KEYS.SAVEDLOC_KEY, setSavedLocations, JSON.stringify([]));
+        readData(USER_KEYS.SAVEDLOC_KEY, setSavedLocation, '');
     }, []);
 
     const saveNewSettings = (value, setValue, key) => {
@@ -59,7 +59,7 @@ const App = () => {
         showDeleteAlert,
         draggableObjects,
         latestSnapshot,
-        savedLocations,
+        savedLocation,
         locationPermission,
         // setTheme,
         setPenColor,
@@ -69,7 +69,7 @@ const App = () => {
         setShowDeleteAlert,
         setDraggableObjects,
         setLatestSnapshot,
-        setSavedLocations,
+        setSavedLocation,
         setLocationPermission,
     };
 

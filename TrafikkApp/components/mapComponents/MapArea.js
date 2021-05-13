@@ -15,8 +15,8 @@ import { isSmallScreen, useToggle, useCoords, useOpen } from '../helpers';
 import AlertPermissionModal from './AlertPermissionModal';
 
 const randomRegion = {
-    latitude: 69.660084,
-    longitude: 18.94557,
+    latitude: 63.42877,
+    longitude: 10.38896,
 };
 
 /**
@@ -34,14 +34,37 @@ const MapArea = () => {
     const markerToggle = useToggle(true);
     const bottomMenuVisible = useOpen(true);
     const [latitudeDelta, setLatitudeDelta] = useState(0.01);
-    const pin = useCoords(undefined);
+    const pin = useCoords(
+        appContext.savedLocation == ''
+            ? undefined
+            : JSON.parse(appContext.savedLocation)
+    );
     const userLoc = useCoords(undefined);
     const mapRef = useRef();
     let _watchId = undefined;
 
-    // JSON.parse(appContext.savedLocations)[0] != ''
-    //     ? JSON.parse(appContext.savedLocations[0])
-    //     : undefined;
+    /** When user opens map, go to user if available, else go to last pin, else go to init currRegion.coords
+     * @memberof MapArea
+     */
+    useEffect(() => {
+        if (mapRef.current) {
+            const newCamera = {
+                zoom: 12,
+                heading: 0,
+                pitch: 0,
+                altitude: 5,
+            };
+
+            if (userLoc.coords) {
+                newCamera['center'] = { ...userLoc.coords };
+            } else if (pin.coords) {
+                newCamera['center'] = { ...pin.coords };
+            } else {
+                newCamera['center'] = { ...randomRegion };
+            }
+            mapRef.current.animateCamera(newCamera, { duration: 2000 });
+        }
+    }, []);
 
     /**
      * Use effect that runs when component is in focus and when it is out of focus
@@ -134,31 +157,6 @@ const MapArea = () => {
             });
         }
     }, [userLoc]);
-
-    /** When user opens map, go to user if available, else go to last pin, else go to init currRegion.coords
-     * @memberof MapArea
-     */
-    useEffect(() => {
-        if (mapRef.current) {
-            const newCamera = {
-                zoom: 18,
-                heading: 0,
-                pitch: 0,
-                altitude: 5,
-            };
-
-            if (userLoc.coords) {
-                newCamera['center'] = { ...userLoc.coords };
-                mapRef.current.animateCamera(newCamera, { duration: 2000 });
-            } else if (pin.coords) {
-                newCamera['center'] = { ...pin.coords };
-                mapRef.current.animateCamera(newCamera, { duration: 2000 });
-            } else {
-                newCamera['center'] = { ...randomRegion.coords };
-                mapRef.current.animateCamera(newCamera, { duration: 2000 });
-            }
-        }
-    }, []);
 
     /**
      * Take a snapshot of the map view where the user is right now
