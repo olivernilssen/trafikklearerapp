@@ -50,11 +50,12 @@ const LargeScreenMenu = ({
      * @memberof LargeScreenMenu
      */
     const savePinLocation = () => {
-        appContext.saveNewSettings(
-            JSON.stringify(pin.coords),
-            appContext.setSavedLocation,
-            USER_KEYS.SAVEDLOC_KEY
-        );
+        const newList = [...appContext.savedLocations, pin.coords];
+        appContext.saveNewSettings([
+            JSON.stringify(newList),
+            appContext.setSavedLocations,
+            USER_KEYS.SAVEDLOC_KEY,
+        ]);
         ToastAndroid.show(
             'Markør har blitt lagret på enheten',
             ToastAndroid.SHORT,

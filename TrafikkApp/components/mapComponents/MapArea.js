@@ -34,14 +34,14 @@ const MapArea = () => {
     const markerToggle = useToggle(true);
     const bottomMenuVisible = useOpen(true);
     const [latitudeDelta, setLatitudeDelta] = useState(0.01);
-    const pin = useCoords(
-        appContext.savedLocation != ''
-            ? JSON.parse(appContext.savedLocation)
-            : undefined
-    );
+    const pin = useCoords(undefined);
     const userLoc = useCoords(undefined);
     const mapRef = useRef();
     let _watchId = undefined;
+
+    // JSON.parse(appContext.savedLocations)[0] != ''
+    //     ? JSON.parse(appContext.savedLocations[0])
+    //     : undefined;
 
     /**
      * Use effect that runs when component is in focus and when it is out of focus

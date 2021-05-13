@@ -13,7 +13,7 @@ const useOpen = (defaultOpen) => {
         isOpen,
         onOpen: useCallback(() => setOpen(true), []),
         onClose: useCallback(() => setOpen(false), []),
-        onToggle: useCallback(() => setOpen((prev) => !prev), []),
+        onToggle: () => setOpen((prev) => !prev),
     };
 };
 
