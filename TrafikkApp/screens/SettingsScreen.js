@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import { MainView, Header, Overlay } from '../components/reusableComponents/';
 import { Colors } from '../styles';
-import { SettingsArea } from '../components/ENDREsettingsComponents';
+import { SettingsArea } from '../components/settingsComponents';
 import { useOpen } from '../components/helpers';
 
 /**
