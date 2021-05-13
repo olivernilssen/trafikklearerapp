@@ -8,3 +8,5 @@ export { default as SettingsScreen } from './SettingsScreen';
 export { default as StartScreen } from './StartScreen';
 export { default as AuthorityPyramidScreen } from './AuthorityPyramidScreen';
 export { default as AboutScreen } from './AboutScreen';
+export { default as MapScreen } from './MapScreen';
+export { default as MapSketchScreen } from './MapSketchScreen';

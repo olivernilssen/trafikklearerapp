@@ -15,10 +15,7 @@ const CountryRoadScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
             <View style={styles.sketchArea}>
-                <SketchArea
-                    navigate={navigation.navigate}
-                    toggleDrawer={navigation.toggleDrawer}
-                    name={'Landevei'}></SketchArea>
+                <SketchArea name={'Landevei'} />
             </View>
         </MainView>
     );

@@ -13,10 +13,7 @@ import AboutArea from '../components/aboutComponents/AboutArea';
 const AboutScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
-            <AboutArea
-                navigate={navigation.navigate}
-                toggleDrawer={navigation.toggleDrawer}
-            />
+            <AboutArea />
         </MainView>
     );
 });

@@ -9,17 +9,19 @@ import { Colors, Icons } from '../../styles';
  * Takes in other React Native components as children.
  * @namespace BottomMenuAnimated
  * @category ReusableComponents
- * @prop {object} bottomSheetHidden a hook which stores the state state and function to handle if its open or closed
+ * @prop {object} bottomSheetOpen a hook which stores the state state and function to handle if its open or closed
  */
 const BottomMenuAnimated = React.memo((props) => {
-    const { bottomSheetHidden, chevronColor } = props;
+    const { bottomSheetOpen, chevronColor } = props;
 
     const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
-    const [hiddenViewButton, setHiddenViewButton] = useState('chevron-down');
+    const [hiddenViewButton, setHiddenViewButton] = useState(
+        bottomSheetOpen.isOpen ? 'chevron-down' : 'chevron-up'
+    );
     const [bottomSheetHeight, setBottomSheetHeight] = useState(0);
 
     /**
-     * Is triggered when the state bottomSheetHidden is changed
+     * Is triggered when the state bottomSheetOpen is changed
      * Will trigger the toggleSubview function to animate the
      * bottomsheet into view
      * @memberof BottomMenuAnimated
@@ -27,7 +29,7 @@ const BottomMenuAnimated = React.memo((props) => {
      */
     useEffect(() => {
         toggleSubview();
-    }, [bottomSheetHidden.isOpen]);
+    }, [bottomSheetOpen.isOpen]);
 
     /**
      * This function will change the little icon at the top of the bottom menu
@@ -37,11 +39,11 @@ const BottomMenuAnimated = React.memo((props) => {
      */
     const toggleSubview = useCallback(() => {
         setHiddenViewButton(
-            bottomSheetHidden.isOpen ? 'chevron-up' : 'chevron-down'
+            bottomSheetOpen.isOpen ? 'chevron-down' : 'chevron-up'
         );
         var toValue = bottomSheetHeight;
 
-        if (!bottomSheetHidden.isOpen) {
+        if (bottomSheetOpen.isOpen) {
             toValue = 0;
         }
 
@@ -74,7 +76,7 @@ const BottomMenuAnimated = React.memo((props) => {
             ]}>
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => bottomSheetHidden.onToggle()}>
+                onPress={() => bottomSheetOpen.onToggle()}>
                 <Icon
                     name={hiddenViewButton}
                     size={Icons.medium}

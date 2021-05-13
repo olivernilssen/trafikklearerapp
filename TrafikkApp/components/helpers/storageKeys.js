@@ -6,6 +6,8 @@ const USER_KEYS = {
     ERASER_SIZE_KEY: '@eraser_size',
     DRAGGABLE_OBJECTS: '@draggable_objects',
     SHOW_DELETE_ALERT_KEY: '@show_delete_alert',
+    SNAPSHOT_KEY: '@snapshot_key',
+    SAVEDLOC_KEY: '@saved_location_key',
 };
 
 export default USER_KEYS;

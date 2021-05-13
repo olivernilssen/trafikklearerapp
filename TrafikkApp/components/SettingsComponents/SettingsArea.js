@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useCallback } from 'react';
+import React, { useContext, useCallback } from 'react';
 import {
     View,
     Text,
@@ -9,19 +9,18 @@ import {
 import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
 import { Buttons, Colors, Typography } from '../../styles/index';
-import { ButtonGroup, Divider } from '../reusableComponents/';
+import { ButtonGroup, Divider } from '../reusableComponents';
 import OptionPicker from './OptionPicker';
-import { RUtils } from 'react-native-responsive-component';
-import { isSmallScreen } from '../reusableComponents/globalFunctions';
+import { isSmallScreen } from '../helpers';
 
 /**
  * The view for the settings screen. It takes in data from
  * AppContext and has arrays for possible values for the different settings.
- * @namespace SettingsView
+ * @namespace SettingsArea
  * @category SettingsComponents
  */
-const SettingsView = React.memo((props) => {
-    const { pickerVisible, setPickerVisible } = props;
+const SettingsArea = React.memo((props) => {
+    const { pickerVisible } = props;
 
     // Width of buttonGroups
     const buttonGroupWidth = isSmallScreen() ? 170 : 300;
@@ -88,12 +87,8 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.THEME_KEY
                             )
                         }
-                        groupWidth={buttonGroupWidth}
+                        width={buttonGroupWidth}
                         height={buttonGroupHeight}
-                        highlightBackgroundColor={Colors.slideActiveBg}
-                        highlightTextColor={Colors.slideTextActive}
-                        inactiveBackgroundColor={Colors.slideInactiveBg}
-                        inactiveTextColor={Colors.slideTextInactive}
                     />
                 </View>
             </View>
@@ -114,12 +109,8 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.ERASER_SIZE_KEY
                             )
                         }
-                        groupWidth={buttonGroupWidth}
+                        width={buttonGroupWidth}
                         height={buttonGroupHeight}
-                        highlightBackgroundColor={Colors.slideActiveBg}
-                        highlightTextColor={Colors.slideTextActive}
-                        inactiveBackgroundColor={Colors.slideInactiveBg}
-                        inactiveTextColor={Colors.slideTextInactive}
                     />
                 </View>
             </View>
@@ -142,12 +133,8 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.DELETE_KEY
                             )
                         }
-                        groupWidth={buttonGroupWidth}
+                        width={buttonGroupWidth}
                         height={buttonGroupHeight}
-                        highlightBackgroundColor={Colors.slideActiveBg}
-                        highlightTextColor={Colors.slideTextActive}
-                        inactiveBackgroundColor={Colors.slideInactiveBg}
-                        inactiveTextColor={Colors.slideTextInactive}
                     />
                 </View>
             </View>
@@ -168,13 +155,9 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.PEN_COLOR_KEY
                             )
                         }
-                        groupWidth={buttonGroupWidth}
+                        width={buttonGroupWidth}
                         height={buttonGroupHeight}
-                        highlightBackgroundColor={Colors.slideActiveBg}
-                        highlightTextColor={Colors.slideTextActive}
-                        inactiveBackgroundColor={Colors.slideInactiveBg}
-                        inactiveTextColor={Colors.slideTextInactive}
-                        isColorOptions={true}
+                        isColorOption={true}
                     />
                 </View>
             </View>
@@ -197,12 +180,9 @@ const SettingsView = React.memo((props) => {
                                 USER_KEYS.DRAGGABLE_COLOR_KEY
                             )
                         }
-                        groupWidth={buttonGroupWidth}
-                        highlightBackgroundColor={Colors.slideActiveBg}
-                        highlightTextColor={Colors.slideTextActive}
-                        inactiveBackgroundColor={Colors.slideInactiveBg}
-                        inactiveTextColor={Colors.slideTextInactive}
-                        isColorOptions={true}
+                        width={buttonGroupWidth}
+                        height={buttonGroupHeight}
+                        isColorOption={true}
                     />
                 </View>
             </View>
@@ -263,4 +243,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default SettingsView;
+export default SettingsArea;

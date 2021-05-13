@@ -1,18 +1,17 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Modal, TouchableOpacity, Text, View, StyleSheet } from 'react-native';
-import { DraggableComponentsMenu } from '../draggableComponentsMenu/';
+import { DraggableMenu } from './draggableMenu';
 import MappingDraggables from './MappingDraggables';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import { Colors, Typography, Icons } from '../../styles';
+import { Colors, Typography } from '../../styles';
 import { Divider } from '../reusableComponents';
 
 /**
  * Collects all the draggable components into one.
  * Contains the list of draggables, the draggables object, the draggable menu
  * and the dropzone area.
- * @namespace DraggableWithEverything
- * @category Draggable
- * @prop {boolean} topMenuHidden If the topMenu is hidden or in view
+ * @namespace DraggablesWithMenu
+ * @category DraggableComponents
+ * @prop {boolean} topMenuOpen If the topMenu is open or not in view
  * @prop {array[]} draggables list of all draggables in view
  * @prop {function} setDraggables function to update draggables array
  * @prop {array[]} actionList list of all actions taken (drawing or adding draggables)
@@ -22,10 +21,10 @@ import { Divider } from '../reusableComponents';
  * @prop {string} extensionType information about which extension is being used ("gangfelt", "sykkelveit", etc)
  * @prop {function} setExtensionType update the extension type used
  */
-const DraggableWithEverything = React.memo((props) => {
+const DraggablesWithMenu = React.memo((props) => {
     //States from props
     const {
-        topMenuHidden,
+        topMenuOpen,
         draggables,
         setDraggables,
         actionList,
@@ -53,7 +52,7 @@ const DraggableWithEverything = React.memo((props) => {
      * Adds a new draggable to the array draggables
      * also adds this value to the actionList to be used
      * when the user presses the undo button
-     * @memberof DraggableWithEverything
+     * @memberof DraggablesWithMenu
      * @param {string} itemSrc image source of draggable to add
      */
     const onNewDraggable = useCallback((itemSrc) => {
@@ -75,7 +74,7 @@ const DraggableWithEverything = React.memo((props) => {
      * Function to remove an item from the list draggables
      * Filters the list according to the provided itemID
      * Also filteres the actionList the same way
-     * @memberof DraggableWithEverything
+     * @memberof DraggablesWithMenu
      * @param {int} itemId
      */
     const onRemoveItem = (itemId) => {
@@ -134,8 +133,8 @@ const DraggableWithEverything = React.memo((props) => {
                 onRemoveItem={onRemoveItem}
             />
 
-            <DraggableComponentsMenu
-                topMenuHidden={topMenuHidden}
+            <DraggableMenu
+                topMenuOpen={topMenuOpen}
                 onNewDraggable={onNewDraggable}
                 extensionType={extensionType}
                 setExtensionType={setExtensionType}
@@ -166,14 +165,12 @@ const styles = StyleSheet.create({
     },
     modalTitle: {
         margin: 5,
-        // textAlign: 'center',
         fontWeight: 'bold',
         color: Colors.icons,
         ...Typography.section,
     },
     modalText: {
         margin: 5,
-        // textAlign: 'center',
         color: Colors.icons,
         ...Typography.body,
     },
@@ -208,4 +205,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default DraggableWithEverything;
+export default DraggablesWithMenu;

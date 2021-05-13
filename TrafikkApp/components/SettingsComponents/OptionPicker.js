@@ -12,12 +12,10 @@ import {
     FlatList,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import USER_KEYS from '../helpers/storageKeys';
 import AppContext from '../../AppContext';
 import { Buttons, Colors, Icons, Typography } from '../../styles/index';
 import draggables from './draggableObjectPaths';
-import { RUtils } from 'react-native-responsive-component';
-import { isSmallScreen } from '../reusableComponents/globalFunctions';
+import { isSmallScreen, USER_KEYS } from '../helpers';
 
 const numberOfColumns = isSmallScreen() ? 6 : 7;
 
@@ -183,10 +181,8 @@ const OptionPicker = React.memo((props) => {
                                     data={allKeys}
                                     style={styles.flatList}
                                     keyExtractor={keyExtractor}
-                                    // maxToRenderPerBatch={10}
                                     initialNumToRender={10}
                                     renderItem={renderItem}
-                                    initialNumToRender={6}
                                     numColumns={numberOfColumns}
                                 />
 
@@ -297,7 +293,7 @@ const styles = StyleSheet.create({
     button: {
         padding: 10,
         elevation: 2,
-        width: RUtils.isSmallScreen() ? '35%' : '30%',
+        width: isSmallScreen() ? '35%' : '30%',
         ...Buttons.rounded,
     },
     buttonText: {

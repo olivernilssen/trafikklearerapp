@@ -6,12 +6,12 @@ import { Colors, Icons } from '../../styles';
 
 /**
  * Component to display the hamburger icon to toggle the drawer menu.
- * @namespace DrawerToggleItem
- * @category DrawerComponents
+ * @namespace DrawerToggle
+ * @category NavigationComponent
  * @prop {function} toggleDrawer functions for the drawer toggleDrawer
  * @prop {string} icon the icon name for this screen item
  */
-const DrawerToggleItem = React.memo(({ toggleDrawer, icon }) => (
+const DrawerToggle = React.memo(({ toggleDrawer, icon }) => (
     <TouchableOpacity
         style={styles.menuItem}
         activeOpacity={0.8}
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default DrawerToggleItem;
+export default DrawerToggle;

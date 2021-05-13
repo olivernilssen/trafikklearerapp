@@ -1,4 +1,4 @@
-const draggables = {
+const objectPaths = {
     Bus: {
         source: require('../../assets/Elements/bus.png'),
         hasTint: false,
@@ -21,4 +21,4 @@ const draggables = {
     },
 };
 
-export default draggables;
+export default objectPaths;

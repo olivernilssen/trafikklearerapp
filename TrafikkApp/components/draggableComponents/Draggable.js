@@ -1,9 +1,4 @@
-import React, {
-    useState,
-    useEffect,
-    useCallback,
-    useLayoutEffect,
-} from 'react';
+import React, { useState, useCallback, useLayoutEffect } from 'react';
 import Gestures from 'react-native-easy-gestures';
 import {
     StyleSheet,
@@ -12,9 +7,6 @@ import {
     Dimensions,
     TouchableWithoutFeedback,
 } from 'react-native';
-import { RUtils } from 'react-native-responsive-component';
-import { isSmallScreen } from '../reusableComponents/globalFunctions';
-
 import { Popout } from './Popout/';
 
 const windowWidth = Dimensions.get('window').width;
@@ -32,16 +24,14 @@ const colors = [
 
 const noColors = ['delete'];
 
-// const ITEM_SIZE = isSmallScreen() ? 70 : 100;
 const ITEM_SIZE = windowWidth * 0.13;
 const radius = (ITEM_SIZE * 2) / 2;
-// const buttonSize = isSmallScreen() ? 20 : 30;
 const buttonSize = windowWidth * 0.04;
 
 /**
  * Component that holds the actual draggable component
  * @namespace Draggable
- * @category Draggable
+ * @category DraggableComponents
  * @prop {string} source image source of the draggable object
  */
 const Draggable = React.memo((props) => {

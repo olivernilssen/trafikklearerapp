@@ -15,7 +15,7 @@ import AuthorityPyramidArea from '../components/authorityPyramidComponents/Autho
 const AuthorityPyramidScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
-            <AuthorityPyramidArea toggleDrawer={navigation.toggleDrawer} />
+            <AuthorityPyramidArea />
         </MainView>
     );
 });

@@ -13,10 +13,12 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Typography, Icons, Buttons } from '../../styles';
 import { Divider } from '../reusableComponents';
-import { RUtils } from 'react-native-responsive-component';
-import { isSmallScreen } from '../reusableComponents/globalFunctions';
+import { isSmallScreen } from '../helpers';
 
 /**
+ * this component will display a modal with an image,
+ * when image, or the "i"-button is pressed, it wil display the name and description related to said image
+ * To close modal, either press the "X"-button or outside of the modal.
  * @namespace RoadSignModal
  * @category RoadSignComponents
  * @prop {method} closeModal Method used for closing the modal
@@ -48,6 +50,7 @@ const RoadSignModal = React.memo((props) => {
         }).start();
 
         setShowDescript(false);
+        setShowText(false);
     }, [modalVisible.isOpen]);
 
     /**

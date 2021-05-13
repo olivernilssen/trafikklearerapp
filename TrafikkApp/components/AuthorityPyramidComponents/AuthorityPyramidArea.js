@@ -5,20 +5,15 @@ import { Header } from '../reusableComponents';
 import { Colors } from '../../styles';
 
 /**
- * The screen component for the authority pyramid.
- * This screen contains only an image of the pyramid.
+ * The area component for the authority pyramid.
+ * This is the component that contains all the other components related to the AuthorityPyramidScreen
  * @namespace AuthorityPyramidArea
  * @category AthorityPyramidComponents
- * @prop {object} toggleDrawer Used for opening the DrawerMenu
  */
 const AuthorityPyramidArea = React.memo((props) => {
-    const { toggleDrawer } = props;
     return (
         <>
-            <Header
-                name="Myndighetspyramiden"
-                toggleDrawer={toggleDrawer}
-                style={styles.header}></Header>
+            <Header name="Myndighetspyramiden" style={styles.header}></Header>
             <View style={styles.main}>
                 <Image
                     resizeMode={'contain'}

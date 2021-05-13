@@ -9,26 +9,20 @@ import {
     ScrollView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { MainView, Header, Divider } from '../reusableComponents/';
+import { Header, Divider } from '../reusableComponents/';
 import { Buttons, Colors, Icons, Typography } from '../../styles';
-import { RUtils } from 'react-native-responsive-component';
-import { isSmallScreen } from '../reusableComponents/globalFunctions';
+import { isSmallScreen } from '../helpers';
 
 /**
- * The screen component for the About App screen.
- * The screen displays some info about the app and contact information for the developers.
- * It also displays a button that sends the user to Google Play Store to review the app.
+ * The area component for the About App screen.
+ * This is the component that contains all the other components related to the AboutScreen
  * @namespace AboutArea
  * @category AboutComponents
- * @prop {object} navigate Used for navigation between the different screens
- * @prop {object} toggleDrawer
  */
 const AboutArea = React.memo((props) => {
     const pkg = require('../../package.json');
     const appVersion = pkg.version;
     imgSource = require('../../assets/images/logo_round.png');
-
-    const { navigate, toggleDrawer } = props;
 
     /**
      * Button event that opens the Google Play Store site for the app.
@@ -52,11 +46,7 @@ const AboutArea = React.memo((props) => {
 
     return (
         <>
-            <Header
-                name="Om appen"
-                toggleDrawer={toggleDrawer}
-                style={styles.header}
-            />
+            <Header name="Om appen" style={styles.header} />
             <View style={styles.main}>
                 <View style={styles.section}>
                     <Image

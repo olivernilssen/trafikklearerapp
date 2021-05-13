@@ -7,37 +7,31 @@ import {
     Linking,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-
 import { Header, Divider } from '../reusableComponents/';
-import { StartScreenLink, ExternalLink, HeaderName } from './';
+import StartScreenLink from './StartScreenLink';
+import ExternalLink from './ExternalLink';
+import HeaderName from './HeaderName';
 import { Colors, Typography, Icons } from '../../styles';
+import { useNavigation } from '@react-navigation/native';
 
-import { Dimensions } from 'react-native';
-const { height, width } = Dimensions.get('screen');
 /**
  * Screen component for the start screen.
  * Contains links to the most important screens in the app, and some clickable external links.
  * @namespace StartArea
  * @category StartScreenComponents
- * @prop {object} navigate Used to navigate to SettingsScreen
- * @prop {function} toggleDrawer function to toggle the drawer
  */
 const StartArea = React.memo((props) => {
-    const { toggleDrawer, navigate } = props;
-
-    // const testFunc = () => {
-    //     console.log('Height: ' + height + '--- width: ' + width);
-    // };
+    const navigation = useNavigation();
 
     return (
         <View style={styles.startArea}>
-            <Header toggleDrawer={toggleDrawer} style={styles.header}>
+            <Header style={styles.header}>
                 <View style={styles.headerItems}>
                     <HeaderName />
                     <TouchableOpacity
                         style={styles.headerIcon}
                         activeOpacity={0.6}
-                        onPress={() => navigate('SettingsScreen')}>
+                        onPress={() => navigation.navigate('SettingsScreen')}>
                         <Icon
                             name={'cog'}
                             size={Icons.medium}
@@ -53,26 +47,40 @@ const StartArea = React.memo((props) => {
                         <StartScreenLink
                             name="arrow-right"
                             text="Veikryss"
-                            navigateTo={() => navigate('IntersectionScreen')}
+                            navigateTo={() =>
+                                navigation.navigate('IntersectionScreen')
+                            }
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
                         <StartScreenLink
                             name="arrow-right"
                             text="Rundkjøring"
-                            navigateTo={() => navigate('RoundaboutScreen')}
+                            navigateTo={() =>
+                                navigation.navigate('RoundaboutScreen')
+                            }
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
                         <StartScreenLink
                             name="arrow-right"
                             text="Landevei"
-                            navigateTo={() => navigate('CountryRoadScreen')}
+                            navigateTo={() =>
+                                navigation.navigate('CountryRoadScreen')
+                            }
                             backgroundColor={Colors.startScreenLinkDrawing}
                         />
                         <StartScreenLink
                             name="arrow-right"
                             text="Fartsøknings- og reduksjonsfelt"
-                            navigateTo={() => navigate('HighwayScreen')}
+                            navigateTo={() =>
+                                navigation.navigate('HighwayScreen')
+                            }
                             backgroundColor={Colors.startScreenLinkDrawing}
+                        />
+                        <StartScreenLink
+                            name="arrow-right"
+                            text="Kart (beta)"
+                            navigateTo={() => navigation.navigate('MapScreen')}
+                            backgroundColor={Colors.StartScreenLinkMap}
                         />
                     </View>
                 </View>
@@ -83,14 +91,18 @@ const StartArea = React.memo((props) => {
                         <StartScreenLink
                             name="arrow-right"
                             text="Trafikkskilt"
-                            navigateTo={() => navigate('RoadSignScreen')}
+                            navigateTo={() =>
+                                navigation.navigate('RoadSignScreen')
+                            }
                             backgroundColor={Colors.startScreenLinkTheory}
                         />
                         <StartScreenLink
                             name="arrow-right"
                             text="Læreplanmål"
                             navigateTo={() =>
-                                navigate('CurriculumObjectivesScreen')
+                                navigation.navigate(
+                                    'CurriculumObjectivesScreen'
+                                )
                             }
                             backgroundColor={Colors.startScreenLinkTheory}
                         />
@@ -98,7 +110,7 @@ const StartArea = React.memo((props) => {
                             name="arrow-right"
                             text="Myndighets- pyramiden"
                             navigateTo={() =>
-                                navigate('AuthorityPyramidScreen')
+                                navigation.navigate('AuthorityPyramidScreen')
                             }
                             backgroundColor={Colors.startScreenLinkTheory}
                         />
@@ -203,7 +215,7 @@ const styles = StyleSheet.create({
     linksContainer: {
         width: '90%',
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-around',
         flexWrap: 'wrap',
     },
     footer: {

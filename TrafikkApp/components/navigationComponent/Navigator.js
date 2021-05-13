@@ -13,7 +13,9 @@ import {
     CurriculumObjectivesScreen,
     AuthorityPyramidScreen,
     AboutScreen,
-} from '../../screens/';
+    MapScreen,
+    MapSketchScreen,
+} from '../../screens';
 
 const Drawer = createDrawerNavigator();
 
@@ -22,7 +24,7 @@ const Drawer = createDrawerNavigator();
  * This component holds all the information about the different screens and
  * the screen parameters.
  * @namespace Navigator
- * @category DrawerComponents
+ * @category NavigationComponents
  */
 const Navigator = () => {
     return (
@@ -140,6 +142,28 @@ const Navigator = () => {
                     icon: 'settings',
                     screenName: 'SettingsScreen',
                     value: 9,
+                }}
+            />
+            <Drawer.Screen
+                name="MapScreen"
+                component={MapScreen}
+                initialParams={{
+                    section: 'Illustreringer',
+                    title: 'Kart (beta)',
+                    icon: 'map',
+                    screenName: 'MapScreen',
+                    value: 10,
+                }}
+            />
+            <Drawer.Screen
+                name="MapSketchScreen"
+                component={MapSketchScreen}
+                initialParams={{
+                    section: 'ingen',
+                    title: 'Kart Illustrering',
+                    icon: 'map',
+                    screenName: 'MapSketchScreen',
+                    value: 11,
                 }}
             />
         </Drawer.Navigator>

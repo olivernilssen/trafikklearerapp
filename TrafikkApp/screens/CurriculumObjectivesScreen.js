@@ -14,7 +14,7 @@ import CurriculumArea from '../components/curriculumObjectivesComponents/Curricu
 const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
     return (
         <MainView>
-            <CurriculumArea toggleDrawer={navigation.toggleDrawer} />
+            <CurriculumArea />
         </MainView>
     );
 });
