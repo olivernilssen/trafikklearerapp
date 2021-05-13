@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
     buttonGroup: {
         flex: isSmallScreen() ? 2 : 4,
         flexDirection: 'column',
-        marginRight: isSmallScreen() ? '2%' : '5%',
+        marginRight: isSmallScreen() ? '2%' : '2%',
         height: '90%',
     },
     innerGroup: {
