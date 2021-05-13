@@ -14,9 +14,8 @@ import { Buttons, Colors, Icons, Typography } from '../../styles';
 import { isSmallScreen } from '../helpers';
 
 /**
- * The screen component for the About App screen.
- * The screen displays some info about the app and contact information for the developers.
- * It also displays a button that sends the user to Google Play Store to review the app.
+ * The area component for the About App screen.
+ * This is the component that contains all the other components related to the AboutScreen
  * @namespace AboutArea
  * @category AboutComponents
  */

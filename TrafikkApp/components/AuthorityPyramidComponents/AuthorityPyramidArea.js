@@ -5,8 +5,8 @@ import { Header } from '../reusableComponents';
 import { Colors } from '../../styles';
 
 /**
- * The screen component for the authority pyramid.
- * This screen contains only an image of the pyramid.
+ * The area component for the authority pyramid.
+ * This is the component that contains all the other components related to the AuthorityPyramidScreen
  * @namespace AuthorityPyramidArea
  * @category AthorityPyramidComponents
  */

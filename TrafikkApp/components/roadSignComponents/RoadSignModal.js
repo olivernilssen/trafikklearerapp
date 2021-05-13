@@ -16,6 +16,9 @@ import { Divider } from '../reusableComponents';
 import { isSmallScreen } from '../helpers';
 
 /**
+ * this component will display a modal with an image,
+ * when image, or the "i"-button is pressed, it wil display the name and description related to said image
+ * To close modal, either press the "X"-button or outside of the modal.
  * @namespace RoadSignModal
  * @category RoadSignComponents
  * @prop {method} closeModal Method used for closing the modal
