@@ -347,8 +347,7 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         padding: 25,
-        marginRight: 5,
-        marginHorizontal: 15,
+        marginHorizontal: isSmallScreen() ? 10 : 15,
         justifyContent: 'center',
         alignItems: 'center',
         elevation: 3,
