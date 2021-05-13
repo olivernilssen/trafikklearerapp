@@ -1,8 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
 
-import { MainView, Header } from '../components/reusableComponents/';
-import { Colors } from '../styles';
+import { MainView } from '../components/reusableComponents/';
 import AuthorityPyramidArea from '../components/authorityPyramidComponents/AuthorityPyramidArea';
 
 /**

@@ -17,7 +17,7 @@ const saveData = async (key, value) => {
         await AsyncStorage.setItem(key, value);
         // console.log('Data successfully saved to ', key, value);
     } catch (e) {
-        console.warn('Failed to save the data to the storage to ', key);
+        console.warn('Failed to save the data to the storage for', key);
     }
 };
 

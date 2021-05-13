@@ -57,7 +57,7 @@ const LargeScreenMenu = ({
     const savePinLocation = () => {
         appContext.saveNewSettings(
             JSON.stringify(pin.coords),
-            appContext.setSavedLocation,
+            appContext.setSavedLocations,
             USER_KEYS.SAVEDLOC_KEY
         );
         ToastAndroid.show(
