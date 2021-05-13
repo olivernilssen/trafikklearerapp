@@ -1,11 +1,20 @@
 import React from 'react';
-import { Modal, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import {
+    Modal,
+    StyleSheet,
+    Text,
+    View,
+    TouchableOpacity,
+    Dimensions,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Typography, Icons } from '../../styles';
 import { Divider } from '../reusableComponents';
+
+const windowWidth = Dimensions.get('window').width;
 
 /**
  * This is a component that pops up to alert the user that the drawing is set to be deleted.
@@ -114,7 +123,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0,0,0,0.6)',
     },
     modalView: {
-        maxWidth: 500,
+        maxWidth: windowWidth - 60,
         backgroundColor: Colors.sketchBackground,
         borderRadius: 10,
         padding: 20,
