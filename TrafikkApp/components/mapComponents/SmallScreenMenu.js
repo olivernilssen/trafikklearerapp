@@ -129,7 +129,7 @@ const SmallScreenMenu = ({
 
                         {/* USE PHOTO TO ILLUSTRATE BUTTON */}
                         <TouchableOpacity
-                            style={styles.button}
+                            style={[styles.button, { flexDirection: 'row' }]}
                             onPress={() =>
                                 navigation.navigate('MapSketchScreen')
                             }>
@@ -177,7 +177,7 @@ const SmallScreenMenu = ({
                         selectedValue={mapKeys.find(
                             (key) => mapTypes[key] === mapType
                         )}
-                        values={mapTypes}
+                        values={mapKeys}
                         width={buttonLayout.width - 50}
                         onSelect={(newValue) => setMapType(mapTypes[newValue])}
                         inactiveBackgroundColor={Colors.bottomMenyButtons}
