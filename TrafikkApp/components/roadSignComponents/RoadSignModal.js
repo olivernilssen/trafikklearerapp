@@ -186,7 +186,7 @@ const RoadSignModal = React.memo((props) => {
                                 <Icon
                                     name={'info'}
                                     size={Icons.medium}
-                                    color={Colors.icons}
+                                    color={Colors.textSecondary}
                                 />
                             </TouchableOpacity>
 

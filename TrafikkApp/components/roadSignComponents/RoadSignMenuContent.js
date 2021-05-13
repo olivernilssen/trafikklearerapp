@@ -95,7 +95,9 @@ const RoadSignMenuContent = (props) => {
      */
     const handleBottomMenuPress = (value) => {
         handleSignType(value);
-        closeBottomMenu();
+        setTimeout(() => {
+            closeBottomMenu();
+        }, 500);
     };
 
     return (
