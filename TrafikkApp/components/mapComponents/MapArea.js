@@ -28,7 +28,7 @@ const randomRegion = {
 const MapArea = () => {
     const appContext = useContext(AppContext);
     const [snapshot, setSnapshot] = useState(appContext.latestSnapshot);
-    const [mapType, setMapType] = useState('standard');
+    const [mapType, setMapType] = useState('satellite');
     const modalVisible = useToggle(false);
     const userFollow = useToggle(false);
     const markerToggle = useToggle(true);

@@ -18,7 +18,7 @@ import { isSmallScreen, useOpen } from '../helpers';
  * @prop {function} setImage Changes the state currentImage
  * @prop {function} setRoadDesignChange Changes the state roadDesignChange to true or false
  * @prop {string} extensionType Name of the extension type to be set (vanlig, gangfelt, sykkelfelt)
- * @prop {function} openBottomSheet Changes the state bottomSheetOpen to hide or show the bottomMenu
+ * @prop {function} bottomSheetToggle Changes the state bottomSheetOpen to hide or show the bottomMenu
  */
 const SketchAreaMenuContent = React.memo(
     ({
@@ -26,7 +26,7 @@ const SketchAreaMenuContent = React.memo(
         setImage,
         setRoadDesignChange,
         extensionType,
-        openBottomSheet,
+        closeBottomSheet,
     }) => {
         // Width of button group in bottom menu
         const buttonGroupWidth = isSmallScreen() ? 200 : 300;
@@ -146,7 +146,9 @@ const SketchAreaMenuContent = React.memo(
                     setImage(imgSource);
                 }
                 setRoadDesign(designName);
-                openBottomSheet();
+                setTimeout(() => {
+                    closeBottomSheet();
+                }, 100);
             }
         };
 
@@ -197,7 +199,7 @@ const SketchAreaMenuContent = React.memo(
 
             if (isDesignBtn) {
                 setRoadDesign(tempRoadDesign);
-                openBottomSheet();
+                closeBottomSheet();
             } else if (isIntersectionBtn) {
                 setIntersectionType(tempIntersectionType);
             }
@@ -345,8 +347,7 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         padding: 25,
-        marginRight: 5,
-        marginHorizontal: 15,
+        marginHorizontal: isSmallScreen() ? 10 : 15,
         justifyContent: 'center',
         alignItems: 'center',
         elevation: 3,

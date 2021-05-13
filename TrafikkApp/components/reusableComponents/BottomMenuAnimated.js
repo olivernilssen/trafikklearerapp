@@ -73,10 +73,8 @@ const BottomMenuAnimated = React.memo((props) => {
                             gesture.dy >= -heightRef.current / 3);
 
                     if (goBack) {
-                        // console.log('going back', bottomSheetOpen.isOpen);
                         toggleSubview();
                     } else {
-                        // console.log('going somewhere', bottomSheetOpen.isOpen);
                         bottomSheetOpen.onToggle();
                     }
                 },
@@ -153,7 +151,7 @@ const BottomMenuAnimated = React.memo((props) => {
                 {
                     transform: [
                         {
-                            translateY: pan.y < 0 ? bottomSheetHeight : pan.y,
+                            translateY: pan.y,
                         },
                     ],
                 },

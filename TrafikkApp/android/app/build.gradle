@@ -128,11 +128,17 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    def propFile = file('version.properties')
+    def Properties versionProp = new Properties()
+    if(propFile.exists())
+        versionProp.load(new FileInputStream(propFile))
+    def verCode = (versionProp['VERSION_CODE'] ?: "0").toInteger() + 1
+
     defaultConfig {
         applicationId "com.illustrafikk"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
+        versionCode verCode
         versionName "1.0"
         multiDexEnabled true
     }
@@ -175,6 +181,27 @@ android {
             }
 
         }
+    }
+}
+
+ext.autoIncrementBuildNumber = {
+    println("begin autoIncrementBuildNumber")
+    def propFile = file('version.properties')
+
+    def Properties versionProp = new Properties()
+    if(propFile.exists())
+        versionProp.load(new FileInputStream(propFile))
+    def verCode = (versionProp['VERSION_CODE'] ?: "0").toInteger() + 1
+    versionProp['VERSION_CODE'] = verCode.toString()
+    versionProp.store(propFile.newWriter(), null)
+    println("finish autoIncrementBuildNumber")
+}
+
+gradle.taskGraph.whenReady { taskGraph ->
+    if (taskGraph.hasTask(generateReleaseBuildConfig)) {
+        println("task graph begin autoIncrement")
+        autoIncrementBuildNumber()
+        println("task graph after autoIncrement")
     }
 }
 
