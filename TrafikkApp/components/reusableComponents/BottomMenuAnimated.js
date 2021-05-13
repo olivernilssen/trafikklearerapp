@@ -1,7 +1,17 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { StyleSheet, Animated, TouchableOpacity, View } from 'react-native';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import {
+    StyleSheet,
+    Animated,
+    TouchableOpacity,
+    View,
+    PanResponder,
+} from 'react-native';
+
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Icons } from '../../styles';
+
+let _value = { x: 0, y: 0 };
+let xOffset = 0;
 
 /**
  * Component that displays a menu on the bottom of the screen.
@@ -14,11 +24,79 @@ import { Colors, Icons } from '../../styles';
 const BottomMenuAnimated = React.memo((props) => {
     const { bottomSheetOpen, chevronColor } = props;
 
-    const [bounceValue, setBounceValue] = useState(new Animated.Value(0));
+    //this value is used to help panresonder not having to re-render
+    const sheetValue = useRef(bottomSheetOpen.isOpen);
+    const heightRef = useRef(bottomSheetHeight);
+
     const [hiddenViewButton, setHiddenViewButton] = useState(
         bottomSheetOpen.isOpen ? 'chevron-down' : 'chevron-up'
     );
     const [bottomSheetHeight, setBottomSheetHeight] = useState(0);
+
+    const pan = useRef(new Animated.ValueXY()).current;
+
+    const panResponder = React.useMemo(
+        () =>
+            PanResponder.create({
+                onMoveShouldSetPanResponder: (evt, gestureState) => true,
+                onPanResponderGrant: () => {
+                    pan.setOffset({
+                        y: pan.y._value,
+                    });
+                },
+
+                onPanResponderMove: (e, gesture) => {
+                    if (
+                        sheetValue.current &&
+                        gesture.dy >= 0 &&
+                        gesture.dy <= heightRef.current
+                    ) {
+                        pan.setValue({ x: 0, y: gesture.dy });
+                    } else if (
+                        !sheetValue.current &&
+                        gesture.dy >= -heightRef.current &&
+                        gesture.dy <= 0
+                    ) {
+                        pan.setValue({ x: 0, y: gesture.dy });
+                    } else {
+                        pan.setOffset({ x: 0, y: _value.y });
+                        pan.setValue({ x: 0, y: 0 });
+                    }
+                },
+
+                onPanResponderEnd: (e, gesture) => {
+                    pan.flattenOffset();
+                    const goBack =
+                        (sheetValue.current &&
+                            gesture.dy <= heightRef.current / 3) ||
+                        (!sheetValue.current &&
+                            gesture.dy >= -heightRef.current / 3);
+
+                    if (goBack) {
+                        // console.log('going back', bottomSheetOpen.isOpen);
+                        toggleSubview();
+                    } else {
+                        // console.log('going somewhere', bottomSheetOpen.isOpen);
+                        bottomSheetOpen.onToggle();
+                    }
+                },
+            }),
+        [bottomSheetOpen.isOpen]
+    );
+
+    /** Use effect to help panresponder keep a current version of the bottomsheetOpen value
+     * @memberof BottomMenuAnimated
+     */
+    useEffect(() => {
+        sheetValue.current = bottomSheetOpen.isOpen;
+    }, [bottomSheetOpen.isOpen]);
+
+    React.useEffect(() => {
+        const listener = pan.addListener((value) => (_value = value));
+        return () => {
+            pan.removeListener(listener);
+        };
+    }, []);
 
     /**
      * Is triggered when the state bottomSheetOpen is changed
@@ -41,18 +119,16 @@ const BottomMenuAnimated = React.memo((props) => {
         setHiddenViewButton(
             bottomSheetOpen.isOpen ? 'chevron-down' : 'chevron-up'
         );
+
         var toValue = bottomSheetHeight;
 
         if (bottomSheetOpen.isOpen) {
             toValue = 0;
         }
 
-        Animated.spring(bounceValue, {
-            useNativeDriver: true,
+        Animated.timing(pan.y, {
+            useNativeDriver: false,
             toValue: toValue,
-            velocity: 3,
-            tension: 20,
-            friction: 8,
         }).start();
     });
 
@@ -65,14 +141,22 @@ const BottomMenuAnimated = React.memo((props) => {
      */
     const getLayout = (layout) => {
         const { x, y, width, height } = layout;
+        heightRef.current = height;
         setBottomSheetHeight(height);
     };
 
     return (
         <Animated.View
+            {...panResponder.panHandlers}
             style={[
                 styles.subView,
-                { transform: [{ translateY: bounceValue }] },
+                {
+                    transform: [
+                        {
+                            translateY: pan.y < 0 ? bottomSheetHeight : pan.y,
+                        },
+                    ],
+                },
             ]}>
             <TouchableOpacity
                 style={styles.button}

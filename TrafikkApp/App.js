@@ -3,10 +3,10 @@ import { PermissionsAndroid } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { MenuProvider } from 'react-native-popup-menu';
 import Navigator from './components/navigationComponent/Navigator';
-import USER_KEYS from './components/helpers/storageKeys';
+import { USER_KEYS } from './components/helpers';
 import { readData, saveData } from './components/helpers/useAsyncStorage';
 import AppContext from './AppContext';
-import objectPaths from './components/settingsComponents';
+import objectPaths from './components/settingsComponents/initial-draggable-paths';
 import SplashScreen from 'react-native-splash-screen';
 
 /**
@@ -16,6 +16,7 @@ import SplashScreen from 'react-native-splash-screen';
  * @returns
  */
 const App = () => {
+    // const [theme, setTheme] = useState('');
     const [penColor, setPenColor] = useState('');
     const [draggableColor, setDraggableColor] = useState('');
     const [deleteOnChange, setDeleteOnChange] = useState('');
@@ -23,11 +24,12 @@ const App = () => {
     const [showDeleteAlert, setShowDeleteAlert] = useState('');
     const [draggableObjects, setDraggableObjects] = useState('');
     const [latestSnapshot, setLatestSnapshot] = useState('');
-    const [savedLocation, setSavedLocation] = useState('');
+    const [savedLocation, setSavedLocation] = useState([]);
     const [locationPermission, setLocationPermission] = useState(false);
 
     useEffect(() => {
         SplashScreen.hide();
+        // readData(USER_KEYS.THEME_KEY, setTheme, 'Mørk');
         readData(USER_KEYS.PEN_COLOR_KEY, setPenColor, '#cf262f');
         readData(USER_KEYS.DRAGGABLE_COLOR_KEY, setDraggableColor, '#000000');
         readData(USER_KEYS.DELETE_KEY, setDeleteOnChange, 'Ja');
@@ -49,6 +51,7 @@ const App = () => {
 
     const userSettings = {
         saveNewSettings,
+        // theme,
         penColor,
         draggableColor,
         deleteOnChange,
@@ -58,6 +61,7 @@ const App = () => {
         latestSnapshot,
         savedLocation,
         locationPermission,
+        // setTheme,
         setPenColor,
         setDraggableColor,
         setDeleteOnChange,
