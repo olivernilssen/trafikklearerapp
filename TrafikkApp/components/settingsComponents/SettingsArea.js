@@ -46,7 +46,6 @@ const SettingsArea = React.memo((props) => {
         '#284b63',
         '#3a5a40',
     ];
-    const themeValues = ['Mørk', 'Lys'];
 
     /**
      * Function to handle changing a value in settings.
@@ -71,28 +70,6 @@ const SettingsArea = React.memo((props) => {
         <View style={styles.view}>
             {/* MODAL */}
             <OptionPicker modalVisible={pickerVisible} />
-
-            {/* CHANGE THEME COLORS */}
-            <View style={styles.rowView}>
-                <Text style={styles.leftColumn}>Fargetema:</Text>
-                <View style={styles.rightColumn}>
-                    <ButtonGroup
-                        selectedValue={myContext.theme}
-                        values={themeValues}
-                        onSelect={(newValue) =>
-                            onChangeValue(
-                                'Temafarge',
-                                newValue,
-                                myContext.setTheme,
-                                USER_KEYS.THEME_KEY
-                            )
-                        }
-                        width={buttonGroupWidth}
-                        height={buttonGroupHeight}
-                    />
-                </View>
-            </View>
-            <Divider borderColor={Colors.headerBg} />
 
             {/* STANDARD SIZE OF ERASER */}
             <View style={styles.rowView}>

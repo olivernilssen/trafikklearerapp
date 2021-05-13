@@ -16,7 +16,6 @@ import SplashScreen from 'react-native-splash-screen';
  * @returns
  */
 const App = () => {
-    const [theme, setTheme] = useState('');
     const [penColor, setPenColor] = useState('');
     const [draggableColor, setDraggableColor] = useState('');
     const [deleteOnChange, setDeleteOnChange] = useState('');
@@ -29,7 +28,6 @@ const App = () => {
 
     useEffect(() => {
         SplashScreen.hide();
-        readData(USER_KEYS.THEME_KEY, setTheme, 'Mørk');
         readData(USER_KEYS.PEN_COLOR_KEY, setPenColor, '#cf262f');
         readData(USER_KEYS.DRAGGABLE_COLOR_KEY, setDraggableColor, '#000000');
         readData(USER_KEYS.DELETE_KEY, setDeleteOnChange, 'Ja');
@@ -51,7 +49,6 @@ const App = () => {
 
     const userSettings = {
         saveNewSettings,
-        theme,
         penColor,
         draggableColor,
         deleteOnChange,
@@ -61,7 +58,6 @@ const App = () => {
         latestSnapshot,
         savedLocation,
         locationPermission,
-        setTheme,
         setPenColor,
         setDraggableColor,
         setDeleteOnChange,

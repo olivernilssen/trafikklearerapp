@@ -13,14 +13,17 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AppContext from '../../AppContext';
 import USER_KEYS from '../helpers/storageKeys';
-import Colors from '../../styles/colors';
 import { isSmallScreen } from '../helpers';
 import ButtonGroup from '../reusableComponents/ButtonGroup';
 import { Divider, BottomMenuAnimated } from '../reusableComponents/index';
 
-import { Typography, Buttons, Icons } from '../../styles';
+import { Typography, Buttons, Icons, Colors } from '../../styles';
 
-const mapTypes = ['standard', 'terrain', 'satellite'];
+const mapTypes = {
+    Standard: 'standard',
+    Terreng: 'terrain',
+    Satellitt: 'satellite',
+};
 
 /**
  * Component to render the bottom menu in maps for larger screens
@@ -46,6 +49,8 @@ const LargeScreenMenu = ({
     const appContext = useContext(AppContext);
     const [buttonLayout, setButtonLayout] = useState(undefined);
 
+    const mapKeys = Object.keys(mapTypes);
+
     /** Save the pinned location to async storage
      * @memberof LargeScreenMenu
      */
@@ -70,7 +75,7 @@ const LargeScreenMenu = ({
                 {/* GROUP OF BUTTONS ON MAP */}
                 <View style={styles.buttonGroup}>
                     <Text style={styles.sectionText}>Innstillinger</Text>
-                    <Divider color={Colors.dividerSecondary} />
+                    <Divider borderColor={Colors.dividerPrimary} />
                     {/* SAVE LOCATION BUTTON */}
                     <View style={styles.innerGroup}>
                         <TouchableOpacity
@@ -107,7 +112,7 @@ const LargeScreenMenu = ({
                 </View>
                 <View style={styles.buttonGroup}>
                     <Text style={styles.sectionText}>Skjermdump</Text>
-                    <Divider color={Colors.dividerSecondary} />
+                    <Divider borderColor={Colors.dividerPrimary} />
                     <View style={styles.innerGroup}>
                         {/* SCREENSHOT BUTTON */}
                         <TouchableOpacity
@@ -121,7 +126,7 @@ const LargeScreenMenu = ({
                             onPress={takeSnapshot}>
                             <Icon
                                 name={'camera'}
-                                size={Icons.medium}
+                                size={Icons.small}
                                 color={Colors.textPrimary}
                             />
                             <Text
@@ -139,7 +144,16 @@ const LargeScreenMenu = ({
                             onPress={() =>
                                 navigation.navigate('MapSketchScreen')
                             }>
-                            <Text style={styles.buttonText}>
+                            <Icon
+                                name={'pen'}
+                                size={Icons.small}
+                                color={Colors.textPrimary}
+                            />
+                            <Text
+                                style={[
+                                    styles.buttonText,
+                                    { marginLeft: '5%' },
+                                ]}>
                                 Bruk skjermdump
                             </Text>
                         </TouchableOpacity>
@@ -166,14 +180,16 @@ const LargeScreenMenu = ({
             <View
                 style={styles.buttonGroupComponent}
                 onLayout={(e) => setButtonLayout(e.nativeEvent.layout)}>
-                <Text style={styles.sectionText}>Karttype</Text>
+                <Text style={styles.sectionText}>Karttype:</Text>
                 {buttonLayout && (
                     <ButtonGroup
-                        selectedValue={mapType}
-                        values={mapTypes}
+                        selectedValue={mapKeys.find(
+                            (key) => mapTypes[key] === mapType
+                        )}
+                        values={mapKeys}
                         width={buttonLayout.width - 80}
                         height={50}
-                        onSelect={(newValue) => setMapType(newValue)}
+                        onSelect={(newValue) => setMapType(mapTypes[newValue])}
                         inactiveBackgroundColor={Colors.bottomMenyButtons}
                         // width={'100%'}
                     />
@@ -196,9 +212,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     buttonGroup: {
-        flex: isSmallScreen ? 2 : 4,
+        flex: isSmallScreen() ? 2 : 4,
         flexDirection: 'column',
-        marginRight: isSmallScreen ? '2%' : '5%',
+        marginRight: isSmallScreen() ? '2%' : '5%',
         height: '90%',
     },
     innerGroup: {
@@ -209,7 +225,7 @@ const styles = StyleSheet.create({
     sectionText: {
         ...Typography.section,
         color: Colors.textPrimary,
-        marginBottom: isSmallScreen ? '2%' : '5%',
+        marginBottom: isSmallScreen() ? '2%' : '3%',
     },
     buttonGroupComponent: {
         flex: 1,
@@ -218,22 +234,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'center',
         marginBottom: '5%',
-        // backgroundColor: 'red',
     },
     button: {
-        padding: '3%',
+        padding: '5%',
         backgroundColor: Colors.bottomMenyButtons,
         justifyContent: 'center',
         alignItems: 'center',
         ...Buttons.rounded,
-        elevation: 10,
+        elevation: 5,
     },
     buttonText: {
-        color: 'white',
-        fontSize: isSmallScreen ? 18 : 22,
+        color: Colors.textPrimary,
+        ...Typography.body,
     },
     image: {
-        flex: isSmallScreen ? 1 : 2,
+        flex: isSmallScreen() ? 1 : 2,
         height: '90%',
         width: '50%',
         padding: '5%',
