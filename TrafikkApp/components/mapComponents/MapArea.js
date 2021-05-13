@@ -49,7 +49,7 @@ const MapArea = () => {
     useEffect(() => {
         if (mapRef.current) {
             const newCamera = {
-                zoom: 12,
+                zoom: 18,
                 heading: 0,
                 pitch: 0,
                 altitude: 5,
