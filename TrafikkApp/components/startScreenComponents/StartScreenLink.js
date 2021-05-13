@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Buttons, Icons, Colors, Typography } from '../../styles';
 import { RUtils } from 'react-native-responsive-component';
+import { isSmallScreen } from '../helpers';
 
 /**
  * This component is used to display a link on the StartScreen, to navigate to other screens in the app.
@@ -41,7 +42,8 @@ const StartScreenLink = React.memo((props) => {
 
 const styles = StyleSheet.create({
     buttonContainer: {
-        margin: 12,
+        margin: isSmallScreen() ? 7 : 12,
+        // margin: '5%',
         elevation: 10,
         ...Buttons.startScreen,
     },

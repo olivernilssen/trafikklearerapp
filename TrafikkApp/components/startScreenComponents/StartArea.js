@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet,
     Text,
     View,
     TouchableOpacity,
     Linking,
+    ScrollView,
+    Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Header, Divider } from '../reusableComponents/';
@@ -13,7 +15,11 @@ import ExternalLink from './ExternalLink';
 import HeaderName from './HeaderName';
 import { Colors, Typography, Icons } from '../../styles';
 import { useNavigation } from '@react-navigation/native';
+import { isSmallScreen } from '../helpers';
 
+// const {height, width} = Dimensions.get
+// const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 /**
  * Screen component for the start screen.
  * Contains links to the most important screens in the app, and some clickable external links.
@@ -22,6 +28,7 @@ import { useNavigation } from '@react-navigation/native';
  */
 const StartArea = React.memo((props) => {
     const navigation = useNavigation();
+    const [mainViewHeight, setMainViewHeight] = useState(windowHeight - 100);
 
     return (
         <View style={styles.startArea}>
@@ -40,7 +47,11 @@ const StartArea = React.memo((props) => {
                     </TouchableOpacity>
                 </View>
             </Header>
-            <View style={styles.main}>
+            <ScrollView
+                contentContainerStyle={[
+                    styles.main,
+                    { height: isSmallScreen() ? '100%' : '100%' },
+                ]}>
                 <View style={styles.container}>
                     <Text style={styles.text}>Illustrer trafikksituasjon</Text>
                     <View style={styles.linksContainer}>
@@ -116,7 +127,7 @@ const StartArea = React.memo((props) => {
                         />
                     </View>
                 </View>
-            </View>
+            </ScrollView>
             <View style={styles.footer}>
                 <Text style={styles.footerText}>Lenker til forskrifter:</Text>
                 <View style={styles.externalLinksContainer}>
@@ -172,7 +183,7 @@ const StartArea = React.memo((props) => {
 
 const styles = StyleSheet.create({
     startArea: {
-        flex: 1,
+        // flex: 1,
         width: '100%',
         height: '100%',
     },
@@ -192,8 +203,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     main: {
-        flex: 1,
-        // width: '100%',
+        // flex: 1,
+        width: '100%',
         // height: '100%',
         justifyContent: 'center',
         paddingVertical: '10%',
@@ -202,10 +213,11 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: 10,
+        paddingVertical: '2%',
+        // backgroundColor: 'blue',
     },
     text: {
-        width: '85%',
+        width: '90%',
         borderBottomWidth: 2,
         borderColor: Colors.dividerPrimary,
         color: Colors.icons,
@@ -215,10 +227,13 @@ const styles = StyleSheet.create({
     linksContainer: {
         width: '90%',
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'center',
         flexWrap: 'wrap',
+        // backgroundColor: 'red',
     },
     footer: {
+        // flex: 1,
+        // height: 200,
         borderTopWidth: 1,
         borderTopColor: Colors.dividerPrimary,
         width: '100%',
@@ -226,6 +241,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.footer,
         justifyContent: 'center',
         alignItems: 'center',
+        alignSelf: 'flex-end',
     },
     footerText: {
         width: '85%',
