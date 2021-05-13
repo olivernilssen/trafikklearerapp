@@ -207,7 +207,7 @@ const SketchArea = React.memo((props) => {
 
                 <View style={styles.sketchArea}>
                     <SketchCanvas
-                        // onStrokeStart={() => onStrokeStart()}
+                        onStrokeStart={() => onStrokeStart()}
                         onStrokeEnd={() => onStrokeEnd()}
                         ref={sketchRef}
                         style={styles.sketchCanvas}

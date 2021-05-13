@@ -191,7 +191,7 @@ const MapArea = () => {
                 style={styles.map}
                 loadingBackgroundColor={Colors.modalBg}
                 customMapStyle={
-                    latitudeDelta <= 0.0065 ? mapBeigeRoadZoomed : mapBeigeRoad
+                    latitudeDelta <= 0.003 ? mapBeigeRoadZoomed : mapBeigeRoad
                 }
                 ref={mapRef}
                 paddingAdjustmentBehavior={'automatic'}
@@ -201,9 +201,9 @@ const MapArea = () => {
                 mapType={mapType}
                 showsCompass={false}
                 onPanDrag={() => userFollow.onToggleFalse()}
-                onRegionChangeComplete={(e) =>
-                    setLatitudeDelta(e.latitudeDelta)
-                }
+                onRegionChangeComplete={(e) => {
+                    setLatitudeDelta(e.latitudeDelta);
+                }}
                 onPress={(e) =>
                     pin.onUpdate({
                         latitude: e.nativeEvent.coordinate.latitude,
