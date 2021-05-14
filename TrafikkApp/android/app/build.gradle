@@ -142,6 +142,9 @@ android {
         versionName "1.0"
         multiDexEnabled true
     }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
     splits {
         abi {
             reset()
