@@ -1,7 +1,7 @@
 import React, { useState, useRef, useContext, useEffect } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import Geolocation from 'react-native-geolocation-service';
-import { StyleSheet, View, PermissionsAndroid } from 'react-native';
+import { StyleSheet, View, PermissionsAndroid, Image } from 'react-native';
 import AppContext from '../../AppContext';
 import USER_KEYS from '../helpers/storageKeys';
 import { useFocusEffect } from '@react-navigation/native';
@@ -211,17 +211,25 @@ const MapArea = () => {
                     })
                 }>
                 {markerToggle.isToggled && pin.coords && (
-                    <Marker
-                        coordinate={pin.coords}
-                        image={require('../../assets/Elements/map/pin(2).png')}
-                    />
+                    <Marker coordinate={pin.coords}>
+                        <Image
+                            source={require('../../assets/Elements/map/pin(2).png')}
+                            style={styles.mapIcon}
+                            resizeMode={'contain'}
+                            // resizeMethod={'resize'}
+                        />
+                    </Marker>
                 )}
 
                 {userLoc.coords && markerToggle.isToggled && (
-                    <Marker
-                        coordinate={userLoc.coords}
-                        image={require('../../assets/Elements/map/pin.png')}
-                    />
+                    <Marker coordinate={userLoc.coords}>
+                        <Image
+                            source={require('../../assets/Elements/map/pin.png')}
+                            style={styles.mapIcon}
+                            resizeMode={'contain'}
+                            // resizeMethod={'resize'}
+                        />
+                    </Marker>
                 )}
             </MapView>
 
@@ -274,5 +282,9 @@ const styles = StyleSheet.create({
         flex: 1,
         height: '100%',
         width: '100%',
+    },
+    mapIcon: {
+        height: isSmallScreen() ? 50 : 60,
+        width: isSmallScreen() ? 50 : 60,
     },
 });

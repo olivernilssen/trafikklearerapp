@@ -14,8 +14,8 @@ import DraggablesWithMenu from '../draggableComponents/DraggablesWithMenu';
 import SketchAreaMenuContent from './SketchAreaMenuContent';
 import { Colors } from '../../styles';
 import AppContext from '../../AppContext';
-import { RUtils } from 'react-native-responsive-component';
-import { useOpen } from '../helpers';
+// import { RUtils } from 'react-native-responsive-component';
+import { useOpen, isSmallScreen } from '../helpers';
 
 const { width, height } = Dimensions.get('window');
 
@@ -265,7 +265,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 0,
         left: 0,
-        paddingTop: RUtils.isSmallScreen() ? 60 : 80,
+        paddingTop: isSmallScreen() ? 60 : 80,
+        paddingBottom: isSmallScreen() ? 40 : 50,
         height: '100%',
         width: '100%',
         justifyContent: 'center',

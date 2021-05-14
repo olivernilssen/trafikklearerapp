@@ -6,7 +6,7 @@ import SketchColorMenu from './SketchColorMenu';
 import HeaderButton from './HeaderButton';
 import DraggableComponentsButton from './DraggableComponentsButton';
 import DeleteButtonPopover from './DeleteButtonPopover';
-
+import { isSmallScreen } from '../helpers';
 import { Colors } from '../../styles';
 
 /**
@@ -60,10 +60,13 @@ const SketchHeader = React.memo((props) => {
     return (
         <View style={styles.main}>
             <Header style={styles.header}>
-                <DeleteButtonPopover
-                    clearCanvas={clearCanvas}
-                    propsStyle={styles.spacedLeft}
-                />
+                <View style={styles.buttonsLeft}>
+                    <DeleteButtonPopover
+                        clearCanvas={clearCanvas}
+                        propsStyle={styles.spacedLeft}
+                    />
+                </View>
+
                 <View style={styles.buttonsRight}>
                     <SketchColorMenu
                         onPaletteColorChange={onPaletteColorChange}
@@ -115,8 +118,15 @@ const styles = StyleSheet.create({
         borderBottomColor: Colors.dividerPrimary,
         elevation: 10,
     },
+    buttonsLeft: {
+        flex: isSmallScreen() ? 1.2 : 2.2,
+    },
+    buttonsRight: {
+        flex: 2,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
     spacedLeft: {
-        flex: 1,
         flexDirection: 'row',
         height: '100%',
         width: '100%',
@@ -126,12 +136,6 @@ const styles = StyleSheet.create({
 
     container: {
         paddingHorizontal: 5,
-    },
-    buttonsRight: {
-        flex: 1,
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
     },
 });
 

@@ -244,7 +244,6 @@ const styles = StyleSheet.create({
         transform: [{ rotate: '-45deg' }],
     },
     menuOptions: {
-        // flex: 1,
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,
         backgroundColor: Colors.colorPaletteMenu,
