@@ -143,9 +143,16 @@ const BottomMenuAnimated = React.memo((props) => {
         setBottomSheetHeight(height);
     };
 
+    const getLayoutTest = (layout) => {
+        const { x, y, width, height } = layout;
+        // heightRef.current = height;
+        // setBottomSheetHeight(height);
+        console.log('height, ', height);
+    };
+
     return (
         <Animated.View
-            {...panResponder.panHandlers}
+            // {...panResponder.panHandlers}
             style={[
                 styles.subView,
                 {
@@ -158,6 +165,9 @@ const BottomMenuAnimated = React.memo((props) => {
             ]}>
             <TouchableOpacity
                 style={styles.button}
+                onLayout={(event) => {
+                    getLayoutTest(event.nativeEvent.layout);
+                }}
                 onPress={() => bottomSheetOpen.onToggle()}>
                 <Icon
                     name={hiddenViewButton}
@@ -188,7 +198,8 @@ var styles = StyleSheet.create({
         zIndex: 10,
     },
     button: {
-        paddingBottom: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 15,
         opacity: 0.8,
     },
     bottomContainer: {

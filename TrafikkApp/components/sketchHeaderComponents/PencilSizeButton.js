@@ -33,8 +33,8 @@ const PencilSizeButton = React.memo((props) => {
 
 const styles = StyleSheet.create({
     iconPlacement: {
-        height: 60,
-        width: isSmallScreen() ? 120 : 160,
+        height: isSmallScreen() ? 50 : 60,
+        width: isSmallScreen() ? 106 : 160,
         justifyContent: 'center',
         alignItems: 'center',
         margin: -5,
