@@ -38,7 +38,12 @@ const BottomMenuAnimated = React.memo((props) => {
     const panResponder = React.useMemo(
         () =>
             PanResponder.create({
-                onMoveShouldSetPanResponder: (evt, gestureState) => true,
+                onMoveShouldSetPanResponder: (evt, gestureState) => {
+                    return (
+                        Math.abs(gestureState.dx) > 3 ||
+                        Math.abs(gestureState.dy) > 3
+                    );
+                },
                 onPanResponderGrant: () => {
                     pan.setOffset({
                         y: pan.y._value,
@@ -147,12 +152,11 @@ const BottomMenuAnimated = React.memo((props) => {
         const { x, y, width, height } = layout;
         // heightRef.current = height;
         // setBottomSheetHeight(height);
-        console.log('height, ', height);
     };
 
     return (
         <Animated.View
-            // {...panResponder.panHandlers}
+            {...panResponder.panHandlers}
             style={[
                 styles.subView,
                 {
@@ -177,6 +181,7 @@ const BottomMenuAnimated = React.memo((props) => {
             </TouchableOpacity>
 
             <View
+                pointerEvents="box-none"
                 onLayout={(event) => {
                     getLayout(event.nativeEvent.layout);
                 }}
@@ -196,9 +201,10 @@ var styles = StyleSheet.create({
         right: 0,
         backgroundColor: Colors.bottomMenuTransparent,
         zIndex: 10,
+        // height: '100%',
     },
     button: {
-        paddingVertical: 10,
+        paddingVertical: 20,
         paddingHorizontal: 15,
         opacity: 0.8,
     },
