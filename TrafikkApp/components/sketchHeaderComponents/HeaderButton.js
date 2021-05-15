@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Buttons, Icons } from '../../styles';
 
 /**
- * Component that returns a button, used for eraser- and undo-button in the sketchHeader.
+ * This component displays a button used for the eraser- and undu-buttons in the sketch header on the sketch screens.
  * @namespace HeaderButton
  * @category SketchHeaderComponents
  * @prop {String} iconName the name of the Icon
@@ -39,7 +39,7 @@ const HeaderButton = React.memo((props) => {
                                   backgroundColor:
                                       iconName === 'eraser'
                                           ? Colors.eraserIconActive
-                                          : Colors.iconActive,
+                                          : Colors.headerBg,
                               },
                           ]
                         : [styles.buttonSize, styles.buttonInactive]
@@ -66,9 +66,9 @@ const styles = StyleSheet.create({
     },
     buttonActive: {
         backgroundColor: Colors.iconActive,
-        ...Buttons.sketchHeaderButton,
         elevation: 5,
         padding: 10,
+        ...Buttons.sketchHeaderButton,
     },
     buttonInactive: {
         backgroundColor: Colors.headerBg,

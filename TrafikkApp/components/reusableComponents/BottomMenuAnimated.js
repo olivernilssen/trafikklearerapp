@@ -19,7 +19,7 @@ let xOffset = 0;
  * Takes in other React Native components as children.
  * @namespace BottomMenuAnimated
  * @category ReusableComponents
- * @prop {object} bottomSheetOpen a hook which stores the state state and function to handle if its open or closed
+ * @prop {object} bottomSheetOpen Hook which stores the state and function to handle if its open or closed
  */
 const BottomMenuAnimated = React.memo((props) => {
     const { bottomSheetOpen, chevronColor } = props;
@@ -143,13 +143,6 @@ const BottomMenuAnimated = React.memo((props) => {
         setBottomSheetHeight(height);
     };
 
-    const getLayoutTest = (layout) => {
-        const { x, y, width, height } = layout;
-        // heightRef.current = height;
-        // setBottomSheetHeight(height);
-        console.log('height, ', height);
-    };
-
     return (
         <Animated.View
             // {...panResponder.panHandlers}
@@ -165,9 +158,6 @@ const BottomMenuAnimated = React.memo((props) => {
             ]}>
             <TouchableOpacity
                 style={styles.button}
-                onLayout={(event) => {
-                    getLayoutTest(event.nativeEvent.layout);
-                }}
                 onPress={() => bottomSheetOpen.onToggle()}>
                 <Icon
                     name={hiddenViewButton}

@@ -19,7 +19,7 @@ import { fareskiltData } from '../../assets/sign_descriptions';
 const numColumns = 4;
 
 /**
- * This is the component that contains all the components that are visible on the RoadSignScreen
+ * This is the area components of the RoadSignScreen, and contains all the components that are visible on the RoadSignScreen.
  * @namespace RoadSignArea
  * @category RoadSignComponents
  */
@@ -34,10 +34,11 @@ const RoadSignArea = React.memo((props) => {
     const [activeSignTypeName, setActiveSignTypeName] = useState('Fareskilt');
 
     const flatListRef = useRef();
+
     /**
-     * Handles the state of the modal, and sets the selectedSign state to the sign that has been presse.
-     *@memberof RoadSignArea
-     * @param {string} item signcode used for identifying the sign
+     * Handles the state of the modal, and sets the selectedSign state to the sign that has been pressed.
+     * @memberof RoadSignArea
+     * @param {string} item Signcode used for identifying the sign
      */
     const handleModal = (item) => {
         modalVisible.onOpen();
@@ -55,7 +56,7 @@ const RoadSignArea = React.memo((props) => {
     };
 
     /**
-     * Uses the flatlist reference to scrol to top when chaning sign
+     * Uses the flatlist reference to scroll to top when changing sign type in the bottom menu
      * @memberof RoadSignArea
      */
     const scrollToTop = () => {
@@ -66,10 +67,9 @@ const RoadSignArea = React.memo((props) => {
     const keyExtractor = (item, index) => item + index.toString();
 
     /**
-     * Function to set the lenghth and offset of an item in the flatlist
-     * @param {*} index index in the flatlist
+     * Function to set the length and offset of an item in the flatlist
+     * @param {*} index Index in the flatlist
      * @memberof RoadSignArea
-     * @returns
      */
     const getItemLayout = (data, index) => ({
         length: Dimensions.get('screen').height / 7.5,
@@ -78,10 +78,10 @@ const RoadSignArea = React.memo((props) => {
     });
 
     /**
-     * Used as a template for Flattlist, every item in the data it receives is passed on to this method
+     * Used as a template for Flatlist, every item in the data it receives is passed on to this method
      * @memberof RoadSignArea
      * @param {string} item the sign code (example: 100_1)
-     * @returns an image that will open a modal when pressed
+     * @returns An image that will open a modal when pressed
      */
     const renderItem = ({ item, index }) => {
         return (
@@ -103,7 +103,6 @@ const RoadSignArea = React.memo((props) => {
     return (
         <>
             <Overlay showOverlay={bottomSheetOpen} />
-            {/* <View style={styles.mainView}> */}
             <TouchableWithoutFeedback onPress={() => modalVisible.onClose()}>
                 <RoadSignModal
                     modalVisible={modalVisible}
@@ -129,10 +128,8 @@ const RoadSignArea = React.memo((props) => {
                     ref={flatListRef}
                     data={Object.keys(signType)}
                     extraData={signType}
-                    // style={styles.imageContainer}
                     contentContainerStyle={styles.flatlist}
                     keyExtractor={keyExtractor}
-                    // maxToRenderPerBatch={10}
                     initialNumToRender={20}
                     renderItem={renderItem}
                     getItemLayout={getItemLayout}
@@ -140,7 +137,6 @@ const RoadSignArea = React.memo((props) => {
                     persistentScrollbar={true}
                 />
             </View>
-            {/* </View> */}
 
             {/* BOTTOM MENU */}
             <BottomMenuAnimated bottomSheetOpen={bottomSheetOpen}>

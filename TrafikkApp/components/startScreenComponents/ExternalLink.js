@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Colors, Typography, Buttons } from '../../styles';
+import { Colors, Typography } from '../../styles';
 
 /**
  * This component is used to display a clickable external link on the StartScreen.

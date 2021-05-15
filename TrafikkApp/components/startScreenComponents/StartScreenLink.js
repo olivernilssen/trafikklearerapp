@@ -43,7 +43,6 @@ const StartScreenLink = React.memo((props) => {
 const styles = StyleSheet.create({
     buttonContainer: {
         margin: isSmallScreen() ? 7 : 12,
-        // margin: '5%',
         elevation: 10,
         ...Buttons.startScreen,
     },

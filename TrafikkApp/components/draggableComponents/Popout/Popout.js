@@ -3,13 +3,13 @@ import { StyleSheet, Animated } from 'react-native';
 import PopoutItems from './PopoutItems';
 
 /**
- * Popout component that shows a half circle of colors around
- * an object/view
+ * This components is to show the popout menu for each draggable object.
+ * The popout menu shows a half circle of PopoutItems around the draggable object.
  * @namespace Popout
  * @category Draggable
  * @subcategory Popout
- * @prop {boolean} popoutActive Bool to represent if popout is active or not
- * @prop {function} itemSize size of items shown in popout
+ * @prop {boolean} popoutActive Boolean to represent if the popout menu is active or not
+ * @prop {function} itemSize Size of the items shown in the popout menu
  */
 const Popout = React.memo((props) => {
     const { popoutActive, itemSize } = props;
@@ -19,7 +19,7 @@ const Popout = React.memo((props) => {
     /**
      * useEffect that is triggered when popoutActive state
      * is changed. Will animate the menu in or out of view
-     * of the user
+     * of the user.
      * @memberof Popout
      */
     useEffect(() => {
@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         justifyContent: 'center',
         zIndex: 999,
-        // backgroundColor: 'green',
     },
 });
 

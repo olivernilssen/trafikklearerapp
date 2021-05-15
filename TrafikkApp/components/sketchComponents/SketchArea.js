@@ -14,14 +14,15 @@ import DraggablesWithMenu from '../draggableComponents/DraggablesWithMenu';
 import SketchAreaMenuContent from './SketchAreaMenuContent';
 import { Colors } from '../../styles';
 import AppContext from '../../AppContext';
-// import { RUtils } from 'react-native-responsive-component';
 import { useOpen, isSmallScreen } from '../helpers';
 
 const { width, height } = Dimensions.get('window');
 
 /**
- * This is a big component that contains all the components that are visible
- * on the SketchArea screens.
+ * This is the SketchArea compoennt, a big component that contains all the components related to the drawing function and that are visible
+ * on the sketch screens. This is the IntersectionScreen, RoundaboutScreen, HighwayScreen, CountryRoadScreen and MapSketchScreen.
+ * The component behaves differently the MapSketchScreen, for that screen a snapshow of the map is used as a sketch backround. For the
+ * other screens, illustrations from a data file is used.
  * @namespace SketchArea
  * @category SketchComponents
  * @prop {string} name Name of the screen (IntersectionScreen, RoundaboutScreen etc)
@@ -52,8 +53,10 @@ const SketchArea = React.memo((props) => {
     const [extensionType, setExtensionType] = useState('Vanlig');
 
     /**
-     * useEffect that is triggered when currentImg is changed
-     * Will clear the canvas and delete all objects on the screen
+     * useEffect that is triggered when currentImg is changed.
+     * Will clear the canvas and delete all objects on the screen unless the user
+     * has changed the settings for deleteOnChange in the settings.
+     * @memberof SketchArea
      */
     useEffect(() => {
         if (isMap) {
@@ -69,6 +72,12 @@ const SketchArea = React.memo((props) => {
         }
     }, [currentImg]);
 
+    /**
+     * useEffect used when the screen that uses the SketchArea is map.
+     * Will take the latest snapshot taken from the map, and set this
+     * as the sketch background image.
+     * @memberof SketchArea
+     */
     useEffect(() => {
         if (isMap) {
             if (appContext.latestSnapshot != '') {
@@ -79,6 +88,11 @@ const SketchArea = React.memo((props) => {
         }
     }, [appContext.latestSnapshot]);
 
+    /**
+     * useEffect that is triggeren when the user changes eraser size in settings.
+     * Wil set the eraser size according to what the user has chosen.
+     * @memberof SketchArea
+     */
     useEffect(() => {
         setEraserSize(parseInt(appContext.eraserSize));
         if (pencilColor === eraserColor) {
@@ -111,9 +125,9 @@ const SketchArea = React.memo((props) => {
     };
 
     /**
-     * Function to undo the previous action of the user
-     * will remove strokes or draggables
-     * Does not unto draggable movements
+     * Function to undo the previous action of the user.
+     * will remove strokes or draggables.
+     * Does not unto draggable movements.
      * @memberof SketchArea
      */
     const undoChange = useCallback(() => {

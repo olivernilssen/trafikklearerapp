@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react';
 /**
  * This is to be used to determine if something is open or closed
  * and also holds set functions to toggle off and on the state.
- * @namespace useOpen
+ * @memberof Helpers
  * @param {boolean} defaultOpen default/start boolean value of this hook
  * @returns an object with the state and all functions available for it
  */

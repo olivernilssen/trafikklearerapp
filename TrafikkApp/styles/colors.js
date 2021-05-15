@@ -4,7 +4,6 @@
 const lightCharcoal = '#747474';
 const charcoal = '#4A4A4A';
 const darkCharcoal = '#434343';
-const darkerCharchoal = '#404040';
 
 const transparentDark = '#3B3B3BDC';
 
@@ -22,15 +21,11 @@ const mustard = '#E2BD38';
 const green = '#ACEBC1';
 const darkGreen = '#038C73';
 const blue = '#79B7DA';
-const blueGray = '#CDD7DC';
 const blueGreen = '#56B897';
 const blue2 = '#439FD9';
 const blue3 = '#1B72BF';
 
 const red = '#FB5555';
-
-// DEFINING PRIMARY COLOR, SECONDARY COLOR, ACCENT COLOR ++
-const accentColor = blueGreen;
 
 export default {
     // Main
@@ -42,7 +37,7 @@ export default {
     // Text and icons
     textPrimary: white,
     textSecondary: darkGray,
-    logo: accentColor,
+    logo: blueGreen,
     icons: lightGray,
     iconActive: charcoal, // or mustard?
     drawerIconActive: blueGreen,
@@ -88,7 +83,7 @@ export default {
 
     // Curriculum screen
     curriculumBg: evenDarkerGray,
-    curriculumCards: darkGray, //'#171717',
+    curriculumCards: darkGray,
 
     //imagePicker
     selectedBorder: blue,
@@ -101,7 +96,7 @@ export default {
 
     //misc
     warning: red,
-    alertButton: accentColor,
+    alertButton: blueGreen,
     alertButtonSecondary: lightCharcoal,
 
     //map

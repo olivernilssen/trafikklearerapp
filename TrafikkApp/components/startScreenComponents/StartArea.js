@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     StyleSheet,
     Text,
@@ -6,7 +6,6 @@ import {
     TouchableOpacity,
     Linking,
     ScrollView,
-    Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Header, Divider } from '../reusableComponents/';
@@ -17,18 +16,14 @@ import { Colors, Typography, Icons } from '../../styles';
 import { useNavigation } from '@react-navigation/native';
 import { isSmallScreen } from '../helpers';
 
-// const {height, width} = Dimensions.get
-// const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 /**
- * Screen component for the start screen.
- * Contains links to the most important screens in the app, and some clickable external links.
+ * The area component for the StartScreen. This component contains all the components related to the start screen.
+ * It contains links to the most important screens in the app, and some clickable external links.
  * @namespace StartArea
  * @category StartScreenComponents
  */
 const StartArea = React.memo((props) => {
     const navigation = useNavigation();
-    const [mainViewHeight, setMainViewHeight] = useState(windowHeight - 100);
 
     return (
         <View style={styles.startArea}>
@@ -183,7 +178,6 @@ const StartArea = React.memo((props) => {
 
 const styles = StyleSheet.create({
     startArea: {
-        // flex: 1,
         width: '100%',
         height: '100%',
     },
@@ -203,9 +197,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     main: {
-        // flex: 1,
         width: '100%',
-        // height: '100%',
         justifyContent: 'center',
         paddingVertical: '10%',
         backgroundColor: Colors.startScreenBg,
@@ -214,7 +206,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingVertical: '2%',
-        // backgroundColor: 'blue',
     },
     text: {
         width: '90%',
@@ -229,11 +220,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         flexWrap: 'wrap',
-        // backgroundColor: 'red',
     },
     footer: {
-        // flex: 1,
-        // height: 200,
         borderTopWidth: 1,
         borderTopColor: Colors.dividerPrimary,
         width: '100%',

@@ -7,17 +7,17 @@ import { isSmallScreen } from '../helpers';
 import { Colors, Icons } from '../../styles';
 
 /**
- * This component is what the user sees on top of the map
- * it's a transparent type of view
+ * This component is what the user sees on top of the map.
+ * Tt's a transparent type of view.
  * @namespace MapCallout
  * @category MapComponents
- * @prop {ref} MapRef the reference to the MapView object
- * @prop {hook} userFollow boolean hook to set, check and update if user is followed
- * @prop {hook} pin the pin hook to set and update the pin
- * @prop {dict} currRegion the current map region displayed on the screen
- * @prop {boolean} locationPermission if the user has allowed to use the location or not
- * @prop {function} takeSnapshot function to take snapshot of the map
- * @prop {string} maptype the current mapType
+ * @prop {ref} MapRef The reference to the MapView object
+ * @prop {hook} userFollow Boolean hook to set, check and update if user is followed
+ * @prop {hook} pin The pin hook to set and update the pin
+ * @prop {dict} currRegion The current map region displayed on the screen
+ * @prop {boolean} locationPermission If the user has allowed to use the location or not
+ * @prop {function} takeSnapshot Function to take snapshot of the map
+ * @prop {string} maptype The current mapType
  * @returns
  */
 const MapCallout = (props) => {
@@ -33,7 +33,7 @@ const MapCallout = (props) => {
 
     const isSatellite = mapType === 'satellite';
 
-    /** Zoom the camera IN on current location
+    /** Zoom the camera IN on the current location
      * @memberof MapCallout
      */
     const zoomInLocation = () => {

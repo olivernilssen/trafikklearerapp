@@ -5,12 +5,12 @@ import StartArea from '../components/startScreenComponents/StartArea';
 
 /**
  * Screen component for the start screen.
- * Contains links to the most important screens in the app, and some clickable external links.
+ * This screen contains clickable elements that redirects the user to the most important
+ * screens in the app, and some clickable external links.
  * @namespace StartScreen
  * @category Screens
- * @prop {object} navigation Used for navigation between the different screens
  */
-const StartScreen = React.memo(({ navigation }) => {
+const StartScreen = React.memo(() => {
     return (
         <MainView>
             <StartArea />
