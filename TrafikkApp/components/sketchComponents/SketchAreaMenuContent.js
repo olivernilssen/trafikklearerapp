@@ -9,9 +9,11 @@ import AppContext from '../../AppContext';
 import { isSmallScreen, useOpen } from '../helpers';
 
 /**
- * SketchAreaMenuContent is a menu that slides up from the bottom of the screen
+ * SketchAreaMenuContent is a menu that slides up from the bottom of the screen.
  * This menu allows the user to change the background image according to
  * which screen they are on.
+ * In the IntersectionScreen, a buttonGroup is displayed in addition to the road designs. This
+ * button group is to choose between the different intersection types (X, Y or T).
  * @namespace SketchAreaMenuContent
  * @category SketchComponents
  * @prop {string} roadType Name of roadtype
@@ -70,7 +72,8 @@ const SketchAreaMenuContent = React.memo(
 
         /**
          * Is triggered on mount and unmount, will help set the background
-         * when the screen is first mounted
+         * when the screen is first mounted.
+         * @memberof SketchAreaMenuContent
          */
         useEffect(() => {
             if (roadType == 'Veikryss') {
@@ -84,9 +87,10 @@ const SketchAreaMenuContent = React.memo(
         }, []);
 
         /**
-         * Is triggered when extensionType state is changed
-         * Will update the background image according to this parameter
-         * Also sets the roadDesignChange to false so that the canvas is not cleared
+         * Is triggered when extensionType state is changed.
+         * Will update the background image according to this parameter.
+         * Also sets the roadDesignChange to false so that the canvas is not cleared.
+         * @memberof SketchAreaMenuContent
          */
         useEffect(() => {
             setRoadDesignChange(false);
@@ -220,6 +224,7 @@ const SketchAreaMenuContent = React.memo(
          * of the buttons in the BottomMenu.
          * @memberof SketchAreaMenuContent
          * @param {String} designName
+         * @returns The source of the image
          */
         const getImage = (designName) => {
             let imgSource = '';

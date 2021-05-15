@@ -6,20 +6,20 @@ import { Colors, Typography } from '../../styles';
 import { Divider } from '../reusableComponents';
 
 /**
- * Collects all the draggable components into one.
- * Contains the list of draggables, the draggables object, the draggable menu
+ * This components collects all the draggable components into one.
+ * The components contains the list of draggables, the draggables object, the draggable menu
  * and the dropzone area.
  * @namespace DraggablesWithMenu
  * @category DraggableComponents
  * @prop {boolean} topMenuOpen If the topMenu is open or not in view
  * @prop {array[]} draggables list of all draggables in view
- * @prop {function} setDraggables function to update draggables array
- * @prop {array[]} actionList list of all actions taken (drawing or adding draggables)
- * @prop {function} setActionList update the actionList (add or remove)
- * @prop {int} deletingItemId integer to let the component know which draggable to delete
- * @prop {string} name name of the drawing view ('veikryss'... etc)
- * @prop {string} extensionType information about which extension is being used ("gangfelt", "sykkelveit", etc)
- * @prop {function} setExtensionType update the extension type used
+ * @prop {function} setDraggables Function to update the draggables array
+ * @prop {array[]} actionList List of all actions taken (drawing or adding draggables)
+ * @prop {function} setActionList Update the actionList (add or remove)
+ * @prop {int} deletingItemId Integer to let the component know which draggable to delete
+ * @prop {string} name Name of the drawing view ('veikryss'... etc)
+ * @prop {string} extensionType Information about which extension is being used ("gangfelt", "sykkelfelt", etc)
+ * @prop {function} setExtensionType Update the extension type used
  */
 const DraggablesWithMenu = React.memo((props) => {
     //States from props
@@ -49,11 +49,11 @@ const DraggablesWithMenu = React.memo((props) => {
     const [counter, setCounter] = useState(0);
 
     /**
-     * Adds a new draggable to the array draggables
-     * also adds this value to the actionList to be used
-     * when the user presses the undo button
+     * Adds a new draggable to the array draggables.
+     * Also adds this value to the actionList to be used
+     * when the user presses the undo button.
      * @memberof DraggablesWithMenu
-     * @param {string} itemSrc image source of draggable to add
+     * @param {string} itemSrc Image source of the draggable to add
      */
     const onNewDraggable = useCallback((itemSrc) => {
         if (Object.keys(draggables).length >= 5) {
@@ -71,11 +71,11 @@ const DraggablesWithMenu = React.memo((props) => {
     });
 
     /**
-     * Function to remove an item from the list draggables
-     * Filters the list according to the provided itemID
-     * Also filteres the actionList the same way
+     * Function to remove an item from the list draggables.
+     * Filters the list according to the provided itemID.
+     * Also filteres the actionList the same way.
      * @memberof DraggablesWithMenu
-     * @param {int} itemId
+     * @param {int} itemId The id of the draggable to be removed
      */
     const onRemoveItem = (itemId) => {
         //Remove item from list of draggables
@@ -112,7 +112,7 @@ const DraggablesWithMenu = React.memo((props) => {
                         </Text>
 
                         <Divider
-                            borderColor={Colors.iconActive}
+                            borderColor={Colors.dividerPrimary}
                             style={styles.divider}
                         />
                         <View style={styles.buttonsView}>

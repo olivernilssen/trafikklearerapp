@@ -4,14 +4,14 @@ import { MainView } from '../components/reusableComponents/';
 import SketchArea from '../components/sketchComponents/SketchArea';
 
 /**
- * Screen component for map sketch screen
- * Will show the sketch area but with the snapshot background if there i
- * if any.
+ * Screen component for map sketch screen.
+ * This screen is a sketch screen, and is using the big SketchArea component with namne prop 'Map'.
+ * This screen differs from the other screens using the SketchArea component. It will use the
+ * snapshot taken from the MapScreen as background.
  * @namespace MapSketchScreen
  * @category Screens
- * @prop {object} navigation Used for navigation between the different screens
  */
-const MapSketchScreen = React.memo(({ navigation }) => {
+const MapSketchScreen = React.memo(() => {
     return (
         <MainView>
             <View style={styles.sketchArea}>

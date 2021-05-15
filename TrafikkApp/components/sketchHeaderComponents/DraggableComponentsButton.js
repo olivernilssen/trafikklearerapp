@@ -3,11 +3,12 @@ import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Buttons, Colors, Icons } from '../../styles';
 
-/**This is the button component for the
- * box that is either open or closed on the sketchheader
+/**
+ * This component displays the button to open the draggableMenu on the sketch screens.
+ * The button is displayed in the header on the sketch screens.
  * @namespace DraggableComponentsButton
  * @category SketchHeaderComponents
- * @prop {object} topMenuOpen hook to get bool and functions of the menu
+ * @prop {object} topMenuOpen Hook to get bool and functions of the menu
  */
 const DraggableComponentsButton = React.memo((props) => {
     const { topMenuOpen } = props;

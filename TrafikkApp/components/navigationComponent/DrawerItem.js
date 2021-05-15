@@ -4,12 +4,12 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { Colors, Typography, Icons } from '../../styles';
 
 /**
- * Component for the items that are shown in the drawer.
+ * Component for the items that are shown in the drawer menu.
  * @namespace DrawerItem
- * @category NavigationComponent
- * @prop {int} screenIndex the index number of the screenIndex
- * @prop {string} screenName screen name of the view
- * @prop {array} params parameters for this view
+ * @category NavigationComponents
+ * @prop {int} screenIndex The index number of the screenIndex
+ * @prop {string} screenName Screen name of the view
+ * @prop {array} params Parameters for this view
  */
 const DrawerItem = React.memo(({ navigateTo, isActive, params }) => {
     const { icon, title } = params;

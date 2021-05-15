@@ -70,13 +70,14 @@ const signTypeArray = [
 ];
 
 /**
- * This component displays the buttons for the bottom menu
+ * This component displays the content of the bottom menu on the RoadSignScreen.
+ * This includes the buttons to change between the different sign types.
  * @namespace RoadSignMenuContent
  * @category RoadSignComponents
  * @prop {function} handleSignType Handles the change from one signType to another
- * @prop {function} bottomSheetOpen Sets the state of bottomSheetOpen
+ * @prop {function} closeBottomMenu Function to close the bottom menu
  * @prop {function} handleHeaderName Handles the headername when signType changes
- * @returns Buttons for each signType
+ * @prop {function} scrollToTop Function to scroll to the top of the view
  */
 const RoadSignMenuContent = (props) => {
     const [activeTypeID, setActiveTypeID] = useState(0);

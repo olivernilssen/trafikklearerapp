@@ -42,13 +42,14 @@ const pencilThicknessArray = [
 ];
 
 /**
- * A button with a menu for the drawing component of the SketchHeader.
+ * This component displays the menu where the user can change pen color and pen size, in the sketch screens.
+ * The menu is triggered by a button, which is displayed in the header.
  * @namespace SketchColorMenu
  * @category SketchHeaderComponents
  * @prop {function} onPaletteColorChange Changes the color
  * @prop {function} onChangePencilSize Changes pencil size
  * @prop {object} propsStyle StyleSheet
- * @prop {function} onEraserPencilSwitch handles the switch between eraser and pencil
+ * @prop {function} onEraserPencilSwitch Handles the switch between eraser and pencil
  * @prop {number} buttonActiveId The id of the pencil button in the header
  * @prop {number} activeId The state activeId
  * @prop {function} focusedActiveButton Handles the states of the active buttons
@@ -108,7 +109,8 @@ const SketchColorMenu = React.memo((props) => {
     };
 
     /**
-     * Handles what happens to the pencil button when you press it or when you press another button after the pencil button.
+     * Handles what happens to the pencil button when you press it or when you
+     * press another button after the pencil button.
      * @memberof SketchColorMenu
      */
     const onPressMenuTrigger = () => {

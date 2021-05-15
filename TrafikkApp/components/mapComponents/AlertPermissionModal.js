@@ -7,11 +7,12 @@ import DeviceInfo from 'react-native-device-info';
 import IntentLauncher from 'react-native-intent-launcher';
 
 /**
- * This is a component that pops up to alert the user that the drawing is set to be deleted.
+ * This is a component that pops up to alert the user to give the app permission to
+ * use location data, to be able to use the map function on the MapScreen.
  * @namespace AlertPermissionModal
  * @category MapComponent
- * @prop {object} modalVisible If the modal is visible or not, plus functions to open, close it
- * @prop {function} checkUserPermission Checks if the user has allowed app to access location
+ * @prop {object} modalVisible If the modal is visible or not, plus functions to open and close it
+ * @prop {function} checkUserPermission Checks if the user has allowed the app to access location data
  */
 const AlertPermissionModal = React.memo(
     ({ modalVisible, checkUserPermission }) => {
@@ -19,7 +20,7 @@ const AlertPermissionModal = React.memo(
 
         /**
          * This function opens up the settings for this app
-         * in a new activity and then checks if permission has been changed
+         * in a new activity and then checks if permission has been changed.
          * @memberof AlertPermissionModal
          */
         const openAppSettings = () => {
@@ -61,7 +62,7 @@ const AlertPermissionModal = React.memo(
                         </Text>
 
                         <Divider
-                            borderColor={Colors.iconActive}
+                            borderColor={Colors.dividerPrimary}
                             style={styles.divider}
                         />
                         <View style={styles.buttonsView}>
@@ -112,14 +113,12 @@ const styles = StyleSheet.create({
     },
     modalTitle: {
         margin: 5,
-        // textAlign: 'center',
         fontWeight: 'bold',
         color: Colors.icons,
         ...Typography.section,
     },
     modalText: {
         margin: 5,
-        // textAlign: 'center',
         color: Colors.icons,
         ...Typography.body,
     },
