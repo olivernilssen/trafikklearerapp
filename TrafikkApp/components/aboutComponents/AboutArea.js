@@ -9,13 +9,14 @@ import {
     ScrollView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+
 import { Header, Divider } from '../reusableComponents/';
 import { Buttons, Colors, Icons, Typography } from '../../styles';
 import { isSmallScreen } from '../helpers';
 
 /**
  * The area component for the About App screen.
- * This is the component that contains all the other components related to the AboutScreen
+ * This is the component that contains all the other components related to the AboutScreen.
  * @namespace AboutArea
  * @category AboutComponents
  */
@@ -31,8 +32,6 @@ const AboutArea = React.memo((props) => {
     const openPlayStore = () => {
         const GOOGLE_PACKAGE_NAME = 'com.illustrafikk';
         Linking.openURL(`market://details?id=${GOOGLE_PACKAGE_NAME}`);
-
-        // Linking.openURL('https://github.com/olivernilssen/trafikklearerapp/');
     };
 
     /**
@@ -134,7 +133,6 @@ const styles = StyleSheet.create({
     },
     main: {
         flex: 1,
-        // height: '100%',
         width: '100%',
         paddingVertical: 20,
         justifyContent: 'center',
@@ -153,7 +151,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '90%',
-        // height: '100%',
         margin: '1%',
         padding: '3%',
         paddingVertical: '5%',

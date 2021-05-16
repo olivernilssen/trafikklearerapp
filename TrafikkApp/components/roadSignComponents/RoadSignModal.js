@@ -16,13 +16,12 @@ import { Divider } from '../reusableComponents';
 import { isSmallScreen } from '../helpers';
 
 /**
- * this component will display a modal with an image,
- * when image, or the "i"-button is pressed, it wil display the name and description related to said image
- * To close modal, either press the "X"-button or outside of the modal.
+ * This component will display a modal with an image of the chosen road sign.
+ * When the image, or the "i"-button is pressed, it will display the name and description related to said sign.
+ * To close the modal, either press the "X"-button or outside of the modal.
  * @namespace RoadSignModal
  * @category RoadSignComponents
- * @prop {method} closeModal Method used for closing the modal
- * @prop {boolean} modalVisible State used for toggeling modal visability
+ * @prop {object} modalVisible If the modal is visible or not, plus functions to open and close it
  * @prop {object} selectedSign Contains name, description and image source of the chosen sign
  * @prop {string} selectedSignCode The sign code of the selected sign (example: 100_1)
  */
@@ -37,8 +36,8 @@ const RoadSignModal = React.memo((props) => {
     const [showText, setShowText] = useState(false);
 
     /**
-     * UseEffect that runs when modal pops up or goes away
-     * sets the height of the modal to the image heigh
+     * UseEffect that is triggered when the modal pops up or goes away.
+     * Sets the height of the modal to the image height.
      * @memberof RoadSignModal
      */
     useEffect(() => {
@@ -54,8 +53,8 @@ const RoadSignModal = React.memo((props) => {
     }, [modalVisible.isOpen]);
 
     /**
-     * UseEffect that runs when either image height, description height or show description changes
-     * Changes the height of the modal
+     * UseEffect that is triggeren when either image height, description height or show description changes.
+     * Changes the height of the modal.
      * @memberof RoadSignModal
      */
     useEffect(() => {
@@ -75,7 +74,7 @@ const RoadSignModal = React.memo((props) => {
 
     /**
      * SetLayout will run when the view of the modal is mounted
-     * to get the correct size of the modal on the screen
+     * to get the correct size of the modal on the screen.
      * @memberof RoadSignModal
      */
     const setLayout = useCallback((layout, type) => {
@@ -96,8 +95,9 @@ const RoadSignModal = React.memo((props) => {
     });
 
     /**
+     * The name and description of the road sign chosen.
      * @memberof RoadSignModal
-     * @returns the title and description of the sign
+     * @returns The title and description of the sign
      */
     const textDescription = () => {
         if (showDescript) {
@@ -146,7 +146,6 @@ const RoadSignModal = React.memo((props) => {
 
     /**
      * An animated style constant that takes the height of the modal
-     * @memberof RoadSignModal
      */
     const animatedStyle = {
         height: viewHeight,
@@ -279,7 +278,6 @@ const styles = StyleSheet.create({
         width: isSmallScreen() ? '70%' : '85%',
         maxHeight: isSmallScreen() ? 200 : 450,
         resizeMode: 'contain',
-        // backgroundColor: 'red',
     },
     textDescription: {
         marginTop: '5%',
@@ -291,14 +289,12 @@ const styles = StyleSheet.create({
         color: Colors.textPrimary,
         textAlign: 'center',
         fontWeight: 'bold',
-        // backgroundColor: 'blue',
         ...Typography.section,
     },
     textStyleDescription: {
         width: '100%',
         color: Colors.textPrimary,
         textAlign: 'center',
-        // backgroundColor: 'blue',
         ...Typography.section,
     },
 });

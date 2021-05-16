@@ -10,35 +10,39 @@ import { RUtils } from 'react-native-responsive-component';
 const extensionTypes = ['Gangfelt', '-', 'Sykkelfelt'];
 
 /**
- * Component that shows a top menu on the screens using the SketchArea component.
- * Displayes objects that can be turned into draggables, and extension types
- * (pedestrian crossing, bicycle lanes) for the traffic designs.
+ * Component that shows a top menu on the screens where the SketchArea component is used.
+ * Displayes the Carousel containing the objects that can be turned into draggables.
+ * Also displays the extension types (pedestrian crossing, bicycle lanes) for the traffic designs
+ * on IntersectionScreen and RounaboutScreen.
  * @namespace DraggableMenu
  * @category DraggableComponents
  * @subcategory DraggableMenu
- * @prop {boolean} topMenuOpen Bool to represent if the top menu is hidden or not
- * @prop {function} onNewDraggable Function to add new draggable
+ * @prop {boolean} topMenuOpen Boolean to represent if the top menu is hidden or not
+ * @prop {function} onNewDraggable Function to add a new draggable
  * @prop {string} name Name of the screen
  * @prop {function} setExtensionType Function to set the extension type for this view
  */
 const DraggableMenu = React.memo(
     ({ topMenuOpen, onNewDraggable, name, setExtensionType }) => {
+        // The position and animation value of the top menu
         const [yPosHidden, setYPosHidden] = useState(-200);
         const [bounceValue, setBounceValue] = useState(
             new Animated.Value(yPosHidden)
         );
+
         const [buttonValue, setButtonValue] = useState('-');
         const buttonGroupWidth = RUtils.isSmallScreen() ? 200 : 230;
         const buttonGroupHeight = RUtils.isSmallScreen() ? 40 : 45;
 
+        // Maps through the draggables to be displayed, saves this to an array objectKeys
         const appContext = useContext(AppContext);
         const objects = JSON.parse(appContext.draggableObjects);
         const objectKeys = Object.keys(objects);
 
         /**
-         * useEffect that is triggered when topMenuOpen
-         * @memberof DraggableComponentsMenu
-         * is changed. Will toggle the view of the top menu
+         * useEffect that is triggered when topMenuOpen is changed.
+         * Will toggle and animate the the top menu in and out of view.
+         * @memberof DraggableMenu
          */
         useEffect(() => {
             var toValue = 0;
@@ -54,11 +58,11 @@ const DraggableMenu = React.memo(
         }, [topMenuOpen.isOpen]);
 
         /**
-         * Gets the layout of the topmenu view.
+         * Gets the layout of the top menu view.
          * This is so we know how far down the object needs to
-         * "slide" to be fully in view for the user
-         * @memberof DraggableComponentsMenu
-         * @param {dictionary} layout dictionary with information about the view layout
+         * "slide" to be fully in view for the user.
+         * @memberof DraggableMenu
+         * @param {dictionary} layout Dictionary with information about the view layout
          */
         const getTopMenuLayout = (layout) => {
             const { x, y, width, height } = layout;
@@ -68,9 +72,9 @@ const DraggableMenu = React.memo(
         /**
          * Triggered when the buttons in the button group on the topmenu is
          * changed or clicked. Will set the selected button of the button group
-         * aswell as the extensiontype and to change backgroundImage
-         * @memberof DraggableComponentsMenu
-         * @param {String} value extenstiontype value
+         * aswell as the extensiontype used to change backgroundImage of the sketch area.
+         * @memberof DraggableMenu
+         * @param {String} value Extenstiontype value
          */
         const extensionTypeChange = (value) => {
             if (value != 'Gangfelt' && value != 'Sykkelfelt') {

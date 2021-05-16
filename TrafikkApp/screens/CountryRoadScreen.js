@@ -6,12 +6,11 @@ import { SketchArea } from '../components/sketchComponents/';
 
 /**
  * The screen component for roadScreen "Landevei".
- * This screen is a sketch screen, and is using the big SketchArea component.
+ * This screen is a sketch screen, and is using the big SketchArea component with name prop 'Landevei'.
  * @namespace CountryRoadScreen
  * @category Screens
- * @prop {object} navigation Used for navigation between the different screens
  */
-const CountryRoadScreen = React.memo(({ navigation }) => {
+const CountryRoadScreen = React.memo(() => {
     return (
         <MainView>
             <View style={styles.sketchArea}>

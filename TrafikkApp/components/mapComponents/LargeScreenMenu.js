@@ -26,15 +26,15 @@ const mapTypes = {
 };
 
 /**
- * Component to render the bottom menu in maps for larger screens
+ * Component to render the bottom menu in the MapScreen for larger screens/devices.
  * @namespace LargeScreenMenu
  * @category MapComponents
- * @prop {hook} markerToggle hook to mark or unmark the markers
- * @prop {hook} pin hook to set the coords of the pin/marker
- * @prop {string} snapshot the path for the snapshot
- * @prop {function} takeSnapshot call to function to take snapshot and save img
- * @prop {string} mapType the maptype being used
- * @prop {function} setMapType setstate function to set maptype
+ * @prop {hook} markerToggle Hook to mark or unmark the markers
+ * @prop {hook} pin Hook to set the coords of the pin/marker
+ * @prop {string} snapshot The path for the snapshot
+ * @prop {function} takeSnapshot Call to function to take snapshot and save image
+ * @prop {string} mapType The maptype being used
+ * @prop {function} setMapType Setstate function to set mapType
  */
 const LargeScreenMenu = ({
     markerToggle,
@@ -65,7 +65,7 @@ const LargeScreenMenu = ({
         }
     }, [pin.coords]);
 
-    /** Save the pinned location to async storage
+    /** Save the pinned location to async storage.
      * @memberof LargeScreenMenu
      */
     const savePinLocation = () => {

@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { Colors } from '../../styles';
 
 /**
- * Component that displays a divider
+ * Component that displays a divider.
  * @namespace Divider
  * @category ReusableComponents
  * @prop {stylesheetObject} [style] Style of the divider

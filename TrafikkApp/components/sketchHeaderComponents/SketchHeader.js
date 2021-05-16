@@ -10,7 +10,8 @@ import { isSmallScreen } from '../helpers';
 import { Colors } from '../../styles';
 
 /**
- * The SketchHeader contains all the buttons and menus related to the drawing.
+ * The component for the content of the header, the SketchHeader, in the sketch screens.
+ * SketchHeader contains all the buttons and menus related to the drawing.
  * It also contains a button to toggle the draggable components menu in and out of view.
  * @namespace SketchHeader
  * @category SketchHeaderComponents
@@ -20,7 +21,6 @@ import { Colors } from '../../styles';
  * @prop {function} eraser Sets the pencil to an eraser, erases lines instead of drawing
  * @prop {function} onPaletteColorChange changes the pencil color according to user input
  * @prop {boolean} topMenuOpen Whether the draggable components menu is hidden or not.
- * @prop {function} toggleTopMenu Toggles the top menu (draggable components menu) in and out of view
  * @prop {function} onChangePencilSize Changes the pencil thickness
  * @prop {string} pencilColor The state pencilColor
  * @prop {number} pencilSize The state pencilSize
@@ -79,7 +79,6 @@ const SketchHeader = React.memo((props) => {
                         pencilSize={pencilSize}
                         chosenColor={chosenColor}
                     />
-                    {/* <View style={styles.container} /> */}
                     <HeaderButton
                         iconName={'eraser'}
                         buttonOnPress={eraser}
@@ -87,7 +86,6 @@ const SketchHeader = React.memo((props) => {
                         activeId={activeId}
                         focusedActiveButton={focusedActiveButton}
                     />
-                    {/* <View style={styles.container} /> */}
                     <HeaderButton
                         iconName={'undo-alt'}
                         buttonOnPress={undoChange}
@@ -95,7 +93,6 @@ const SketchHeader = React.memo((props) => {
                         activeId={activeId}
                         focusedActiveButton={focusedActiveButton}
                     />
-                    {/* <View style={styles.container} /> */}
                     <DraggableComponentsButton
                         activeIconName={'box-open'}
                         inactiveIconName={'box'}

@@ -26,12 +26,4 @@ export default {
     BUTTON_HEIGHT_LARGE: (height - (isSmallScreen() ? 60 : 80)) / 6, // RUtils.isSmallScreen() ? 100 : 190,
     BUTTON_WIDTH_EXTRA_LARGE: width / 2.5,
     BUTTON_HEIGHT_EXTRA_LARGE: height / 5,
-
-    // SPACING
-    PADDING_SMALL: 5,
-    PADDING_MEDIUM: 10,
-    PADDING_LARGE: 15,
-    MARGIN_SMALL: 5,
-    MARGIN_MEDIUM: 10,
-    MARGIN_LARGE: 15,
 };

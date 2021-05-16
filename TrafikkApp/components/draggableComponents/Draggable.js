@@ -29,10 +29,10 @@ const radius = (ITEM_SIZE * 2) / 2;
 const buttonSize = windowWidth * 0.04;
 
 /**
- * Component that holds the actual draggable component
+ * Component that holds the actual draggable component.
  * @namespace Draggable
  * @category DraggableComponents
- * @prop {string} source image source of the draggable object
+ * @prop {string} source Image source of the draggable object
  */
 const Draggable = React.memo((props) => {
     //States
@@ -42,8 +42,8 @@ const Draggable = React.memo((props) => {
     const [popoutActive, setPopoutActive] = useState(false);
 
     /**
-     * useEffect that is triggered when tintColor is changed
-     * Will make the popout inactive
+     * useEffect that is triggered when tintColor is changed.
+     * Will make the popout menu inactive.
      * @memberof Draggable
      */
     useLayoutEffect(() => {
@@ -51,10 +51,10 @@ const Draggable = React.memo((props) => {
     }, [tintColor]);
 
     /**
-     * When user starts dragging the object, this is triggered
-     * will remove the popout if it is active
+     * When user starts dragging the object, this function is triggered.
+     * will remove the popout menu if it is active
      * and make the item hover as a feedback that the dragging has
-     * started
+     * started.
      * @memberof Draggable
      * @param {array[]} gesture
      */
@@ -70,9 +70,9 @@ const Draggable = React.memo((props) => {
     };
 
     /**
-     * When dragging event has ended, the
-     * hoved animation will end and pop back to it's
-     * original size
+     * When the user stops dragging the object, this function is triggered.
+     * Will make the hover animation end and the item to pop back to it's
+     * original size.
      * @memberof Draggable
      * @param {array[]} gesture
      */
@@ -85,9 +85,9 @@ const Draggable = React.memo((props) => {
     };
 
     /**
-     * Helper function so useEffects are triggered
-     * when the user stops dragging the element on top of
-     * the trashcan. This will initate the removal of the item
+     * Function that is triggered when pressing the delete button
+     * in the popout menu of the draggable object.
+     * Will remove the draggable object from the screen.
      * @memberof Draggable
      */
     const removeItem = useCallback(() => {
@@ -157,7 +157,6 @@ const styles = StyleSheet.create({
         width: ITEM_SIZE,
         height: ITEM_SIZE,
         justifyContent: 'center',
-        // zIndex: -1,
     },
 });
 

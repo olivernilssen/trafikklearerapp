@@ -1,15 +1,14 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-// import { RUtils } from 'react-native-responsive-component';
 import { isSmallScreen } from '../helpers';
 import { Colors } from '../../styles';
 
 /**
- * Component for making the pencil size buttons in the sketchColorMenu.
+ * Component that displays a pencil size button. The button(s) is displayed in the menu to change between pencolor and pencil size in the sketch screens.
  * @namespace PencilSizeButton
  * @category SketchHeaderComponents
  * @prop {number} pencilThickness Determines the height of the View used for making the "icons" for the pencil thickness buttons
- * @prop {number} buttonID assigned uniq number for the button
+ * @prop {number} buttonID Assigned unique number for the button
  * @prop {number} pencilThicknessID The state pencilThicknessID
  */
 const PencilSizeButton = React.memo((props) => {

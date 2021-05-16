@@ -11,7 +11,7 @@ import { Colors } from '../../../styles';
 import { isSmallScreen } from '../../helpers';
 
 /**
- * Component that displays a carousel with the draggable items.
+ * Component that displays a swipeable carousel containing all the draggable objects.
  * @namespace Carousel
  * @category DraggableComponents
  * @subcategory DraggableMenu
@@ -21,6 +21,7 @@ import { isSmallScreen } from '../../helpers';
  */
 const Carousel = React.memo((props) => {
     const { onNewDraggable, objectKeys, objects } = props;
+
     const [numberOfSlides, setNumberOfSlides] = useState(1);
     const [slidesArray, setSlidesArray] = useState([]);
     const [activeSlide, setActiveSlide] = useState(1);
@@ -31,17 +32,18 @@ const Carousel = React.memo((props) => {
     let bullets = [];
 
     /**
-     * Get's the image source of the draggable
-     * and creates a new draggable item
+     * Gets the image source of the draggable
+     * and creates a new draggable item.
+     * Is triggered when pressing the 'image' of the draggable in the top menu.
      * @memberof Carousel
-     * @param {int} source image source of new draggable
+     * @param {int} source Image source of the item pressed
      */
     const onElementPress = (source) => {
         onNewDraggable(objects[source]);
     };
 
     /**
-     * Update scrollview is run everytime objectKeys change
+     * Update scrollview is run every time objectKeys change
      * @memberof Carousel
      */
     useEffect(() => {
@@ -118,7 +120,8 @@ const Carousel = React.memo((props) => {
     /**
      * Function to update the carousel with the new number of slides, and
      * number of items per slide.
-     * Is triggered when the items to be displayed in the carousel changes.
+     * Is triggered each time the items to be displayed in the carousel changes, e.g. when the user
+     * changes which draggables to be displayed in the menu.
      * @memberof Carousel
      */
     const updateScrollView = () => {
@@ -139,8 +142,9 @@ const Carousel = React.memo((props) => {
     };
 
     /**
-     * Generate bulletpoints to show number of slides
-     * Bulletpoint for active slide is highlighted
+     * Generates bulletpoints to show number of slides, and add
+     * the these to the bullets array.
+     * Bulletpoint for active slide is highlighted.
      * @memberof Carousel
      */
     for (let i = 1; i <= numberOfSlides; i++) {
@@ -159,7 +163,9 @@ const Carousel = React.memo((props) => {
 
     /**
      * Displayes the available draggable images that can be used.
-     * @return all the images that are in the "objects" array
+     * For each slide, maps through the objectsKeys making the images
+     * touchable so that they can be used as draggable objects.
+     * @returns All the images that are in the "objects" array as touchable elements
      * @memberof Carousel
      */
     const images = slidesArray.map((i) => {

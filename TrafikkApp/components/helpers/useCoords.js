@@ -2,9 +2,9 @@ import { useState, useCallback } from 'react';
 
 /**
  * This function sets and gets coordinates
- * @namespace useCoords
+ * @memberof Helpers
  * @param {object} defaultToggle the default coords, usually undefined
- * @returns an object with the state and setState of these coordinates
+ * @returns An object with the state and setState of these coordinates
  */
 const useCoords = (defaultCoords) => {
     // if (

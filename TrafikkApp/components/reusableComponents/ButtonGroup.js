@@ -17,7 +17,7 @@ import { Typography, Buttons, Colors } from '../../styles';
  * @prop {number} [groupWidth] The width of the button group
  * @prop {number} [height] The height of the button group
  * @prop {function} onSelect Handler to be called when the user taps a button
- * @prop {color} highlightBackgroundColor BachgroundColor of the selected button
+ * @prop {color} highlightBackgroundColor BackgroundColor of the selected button
  * @prop {color} highlightTextColor Text color of the selected button
  * @prop {color} inactiveBackgroundColor BackgroundColor of the inactive button(s)
  * @prop {color} inactiveTextColor Text color of the inactive button(s)

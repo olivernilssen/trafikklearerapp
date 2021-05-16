@@ -14,7 +14,8 @@ import OptionPicker from './OptionPicker';
 import { isSmallScreen } from '../helpers';
 
 /**
- * The view for the settings screen. It takes in data from
+ * The area component for the SettingsScreen. This component contains all the components
+ * related to the settings screen. This is the view for the settings screen, and it also takes in data from
  * AppContext and has arrays for possible values for the different settings.
  * @namespace SettingsArea
  * @category SettingsComponents
@@ -49,14 +50,14 @@ const SettingsArea = React.memo((props) => {
     // const themeValues = ['Mørk', 'Lys'];
 
     /**
-     * Function to handle changing a value in settings.
+     * Function to handle changing of a value in settings.
      * It also launches a toast on the screen to let the user know
      * that the change has been saved.
      * @memberof SettingsView
-     * @param {string} type the name of the settings that is changed
-     * @param {string} value the value to update the storage key to
-     * @param {function} setValue the state set function associated with this value
-     * @param {string} key the asyncStorage key for this value to update it
+     * @param {string} type The name of the settings that is changed
+     * @param {string} value The value to update the storage key to
+     * @param {function} setValue The state set function associated with this value
+     * @param {string} key The asyncStorage key for this value to update it
      */
     const onChangeValue = useCallback((type, value, setValue, key) => {
         myContext.saveNewSettings(value, setValue, key);

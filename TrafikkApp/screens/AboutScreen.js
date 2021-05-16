@@ -1,6 +1,6 @@
 import React from 'react';
 import { MainView } from '../components/reusableComponents/';
-import AboutArea from '../components/aboutComponents/AboutArea';
+import { AboutArea } from '../components/aboutComponents/';
 
 /**
  * The screen component for the About App screen.
@@ -8,9 +8,8 @@ import AboutArea from '../components/aboutComponents/AboutArea';
  * It also displays a button that sends the user to Google Play Store to review the app.
  * @namespace AboutScreen
  * @category Screens
- * @prop {object} navigation Used for navigation between the different screens
  */
-const AboutScreen = React.memo(({ navigation }) => {
+const AboutScreen = React.memo(() => {
     return (
         <MainView>
             <AboutArea />

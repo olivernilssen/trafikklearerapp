@@ -9,9 +9,8 @@ import CurriculumArea from '../components/curriculumObjectivesComponents/Curricu
  * and displays the text on the screen.
  * @namespace CurriculumObjectivesScreen
  * @category Screens
- * @prop {object} navigation Used for navigation between the different screens
  */
-const CurriculumObjectivesScreen = React.memo(({ navigation }) => {
+const CurriculumObjectivesScreen = React.memo(() => {
     return (
         <MainView>
             <CurriculumArea />

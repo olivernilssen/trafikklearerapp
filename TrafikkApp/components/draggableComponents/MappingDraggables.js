@@ -3,12 +3,13 @@ import Draggable from './Draggable';
 import AppContext from '../../AppContext';
 
 /**
- * Helper function to map through all the draggables objects
- * then to display them in DraggableWithEverything
+ * This component maps through all the draggables objects, making a Draggable from
+ * each of them. This is used to display them in the big component containing all the
+ * components related to the draggable function - DraggablesWithMenu.
  * @namespace MappingDraggable
  * @category DraggableComponents
  * @prop {array[]} draggables list of all draggables in view
- * @prop {function} onRemoveItem function to remove item from draggables list
+ * @prop {function} onRemoveItem Function to remove an item from the draggables list
  */
 const MappingDraggable = React.memo((props) => {
     //Get props
