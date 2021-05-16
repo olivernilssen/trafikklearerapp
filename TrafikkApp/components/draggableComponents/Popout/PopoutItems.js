@@ -8,10 +8,10 @@ import { Colors } from '../../../styles';
  * This component contains the items that is displayed inside the animated popout menu,
  * the menu for each draggable object.
  * @namespace PopoutItems
- * @category Draggable
+ * @category DraggableComponents
  * @subcategory Popout
  * @prop {int} radius Radius of the popout item
- * @prop {array[]} array Array of colors or items in the popout menu
+ * @prop {array} array Array of colors or items in the popout menu
  * @prop {function} setTintColor Function to set the tintColor of the draggable object
  * @prop {int} buttonSize Size of the buttons in the popout menu
  * @prop {function} removeItem Function to delete the draggable object
@@ -31,6 +31,7 @@ const PopoutItems = React.memo((props) => {
      * around an object, depending on which position the item has in
      * the array it is placed in.
      * @memberof PopoutItems
+     * @function
      * @param {int} index index of a popout item
      * @returns {int} the x position of the circle
      * @returns {int} the y position of the circle
@@ -53,7 +54,7 @@ const PopoutItems = React.memo((props) => {
     });
 
     /**
-     * Function to sheck which button in the popout menu that is pressed
+     * Function to check which button in the popout menu that is pressed
      * and either change tintColor, remove the object or delete the object.
      * @memberof PopoutItems
      * @param {hex} color Color of the selected tint
@@ -69,8 +70,11 @@ const PopoutItems = React.memo((props) => {
     };
 
     /**
-     * This returns each object that is in the array
-     * as a small circle placed according to the function calculateXY
+     * @memberof PopoutItems
+     * @typedef {component} PopoutItems
+     * @description This maps through the array of items, and
+     * returns each object that is in the array as a small circle placed
+     * according to the function calculateXY.
      */
     return array.map((color, i) => {
         const isExitButton = color == 'exit';

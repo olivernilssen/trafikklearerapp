@@ -7,6 +7,7 @@ import { isSmallScreen } from '../helpers';
 
 /**
  * This component is used to display a link on the StartScreen, to navigate to other screens in the app.
+ *
  * @namespace StartScreenLink
  * @category StartScreenComponents
  * @prop {string} name The icon name

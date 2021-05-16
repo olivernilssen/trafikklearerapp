@@ -19,6 +19,7 @@ import { isSmallScreen } from '../helpers';
 /**
  * The area component for the StartScreen. This component contains all the components related to the start screen.
  * It contains links to the most important screens in the app, and some clickable external links.
+ *
  * @namespace StartArea
  * @category StartScreenComponents
  */

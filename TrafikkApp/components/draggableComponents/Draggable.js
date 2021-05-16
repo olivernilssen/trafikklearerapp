@@ -42,9 +42,10 @@ const Draggable = React.memo((props) => {
     const [popoutActive, setPopoutActive] = useState(false);
 
     /**
-     * useEffect that is triggered when tintColor is changed.
-     * Will make the popout menu inactive.
      * @memberof Draggable
+     * @typedef {function} useLayoutEffect
+     * @description useLayoutEffect that is triggered when tintColor is changed.
+     * Will make the popout menu inactive.
      */
     useLayoutEffect(() => {
         setPopoutActive(!popoutActive);
@@ -56,7 +57,7 @@ const Draggable = React.memo((props) => {
      * and make the item hover as a feedback that the dragging has
      * started.
      * @memberof Draggable
-     * @param {array[]} gesture
+     * @param {array} gesture The gesture used
      */
     const onDragStart = (gesture) => {
         //Start spring animation (user feedback)
@@ -74,7 +75,7 @@ const Draggable = React.memo((props) => {
      * Will make the hover animation end and the item to pop back to it's
      * original size.
      * @memberof Draggable
-     * @param {array[]} gesture
+     * @param {array} gesture The gesture used
      */
     const onDragEnd = (gesture) => {
         Animated.spring(imgScale, {
@@ -89,6 +90,7 @@ const Draggable = React.memo((props) => {
      * in the popout menu of the draggable object.
      * Will remove the draggable object from the screen.
      * @memberof Draggable
+     * @function
      */
     const removeItem = useCallback(() => {
         props.onRemoveItem(props.id);

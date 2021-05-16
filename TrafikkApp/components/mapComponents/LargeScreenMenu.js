@@ -52,10 +52,12 @@ const LargeScreenMenu = ({
 
     const mapKeys = Object.keys(mapTypes);
 
-    /** useEffect to set the state locationPinActive to true or false.
-     * This is used to style the button to save the pinned location.
-     * Is triggered when the coordinates of the pin is changed.
+    /**
      * @memberof LargeScreenMenu
+     * @typedef {function} useEffect
+     * @description useEffect that is triggered when the coordinates of the pin
+     * is changed. Used to set the state locationPinActive to true or false,
+     * which is used to style the "save pinned location"-button.
      */
     useEffect(() => {
         if (pin.coords != undefined) {

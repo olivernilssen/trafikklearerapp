@@ -40,9 +40,10 @@ const DraggableMenu = React.memo(
         const objectKeys = Object.keys(objects);
 
         /**
-         * useEffect that is triggered when topMenuOpen is changed.
-         * Will toggle and animate the the top menu in and out of view.
          * @memberof DraggableMenu
+         * @typedef {function} useEffect
+         * @description useEffect that is triggered when topMenuOpen is changed.
+         * Will toggle and animate the the top menu in and out of view.
          */
         useEffect(() => {
             var toValue = 0;

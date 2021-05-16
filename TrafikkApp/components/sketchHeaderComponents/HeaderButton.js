@@ -6,6 +6,7 @@ import { Colors, Buttons, Icons } from '../../styles';
 
 /**
  * This component displays a button used for the eraser- and undu-buttons in the sketch header on the sketch screens.
+ *
  * @namespace HeaderButton
  * @category SketchHeaderComponents
  * @prop {String} iconName the name of the Icon

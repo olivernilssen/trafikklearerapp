@@ -4,6 +4,7 @@ import { Colors, Typography } from '../../styles';
 
 /**
  * This component is used to display a clickable external link on the StartScreen.
+ *
  * @namespace ExternalLink
  * @category StartScreenComponents
  * @prop {string} text The text of the link

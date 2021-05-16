@@ -18,7 +18,6 @@ import { Colors, Icons } from '../../styles';
  * @prop {boolean} locationPermission If the user has allowed to use the location or not
  * @prop {function} takeSnapshot Function to take snapshot of the map
  * @prop {string} maptype The current mapType
- * @returns
  */
 const MapCallout = (props) => {
     const {
@@ -70,8 +69,8 @@ const MapCallout = (props) => {
 
     /**
      * Function that changes the camera position to zoom in to coords
-     * @param {object} coords Object with longitude and latitude
      * @memberof MapCallout
+     * @param {object} coords Object with longitude and latitude
      */
     const goToCoords = (coords) => {
         userFollow.onToggleFalse();

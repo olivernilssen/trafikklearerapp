@@ -20,9 +20,10 @@ const Overlay = React.memo((props) => {
     const [zIndex, setZIndex] = useState(10);
 
     /**
-     * useEffect that is triggered when the state showOverlay is changed.
-     * Will animate the overlay into view and out of view
      * @memberof Overlay
+     * @typedef {function} useEffect
+     * @description useEffect that is triggered when the state showOverlay is changed.
+     * Will run the handleAnimation function to animate the overlay into view and out of view.
      */
     useEffect(() => {
         handleAnimation();
@@ -54,7 +55,7 @@ const Overlay = React.memo((props) => {
     };
 
     /**
-     * Defines which colors to animate between
+     * Defines which colors to animate between.
      * @memberof Overlay
      * @param {Array} inputRange The ranges to interpolate between
      * @param {Array} outputRange The colors to interpolate between

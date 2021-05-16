@@ -16,6 +16,7 @@ const { Popover } = renderers;
 /**
  * This is the component to display a button to clear the drawings, in the header on the sketch screens.
  * When pressed it drops down a second button for confirmation.
+ *
  * @namespace DeleteButtonPopover
  * @category SketchHeaderComponents
  * @prop {object} propsStyle StyleSheet

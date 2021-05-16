@@ -53,7 +53,9 @@ const SettingsArea = React.memo((props) => {
      * Function to handle changing of a value in settings.
      * It also launches a toast on the screen to let the user know
      * that the change has been saved.
-     * @memberof SettingsView
+     *
+     * @memberof SettingsArea
+     * @function
      * @param {string} type The name of the settings that is changed
      * @param {string} value The value to update the storage key to
      * @param {function} setValue The state set function associated with this value

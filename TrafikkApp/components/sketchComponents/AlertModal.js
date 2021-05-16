@@ -18,6 +18,7 @@ const windowWidth = Dimensions.get('window').width;
 
 /**
  * This component is an alert that pops up to alert the user that the drawing is set to be deleted.
+ *
  * @namespace AlertModal
  * @category SketchComponents
  * @prop {object} modalVisible If the modal is visible or not, plus functions to open, close it

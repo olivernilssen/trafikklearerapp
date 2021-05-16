@@ -13,6 +13,7 @@ import { isSmallScreen } from '../helpers';
 /**
  * Color button component displayed in the menu to change between pencolor and pencil size in the sketch screens.
  * Returns a color button based on the props it receives.
+ *
  * @namespace ColorButton
  * @category SketchHeaderComponents
  * @prop {string} colorName The color from the colorArray

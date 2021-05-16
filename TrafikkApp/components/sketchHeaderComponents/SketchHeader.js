@@ -13,6 +13,7 @@ import { Colors } from '../../styles';
  * The component for the content of the header, the SketchHeader, in the sketch screens.
  * SketchHeader contains all the buttons and menus related to the drawing.
  * It also contains a button to toggle the draggable components menu in and out of view.
+ *
  * @namespace SketchHeader
  * @category SketchHeaderComponents
  * @prop {function} onEraserPencilSwitch Changes the pencil color and size when switching between eraser and pencil
@@ -44,7 +45,7 @@ const SketchHeader = React.memo((props) => {
     } = props;
 
     /**
-     * Handles the states for active buttons
+     * Handles the states for active buttons.
      * @memberof SketchHeader
      * @param {int} value The value of the button
      */

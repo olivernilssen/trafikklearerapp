@@ -52,9 +52,10 @@ const CurriculumObjectives = React.memo(
         };
 
         /**
-         * Maps through all the curriculum objectives from the data file.
+         * Maps through all the curriculum objectives from the data file curriculumData and
+         * returns the content of the objectives to be displayed as text on the screen.
          * @memberof CurriculumObjectives
-         * @returns The contents of the objectives to be displayed on the screen
+         * @returns {contents} The contents of the objectives to be displayed on the screen
          */
         const contents = curriculumContents.map((source, i) => {
             if (source !== 'overskrift') {

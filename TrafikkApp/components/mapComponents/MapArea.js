@@ -45,10 +45,12 @@ const MapArea = () => {
     const mapRef = useRef();
     let _watchId = undefined;
 
-    /** When the user opens the map, this function pans the map to the
-     * users location if its available. If its not available, it pans the map to the position
-     * of the last pinned marker. If there is no marker, it goes to init currRegion.coords
+    /**
      * @memberof MapArea
+     * @typedef {function} useEffect
+     * @description When the user opens the map, this function pans the map to the
+     * users location if its available. If its not available, it pans the map to the position
+     * of the last pinned marker. If there is no marker, it goes to init currRegion.coords.
      */
     useEffect(() => {
         if (mapRef.current) {
@@ -71,10 +73,11 @@ const MapArea = () => {
     }, []);
 
     /**
-     * Use effect that runs when the component is in focus and when it is out of focus.
+     * @memberof MapArea
+     * @typedef {function} useFocusEffect
+     * @description useFocusEffect that runs when the component is in focus and when it is out of focus.
      * Will start the geolocation watch to track user movement
      * and remove it upon umount.
-     * @memberof MapArea
      */
     useFocusEffect(
         React.useCallback(() => {
@@ -155,9 +158,10 @@ const MapArea = () => {
     };
 
     /**
-     * UseEffect to get toggled if the user wants to track their own movement.
-     * Will update the camera view to where the user is moving.
      * @memberof MapArea
+     * @typedef {function} useEffect
+     * @description UseEffect to get toggled if the user wants to track their own movement.
+     * Will update the camera view to where the user is moving.
      */
     useEffect(() => {
         if (userFollow.isToggled) {

@@ -24,10 +24,10 @@ const DrawerMenu = React.memo((props) => {
     const [arrayFinished, setArrayFinished] = useState(false);
 
     /**
-     * useEffect that runs on mount and checks if it has already been run or not.
-     * If it has not, then it creates an array with the info for the drawers
-     * to create sections.
      * @memberof DrawerMenu
+     * @typedef {function} useEffect
+     * @description useEffect that runs on mount and checks if it has already been run or not.
+     * If it has not, then it creates an array with the info for the drawers to create sections.
      */
     useEffect(() => {
         if (!arrayFinished) {
