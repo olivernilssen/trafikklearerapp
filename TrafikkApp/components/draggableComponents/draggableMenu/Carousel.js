@@ -43,16 +43,20 @@ const Carousel = React.memo((props) => {
     };
 
     /**
-     * Update scrollview is run every time objectKeys change
      * @memberof Carousel
+     * @typedef {function} useEffect
+     * @description useEffect that is triggered when objectKeys is changed.
+     * Will run the function updateScrollView() and update the scrollview
+     * every time objectKeys change.
      */
     useEffect(() => {
         updateScrollView();
     }, [objectKeys]);
 
     /**
-     * Function to get the active slide
+     * Function to get the active slide of the carousel.
      * @memberof Carousel
+     * @function
      * @param {number} offset The content offset of the carousel
      * @returns {int} The active slide
      */
@@ -165,6 +169,8 @@ const Carousel = React.memo((props) => {
      * Displayes the available draggable images that can be used.
      * For each slide, maps through the objectsKeys making the images
      * touchable so that they can be used as draggable objects.
+     * Returns all the images that are in the "objects" array as touchables
+     * elements.
      * @returns All the images that are in the "objects" array as touchable elements
      * @memberof Carousel
      */

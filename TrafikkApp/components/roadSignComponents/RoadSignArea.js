@@ -46,7 +46,7 @@ const RoadSignArea = React.memo((props) => {
     };
 
     /**
-     * Handles the change from one signtype to another
+     * Handles the change from one signtype to another.
      * @memberof RoadSignArea
      * @param {object} signTypeName Object that contains sign- name, description and image source
      */
@@ -56,7 +56,7 @@ const RoadSignArea = React.memo((props) => {
     };
 
     /**
-     * Uses the flatlist reference to scroll to top when changing sign type in the bottom menu
+     * Uses the flatlist reference to scroll to top when changing sign type in the bottom menu.
      * @memberof RoadSignArea
      */
     const scrollToTop = () => {
@@ -67,7 +67,7 @@ const RoadSignArea = React.memo((props) => {
     const keyExtractor = (item, index) => item + index.toString();
 
     /**
-     * Function to set the length and offset of an item in the flatlist
+     * Function to set the length and offset of an item in the flatlist.
      * @param {*} index Index in the flatlist
      * @memberof RoadSignArea
      */
@@ -78,7 +78,7 @@ const RoadSignArea = React.memo((props) => {
     });
 
     /**
-     * Used as a template for Flatlist, every item in the data it receives is passed on to this method
+     * Used as a template for Flatlist, every item in the data it receives is passed on to this method.
      * @memberof RoadSignArea
      * @param {string} item the sign code (example: 100_1)
      * @returns An image that will open a modal when pressed

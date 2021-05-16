@@ -12,9 +12,9 @@ import { Divider } from '../reusableComponents';
  * @namespace DraggablesWithMenu
  * @category DraggableComponents
  * @prop {boolean} topMenuOpen If the topMenu is open or not in view
- * @prop {array[]} draggables list of all draggables in view
+ * @prop {array} draggables List of all draggables in view
  * @prop {function} setDraggables Function to update the draggables array
- * @prop {array[]} actionList List of all actions taken (drawing or adding draggables)
+ * @prop {array} actionList List of all actions taken (drawing or adding draggables)
  * @prop {function} setActionList Update the actionList (add or remove)
  * @prop {int} deletingItemId Integer to let the component know which draggable to delete
  * @prop {string} name Name of the drawing view ('veikryss'... etc)
@@ -36,16 +36,19 @@ const DraggablesWithMenu = React.memo((props) => {
     } = props;
 
     const [modalVisible, setModalVisible] = useState(false);
+
     /**
-     * useEffect that is triggered when deletingItemId is changed
-     * Will delete according to this state's value
+     * @memberof DraggablesWithMenu
+     * @typedef {function} useEffect
+     * @description useEffect that is triggered when deletingItemId is changed.
+     * Will delete according to this state's value.
      */
     useEffect(() => {
         if (deletingItemId == null) return;
         onRemoveItem(deletingItemId);
     }, [deletingItemId]);
 
-    //States and states from props
+    // States and states from props
     const [counter, setCounter] = useState(0);
 
     /**
@@ -53,6 +56,7 @@ const DraggablesWithMenu = React.memo((props) => {
      * Also adds this value to the actionList to be used
      * when the user presses the undo button.
      * @memberof DraggablesWithMenu
+     * @function
      * @param {string} itemSrc Image source of the draggable to add
      */
     const onNewDraggable = useCallback((itemSrc) => {

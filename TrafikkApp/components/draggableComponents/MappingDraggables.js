@@ -8,7 +8,7 @@ import AppContext from '../../AppContext';
  * components related to the draggable function - DraggablesWithMenu.
  * @namespace MappingDraggable
  * @category DraggableComponents
- * @prop {array[]} draggables list of all draggables in view
+ * @prop {array} draggables List of all draggables in view
  * @prop {function} onRemoveItem Function to remove an item from the draggables list
  */
 const MappingDraggable = React.memo((props) => {

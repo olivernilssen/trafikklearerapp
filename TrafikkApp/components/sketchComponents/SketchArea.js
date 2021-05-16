@@ -23,6 +23,7 @@ const { width, height } = Dimensions.get('window');
  * on the sketch screens. This is the IntersectionScreen, RoundaboutScreen, HighwayScreen, CountryRoadScreen and MapSketchScreen.
  * The component behaves differently the MapSketchScreen, for that screen a snapshow of the map is used as a sketch backround. For the
  * other screens, illustrations from a data file is used.
+ *
  * @namespace SketchArea
  * @category SketchComponents
  * @prop {string} name Name of the screen (IntersectionScreen, RoundaboutScreen etc)
@@ -53,10 +54,11 @@ const SketchArea = React.memo((props) => {
     const [extensionType, setExtensionType] = useState('Vanlig');
 
     /**
-     * useEffect that is triggered when currentImg is changed.
+     * @memberof SketchArea
+     * @typedef {function} useEffect
+     * @description useEffect that is triggered when currentImg is changed.
      * Will clear the canvas and delete all objects on the screen unless the user
      * has changed the settings for deleteOnChange in the settings.
-     * @memberof SketchArea
      */
     useEffect(() => {
         if (isMap) {
@@ -73,10 +75,11 @@ const SketchArea = React.memo((props) => {
     }, [currentImg]);
 
     /**
-     * useEffect used when the screen that uses the SketchArea is map.
+     * @memberof SketchArea
+     * @typedef {function} useEffect
+     * @description useEffect used when the screen that uses the SketchArea is map.
      * Will take the latest snapshot taken from the map, and set this
      * as the sketch background image.
-     * @memberof SketchArea
      */
     useEffect(() => {
         if (isMap) {
@@ -89,9 +92,10 @@ const SketchArea = React.memo((props) => {
     }, [appContext.latestSnapshot]);
 
     /**
-     * useEffect that is triggeren when the user changes eraser size in settings.
-     * Wil set the eraser size according to what the user has chosen.
      * @memberof SketchArea
+     * @typedef {function} useEffect
+     * @description useEffect that is triggered when the user changes eraser size in settings.
+     * Wil set the eraser size according to what the user has chosen.
      */
     useEffect(() => {
         setEraserSize(parseInt(appContext.eraserSize));
@@ -103,6 +107,7 @@ const SketchArea = React.memo((props) => {
     /**
      * Changes the pencil color and size when switching between eraser and pencil.
      * @memberof SketchArea
+     * @function
      */
     const onEraserPencilSwitch = useCallback(() => {
         if (pencilColor === eraserColor) {
@@ -129,6 +134,7 @@ const SketchArea = React.memo((props) => {
      * will remove strokes or draggables.
      * Does not unto draggable movements.
      * @memberof SketchArea
+     * @function
      */
     const undoChange = useCallback(() => {
         if (actionList.length == 0) return;
@@ -151,6 +157,7 @@ const SketchArea = React.memo((props) => {
      * When strokeEnded the added path/stroke
      * is added to actionList to keep track of undo actions.
      * @memberof SketchArea
+     * @function
      */
     const onStrokeEnd = useCallback(() => {
         setActionList([...actionList, { type: 'stroke' }]);
@@ -160,6 +167,7 @@ const SketchArea = React.memo((props) => {
      * Function to clear the canvas and set draggables to empty list.
      * Only clear canvas if roadDesignChange is true.
      * @memberof SketchArea
+     * @function
      */
     const clearCanvas = useCallback(() => {
         sketchRef.current.clear();
@@ -183,6 +191,7 @@ const SketchArea = React.memo((props) => {
      * Function to hide the bottomsheet when user starts
      * drawing on the canvas.
      * @memberof SketchArea
+     * @function
      */
     const onStrokeStart = useCallback(() => {
         if (bottomSheetOpen.isOpen === true) bottomSheetOpen.onToggle();

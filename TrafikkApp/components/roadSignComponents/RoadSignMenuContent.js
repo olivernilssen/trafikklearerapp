@@ -72,6 +72,7 @@ const signTypeArray = [
 /**
  * This component displays the content of the bottom menu on the RoadSignScreen.
  * This includes the buttons to change between the different sign types.
+ *
  * @namespace RoadSignMenuContent
  * @category RoadSignComponents
  * @prop {function} handleSignType Handles the change from one signType to another
@@ -90,7 +91,7 @@ const RoadSignMenuContent = (props) => {
     } = props;
 
     /**
-     * Function to change which sign type the user is browsing
+     * Function to change which sign type the user is browsing.
      * @memberof RoadSignMenuContent
      * @param {object} value The object of the chosen signType, contains name, description and image source
      */

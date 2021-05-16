@@ -19,6 +19,7 @@ const { Popover } = renderers;
 /**
  * An array that holds the colors that are used for the color buttons.
  * These are also the colors used to draw with.
+ * @memberof SketchColorMenu
  */
 const colorArray = [
     { colorCode: '#20303c', key: '20303c' },
@@ -34,6 +35,7 @@ const colorArray = [
 /**
  * An array that holds the thickness of the "icons" (view) for the pencil thickness buttons
  * and the pencil thickness used for changing the thickness of the pencil.
+ * @memberof SketchColorMenu
  */
 const pencilThicknessArray = [
     { viewThickness: 8, pencilThickness: 5, key: 85 },
@@ -73,9 +75,10 @@ const SketchColorMenu = React.memo((props) => {
     } = props;
 
     /**
-     * useEffect to get out the colorId of the correct color
-     * depending on what the settings has stored
      * @memberof SketchColorMenu
+     * @typedef {function} useEffect
+     * @description useEffect to get out the colorId of the correct color
+     * depending on what the settings has stored.
      */
     useEffect(() => {
         let index = 0;
@@ -99,7 +102,7 @@ const SketchColorMenu = React.memo((props) => {
     };
 
     /**
-     * Used to assign an ID to the pencil thickness buttons
+     * Used to assign an ID to the pencil thickness buttons.
      * @memberof SketchColorMenu
      * @param {number} value The id for the pencil thickness button
      */

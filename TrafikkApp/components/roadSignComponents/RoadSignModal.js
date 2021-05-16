@@ -19,6 +19,7 @@ import { isSmallScreen } from '../helpers';
  * This component will display a modal with an image of the chosen road sign.
  * When the image, or the "i"-button is pressed, it will display the name and description related to said sign.
  * To close the modal, either press the "X"-button or outside of the modal.
+ *
  * @namespace RoadSignModal
  * @category RoadSignComponents
  * @prop {object} modalVisible If the modal is visible or not, plus functions to open and close it
@@ -36,9 +37,10 @@ const RoadSignModal = React.memo((props) => {
     const [showText, setShowText] = useState(false);
 
     /**
-     * UseEffect that is triggered when the modal pops up or goes away.
-     * Sets the height of the modal to the image height.
      * @memberof RoadSignModal
+     * @typedef {function} useEffect
+     * @description UseEffect that is triggered when the modal pops up or goes away.
+     * Sets the height of the modal to the image height.
      */
     useEffect(() => {
         const heightModal = isSmallScreen() ? imgHeight + 50 : imgHeight + 100;
@@ -53,9 +55,10 @@ const RoadSignModal = React.memo((props) => {
     }, [modalVisible.isOpen]);
 
     /**
-     * UseEffect that is triggeren when either image height, description height or show description changes.
-     * Changes the height of the modal.
      * @memberof RoadSignModal
+     * @typedef {function} useEffect
+     * @description UseEffect that is triggered when either image height, description height or show description changes.
+     * Changes the height of the modal.
      */
     useEffect(() => {
         const heightModal = isSmallScreen() ? imgHeight + 50 : imgHeight + 100;
@@ -76,6 +79,9 @@ const RoadSignModal = React.memo((props) => {
      * SetLayout will run when the view of the modal is mounted
      * to get the correct size of the modal on the screen.
      * @memberof RoadSignModal
+     * @function
+     * @param {object} layout X-position, Y-position, width and height of the view
+     * @param {string} type The name of the view. Is either 'image' or 'description'.
      */
     const setLayout = useCallback((layout, type) => {
         const { height } = layout;

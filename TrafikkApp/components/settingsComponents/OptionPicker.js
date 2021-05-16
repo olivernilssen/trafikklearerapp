@@ -22,6 +22,7 @@ const numberOfColumns = isSmallScreen() ? 6 : 7;
 /**
  * This component shows a modal where the user can choose which draggable objects
  * is to be available in the sketch screens.
+ *
  * @namespace OptionPicker
  * @category SettingsComponents
  * @prop {object} modalVisible Hook with boolean and functions for it
@@ -42,8 +43,9 @@ const OptionPicker = React.memo((props) => {
      * Save the settings to asyncStorage
      * and make modal go away/invisible.
      * @memberof OptionPicker
+     * @function
      */
-    const saveSelectedtDraggables = useCallback(() => {
+    const saveSelectedDraggables = useCallback(() => {
         appContext.saveNewSettings(
             JSON.stringify(selectedImages),
             appContext.setDraggableObjects,
@@ -103,6 +105,7 @@ const OptionPicker = React.memo((props) => {
     /**
      * Close the modal and don't save the state of selected values.
      * @memberof OptionPicker
+     * @function
      */
     const closeModalWithoutSave = useCallback(() => {
         modalVisible.onToggle();
@@ -208,7 +211,7 @@ const OptionPicker = React.memo((props) => {
                                             styles.buttonSave,
                                         ]}
                                         onPress={() =>
-                                            saveSelectedtDraggables()
+                                            saveSelectedDraggables()
                                         }>
                                         <Text style={styles.buttonText}>
                                             Lagre

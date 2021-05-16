@@ -10,7 +10,7 @@ import IntentLauncher from 'react-native-intent-launcher';
  * This is a component that pops up to alert the user to give the app permission to
  * use location data, to be able to use the map function on the MapScreen.
  * @namespace AlertPermissionModal
- * @category MapComponent
+ * @category MapComponents
  * @prop {object} modalVisible If the modal is visible or not, plus functions to open and close it
  * @prop {function} checkUserPermission Checks if the user has allowed the app to access location data
  */

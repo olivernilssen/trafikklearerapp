@@ -14,6 +14,7 @@ import { isSmallScreen, useOpen } from '../helpers';
  * which screen they are on.
  * In the IntersectionScreen, a buttonGroup is displayed in addition to the road designs. This
  * button group is to choose between the different intersection types (X, Y or T).
+ *
  * @namespace SketchAreaMenuContent
  * @category SketchComponents
  * @prop {string} roadType Name of roadtype
@@ -71,9 +72,10 @@ const SketchAreaMenuContent = React.memo(
         const appContext = useContext(AppContext);
 
         /**
-         * Is triggered on mount and unmount, will help set the background
-         * when the screen is first mounted.
          * @memberof SketchAreaMenuContent
+         * @typedef {function} useEffect
+         * @description useEffect that is triggered on mount and unmount, will help set the background
+         * when the screen is first mounted.
          */
         useEffect(() => {
             if (roadType == 'Veikryss') {
@@ -87,10 +89,11 @@ const SketchAreaMenuContent = React.memo(
         }, []);
 
         /**
-         * Is triggered when extensionType state is changed.
+         * @memberof SketchAreaMenuContent
+         * @typedef {function} useEffect
+         * @description useEffect triggered when extensionType state is changed.
          * Will update the background image according to this parameter.
          * Also sets the roadDesignChange to false so that the canvas is not cleared.
-         * @memberof SketchAreaMenuContent
          */
         useEffect(() => {
             setRoadDesignChange(false);

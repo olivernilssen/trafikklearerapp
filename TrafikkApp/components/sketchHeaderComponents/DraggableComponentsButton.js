@@ -6,6 +6,7 @@ import { Buttons, Colors, Icons } from '../../styles';
 /**
  * This component displays the button to open the draggableMenu on the sketch screens.
  * The button is displayed in the header on the sketch screens.
+ *
  * @namespace DraggableComponentsButton
  * @category SketchHeaderComponents
  * @prop {object} topMenuOpen Hook to get bool and functions of the menu
