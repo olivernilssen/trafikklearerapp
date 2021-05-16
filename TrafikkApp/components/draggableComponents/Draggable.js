@@ -24,9 +24,9 @@ const colors = [
 
 const noColors = ['delete'];
 
-const ITEM_SIZE = windowWidth * 0.13;
+const ITEM_SIZE = windowWidth * 0.2;
 const radius = (ITEM_SIZE * 2) / 2;
-const buttonSize = windowWidth * 0.04;
+const buttonSize = windowWidth * 0.05;
 
 /**
  * Component that holds the actual draggable component.
@@ -104,41 +104,39 @@ const Draggable = React.memo((props) => {
             style={styles.container}
             onEnd={(event) => onDragEnd(event)}
             onStart={(event) => onDragStart(event)}>
-            <View>
-                <TouchableWithoutFeedback
-                    onLongPress={() => setPopoutActive(true)}
-                    accessibilityRole={'image'}>
-                    <View>
-                        <Animated.Image
-                            source={imgInfo.source}
-                            resizeMode={'contain'}
-                            style={[
-                                styles.item,
-                                tintColor === null
-                                    ? null
-                                    : imgInfo.hasTint === false
-                                    ? { tintColor: tintColor }
-                                    : null,
-                                {
-                                    transform: [{ scale: imgScale }],
-                                },
-                            ]}
+            <TouchableWithoutFeedback
+                onLongPress={() => setPopoutActive(true)}
+                accessibilityRole={'image'}>
+                <View>
+                    <Animated.Image
+                        source={imgInfo.source}
+                        resizeMode={'contain'}
+                        style={[
+                            styles.item,
+                            tintColor === null
+                                ? null
+                                : imgInfo.hasTint === false
+                                ? { tintColor: tintColor }
+                                : null,
+                            {
+                                transform: [{ scale: imgScale }],
+                            },
+                        ]}
+                    />
+                    {popoutActive && (
+                        <Popout
+                            radius={radius}
+                            array={imgInfo.hasTint ? noColors : colors}
+                            setPopoutActive={setPopoutActive}
+                            popoutActive={popoutActive}
+                            setTintColor={setTintColor}
+                            buttonSize={buttonSize}
+                            itemSize={ITEM_SIZE}
+                            removeItem={removeItem}
                         />
-                        {popoutActive && (
-                            <Popout
-                                radius={radius}
-                                array={imgInfo.hasTint ? noColors : colors}
-                                setPopoutActive={setPopoutActive}
-                                popoutActive={popoutActive}
-                                setTintColor={setTintColor}
-                                buttonSize={buttonSize}
-                                itemSize={ITEM_SIZE}
-                                removeItem={removeItem}
-                            />
-                        )}
-                    </View>
-                </TouchableWithoutFeedback>
-            </View>
+                    )}
+                </View>
+            </TouchableWithoutFeedback>
         </Gestures>
     );
 });

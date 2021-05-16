@@ -76,7 +76,7 @@ const MapCallout = (props) => {
         userFollow.onToggleFalse();
         mapRef?.current?.getCamera().then((cam) => {
             cam.center = { ...coords };
-            mapRef?.current?.animateCamera(cam, { duration: 2000 });
+            mapRef?.current?.animateCamera(cam, { duration: 1000 });
         });
     };
 
@@ -176,7 +176,9 @@ const MapCallout = (props) => {
                     style={[styles.imgContainer, bgColor]}
                     onPress={() => {
                         takeSnapshot();
-                        bottomMenuVisible.onOpen();
+                        setTimeout(() => {
+                            bottomMenuVisible.onOpen();
+                        }, 500);
                     }}>
                     <Image
                         style={styles.img}
