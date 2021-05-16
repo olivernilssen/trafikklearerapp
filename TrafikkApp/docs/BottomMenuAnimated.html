@@ -236,8 +236,8 @@ Takes in other React Native components as children.</p></div>
             
                 <div class="member">
 
-<h4 class="name" id=".toggleSubview">
-    <a class="href-link" href="#.toggleSubview">#</a>
+<h4 class="name" id=".pan">
+    <a class="href-link" href="#.pan">#</a>
     
         
             <span class='tag'>static</span>
@@ -246,7 +246,7 @@ Takes in other React Native components as children.</p></div>
         
     
     <span class="code-name">
-        toggleSubview
+        pan
     </span>
     
 </h4>
@@ -255,9 +255,9 @@ Takes in other React Native components as children.</p></div>
 
 
 <div class="description">
-    <p>This function will change the little icon at the top of the bottom menu
-to either show a chevron-up or chevron-down.
-It also animates the menu to either be hidden or shown</p>
+    <p>This is just a ref to the pan. Which holds the x and y coordinates of the
+animated view. It will update depending on either the togglesubview
+or by the user dragging their finger on it.</p>
 </div>
 
 
@@ -299,7 +299,88 @@ It also animates the menu to either be hidden or shown</p>
         <p class="tag-source">
             <a href="components_reusableComponents_BottomMenuAnimated.js.html" class="button">View Source</a>
             <span>
-                <a href="components_reusableComponents_BottomMenuAnimated.js.html">components/reusableComponents/BottomMenuAnimated.js</a>, <a href="components_reusableComponents_BottomMenuAnimated.js.html#line116">line 116</a>
+                <a href="components_reusableComponents_BottomMenuAnimated.js.html">components/reusableComponents/BottomMenuAnimated.js</a>, <a href="components_reusableComponents_BottomMenuAnimated.js.html#line42">line 42</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".panResponder">
+    <a class="href-link" href="#.panResponder">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        panResponder
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Pan responder is a way to allow gestures like
+swipe in an animated view. This panresponder makes
+sure that the user is not tapping by disabling it if the 'tap'/finger
+goes less than 3 in either y or x direction to allow tapping.
+Other than that it check the distance the finger has gone from
+the starting point and depending on if the menu is open or not,
+it will either close it or pop it back to it's original position.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_reusableComponents_BottomMenuAnimated.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_reusableComponents_BottomMenuAnimated.js.html">components/reusableComponents/BottomMenuAnimated.js</a>, <a href="components_reusableComponents_BottomMenuAnimated.js.html#line54">line 54</a>
             </span>
         </p>
     
@@ -446,7 +527,110 @@ on the screen the menu needs to slide.</p>
         <p class="tag-source">
             <a href="components_reusableComponents_BottomMenuAnimated.js.html" class="button">View Source</a>
             <span>
-                <a href="components_reusableComponents_BottomMenuAnimated.js.html">components/reusableComponents/BottomMenuAnimated.js</a>, <a href="components_reusableComponents_BottomMenuAnimated.js.html#line140">line 140</a>
+                <a href="components_reusableComponents_BottomMenuAnimated.js.html">components/reusableComponents/BottomMenuAnimated.js</a>, <a href="components_reusableComponents_BottomMenuAnimated.js.html#line173">line 173</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".toggleSubview">
+        <a class="href-link" href="#.toggleSubview">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                toggleSubview<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>This function will change the little icon at the top of the bottom menu
+to either show a chevron-up or chevron-down.
+It also animates the menu to either be hidden or shown.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_reusableComponents_BottomMenuAnimated.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_reusableComponents_BottomMenuAnimated.js.html">components/reusableComponents/BottomMenuAnimated.js</a>, <a href="components_reusableComponents_BottomMenuAnimated.js.html#line149">line 149</a>
             </span>
         </p>
     
@@ -478,6 +662,326 @@ on the screen the menu needs to slide.</p>
         </div>
     
 
+    
+        <div class='vertical-section'>
+            <h1>Type Definitions</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".useEffect">
+        <a class="href-link" href="#.useEffect">#</a>
+        
+        <span class="code-name">
+            
+                useEffect<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>UseEffect to help panresponder keep a current version of the bottomsheetOpen value.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_reusableComponents_BottomMenuAnimated.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_reusableComponents_BottomMenuAnimated.js.html">components/reusableComponents/BottomMenuAnimated.js</a>, <a href="components_reusableComponents_BottomMenuAnimated.js.html#line106">line 106</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".useEffect">
+        <a class="href-link" href="#.useEffect">#</a>
+        
+        <span class="code-name">
+            
+                useEffect<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>useEffect that adds a listener to the pan on mount.
+This listner will 'listen' for values being changed and update
+the pan accordingly (eg. the user drags their finger on the view).
+Upon unmount (return) it will remove the listener.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_reusableComponents_BottomMenuAnimated.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_reusableComponents_BottomMenuAnimated.js.html">components/reusableComponents/BottomMenuAnimated.js</a>, <a href="components_reusableComponents_BottomMenuAnimated.js.html#line115">line 115</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>void</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".useEffect">
+        <a class="href-link" href="#.useEffect">#</a>
+        
+        <span class="code-name">
+            
+                useEffect<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>useEffect triggered when the state bottomSheetOpen is changed.
+Will trigger the toggleSubview function to animate the
+bottomsheet into view.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_reusableComponents_BottomMenuAnimated.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_reusableComponents_BottomMenuAnimated.js.html">components/reusableComponents/BottomMenuAnimated.js</a>, <a href="components_reusableComponents_BottomMenuAnimated.js.html#line131">line 131</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
     
 
     

@@ -104,22 +104,24 @@ const BottomMenuAnimated = React.memo((props) => {
     );
 
     /**
-     * Use effect to help panresponder keep a current version of the bottomsheetOpen value
      * @memberof BottomMenuAnimated
+     * @typedef {function} useEffect
+     * @description UseEffect to help panresponder keep a current version of the bottomsheetOpen value.
      */
     useEffect(() => {
         sheetValue.current = bottomSheetOpen.isOpen;
     }, [bottomSheetOpen.isOpen]);
 
     /**
-     * This useeffect adds a listener to the pan on mount
-     * this listner will 'listen' for values being changed and update
-     * the pan accordingly (eg. the user drags their finger on the view)
-     * upon unmount (return) it will remove the listener
      * @memberof BottomMenuAnimated
+     * @typedef {function} useEffect
+     * @description useEffect that adds a listener to the pan on mount.
+     * This listner will 'listen' for values being changed and update
+     * the pan accordingly (eg. the user drags their finger on the view).
+     * Upon unmount (return) it will remove the listener.
      * @returns void
      */
-    React.useEffect(() => {
+    useEffect(() => {
         const listener = pan.addListener((value) => (_value = value));
         return () => {
             pan.removeListener(listener);
@@ -127,11 +129,11 @@ const BottomMenuAnimated = React.memo((props) => {
     }, []);
 
     /**
-     * Is triggered when the state bottomSheetOpen is changed
-     * Will trigger the toggleSubview function to animate the
-     * bottomsheet into view
      * @memberof BottomMenuAnimated
-
+     * @typedef {function} useEffect
+     * @description useEffect triggered when the state bottomSheetOpen is changed.
+     * Will trigger the toggleSubview function to animate the
+     * bottomsheet into view.
      */
     useEffect(() => {
         toggleSubview();
@@ -140,8 +142,9 @@ const BottomMenuAnimated = React.memo((props) => {
     /**
      * This function will change the little icon at the top of the bottom menu
      * to either show a chevron-up or chevron-down.
-     * It also animates the menu to either be hidden or shown
+     * It also animates the menu to either be hidden or shown.
      * @memberof BottomMenuAnimated
+     * @function
      */
     const toggleSubview = useCallback(() => {
         setHiddenViewButton(
