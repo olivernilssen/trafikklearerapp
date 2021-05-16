@@ -24,7 +24,7 @@ let xOffset = 0;
 const BottomMenuAnimated = React.memo((props) => {
     const { bottomSheetOpen, chevronColor } = props;
 
-    //this value is used to help panresonder not having to re-render
+    //these two value is used to help panresonder not having to re-render to get the correct values
     const sheetValue = useRef(bottomSheetOpen.isOpen);
     const heightRef = useRef(bottomSheetHeight);
 
@@ -33,8 +33,24 @@ const BottomMenuAnimated = React.memo((props) => {
     );
     const [bottomSheetHeight, setBottomSheetHeight] = useState(0);
 
+    /**
+     * This is just a ref to the pan. Which holds the x and y coordinates of the
+     * animated view. It will update depending on either the togglesubview
+     * or by the user dragging their finger on it.
+     * @memberof BottomMenuAnimated
+     */
     const pan = useRef(new Animated.ValueXY()).current;
 
+    /**
+     * Pan responder is a way to allow gestures like
+     * swipe in an animated view. This panresponder makes
+     * sure that the user is not tapping by disabling it if the 'tap'/finger
+     * goes less than 3 in either y or x direction to allow tapping.
+     * Other than that it check the distance the finger has gone from
+     * the starting point and depending on if the menu is open or not,
+     * it will either close it or pop it back to it's original position.
+     * @memberof BottomMenuAnimated
+     */
     const panResponder = React.useMemo(
         () =>
             PanResponder.create({
@@ -87,13 +103,22 @@ const BottomMenuAnimated = React.memo((props) => {
         [bottomSheetOpen.isOpen]
     );
 
-    /** Use effect to help panresponder keep a current version of the bottomsheetOpen value
+    /**
+     * Use effect to help panresponder keep a current version of the bottomsheetOpen value
      * @memberof BottomMenuAnimated
      */
     useEffect(() => {
         sheetValue.current = bottomSheetOpen.isOpen;
     }, [bottomSheetOpen.isOpen]);
 
+    /**
+     * This useeffect adds a listener to the pan on mount
+     * this listner will 'listen' for values being changed and update
+     * the pan accordingly (eg. the user drags their finger on the view)
+     * upon unmount (return) it will remove the listener
+     * @memberof BottomMenuAnimated
+     * @returns void
+     */
     React.useEffect(() => {
         const listener = pan.addListener((value) => (_value = value));
         return () => {
