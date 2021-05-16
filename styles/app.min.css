@@ -9838,7 +9838,7 @@ body.small-header #main {
     box-shadow: 0 0 40px 0 rgba(115, 134, 160, 0.24);
 }
 #main > .side-nav {
-    /* width: 240px; */
+    width: 240px;
     padding: 40px 20px;
     flex-grow: 0;
     flex-shrink: 0;
