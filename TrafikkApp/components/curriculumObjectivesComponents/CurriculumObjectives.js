@@ -4,26 +4,18 @@ import curriculumData from './curriculumData';
 import { Colors, Typography } from '../../styles';
 
 /**
- * Component to actually display the curriculum objectives as text on the screen.
- * Which content to display is decided by which button(s) in the BottomMenu
- * that is pressed
+ * Component to display the content of each curriculum objectives as text on the screen.
+ * Which content to display is decided by which button(s) in the CurriculumMenuContent
+ * that is pressed.
  * @namespace CurriculumObjectives
  * @category CurriculumObjectivesComponents
  * @prop {string} curriculumObjective The name of the chosen curriculum objective
- * @prop {function} setCurriculumObjective Sets the state curriculumObjective
  * @prop {string} trafficClass The name of the chosen traffic class
- * @prop {function} setTrafficClass Sets the state trafficClass
- * @prop {object} scrollRef Reference to the scrollview component in the
- * CurriculumObjectiveScreen
+ * @prop {function} setSubHeading Sets the state subHeading according to the curriculumObjective chosen
+ * @prop {object} setMainHeading Sets the state mainHeading according to the trafficClass chosen
  */
 const CurriculumObjectives = React.memo(
-    ({
-        curriculumObjective,
-        trafficClass,
-        subHeading,
-        setSubHeading,
-        setMainHeading,
-    }) => {
+    ({ curriculumObjective, trafficClass, setSubHeading, setMainHeading }) => {
         /**
          * useEffect that is triggered when curriculumObjective is changed.
          * Will run the function onContentChange() to change the content on the creen
@@ -60,9 +52,10 @@ const CurriculumObjectives = React.memo(
         };
 
         /**
-         * Maps through all the curriculum objectives from the data file.
+         * Maps through all the curriculum objectives from the data file curriculumData and
+         * returns the content of the objectives to be displayed as text on the screen.
          * @memberof CurriculumObjectives
-         * @returns The contents of the objectives to be displayed on the screen
+         * @returns {contents} The contents of the objectives to be displayed on the screen
          */
         const contents = curriculumContents.map((source, i) => {
             if (source !== 'overskrift') {

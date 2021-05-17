@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { Colors } from '../../styles';
 
 /**
- * Component that displays a divider
+ * Component that displays a divider.
  * @namespace Divider
  * @category ReusableComponents
  * @prop {stylesheetObject} [style] Style of the divider
@@ -22,6 +23,7 @@ const styles = StyleSheet.create({
     divider: {
         flex: 1,
         borderWidth: 1,
+        borderColor: Colors.dividerSecondary,
     },
 });
 

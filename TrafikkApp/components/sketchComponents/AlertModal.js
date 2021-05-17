@@ -1,45 +1,47 @@
 import React from 'react';
-import { Modal, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import {
+    Modal,
+    StyleSheet,
+    Text,
+    View,
+    TouchableOpacity,
+    Dimensions,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Typography, Icons } from '../../styles';
 import { Divider } from '../reusableComponents';
 
+const windowWidth = Dimensions.get('window').width;
+
 /**
- * This is a component that pops up to alert the user that the drawing is set to be deleted.
+ * This component is an alert that pops up to alert the user that the drawing is set to be deleted.
+ *
  * @namespace AlertModal
  * @category SketchComponents
- * @prop {object} navigation Used for navigation between the different screens
- * @prop {boolean} modalVisible If the modal is visible or not
- * @prop {function} setModalVisible Changes the state modalVisible
+ * @prop {object} modalVisible If the modal is visible or not, plus functions to open, close it
  * @prop {boolean} alwaysHideAlert If the checkbox to never show alert again, is checked
  * @prop {function} setAlwaysHideAlert Changes the state alwaysHideAlert
  * @prop {function} onOK What to do when the 'OK' button in the Alert is triggered
  */
 const AlertModal = React.memo(
-    ({
-        navigation,
-        modalVisible,
-        setModalVisible,
-        alwaysHideAlert,
-        setAlwaysHideAlert,
-        onOK,
-    }) => {
+    ({ modalVisible, alwaysHideAlert, setAlwaysHideAlert, onOK }) => {
+        const navigation = useNavigation();
         return (
             <View style={styles.centeredView}>
                 <Modal
                     animationType="fade"
                     transparent={true}
-                    visible={modalVisible}
-                    onRequestClose={() => setModalVisible(!modalVisible)}>
+                    visible={modalVisible.isOpen}
+                    onRequestClose={() => modalVisible.onToggle()}>
                     <View style={styles.centeredView}>
                         <View style={styles.modalView}>
                             <View style={styles.alertHeader}>
                                 <Text style={styles.modalTitle}>Advarsel</Text>
                                 <TouchableOpacity
-                                    onPress={() =>
-                                        setModalVisible(!modalVisible)
-                                    }
+                                    onPress={() => modalVisible.onToggle()}
                                     activeOpacity={0.4}>
                                     <Icon
                                         name="times"
@@ -83,14 +85,14 @@ const AlertModal = React.memo(
                                 </Text>
                             </TouchableOpacity>
                             <Divider
-                                borderColor={Colors.iconActive}
+                                borderColor={Colors.dividerPrimary}
                                 style={styles.divider}
                             />
                             <View style={styles.buttonsView}>
                                 <TouchableOpacity
                                     style={[styles.button, styles.buttonClose]}
                                     onPress={() => {
-                                        setModalVisible(!modalVisible);
+                                        modalVisible.onToggle();
                                         navigation.navigate('SettingsScreen');
                                     }}
                                     activeOpacity={0.4}>
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0,0,0,0.6)',
     },
     modalView: {
-        maxWidth: 500,
+        maxWidth: windowWidth - 60,
         backgroundColor: Colors.sketchBackground,
         borderRadius: 10,
         padding: 20,
@@ -135,14 +137,12 @@ const styles = StyleSheet.create({
     },
     modalTitle: {
         margin: 5,
-        // textAlign: 'center',
         fontWeight: 'bold',
         color: Colors.icons,
         ...Typography.section,
     },
     modalText: {
         margin: 5,
-        // textAlign: 'center',
         color: Colors.icons,
         ...Typography.body,
     },

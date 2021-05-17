@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IllusTrafikk | Doc MapArea</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="style.css">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">IllusTrafikk Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/olivernilssen/trafikklearerapp"
+                        >
+                            Github
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Namespaces</h3><ul><li><a href="App.html">App</a></li><li><a href="Helpers.html">Helpers</a></li></ul></div><div class="category"><h2>AboutComponents</h2><h3>Namespaces</h3><ul><li><a href="AboutArea.html">AboutArea</a></li></ul></div><div class="category"><h2>AthorityPyramidComponents</h2><h3>Namespaces</h3><ul><li><a href="AuthorityPyramidArea.html">AuthorityPyramidArea</a></li></ul></div><div class="category"><h2>CurriculumObjectivesComponents</h2><h3>Namespaces</h3><ul><li><a href="CurriculumArea.html">CurriculumArea</a></li><li><a href="CurriculumMenuContent.html">CurriculumMenuContent</a></li><li><a href="CurriculumObjectives.html">CurriculumObjectives</a></li></ul></div><div class="category"><h2>DraggableComponents</h2><h3>Namespaces / DraggableMenu</h3><ul><li><a href="Carousel.html">Carousel</a></li><li><a href="DraggableMenu.html">DraggableMenu</a></li></ul><h3>Namespaces</h3><ul><li><a href="Draggable.html">Draggable</a></li><li><a href="DraggablesWithMenu.html">DraggablesWithMenu</a></li><li><a href="MappingDraggable.html">MappingDraggable</a></li></ul><h3>Namespaces / Popout</h3><ul><li><a href="Popout.html">Popout</a></li><li><a href="PopoutItems.html">PopoutItems</a></li></ul></div><div class="category"><h2>Helpers</h2><h3>Namespaces</h3><ul><li><a href="AsyncStorage.html">AsyncStorage</a></li></ul></div><div class="category"><h2>MapComponents</h2><h3>Namespaces</h3><ul><li><a href="AlertPermissionModal.html">AlertPermissionModal</a></li><li><a href="LargeScreenMenu.html">LargeScreenMenu</a></li><li><a href="MapArea.html">MapArea</a></li><li><a href="MapCallout.html">MapCallout</a></li><li><a href="SmallScreenMenu.html">SmallScreenMenu</a></li></ul></div><div class="category"><h2>NavigationComponents</h2><h3>Namespaces</h3><ul><li><a href="DrawerItem.html">DrawerItem</a></li><li><a href="DrawerMenu.html">DrawerMenu</a></li><li><a href="DrawerToggle.html">DrawerToggle</a></li><li><a href="Navigator.html">Navigator</a></li></ul></div><div class="category"><h2>ReusableComponents</h2><h3>Namespaces</h3><ul><li><a href="BottomMenuAnimated.html">BottomMenuAnimated</a></li><li><a href="ButtonGroup.html">ButtonGroup</a></li><li><a href="Divider.html">Divider</a></li><li><a href="Header.html">Header</a></li><li><a href="MainView.html">MainView</a></li><li><a href="Overlay.html">Overlay</a></li></ul></div><div class="category"><h2>RoadSignComponents</h2><h3>Namespaces</h3><ul><li><a href="RoadSignArea.html">RoadSignArea</a></li><li><a href="RoadSignMenuContent.html">RoadSignMenuContent</a></li><li><a href="RoadSignModal.html">RoadSignModal</a></li></ul></div><div class="category"><h2>Screens</h2><h3>Namespaces</h3><ul><li><a href="AboutScreen.html">AboutScreen</a></li><li><a href="AuthorityPyramidScreen.html">AuthorityPyramidScreen</a></li><li><a href="CountryRoadScreen.html">CountryRoadScreen</a></li><li><a href="CurriculumObjectivesScreen.html">CurriculumObjectivesScreen</a></li><li><a href="HighwayScreen.html">HighwayScreen</a></li><li><a href="IntersectionScreen.html">IntersectionScreen</a></li><li><a href="MapScreen.html">MapScreen</a></li><li><a href="MapSketchScreen.html">MapSketchScreen</a></li><li><a href="RoadSignScreen.html">RoadSignScreen</a></li><li><a href="RoundaboutScreen.html">RoundaboutScreen</a></li><li><a href="SettingsScreen.html">SettingsScreen</a></li><li><a href="StartScreen.html">StartScreen</a></li></ul></div><div class="category"><h2>SettingsComponents</h2><h3>Namespaces</h3><ul><li><a href="OptionPicker.html">OptionPicker</a></li><li><a href="SettingsArea.html">SettingsArea</a></li></ul></div><div class="category"><h2>SketchComponents</h2><h3>Namespaces</h3><ul><li><a href="AlertModal.html">AlertModal</a></li><li><a href="SketchArea.html">SketchArea</a></li><li><a href="SketchAreaMenuContent.html">SketchAreaMenuContent</a></li></ul></div><div class="category"><h2>SketchHeaderComponents</h2><h3>Namespaces</h3><ul><li><a href="ColorButton.html">ColorButton</a></li><li><a href="DeleteButtonPopover.html">DeleteButtonPopover</a></li><li><a href="DraggableComponentsButton.html">DraggableComponentsButton</a></li><li><a href="HeaderButton.html">HeaderButton</a></li><li><a href="PencilSizeButton.html">PencilSizeButton</a></li><li><a href="SketchColorMenu.html">SketchColorMenu</a></li><li><a href="SketchHeader.html">SketchHeader</a></li></ul></div><div class="category"><h2>StartScreenComponents</h2><h3>Namespaces</h3><ul><li><a href="ExternalLink.html">ExternalLink</a></li><li><a href="HeaderName.html">HeaderName</a></li><li><a href="StartArea.html">StartArea</a></li><li><a href="StartScreenLink.html">StartScreenLink</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Namespace</p>
+                    <h1>MapArea</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>MapArea</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>MapArea contains all the components associated with the MapScreen. This includes
+the map view, MapCallout, SmallScreenMenu and LargeScreenMenu.
+It will handle the permission to get the user location aswell.</p></div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_mapComponents_MapArea.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_mapComponents_MapArea.js.html">components/mapComponents/MapArea.js</a>, <a href="components_mapComponents_MapArea.js.html#line22">line 22</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".checkUserPermission">
+        <a class="href-link" href="#.checkUserPermission">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                checkUserPermission<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>This function checks if the user has given the app permission to use
+location. Is the location permission is set, the trackUser function is triggered.
+If the permission is not set, the modal to turn on location is opened.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_mapComponents_MapArea.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_mapComponents_MapArea.js.html">components/mapComponents/MapArea.js</a>, <a href="components_mapComponents_MapArea.js.html#line143">line 143</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".takeSnapshot">
+        <a class="href-link" href="#.takeSnapshot">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                takeSnapshot<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Takes a snapshot of the map view where the user is right now.
+It will be saved in cache and also saved to async storage for later use.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_mapComponents_MapArea.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_mapComponents_MapArea.js.html">components/mapComponents/MapArea.js</a>, <a href="components_mapComponents_MapArea.js.html#line180">line 180</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".trackUser">
+        <a class="href-link" href="#.trackUser">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                trackUser<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>On mount this checks if the user location is active an starts tracking the user.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_mapComponents_MapArea.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_mapComponents_MapArea.js.html">components/mapComponents/MapArea.js</a>, <a href="components_mapComponents_MapArea.js.html#line98">line 98</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Type Definitions</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".useEffect">
+        <a class="href-link" href="#.useEffect">#</a>
+        
+        <span class="code-name">
+            
+                useEffect<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>When the user opens the map, this function pans the map to the
+users location if its available. If its not available, it pans the map to the position
+of the last pinned marker. If there is no marker, it goes to init currRegion.coords.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_mapComponents_MapArea.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_mapComponents_MapArea.js.html">components/mapComponents/MapArea.js</a>, <a href="components_mapComponents_MapArea.js.html#line48">line 48</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".useEffect">
+        <a class="href-link" href="#.useEffect">#</a>
+        
+        <span class="code-name">
+            
+                useEffect<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>UseEffect to get toggled if the user wants to track their own movement.
+Will update the camera view to where the user is moving.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_mapComponents_MapArea.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_mapComponents_MapArea.js.html">components/mapComponents/MapArea.js</a>, <a href="components_mapComponents_MapArea.js.html#line160">line 160</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".useFocusEffect">
+        <a class="href-link" href="#.useFocusEffect">#</a>
+        
+        <span class="code-name">
+            
+                useFocusEffect<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>useFocusEffect that runs when the component is in focus and when it is out of focus.
+Will start the geolocation watch to track user movement
+and remove it upon umount.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_mapComponents_MapArea.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_mapComponents_MapArea.js.html">components/mapComponents/MapArea.js</a>, <a href="components_mapComponents_MapArea.js.html#line75">line 75</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+</body>
+</html>

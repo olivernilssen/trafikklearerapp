@@ -8,33 +8,35 @@ import {
 
 /**
  * Component that displays a transparent overlay over the screen.
+ * The overlay is touchable, and it is closed when the user touches the overlay.
  * @namespace Overlay
  * @category ReusableComponents
- * @prop {boolean} showOverlay Bool to decide whether overlay is hidden or not
- * @prop {function} setShowOverlay Set the state showOverlay
+ * @prop {boolean} showOverlay Hook to set, get and toggle the overlay
  */
 const Overlay = React.memo((props) => {
-    const { setShowOverlay, showOverlay } = props;
+    const { showOverlay } = props;
 
     const [animation, setAnimation] = useState(new Animated.Value(0));
     const [zIndex, setZIndex] = useState(10);
 
     /**
-     * useEffect that is triggered when the state showOverlay is changed.
-     * Will animate the overlay into view and out of view
+     * @memberof Overlay
+     * @typedef {function} useEffect
+     * @description useEffect that is triggered when the state showOverlay is changed.
+     * Will run the handleAnimation function to animate the overlay into view and out of view.
      */
     useEffect(() => {
         handleAnimation();
-    }, [showOverlay]);
+    }, [showOverlay.isOpen]);
 
     /**
      * Function to animate the showing and hiding of the overlay.
      * Will set the value of the backgroundColor,
-     * duration of the animation and zIndex of the overlay
+     * duration of the animation and zIndex of the overlay.
      * @memberof Overlay
      */
     const handleAnimation = () => {
-        if (showOverlay) {
+        if (!showOverlay.isOpen) {
             Animated.timing(animation, {
                 toValue: 0,
                 duration: 400,
@@ -53,9 +55,8 @@ const Overlay = React.memo((props) => {
     };
 
     /**
-     * Defines which colors to animate between
+     * Defines which colors to animate between.
      * @memberof Overlay
-     * @function
      * @param {Array} inputRange The ranges to interpolate between
      * @param {Array} outputRange The colors to interpolate between
      */
@@ -78,10 +79,7 @@ const Overlay = React.memo((props) => {
                 ...animatedStyle,
                 zIndex: zIndex,
             }}>
-            <TouchableWithoutFeedback
-                onPress={() => {
-                    setShowOverlay(!showOverlay);
-                }}>
+            <TouchableWithoutFeedback onPress={() => showOverlay.onClose()}>
                 <View style={styles.touchableArea}></View>
             </TouchableWithoutFeedback>
         </Animated.View>

@@ -5,17 +5,16 @@ import { MainView } from '../components/reusableComponents/';
 import { SketchArea } from '../components/sketchComponents/';
 
 /**
- * Screen component for roundbaout screen / rundkjøring.
- * This screen is a sketch screen, and is using the big SketchArea component.
+ * Screen component for roundbaout screen.
+ * This screen is a sketch screen, and is using the big SketchArea component with name prop 'Rundkjoring'.
  * @namespace RoundaboutScreen
  * @category Screens
- * @prop {object} navigation Used for navigation between the different screens
  */
-const RoundaboutScreen = React.memo(({ navigation }) => {
+const RoundaboutScreen = React.memo(() => {
     return (
         <MainView>
             <View style={styles.sketchArea}>
-                <SketchArea navigation={navigation} name={'Rundkjoring'} />
+                <SketchArea name={'Rundkjoring'} />
             </View>
         </MainView>
     );

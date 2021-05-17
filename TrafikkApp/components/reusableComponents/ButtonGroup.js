@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
     Animated,
 } from 'react-native';
-import { Typography, Buttons } from '../../styles';
+import { Typography, Buttons, Colors } from '../../styles';
 
 /**
  * Component that displays a button group.
@@ -17,7 +17,7 @@ import { Typography, Buttons } from '../../styles';
  * @prop {number} [groupWidth] The width of the button group
  * @prop {number} [height] The height of the button group
  * @prop {function} onSelect Handler to be called when the user taps a button
- * @prop {color} highlightBackgroundColor BachgroundColor of the selected button
+ * @prop {color} highlightBackgroundColor BackgroundColor of the selected button
  * @prop {color} highlightTextColor Text color of the selected button
  * @prop {color} inactiveBackgroundColor BackgroundColor of the inactive button(s)
  * @prop {color} inactiveTextColor Text color of the inactive button(s)
@@ -26,41 +26,45 @@ const ButtonGroup = (props) => {
     const {
         values,
         selectedValue,
-        groupWidth,
+        width,
         height,
         onSelect,
         highlightBackgroundColor,
         highlightTextColor,
         inactiveBackgroundColor,
         inactiveTextColor,
-        isColorOptions,
+        isColorOption,
     } = props;
 
-    const width = groupWidth != null ? groupWidth : 300;
-    const isHeight = height != null ? height : width / 6;
-
-    const buttonSize = width / values.length;
-    const [buttonSizes, setButtonSizes] = useState([]);
-
-    // const fontSize = textSize != null ? textSize : width / 15;
-    const isColorOption = isColorOptions != null ? isColorOptions : false;
+    const adjHeight = height === 100 ? width / 7 : height;
 
     const [chosenIndex, setChosenIndex] = useState(
         values.indexOf(selectedValue)
     );
+    // This state is to help the text to change color only once the animation is done
+    // So we don't get weird color flickering
+    const [indexAnimDone, setIndexAnimDone] = useState(
+        values.indexOf(selectedValue)
+    );
+    const [hasMounted, setHasMounted] = useState(false);
+    const [newValue, setNewValue] = useState(selectedValue);
     const [boxPos, setBoxPos] = useState(new Animated.Value(0));
 
     /**
-     * useEffect that is triggered when selectedValue is changed.
-     * Will set the state chosenIndex to the index of the selected value
+     * @memberof ButtonGroup
+     * @typedef {function} useEffect
+     * @description useEffect that is triggered when selectedValue is changed.
+     * Will set the state chosenIndex to the index of the selected value.
      */
     useEffect(() => {
         setChosenIndex(values.indexOf(selectedValue));
     }, [selectedValue]);
 
     /**
-     * useEffect that is triggered when chosenValue is changed.
-     * Will animate the changing of the selected button
+     * @memberof ButtonGroup
+     * @typedef {function} useEffect
+     * @description UseEffect triggered on mount to set the inital buttonSizes depending on
+     * what type of slider it is.
      */
     useEffect(() => {
         // Getting sum of numbers
@@ -80,14 +84,24 @@ const ButtonGroup = (props) => {
         var newSizes = [];
         const smallButton = width / values.length / 3;
         let bigButton = 0;
-        if (values.indexOf('O') != -1 || values.indexOf('-') != -1) {
+
+        if (
+            values.indexOf('O') != -1 ||
+            values.indexOf('-') != -1 ||
+            values.indexOf('x') != -1
+        ) {
             bigButton = (width - smallButton) / (values.length - 1);
         } else {
             bigButton = width / values.length;
         }
 
         for (var i = 0; i < values.length; i++) {
-            if (values[i] === 'O' || values[i] === '-' || values[i] === '0') {
+            if (
+                values[i] === 'O' ||
+                values[i] === '-' ||
+                values[i] === '0' ||
+                values[i] === 'x'
+            ) {
                 newSizes.push(smallButton);
             } else {
                 newSizes.push(bigButton);
@@ -95,106 +109,168 @@ const ButtonGroup = (props) => {
         }
 
         setButtonSizes(newSizes);
-    }, []);
+    }, [width]);
+
+    /**
+     * @memberof ButtonGroup
+     * @typedef {function} useEffect
+     * @description useEffect that is triggered when chosenValue is changed.
+     * Will animate the changing of the selected button.
+     */
+    useEffect(() => {
+        // Getting sum of numbers
+        var sum = buttonSizes.slice(0, chosenIndex).reduce(function (a, b) {
+            return a + b;
+        }, 0);
+
+        if (!hasMounted) {
+            Animated.timing(boxPos, {
+                toValue: sum,
+                duration: 250,
+                useNativeDriver: true,
+            }).start();
+        } else {
+            Animated.timing(boxPos, {
+                toValue: sum,
+                duration: 250,
+                useNativeDriver: true,
+            }).start();
+        }
+
+        setHasMounted(true);
+        setIndexAnimDone(chosenIndex);
+    }, [chosenIndex, buttonSizes]);
 
     /**
      * Handler that is called when the user taps a button.
-     * Sets the state of the chosenIndex
+     * Sets the state of the chosenIndex.
      * @memberof ButtonGroup
      * @param {string} value The name of the button
      * @param {int} i The index of the button
      */
     const onValueChanged = (value, i) => {
-        onSelect(value);
         setChosenIndex(i);
+        setNewValue(value);
     };
 
-    return (
-        <View
-            style={[
-                styles.mainView,
-                {
-                    width: width,
-                    height: isHeight,
-                    backgroundColor: inactiveBackgroundColor,
-                },
-            ]}>
-            {!isColorOption && (
-                <Animated.View
-                    style={[
-                        styles.slider,
-                        {
-                            height: isHeight,
-                            width: buttonSizes[chosenIndex],
-                            backgroundColor: highlightBackgroundColor,
-                            transform: [{ translateX: boxPos }],
-                        },
-                    ]}
-                />
-            )}
+    useEffect(() => {
+        if (newValue != selectedValue) onSelect(newValue);
+    }, [newValue]);
 
-            {values.map((value, i) => {
-                return (
-                    <View
-                        key={i}
-                        style={[
-                            styles.buttonView,
-                            isColorOption
-                                ? {
-                                      borderTopLeftRadius: i == 0 ? 10 : 0,
-                                      borderTopRightRadius:
-                                          i === values.length - 1 ? 10 : 0,
-                                      borderBottomLeftRadius: i === 0 ? 10 : 0,
-                                      borderBottomRightRadius:
-                                          i === values.length - 1 ? 10 : 0,
-                                      backgroundColor: value,
-                                  }
-                                : null,
-                        ]}>
-                        <TouchableOpacity
+    return (
+        <>
+            {buttonSizes.length !== 0 && (
+                <View
+                    style={[
+                        styles.mainView,
+                        {
+                            width: width,
+                            height: adjHeight,
+                            backgroundColor: inactiveBackgroundColor,
+                        },
+                    ]}>
+                    {!isColorOption && (
+                        <Animated.View
                             style={[
-                                styles.touchable,
+                                styles.slider,
                                 {
-                                    width: buttonSizes[i],
+                                    height: adjHeight,
+                                    width: buttonSizes[chosenIndex],
+                                    backgroundColor: highlightBackgroundColor,
+                                    transform: [{ translateX: boxPos }],
                                 },
                             ]}
-                            onPress={() => onValueChanged(value, i)}>
-                            {!isColorOption && (
-                                <Text
-                                    style={[
-                                        styles.text,
-                                        {
-                                            color:
-                                                i == chosenIndex
-                                                    ? highlightTextColor
-                                                    : inactiveTextColor,
-                                        },
-                                    ]}>
-                                    {value}
-                                </Text>
-                            )}
-                        </TouchableOpacity>
-                    </View>
-                );
-            })}
+                        />
+                    )}
 
-            {isColorOption && (
-                <Animated.View
-                    style={[
-                        styles.slider,
-                        {
-                            height: isHeight,
-                            width: buttonSizes[chosenIndex],
-                            borderBottomWidth: 5,
-                            borderRadius: 0,
-                            transform: [{ translateX: boxPos }],
-                        },
-                    ]}
-                />
+                    {values.map((value, i) => {
+                        return (
+                            <View
+                                key={i}
+                                style={[
+                                    styles.buttonView,
+                                    isColorOption
+                                        ? {
+                                              borderTopLeftRadius:
+                                                  i === 0 ? 10 : 0,
+                                              borderTopRightRadius:
+                                                  i === values.length - 1
+                                                      ? 10
+                                                      : 0,
+                                              borderBottomLeftRadius:
+                                                  i === 0 ? 10 : 0,
+                                              borderBottomRightRadius:
+                                                  i === values.length - 1
+                                                      ? 10
+                                                      : 0,
+                                              backgroundColor: value,
+                                          }
+                                        : null,
+                                ]}>
+                                <TouchableOpacity
+                                    style={[
+                                        styles.touchable,
+                                        {
+                                            width: buttonSizes[i],
+                                        },
+                                    ]}
+                                    onPress={() => onValueChanged(value, i)}
+                                    activeOpacity={0.7}>
+                                    {!isColorOption && (
+                                        <Text
+                                            style={[
+                                                styles.text,
+                                                {
+                                                    color:
+                                                        i == indexAnimDone
+                                                            ? highlightTextColor
+                                                            : inactiveTextColor,
+                                                },
+                                            ]}>
+                                            {value}
+                                        </Text>
+                                    )}
+                                </TouchableOpacity>
+                            </View>
+                        );
+                    })}
+
+                    {isColorOption && (
+                        <Animated.View
+                            style={[
+                                styles.slider,
+                                {
+                                    height: adjHeight,
+                                    width: buttonSizes[chosenIndex],
+                                    borderBottomWidth: 5,
+                                    borderBottomLeftRadius:
+                                        chosenIndex === 0 ? 10 : 0,
+                                    borderBottomRightRadius:
+                                        chosenIndex === values.length - 1
+                                            ? 10
+                                            : 0,
+                                    transform: [{ translateX: boxPos }],
+                                    borderColor: 'white',
+                                },
+                            ]}
+                        />
+                    )}
+                </View>
             )}
-        </View>
+        </>
     );
 };
+
+ButtonGroup.defaultProps = {
+    width: 300,
+    height: 100,
+    highlightBackgroundColor: Colors.slideActiveBg,
+    highlightTextColor: Colors.slideTextActive,
+    inactiveBackgroundColor: Colors.slideInactiveBg,
+    inactiveTextColor: Colors.slideTextInactive,
+    isColorOptions: false,
+};
+
 const styles = StyleSheet.create({
     mainView: {
         flexDirection: 'row',

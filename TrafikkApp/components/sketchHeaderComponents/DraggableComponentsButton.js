@@ -3,26 +3,30 @@ import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Buttons, Colors, Icons } from '../../styles';
 
-/**This is the button component for the
- * box that is either open or closed on the sketchheader
+/**
+ * This component displays the button to open the draggableMenu on the sketch screens.
+ * The button is displayed in the header on the sketch screens.
+ *
  * @namespace DraggableComponentsButton
  * @category SketchHeaderComponents
- * @prop {function} topMenuHidden Whether the draggable components menu is hidden or not
- * @prop {boolean} toggleTopMenu Handler to be called when the user presses the button
+ * @prop {object} topMenuOpen Hook to get bool and functions of the menu
  */
 const DraggableComponentsButton = React.memo((props) => {
-    const { topMenuHidden, toggleTopMenu } = props;
+    const { topMenuOpen } = props;
     return (
-        <View
-            style={[
-                styles.buttonSize,
-                !topMenuHidden ? styles.buttonActive : styles.buttonInactive,
-            ]}>
-            <TouchableOpacity onPress={() => toggleTopMenu()}>
+        <View>
+            <TouchableOpacity
+                onPress={() => topMenuOpen.onToggle()}
+                style={[
+                    styles.buttonSize,
+                    topMenuOpen.isOpen
+                        ? styles.buttonActive
+                        : styles.buttonInactive,
+                ]}>
                 <Icon
-                    name={!topMenuHidden ? 'car-crash' : 'car'}
+                    name={topMenuOpen.isOpen ? 'car-crash' : 'car'}
                     size={Icons.medium}
-                    color={!topMenuHidden ? Colors.textPrimary : Colors.icons}
+                    color={Colors.textPrimary}
                 />
             </TouchableOpacity>
         </View>
@@ -37,7 +41,6 @@ const styles = StyleSheet.create({
     },
     buttonActive: {
         backgroundColor: Colors.boxIconActive,
-        ...Buttons.sketchHeaderButton,
     },
     buttonInactive: {
         backgroundColor: Colors.headerBg,

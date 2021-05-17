@@ -5,7 +5,8 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Buttons, Icons } from '../../styles';
 
 /**
- * Component that returns a button, used for eraser- and undo-button in the sketchHeader.
+ * This component displays a button used for the eraser- and undu-buttons in the sketch header on the sketch screens.
+ *
  * @namespace HeaderButton
  * @category SketchHeaderComponents
  * @prop {String} iconName the name of the Icon
@@ -25,7 +26,11 @@ const HeaderButton = React.memo((props) => {
 
     return (
         <View>
-            <View
+            <TouchableOpacity
+                onPress={() => {
+                    buttonOnPress();
+                    focusedActiveButton(buttonActiveId);
+                }}
                 style={
                     activeId === buttonActiveId
                         ? [
@@ -35,27 +40,21 @@ const HeaderButton = React.memo((props) => {
                                   backgroundColor:
                                       iconName === 'eraser'
                                           ? Colors.eraserIconActive
-                                          : Colors.iconActive,
+                                          : Colors.headerBg,
                               },
                           ]
                         : [styles.buttonSize, styles.buttonInactive]
                 }>
-                <TouchableOpacity
-                    onPress={() => {
-                        buttonOnPress();
-                        focusedActiveButton(buttonActiveId);
-                    }}>
-                    <Icon
-                        name={iconName}
-                        size={Icons.medium}
-                        color={
-                            activeId === buttonActiveId
-                                ? Colors.textPrimary
-                                : Colors.icons
-                        }
-                    />
-                </TouchableOpacity>
-            </View>
+                <Icon
+                    name={iconName}
+                    size={Icons.medium}
+                    color={
+                        activeId === buttonActiveId
+                            ? Colors.textPrimary
+                            : Colors.icons
+                    }
+                />
+            </TouchableOpacity>
         </View>
     );
 });
@@ -68,18 +67,14 @@ const styles = StyleSheet.create({
     },
     buttonActive: {
         backgroundColor: Colors.iconActive,
+        elevation: 5,
+        padding: 10,
         ...Buttons.sketchHeaderButton,
     },
     buttonInactive: {
         backgroundColor: Colors.headerBg,
         ...Buttons.sketchHeaderButton,
-    },
-    spacedRight: {
-        flex: 1,
-        flexDirection: 'row',
-        height: '100%',
-        width: '100%',
-        alignItems: 'center',
+        padding: 10,
     },
 });
 

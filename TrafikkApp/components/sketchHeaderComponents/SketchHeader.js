@@ -6,12 +6,14 @@ import SketchColorMenu from './SketchColorMenu';
 import HeaderButton from './HeaderButton';
 import DraggableComponentsButton from './DraggableComponentsButton';
 import DeleteButtonPopover from './DeleteButtonPopover';
-
+import { isSmallScreen } from '../helpers';
 import { Colors } from '../../styles';
 
 /**
- * The SketchHeader contains all the buttons and menus related to the drawing.
+ * The component for the content of the header, the SketchHeader, in the sketch screens.
+ * SketchHeader contains all the buttons and menus related to the drawing.
  * It also contains a button to toggle the draggable components menu in and out of view.
+ *
  * @namespace SketchHeader
  * @category SketchHeaderComponents
  * @prop {function} onEraserPencilSwitch Changes the pencil color and size when switching between eraser and pencil
@@ -19,8 +21,7 @@ import { Colors } from '../../styles';
  * @prop {function} clearCanvas Clears the canvas of all illustrations
  * @prop {function} eraser Sets the pencil to an eraser, erases lines instead of drawing
  * @prop {function} onPaletteColorChange changes the pencil color according to user input
- * @prop {boolean} topMenuHidden Whether the draggable components menu is hidden or not.
- * @prop {function} toggleTopMenu Toggles the top menu (draggable components menu) in and out of view
+ * @prop {boolean} topMenuOpen Whether the draggable components menu is hidden or not.
  * @prop {function} onChangePencilSize Changes the pencil thickness
  * @prop {string} pencilColor The state pencilColor
  * @prop {number} pencilSize The state pencilSize
@@ -36,8 +37,7 @@ const SketchHeader = React.memo((props) => {
         clearCanvas,
         eraser,
         onPaletteColorChange,
-        topMenuHidden,
-        toggleTopMenu,
+        topMenuOpen,
         onChangePencilSize,
         pencilColor,
         pencilSize,
@@ -45,7 +45,7 @@ const SketchHeader = React.memo((props) => {
     } = props;
 
     /**
-     * Handles the states for active buttons
+     * Handles the states for active buttons.
      * @memberof SketchHeader
      * @param {int} value The value of the button
      */
@@ -60,46 +60,46 @@ const SketchHeader = React.memo((props) => {
 
     return (
         <View style={styles.main}>
-            <Header navigation={props.navigation} style={styles.header}>
-                <DeleteButtonPopover
-                    clearCanvas={clearCanvas}
-                    propsStyle={styles.spacedLeft}
-                />
-                <SketchColorMenu
-                    onPaletteColorChange={onPaletteColorChange}
-                    onChangePencilSize={onChangePencilSize}
-                    propsStyle={styles.spacedRight}
-                    onEraserPencilSwitch={onEraserPencilSwitch}
-                    buttonActiveId={0}
-                    activeId={activeId}
-                    focusedActiveButton={focusedActiveButton}
-                    pencilColor={pencilColor}
-                    pencilSize={pencilSize}
-                    chosenColor={chosenColor}
-                />
-                <View style={styles.container} />
-                <HeaderButton
-                    iconName={'eraser'}
-                    buttonOnPress={eraser}
-                    buttonActiveId={1}
-                    activeId={activeId}
-                    focusedActiveButton={focusedActiveButton}
-                />
-                <View style={styles.container} />
-                <HeaderButton
-                    iconName={'undo-alt'}
-                    buttonOnPress={undoChange}
-                    buttonActiveId={null}
-                    activeId={activeId}
-                    focusedActiveButton={focusedActiveButton}
-                />
-                <View style={styles.container} />
-                <DraggableComponentsButton
-                    activeIconName={'box-open'}
-                    inactiveIconName={'box'}
-                    toggleTopMenu={toggleTopMenu}
-                    topMenuHidden={topMenuHidden}
-                />
+            <Header style={styles.header}>
+                <View style={styles.buttonsLeft}>
+                    <DeleteButtonPopover
+                        clearCanvas={clearCanvas}
+                        propsStyle={styles.spacedLeft}
+                    />
+                </View>
+
+                <View style={styles.buttonsRight}>
+                    <SketchColorMenu
+                        onPaletteColorChange={onPaletteColorChange}
+                        onChangePencilSize={onChangePencilSize}
+                        onEraserPencilSwitch={onEraserPencilSwitch}
+                        buttonActiveId={0}
+                        activeId={activeId}
+                        focusedActiveButton={focusedActiveButton}
+                        pencilColor={pencilColor}
+                        pencilSize={pencilSize}
+                        chosenColor={chosenColor}
+                    />
+                    <HeaderButton
+                        iconName={'eraser'}
+                        buttonOnPress={eraser}
+                        buttonActiveId={1}
+                        activeId={activeId}
+                        focusedActiveButton={focusedActiveButton}
+                    />
+                    <HeaderButton
+                        iconName={'undo-alt'}
+                        buttonOnPress={undoChange}
+                        buttonActiveId={null}
+                        activeId={activeId}
+                        focusedActiveButton={focusedActiveButton}
+                    />
+                    <DraggableComponentsButton
+                        activeIconName={'box-open'}
+                        inactiveIconName={'box'}
+                        topMenuOpen={topMenuOpen}
+                    />
+                </View>
             </Header>
         </View>
     );
@@ -116,33 +116,25 @@ const styles = StyleSheet.create({
         borderBottomColor: Colors.dividerPrimary,
         elevation: 10,
     },
+    buttonsLeft: {
+        flex: isSmallScreen() ? 1.2 : 2.2,
+    },
+    buttonsRight: {
+        flex: 2,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
     spacedLeft: {
-        flex: 1,
         flexDirection: 'row',
         height: '100%',
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'flex-start',
-        borderRadius: 20,
+        justifyContent: 'center',
     },
-    spacedRight: {
-        flex: 1,
-        flexDirection: 'row',
-        height: '100%',
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        padding: 10,
-    },
+
     container: {
         paddingHorizontal: 5,
     },
-    // buttonSize: {
-    //     // flex: 1,
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    //     ...Buttons.sketchHeaderButton,
-    // },
 });
 
 export default SketchHeader;

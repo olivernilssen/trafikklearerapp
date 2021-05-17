@@ -8,21 +8,24 @@ import React, {
 import { View, StyleSheet, Image, Dimensions } from 'react-native';
 import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
 
-import { MainView, BottomMenuAnimated, Overlay } from '../reusableComponents/';
+import { MainView, BottomMenuAnimated, Overlay } from '../reusableComponents';
 import { SketchHeader } from '../sketchHeaderComponents/';
-import { DraggableWithEverything } from '../draggable/';
+import DraggablesWithMenu from '../draggableComponents/DraggablesWithMenu';
 import SketchAreaMenuContent from './SketchAreaMenuContent';
 import { Colors } from '../../styles';
 import AppContext from '../../AppContext';
+import { useOpen, isSmallScreen } from '../helpers';
 
 const { width, height } = Dimensions.get('window');
 
 /**
- * This is a big component that contains all the components that are visible
- * on the SketchArea screens.
+ * This is the SketchArea compoennt, a big component that contains all the components related to the drawing function and that are visible
+ * on the sketch screens. This is the IntersectionScreen, RoundaboutScreen, HighwayScreen, CountryRoadScreen and MapSketchScreen.
+ * The component behaves differently the MapSketchScreen, for that screen a snapshow of the map is used as a sketch backround. For the
+ * other screens, illustrations from a data file is used.
+ *
  * @namespace SketchArea
  * @category SketchComponents
- * @prop {object} navigation Used for navigation between the different screens
  * @prop {string} name Name of the screen (IntersectionScreen, RoundaboutScreen etc)
  */
 const SketchArea = React.memo((props) => {
@@ -32,16 +35,16 @@ const SketchArea = React.memo((props) => {
     const eraserColor = 'transparent';
     const defaultPencilSize = 5;
 
-    const { name, navigation } = props;
-
+    const { name } = props;
+    const isMap = name == 'Map';
     const [pencilColor, setPencilColor] = useState(appContext.penColor);
-    const [chosenColor, setChosenColor] = useState('');
+    const [chosenColor, setChosenColor] = useState(appContext.penColor);
     const [pencilSize, setPencilSize] = useState(defaultPencilSize);
     const [chosenPencilSize, setChosenPencilSize] = useState(null);
     const [roadDesignChange, setRoadDesignChange] = useState(true);
     const [currentImg, setImage] = useState();
-    const [topMenuHidden, setTopMenuHidden] = useState(true);
-    const [bottomSheetHidden, setBottomSheetHidden] = useState(false);
+    const topMenuOpen = useOpen(false);
+    const bottomSheetOpen = useOpen(true);
     const [draggables, setDraggables] = useState([]);
     const [actionList, setActionList] = useState([]);
     const [deletingItemId, setDeletingItemId] = useState(null);
@@ -49,28 +52,60 @@ const SketchArea = React.memo((props) => {
     const [extensionType, setExtensionType] = useState('Vanlig');
 
     /**
-     * useEffect that is triggered when currentImg is changed
-     * Will clear the canvas and delete all objects on the screen
+     * @memberof SketchArea
+     * @typedef {function} useEffect
+     * @description useEffect that is triggered when currentImg is changed.
+     * Will clear the canvas and delete all objects on the screen unless the user
+     * has changed the settings for deleteOnChange in the settings.
      */
     useEffect(() => {
-        if (roadDesignChange && appContext.deleteOnChange == 'Ja') {
-            clearCanvas();
-            setDraggables([]);
+        if (isMap) {
+            if (appContext.deleteOnChange == 'Ja') {
+                clearCanvas();
+                setDraggables([]);
+            }
+        } else {
+            if (roadDesignChange && appContext.deleteOnChange == 'Ja') {
+                clearCanvas();
+                setDraggables([]);
+            }
         }
     }, [currentImg]);
 
     /**
-     * Changes the pencil color according to user input.
      * @memberof SketchArea
-     * @param {String} color The color thats been chosen
+     * @typedef {function} useEffect
+     * @description useEffect used when the screen that uses the SketchArea is map.
+     * Will take the latest snapshot taken from the map, and set this
+     * as the sketch background image.
      */
-    const onPaletteColorChange = (color) => {
-        setPencilColor(color);
-    };
+    useEffect(() => {
+        if (isMap) {
+            if (appContext.latestSnapshot != '') {
+                setImage(appContext.latestSnapshot);
+            } else {
+                console.warn('no image stored');
+            }
+        }
+    }, [appContext.latestSnapshot]);
+
+    /**
+     * @memberof SketchArea
+     * @typedef {function} useEffect
+     * @description useEffect that is triggered when the user changes eraser size in settings.
+     * Wil set the eraser size according to what the user has chosen.
+     */
+    useEffect(() => {
+        setEraserSize(parseInt(appContext.eraserSize));
+        if (pencilColor === eraserColor) {
+            setPencilSize(parseInt(appContext.eraserSize));
+        }
+    }, [appContext.eraserSize]);
 
     /**
      * Changes the pencil color and size when switching between eraser and pencil.
      * @memberof SketchArea
+     * @function
      */
     const onEraserPencilSwitch = useCallback(() => {
         if (pencilColor === eraserColor) {
@@ -93,10 +128,11 @@ const SketchArea = React.memo((props) => {
     };
 
     /**
-     * Function to undo the previous action of the user
-     * will remove strokes or draggables
-     * Does not unto draggable movements
+     * Function to undo the previous action of the user.
+     * will remove strokes or draggables.
+     * Does not unto draggable movements.
      * @memberof SketchArea
+     * @function
      */
     const undoChange = useCallback(() => {
         if (actionList.length == 0) return;
@@ -119,6 +155,7 @@ const SketchArea = React.memo((props) => {
      * When strokeEnded the added path/stroke
      * is added to actionList to keep track of undo actions.
      * @memberof SketchArea
+     * @function
      */
     const onStrokeEnd = useCallback(() => {
         setActionList([...actionList, { type: 'stroke' }]);
@@ -128,6 +165,7 @@ const SketchArea = React.memo((props) => {
      * Function to clear the canvas and set draggables to empty list.
      * Only clear canvas if roadDesignChange is true.
      * @memberof SketchArea
+     * @function
      */
     const clearCanvas = useCallback(() => {
         sketchRef.current.clear();
@@ -151,47 +189,39 @@ const SketchArea = React.memo((props) => {
      * Function to hide the bottomsheet when user starts
      * drawing on the canvas.
      * @memberof SketchArea
+     * @function
      */
     const onStrokeStart = useCallback(() => {
-        if (bottomSheetHidden == false)
-            setBottomSheetHidden(!bottomSheetHidden);
-    }, [bottomSheetHidden]);
-
-    /**
-     * Function to toggle the top menu to hidden or not hidden.
-     * @memberof SketchArea
-     */
-    const toggleMenu = () => {
-        setTopMenuHidden(!topMenuHidden);
-    };
+        if (bottomSheetOpen.isOpen === true) bottomSheetOpen.onToggle();
+    }, [bottomSheetOpen.isOpen]);
 
     return (
         <MainView>
-            <Overlay
-                showOverlay={bottomSheetHidden}
-                setShowOverlay={setBottomSheetHidden}
-            />
+            {name != 'Map' && <Overlay showOverlay={bottomSheetOpen} />}
             <View style={styles.main}>
                 <SketchHeader
                     onEraserPencilSwitch={onEraserPencilSwitch}
                     undoChange={undoChange}
                     clearCanvas={clearCanvas}
                     eraser={eraser}
-                    onPaletteColorChange={onPaletteColorChange}
-                    navigation={navigation}
+                    onPaletteColorChange={(color) => setPencilColor(color)}
                     name={name}
-                    topMenuHidden={topMenuHidden}
-                    toggleTopMenu={toggleMenu}
+                    topMenuOpen={topMenuOpen}
                     onChangePencilSize={onChangePencilSize}
                     pencilColor={pencilColor}
                     pencilSize={pencilSize}
                     chosenColor={chosenColor}
                 />
+
                 <View style={styles.backgroundImageContainer}>
                     <Image
                         resizeMode={'cover'}
-                        style={styles.backgroundImage}
-                        source={currentImg}
+                        style={
+                            isMap
+                                ? styles.mapBackgroundImage
+                                : styles.backgroundImage
+                        }
+                        source={isMap ? { uri: currentImg } : currentImg}
                     />
                 </View>
 
@@ -204,10 +234,10 @@ const SketchArea = React.memo((props) => {
                         strokeColor={pencilColor}
                         strokeWidth={pencilSize}
                     />
-                    <DraggableWithEverything
+                    <DraggablesWithMenu
                         draggables={draggables}
                         setDraggables={setDraggables}
-                        topMenuHidden={topMenuHidden}
+                        topMenuOpen={topMenuOpen}
                         deletingItemId={deletingItemId}
                         name={name}
                         setActionList={setActionList}
@@ -218,18 +248,17 @@ const SketchArea = React.memo((props) => {
                 </View>
             </View>
 
-            <BottomMenuAnimated
-                bottomSheetHidden={bottomSheetHidden}
-                setBottomSheetHidden={setBottomSheetHidden}>
-                <SketchAreaMenuContent
-                    roadType={name}
-                    setImage={setImage}
-                    setRoadDesignChange={setRoadDesignChange}
-                    extensionType={extensionType}
-                    setBottomSheetHidden={setBottomSheetHidden}
-                    navigation={navigation}
-                />
-            </BottomMenuAnimated>
+            {!isMap && (
+                <BottomMenuAnimated bottomSheetOpen={bottomSheetOpen}>
+                    <SketchAreaMenuContent
+                        roadType={name}
+                        setImage={setImage}
+                        setRoadDesignChange={setRoadDesignChange}
+                        extensionType={extensionType}
+                        closeBottomSheet={() => bottomSheetOpen.onClose()}
+                    />
+                </BottomMenuAnimated>
+            )}
         </MainView>
     );
 });
@@ -257,7 +286,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 0,
         left: 0,
-        paddingTop: 80,
+        paddingTop: isSmallScreen() ? 60 : 80,
+        paddingBottom: isSmallScreen() ? 40 : 50,
         height: '100%',
         width: '100%',
         justifyContent: 'center',
@@ -268,6 +298,15 @@ const styles = StyleSheet.create({
         width: '100%',
         maxWidth: width,
         aspectRatio: 1752 / 2263,
+        alignSelf: 'center',
+        backgroundColor: Colors.sketchBackground,
+        zIndex: 0,
+    },
+    mapBackgroundImage: {
+        height: '100%',
+        maxHeight: '100%',
+        width: '100%',
+        maxWidth: width,
         alignSelf: 'center',
         backgroundColor: Colors.sketchBackground,
         zIndex: 0,

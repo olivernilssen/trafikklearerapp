@@ -12,17 +12,46 @@ import PencilSizeButton from './PencilSizeButton';
 import ColorButton from './ColorButton';
 import { Colors, Buttons, Icons } from '../../styles';
 import AppContext from '../../AppContext';
+import { isSmallScreen } from '../helpers';
 
 const { Popover } = renderers;
 
 /**
- * A button with a menu for the drawing component of the SketchHeader.
+ * An array that holds the colors that are used for the color buttons.
+ * These are also the colors used to draw with.
+ * @memberof SketchColorMenu
+ */
+const colorArray = [
+    { colorCode: '#20303c', key: '20303c' },
+    { colorCode: '#3182c8', key: '3182c8' },
+    { colorCode: '#00aaaf', key: '00aaaf' },
+    { colorCode: '#00a65f', key: '00a65f' },
+    { colorCode: '#e2902b', key: 'e2902b' },
+    { colorCode: '#d9644a', key: 'd9644a' },
+    { colorCode: '#cf262f', key: 'cf262f' },
+    { colorCode: '#8b1079', key: '8b1079' },
+];
+
+/**
+ * An array that holds the thickness of the "icons" (view) for the pencil thickness buttons
+ * and the pencil thickness used for changing the thickness of the pencil.
+ * @memberof SketchColorMenu
+ */
+const pencilThicknessArray = [
+    { viewThickness: 8, pencilThickness: 5, key: 85 },
+    { viewThickness: 11, pencilThickness: 8, key: 118 },
+    { viewThickness: 14, pencilThickness: 11, key: 1411 },
+];
+
+/**
+ * This component displays the menu where the user can change pen color and pen size, in the sketch screens.
+ * The menu is triggered by a button, which is displayed in the header.
  * @namespace SketchColorMenu
  * @category SketchHeaderComponents
  * @prop {function} onPaletteColorChange Changes the color
  * @prop {function} onChangePencilSize Changes pencil size
  * @prop {object} propsStyle StyleSheet
- * @prop {function} onEraserPencilSwitch handles the switch between eraser and pencil
+ * @prop {function} onEraserPencilSwitch Handles the switch between eraser and pencil
  * @prop {number} buttonActiveId The id of the pencil button in the header
  * @prop {number} activeId The state activeId
  * @prop {function} focusedActiveButton Handles the states of the active buttons
@@ -33,13 +62,11 @@ const SketchColorMenu = React.memo((props) => {
     const [isOpened, setOpened] = useState(false);
     const [colorButtonID, setColorButtonID] = useState(0);
     const [pencilThicknessID, setPencilThicknessID] = useState(0);
-    // const [menuArrow, setMenuArrow] = useState(false);
     const appContext = useContext(AppContext);
 
     const {
         onPaletteColorChange,
         onChangePencilSize,
-        propsStyle,
         onEraserPencilSwitch,
         buttonActiveId,
         activeId,
@@ -49,33 +76,10 @@ const SketchColorMenu = React.memo((props) => {
     } = props;
 
     /**
-     * An array that holds the colors that are used for the color buttons.
-     * These are also the colors used to draw with.
-     */
-    const colorArray = [
-        { colorCode: '#20303C', key: '20403C' },
-        { colorCode: '#3182C8', key: '3182C8' },
-        { colorCode: '#00AAAF', key: '00AAAF' },
-        { colorCode: '#00A65F', key: '00A65F' },
-        { colorCode: '#E2902B', key: 'E2902B' },
-        { colorCode: '#D9644A', key: 'D9644A' },
-        { colorCode: '#CF262F', key: 'CF262F' },
-        { colorCode: '#8B1079', key: '8B1079' },
-    ];
-
-    /**
-     * An array that holds the thickness of the "icons" (view) for the pencil thickness buttons
-     * and the pencil thickness used for changing the thickness of the pencil.
-     */
-    const pencilThicknessArray = [
-        { viewThickness: 8, pencilThickness: 5, key: 85 },
-        { viewThickness: 11, pencilThickness: 8, key: 118 },
-        { viewThickness: 14, pencilThickness: 11, key: 1411 },
-    ];
-
-    /**
-     * useEffect to get out the colorId of the correct color
-     * depending on what the settings has stored
+     * @memberof SketchColorMenu
+     * @typedef {function} useEffect
+     * @description useEffect to get out the colorId of the correct color
+     * depending on what the settings has stored.
      */
     useEffect(() => {
         for (let i = 0; i < colorArray.length; i++) {
@@ -84,15 +88,6 @@ const SketchColorMenu = React.memo((props) => {
             }
         }
     }, []);
-
-    /**
-     * Used to handle the state of the color menu, if it is open or not.
-     * @memberof SketchColorMenu
-     * @param {boolean} value The state of isOpened
-     */
-    const onSecondClickOpen = (value) => {
-        setOpened(value);
-    };
 
     /**
      * Used to assign an ID to the color buttons.
@@ -105,7 +100,7 @@ const SketchColorMenu = React.memo((props) => {
     };
 
     /**
-     * Used to assign an ID to the pencil thickness buttons
+     * Used to assign an ID to the pencil thickness buttons.
      * @memberof SketchColorMenu
      * @param {number} value The id for the pencil thickness button
      */
@@ -115,16 +110,17 @@ const SketchColorMenu = React.memo((props) => {
     };
 
     /**
-     * Handles what happens to the pencil button when you press it or when you press another button after the pencil button.
+     * Handles what happens to the pencil button when you press it or when you
+     * press another button after the pencil button.
      * @memberof SketchColorMenu
      */
     const onPressMenuTrigger = () => {
         if (activeId != 0) {
             onEraserPencilSwitch();
             focusedActiveButton(buttonActiveId);
-            onSecondClickOpen(false);
+            setOpened(false);
         } else {
-            onSecondClickOpen(true);
+            setOpened(true);
         }
     };
 
@@ -173,7 +169,7 @@ const SketchColorMenu = React.memo((props) => {
     });
 
     return (
-        <View style={propsStyle}>
+        <View>
             <Menu
                 renderer={Popover}
                 rendererProps={{
@@ -182,7 +178,7 @@ const SketchColorMenu = React.memo((props) => {
                 }}
                 opened={isOpened}
                 onBackdropPress={() => {
-                    onSecondClickOpen(false);
+                    setOpened(false);
                 }}>
                 <MenuTrigger>
                     <TouchableOpacity
@@ -246,8 +242,8 @@ const styles = StyleSheet.create({
     downIconMenu: {
         position: 'absolute',
         alignSelf: 'center',
-        top: 26,
-        left: 35,
+        top: isSmallScreen() ? 20 : 26,
+        left: isSmallScreen() ? 24 : 33,
         transform: [{ rotate: '-45deg' }],
     },
     menuOptions: {

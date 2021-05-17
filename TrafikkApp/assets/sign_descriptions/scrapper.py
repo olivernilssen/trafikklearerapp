@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import re
 import json
 
+#0: url til nettside, 1: navn på filen som blir opprettet eller oppdatert, 2: navn på mappen som bildene ligger i
 urls = [
     ["https://www.vegvesen.no/trafikkinformasjon/langs-veien/trafikkskilt/fareskilt", 'fareskiltBeskrivelse.json', 'Fareskilt'],
     ["https://www.vegvesen.no/trafikkinformasjon/langs-veien/trafikkskilt/vikeplikt-og-forkjorsskilt", 'vikepliktBeskrivelse.json', 'Vikeplikt'],
@@ -16,7 +17,9 @@ urls = [
     ['https://www.vegvesen.no/trafikkinformasjon/langs-veien/trafikkskilt/underskilt', 'underskiltBeskrivelse.json', 'Underskilt'],
     ['https://www.vegvesen.no/trafikkinformasjon/langs-veien/trafikkskilt/markeringsskilt', 'markeringskiltBeskrivelse.json', 'Markeringsskilt']]
 
+#fFile path for the roadsigns images
 mainpath = '../roadSigns/'
+
 #go through all the urls and add to json
 for url in urls: 
     response = requests.get(url[0])
@@ -115,13 +118,13 @@ for url in urls:
                         signDescription[title.replace('.', '_')] = {'navn': headerTitle[1], 'beskrivelse': description, 'source' : "require(" + imgSource + title.replace('.', '_') + ".png)"} #add key=code, name and description 
             else:
                 signDescription[title.replace('.', '_')] = {'navn': headerTitle[1], 'beskrivelse': description, 'source' : "require(" + imgSource + title.replace('.', '_') + ".png)"} #add key=code, name and description
+        
+        #end inner for loop
 
-
-
-
-    # print(signDescription)
-
-    #add the dict to a json file
+    #add the dictionary to a json file
     with open(url[1], 'w', encoding='utf-8') as f:
         json.dump(signDescription, f, ensure_ascii=False, indent=4)
         print('wrote to file ' + url[1]) 
+
+    #end of iteration
+#end for loop

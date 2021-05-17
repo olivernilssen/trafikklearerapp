@@ -3,10 +3,13 @@ import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { ButtonGroup } from '../reusableComponents/';
 import curriculumData from './curriculumData';
 import { Colors, Typography } from '../../styles';
+import { isSmallScreen } from '../helpers/';
 
 /**
  * Component to display the content of the BottomMenu, on the screen
- * for the CurriculumObjectives.
+ * for the CurriculumObjectives. The content of the menu on this screen is a tab bar to choose
+ * between the different traffic classes, and a buttonGroup to choose between the
+ * curriculumObjectives for these classes.
  * @namespace CurriculumMenuContent
  * @category CurriculumObjectivesComponents
  * @prop {string} curriculumObjective The name of the chosen curriculum objective
@@ -14,6 +17,7 @@ import { Colors, Typography } from '../../styles';
  * @prop {string} trafficClass The name of the chosen traffic class
  * @prop {function} setTrafficClass Sets the state trafficClass
  * @prop {object} scrollRef Reference to the scrollview component in the CurriculumObjectiveScreen
+ * @prop {function} closeBottomMenu Function to close the bottom menu
  */
 const CurriculumMenuContent = React.memo(
     ({
@@ -22,8 +26,12 @@ const CurriculumMenuContent = React.memo(
         trafficClass,
         setTrafficClass,
         scrollRef,
-        setBottomSheetHidden,
+        closeBottomMenu,
     }) => {
+        // Width of the button group in the bottom menu
+        const buttonGroupWidth = isSmallScreen() ? 360 : 550;
+        const buttonGroupWidthSmaller = isSmallScreen() ? 290 : 450;
+
         // The traffic classes (klasse B, klasse B kode 96 og BE)
         const trafficClasses = [];
         const keys = Object.keys(curriculumData);
@@ -62,7 +70,9 @@ const CurriculumMenuContent = React.memo(
             setCurriculumObjective(curriculumObjective);
             scrollRef.current.scrollTo({ y: 0, animated: true });
             scrollRef.current.scrollTo({ y: 0, animated: true });
-            setBottomSheetHidden(true);
+            setTimeout(() => {
+                closeBottomMenu();
+            }, 500);
         };
 
         return (
@@ -122,9 +132,12 @@ const CurriculumMenuContent = React.memo(
                         onSelect={(newValue) =>
                             onCurriculumObjectiveChange(newValue)
                         }
-                        groupWidth={trafficClass == 'Klasse B' ? 700 : 550}
-                        height={50}
-                        textSize={20}
+                        width={
+                            trafficClass == 'Klasse B'
+                                ? buttonGroupWidth
+                                : buttonGroupWidthSmaller
+                        }
+                        height={55}
                         highlightBackgroundColor={Colors.startScreenLinkTheory}
                         highlightTextColor={Colors.secSlideTextActive}
                         inactiveBackgroundColor={Colors.secSlideInactiveBg}

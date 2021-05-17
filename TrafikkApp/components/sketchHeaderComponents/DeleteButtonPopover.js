@@ -9,11 +9,14 @@ import {
 } from 'react-native-popup-menu';
 
 import { Colors, Typography, Buttons, Icons } from '../../styles';
+import { isSmallScreen } from '../helpers';
 
 const { Popover } = renderers;
 
 /**
- * A button for clearing the sketch screen, drops down a button for confirmation.
+ * This is the component to display a button to clear the drawings, in the header on the sketch screens.
+ * When pressed it drops down a second button for confirmation.
+ *
  * @namespace DeleteButtonPopover
  * @category SketchHeaderComponents
  * @prop {object} propsStyle StyleSheet
@@ -88,29 +91,30 @@ const styles = StyleSheet.create({
     buttonSize: {
         justifyContent: 'center',
         alignItems: 'center',
-        paddingVertical: 16,
-        paddingHorizontal: 16,
         ...Buttons.sketchHeaderButton,
     },
     buttonActive: {
         backgroundColor: Colors.deleteButtonActive,
+        elevation: 2,
     },
     buttonInactive: {
         color: Colors.icons,
         backgroundColor: Colors.headerBg,
     },
     menuOptions: {
-        height: 80,
-        width: 100,
+        height: isSmallScreen() ? 65 : 75,
+        width: isSmallScreen() ? 80 : 90,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
         backgroundColor: Colors.colorPaletteMenu,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignContent: 'center',
     },
     menuOptionsContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: 20,
     },
     deleteAllButton: {
         backgroundColor: Colors.deleteButtonActive,
