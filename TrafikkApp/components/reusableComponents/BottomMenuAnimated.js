@@ -11,7 +11,6 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Icons } from '../../styles';
 
 let _value = { x: 0, y: 0 };
-let xOffset = 0;
 
 /**
  * Component that displays a menu on the bottom of the screen.
@@ -131,7 +130,6 @@ const BottomMenuAnimated = React.memo((props) => {
      * Will trigger the toggleSubview function to animate the
      * bottomsheet into view
      * @memberof BottomMenuAnimated
-
      */
     useEffect(() => {
         toggleSubview();
