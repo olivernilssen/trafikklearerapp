@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, StyleSheet, Text, ScrollView } from 'react-native';
 
 import { Header, Overlay, BottomMenuAnimated } from '../reusableComponents';
@@ -10,8 +10,15 @@ import { Colors, Typography } from '../../styles';
 import { RUtils } from 'react-native-responsive-component';
 
 /**
+<<<<<<< HEAD
  * The area component for the curriculum objectives for traffic training.
  * This is the component that contains all the other components related to the CurriculumObjectivesScreen
+=======
+ * The area component for the curriculum objectives screen.
+ * This is the component that contains all the other components related to the CurriculumObjectivesScreen.
+ * This includes a CurriCulumMenuContent, a bottom menu to chose between the different curriculum objectives,
+ * and a scrollview to display the CurriCulumObjectives, the text in.
+>>>>>>> 725e3cd0dbf01427b94203212d4518a9d1879fcb
  * @namespace CurriculumArea
  * @category CurriculumObjectivesComponents
  */
@@ -56,7 +63,6 @@ const CurriculumArea = React.memo((props) => {
                     <CurriculumObjectives
                         curriculumObjective={curriculumObjective}
                         trafficClass={trafficClass}
-                        // subHeading={subHeading}
                         setSubHeading={setSubHeading}
                         setMainHeading={setMainHeading}
                     />

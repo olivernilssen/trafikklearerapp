@@ -1,22 +1,20 @@
 import React, { useCallback } from 'react';
-import { View, StyleSheet, Animated } from 'react-native';
-import {
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-} from 'react-native-gesture-handler';
+import { StyleSheet, Animated } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors } from '../../../styles';
 
 /**
- * Component for the items inside the animated popout menu
+ * This component contains the items that is displayed inside the animated popout menu,
+ * the menu for each draggable object.
  * @namespace PopoutItems
- * @category Draggable
+ * @category DraggableComponents
  * @subcategory Popout
- * @prop {int} radius radius of popout item
- * @prop {array[]} array array of colors or items in popout menu
- * @prop {function} setTintColor function to set the tintcolor of draggable
- * @prop {int} buttonSize size of buttons in popout menu
- * @prop {function} removeItem function to delete draggable
+ * @prop {int} radius Radius of the popout item
+ * @prop {array} array Array of colors or items in the popout menu
+ * @prop {function} setTintColor Function to set the tintColor of the draggable object
+ * @prop {int} buttonSize Size of the buttons in the popout menu
+ * @prop {function} removeItem Function to delete the draggable object
  */
 const PopoutItems = React.memo((props) => {
     const {
@@ -30,9 +28,10 @@ const PopoutItems = React.memo((props) => {
 
     /**
      * Function to calculate the x and y coordinates as a half circle
-     * around an object. depending on which position the item has in
-     * the array it is placed in
+     * around an object, depending on which position the item has in
+     * the array it is placed in.
      * @memberof PopoutItems
+     * @function
      * @param {int} index index of a popout item
      * @returns {int} the x position of the circle
      * @returns {int} the y position of the circle
@@ -55,12 +54,12 @@ const PopoutItems = React.memo((props) => {
     });
 
     /**
-     * Check what button is pressed
-     * and change either tintcolor, remove it or delete item
+     * Function to check which button in the popout menu that is pressed
+     * and either change tintColor, remove the object or delete the object.
      * @memberof PopoutItems
-     * @param {hex} color color of selected tint
-     * @param {boolean} isRemoveButton if button is the remove button
-     * @param {boolean} isExitButton if the button is the reset button (not working)
+     * @param {hex} color Color of the selected tint
+     * @param {boolean} isRemoveButton If the button is the remove button
+     * @param {boolean} isExitButton If the button is the reset button (not working)
      */
     const onPressOption = (color, isRemoveButton, isExitButton) => {
         isRemoveButton
@@ -71,8 +70,11 @@ const PopoutItems = React.memo((props) => {
     };
 
     /**
-     * This returns each object that is in the array
-     * as a small circle placed according to the function calculateXY
+     * @memberof PopoutItems
+     * @typedef {component} PopoutItems
+     * @description This maps through the array of items, and
+     * returns each object that is in the array as a small circle placed
+     * according to the function calculateXY.
      */
     return array.map((color, i) => {
         const isExitButton = color == 'exit';

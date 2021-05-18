@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 
 import {
     StyleSheet,
@@ -26,15 +26,15 @@ const mapTypes = {
 };
 
 /**
- * Component to render the bottom menu in maps for larger screens
+ * Component to render the bottom menu in the MapScreen for larger screens/devices.
  * @namespace LargeScreenMenu
  * @category MapComponents
- * @prop {hook} markerToggle hook to mark or unmark the markers
- * @prop {hook} pin hook to set the coords of the pin/marker
- * @prop {string} snapshot the path for the snapshot
- * @prop {function} takeSnapshot call to function to take snapshot and save img
- * @prop {string} mapType the maptype being used
- * @prop {function} setMapType setstate function to set maptype
+ * @prop {hook} markerToggle Hook to mark or unmark the markers
+ * @prop {hook} pin Hook to set the coords of the pin/marker
+ * @prop {string} snapshot The path for the snapshot
+ * @prop {function} takeSnapshot Call to function to take snapshot and save image
+ * @prop {string} mapType The maptype being used
+ * @prop {function} setMapType Setstate function to set mapType
  */
 const LargeScreenMenu = ({
     markerToggle,
@@ -48,23 +48,41 @@ const LargeScreenMenu = ({
     const navigation = useNavigation();
     const appContext = useContext(AppContext);
     const [buttonLayout, setButtonLayout] = useState(undefined);
+    const [locationPinActive, setLocationPinActive] = useState(false);
 
     const mapKeys = Object.keys(mapTypes);
 
-    /** Save the pinned location to async storage
+    /**
+     * @memberof LargeScreenMenu
+     * @typedef {function} useEffect
+     * @description useEffect that is triggered when the coordinates of the pin
+     * is changed. Used to set the state locationPinActive to true or false,
+     * which is used to style the "save pinned location"-button.
+     */
+    useEffect(() => {
+        if (pin.coords != undefined) {
+            setLocationPinActive(true);
+        } else {
+            setLocationPinActive(false);
+        }
+    }, [pin.coords]);
+
+    /** Save the pinned location to async storage.
      * @memberof LargeScreenMenu
      */
     const savePinLocation = () => {
-        appContext.saveNewSettings(
-            JSON.stringify(pin.coords),
-            appContext.setSavedLocations,
-            USER_KEYS.SAVEDLOC_KEY
-        );
-        ToastAndroid.show(
-            'Markør har blitt lagret på enheten',
-            ToastAndroid.SHORT,
-            ToastAndroid.TOP
-        );
+        if (pin.coords != undefined) {
+            appContext.saveNewSettings(
+                JSON.stringify(pin.coords),
+                appContext.setSavedLocation,
+                USER_KEYS.SAVEDLOC_KEY
+            );
+            ToastAndroid.show(
+                'Markør har blitt lagret på enheten',
+                ToastAndroid.SHORT,
+                ToastAndroid.TOP
+            );
+        }
     };
 
     return (
@@ -82,14 +100,27 @@ const LargeScreenMenu = ({
                             onLayout={(e) =>
                                 setButtonLayout(e.nativeEvent.layout)
                             }
-                            style={styles.button}
-                            onPress={savePinLocation}>
-                            <Text style={styles.buttonText}>Lagre pin</Text>
+                            style={
+                                locationPinActive
+                                    ? styles.button
+                                    : styles.buttonInactive
+                            }
+                            activeOpacity={locationPinActive ? 0.5 : 1}
+                            onPress={() => savePinLocation()}>
+                            <Text
+                                style={
+                                    locationPinActive
+                                        ? styles.buttonText
+                                        : styles.buttonTextInactive
+                                }>
+                                Lagre pin
+                            </Text>
                         </TouchableOpacity>
 
                         {/* MAKE MARKERS VISIBLE BUTTON */}
                         <TouchableOpacity
                             style={styles.button}
+                            activeOpacity={0.5}
                             onPress={() => {
                                 markerToggle.onToggle();
                             }}>
@@ -97,16 +128,6 @@ const LargeScreenMenu = ({
                                 {markerToggle.isToggled ? 'Gjem' : 'Vis'}{' '}
                                 markør(er)
                             </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={[
-                                styles.button,
-                                {
-                                    backgroundColor: 'transparent',
-                                    elevation: 0,
-                                },
-                            ]}>
-                            <Text style={styles.buttonText}></Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -123,6 +144,7 @@ const LargeScreenMenu = ({
                                     flexDirection: 'row',
                                 },
                             ]}
+                            activeOpacity={0.5}
                             onPress={takeSnapshot}>
                             <Icon
                                 name={'camera'}
@@ -141,6 +163,7 @@ const LargeScreenMenu = ({
                         {/* USE PHOTO TO ILLUSTRATE BUTTON */}
                         <TouchableOpacity
                             style={[styles.button, { flexDirection: 'row' }]}
+                            activeOpacity={0.5}
                             onPress={() =>
                                 navigation.navigate('MapSketchScreen')
                             }>
@@ -157,18 +180,9 @@ const LargeScreenMenu = ({
                                 Bruk skjermdump
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity
-                            style={[
-                                styles.button,
-                                {
-                                    backgroundColor: 'transparent',
-                                    elevation: 0,
-                                },
-                            ]}>
-                            <Text style={styles.buttonText}></Text>
-                        </TouchableOpacity>
                     </View>
                 </View>
+
                 {/* SCREENSHOTTEN IMAGE */}
                 <Image
                     style={styles.image}
@@ -191,7 +205,6 @@ const LargeScreenMenu = ({
                         height={50}
                         onSelect={(newValue) => setMapType(mapTypes[newValue])}
                         inactiveBackgroundColor={Colors.bottomMenyButtons}
-                        // width={'100%'}
                     />
                 )}
             </View>
@@ -203,7 +216,6 @@ export default LargeScreenMenu;
 
 const styles = StyleSheet.create({
     bottomSheet: {
-        // backgroundColor: Colors.dividerPrimary + '50',
         height: 300,
         width: '100%',
         paddingHorizontal: '2%',
@@ -217,34 +229,39 @@ const styles = StyleSheet.create({
         marginRight: isSmallScreen() ? '2%' : '2%',
         height: '90%',
     },
-    innerGroup: {
-        flex: 1,
-        justifyContent: 'space-evenly',
-        flexDirection: 'column',
-    },
     sectionText: {
         ...Typography.section,
         color: Colors.textPrimary,
         marginBottom: isSmallScreen() ? '2%' : '3%',
     },
-    buttonGroupComponent: {
+    innerGroup: {
         flex: 1,
-        width: '90%',
-        height: '60%',
-        alignItems: 'center',
-        alignSelf: 'center',
-        marginBottom: '5%',
+        justifyContent: 'flex-start',
     },
     button: {
         padding: '5%',
+        marginVertical: 10,
+        backgroundColor: Colors.bottomMenyButtons,
+        justifyContent: 'center',
+        alignItems: 'center',
+        elevation: 5,
+        ...Buttons.rounded,
+    },
+    buttonInactive: {
+        padding: '5%',
+        marginVertical: 12,
         backgroundColor: Colors.bottomMenyButtons,
         justifyContent: 'center',
         alignItems: 'center',
         ...Buttons.rounded,
-        elevation: 5,
     },
     buttonText: {
         color: Colors.textPrimary,
+        ...Typography.body,
+    },
+    buttonTextInactive: {
+        color: Colors.slideTextInactive,
+        fontStyle: 'italic',
         ...Typography.body,
     },
     image: {
@@ -255,5 +272,13 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         borderWidth: 2,
         borderColor: Colors.selectedBorder,
+    },
+    buttonGroupComponent: {
+        flex: 1,
+        width: '90%',
+        height: '60%',
+        alignItems: 'center',
+        alignSelf: 'center',
+        marginBottom: '5%',
     },
 });

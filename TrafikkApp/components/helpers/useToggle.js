@@ -1,9 +1,10 @@
 import { useState, useCallback } from 'react';
+
 /**
- * This is to be used to determine if something is toggled or not
+ * This is used to determine if something is toggled or not
  * and also holds set functions to toggle off and on the state.
- * @namespace useToggle
- * @param {boolean} defaultToggle defautl/start boolean value of this hook
+ * @memberof Helpers
+ * @param {boolean} defaultToggle default/start boolean value of this hook
  * @returns an object with the state and all functions available for it
  */
 const useToggle = (defaultToggle) => {

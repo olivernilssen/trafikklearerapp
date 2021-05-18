@@ -7,7 +7,9 @@ import { isSmallScreen } from '../helpers/';
 
 /**
  * Component to display the content of the BottomMenu, on the screen
- * for the CurriculumObjectives.
+ * for the CurriculumObjectives. The content of the menu on this screen is a tab bar to choose
+ * between the different traffic classes, and a buttonGroup to choose between the
+ * curriculumObjectives for these classes.
  * @namespace CurriculumMenuContent
  * @category CurriculumObjectivesComponents
  * @prop {string} curriculumObjective The name of the chosen curriculum objective
@@ -15,6 +17,7 @@ import { isSmallScreen } from '../helpers/';
  * @prop {string} trafficClass The name of the chosen traffic class
  * @prop {function} setTrafficClass Sets the state trafficClass
  * @prop {object} scrollRef Reference to the scrollview component in the CurriculumObjectiveScreen
+ * @prop {function} closeBottomMenu Function to close the bottom menu
  */
 const CurriculumMenuContent = React.memo(
     ({

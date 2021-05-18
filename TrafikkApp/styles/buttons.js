@@ -1,15 +1,6 @@
 import ThemeVariables from './themeVariables';
 import { isSmallScreen } from '../components/helpers/';
 
-export const small = {
-    width: ThemeVariables.BUTTON_WIDTH_SMALL,
-};
-
-export const medium = {
-    height: ThemeVariables.BUTTON_HEIGTH_MEDIUM,
-    width: ThemeVariables.BUTTON_WIDTH_MEDIUM,
-};
-
 export const largeWidt = {
     height: ThemeVariables.BUTTON_HEIGHT_EXTRA_LARGE,
     width: ThemeVariables.BUTTON_WIDTH_LARGE,
@@ -33,21 +24,6 @@ export const startScreen = {
     ...rounded,
 };
 
-export const smallRounded = {
-    ...small,
-    ...rounded,
-};
-
-export const mediumRounded = {
-    ...medium,
-    ...rounded,
-};
-
-export const largeWidthRounded = {
-    ...largeWidt,
-    ...rounded,
-};
-
 export const sketchHeaderButton = {
     height: isSmallScreen() ? 43 : 60,
     width: isSmallScreen() ? 43 : 60,
@@ -58,4 +34,9 @@ export const sketchHeaderButtonSmall = {
     height: isSmallScreen() ? 26 : 32,
     width: isSmallScreen() ? 26 : 32,
     ...round,
+};
+
+export const largeWidthRounded = {
+    ...largeWidt,
+    ...rounded,
 };

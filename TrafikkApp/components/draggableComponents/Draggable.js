@@ -24,15 +24,15 @@ const colors = [
 
 const noColors = ['delete'];
 
-const ITEM_SIZE = windowWidth * 0.13;
+const ITEM_SIZE = windowWidth * 0.2;
 const radius = (ITEM_SIZE * 2) / 2;
-const buttonSize = windowWidth * 0.04;
+const buttonSize = windowWidth * 0.05;
 
 /**
- * Component that holds the actual draggable component
+ * Component that holds the actual draggable component.
  * @namespace Draggable
  * @category DraggableComponents
- * @prop {string} source image source of the draggable object
+ * @prop {string} source Image source of the draggable object
  */
 const Draggable = React.memo((props) => {
     //States
@@ -42,21 +42,22 @@ const Draggable = React.memo((props) => {
     const [popoutActive, setPopoutActive] = useState(false);
 
     /**
-     * useEffect that is triggered when tintColor is changed
-     * Will make the popout inactive
      * @memberof Draggable
+     * @typedef {function} useLayoutEffect
+     * @description useLayoutEffect that is triggered when tintColor is changed.
+     * Will make the popout menu inactive.
      */
     useLayoutEffect(() => {
         setPopoutActive(!popoutActive);
     }, [tintColor]);
 
     /**
-     * When user starts dragging the object, this is triggered
-     * will remove the popout if it is active
+     * When user starts dragging the object, this function is triggered.
+     * will remove the popout menu if it is active
      * and make the item hover as a feedback that the dragging has
-     * started
+     * started.
      * @memberof Draggable
-     * @param {array[]} gesture
+     * @param {array} gesture The gesture used
      */
     const onDragStart = (gesture) => {
         //Start spring animation (user feedback)
@@ -70,11 +71,11 @@ const Draggable = React.memo((props) => {
     };
 
     /**
-     * When dragging event has ended, the
-     * hoved animation will end and pop back to it's
-     * original size
+     * When the user stops dragging the object, this function is triggered.
+     * Will make the hover animation end and the item to pop back to it's
+     * original size.
      * @memberof Draggable
-     * @param {array[]} gesture
+     * @param {array} gesture The gesture used
      */
     const onDragEnd = (gesture) => {
         Animated.spring(imgScale, {
@@ -85,10 +86,11 @@ const Draggable = React.memo((props) => {
     };
 
     /**
-     * Helper function so useEffects are triggered
-     * when the user stops dragging the element on top of
-     * the trashcan. This will initate the removal of the item
+     * Function that is triggered when pressing the delete button
+     * in the popout menu of the draggable object.
+     * Will remove the draggable object from the screen.
      * @memberof Draggable
+     * @function
      */
     const removeItem = useCallback(() => {
         props.onRemoveItem(props.id);
@@ -102,41 +104,39 @@ const Draggable = React.memo((props) => {
             style={styles.container}
             onEnd={(event) => onDragEnd(event)}
             onStart={(event) => onDragStart(event)}>
-            <View>
-                <TouchableWithoutFeedback
-                    onLongPress={() => setPopoutActive(true)}
-                    accessibilityRole={'image'}>
-                    <View>
-                        <Animated.Image
-                            source={imgInfo.source}
-                            resizeMode={'contain'}
-                            style={[
-                                styles.item,
-                                tintColor === null
-                                    ? null
-                                    : imgInfo.hasTint === false
-                                    ? { tintColor: tintColor }
-                                    : null,
-                                {
-                                    transform: [{ scale: imgScale }],
-                                },
-                            ]}
+            <TouchableWithoutFeedback
+                onLongPress={() => setPopoutActive(true)}
+                accessibilityRole={'image'}>
+                <View>
+                    <Animated.Image
+                        source={imgInfo.source}
+                        resizeMode={'contain'}
+                        style={[
+                            styles.item,
+                            tintColor === null
+                                ? null
+                                : imgInfo.hasTint === false
+                                ? { tintColor: tintColor }
+                                : null,
+                            {
+                                transform: [{ scale: imgScale }],
+                            },
+                        ]}
+                    />
+                    {popoutActive && (
+                        <Popout
+                            radius={radius}
+                            array={imgInfo.hasTint ? noColors : colors}
+                            setPopoutActive={setPopoutActive}
+                            popoutActive={popoutActive}
+                            setTintColor={setTintColor}
+                            buttonSize={buttonSize}
+                            itemSize={ITEM_SIZE}
+                            removeItem={removeItem}
                         />
-                        {popoutActive && (
-                            <Popout
-                                radius={radius}
-                                array={imgInfo.hasTint ? noColors : colors}
-                                setPopoutActive={setPopoutActive}
-                                popoutActive={popoutActive}
-                                setTintColor={setTintColor}
-                                buttonSize={buttonSize}
-                                itemSize={ITEM_SIZE}
-                                removeItem={removeItem}
-                            />
-                        )}
-                    </View>
-                </TouchableWithoutFeedback>
-            </View>
+                    )}
+                </View>
+            </TouchableWithoutFeedback>
         </Gestures>
     );
 });
@@ -157,7 +157,6 @@ const styles = StyleSheet.create({
         width: ITEM_SIZE,
         height: ITEM_SIZE,
         justifyContent: 'center',
-        // zIndex: -1,
     },
 });
 

@@ -17,7 +17,8 @@ import { Divider } from '../reusableComponents';
 const windowWidth = Dimensions.get('window').width;
 
 /**
- * This is a component that pops up to alert the user that the drawing is set to be deleted.
+ * This component is an alert that pops up to alert the user that the drawing is set to be deleted.
+ *
  * @namespace AlertModal
  * @category SketchComponents
  * @prop {object} modalVisible If the modal is visible or not, plus functions to open, close it
@@ -84,7 +85,7 @@ const AlertModal = React.memo(
                                 </Text>
                             </TouchableOpacity>
                             <Divider
-                                borderColor={Colors.iconActive}
+                                borderColor={Colors.dividerPrimary}
                                 style={styles.divider}
                             />
                             <View style={styles.buttonsView}>
@@ -136,14 +137,12 @@ const styles = StyleSheet.create({
     },
     modalTitle: {
         margin: 5,
-        // textAlign: 'center',
         fontWeight: 'bold',
         color: Colors.icons,
         ...Typography.section,
     },
     modalText: {
         margin: 5,
-        // textAlign: 'center',
         color: Colors.icons,
         ...Typography.body,
     },

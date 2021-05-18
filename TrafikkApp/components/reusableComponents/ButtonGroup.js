@@ -17,7 +17,7 @@ import { Typography, Buttons, Colors } from '../../styles';
  * @prop {number} [groupWidth] The width of the button group
  * @prop {number} [height] The height of the button group
  * @prop {function} onSelect Handler to be called when the user taps a button
- * @prop {color} highlightBackgroundColor BachgroundColor of the selected button
+ * @prop {color} highlightBackgroundColor BackgroundColor of the selected button
  * @prop {color} highlightTextColor Text color of the selected button
  * @prop {color} inactiveBackgroundColor BackgroundColor of the inactive button(s)
  * @prop {color} inactiveTextColor Text color of the inactive button(s)
@@ -42,8 +42,8 @@ const ButtonGroup = (props) => {
     const [chosenIndex, setChosenIndex] = useState(
         values.indexOf(selectedValue)
     );
-    //This state is to help the text to change color only once the animation is done
-    //So we don't get weird color flickering
+    // This state is to help the text to change color only once the animation is done
+    // So we don't get weird color flickering
     const [indexAnimDone, setIndexAnimDone] = useState(
         values.indexOf(selectedValue)
     );
@@ -52,18 +52,20 @@ const ButtonGroup = (props) => {
     const [boxPos, setBoxPos] = useState(new Animated.Value(0));
 
     /**
-     * useEffect that is triggered when selectedValue is changed.
-     * Will set the state chosenIndex to the index of the selected value
      * @memberof ButtonGroup
+     * @typedef {function} useEffect
+     * @description useEffect that is triggered when selectedValue is changed.
+     * Will set the state chosenIndex to the index of the selected value.
      */
     useEffect(() => {
         setChosenIndex(values.indexOf(selectedValue));
     }, [selectedValue]);
 
     /**
-     * Use effect triggered on mount to set the inital buttonSizes depending on
-     * what type of slider it is
      * @memberof ButtonGroup
+     * @typedef {function} useEffect
+     * @description UseEffect triggered on mount to set the inital buttonSizes depending on
+     * what type of slider it is.
      */
     useEffect(() => {
         var newSizes = [];
@@ -97,9 +99,10 @@ const ButtonGroup = (props) => {
     }, [width]);
 
     /**
-     * useEffect that is triggered when chosenValue is changed.
-     * Will animate the changing of the selected button
      * @memberof ButtonGroup
+     * @typedef {function} useEffect
+     * @description useEffect that is triggered when chosenValue is changed.
+     * Will animate the changing of the selected button.
      */
     useEffect(() => {
         // Getting sum of numbers
@@ -127,7 +130,7 @@ const ButtonGroup = (props) => {
 
     /**
      * Handler that is called when the user taps a button.
-     * Sets the state of the chosenIndex
+     * Sets the state of the chosenIndex.
      * @memberof ButtonGroup
      * @param {string} value The name of the button
      * @param {int} i The index of the button

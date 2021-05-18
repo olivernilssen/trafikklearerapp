@@ -4,6 +4,7 @@ import { Colors, Typography } from '../../styles';
 
 /**
  * This component is used to display a name/logo on the header in the StartScreen.
+ *
  * @namespace HeaderName
  * @category StartScreenComponents
  */

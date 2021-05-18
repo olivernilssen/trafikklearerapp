@@ -19,12 +19,12 @@ let xOffset = 0;
  * Takes in other React Native components as children.
  * @namespace BottomMenuAnimated
  * @category ReusableComponents
- * @prop {object} bottomSheetOpen a hook which stores the state state and function to handle if its open or closed
+ * @prop {object} bottomSheetOpen Hook which stores the state and function to handle if its open or closed
  */
 const BottomMenuAnimated = React.memo((props) => {
     const { bottomSheetOpen, chevronColor } = props;
 
-    //this value is used to help panresonder not having to re-render
+    //these two value is used to help panresonder not having to re-render to get the correct values
     const sheetValue = useRef(bottomSheetOpen.isOpen);
     const heightRef = useRef(bottomSheetHeight);
 
@@ -33,12 +33,33 @@ const BottomMenuAnimated = React.memo((props) => {
     );
     const [bottomSheetHeight, setBottomSheetHeight] = useState(0);
 
+    /**
+     * This is just a ref to the pan. Which holds the x and y coordinates of the
+     * animated view. It will update depending on either the togglesubview
+     * or by the user dragging their finger on it.
+     * @memberof BottomMenuAnimated
+     */
     const pan = useRef(new Animated.ValueXY()).current;
 
+    /**
+     * Pan responder is a way to allow gestures like
+     * swipe in an animated view. This panresponder makes
+     * sure that the user is not tapping by disabling it if the 'tap'/finger
+     * goes less than 3 in either y or x direction to allow tapping.
+     * Other than that it check the distance the finger has gone from
+     * the starting point and depending on if the menu is open or not,
+     * it will either close it or pop it back to it's original position.
+     * @memberof BottomMenuAnimated
+     */
     const panResponder = React.useMemo(
         () =>
             PanResponder.create({
-                onMoveShouldSetPanResponder: (evt, gestureState) => true,
+                onMoveShouldSetPanResponder: (evt, gestureState) => {
+                    return (
+                        Math.abs(gestureState.dx) > 3 ||
+                        Math.abs(gestureState.dy) > 3
+                    );
+                },
                 onPanResponderGrant: () => {
                     pan.setOffset({
                         y: pan.y._value,
@@ -82,14 +103,25 @@ const BottomMenuAnimated = React.memo((props) => {
         [bottomSheetOpen.isOpen]
     );
 
-    /** Use effect to help panresponder keep a current version of the bottomsheetOpen value
+    /**
      * @memberof BottomMenuAnimated
+     * @typedef {function} useEffect
+     * @description UseEffect to help panresponder keep a current version of the bottomsheetOpen value.
      */
     useEffect(() => {
         sheetValue.current = bottomSheetOpen.isOpen;
     }, [bottomSheetOpen.isOpen]);
 
-    React.useEffect(() => {
+    /**
+     * @memberof BottomMenuAnimated
+     * @typedef {function} useEffect
+     * @description useEffect that adds a listener to the pan on mount.
+     * This listner will 'listen' for values being changed and update
+     * the pan accordingly (eg. the user drags their finger on the view).
+     * Upon unmount (return) it will remove the listener.
+     * @returns void
+     */
+    useEffect(() => {
         const listener = pan.addListener((value) => (_value = value));
         return () => {
             pan.removeListener(listener);
@@ -97,11 +129,11 @@ const BottomMenuAnimated = React.memo((props) => {
     }, []);
 
     /**
-     * Is triggered when the state bottomSheetOpen is changed
-     * Will trigger the toggleSubview function to animate the
-     * bottomsheet into view
      * @memberof BottomMenuAnimated
-
+     * @typedef {function} useEffect
+     * @description useEffect triggered when the state bottomSheetOpen is changed.
+     * Will trigger the toggleSubview function to animate the
+     * bottomsheet into view.
      */
     useEffect(() => {
         toggleSubview();
@@ -110,8 +142,9 @@ const BottomMenuAnimated = React.memo((props) => {
     /**
      * This function will change the little icon at the top of the bottom menu
      * to either show a chevron-up or chevron-down.
-     * It also animates the menu to either be hidden or shown
+     * It also animates the menu to either be hidden or shown.
      * @memberof BottomMenuAnimated
+     * @function
      */
     const toggleSubview = useCallback(() => {
         setHiddenViewButton(
@@ -167,6 +200,7 @@ const BottomMenuAnimated = React.memo((props) => {
             </TouchableOpacity>
 
             <View
+                pointerEvents="box-none"
                 onLayout={(event) => {
                     getLayout(event.nativeEvent.layout);
                 }}
@@ -186,9 +220,11 @@ var styles = StyleSheet.create({
         right: 0,
         backgroundColor: Colors.bottomMenuTransparent,
         zIndex: 10,
+        // height: '100%',
     },
     button: {
-        paddingBottom: 10,
+        paddingVertical: 20,
+        paddingHorizontal: 15,
         opacity: 0.8,
     },
     bottomContainer: {

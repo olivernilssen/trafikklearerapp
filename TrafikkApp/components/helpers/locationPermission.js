@@ -1,9 +1,10 @@
 import { PermissionsAndroid } from 'react-native';
 
 /**
- * Function to check the location permission on device for this app
+ * Function to check the location permission on the device for this app.
+ * @memberof Helpers
  */
-export const requestLocationPermission = async () => {
+const requestLocationPermission = async () => {
     try {
         const granted = await PermissionsAndroid.request(
             PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -25,3 +26,5 @@ export const requestLocationPermission = async () => {
         console.warn(err);
     }
 };
+
+export default requestLocationPermission;

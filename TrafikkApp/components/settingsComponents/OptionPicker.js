@@ -20,12 +20,12 @@ import { isSmallScreen, USER_KEYS } from '../helpers';
 const numberOfColumns = isSmallScreen() ? 6 : 7;
 
 /**
- * The view modal picker. This shows so the user can select
- * which traggable images they want visible in the drawing
- * board.
+ * This component shows a modal where the user can choose which draggable objects
+ * is to be available in the sketch screens.
+ *
  * @namespace OptionPicker
  * @category SettingsComponents
- * @prop {object} modalVisible hook with boolean and functions for it
+ * @prop {object} modalVisible Hook with boolean and functions for it
  *
  */
 const OptionPicker = React.memo((props) => {
@@ -43,8 +43,9 @@ const OptionPicker = React.memo((props) => {
      * Save the settings to asyncStorage
      * and make modal go away/invisible.
      * @memberof OptionPicker
+     * @function
      */
-    const saveSelectedtDraggables = useCallback(() => {
+    const saveSelectedDraggables = useCallback(() => {
         appContext.saveNewSettings(
             JSON.stringify(selectedImages),
             appContext.setDraggableObjects,
@@ -64,7 +65,7 @@ const OptionPicker = React.memo((props) => {
      * Update which images that are selected in the modal view.
      * Can be selected or unselected.
      * @memberof OptionPicker
-     * @param {string} newValue the source key of selected image
+     * @param {string} newValue The source key of selected image
      */
     const updateSelectedImages = (newValue) => {
         if (warningShow) setWarningShow(false);
@@ -104,12 +105,19 @@ const OptionPicker = React.memo((props) => {
     /**
      * Close the modal and don't save the state of selected values.
      * @memberof OptionPicker
+     * @function
      */
     const closeModalWithoutSave = useCallback(() => {
         modalVisible.onToggle();
         setSelectedImages(JSON.parse(appContext.draggableObjects));
     });
 
+    /**
+     * This defines fhe clickable images of the draggable objects the user can choose between.
+     * Is displayed in a flatlist in the modal.
+     * @memberof OptionPicker
+     * @returns A clickable image of the draggable
+     */
     const renderItem = ({ item, index }) => {
         const selected = selectedImages[item] != null ? true : false;
         return (
@@ -203,7 +211,7 @@ const OptionPicker = React.memo((props) => {
                                             styles.buttonSave,
                                         ]}
                                         onPress={() =>
-                                            saveSelectedtDraggables()
+                                            saveSelectedDraggables()
                                         }>
                                         <Text style={styles.buttonText}>
                                             Lagre

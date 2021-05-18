@@ -139,7 +139,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode verCode
-        versionName "1.0"
+        versionName "1.1"
         multiDexEnabled true
     }
     dexOptions {

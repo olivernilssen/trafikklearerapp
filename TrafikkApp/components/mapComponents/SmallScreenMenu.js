@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 
 import {
     StyleSheet,
@@ -6,7 +6,6 @@ import {
     View,
     TouchableOpacity,
     Image,
-    TouchableHighlight,
     ToastAndroid,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -29,15 +28,15 @@ const mapTypes = {
 };
 
 /**
- * Component to render the bottom menu in maps for smaller screens
+ * Component to render the bottom menu in the MapScreen for smaller screens/devices.
  * @namespace SmallScreenMenu
  * @category MapComponents
- * @prop {hook} markerToggle hook to mark or unmark the markers
- * @prop {hook} pin hook to set the coords of the pin/marker
- * @prop {string} snapshot the path for the snapshot
- * @prop {function} takeSnapshot call to function to take snapshot and save img
- * @prop {string} mapType the maptype being used
- * @prop {function} setMapType setstate function to set maptype
+ * @prop {hook} markerToggle Hook to mark or unmark the markers
+ * @prop {hook} pin Hook to set the coords of the pin/marker
+ * @prop {string} snapshot The path for the snapshot
+ * @prop {function} takeSnapshot Call to function to take snapshot and save img
+ * @prop {string} mapType The maptype being used
+ * @prop {function} setMapType Setstate function to set maptype
  */
 const SmallScreenMenu = ({
     markerToggle,
@@ -52,22 +51,41 @@ const SmallScreenMenu = ({
     const navigation = useNavigation();
 
     const [buttonLayout, setButtonLayout] = useState(undefined);
+    const [locationPinActive, setLocationPinActive] = useState(false);
+
     const mapKeys = Object.keys(mapTypes);
 
-    /** Save the pinned location to async storage
+    /**
+     * @memberof SmallScreenMenu
+     * @typedef {function} useEffect
+     * @description useEffect that is triggered when the coordinates of the pin
+     * is changed. Used to set the state locationPinActive to true or false,
+     * which is used to style the "save pinned location"-button.
+     */
+    useEffect(() => {
+        if (pin.coords != undefined) {
+            setLocationPinActive(true);
+        } else {
+            setLocationPinActive(false);
+        }
+    }, [pin.coords]);
+
+    /** Save the pinned location to async storage.
      * @memberof SmallScreenMenu
      */
     const savePinLocation = () => {
-        appContext.saveNewSettings(
-            JSON.stringify(pin.coords),
-            appContext.setSavedLocations,
-            USER_KEYS.SAVEDLOC_KEY
-        );
-        ToastAndroid.show(
-            'Markør har blitt lagret på enheten',
-            ToastAndroid.SHORT,
-            ToastAndroid.TOP
-        );
+        if (pin.coords != undefined) {
+            appContext.saveNewSettings(
+                JSON.stringify(pin.coords),
+                appContext.setSavedLocation,
+                USER_KEYS.SAVEDLOC_KEY
+            );
+            ToastAndroid.show(
+                'Markør har blitt lagret på enheten',
+                ToastAndroid.SHORT,
+                ToastAndroid.TOP
+            );
+        }
     };
 
     return (
@@ -77,32 +95,11 @@ const SmallScreenMenu = ({
             <View style={styles.bottomSheet}>
                 {/* GROUP OF BUTTONS IN MENU */}
                 <View style={styles.buttonGroup}>
-                    <Text style={styles.sectionText}>Innstillinger</Text>
+                    <Text style={styles.sectionText}>Funksjoner</Text>
                     <Divider borderColor={Colors.dividerPrimary} />
+
                     {/* INNER GROUP OF BUTTONS */}
                     <View style={styles.innerGroup}>
-                        {/* SAVE LOCATION BUTTON */}
-                        <TouchableHighlight
-                            onLayout={(e) =>
-                                setButtonLayout(e.nativeEvent.layout)
-                            }
-                            style={styles.button}
-                            onPress={savePinLocation}>
-                            <Text style={styles.buttonText}>Lagre markør</Text>
-                        </TouchableHighlight>
-
-                        {/* MAKE MARKERS VISIBLE BUTTON */}
-                        <TouchableOpacity
-                            style={styles.button}
-                            onPress={() => {
-                                markerToggle.onToggle();
-                            }}>
-                            <Text style={styles.buttonText}>
-                                {markerToggle.isToggled ? 'Gjem' : 'Vis'}{' '}
-                                markør(er)
-                            </Text>
-                        </TouchableOpacity>
-
                         {/* SCREENSHOT BUTTON */}
                         <TouchableOpacity
                             style={[
@@ -112,6 +109,7 @@ const SmallScreenMenu = ({
                                     flexDirection: 'row',
                                 },
                             ]}
+                            activeOpacity={0.5}
                             onPress={takeSnapshot}>
                             <Icon
                                 name={'camera'}
@@ -130,6 +128,7 @@ const SmallScreenMenu = ({
                         {/* USE PHOTO TO ILLUSTRATE BUTTON */}
                         <TouchableOpacity
                             style={[styles.button, { flexDirection: 'row' }]}
+                            activeOpacity={0.5}
                             onPress={() =>
                                 navigation.navigate('MapSketchScreen')
                             }>
@@ -147,15 +146,39 @@ const SmallScreenMenu = ({
                             </Text>
                         </TouchableOpacity>
 
+                        {/* SAVE LOCATION BUTTON */}
                         <TouchableOpacity
-                            style={[
-                                styles.button,
-                                {
-                                    backgroundColor: 'transparent',
-                                    elevation: 0,
-                                },
-                            ]}>
-                            <Text style={styles.buttonText}></Text>
+                            onLayout={(e) =>
+                                setButtonLayout(e.nativeEvent.layout)
+                            }
+                            style={
+                                locationPinActive
+                                    ? styles.button
+                                    : styles.buttonInactive
+                            }
+                            activeOpacity={locationPinActive ? 0.5 : 1}
+                            onPress={() => savePinLocation()}>
+                            <Text
+                                style={
+                                    locationPinActive
+                                        ? styles.buttonText
+                                        : styles.buttonTextInactive
+                                }>
+                                Lagre markør
+                            </Text>
+                        </TouchableOpacity>
+
+                        {/* MAKE MARKERS VISIBLE BUTTON */}
+                        <TouchableOpacity
+                            style={styles.button}
+                            activeOpacity={0.5}
+                            onPress={() => {
+                                markerToggle.onToggle();
+                            }}>
+                            <Text style={styles.buttonText}>
+                                {markerToggle.isToggled ? 'Gjem' : 'Vis'}{' '}
+                                markør(er)
+                            </Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -181,7 +204,6 @@ const SmallScreenMenu = ({
                         width={buttonLayout.width - 50}
                         onSelect={(newValue) => setMapType(mapTypes[newValue])}
                         inactiveBackgroundColor={Colors.bottomMenyButtons}
-                        // width={'100%'}
                     />
                 )}
             </View>
@@ -193,40 +215,52 @@ export default SmallScreenMenu;
 
 const styles = StyleSheet.create({
     bottomSheet: {
-        // backgroundColor: Colors.dividerPrimary + '50',
         height: 250,
         width: '100%',
         padding: '2%',
         justifyContent: 'space-around',
         flexDirection: 'row',
-        // opacity: 0.9,
     },
     buttonGroup: {
         flex: 2,
         flexDirection: 'column',
         marginRight: isSmallScreen() ? '4%' : '5%',
     },
-    innerGroup: {
-        // flex: 1,
-        height: '100%',
-        paddingTop: '4%',
-        justifyContent: 'space-evenly',
-        flexDirection: 'column',
-    },
     sectionText: {
         ...Typography.section,
         color: Colors.textPrimary,
         marginBottom: isSmallScreen() ? '2%' : '5%',
     },
-
+    innerGroup: {
+        height: '80%',
+        justifyContent: 'flex-start',
+        flexDirection: 'column',
+    },
     button: {
-        // flex: 1,
         padding: '3%',
+        marginVertical: 6,
         backgroundColor: Colors.bottomMenyButtons,
         justifyContent: 'center',
         alignItems: 'center',
         ...Buttons.rounded,
         elevation: 5,
+    },
+    buttonInactive: {
+        padding: '3%',
+        marginVertical: 7,
+        backgroundColor: Colors.bottomMenyButtons,
+        justifyContent: 'center',
+        alignItems: 'center',
+        ...Buttons.rounded,
+    },
+    buttonText: {
+        color: Colors.textPrimary,
+        ...Typography.body,
+    },
+    buttonTextInactive: {
+        color: Colors.slideTextInactive,
+        fontStyle: 'italic',
+        ...Typography.body,
     },
     buttonComp: {
         flex: 1,
@@ -234,11 +268,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'center',
         marginBottom: '5%',
-        // paddingTop: '7%',
-    },
-    buttonText: {
-        color: Colors.textPrimary,
-        ...Typography.body,
     },
     image: {
         flex: 1,

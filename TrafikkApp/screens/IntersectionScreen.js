@@ -5,13 +5,12 @@ import { MainView } from '../components/reusableComponents/';
 import { SketchArea } from '../components/sketchComponents/';
 
 /**
- * The scren component to show the sketcharea of Veikryss.
- * This screen is a sketch screen, and is using the big SketchArea component.
+ * The screen component for the intersection screen.
+ * This screen is a sketch screen, and is using the big SketchArea component with namne prop 'Veikryss'.
  * @namespace IntersectionScreen
  * @category Screens
- * @prop {object} navigation Used for navigation between the different screens
  */
-const IntersectionScreen = React.memo(({ navigation }) => {
+const IntersectionScreen = React.memo(() => {
     return (
         <MainView>
             <View style={styles.sketchArea}>

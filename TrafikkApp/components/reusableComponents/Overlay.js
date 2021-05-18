@@ -8,9 +8,10 @@ import {
 
 /**
  * Component that displays a transparent overlay over the screen.
+ * The overlay is touchable, and it is closed when the user touches the overlay.
  * @namespace Overlay
  * @category ReusableComponents
- * @prop {boolean} showOverlay hook to set, get and toggle overlay
+ * @prop {boolean} showOverlay Hook to set, get and toggle the overlay
  */
 const Overlay = React.memo((props) => {
     const { showOverlay } = props;
@@ -19,9 +20,10 @@ const Overlay = React.memo((props) => {
     const [zIndex, setZIndex] = useState(10);
 
     /**
-     * useEffect that is triggered when the state showOverlay is changed.
-     * Will animate the overlay into view and out of view
      * @memberof Overlay
+     * @typedef {function} useEffect
+     * @description useEffect that is triggered when the state showOverlay is changed.
+     * Will run the handleAnimation function to animate the overlay into view and out of view.
      */
     useEffect(() => {
         handleAnimation();
@@ -30,7 +32,7 @@ const Overlay = React.memo((props) => {
     /**
      * Function to animate the showing and hiding of the overlay.
      * Will set the value of the backgroundColor,
-     * duration of the animation and zIndex of the overlay
+     * duration of the animation and zIndex of the overlay.
      * @memberof Overlay
      */
     const handleAnimation = () => {
@@ -53,7 +55,7 @@ const Overlay = React.memo((props) => {
     };
 
     /**
-     * Defines which colors to animate between
+     * Defines which colors to animate between.
      * @memberof Overlay
      * @param {Array} inputRange The ranges to interpolate between
      * @param {Array} outputRange The colors to interpolate between
@@ -65,7 +67,6 @@ const Overlay = React.memo((props) => {
 
     /**
      * Declares the animated backgroundColor to pass to the animated view
-     * @memberof Overlay
      */
     const animatedStyle = {
         backgroundColor: boxInterpolation,

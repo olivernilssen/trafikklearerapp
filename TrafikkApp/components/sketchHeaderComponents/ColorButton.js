@@ -8,10 +8,12 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Buttons, Typography } from '../../styles';
 import { MenuOption } from 'react-native-popup-menu';
+import { isSmallScreen } from '../helpers';
 
 /**
- * Color button component.
- * returns a color button based on the props it receives
+ * Color button component displayed in the menu to change between pencolor and pencil size in the sketch screens.
+ * Returns a color button based on the props it receives.
+ *
  * @namespace ColorButton
  * @category SketchHeaderComponents
  * @prop {string} colorName The color from the colorArray
@@ -69,10 +71,10 @@ const ColorButton = React.memo((props) => {
 
 const styles = StyleSheet.create({
     buttonSpacing: {
-        padding: '1.4%',
+        padding: isSmallScreen() ? 2 : '1.4%',
     },
     iconActiveCircle: {
-        padding: '1.4%',
+        padding: isSmallScreen() ? 2 : '1.4%',
         opacity: 0.8,
         ...Buttons.round,
     },
@@ -83,7 +85,6 @@ const styles = StyleSheet.create({
     },
     iconColorActive: {
         color: Colors.textPrimary,
-        // fontSize: 20,
         ...Typography.body,
     },
     iconColorInactive: {

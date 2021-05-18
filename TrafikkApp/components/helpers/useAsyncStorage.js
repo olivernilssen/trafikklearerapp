@@ -2,15 +2,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /**
  * Use of async storage to store the app settings the user changes.
+ * The data is stored on the users device.
  * @namespace AsyncStorage
  * @category Helpers
  */
 
 /**
- * Save data based on key and value to async storage
+ * Save data based on key and value to async storage.
  * @memberof AsyncStorage
- * @param {string} key
- * @param {string} value
+ * @param {string} key The key that is stored in the asyncStorage to be updated
+ * @param {string} value The value to be saved
  */
 const saveData = async (key, value) => {
     try {
@@ -22,11 +23,11 @@ const saveData = async (key, value) => {
 };
 
 /**
- * Read data from async storage and return
+ * Read data from async storage and return.
  * @memberof AsyncStorage
- * @param {string} key the key that is stored in the asyncStorage to be updated
- * @param {function} setValue the state set function for this key
- * @param {string} defaultValue the default value of this key
+ * @param {string} key The key that is stored in the asyncStorage to be updated
+ * @param {function} setValue The state set function for this key
+ * @param {string} defaultValue The default value of this key
  */
 const readData = async (key, setValue, defaultValue) => {
     try {
@@ -44,7 +45,7 @@ const readData = async (key, setValue, defaultValue) => {
 };
 
 /**
- * Clear the entire asyncStorage
+ * Clear the entire asyncStorage.
  * @memberof AsyncStorage
  */
 const clearStorage = async () => {

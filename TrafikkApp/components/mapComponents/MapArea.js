@@ -1,7 +1,7 @@
 import React, { useState, useRef, useContext, useEffect } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import Geolocation from 'react-native-geolocation-service';
-import { StyleSheet, View, PermissionsAndroid } from 'react-native';
+import { StyleSheet, View, PermissionsAndroid, Image } from 'react-native';
 import AppContext from '../../AppContext';
 import USER_KEYS from '../helpers/storageKeys';
 import { useFocusEffect } from '@react-navigation/native';
@@ -20,10 +20,12 @@ const randomRegion = {
 };
 
 /**
+ * MapArea contains all the components associated with the MapScreen. This includes
+ * the map view, MapCallout, SmallScreenMenu and LargeScreenMenu.
+ * It will handle the permission to get the user location aswell.
  * @namespace MapArea
  * @category MapComponents
- * MapArea contains the MapView, Callout and bottom menu assosiated with the map
- * It will handle the permission to get user location aswell
+ *
  */
 const MapArea = () => {
     const appContext = useContext(AppContext);
@@ -43,8 +45,12 @@ const MapArea = () => {
     const mapRef = useRef();
     let _watchId = undefined;
 
-    /** When user opens map, go to user if available, else go to last pin, else go to init currRegion.coords
+    /**
      * @memberof MapArea
+     * @typedef {function} useEffect
+     * @description When the user opens the map, this function pans the map to the
+     * users location if its available. If its not available, it pans the map to the position
+     * of the last pinned marker. If there is no marker, it goes to init currRegion.coords.
      */
     useEffect(() => {
         if (mapRef.current) {
@@ -67,10 +73,11 @@ const MapArea = () => {
     }, []);
 
     /**
-     * Use effect that runs when component is in focus and when it is out of focus
-     * Will start the geolocation watch to track user movement
-     * and remove it upon umount
      * @memberof MapArea
+     * @typedef {function} useFocusEffect
+     * @description useFocusEffect that runs when the component is in focus and when it is out of focus.
+     * Will start the geolocation watch to track user movement
+     * and remove it upon umount.
      */
     useFocusEffect(
         React.useCallback(() => {
@@ -85,8 +92,8 @@ const MapArea = () => {
     );
 
     /**
+     * On mount this checks if the user location is active an starts tracking the user.
      * @memberof MapArea
-     * On mount checks if the user location is active an starts tracking user
      */
     const trackUser = () => {
         if (!_watchId) {
@@ -117,6 +124,10 @@ const MapArea = () => {
         }
     };
 
+    /**
+     * UseEffect to handle triggering of the userPermission function
+     * if it has not already been approved
+     */
     useEffect(() => {
         if (userFollow.isToggled && appContext.locationPermission == false) {
             checkUserPermission();
@@ -124,8 +135,10 @@ const MapArea = () => {
     }, [userFollow]);
 
     /**
-     * UseEffect to handle triggering of the userPermission function
-     * if it has not already been approved
+     * This function checks if the user has given the app permission to use
+     * location. Is the location permission is set, the trackUser function is triggered.
+     * If the permission is not set, the modal to turn on location is opened.
+     * @memberof MapArea
      */
     const checkUserPermission = () => {
         if (!appContext.locationPermission) {
@@ -145,9 +158,10 @@ const MapArea = () => {
     };
 
     /**
-     * UseEffect to get toggled if wants to track their own movement
-     * will updated cameraview to where user is moving
      * @memberof MapArea
+     * @typedef {function} useEffect
+     * @description UseEffect to get toggled if the user wants to track their own movement.
+     * Will update the camera view to where the user is moving.
      */
     useEffect(() => {
         if (userFollow.isToggled) {
@@ -159,8 +173,8 @@ const MapArea = () => {
     }, [userLoc]);
 
     /**
-     * Take a snapshot of the map view where the user is right now
-     * It will be saved in cache and also saved to async storage for later use
+     * Takes a snapshot of the map view where the user is right now.
+     * It will be saved in cache and also saved to async storage for later use.
      * @memberof MapArea
      */
     const takeSnapshot = () => {
@@ -211,17 +225,25 @@ const MapArea = () => {
                     })
                 }>
                 {markerToggle.isToggled && pin.coords && (
-                    <Marker
-                        coordinate={pin.coords}
-                        image={require('../../assets/Elements/map/pin(2).png')}
-                    />
+                    <Marker coordinate={pin.coords}>
+                        <Image
+                            source={require('../../assets/Elements/map/pin(2).png')}
+                            style={styles.mapIcon}
+                            resizeMode={'contain'}
+                            // resizeMethod={'resize'}
+                        />
+                    </Marker>
                 )}
 
                 {userLoc.coords && markerToggle.isToggled && (
-                    <Marker
-                        coordinate={userLoc.coords}
-                        image={require('../../assets/Elements/map/pin.png')}
-                    />
+                    <Marker coordinate={userLoc.coords}>
+                        <Image
+                            source={require('../../assets/Elements/map/pin.png')}
+                            style={styles.mapIcon}
+                            resizeMode={'contain'}
+                            // resizeMethod={'resize'}
+                        />
+                    </Marker>
                 )}
             </MapView>
 
@@ -274,5 +296,9 @@ const styles = StyleSheet.create({
         flex: 1,
         height: '100%',
         width: '100%',
+    },
+    mapIcon: {
+        height: isSmallScreen() ? 50 : 60,
+        width: isSmallScreen() ? 50 : 60,
     },
 });

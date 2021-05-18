@@ -16,18 +16,18 @@ import { Colors, Typography } from '../../styles';
  * Component to display the menu as a section list in
  * the navigation drawer (will add all items that are in props.state.routes).
  * @namespace DrawerMenu
- * @category NavigationComponent
- * @prop {function} navigation functions for the drawer navigation
+ * @category NavigationComponents
+ * @prop {function} navigation Functions for the drawer navigation
  */
 const DrawerMenu = React.memo((props) => {
     const [drawerInfo, setDrawerInfo] = useState({});
     const [arrayFinished, setArrayFinished] = useState(false);
 
     /**
-     * useEffect that runs on mount. Checks if it has already been run or not
-     * if it has not, then it creates an array with the info for the drawers
-     * to create sections
      * @memberof DrawerMenu
+     * @typedef {function} useEffect
+     * @description useEffect that runs on mount and checks if it has already been run or not.
+     * If it has not, then it creates an array with the info for the drawers to create sections.
      */
     useEffect(() => {
         if (!arrayFinished) {
@@ -60,8 +60,9 @@ const DrawerMenu = React.memo((props) => {
 
     /**
      * Section header Component for the SectionList
-     * @param {string} title
-     * @returns
+     * @memberof DrawerMenu
+     * @param {string} title The name of the section
+     * @returns A section header
      */
     const SectionHeader = ({ title }) => {
         if (title == '') {
