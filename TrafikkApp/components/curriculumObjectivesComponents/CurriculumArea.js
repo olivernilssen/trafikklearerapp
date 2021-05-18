@@ -10,9 +10,8 @@ import { Colors, Typography } from '../../styles';
 import { RUtils } from 'react-native-responsive-component';
 
 /**
- * The screen component for the curriculum objectives for traffic training.
- * This screen contains a menu to chose between the different curriculum objectives,
- * and displays the text on the screen.
+ * The area component for the curriculum objectives for traffic training.
+ * This is the component that contains all the other components related to the CurriculumObjectivesScreen
  * @namespace CurriculumArea
  * @category CurriculumObjectivesComponents
  */
