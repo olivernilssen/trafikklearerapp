@@ -9,9 +9,9 @@ import {
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Colors, Icons } from '../../styles';
+import { isSmallScreen } from '../helpers';
 
 let _value = { x: 0, y: 0 };
-let xOffset = 0;
 
 /**
  * Component that displays a menu on the bottom of the screen.
@@ -223,7 +223,7 @@ var styles = StyleSheet.create({
         // height: '100%',
     },
     button: {
-        paddingVertical: 20,
+        paddingVertical: isSmallScreen() ? 20 : 10,
         paddingHorizontal: 15,
         opacity: 0.8,
     },
