@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         paddingTop: isSmallScreen() ? 60 : 80,
-        paddingBottom: isSmallScreen() ? 40 : 50,
+        paddingBottom: isSmallScreen() ? 50 : 50,
         height: '100%',
         width: '100%',
         justifyContent: 'center',

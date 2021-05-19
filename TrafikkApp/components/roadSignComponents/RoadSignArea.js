@@ -15,6 +15,7 @@ import { Colors, Typography } from '../../styles';
 import RoadSignModal from './RoadSignModal';
 import RoadSignMenuContent from './RoadSignMenuContent';
 import { fareskiltData } from '../../assets/sign_descriptions';
+import { isSmallScreen } from '../helpers';
 
 const numColumns = 4;
 
@@ -169,7 +170,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.sketchBackground,
     },
     flatlist: {
-        paddingBottom: '9%',
+        paddingBottom: isSmallScreen() ? 65 : '9%',
     },
     item: {
         alignItems: 'center',

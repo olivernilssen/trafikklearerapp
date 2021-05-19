@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import curriculumData from './curriculumData';
 import { Colors, Typography } from '../../styles';
+import { isSmallScreen } from '../helpers';
 
 /**
  * Component to display the content of each curriculum objectives as text on the screen.
@@ -78,18 +79,11 @@ const CurriculumObjectives = React.memo(
 
 const styles = StyleSheet.create({
     main: {
-        marginBottom: '12%',
-    },
-    subHeading: {
-        paddingTop: '2%',
-        paddingBottom: '2%',
-        paddingLeft: '2%',
-        color: Colors.icons,
-        ...Typography.section,
+        marginBottom: isSmallScreen() ? 65 : '10%',
     },
     content: {
-        paddingHorizontal: '2%',
         paddingVertical: '1%',
+        paddingHorizontal: '2%',
         marginVertical: 10,
         borderRadius: 5,
         borderWidth: 1,
