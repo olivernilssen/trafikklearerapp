@@ -37,7 +37,7 @@ const App = () => {
     useEffect(() => {
         SplashScreen.hide();
         // readData(USER_KEYS.THEME_KEY, setTheme, 'Mørk');
-        readData(USER_KEYS.PEN_COLOR_KEY, setPenColor, '#cf262f');
+        readData(USER_KEYS.PEN_COLOR_KEY, setPenColor, '#20303c');
         readData(USER_KEYS.DRAGGABLE_COLOR_KEY, setDraggableColor, '#000000');
         readData(USER_KEYS.DELETE_KEY, setDeleteOnChange, 'Ja');
         readData(USER_KEYS.ERASER_SIZE_KEY, setEraserSize, '80');

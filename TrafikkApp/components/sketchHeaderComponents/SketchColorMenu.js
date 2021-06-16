@@ -22,14 +22,14 @@ const { Popover } = renderers;
  * @memberof SketchColorMenu
  */
 const colorArray = [
-    { colorCode: '#20303c', key: '20303c' },
-    { colorCode: '#3182c8', key: '3182c8' },
-    { colorCode: '#00aaaf', key: '00aaaf' },
-    { colorCode: '#00a65f', key: '00a65f' },
-    { colorCode: '#e2902b', key: 'e2902b' },
-    { colorCode: '#d9644a', key: 'd9644a' },
-    { colorCode: '#cf262f', key: 'cf262f' },
-    { colorCode: '#8b1079', key: '8b1079' },
+    { colorCode: '#20303c', key: '20303c' }, // dark blue
+    { colorCode: '#0040ff', key: '0040ff' }, // blue
+    { colorCode: '#00f5ff', key: '00f5ff' }, // light blue
+    { colorCode: '#00ff92', key: '00ff92' }, // green
+    { colorCode: '#ffeb00', key: 'ffeb00' }, // yellow
+    { colorCode: '#ff9200', key: 'ff9200' }, // orange
+    { colorCode: '#ff676d', key: 'ff676d' }, // red
+    { colorCode: '#ff4ce4', key: 'ff4ce4' }, // purple
 ];
 
 /**

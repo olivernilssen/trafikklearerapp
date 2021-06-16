@@ -30,22 +30,22 @@ const SettingsArea = React.memo((props) => {
 
     const onDelChangeValues = ['Ja', 'Nei'];
     const penColorValues = [
-        '#20303c',
-        '#3182c8',
-        '#00aaaf',
-        '#00a65f',
-        '#e2902b',
-        '#d9644a',
-        '#cf262f',
-        '#8c1079',
+        '#20303c', // dark blue
+        '#0040ff', // blue
+        '#00f5ff', // light blue
+        '#00ff92', // green
+        '#ffeb00', // yellow
+        '#ff9200', // orange
+        '#ff676d', // red
+        '#ff4ce4', // purple
     ];
     const eraserSizeValues = ['50', '60', '70', '80', '90', '100'];
     const draggableColorValues = [
-        '#000000',
-        '#e09f3e',
-        '#9e2a2b',
-        '#284b63',
-        '#3a5a40',
+        '#000000', // black
+        '#ffe525', // yellow
+        '#ffffff', // white
+        '#00f5ff', // blue
+        '#1dff4e', // green
     ];
     // const themeValues = ['Mørk', 'Lys'];
 
@@ -64,7 +64,7 @@ const SettingsArea = React.memo((props) => {
     const onChangeValue = useCallback((type, value, setValue, key) => {
         myContext.saveNewSettings(value, setValue, key);
         ToastAndroid.show(
-            type + 'har blitt endret til ' + value,
+            type + ' har blitt endret til ' + value,
             ToastAndroid.SHORT,
             ToastAndroid.BOTTOM
         );
