@@ -7,8 +7,24 @@ const draggables = {
         source: require('../../assets/Elements/bus.png'),
         hasTint: false,
     },
+    'Bus-flipped': {
+        source: require('../../assets/Elements/bus-flipped.png'),
+        hasTint: false,
+    },
     Car: {
         source: require('../../assets/Elements/car-top-view.png'),
+        hasTint: false,
+    },
+    'Car-down': {
+        source: require('../../assets/Elements/car-top-view-down.png'),
+        hasTint: false,
+    },
+    'Car-left': {
+        source: require('../../assets/Elements/car-top-view-left.png'),
+        hasTint: false,
+    },
+    'Car-right': {
+        source: require('../../assets/Elements/car-top-view-right.png'),
         hasTint: false,
     },
     Children: {
@@ -51,10 +67,6 @@ const draggables = {
         source: require('../../assets/Elements/person-walking.png'),
         hasTint: false,
     },
-    'tree-silhouette': {
-        source: require('../../assets/Elements/tree-silhouette.png'),
-        hasTint: false,
-    },
     'car-yellow': {
         source: require('../../assets/Elements/car-yellow.png'),
         hasTint: true,
@@ -69,10 +81,6 @@ const draggables = {
     },
     'no-entry': {
         source: require('../../assets/Elements/no-entry.png'),
-        hasTint: true,
-    },
-    truck: {
-        source: require('../../assets/Elements/truck.png'),
         hasTint: true,
     },
     20: {
@@ -122,6 +130,10 @@ const draggables = {
     tree: {
         source: require('../../assets/Elements/tree.png'),
         hasTint: true,
+    },
+    motorbike: {
+        source: require('../../assets/Elements/motocross.png'),
+        hasTint: false,
     },
 };
 

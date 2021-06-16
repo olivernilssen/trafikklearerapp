@@ -14,19 +14,19 @@ const windowHeight = Dimensions.get('window').height;
 
 const colors = [
     'exit',
-    '#000000',
-    '#e09f3e',
-    '#9e2a2b',
-    '#284b63',
-    '#3a5a40',
+    '#000000', // black
+    '#ffe525', // yellow
+    '#ffffff', // white
+    '#00f5ff', // blue
+    '#1dff4e', // green
     'delete',
 ];
 
 const noColors = ['delete'];
 
-const ITEM_SIZE = windowWidth * 0.2;
-const radius = (ITEM_SIZE * 2) / 2;
-const buttonSize = windowWidth * 0.05;
+const ITEM_SIZE = windowWidth * 0.13;
+const radius = (ITEM_SIZE * 2) / 1.8;
+const buttonSize = windowWidth * 0.042;
 
 /**
  * Component that holds the actual draggable component.
